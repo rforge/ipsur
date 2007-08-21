@@ -1,0 +1,7 @@
+Package: IPSUR
+Version: 0.1-2
+Depends: R (>= 2.1.0), car (>= 1.0-15), grDevices, tcltk, utils
+Suggests: abind, distr, distrEx, effects (>= 1.0-7), foreign, grid,
+        lattice, lmtest, MASS, mgcv, multcomp (>= 0.991-2), nlme, nnet,
+        qcc, relimp, rgl, RODBC
+
