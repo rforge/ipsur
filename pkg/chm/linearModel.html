@@ -1,0 +1,77 @@
+<html><head><title>Rcmdr Linear Model Dialog</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>linearModel(Rcmdr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   linearModel">
+<param name="keyword" value=" Rcmdr Linear Model Dialog">
+</object>
+
+
+<h2>Rcmdr Linear Model Dialog</h2>
+
+
+<h3>Description</h3>
+
+<p>
+This dialog is used to specify a linear model to be fit by the <code><a onclick="findlink('stats', 'lm.html')" style="text-decoration: underline; color: blue; cursor: hand">lm</a></code> function.
+</p>
+
+
+<h3>Details</h3>
+
+<p>
+The left model-formula box specifies the response variable to be used in the model; it
+may be a variable name or an expression evaluating to the response variable, such as
+<code>log(income)</code>.
+</p>
+<p>
+The right model-formula box specifies the right-hand (i.e., predictor) side of the model.
+See <code><a onclick="findlink('stats', 'lm.html')" style="text-decoration: underline; color: blue; cursor: hand">lm</a></code> for details.
+</p>
+<p>
+You can type directly in the model formula boxes. Alternatively, double-clicking the left mouse
+button on a variable in the variable-list transfers it to the left-hand side of the model (if
+it is empty) or to the right-hand side. You can also enter operators and parentheses using the buttons
+above the formula.
+</p>
+<p>
+Specifying a subset expression allows you to fit the model to a subset of observations
+in the active data set. For example, assuming that <code>gender</code> is a variable in the
+active data set, entering <code>gender == "Male"</code> would restrict the model to males.
+</p>
+<p>
+If the active model is a linear model and the active data set has not changed, 
+then the initial values of the left-hand-side,
+right-hand-side, and subset fields are retained from the previous model.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+John Fox <a href="mailto:jfox@mcmaster.ca">jfox@mcmaster.ca</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a onclick="findlink('stats', 'lm.html')" style="text-decoration: underline; color: blue; cursor: hand">lm</a></code>, <code><a onclick="findlink('base', 'Comparison.html')" style="text-decoration: underline; color: blue; cursor: hand">Comparison</a></code>
+</p>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>Rcmdr</em> version 1.2-6 <a href="00Index.html">Index]</a></div>
+
+</body></html>

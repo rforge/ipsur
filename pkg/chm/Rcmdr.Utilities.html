@@ -1,0 +1,483 @@
+<html><head><title>Rcmdr Utility Functions</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>Rcmdr.Utilities(Rcmdr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   Rcmdr.Utilities">
+<param name="keyword" value="R:   activateMenus">
+<param name="keyword" value="R:   activeDataSet">
+<param name="keyword" value="R:   ActiveDataSet">
+<param name="keyword" value="R:   activeDataSetP">
+<param name="keyword" value="R:   activeModel">
+<param name="keyword" value="R:   ActiveModel">
+<param name="keyword" value="R:   activeModelP">
+<param name="keyword" value="R:   checkActiveDataSet">
+<param name="keyword" value="R:   checkActiveModel">
+<param name="keyword" value="R:   checkBoxes">
+<param name="keyword" value="R:   checkClass">
+<param name="keyword" value="R:   checkFactors">
+<param name="keyword" value="R:   checkMethod">
+<param name="keyword" value="R:   checkNumeric">
+<param name="keyword" value="R:   checkReplace">
+<param name="keyword" value="R:   checkTwoLevelFactors">
+<param name="keyword" value="R:   checkVariables">
+<param name="keyword" value="R:   closeDialog">
+<param name="keyword" value="R:   commanderPosition">
+<param name="keyword" value="R:   CommanderWindow">
+<param name="keyword" value="R:   dataSetsP">
+<param name="keyword" value="R:   dialogSuffix">
+<param name="keyword" value="R:   doItAndPrint">
+<param name="keyword" value="R:   errorCondition">
+<param name="keyword" value="R:   exists.method">
+<param name="keyword" value="R:   Factors">
+<param name="keyword" value="R:   factorsP">
+<param name="keyword" value="R:   getFrame">
+<param name="keyword" value="R:   getFrame.listbox">
+<param name="keyword" value="R:   getRcmdr">
+<param name="keyword" value="R:   getSelection">
+<param name="keyword" value="R:   getSelection.listbox">
+<param name="keyword" value="R:   gettextRcmdr">
+<param name="keyword" value="R:   glmP">
+<param name="keyword" value="R:   GrabFocus">
+<param name="keyword" value="R:   groupsBox">
+<param name="keyword" value="R:   groupsLabel">
+<param name="keyword" value="R:   hclustSolutionsP">
+<param name="keyword" value="R:   initializeDialog">
+<param name="keyword" value="R:   is.valid.name">
+<param name="keyword" value="R:   justDoIt">
+<param name="keyword" value="R:   listAllModels">
+<param name="keyword" value="R:   listDataSets">
+<param name="keyword" value="R:   listGeneralizedLinearModels">
+<param name="keyword" value="R:   listFactors">
+<param name="keyword" value="R:   listLinearModels">
+<param name="keyword" value="R:   listMultinomialLogitModels">
+<param name="keyword" value="R:   listNumeric">
+<param name="keyword" value="R:   listProportionalOddsModels">
+<param name="keyword" value="R:   listTwoLevelFactors">
+<param name="keyword" value="R:   listVariables">
+<param name="keyword" value="R:   lmP">
+<param name="keyword" value="R:   logger">
+<param name="keyword" value="R:   LogWindow">
+<param name="keyword" value="R:   Message">
+<param name="keyword" value="R:   MessagesWindow">
+<param name="keyword" value="R:   modelFormula">
+<param name="keyword" value="R:   modelsP">
+<param name="keyword" value="R:   Numeric">
+<param name="keyword" value="R:   numericP">
+<param name="keyword" value="R:   OKCancelHelp">
+<param name="keyword" value="R:   OutputWindow">
+<param name="keyword" value="R:   packageAvailable">
+<param name="keyword" value="R:   putRcmdr">
+<param name="keyword" value="R:   radioButtons">
+<param name="keyword" value="R:   RcmdrTclSet">
+<param name="keyword" value="R:   RcmdrTkmessageBox">
+<param name="keyword" value="R:   subOKCancelHelp">
+<param name="keyword" value="R:   subsetBox">
+<param name="keyword" value="R:   trim.blanks">
+<param name="keyword" value="R:   TwoLevelFactors">
+<param name="keyword" value="R:   twoLevelFactorsP">
+<param name="keyword" value="R:   UpdateModelNumber">
+<param name="keyword" value="R:   variableListBox">
+<param name="keyword" value="R:   Variables">
+<param name="keyword" value=" Rcmdr Utility Functions">
+</object>
+
+
+<h2>Rcmdr Utility Functions</h2>
+
+
+<h3>Description</h3>
+
+<p>
+These functions support writing additions to the Rcmdr package. Additional R code
+can be placed in files with file type <code>.R</code> in the <code>etc</code> subdirectory
+of the package. Add menus, submenus, and menu items by editing the file
+<code>Rcmdr-menus.txt</code> in the same directory.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+activateMenus()
+activeDataSet(dsname, flushModel=TRUE)
+ActiveDataSet(name)
+activeDataSetP()
+activeModel(model)
+ActiveModel(name)
+activeModelP()
+checkActiveDataSet()
+checkActiveModel()
+checkBoxes(window=top, frame, boxes, initialValues=NULL, labels)  # macro
+checkClass(object, class, message=NULL)  # macro
+checkFactors(n=1)
+checkMethod(generic, object, message=NULL, default=FALSE, strict=FALSE, 
+    reportError=TRUE)  # macro
+checkNumeric(n=1)
+checkReplace(name, type=gettextRcmdr("Variable"))
+checkTwoLevelFactors(n=1)
+checkVariables(n=1)
+closeDialog(window, release=TRUE)  # macro
+CommanderWindow()
+dataSetsP()
+dialogSuffix(window=top, onOK=onOK, rows=1, columns=1, focus=top, bindReturn=TRUE, 
+    preventGrabFocus=FALSE, preventDoubleClick=FALSE, preventCrisp=FALSE)  # macro
+doItAndPrint(command, log=TRUE)
+errorCondition(window=top, recall=NULL, message, model=FALSE)  # macro
+exists.method(generic, object, default=TRUE, strict=FALSE)
+Factors(names)
+factorsP(n=1)
+## S3 method for class 'listbox':
+getFrame(object)
+## S3 method for class 'listbox':
+getSelection(object)
+getRcmdr(x, mode="any")
+gettextRcmdr(...)
+glmP()
+GrabFocus(value)
+groupsBox(recall=NULL, label=gettextRcmdr("Plot by:"), 
+    initialLabel=gettextRcmdr("Plot by groups"),
+    plotLinesByGroup=FALSE, positionLegend=FALSE, 
+    plotLinesByGroupsText=gettextRcmdr("Plot lines by group"))  # macro
+groupsLabel(frame=top, groupsBox=groupsBox, columnspan=1)  # macro
+hclustSolutionsP()
+initializeDialog(window=top, title="", offset=10, preventCrisp=FALSE)  # macro
+is.valid.name(x)
+justDoIt(command)
+listAllModels(envir=.GlobalEnv, ...)
+listDataSets(envir=.GlobalEnv, ...)
+listFactors(dataSet=ActiveDataSet())
+listGeneralizedLinearModels(envir=.GlobalEnv, ...)
+listLinearModels(envir=.GlobalEnv, ...)
+listMultinomialLogitModels(envir=.GlobalEnv, ...)
+listNumeric(dataSet=ActiveDataSet())
+listProportionalOddsModels(envir=.GlobalEnv, ...)
+listTwoLevelFactors(dataSet=ActiveDataSet())
+listVariables(dataSet=ActiveDataSet())
+lmP()
+logger(command)
+LogWindow()
+Message(message, type=c("note", "error", "warning"))
+MessagesWindow()
+modelFormula(frame=top, hasLhs=TRUE)  # macro
+modelsP(n=1)
+Numeric(names)
+numericP(n=1)
+OKCancelHelp(window=top, helpSubject=NULL, model=FALSE)  # macro
+OutputWindow()
+packageAvailable(name)
+putRcmdr(x, value)
+radioButtons(window=top, name, buttons, values=NULL, initialValue=..values[1], 
+    labels, title)  # macro
+RcmdrTclSet(name, value)
+RcmdrTkmessageBox(message, icon=c("info", "question", "warning",
+    "error"), type=c("okcancel", "yesno", "ok"), default, title="")
+subOKCancelHelp(window=subdialog, helpSubject=NULL)  # macro
+subsetBox(window=top, model=FALSE)  # macro
+trim.blanks(text)
+TwoLevelFactors(names)
+twoLevelFactorsP(n=1)
+UpdateModelNumber(increment=1)
+variableListBox(parentWindow, variableList=Variables(), bg="white",
+    selectmode="single", export="FALSE", initialSelection=NULL, 
+    listHeight = 4, title)
+Variables(names)
+
+# the following function is exported for technical reasons,
+# but is not meant to be called directly
+
+commanderPosition()
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>bg</code></td>
+<td>
+background color.</td></tr>
+<tr valign="top"><td><code>bindReturn</code></td>
+<td>
+if <code>TRUE</code>, the <EM>Return</EM> key is bound to the <code>onOK</code> function in the dialog.</td></tr>
+<tr valign="top"><td><code>boxes</code></td>
+<td>
+vector of quoted names for check boxes, used to generate each box and its associated variable.</td></tr>
+<tr valign="top"><td><code>buttons</code></td>
+<td>
+vector of quoted names for buttons in a set of related radio buttons.</td></tr>
+<tr valign="top"><td><code>class</code></td>
+<td>
+quoted name of class.</td></tr>
+<tr valign="top"><td><code>columnspan</code></td>
+<td>
+number of dialog-box columns to be spanned by frame.</td></tr>
+<tr valign="top"><td><code>command</code></td>
+<td>
+a character string that evaluates to an R command.</td></tr>
+<tr valign="top"><td><code>dataSet, dsname</code></td>
+<td>
+the quoted name of a data frame in memory.</td></tr>
+<tr valign="top"><td><code>default</code></td>
+<td>
+default button: if not specified, "ok" for "okcancel", "yes" for "yesno", and "ok" for "ok";
+or look for a default method.</td></tr>
+<tr valign="top"><td><code>envir</code></td>
+<td>
+the environment to be searched; should generally be left at the default.</td></tr>
+<tr valign="top"><td><code>export</code></td>
+<td>
+export selection?</td></tr>
+<tr valign="top"><td><code>flushModel</code></td>
+<td>
+set (or reset) the active model to NULL? Should normally be <code>TRUE</code> when the active 
+data set is changed; an exception is when variables are simply added to, deleted from, or modified in 
+the data set set.</td></tr>
+<tr valign="top"><td><code>focus</code></td>
+<td>
+Tk window to get the focus.</td></tr>
+<tr valign="top"><td><code>frame</code></td>
+<td>
+frame or quoted name for frame depending upon the function.</td></tr>
+<tr valign="top"><td><code>generic</code></td>
+<td>
+quoted name of generic function.</td></tr>
+<tr valign="top"><td><code>groupsBox</code></td>
+<td>
+listbox object for selecting groups variable.</td></tr>
+<tr valign="top"><td><code>hasLhs</code></td>
+<td>
+does the model formula have a left-hand side?</td></tr>
+<tr valign="top"><td><code>helpSubject</code></td>
+<td>
+the quoted name of a help subject, to be called as <code>help(helpSubject)</code>
+when the dialog <EM>Help</EM> button is pressed.</td></tr>
+<tr valign="top"><td><code>icon</code></td>
+<td>
+Message-box icon.</td></tr>
+<tr valign="top"><td><code>increment</code></td>
+<td>
+increment to model number; -1 to set back after error.</td></tr>
+<tr valign="top"><td><code>initialLabel</code></td>
+<td>
+label for groups button before a selection is made.</td></tr>
+<tr valign="top"><td><code>initialSelection</code></td>
+<td>
+index of item initially selected, 0-base indexing.</td></tr>
+<tr valign="top"><td><code>initialValue</code></td>
+<td>
+for a set of related radio buttons.</td></tr>
+<tr valign="top"><td><code>initialValues</code></td>
+<td>
+for a set of related check boxes.</td></tr>
+<tr valign="top"><td><code>label</code></td>
+<td>
+label prefix for groups button after a selection is made.</td></tr>
+<tr valign="top"><td><code>labels</code></td>
+<td>
+a vector of character strings to label a set of radio buttons or check boxes.</td></tr>
+<tr valign="top"><td><code>listHeight</code></td>
+<td>
+Maximum number of elements displayed simultaneously in list box.</td></tr>
+<tr valign="top"><td><code>log</code></td>
+<td>
+echo command to the log window, as well as executing it and printing its output.</td></tr>
+<tr valign="top"><td><code>message</code></td>
+<td>
+error (or other) message.</td></tr>
+<tr valign="top"><td><code>mode</code></td>
+<td>
+mode of object to retrieve.</td></tr>
+<tr valign="top"><td><code>model</code></td>
+<td>
+the name of a model, as a character string, or <code>TRUE</code> or <code>FALSE</code>, depending
+upon the function.</td></tr>
+<tr valign="top"><td><code>name</code></td>
+<td>
+quoted name.</td></tr>
+<tr valign="top"><td><code>names</code></td>
+<td>
+optional names to be stored.</td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+number of items to check for.</td></tr>
+<tr valign="top"><td><code>object</code></td>
+<td>
+an object (depends on context).</td></tr>
+<tr valign="top"><td><code>offset</code></td>
+<td>
+in pixels, from top-left of Commander window.</td></tr>
+<tr valign="top"><td><code>onOK</code></td>
+<td>
+function to execute when the <EM>OK</EM> button is pressed.</td></tr>
+<tr valign="top"><td><code>plotLinesByGroup</code></td>
+<td>
+include a check box for plotting lines by group?</td></tr>
+<tr valign="top"><td><code>plotLinesByGroupsText</code></td>
+<td>
+the label for the plot-lines-by-group check box.</td></tr>
+<tr valign="top"><td><code>positionLegend</code></td>
+<td>
+include a check box for a legend?</td></tr>
+<tr valign="top"><td><code>preventGrabFocus</code></td>
+<td>
+prevent the dialog box from grabbing the focus.</td></tr>
+<tr valign="top"><td><code>preventDoubleClick</code></td>
+<td>
+prevent double-clicking from pressing the OK button, even when the
+double.click option is set; necessary for statistical modelling dialogs, which use double-clicking
+to build the model formula.</td></tr>
+<tr valign="top"><td><code>preventCrisp</code></td>
+<td>
+prevent call to <code>tclServiceMode</code>, which (rarely) causes
+problems with some dialogs.</td></tr>
+<tr valign="top"><td><code>recall</code></td>
+<td>
+function to call after error &mdash; usually the function that initiates the dialog.</td></tr>
+<tr valign="top"><td><code>release</code></td>
+<td>
+release the focus if the grab.focus option has been set.</td></tr>
+<tr valign="top"><td><code>reportError</code></td>
+<td>
+if <code>TRUE</code>, report an error message.</td></tr>
+<tr valign="top"><td><code>rows, columns</code></td>
+<td>
+numbers of rows and columns of widgets in the dialog box.</td></tr>
+<tr valign="top"><td><code>values</code></td>
+<td>
+vector of quoted values associated with radio buttons or check boxes.</td></tr>
+<tr valign="top"><td><code>selectmode</code></td>
+<td>
+<code>"single"</code> or <code>"multiple"</code>.</td></tr>
+<tr valign="top"><td><code>strict</code></td>
+<td>
+if <code>TRUE</code>, only use first element of class vector.</td></tr>
+<tr valign="top"><td><code>text</code></td>
+<td>
+a text string.</td></tr>
+<tr valign="top"><td><code>title</code></td>
+<td>
+Window or dialog-box-element title.</td></tr>
+<tr valign="top"><td><code>type</code></td>
+<td>
+quoted type of object to check; used to generate check-replace dialog box;
+or type of message to print in Message window.</td></tr>
+<tr valign="top"><td><code>value</code></td>
+<td>
+an object to be stored.</td></tr>
+<tr valign="top"><td><code>variableList</code></td>
+<td>
+a vector of variable names.</td></tr>
+<tr valign="top"><td><code>window, parentWindow</code></td>
+<td>
+a Tk window.</td></tr>
+<tr valign="top"><td><code>x</code></td>
+<td>
+an R object name, as a character string.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+For <code>gettextRcmdr</code>, text string or vector of text strings
+to translate; otherwise disregard.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+There are several groups of functions exported by the <code>Rcmdr</code> package and documented briefly here.
+To see how these functions work, it is simplest to examine the dialog-generating functions in the <code>Rcmdr</code> package.
+</p>
+<p>
+<EM>Executing and logging commands: </EM>
+The functions <code>doItAndPrint</code>, <code>justDoIt</code>, and <code>logger</code> control the 
+execution, logging, and printing of commands generated by menus and dialogs. 
+<code>logger(command)</code> adds <code>command</code> to the log/script window and to the output window. 
+<code>justDoIt(command)</code> causes <code>command</code>
+to be executed. <code>doItAndPrint(command)</code> does both of these operations, and also prints the
+output produced by the command.
+</p>
+<p>
+<EM>Checking for errors: </EM>
+The function <code>is.valid.name</code> checks whether a character string specifies a valid name
+for an R object. The functions <code>checkActiveDataSet</code>, <code>checkActiveModel</code>,
+<code>checkFactors</code>, <code>checkNumeric</code>, <code>checkTwoLevelFactors</code>, and <code>checkVariables</code>
+check for the existence of objects and write an error message to the log if they are absent
+(or insufficiently numerous, in the case of different kinds of variables). The function 
+<code>checkReplace</code> opens a dialog to query whether an existing object should be replaced.
+The function <code>checkMethod</code>, checks whether a method exists for a particular generic that is
+appropriate for a particular object. The function <code>checkClass</code> checks whether an object is of
+a specific class. Both of these functions write error messages to the log if the condition fails.
+The function <code>errorCondition</code> reports an error to the user and (optionally) re-starts
+a dialog.
+</p>
+<p>
+<EM>Information: </EM>
+Several functions return vectors of object names: <code>listAllModels</code>, <br>
+<code>listDataSets</code>, <code>listGeneralizedLinearModels</code>,
+<code>listFactors</code>, <code>listLinearModels</code>, <code>listMultinomialLogitModels</code>,
+<code>listNumeric</code>, <code>listProportionalOddsModels</code>,
+<code>listTwoLevelFactors</code>,
+<code>listVariables</code>. The functions <code>activeDataSet</code> and <code>activeModel</code> respectively report or set the active
+data set and model.
+The function <code>packageAvailable</code> reports whether the named package is 
+available to be loaded (or has possibly already been loaded).
+The function <code>exists.method</code> checks whether a method exists for a particular generic that is
+appropriate for a particular object, and returns <code>TRUE</code> or <code>FALSE</code>.
+</p>
+<p>
+<EM>Building dialog boxes: </EM>
+Several functions simplify the process of constructing Tk dialogs: 
+initializing a dialog box, <code>initializeDialog</code>, and completing the definition of a dialog box, <code>dialogSuffix</code>;
+a set of check boxes, <code>checkBoxes</code>;
+a set of radio buttons, <code>radioButtons</code>;
+a list box with associated scrollbars and state variable, <code>variableListBox</code>
+(and the associated functions <code>getFrame</code> and <code>getSelection</code>);
+a button and subdialog for selecting a "grouping" variable, <code>groupsBox</code>; 
+displaying the currently defined groups in a dialog, <code>groupsLabel</code>;
+a dialog-box structure for entering a model formula, <code>modelFormula</code>;
+a text box for entering a subsetting expression, <code>subsetBox</code>;
+<EM>OK</EM>, <EM>Cancel</EM>, and <EM>Help</EM> buttons for dialogs, <code>OKCancelHelp</code>, and subdialogs, <code>subOKCancelHelp</code>.
+</p>
+<p>
+<EM>Translating text:</EM>
+The <code>gettextRcmdr</code> function simply passes its argument(s) to
+<code><a onclick="findlink('base', 'gettext.html')" style="text-decoration: underline; color: blue; cursor: hand">gettext</a></code>, adding the argument <code>domain="R-Rcmdr"</code>.
+</p>
+<p>
+<EM>Miscelaneous:</EM>
+The function <code>trim.blanks</code> removes spaces from the beginning and end of a character string.
+</p>
+<p>
+Some of these functions, marked <code># macro</code> under <EM>Usage</EM>, are "macro-like" in their behaviour, in that they 
+execute in the environment from which they are called. These were defined with an adaptation (used with permission) of
+Thomas Lumley's <code>defmacro</code> function, described in Lumley (2001).
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+John Fox <a href="mailto:jfox@mcmaster.ca">jfox@mcmaster.ca</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+T. Lumley (2001) Programmer's niche: Macros in R.
+<EM>R News</EM>, <B>1(3)</B>, 11&ndash;13.
+</p>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>Rcmdr</em> version 1.2-6 <a href="00Index.html">Index]</a></div>
+
+</body></html>

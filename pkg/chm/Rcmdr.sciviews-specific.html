@@ -1,0 +1,79 @@
+<html><head><title>Rcmdr SciViews-specific Functions</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>Rcmdr.sciviews-specific(Rcmdr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   Rcmdr.sciviews-specific">
+<param name="keyword" value="R:   is.SciViews">
+<param name="keyword" value="R:   is.SciViews.TclTk">
+<param name="keyword" value="R:   tkfocus">
+<param name="keyword" value="R:   svCommander">
+<param name="keyword" value="R:   svlogger">
+<param name="keyword" value="R:   activeDataSetEdit">
+<param name="keyword" value="R:   activeDataSetView">
+<param name="keyword" value="R:   optionLogCommand">
+<param name="keyword" value="R:   optionAttachDataSet">
+<param name="keyword" value="R:   optionSortVariables">
+<param name="keyword" value="R:   refreshStatus">
+<param name="keyword" value=" Rcmdr SciViews-specific Functions">
+</object>
+
+
+<h2>Rcmdr SciViews-specific Functions</h2>
+
+
+<h3>Description</h3>
+
+<p>
+These functions provide compatibility with SciViews (<a href="http://www.sciviews.org">http://www.sciviews.org</a>). Thanks to them, Rcmdr is totally integrated
+into SciViews Insider. In this environment, the main 'R Commander' window is replaced by an 'R Commander menu' and log files are
+replaced by special R code editing windows with syntax highlighting. Most of these functions are not intended for direct use.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+is.SciViews()
+is.SciViews.TclTk()
+svlogger(command)
+optionLogCommand()
+optionAttachDataSet()
+optionSortVariables()
+refreshStatus()
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>command</code></td>
+<td>
+a character string that evaluates to an R command.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+The functions <code>is.SciViews</code> tests if R is running under SciViews. If not, most of the other SciViews-specific functions do nothing. <code>is.SciViews.TclTk</code> test if the SciViews client communicates with R through Tcl/Tk (otherwise, it probably uses SciViews plugs).
+The function <code>svlogger</code> is similar to <code>logger</code>, but it records Rcmdr commands in the specific SciViews R script window
+and in the SciViews command history, instead of the log window and the default R command history. 
+<code>optionLogCommand</code>, <code>optionAttachDataSet</code> and {optionSortVariables} allow to change the command logging, automatic attachment of the active
+data set and sorting of variable names (equivalent options than those accessible by check boxes in the 'R Commander' window of Rcmdr outside of SciViews, or in the Options dialog box). In SciViews
+insider, the state of these options, as well as the names of the active data set and model are displayed in the status bar.
+<code>refreshStatus</code> make sure that this information in the status bar is updated according to the current internal state of Rcmdr.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Philippe Grosjean <a href="mailto:phgrosjean@sciviews.org">phgrosjean@sciviews.org</a>
+</p>
+
+
+
+<hr><div align="center">[Package <em>Rcmdr</em> version 1.2-6 <a href="00Index.html">Index]</a></div>
+
+</body></html>

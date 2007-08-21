@@ -1,0 +1,144 @@
+<html><head><title>Stem-and-Leaf Display</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>stem.leaf(Rcmdr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   stem.leaf">
+<param name="keyword" value="R:   print.stem.leaf">
+<param name="keyword" value=" Stem-and-Leaf Display">
+</object>
+
+
+<h2>Stem-and-Leaf Display</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Creates a classical ("Tukey-style") stem-and-leaf display.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+stem.leaf(data, unit, m, Min, Max,
+    rule.line = c("Dixon", "Velleman", "Sturges"),
+    style = c("Tukey", "bare"), trim.outliers = TRUE, depths = TRUE,
+    reverse.negative.leaves = TRUE)
+
+## S3 method for class 'stem.leaf':
+print(x, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>data</code></td>
+<td>
+a numeric vector.</td></tr>
+<tr valign="top"><td><code>unit</code></td>
+<td>
+leaf unit, as a power of 10 (e.g., <code>100</code>, <code>.01</code>);
+omit to let the function choose the unit.</td></tr>
+<tr valign="top"><td><code>m</code></td>
+<td>
+number of parts (1, 2, or 5) into which each stem should be
+divided; omit to let the function choose the number of parts/stem.</td></tr>
+<tr valign="top"><td><code>Min</code></td>
+<td>
+smallest non-outlying value; omit for automatic choice.</td></tr>
+<tr valign="top"><td><code>Max</code></td>
+<td>
+largest non-outlying value; omit for automatic choice.</td></tr>
+<tr valign="top"><td><code>rule.line</code></td>
+<td>
+the rule to use for choosing the desired number of lines
+in the display; <code>"Dixon"</code> = 10*log10(n); <code>"Velleman"</code> = 2*sqrt(n);
+<code>"Sturges"</code> = 1 + log2(n); the default is <code>"Dixon"</code>.</td></tr>
+<tr valign="top"><td><code>style</code></td>
+<td>
+<code>"Tukey"</code> (the default) for "Tukey-style" divided stems;
+<code>"bare"</code> for divided stems that simply repeat the stem digits.</td></tr>
+<tr valign="top"><td><code>trim.outliers</code></td>
+<td>
+if <code>TRUE</code> (the default), outliers are placed on <code>LO</code> and
+<code>HI</code> stems.</td></tr>
+<tr valign="top"><td><code>depths</code></td>
+<td>
+if <code>TRUE</code> (the default), print a column of "depths" to the left of the
+stems; the depth of the stem containing the median is the stem-count enclosed in
+parentheses.</td></tr>
+<tr valign="top"><td><code>reverse.negative.leaves</code></td>
+<td>
+if <code>TRUE</code> (the default), reverse the leaves on negative
+stems (so, e.g., the leaf 9 comes before the leaf 8, etc.).</td></tr>
+<tr valign="top"><td><code>x</code></td>
+<td>
+an object of class stem.leaf to be printed.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+not used: for compatibility with the generic print function.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Unlike the <code>stem</code> function in the <code>base</code> package, this function produces
+classic stem-and-leaf displays, as described in Tukey's <EM>Exploratory Data Analysis</EM>.
+Outliers are determined using the rule for boxplots (see <code><a onclick="findlink('grDevices', 'boxplot.stats.html')" style="text-decoration: underline; color: blue; cursor: hand">boxplot.stats</a></code>).
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+Returns on object of class stem.leaf, which normally would be printed.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Peter Wolf, slightly modified by John Fox <a href="mailto:jfox@mcmaster.ca">jfox@mcmaster.ca</a>
+with the original author's permission.
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Tukey, J. 
+<EM>Exploratory Data Analysis.</EM>
+Addison-Wesley, 1977.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a onclick="findlink('graphics', 'stem.html')" style="text-decoration: underline; color: blue; cursor: hand">stem</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(Prestige)
+stem.leaf(Prestige$income)
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>Rcmdr</em> version 1.2-6 <a href="00Index.html">Index]</a></div>
+
+</body></html>

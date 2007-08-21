@@ -1,0 +1,93 @@
+<html><head><title>Bin a Numeric Varisible</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>bin.var(Rcmdr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   bin.var">
+<param name="keyword" value=" Bin a Numeric Varisible">
+</object>
+
+
+<h2>Bin a Numeric Varisible</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Create a factor dissecting the range of a numeric variable into
+bins of equal width, (roughly) equal frequency, or at "natural"
+cut points. The <code><a onclick="findlink('base', 'cut.html')" style="text-decoration: underline; color: blue; cursor: hand">cut</a></code> function is used to create the factor.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+bin.var(x, bins = 4, method = c("intervals", "proportions", "natural"),
+    labels = FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+numeric variable to be binned.</td></tr>
+<tr valign="top"><td><code>bins</code></td>
+<td>
+number of bins.</td></tr>
+<tr valign="top"><td><code>method</code></td>
+<td>
+one of <code>"intervals"</code> for equal-width bins;
+<code>"proportions"</code> for equal-count bins;
+<code>"natural"</code> for cut points between bins to be determined
+by a k-means clustering.</td></tr>
+<tr valign="top"><td><code>labels</code></td>
+<td>
+if <code>FALSE</code>, numeric labels will be used for the factor levels;
+if <code>NULL</code>, the cut points are used to define labels; otherwise a character
+vector of level names.</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+A factor.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Dan Putler, slightly modified by John Fox <a href="mailto:jfox@mcmaster.ca">jfox@mcmaster.ca</a>
+with the original author's permission.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a onclick="findlink('base', 'cut.html')" style="text-decoration: underline; color: blue; cursor: hand">cut</a></code>, <code><a onclick="findlink('stats', 'kmeans.html')" style="text-decoration: underline; color: blue; cursor: hand">kmeans</a></code>.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+summary(bin.var(rnorm(100), method="prop", labels=letters[1:4]))
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>Rcmdr</em> version 1.2-6 <a href="00Index.html">Index]</a></div>
+
+</body></html>

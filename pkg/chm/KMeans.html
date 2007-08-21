@@ -1,0 +1,111 @@
+<html><head><title>K-Means Clustering Using Multiple Random Seeds</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>KMeans(Rcmdr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   KMeans">
+<param name="keyword" value=" K-Means Clustering Using Multiple Random Seeds">
+</object>
+
+
+<h2>K-Means Clustering Using Multiple Random Seeds</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Finds a number of k-means clusting solutions using R's <code>kmeans</code> function,
+and selects as the final solution the one that has the minimum total
+within-cluster sum of squared distances.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+KMeans(x, centers, iter.max=10, num.seeds=10)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+A numeric matrix of data, or an object that can be coerced to such a
+matrix (such as a numeric vector or a dataframe with all numeric columns).</td></tr>
+<tr valign="top"><td><code>centers</code></td>
+<td>
+The number of clusters in the solution.</td></tr>
+<tr valign="top"><td><code>iter.max</code></td>
+<td>
+The maximum number of iterations allowed.</td></tr>
+<tr valign="top"><td><code>num.seeds</code></td>
+<td>
+The number of different starting random seeds to use. Each
+random seed results in a different k-means solution.</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+A list with components:
+</p>
+<table summary="R argblock">
+<tr valign="top"><td><code>cluster</code></td>
+<td>
+A vector of integers indicating the cluster to which each 
+point is allocated.</td></tr>
+<tr valign="top"><td><code>centers</code></td>
+<td>
+A matrix of cluster centres (centroids).</td></tr>
+<tr valign="top"><td><code>withinss</code></td>
+<td>
+The within-cluster sum of squares for each cluster.</td></tr>
+<tr valign="top"><td><code>tot.withinss</code></td>
+<td>
+The within-cluster sum of squares summed across clusters.</td></tr>
+<tr valign="top"><td><code>betweenss</code></td>
+<td>
+The between-cluster sum of squared distances.</td></tr>
+<tr valign="top"><td><code>size</code></td>
+<td>
+The number of points in each cluster.</td></tr>
+</table>
+
+<h3>Author(s)</h3>
+
+<p>
+Dan Putler
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a onclick="findlink('stats', 'kmeans.html')" style="text-decoration: underline; color: blue; cursor: hand">kmeans</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+  data(USArrests)
+  KMeans(USArrests, centers=3, iter.max=5, num.seeds=5)
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>Rcmdr</em> version 1.2-6 <a href="00Index.html">Index]</a></div>
+
+</body></html>

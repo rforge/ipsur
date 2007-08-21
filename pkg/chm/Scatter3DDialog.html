@@ -1,0 +1,99 @@
+<html><head><title>Rcmdr 3D Scatterplot Dialog</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>Scatter3DDialog(Rcmdr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   Scatter3DDialog">
+<param name="keyword" value="R:   Scatter3D">
+<param name="keyword" value=" Rcmdr 3D Scatterplot Dialog">
+</object>
+
+
+<h2>Rcmdr 3D Scatterplot Dialog</h2>
+
+
+<h3>Description</h3>
+
+<p>
+This dialog sets up a call to the <code><a href="scatter3d.html">scatter3d</a></code> function to draw a
+three-dimensional scatterplot, and optionally to <code><a href="scatter3d.html">identify3d</a></code> to label
+points interactively with the mouse.
+</p>
+
+
+<h3>Details</h3>
+
+<p>
+The explanatory variables provide the "horizontal" and "out-of-screen" axes of the scatterplot,
+the response variable provides the "vertical" axis.
+</p>
+<p>
+Data points are represented as spheres or points,
+depending upon the number of observations. 
+</p>
+<p>
+Several regression surfaces can be
+plotted: a linear least-squares surface; a full quadratic least-squares surface
+with squared and cross-product terms; a "smooth" regression surface &mdash; either a
+smoothing spline, if no degrees of freedom are specified (in which case the
+<code><a onclick="findlink('mgcv', 'gam.html')" style="text-decoration: underline; color: blue; cursor: hand">gam</a></code> function selects the df by generalized cross validation),
+or a fixed-df regression spline; an additive-regression surface (also fit by <code>gam</code>),
+with either smoothing spline or regression spline components (again selected according
+to the specification of degrees of freedom). If only one surface is fit, then residuals are
+plotted as red (negative) and green (positive) lines from the surface to the points.
+</p>
+<p>
+You can specify a factor defining groups by pressing the <EM>Plot by groups</EM> button. A
+separate surface or set of surfaces is plotted for each level of the groups factor. These
+surfaces can be constrained to be parallel.
+</p>
+<p>
+The completed plot can be manipulated with the mouse: Click, hold, drag the left mouse button to rotate
+the display; click, hold, and drag the right button (or centre button on a three-button mouse)
+to zoom in and out.
+</p>
+<p>
+If the box labelled <EM>Identify observations with mouse</EM> is checked, you may use
+the mouse to identify points interactively: Press the right mouse button (or the centre button
+on a three-button mouse), drag a 
+rectangle around the points to be identified, and release the button. 
+Repeat this procedure for each point or
+set of "nearby" points to be identified. To exit from point-identification mode,
+right-click (or centre-click) in an empty region of the plot.
+</p>
+<p>
+Points may also be identified subsequently by selecting <EM>Identify observations with mouse</EM>
+from the R Commander <EM>3D graph</EM> menu: As above, click and drag the left mouse button to
+rotate the display, and click and drag the right (or centre) button to identify points.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+John Fox <a href="mailto:jfox@mcmaster.ca">jfox@mcmaster.ca</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="scatter3d.html">scatter3d</a></code>, <code><a href="scatter3d.html">identify3d</a></code>,  
+<code><a onclick="findlink('rgl', 'rgl.open.html')" style="text-decoration: underline; color: blue; cursor: hand">rgl.open</a></code>, <code><a onclick="findlink('mgcv', 'gam.html')" style="text-decoration: underline; color: blue; cursor: hand">gam</a></code>
+</p>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>Rcmdr</em> version 1.2-6 <a href="00Index.html">Index]</a></div>
+
+</body></html>

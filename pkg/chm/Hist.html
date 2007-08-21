@@ -1,0 +1,86 @@
+<html><head><title>Plot a Histogram</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>Hist(Rcmdr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   Hist">
+<param name="keyword" value=" Plot a Histogram">
+</object>
+
+
+<h2>Plot a Histogram</h2>
+
+
+<h3>Description</h3>
+
+<p>
+This function is a wrapper for the <code><a onclick="findlink('graphics', 'hist.html')" style="text-decoration: underline; color: blue; cursor: hand">hist</a></code> function in
+the <code>base</code> package, permitting percentage scaling of the
+vertical axis in addition to frequency and density scaling.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+Hist(x, scale = c("frequency", "percent", "density"), ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+a vector of values for which a histogram is to be plotted.</td></tr>
+<tr valign="top"><td><code>scale</code></td>
+<td>
+the scaling of the vertical axis: <code>"frequency"</code> (the default),
+<code>"percent"</code>, or <code>"density"</code>.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+arguments to be passed to <code>hist</code>.</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+This function returns <code>NULL</code>, and is called for its side effect &mdash;
+plotting a histogram.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+John Fox <a href="mailto:jfox@mcmaster.ca">jfox@mcmaster.ca</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a onclick="findlink('graphics', 'hist.html')" style="text-decoration: underline; color: blue; cursor: hand">hist</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+    data(Prestige)
+    Hist(Prestige$income, scale="percent")
+    </pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>Rcmdr</em> version 1.2-6 <a href="00Index.html">Index]</a></div>
+
+</body></html>
