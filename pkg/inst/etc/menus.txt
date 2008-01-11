@@ -15,7 +15,7 @@
 ###############################
 
     menu    probabilityMenu         topMenu               ""                                              ""                                    ""	""
-    item    topMenu                 cascade               "IPSUR-Probability"                             probabilityMenu                       ""	""
+    item    topMenu                 cascade               "Probability"                                   probabilityMenu                       ""	""
 
     item    probabilityMenu         command               "Birthday Problem..."                           birthdayProbabilities.ipsur           ""	""
 
