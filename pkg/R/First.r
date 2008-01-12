@@ -6,7 +6,6 @@
 
 .First.lib <- function(libname, pkgname){
     if (!interactive()) return()
-    require(Rcmdr)
     Rcmdr <- options()$Rcmdr
     plugins <- Rcmdr$plugins
     if ((!pkgname %in% plugins) && !getRcmdr("autoRestart")) {
