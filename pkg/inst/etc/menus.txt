@@ -6,6 +6,12 @@
 
 
 
+
+# bar graphs for summarized data
+    menu    BarGraphMenu    graphsMenu      ""                                              ""                          ""             "packageAvailable('abind')"
+    item    BarGraphMenu    command         "Variable(s) in Active data set..."             barGraph                    "factorsP()"   "packageAvailable('abind')"
+    item    BarGraphMenu    command         "Enter table..."                                barPlotSumTable             ""             "packageAvailable('abind')"
+
 #################################################################################################################################################
 #################################################################################################################################################
 ###                          ##
