@@ -7,7 +7,9 @@
 
 # Probability menu dialogs
 
-# last modified 21 July 06
+# Modified 29 January 2008
+# By: Tyler Drombosky
+# Added Quantile Function to Plot Menus
 
 ################## BETA DISTRIBUTION ######################
 betaQuantiles.ipsur <- function(){
@@ -139,6 +141,7 @@ betaDistributionPlot.ipsur  <- function(){
     functionVar <- tclVar("Density")
     densityButton <- tkradiobutton(top, variable=functionVar, value="Density")
     distributionButton <- tkradiobutton(top, variable=functionVar, value="Cumulative Probability")
+	quantileButton <- tkradiobutton(top, variable=functionVar, value="Quantile Function")
     onOK <- function(){
         closeDialog()
         shape1 <- tclvalue(shape1Var)
@@ -158,21 +161,61 @@ betaDistributionPlot.ipsur  <- function(){
                 return()
         }
         fn <- if (fun == "Density") "dbeta" else "pbeta"
-        command <- paste("qbeta(.00005, shape1=", shape1, ", shape2=",  shape2, ")", sep="")
-              logger(paste("xmin <- ", command, sep=""))
-              assign("xmin", justDoIt(command), envir=.GlobalEnv)
-        command <- paste("qbeta(.99995, shape1=", shape1, ", shape2=",  shape2, ")", sep="")
-              logger(paste("xmax <- ", command, sep=""))
-              assign("xmax", justDoIt(command), envir=.GlobalEnv)
-        command <- paste("seq(xmin, xmax, length=100)", sep="")
-              logger(paste(".x <- ", command, sep=""))
-              assign(".x", justDoIt(command), envir=.GlobalEnv)
-        doItAndPrint(paste("plot(.x, ", fn, "(.x, shape1=", shape1,
-            ", shape2=", shape2, ", ncp=", ncp, '), xlab="x", ylab="', fun,
-            '", main=expression(paste("Beta Distribution: ", alpha, " = ',
-            shape1, ', ", beta, " = ', shape2, ', ", delta, " = ', ncp, '")), type="l")', sep=""))
-        doItAndPrint('abline(h=0, col="gray")')
-        remove(.x, xmin, xmax, envir=.GlobalEnv)
+        if(fun == "Density"){
+		
+			command <- paste("qbeta(.00005, shape1=", shape1, ", shape2=",  shape2, ")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qbeta(.99995, shape1=", shape1, ", shape2=",  shape2, ")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(xmin, xmax, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, dbeta(.x, shape1=", shape1,
+				", shape2=", shape2, ", ncp=", ncp, '), xlab="x", ylab="', fun,
+				'", main=expression(paste("Beta Distribution: ", alpha, " = ',
+				shape1, ', ", beta, " = ', shape2, ', ", delta, " = ', ncp, '")), type="l")', sep=""))
+			doItAndPrint('abline(h=0, col="gray")')
+        
+		} else if (fun == "Cumulative Probability") {
+			command <- paste("qbeta(.00005, shape1=", shape1, ", shape2=",  shape2, ")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qbeta(.99995, shape1=", shape1, ", shape2=",  shape2, ")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(xmin, xmax, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+				
+			doItAndPrint(paste("plot(.x, pbeta(.x, shape1=", shape1,
+				", shape2=", shape2, ", ncp=", ncp, '), xlab="x", ylab="', fun,
+				'", main=expression(paste("Beta Distribution: ", alpha, " = ',
+				shape1, ', ", beta, " = ', shape2, ', ", delta, " = ', ncp, '")), type="l")', sep=""))
+			doItAndPrint('abline(h=0, col="gray")')
+		
+		} else if (fun == "Quantile Function") {
+			command <- paste("qbeta(.00005, shape1=", shape1, ", shape2=",  shape2, ")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qbeta(.99995, shape1=", shape1, ", shape2=",  shape2, ")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(.00005, .99995, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			
+			doItAndPrint(paste("plot(.x, qbeta(.x, shape1=", shape1,
+				", shape2=", shape2, ", ncp=", ncp, '), xlab="Cumulative Probability", ylab="Quantile", main=expression(paste("Beta QF: ", alpha, " = ',
+				shape1, ', ", beta, " = ', shape2, ', ", delta, " = ', ncp, '")), type="l")', sep=""))
+			justDoIt(paste('abline(h=0, col = "grey")'))
+			justDoIt(paste('abline(v=0, col = "grey")'))
+			justDoIt(paste('abline(v=1, lty = 2, col = "grey")'))
+		
+		}
+		
+		remove(.x, xmin, xmax, envir=.GlobalEnv)
         logger("remove(.x, xmin, xmax)")
         tkfocus(CommanderWindow())
         }
@@ -182,12 +225,14 @@ betaDistributionPlot.ipsur  <- function(){
     tkgrid(tklabel(top, text=gettextRcmdr("ncp (non-centrality parameter)")), ncpEntry, sticky="e")
     tkgrid(tklabel(top, text=gettextRcmdr("Plot density function")), densityButton, sticky="e")
     tkgrid(tklabel(top, text=gettextRcmdr("Plot distribution function")), distributionButton, sticky="e")
+	tkgrid(tklabel(top, text=gettextRcmdr("Plot quantile function")), quantileButton, sticky="e")
     tkgrid(buttonsFrame, columnspan=2, sticky="w")
     tkgrid.configure(shape1Entry, sticky="w")
     tkgrid.configure(shape2Entry, sticky="w")
     tkgrid.configure(ncpEntry, sticky="w")
     tkgrid.configure(densityButton, sticky="w")
     tkgrid.configure(distributionButton, sticky="w")
+	tkgrid.configure(quantileButton, sticky="w")
     dialogSuffix(rows=5, columns=2, focus=shape1Entry)
     }
 #################################  END OF BETA DISTRIBUTION  ###############
@@ -298,6 +343,7 @@ cauchyDistributionPlot.ipsur  <- function(){
     functionVar <- tclVar("Density")
     densityButton <- tkradiobutton(top, variable=functionVar, value="Density")
     distributionButton <- tkradiobutton(top, variable=functionVar, value="Cumulative Probability")
+	quantileButton <- tkradiobutton(top, variable=functionVar, value="Quantile Function")
     onOK <- function(){
         closeDialog()
         location <- tclvalue(locationVar)
@@ -311,21 +357,52 @@ cauchyDistributionPlot.ipsur  <- function(){
               errorCondition(recall=cauchyDistributionPlot.ipsur, message=gettextRcmdr("The scale parameter was not specified."))
               return()
         }
-        fn <- if (fun == "Density") "dcauchy" else "pcauchy"
-        command <- paste("qcauchy(.00005, location=", location, ", scale=", scale1, ")", sep="")
-              logger(paste("xmin <- ", command, sep=""))
-              assign("xmin", justDoIt(command), envir=.GlobalEnv)
-        command <- paste("qcauchy(.99995, location=", location, ", scale=", scale1, ")", sep="")
-              logger(paste("xmax <- ", command, sep=""))
-              assign("xmax", justDoIt(command), envir=.GlobalEnv)
-        command <- paste("seq(xmin, xmax, length=100)", sep="")
-              logger(paste(".x <- ", command, sep=""))
-              assign(".x", justDoIt(command), envir=.GlobalEnv)
-        doItAndPrint(paste("plot(.x, ", fn, "(.x, location=", location,
-            ", scale=", scale1, '), xlab="x", ylab="', fun,
-            '", main=expression(paste("Cauchy Distribution: ", location, " = ',
-            location, ', ", scale, " = ', scale1, '")), type="l")', sep=""))
-        doItAndPrint('abline(h=0, col="gray")')
+		if(fun=="Density"){
+			command <- paste("qcauchy(.00005, location=", location, ", scale=", scale1, ")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qcauchy(.99995, location=", location, ", scale=", scale1, ")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(xmin, xmax, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, dcauchy(.x, location=", location,
+				", scale=", scale1, '), xlab="x", ylab="', fun,
+				'", main=expression(paste("Cauchy Distribution: ", location, " = ',
+				location, ', ", scale, " = ', scale1, '")), type="l")', sep=""))
+			doItAndPrint('abline(h=0, col="gray")')
+		}else if(fun=="Cumulative Probability"){
+			command <- paste("qcauchy(.00005, location=", location, ", scale=", scale1, ")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qcauchy(.99995, location=", location, ", scale=", scale1, ")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(xmin, xmax, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, pcauchy(.x, location=", location,
+				", scale=", scale1, '), xlab="x", ylab="', fun,
+				'", main=expression(paste("Cauchy Distribution: ", location, " = ',
+				location, ', ", scale, " = ', scale1, '")), type="l")', sep=""))
+			doItAndPrint('abline(h=0, col="gray")')
+		}else if(fun=="Quantile Function"){
+			command <- paste("qcauchy(.00005, location=", location, ", scale=", scale1, ")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qcauchy(.99995, location=", location, ", scale=", scale1, ")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(xmin, xmax, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, qcauchy(.x, location=", location,
+				", scale=", scale1, '), xlab="Cumulative Probability", ylab="Quantile", main=expression(paste("Cauchy Distribution: ", location, " = ',
+				location, ', ", scale, " = ', scale1, '")), type="l")', sep=""))	
+			doItAndPrint('abline(h=0, col="gray")')
+		
+		}
         remove(.x, xmin, xmax, envir=.GlobalEnv)
         logger("remove(.x, xmin, xmax)")
         tkfocus(CommanderWindow())
@@ -335,11 +412,13 @@ cauchyDistributionPlot.ipsur  <- function(){
     tkgrid(tklabel(top, text=gettextRcmdr("scale")), scale1Entry, sticky="e")
     tkgrid(tklabel(top, text=gettextRcmdr("Plot density function")), densityButton, sticky="e")
     tkgrid(tklabel(top, text=gettextRcmdr("Plot distribution function")), distributionButton, sticky="e")
+	tkgrid(tklabel(top, text=gettextRcmdr("Plot quantile function")), quantileButton, sticky="e")
     tkgrid(buttonsFrame, columnspan=2, sticky="w")
     tkgrid.configure(locationEntry, sticky="w")
     tkgrid.configure(scale1Entry, sticky="w")
     tkgrid.configure(densityButton, sticky="w")
     tkgrid.configure(distributionButton, sticky="w")
+	tkgrid.configure(quantileButton, sticky="w")
     dialogSuffix(rows=5, columns=2, focus=locationEntry)
     }
 ############################ END OF CAUCHY #################################
@@ -452,6 +531,7 @@ chisquareDistributionPlot.ipsur  <- function(){
     functionVar <- tclVar("Density")
     densityButton <- tkradiobutton(top, variable=functionVar, value="Density")
     distributionButton <- tkradiobutton(top, variable=functionVar, value="Cumulative Probability")
+	quantileButton <- tkradiobutton(top, variable=functionVar, value="Quantile Function")
     onOK <- function(){
         closeDialog()
         df <- tclvalue(dfVar)
@@ -465,20 +545,50 @@ chisquareDistributionPlot.ipsur  <- function(){
               return()
         }
         fun <- tclvalue(functionVar)
-        fn <- if (fun == "Density") "dchisq" else "pchisq"
-        command <- paste("qchisq(.00005, df=", df, ", ncp=",ncp, ")", sep="")
-              logger(paste("xmin <- ", command, sep=""))
-              assign("xmin", justDoIt(command), envir=.GlobalEnv)
-        command <- paste("qchisq(.99995, df=", df, ", ncp=",ncp, ")", sep="")
-              logger(paste("xmax <- ", command, sep=""))
-              assign("xmax", justDoIt(command), envir=.GlobalEnv)
-        command <- paste("seq(xmin, xmax, length=100)", sep="")
-              logger(paste(".x <- ", command, sep=""))
-              assign(".x", justDoIt(command), envir=.GlobalEnv)
-        doItAndPrint(paste("plot(.x, ", fn, "(.x, df=", df,  ", ncp=",ncp, 
-            '), xlab=expression(chi^2), ylab="', fun,
-            '", main="Chi-Squared Distribution: df = ', df,  ", ncp=",ncp, '", type="l")', sep=""))
-        doItAndPrint('abline(h=0, col="gray")')
+		if(fun=="Density"){
+			command <- paste("qchisq(.00005, df=", df, ", ncp=",ncp, ")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qchisq(.99995, df=", df, ", ncp=",ncp, ")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(xmin, xmax, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, dchisq(.x, df=", df,  ", ncp=",ncp, 
+				'), xlab=expression(chi^2), ylab="', fun,
+				'", main="Chi-Squared Distribution: df = ', df,  ", ncp=",ncp, '", type="l")', sep=""))
+			doItAndPrint('abline(h=0, col="gray")')
+		} else if(fun=="Cumulative Probability"){
+			command <- paste("qchisq(.00005, df=", df, ", ncp=",ncp, ")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qchisq(.99995, df=", df, ", ncp=",ncp, ")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(xmin, xmax, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, pchisq(.x, df=", df,  ", ncp=",ncp, 
+				'), xlab=expression(chi^2), ylab="', fun,
+				'", main="Chi-Squared Distribution: df = ', df,  ", ncp=",ncp, '", type="l")', sep=""))
+			doItAndPrint('abline(h=0, col="gray")')
+		} else if(fun=="Quantile Function"){
+			command <- paste("qchisq(.00005, df=", df, ", ncp=",ncp, ")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qchisq(.99995, df=", df, ", ncp=",ncp, ")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(.00005, .99995, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, qchisq(.x, df=", df,  ", ncp=",ncp, 
+				'), xlab="Cumulative Probability", ylab="Quantile", main="Chi-Squared Distribution: df = ', df,  ", ncp=",ncp, '", type="l")', sep=""))
+			justDoIt(paste('abline(h=0, col = "grey")'))
+			justDoIt(paste('abline(v=0, col = "grey")'))
+			justDoIt(paste('abline(v=1, lty = 2, col = "grey")'))
+		}
         remove(.x, xmin, xmax, envir=.GlobalEnv)
         logger("remove(.x, xmin, xmax)")
         tkfocus(CommanderWindow())
@@ -488,11 +598,13 @@ chisquareDistributionPlot.ipsur  <- function(){
     tkgrid(tklabel(top, text=gettextRcmdr("ncp (noncentrality parameter)")), ncpEntry, sticky="e")
     tkgrid(tklabel(top, text=gettextRcmdr("Plot density function")), densityButton, sticky="e")
     tkgrid(tklabel(top, text=gettextRcmdr("Plot distribution function")), distributionButton, sticky="e")
+	tkgrid(tklabel(top, text=gettextRcmdr("Plot quantile function")), quantileButton, sticky="e")
     tkgrid(buttonsFrame, columnspan=2, sticky="w")
     tkgrid.configure(dfEntry, sticky="w")
     tkgrid.configure(ncpEntry, sticky="w")
     tkgrid.configure(densityButton, sticky="w")
     tkgrid.configure(distributionButton, sticky="w")
+	tkgrid.configure(quantileButton, sticky="w")
     dialogSuffix(rows=4, columns=2, focus=dfEntry)
     }
 ############################ END OF CHISQUARE  #############################
@@ -582,6 +694,7 @@ expDistributionPlot.ipsur  <- function(){
     functionVar <- tclVar("Density")
     densityButton <- tkradiobutton(top, variable=functionVar, value="Density")
     distributionButton <- tkradiobutton(top, variable=functionVar, value="Cumulative Probability")
+	quantileButton <- tkradiobutton(top, variable=functionVar, value="Quantile Function")
     onOK <- function(){
         closeDialog()
         rate <- tclvalue(rateVar)
@@ -590,32 +703,64 @@ expDistributionPlot.ipsur  <- function(){
              errorCondition(recall=expDistributionPlot.ipsur, message=gettextRcmdr("The rate parameter was not specified."))
              return()
         }
-        fn <- if (fun == "Density") "dexp" else "pexp"
-        command <- paste("qexp(.00005, rate=", rate, ")", sep="")
-            logger(paste("xmin <- ", command, sep=""))
-            assign("xmin", justDoIt(command), envir=.GlobalEnv)
-        command <- paste("qexp(.99995, rate=", rate, ")", sep="")
-            logger(paste("xmax <- ", command, sep=""))
-            assign("xmax", justDoIt(command), envir=.GlobalEnv)
-        command <- paste("seq(xmin, xmax, length=100)", sep="")
-            logger(paste(".x <- ", command, sep=""))
-            assign(".x", justDoIt(command), envir=.GlobalEnv)
-        doItAndPrint(paste("plot(.x, ", fn, "(.x, rate=", rate,
-             ' ), xlab="x", ylab="', fun,
-            '", main=expression(paste("Exponential Distribution: ", lambda, " =', rate, '")), type="l")', sep=""))
-        doItAndPrint('abline(h=0, col="gray")')
+		if(fun=="Density"){
+			command <- paste("qexp(.00005, rate=", rate, ")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qexp(.99995, rate=", rate, ")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(xmin, xmax, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, dexp(.x, rate=", rate,
+				' ), xlab="x", ylab="', fun,
+				'", main=expression(paste("Exponential Distribution: ", lambda, " =', rate, '")), type="l")', sep=""))
+			doItAndPrint('abline(h=0, col="gray")')
+		}else if(fun == "Cumulative Probability"){
+			command <- paste("qexp(.00005, rate=", rate, ")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qexp(.99995, rate=", rate, ")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(xmin, xmax, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, pexp(.x, rate=", rate,
+				' ), xlab="x", ylab="', fun,
+				'", main=expression(paste("Exponential Distribution: ", lambda, " =', rate, '")), type="l")', sep=""))
+			doItAndPrint('abline(h=0, col="gray")')
+		} else if(fun == "Quantile Function"){
+			command <- paste("qexp(.00005, rate=", rate, ")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qexp(.99995, rate=", rate, ")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(.00005, .99995, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, qexp(.x, rate=", rate,
+				' ), xlab="Cumulative Probability", ylab="Quantile", main=expression(paste("Exponential Distribution: ", lambda, " =', rate, '")), type="l")', sep=""))
+			justDoIt(paste('abline(h=0, col = "grey")'))
+			justDoIt(paste('abline(v=0, col = "grey")'))
+			justDoIt(paste('abline(v=1, lty = 2, col = "grey")'))
+		}
         remove(.x, xmin, xmax, envir=.GlobalEnv)
         logger("remove(.x, xmin, xmax)")
         tkfocus(CommanderWindow())
-        }
+	}
     OKCancelHelp(helpSubject="dexp")
     tkgrid(tklabel(top, text=gettextRcmdr("rate (of arrivals in unit time)")), rateEntry, sticky="e")
     tkgrid(tklabel(top, text=gettextRcmdr("Plot density function")), densityButton, sticky="e")
     tkgrid(tklabel(top, text=gettextRcmdr("Plot distribution function")), distributionButton, sticky="e")
+	tkgrid(tklabel(top, text=gettextRcmdr("Plot quantile function")), quantileButton, sticky="e")
     tkgrid(buttonsFrame, columnspan=2, sticky="w")
     tkgrid.configure(rateEntry, sticky="w")
     tkgrid.configure(densityButton, sticky="w")
     tkgrid.configure(distributionButton, sticky="w")
+	tkgrid.configure(quantileButton, sticky="w")
     dialogSuffix(rows=5, columns=2, focus=rateEntry)
     }
 ################### END OF EXPONENTIAL ####################################
@@ -739,6 +884,7 @@ FDistributionPlot.ipsur  <- function(){
     functionVar <- tclVar("Density")
     densityButton <- tkradiobutton(top, variable=functionVar, value="Density")
     distributionButton <- tkradiobutton(top, variable=functionVar, value="Cumulative Probability")
+	quantileButton <- tkradiobutton(top, variable=functionVar, value="Quantile Function")
     onOK <- function(){
         closeDialog()
         df1 <- tclvalue(df1Var)
@@ -754,21 +900,53 @@ FDistributionPlot.ipsur  <- function(){
         }
         
         fun <- tclvalue(functionVar)
-        fn <- if (fun == "Density") "df" else "pf"
-        command <- paste("qf(.00005, df1=", df1, ", df2=", df2, ", ncp=", ncp,")", sep="")
-              logger(paste("xmin <- ", command, sep=""))
-              assign("xmin", justDoIt(command), envir=.GlobalEnv)
-        command <- paste("qf(.99995, df1=", df1, ", df2=", df2, ", ncp=", ncp, ")", sep="")
-              logger(paste("xmax <- ", command, sep=""))
-              assign("xmax", justDoIt(command), envir=.GlobalEnv)
-        command <- paste("seq(xmin, xmax, length=100)", sep="")
-              logger(paste(".x <- ", command, sep=""))
-              assign(".x", justDoIt(command), envir=.GlobalEnv)
-        doItAndPrint(paste("plot(.x, ", fn, "(.x, df1=", df1, ", df2=", df2, ", ncp=", ncp,
-            '), xlab="f", ylab="', fun,
-            '", main="F Distribution: Numerator df = ', df1, ', Denominator df = ', df2, 'ncp = ', ncp,
-            '", type="l")', sep=""))
-        doItAndPrint('abline(h=0, col="gray")')
+		if(fun=="Density"){
+			command <- paste("qf(.00005, df1=", df1, ", df2=", df2, ", ncp=", ncp,")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qf(.99995, df1=", df1, ", df2=", df2, ", ncp=", ncp, ")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(xmin, xmax, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, df(.x, df1=", df1, ", df2=", df2, ", ncp=", ncp,
+				'), xlab="f", ylab="', fun,
+				'", main="F Distribution: Numerator df = ', df1, ', Denominator df = ', df2, 'ncp = ', ncp,
+				'", type="l")', sep=""))
+			doItAndPrint('abline(h=0, col="gray")')
+		}else if(fun=="Cumulative Probability"){
+			command <- paste("qf(.00005, df1=", df1, ", df2=", df2, ", ncp=", ncp,")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qf(.99995, df1=", df1, ", df2=", df2, ", ncp=", ncp, ")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(xmin, xmax, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, pf(.x, df1=", df1, ", df2=", df2, ", ncp=", ncp,
+				'), xlab="f", ylab="', fun,
+				'", main="F Distribution: Numerator df = ', df1, ', Denominator df = ', df2, 'ncp = ', ncp,
+				'", type="l")', sep=""))
+			doItAndPrint('abline(h=0, col="gray")')
+		}else if(fun=="Quantile Function"){
+			command <- paste("qf(.00005, df1=", df1, ", df2=", df2, ", ncp=", ncp,")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qf(.99995, df1=", df1, ", df2=", df2, ", ncp=", ncp, ")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(.00005, .99995, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, qf(.x, df1=", df1, ", df2=", df2, ", ncp=", ncp,
+				'), xlab="Cumulative Probability", ylab="Quantile", main="F Distribution: Numerator df = ', df1, ', Denominator df = ', df2, 'ncp = ', ncp,
+				'", type="l")', sep=""))
+			justDoIt(paste('abline(h=0, col = "grey")'))
+			justDoIt(paste('abline(v=0, col = "grey")'))
+			justDoIt(paste('abline(v=1, lty = 2, col = "grey")'))
+		}
         remove(.x, xmin, xmax, envir=.GlobalEnv)
         logger("remove(.x, xmin, xmax)")
         tkfocus(CommanderWindow())
@@ -779,14 +957,17 @@ FDistributionPlot.ipsur  <- function(){
     tkgrid(tklabel(top, text=gettextRcmdr("ncp (noncentrality parameter)")), ncpEntry, sticky="e")
     tkgrid(tklabel(top, text=gettextRcmdr("Plot density function")), densityButton, sticky="e")
     tkgrid(tklabel(top, text=gettextRcmdr("Plot distribution function")), distributionButton, sticky="e")
+	tkgrid(tklabel(top, text=gettextRcmdr("Pot quantile function")), quantileButton, sticky="e")
     tkgrid(buttonsFrame, columnspan=2, sticky="w")
     tkgrid.configure(df1Entry, sticky="w")
     tkgrid.configure(df2Entry, sticky="w")
     tkgrid.configure(ncpEntry, sticky="w")
     tkgrid.configure(densityButton, sticky="w")
     tkgrid.configure(distributionButton, sticky="w")
+	tkgrid.configure(quantileButton, sticky="w")
     dialogSuffix(rows=5, columns=2, focus=df1Entry)
     }
+
 ####################### END OF F DISTRIBUTION #########################
 
 ################ GAMMA DISTRIBUTION ###################################
@@ -896,6 +1077,7 @@ gammaDistributionPlot.ipsur  <- function(){
     functionVar <- tclVar("Density")
     densityButton <- tkradiobutton(top, variable=functionVar, value="Density")
     distributionButton <- tkradiobutton(top, variable=functionVar, value="Cumulative Probability")
+	quantileButton <- tkradiobutton(top, variable=functionVar, value="Quantile Function")
     onOK <- function(){
         closeDialog()
         shape <- tclvalue(shapeVar)
@@ -909,21 +1091,53 @@ gammaDistributionPlot.ipsur  <- function(){
               errorCondition(recall=gammaDistributionPlot.ipsur, message=gettextRcmdr("The rate parameter was not specified."))
               return()
         }
-        fn <- if (fun == "Density") "dgamma" else "pgamma"
-        command <- paste("qgamma(.00005, shape=", shape, ", rate=", scale1, ")", sep="")
-              logger(paste("xmin <- ", command, sep=""))
-              assign("xmin", justDoIt(command), envir=.GlobalEnv)
-        command <- paste("qgamma(.99995, shape=", shape, ", rate=", scale1, ")", sep="")
-              logger(paste("xmax <- ", command, sep=""))
-              assign("xmax", justDoIt(command), envir=.GlobalEnv)
-        command <- paste("seq(xmin, xmax, length=100)", sep="")
-              logger(paste(".x <- ", command, sep=""))
-              assign(".x", justDoIt(command), envir=.GlobalEnv)
-        doItAndPrint(paste("plot(.x, ", fn, "(.x, shape=", shape,
-            ", rate=", scale1, '), xlab="x", ylab="', fun,
-            '", main=expression(paste("Gamma Distribution: ", alpha, " = ',
-            shape, ', ", lambda, " = ', scale1, '")), type="l")', sep=""))
-        doItAndPrint('abline(h=0, col="gray")')
+		if(fun=="Density"){
+			command <- paste("qgamma(.00005, shape=", shape, ", rate=", scale1, ")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qgamma(.99995, shape=", shape, ", rate=", scale1, ")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(xmin, xmax, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, dgamma(.x, shape=", shape,
+				", rate=", scale1, '), xlab="x", ylab="', fun,
+				'", main=expression(paste("Gamma Distribution: ", alpha, " = ',
+				shape, ', ", lambda, " = ', scale1, '")), type="l")', sep=""))
+			doItAndPrint('abline(h=0, col="gray")')
+		} else if(fun=="Cumulative Probability"){
+			command <- paste("qgamma(.00005, shape=", shape, ", rate=", scale1, ")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qgamma(.99995, shape=", shape, ", rate=", scale1, ")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(xmin, xmax, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, pgamma(.x, shape=", shape,
+				", rate=", scale1, '), xlab="x", ylab="', fun,
+				'", main=expression(paste("Gamma Distribution: ", alpha, " = ',
+				shape, ', ", lambda, " = ', scale1, '")), type="l")', sep=""))
+			doItAndPrint('abline(h=0, col="gray")')
+		} else if(fun=="Quantile Function"){
+			command <- paste("qgamma(.00005, shape=", shape, ", rate=", scale1, ")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qgamma(.99995, shape=", shape, ", rate=", scale1, ")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(.00005, .99995, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, qgamma(.x, shape=", shape,
+				", rate=", scale1, '), xlab="Cumulative Probability", ylab="Quantile", main=expression(paste("Gamma Distribution: ", alpha, " = ',
+				shape, ', ", lambda, " = ', scale1, '")), type="l")', sep=""))
+			justDoIt(paste('abline(h=0, col = "grey")'))
+			justDoIt(paste('abline(v=0, col = "grey")'))
+			justDoIt(paste('abline(v=1, lty = 2, col = "grey")'))
+		}
         remove(.x, xmin, xmax, envir=.GlobalEnv)
         logger("remove(.x, xmin, xmax)")
         tkfocus(CommanderWindow())
@@ -933,11 +1147,13 @@ gammaDistributionPlot.ipsur  <- function(){
     tkgrid(tklabel(top, text=gettextRcmdr("scale (=1/scale)")), scale1Entry, sticky="e")
     tkgrid(tklabel(top, text=gettextRcmdr("Plot density function")), densityButton, sticky="e")
     tkgrid(tklabel(top, text=gettextRcmdr("Plot distribution function")), distributionButton, sticky="e")
+	tkgrid(tklabel(top, text=gettextRcmdr("Plot quantile function")), quantileButton, sticky="e")
     tkgrid(buttonsFrame, columnspan=2, sticky="w")
     tkgrid.configure(shapeEntry, sticky="w")
     tkgrid.configure(scale1Entry, sticky="w")
     tkgrid.configure(densityButton, sticky="w")
     tkgrid.configure(distributionButton, sticky="w")
+	tkgrid.configure(quantileButton, sticky="w")
     dialogSuffix(rows=5, columns=2, focus=shapeEntry)
     }
 ##################### END OF GAMMA DISTRIBUTION #########################
@@ -1052,6 +1268,7 @@ lognormalDistributionPlot.ipsur  <- function(){
     functionVar <- tclVar("Density")
     densityButton <- tkradiobutton(top, variable=functionVar, value="Density")
     distributionButton <- tkradiobutton(top, variable=functionVar, value="Cumulative Probability")
+	quantileButton <- tkradiobutton(top, variable=functionVar, value="Quantile Function")
     onOK <- function(){
         closeDialog()
         mulog <- tclvalue(mulogVar)
@@ -1065,22 +1282,54 @@ lognormalDistributionPlot.ipsur  <- function(){
               errorCondition(recall=lognormalDistributionPlot.ipsur, message=gettextRcmdr("The standard deviation was not specified."))
               return()
         }
-        fn <- if (fun == "Density") "dlnorm" else "plnorm"
-        command <- paste("qlnorm(.00005, meanlog=", mulog, ", sdlog=", sigmalog,")", sep="")
-              logger(paste("xmin <- ", command, sep=""))
-              assign("xmin", justDoIt(command), envir=.GlobalEnv)
-        command <- paste("qlnorm(.99995, meanlog=", mulog, ", sdlog=", sigmalog,")", sep="")
-              logger(paste("xmax <- ", command, sep=""))
-              assign("xmax", justDoIt(command), envir=.GlobalEnv)
-        command <- paste("seq(xmin, xmax, length=100)", sep="")
-              logger(paste(".x <- ", command, sep=""))
-              assign(".x", justDoIt(command), envir=.GlobalEnv)
-        doItAndPrint(paste("plot(.x, ", fn, "(.x, meanlog=", mulog,
-            ", sdlog=", sigmalog, '), xlab="x", ylab="', fun,
-            '", main=expression(paste("Log Normal Distribution: ", mulog, " = ',
-            mulog, ', ", sigmalog, " = ', sigmalog, '")), type="l")', sep=""))
-        doItAndPrint('abline(h=0, col="gray")')
-        remove(.x, xmin, xmax, envir=.GlobalEnv)
+		if(fun=="Density"){
+			command <- paste("qlnorm(.00005, meanlog=", mulog, ", sdlog=", sigmalog,")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qlnorm(.99995, meanlog=", mulog, ", sdlog=", sigmalog,")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(xmin, xmax, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, dlnorm(.x, meanlog=", mulog,
+				", sdlog=", sigmalog, '), xlab="x", ylab="', fun,
+				'", main=expression(paste("Log Normal Distribution: ", mulog, " = ',
+				mulog, ', ", sigmalog, " = ', sigmalog, '")), type="l")', sep=""))
+			doItAndPrint('abline(h=0, col="gray")')
+		}else if(fun=="Cumulative Probability"){
+			command <- paste("qlnorm(.00005, meanlog=", mulog, ", sdlog=", sigmalog,")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qlnorm(.99995, meanlog=", mulog, ", sdlog=", sigmalog,")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(xmin, xmax, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, plnorm(.x, meanlog=", mulog,
+				", sdlog=", sigmalog, '), xlab="x", ylab="', fun,
+				'", main=expression(paste("Log Normal Distribution: ", mulog, " = ',
+				mulog, ', ", sigmalog, " = ', sigmalog, '")), type="l")', sep=""))
+			doItAndPrint('abline(h=0, col="gray")')
+		}else if(fun=="Quantile Function"){
+			command <- paste("qlnorm(.00005, meanlog=", mulog, ", sdlog=", sigmalog,")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qlnorm(.99995, meanlog=", mulog, ", sdlog=", sigmalog,")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(.00005, .99995, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, qlnorm(.x, meanlog=", mulog,
+				", sdlog=", sigmalog, '), xlab="Cumulative Probability", ylab="Quantile", main=expression(paste("Log Normal Distribution: ", mulog, " = ',
+				mulog, ', ", sigmalog, " = ', sigmalog, '")), type="l")', sep=""))
+			justDoIt(paste('abline(h=0, col = "grey")'))
+			justDoIt(paste('abline(v=0, col = "grey")'))
+			justDoIt(paste('abline(v=1, lty = 2, col = "grey")'))
+		}
+		remove(.x, xmin, xmax, envir=.GlobalEnv)
         logger("remove(.x, xmin, xmax)")
         tkfocus(CommanderWindow())
         }
@@ -1089,11 +1338,13 @@ lognormalDistributionPlot.ipsur  <- function(){
     tkgrid(tklabel(top, text=gettextRcmdr("sdlog (std dev of dist'n on log scale)")), sigmalogEntry, sticky="e")
     tkgrid(tklabel(top, text=gettextRcmdr("Plot density function")), densityButton, sticky="e")
     tkgrid(tklabel(top, text=gettextRcmdr("Plot distribution function")), distributionButton, sticky="e")
+	tkgrid(tklabel(top, text=gettextRcmdr("Plot quantile function")), quantileButton, sticky="e")
     tkgrid(buttonsFrame, columnspan=2, sticky="w")
     tkgrid.configure(mulogEntry, sticky="w")
     tkgrid.configure(sigmalogEntry, sticky="w")
     tkgrid.configure(densityButton, sticky="w")
     tkgrid.configure(distributionButton, sticky="w")
+	tkgrid.configure(quantileButton, sticky="w")
     dialogSuffix(rows=5, columns=2, focus=mulogEntry)
     }
 ################### END OF LOG NORMAL DISTRIBUTION #######################
@@ -1206,6 +1457,7 @@ logisticDistributionPlot.ipsur  <- function(){
     functionVar <- tclVar("Density")
     densityButton <- tkradiobutton(top, variable=functionVar, value="Density")
     distributionButton <- tkradiobutton(top, variable=functionVar, value="Cumulative Probability")
+	quantileButton <- tkradiobutton(top, variable=functionVar, value="Quantile Function")
     onOK <- function(){
         closeDialog()
         location <- tclvalue(locationVar)
@@ -1219,21 +1471,53 @@ logisticDistributionPlot.ipsur  <- function(){
               errorCondition(recall=logisticDistributionPlot.ipsur, message=gettextRcmdr("The scale parameter was not specified."))
               return()
         }
-        fn <- if (fun == "Density") "dlogis" else "plogis"
-        command <- paste("qlogis(.00005, location=", location, ", scale=", scale1,")", sep="")
-              logger(paste("xmin <- ", command, sep=""))
-              assign("xmin", justDoIt(command), envir=.GlobalEnv)
-        command <- paste("qlogis(.99995, location=", location, ", scale=", scale1,")", sep="")
-              logger(paste("xmax <- ", command, sep=""))
-              assign("xmax", justDoIt(command), envir=.GlobalEnv)
-        command <- paste("seq(xmin, xmax, length=100)", sep="")
-              logger(paste(".x <- ", command, sep=""))
-              assign(".x", justDoIt(command), envir=.GlobalEnv)
-        doItAndPrint(paste("plot(.x, ", fn, "(.x, location=", location,
-            ", scale=", scale1, '), xlab="x", ylab="', fun,
-            '", main=expression(paste("Logistic Distribution: ", mu, " = ',
-            location, ', ", beta, " = ', scale1, '")), type="l")', sep=""))
-        doItAndPrint('abline(h=0, col="gray")')
+		if(fun=="Density"){
+			command <- paste("qlogis(.00005, location=", location, ", scale=", scale1,")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qlogis(.99995, location=", location, ", scale=", scale1,")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(xmin, xmax, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, dlogis(.x, location=", location,
+				", scale=", scale1, '), xlab="x", ylab="', fun,
+				'", main=expression(paste("Logistic Distribution: ", mu, " = ',
+				location, ', ", beta, " = ', scale1, '")), type="l")', sep=""))
+			doItAndPrint('abline(h=0, col="gray")')
+		}else if(fun=="Cumulative Probability"){
+			command <- paste("qlogis(.00005, location=", location, ", scale=", scale1,")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qlogis(.99995, location=", location, ", scale=", scale1,")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(xmin, xmax, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, plogis(.x, location=", location,
+				", scale=", scale1, '), xlab="x", ylab="', fun,
+				'", main=expression(paste("Logistic Distribution: ", mu, " = ',
+				location, ', ", beta, " = ', scale1, '")), type="l")', sep=""))
+			doItAndPrint('abline(h=0, col="gray")')
+		}else if(fun=="Quantile Function"){
+			command <- paste("qlogis(.00005, location=", location, ", scale=", scale1,")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qlogis(.99995, location=", location, ", scale=", scale1,")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(.00005, .99995, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, qlogis(.x, location=", location,
+				", scale=", scale1, '), xlab="Cumulative Probability", ylab="Quantile", main=expression(paste("Logistic Distribution: ", mu, " = ',
+				location, ', ", beta, " = ', scale1, '")), type="l")', sep=""))
+			justDoIt(paste('abline(h=0, col = "grey")'))
+			justDoIt(paste('abline(v=0, col = "grey")'))
+			justDoIt(paste('abline(v=1, lty = 2, col = "grey")'))
+		}
         remove(.x, xmin, xmax, envir=.GlobalEnv)
         logger("remove(.x, xmin, xmax)")
         tkfocus(CommanderWindow())
@@ -1243,11 +1527,13 @@ logisticDistributionPlot.ipsur  <- function(){
     tkgrid(tklabel(top, text=gettextRcmdr("scale ")), scale1Entry, sticky="e")
     tkgrid(tklabel(top, text=gettextRcmdr("Plot density function")), densityButton, sticky="e")
     tkgrid(tklabel(top, text=gettextRcmdr("Plot distribution function")), distributionButton, sticky="e")
+	tkgrid(tklabel(top, text=gettextRcmdr("Plot quantil function")), quantileButton, sticky="e")
     tkgrid(buttonsFrame, columnspan=2, sticky="w")
     tkgrid.configure(locationEntry, sticky="w")
     tkgrid.configure(scale1Entry, sticky="w")
     tkgrid.configure(densityButton, sticky="w")
     tkgrid.configure(distributionButton, sticky="w")
+	tkgrid.configure(quantileButton, sticky="w")
     dialogSuffix(rows=5, columns=2, focus=locationEntry)
     }
 ##################### END OF LOGISTIC #################################
@@ -1359,6 +1645,7 @@ normalDistributionPlot.ipsur  <- function(){
     functionVar <- tclVar("Density")
     densityButton <- tkradiobutton(top, variable=functionVar, value="Density")
     distributionButton <- tkradiobutton(top, variable=functionVar, value="Cumulative Probability")
+	quantileButton <- tkradiobutton(top, variable=functionVar, value="Quantile Function")
     onOK <- function(){
         closeDialog()
         mu <- tclvalue(muVar)
@@ -1372,21 +1659,53 @@ normalDistributionPlot.ipsur  <- function(){
               errorCondition(recall=normalDistributionPlot.ipsur, message=gettextRcmdr("The standard deviation was not specified."))
               return()
         }
-        fn <- if (fun == "Density") "dnorm" else "pnorm"
-        command <- paste("qnorm(.00005, mean=", mu, ", sd=", sigma,")", sep="")
-              logger(paste("xmin <- ", command, sep=""))
-              assign("xmin", justDoIt(command), envir=.GlobalEnv)
-        command <- paste("qnorm(.99995, mean=", mu, ", sd=", sigma,")", sep="")
-              logger(paste("xmax <- ", command, sep=""))
-              assign("xmax", justDoIt(command), envir=.GlobalEnv)
-        command <- paste("seq(xmin, xmax, length=100)", sep="")
-              logger(paste(".x <- ", command, sep=""))
-              assign(".x", justDoIt(command), envir=.GlobalEnv)
-        doItAndPrint(paste("plot(.x, ", fn, "(.x, mean=", mu,
-            ", sd=", sigma, '), xlab="x", ylab="', fun,
-            '", main=expression(paste("Normal Distribution: ", mu, " = ',
-            mu, ', ", sigma, " = ', sigma, '")), type="l")', sep=""))
-        doItAndPrint('abline(h=0, col="gray")')
+		if(fun=="Density"){
+			command <- paste("qnorm(.00005, mean=", mu, ", sd=", sigma,")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qnorm(.99995, mean=", mu, ", sd=", sigma,")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(xmin, xmax, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, dnorm(.x, mean=", mu,
+				", sd=", sigma, '), xlab="x", ylab="', fun,
+				'", main=expression(paste("Normal Distribution: ", mu, " = ',
+				mu, ', ", sigma, " = ', sigma, '")), type="l")', sep=""))
+			doItAndPrint('abline(h=0, col="gray")')
+		}else if(fun=="Cumulative Probability"){
+			command <- paste("qnorm(.00005, mean=", mu, ", sd=", sigma,")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qnorm(.99995, mean=", mu, ", sd=", sigma,")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(xmin, xmax, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, pnorm(.x, mean=", mu,
+				", sd=", sigma, '), xlab="x", ylab="', fun,
+				'", main=expression(paste("Normal Distribution: ", mu, " = ',
+				mu, ', ", sigma, " = ', sigma, '")), type="l")', sep=""))
+			doItAndPrint('abline(h=0, col="gray")')
+		}else if(fun=="Quantile Function"){
+			command <- paste("qnorm(.00005, mean=", mu, ", sd=", sigma,")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qnorm(.99995, mean=", mu, ", sd=", sigma,")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(.00005, .99995, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, qnorm(.x, mean=", mu,
+				", sd=", sigma, '), xlab="Cumulative Probability", ylab="Quantile", main=expression(paste("Normal Distribution: ", mu, " = ',
+				mu, ', ", sigma, " = ', sigma, '")), type="l")', sep=""))
+			justDoIt(paste('abline(h=0, col = "grey")'))
+			justDoIt(paste('abline(v=0, col = "grey")'))
+			justDoIt(paste('abline(v=1, lty = 2, col = "grey")'))
+		}
         remove(.x, xmin, xmax, envir=.GlobalEnv)
         logger("remove(.x, xmin, xmax)")
         tkfocus(CommanderWindow())
@@ -1396,11 +1715,13 @@ normalDistributionPlot.ipsur  <- function(){
     tkgrid(tklabel(top, text=gettextRcmdr("sigma (standard deviation)")), sigmaEntry, sticky="e")
     tkgrid(tklabel(top, text=gettextRcmdr("Plot density function")), densityButton, sticky="e")
     tkgrid(tklabel(top, text=gettextRcmdr("Plot distribution function")), distributionButton, sticky="e")
+	tkgrid(tklabel(top, text=gettextRcmdr("Plot quantile function")), quantileButton, sticky="e")
     tkgrid(buttonsFrame, columnspan=2, sticky="w")
     tkgrid.configure(muEntry, sticky="w")
     tkgrid.configure(sigmaEntry, sticky="w")
     tkgrid.configure(densityButton, sticky="w")
     tkgrid.configure(distributionButton, sticky="w")
+	tkgrid.configure(quantileButton, sticky="w")
     dialogSuffix(rows=5, columns=2, focus=muEntry)
     }
 ###################### END OF NORMAL #############################
@@ -1514,9 +1835,11 @@ tDistributionPlot.ipsur  <- function(){
     functionVar <- tclVar("Density")
     densityButton <- tkradiobutton(top, variable=functionVar, value="Density")
     distributionButton <- tkradiobutton(top, variable=functionVar, value="Cumulative Probability")
+	quantileButton <- tkradiobutton(top, variable=functionVar, value="Quantile Function")
     onOK <- function(){
         closeDialog()
         df <- tclvalue(dfVar)
+		fun <- tclvalue(functionVar)
         if ( df =="" ) {
             errorCondition(recall=tDistributionPlot.ipsur, message=gettextRcmdr("Degrees of freedom not specified."))
             return()
@@ -1527,21 +1850,51 @@ tDistributionPlot.ipsur  <- function(){
                     message=gettextRcmdr("The noncentrality parameter was not specified."))
                         return()
         }
-        fun <- tclvalue(functionVar)
-        fn <- if (fun == "Density") "dt" else "pt"
-        command <- paste("qt(.00005, df=", df, ", ncp=", ncp, ")", sep="")
-              logger(paste("xmin <- ", command, sep=""))
-              assign("xmin", justDoIt(command), envir=.GlobalEnv)
-        command <- paste("qt(.99995, df=", df, ", ncp=", ncp, ")", sep="")
-              logger(paste("xmax <- ", command, sep=""))
-              assign("xmax", justDoIt(command), envir=.GlobalEnv)
-        command <- paste("seq(xmin, xmax, length=100)", sep="")
-              logger(paste(".x <- ", command, sep=""))
-              assign(".x", justDoIt(command), envir=.GlobalEnv)
-        doItAndPrint(paste("plot(.x, ", fn, "(.x, df=", df, ", ncp=", ncp,
-            '), xlab="t", ylab="', fun,
-            '", main="t Distribution: df = ', df,  ", ncp=", ncp,'", type="l")', sep=""))
-        doItAndPrint('abline(h=0, col="gray")')
+		if(fun=="Density"){
+			command <- paste("qt(.00005, df=", df, ", ncp=", ncp, ")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qt(.99995, df=", df, ", ncp=", ncp, ")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(xmin, xmax, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, dt(.x, df=", df, ", ncp=", ncp,
+				'), xlab="t", ylab="', fun,
+				'", main="t Distribution: df = ', df,  ", ncp=", ncp,'", type="l")', sep=""))
+			doItAndPrint('abline(h=0, col="gray")')
+		}else if(fun=="Cumulative Probability"){
+			command <- paste("qt(.00005, df=", df, ", ncp=", ncp, ")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qt(.99995, df=", df, ", ncp=", ncp, ")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(xmin, xmax, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, pt(.x, df=", df, ", ncp=", ncp,
+				'), xlab="t", ylab="', fun,
+				'", main="t Distribution: df = ', df,  ", ncp=", ncp,'", type="l")', sep=""))
+			doItAndPrint('abline(h=0, col="gray")')
+		}else if(fun=="Quantile Function"){
+			command <- paste("qt(.00005, df=", df, ", ncp=", ncp, ")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qt(.99995, df=", df, ", ncp=", ncp, ")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(.00005, .99995, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			
+			doItAndPrint(paste('plot(.x, qt(.x, df=', df, ', ncp=', ncp,
+				'), xlab="Cumulative Probability", ylab="Quantile", main="t Distribution: df = ', df,  ', ncp=', ncp,'", type="l")', sep=""))
+			justDoIt(paste('abline(h=0, col = "grey")'))
+			justDoIt(paste('abline(v=0, col = "grey")'))
+			justDoIt(paste('abline(v=1, lty = 2, col = "grey")'))
+		}
         remove(.x, xmin, xmax, envir=.GlobalEnv)
         logger("remove(.x, xmin, xmax)")
         tkfocus(CommanderWindow())
@@ -1551,11 +1904,13 @@ tDistributionPlot.ipsur  <- function(){
     tkgrid(tklabel(top, text=gettextRcmdr("ncp (noncentrality parameter)")), ncpEntry, sticky="e")
     tkgrid(tklabel(top, text=gettextRcmdr("Plot density function")), densityButton, sticky="e")
     tkgrid(tklabel(top, text=gettextRcmdr("Plot distribution function")), distributionButton, sticky="e")
+	tkgrid(tklabel(top, text=gettextRcmdr("Plot quantile function")), quantileButton, sticky="e")
     tkgrid(buttonsFrame, columnspan=2, sticky="w")
     tkgrid.configure(dfEntry, sticky="w")
     tkgrid.configure(ncpEntry, sticky="w")
     tkgrid.configure(densityButton, sticky="w")
     tkgrid.configure(distributionButton, sticky="w")
+	tkgrid.configure(quantileButton, sticky="w")
     dialogSuffix(rows=4, columns=2, focus=dfEntry)
     }
 ###################### END OF STUDENT's T ########################
@@ -1677,6 +2032,7 @@ unifDistributionPlot.ipsur  <- function(){
     functionVar <- tclVar("Density")
     densityButton <- tkradiobutton(top, variable=functionVar, value="Density")
     distributionButton <- tkradiobutton(top, variable=functionVar, value="Cumulative Probability")
+	quantileButton <- tkradiobutton(top, variable=functionVar, value="Quantile Function")
     onOK <- function(){
         closeDialog()
         min1 <- tclvalue(min1Var)
@@ -1690,22 +2046,54 @@ unifDistributionPlot.ipsur  <- function(){
               errorCondition(recall=unifDistributionPlot.ipsur, message=gettextRcmdr("The upper limit(max) was not specified."))
               return()
         }
-        fn <- if (fun == "Density") "dunif" else "punif"
-        command <- paste("qunif(.00005, min=", min1, ", max=", max1,")", sep="")
-              logger(paste("xmin <- ", command, sep=""))
-              assign("xmin", justDoIt(command), envir=.GlobalEnv)
-        command <- paste("qunif(.99995, min=", min1, ", max=", max1,")", sep="")
-              logger(paste("xmax <- ", command, sep=""))
-              assign("xmax", justDoIt(command), envir=.GlobalEnv)
-        command <- paste("seq(xmin, xmax, length=100)", sep="")
-              logger(paste(".x <- ", command, sep=""))
-              assign(".x", justDoIt(command), envir=.GlobalEnv)
-        doItAndPrint(paste("plot(.x, ", fn, "(.x, min=", min1,
-            ", max=", max1, '), xlab="x", ylab="', fun,
-            '", main=expression(paste("Uniform Distribution: ", min, " = ',
-            min1, ', ", max, " = ', max1, '")), type="l")', sep=""))
-        doItAndPrint('abline(h=0, col="gray")')
-        remove(.x, xmin, xmax, envir=.GlobalEnv)
+		if(fun=="Density"){
+			command <- paste("qunif(.00005, min=", min1, ", max=", max1,")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qunif(.99995, min=", min1, ", max=", max1,")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(xmin, xmax, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, dunif(.x, min=", min1,
+				", max=", max1, '), xlab="x", ylab="', fun,
+				'", main=expression(paste("Uniform Distribution: ", min, " = ',
+				min1, ', ", max, " = ', max1, '")), type="l")', sep=""))
+			doItAndPrint('abline(h=0, col="gray")')
+		}else if(fun=="Cumulative Probability"){
+			command <- paste("qunif(.00005, min=", min1, ", max=", max1,")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qunif(.99995, min=", min1, ", max=", max1,")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(xmin, xmax, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, punif(.x, min=", min1,
+				", max=", max1, '), xlab="x", ylab="', fun,
+				'", main=expression(paste("Uniform Distribution: ", min, " = ',
+				min1, ', ", max, " = ', max1, '")), type="l")', sep=""))
+			doItAndPrint('abline(h=0, col="gray")')
+		}else if(fun=="Quantile Function"){
+			command <- paste("qunif(.00005, min=", min1, ", max=", max1,")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qunif(.99995, min=", min1, ", max=", max1,")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(.00005, .99995, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, qunif(.x, min=", min1,
+				", max=", max1, '), xlab="Cumulative Probability", ylab="Quantile", main=expression(paste("Uniform Distribution: ", min, " = ',
+				min1, ', ", max, " = ', max1, '")), type="l")', sep=""))
+			justDoIt(paste('abline(h=0, col = "grey")'))
+			justDoIt(paste('abline(v=0, col = "grey")'))
+			justDoIt(paste('abline(v=1, lty = 2, col = "grey")'))
+		}
+		remove(.x, xmin, xmax, envir=.GlobalEnv)
         logger("remove(.x, xmin, xmax)")
         tkfocus(CommanderWindow())
         }
@@ -1714,11 +2102,13 @@ unifDistributionPlot.ipsur  <- function(){
     tkgrid(tklabel(top, text=gettextRcmdr("max (upper limit of the distribution)")), max1Entry, sticky="e")
     tkgrid(tklabel(top, text=gettextRcmdr("Plot density function")), densityButton, sticky="e")
     tkgrid(tklabel(top, text=gettextRcmdr("Plot distribution function")), distributionButton, sticky="e")
+	tkgrid(tklabel(top, text=gettextRcmdr("Plot quantile function")), quantileButton, sticky="e")
     tkgrid(buttonsFrame, columnspan=2, sticky="w")
     tkgrid.configure(min1Entry, sticky="w")
     tkgrid.configure(max1Entry, sticky="w")
     tkgrid.configure(densityButton, sticky="w")
     tkgrid.configure(distributionButton, sticky="w")
+	tkgrid.configure(quantileButton, sticky="w")
     dialogSuffix(rows=5, columns=2, focus=min1Entry)
     }
 ################ END OF UNIFORM  ########################################
@@ -1831,6 +2221,7 @@ weibullDistributionPlot.ipsur  <- function(){
     functionVar <- tclVar("Density")
     densityButton <- tkradiobutton(top, variable=functionVar, value="Density")
     distributionButton <- tkradiobutton(top, variable=functionVar, value="Cumulative Probability")
+	quantileButton <- tkradiobutton(top, variable=functionVar, value="Quantile Function")
     onOK <- function(){
         closeDialog()
         shape <- tclvalue(shapeVar)
@@ -1844,21 +2235,53 @@ weibullDistributionPlot.ipsur  <- function(){
               errorCondition(recall=weibullDistributionPlot.ipsur, message=gettextRcmdr("The scale parameter was not specified."))
               return()
         }
-        fn <- if (fun == "Density") "dweibull " else "pweibull"
-        command <- paste("qweibull(.00005, shape=", shape, ", scale=", scale1,")", sep="")
-              logger(paste("xmin <- ", command, sep=""))
-              assign("xmin", justDoIt(command), envir=.GlobalEnv)
-        command <- paste("qweibull(.99995, shape=", shape, ", scale=", scale1,")", sep="")
-              logger(paste("xmax <- ", command, sep=""))
-              assign("xmax", justDoIt(command), envir=.GlobalEnv)
-        command <- paste("seq(xmin, xmax, length=100)", sep="")
-              logger(paste(".x <- ", command, sep=""))
-              assign(".x", justDoIt(command), envir=.GlobalEnv)
-        doItAndPrint(paste("plot(.x, ", fn, "(.x, shape=", shape,
-            ", scale=", scale1, '), xlab="x", ylab="', fun,
-            '", main=expression(paste("Weibull Distribution: ", gamma, " = ',
-            shape, ', ", beta, " = ', scale1, '")), type="l")', sep=""))
-        doItAndPrint('abline(h=0, col="gray")')
+		if(fun=="Density"){
+			command <- paste("qweibull(.00005, shape=", shape, ", scale=", scale1,")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qweibull(.99995, shape=", shape, ", scale=", scale1,")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(xmin, xmax, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, dweibull(.x, shape=", shape,
+				", scale=", scale1, '), xlab="x", ylab="', fun,
+				'", main=expression(paste("Weibull Distribution: ", gamma, " = ',
+				shape, ', ", beta, " = ', scale1, '")), type="l")', sep=""))
+			doItAndPrint('abline(h=0, col="gray")')
+		}else if(fun=="Cumulative Probability"){
+			command <- paste("qweibull(.00005, shape=", shape, ", scale=", scale1,")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qweibull(.99995, shape=", shape, ", scale=", scale1,")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(xmin, xmax, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, pweibull(.x, shape=", shape,
+				", scale=", scale1, '), xlab="x", ylab="', fun,
+				'", main=expression(paste("Weibull Distribution: ", gamma, " = ',
+				shape, ', ", beta, " = ', scale1, '")), type="l")', sep=""))
+			doItAndPrint('abline(h=0, col="gray")')
+		}else if(fun=="Quantile Function"){
+			command <- paste("qweibull(.00005, shape=", shape, ", scale=", scale1,")", sep="")
+				logger(paste("xmin <- ", command, sep=""))
+				assign("xmin", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("qweibull(.99995, shape=", shape, ", scale=", scale1,")", sep="")
+				logger(paste("xmax <- ", command, sep=""))
+				assign("xmax", justDoIt(command), envir=.GlobalEnv)
+			command <- paste("seq(.00005, .99995, length=100)", sep="")
+				logger(paste(".x <- ", command, sep=""))
+				assign(".x", justDoIt(command), envir=.GlobalEnv)
+			doItAndPrint(paste("plot(.x, qweibull(.x, shape=", shape,
+				", scale=", scale1, '), xlab="Cumulative Probability", ylab="Quantile", main=expression(paste("Weibull Distribution: ", gamma, " = ',
+				shape, ', ", beta, " = ', scale1, '")), type="l")', sep=""))
+			justDoIt(paste('abline(h=0, col = "grey")'))
+			justDoIt(paste('abline(v=0, col = "grey")'))
+			justDoIt(paste('abline(v=1, lty = 2, col = "grey")'))
+		}
         remove(.x, xmin, xmax, envir=.GlobalEnv)
         logger("remove(.x, xmin, xmax)")
         tkfocus(CommanderWindow())
@@ -1868,11 +2291,13 @@ weibullDistributionPlot.ipsur  <- function(){
     tkgrid(tklabel(top, text=gettextRcmdr("scale ")), scale1Entry, sticky="e")
     tkgrid(tklabel(top, text=gettextRcmdr("Plot density function")), densityButton, sticky="e")
     tkgrid(tklabel(top, text=gettextRcmdr("Plot distribution function")), distributionButton, sticky="e")
+	tkgrid(tklabel(top, text=gettextRcmdr("Plot quantile function")), quantileButton, sticky="e")
     tkgrid(buttonsFrame, columnspan=2, sticky="w")
     tkgrid.configure(shapeEntry, sticky="w")
     tkgrid.configure(scale1Entry, sticky="w")
     tkgrid.configure(densityButton, sticky="w")
     tkgrid.configure(distributionButton, sticky="w")
+	tkgrid.configure(quantileButton, sticky="w")
     dialogSuffix(rows=5, columns=2, focus=shapeEntry)
     }
 
