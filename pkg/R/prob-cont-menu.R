@@ -335,7 +335,7 @@ cauchyProbabilities.ipsur  <- function(){
     }
 
 cauchyDistributionPlot.ipsur  <- function(){
-    initializeDialog(title=gettextRcmdr("Cauchy Distribution"))
+    initializeDialog(title=gettextRcmdr("Cauchy Distribution 03"))
     locationVar <- tclVar("0")
     locationEntry <- tkentry(top, width="6", textvariable=locationVar)
     scale1Var <- tclVar("1")
@@ -394,11 +394,12 @@ cauchyDistributionPlot.ipsur  <- function(){
 			command <- paste("qcauchy(.99995, location=", location, ", scale=", scale1, ")", sep="")
 				logger(paste("xmax <- ", command, sep=""))
 				assign("xmax", justDoIt(command), envir=.GlobalEnv)
-			command <- paste("seq(xmin, xmax, length=100)", sep="")
+			command <- paste("seq(.00005, .99995, length=100)", sep="")
 				logger(paste(".x <- ", command, sep=""))
 				assign(".x", justDoIt(command), envir=.GlobalEnv)
 			doItAndPrint(paste("plot(.x, qcauchy(.x, location=", location,
-				", scale=", scale1, '), xlab="Cumulative Probability", ylab="Quantile", main=expression(paste("Cauchy Distribution: ", location, " = ',
+				", scale=", scale1, '), xlab="Cumulative Probability", ylab="Quantile", 
+				main=expression(paste("Cauchy Distribution: ", location, " = ',
 				location, ', ", scale, " = ', scale1, '")), type="l")', sep=""))	
 			doItAndPrint('abline(h=0, col="gray")')
 		
