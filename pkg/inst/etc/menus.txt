@@ -20,16 +20,13 @@
 ###                          ##
 ###############################
 
-    menu    probabilityMenu         topMenu               ""                                              ""                                    ""	""
-    item    topMenu                 cascade               "Probability"                                   probabilityMenu                       ""	""
-
-    item    probabilityMenu         command               "Birthday Problem..."                           birthdayProbabilities.ipsur           ""	""
+    item    distributionsMenu         command               "IPSUR - Birthday Problem..."                           birthdayProbabilities.ipsur           ""	""
 
 ##########################################################################################################
 #  Continuous Distributions
 
-    menu    continuousIpsurMenu      probabilityMenu       ""                                              ""                                   ""	""
-    item    probabilityMenu          cascade               "Continuous Distributions"                      continuousIpsurMenu                  ""	""
+    menu    continuousIpsurMenu      distributionsMenu       ""                                              ""                                   ""	""
+    item    distributionsMenu          cascade               "IPSUR - Continuous Distributions"                      continuousIpsurMenu                  ""	""
 
     menu    betaIpsurMenu            continuousIpsurMenu   ""                                              ""                                   ""	""
     item    continuousIpsurMenu      cascade               "Beta distribution"                             betaIpsurMenu                        ""	""
@@ -107,8 +104,8 @@
 ##########################################################################################################
 # Discrete Distributions
 
-    menu    discreteIpsurMenu        probabilityMenu       ""                                              ""                                   ""	""
-    item    probabilityMenu          cascade               "Discrete Distributions"                        discreteIpsurMenu                    ""	""
+    menu    discreteIpsurMenu        distributionsMenu       ""                                              ""                                   ""	""
+    item    distributionsMenu          cascade               "IPSUR - Discrete Distributions"                        discreteIpsurMenu                    ""	""
 
     menu    binomialIpsurMenu        discreteIpsurMenu     ""                                              ""                                   ""	""
     item    discreteIpsurMenu        cascade               "Binomial distribution"                         binomialIpsurMenu                    ""	""
@@ -159,8 +156,8 @@
 ##########################################################################################################
 #  Sampling Distributions
 
-    menu    samplingIpsurMenu        probabilityMenu       ""                                              ""                                   ""	""
-    item    probabilityMenu          cascade               "Sampling Distributions"                        samplingIpsurMenu                    ""	""
+    menu    samplingIpsurMenu        distributionsMenu       ""                                              ""                                   ""	""
+    item    distributionsMenu          cascade               "IPSUR - Sampling Distributions"                        samplingIpsurMenu                    ""	""
 
 
     menu    cntsamplingIpsurMenu    samplingIpsurMenu    ""                                                 ""                                    ""	""
@@ -192,5 +189,34 @@
 ################################################################################################################################################
 # End Probability Menu
 
+#Plot menus can be sorted later
+ item    BarGraphMenu    command         "IPSUR - Enter table..."                                barPlotSumTable             ""             "packageAvailable('abind')"   #barPlotSumm.R
 
+ item    proportionsMenu command         "IPSUR - Enter table for single-sample..."              enterTableSinglePropTest    ""                                          "packageAvailable('abind')"  #enterTableProportions
+item    proportionsMenu command         "IPSUR - Enter table for independent samples..."        enterTableMultiPropTest     ""                                          "packageAvailable('abind')"   #enterTableProportions
 
+    item    graphsMenu      command         "IPSUR - Index plot..."                                 indexPlot                   "numericP()"          ""	#graphs-menu
+    item    graphsMenu      command         "IPSUR - Histogram..."                                  Histogram                   "numericP()"          ""	#graphs-menu
+    item    graphsMenu      command         "IPSUR - Boxplot..."                                    boxPlot                     "numericP()"          ""	#graphs-menu
+    item    graphsMenu      command         "IPSUR - Scatterplot..."                                scatterPlot                 "numericP(2)" "packageAvailable('car')"	#graphs-menu
+    item    graphsMenu      command         "IPSUR - Scatterplot matrix..."                         scatterPlotMatrix           "numericP(3)" "packageAvailable('car')" #graphs-menu
+ item    BarGraphMenu    command         "IPSUR - Variable(s) in Active data set..."             barGraph                    "factorsP()"   "packageAvailable('abind')" #graphs-menu
+    item    graphsMenu      command         "IPSUR - Pareto Diagram..."                             paretoChart                 "factorsP()"  "packageAvailable('qcc')" #graphs-menu
+    item    graphsMenu      command         "IPSUR - Quantile-comparison plot..."                   QQPlot                      "numericP()" "packageAvailable('car')"  #graphs-menu
+    item    graphsMenu      command         "IPSUR - XY conditioning plot..."                       Xyplot                      "numericP(2)"          "" #graphs-menu
+    item    graphsMenu      command         "IPSUR - Strip chart..."                                stripChart                  "numericP()"          "" #graphs-menu
+
+    item    graphsMenu      command         "IPSUR - Line graph..."                                 linePlot                    "numericP(2)"          "" #linePlot
+
+    item    proportionsMenu command         "IPSUR - Test for equality of several proportions..."   multiSampleProportionsTest  "multiLevelFactorsP() & twoLevelFactorsP()" "packageAvailable('abind')" #multiSamplePropTest
+
+    menu    powerMenu       statisticsMenu  ""                                              ""                          ""		                                      ""
+    item    powerMenu      command          "IPSUR - Power for t-tests..."                          powerTtest                  ""		                                      "" #power
+    item    powerMenu      command          "IPSUR - Power for two proportions..."                  powerProptest               ""		                                      "" #power
+    item    powerMenu      command          "IPSUR - Power for balanced ANOVA..."                   powerAnovatest              ""		                                      "" #power
+
+    item    summariesMenu   command         "IPSUR - Frequency distributions..."                    frequencyDistribution       "activeDataSetP()"          "" #statistics-summaries-menu
+    item    summariesMenu   command         "IPSUR - Numerical summaries..."                        numericalSummaries          "numericP()" "packageAvailable('abind')" #statistics-summaries-menu
+
+    item    tablesMenu      command         "IPSUR - Two-way table..."                              twoWayTable                 "factorsP(2)" "packageAvailable('abind')" #statistics-tables-menu
+    item    tablesMenu      command         "IPSUR - Enter and analyze two-way table..."            enterTable                  ""              "packageAvailable('abind')" #statistics-tables-menu
