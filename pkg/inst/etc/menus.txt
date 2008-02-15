@@ -5,152 +5,44 @@
 #   type    menu/item      operation/parent  label                                          command/menu                activation  install?
 
 
+#########################
+# Statistics menu
+
+    item    summariesMenu   command         "IPSUR - Frequency distributions..."                   frequencyDistribution.ipsur       "activeDataSetP()"          "" #statistics-summaries-menu
+    item    summariesMenu   command         "IPSUR - Numerical summaries..."                        numericalSummaries.ipsur          "numericP()" "packageAvailable('abind') && packageAvailable('e1071')" #statistics-summaries-menu
+
+    item    tablesMenu      command         "IPSUR - Two-way table..."                              twoWayTable.ipsur                 "factorsP(2)" "packageAvailable('abind')" #statistics-tables-menu
+    item    tablesMenu      command         "IPSUR - Enter and analyze two-way table..."            enterTable.ipsur                  ""              "packageAvailable('abind')" #statistics-tables-menu
+
+ item    proportionsMenu command         "IPSUR - Enter table for single-sample..."              enterTableSinglePropTest    ""                                          "packageAvailable('abind')"  
+item    proportionsMenu command         "IPSUR - Enter table for independent samples..."        enterTableMultiPropTest     ""                                          "packageAvailable('abind')"   
+    item    proportionsMenu command         "IPSUR - Test for equality of several proportions..."   multiSampleProportionsTest  "multiLevelFactorsP() & twoLevelFactorsP()" "packageAvailable('abind')"
 
 
-# bar graphs for summarized data
-    menu    BarGraphMenu    graphsMenu      ""                                              ""                          ""             "packageAvailable('abind')"
-    item    BarGraphMenu    command         "Variable(s) in Active data set..."             barGraph                    "factorsP()"   "packageAvailable('abind')"
-    item    BarGraphMenu    command         "Enter table..."                                barPlotSumTable             ""             "packageAvailable('abind')"
+####
+menu    powerMenu       statisticsMenu  ""	""	""	""  
+    item    statisticsMenu          cascade               "IPSUR - Power"                      powerMenu                  ""	""
+    item    powerMenu      command          "Power for t-tests..."                          powerTtest                  ""		                                      "" #power
+    item    powerMenu      command          "Power for two proportions..."                  powerProptest               ""		                                      "" #power
+    item    powerMenu      command          "Power for balanced ANOVA..."                   powerAnovatest              ""		                                      "" #power
+
+
+
+###################################
+# Graphs menu
+    item    graphsMenu      command         "IPSUR - Boxplot..."                                boxPlot.ipsur               "numericP()"          "" 
+    item    graphsMenu      command         "IPSUR - Strip chart..."                                stripChart                  "numericP()"          ""
+    item    graphsMenu      command         "IPSUR - Pareto chart..."                             paretoChart                 "factorsP()"  "packageAvailable('qcc')" 
+    item    graphsMenu      command         "IPSUR - Bar Graphs enter table..."                            barPlotSumTable               ""			"packageAvailable('abind')"  
+
 
 #################################################################################################################################################
 #################################################################################################################################################
 ###                          ##
-###  PROBABILITY MENU        ##
-###  Last modified 09/25/06  ##
+###  DISTRIBUTIONS MENU      ##
+###  Last modified 02/14/08  ##
 ###                          ##
 ###############################
-
-    item    distributionsMenu         command               "IPSUR - Birthday Problem..."                           birthdayProbabilities.ipsur           ""	""
-
-##########################################################################################################
-#  Continuous Distributions
-
-    menu    continuousIpsurMenu      distributionsMenu       ""                                              ""                                   ""	""
-    item    distributionsMenu          cascade               "IPSUR - Continuous Distributions"                      continuousIpsurMenu                  ""	""
-
-    menu    betaIpsurMenu            continuousIpsurMenu   ""                                              ""                                   ""	""
-    item    continuousIpsurMenu      cascade               "Beta distribution"                             betaIpsurMenu                        ""	""
-    item    betaIpsurMenu            command               "Beta quantiles..."                             betaQuantiles.ipsur                  ""	""
-    item    betaIpsurMenu            command               "Beta probabilities..."                         betaProbabilities.ipsur              ""	""
-    item    betaIpsurMenu            command               "Plot beta distribution..."                     betaDistributionPlot.ipsur           ""	""
-    item    betaIpsurMenu            command               "Simulate beta variates..."                     betaSimulate.ipsur                   ""	""
-    menu    cauchyIpsurMenu          continuousIpsurMenu   ""                                              ""                                   ""	""
-    item    continuousIpsurMenu      cascade               "Cauchy distribution"                           cauchyIpsurMenu                      ""	""
-    item    cauchyIpsurMenu          command               "Cauchy quantiles..."                           cauchyQuantiles.ipsur                ""	""
-    item    cauchyIpsurMenu          command               "Cauchy probabilities..."                       cauchyProbabilities.ipsur            ""	""
-    item    cauchyIpsurMenu          command               "Plot Cauchy distribution..."                   cauchyDistributionPlot.ipsur         ""	""
-    item    cauchyIpsurMenu          command               "Simulate Cauchy variates..."                   cauchySimulate.ipsur                 ""	""
-    menu    chisqIpsurMenu           continuousIpsurMenu   ""                                              ""                                   ""	""
-    item    continuousIpsurMenu      cascade               "Chi-squared distribution"                      chisqIpsurMenu                       ""	""
-    item    chisqIpsurMenu           command               "Chi-squared quantiles..."                      chisqQuantiles.ipsur                 ""	""
-    item    chisqIpsurMenu           command               "Chi-squared probabilities..."                  chisqProbabilities.ipsur             ""	""
-    item    chisqIpsurMenu           command               "Plot chi-squared distribution..."              chisquareDistributionPlot.ipsur      ""	""
-    item    chisqIpsurMenu           command               "Simulate chi-squared variates..."              chisqSimulate.ipsur                  ""	""
-    menu    expIpsurMenu             continuousIpsurMenu   ""                                              ""                                   ""	""
-    item    continuousIpsurMenu      cascade               "Exponential distribution"                      expIpsurMenu                         ""	""
-    item    expIpsurMenu             command               "Exponential quantiles..."                      expQuantiles.ipsur                   ""	""
-    item    expIpsurMenu             command               "Exponential probabilities..."                  expProbabilities.ipsur               ""	""
-    item    expIpsurMenu             command               "Plot exponential distribution..."              expDistributionPlot.ipsur            ""	""
-    item    expIpsurMenu             command               "Simulate exponential variates..."              expSimulate.ipsur                    ""	""
-    menu    FIpsurMenu               continuousIpsurMenu   ""                                              ""                                   ""	""
-    item    continuousIpsurMenu      cascade               "F distribution"                                FIpsurMenu                           ""	""
-    item    FIpsurMenu               command               "F quantiles..."                                FQuantiles.ipsur                     ""	""
-    item    FIpsurMenu               command               "F probabilities..."                            FProbabilities.ipsur                 ""	""
-    item    FIpsurMenu               command               "Plot F distribution..."                        FDistributionPlot.ipsur              ""	""
-    item    FIpsurMenu               command               "Simulate F variates..."                        fSimulate.ipsur                      ""	""
-    menu    gammaIpsurMenu           continuousIpsurMenu   ""                                              ""                                   ""	""
-    item    continuousIpsurMenu      cascade               "Gamma distribution"                            gammaIpsurMenu                       ""	""
-    item    gammaIpsurMenu           command               "Gamma quantiles..."                            gammaQuantiles.ipsur                 ""	""
-    item    gammaIpsurMenu           command               "Gamma probabilities..."                        gammaProbabilities.ipsur             ""	""
-    item    gammaIpsurMenu           command               "Plot gamma distribution..."                    gammaDistributionPlot.ipsur          ""	""
-    item    gammaIpsurMenu           command               "Simulate gamma variates..."                    gammaSimulate.ipsur                  ""	""
-    menu    lognormalIpsurMenu       continuousIpsurMenu   ""                                              ""                                   ""	""
-    item    continuousIpsurMenu      cascade               "Log normal distribution"                       lognormalIpsurMenu                   ""	""
-    item    lognormalIpsurMenu       command               "Log normal quantiles..."                       lognormalQuantiles.ipsur             ""	""
-    item    lognormalIpsurMenu       command               "Log normal probabilities..."                   lognormalProbabilities.ipsur         ""	""
-    item    lognormalIpsurMenu       command               "Plot log normal distribution..."               lognormalDistributionPlot.ipsur      ""	""
-    item    lognormalIpsurMenu	     command               "Simulate log normal variates..."               lnormalSimulate.ipsur                ""	""
-    menu    logisticIpsurMenu        continuousIpsurMenu   ""                                              ""                                   ""	""
-    item    continuousIpsurMenu      cascade               "Logistic distribution"                         logisticIpsurMenu                    ""	""
-    item    logisticIpsurMenu        command               "Logistic quantiles..."                         logisticQuantiles.ipsur              ""	""
-    item    logisticIpsurMenu        command               "Logistic probabilities..."                     logisticProbabilities.ipsur          ""	""
-    item    logisticIpsurMenu        command               "Plot logistic distribution..."                 logisticDistributionPlot.ipsur       ""	""
-   item     logisticIpsurMenu	       command               "Simulate logistic variates..."                 logisSimulate.ipsur 		              ""	""
-    menu    normalIpsurMenu          continuousIpsurMenu   ""                                              ""                                   ""	""
-    item    continuousIpsurMenu      cascade               "Normal distribution"                           normalIpsurMenu                      ""	""
-    item    normalIpsurMenu          command               "Normal quantiles..."                           normalQuantiles.ipsur                ""	""
-    item    normalIpsurMenu          command               "Normal probabilities..."                       normalProbabilities.ipsur            ""	""
-    item    normalIpsurMenu          command               "Plot normal distribution..."                   normalDistributionPlot.ipsur         ""	""
-    item    normalIpsurMenu	         command               "Simulate normal variates..."                   normalSimulate.ipsur  	              ""	""
-    menu    tIpsurMenu               continuousIpsurMenu   ""                                              ""                                   ""	""
-    item    continuousIpsurMenu      cascade               "t distribution"                                tIpsurMenu                           ""	""
-    item    tIpsurMenu               command               "t quantiles..."                                tQuantiles.ipsur                     ""	""
-    item    tIpsurMenu               command               "t probabilities..."                            tProbabilities.ipsur                 ""	""
-    item    tIpsurMenu               command               "Plot t distribution..."                        tDistributionPlot.ipsur              ""	""
-    item    tIpsurMenu	             command               "Simulate t variates..."                        tSimulate.ipsur   	                  ""	""
-    menu    uniformIpsurMenu         continuousIpsurMenu   ""                                              ""                                   ""	""
-    item    continuousIpsurMenu      cascade               "Uniform distribution"                          uniformIpsurMenu                     ""	""
-    item    uniformIpsurMenu         command               "Uniform quantiles..."                          uniformQuantiles.ipsur               ""	""
-    item    uniformIpsurMenu         command               "Uniform probabilities..."                      uniformProbabilities.ipsur           ""	""
-    item    uniformIpsurMenu         command               "Plot uniform distribution..."                  unifDistributionPlot.ipsur           ""	""
-    item    uniformIpsurMenu	       command               "Simulate uniform variates..."                  unifSimulate.ipsur  	                ""	""
-   menu     weibullIpsurMenu         continuousIpsurMenu   ""                                              ""                                   ""	""
-   item     continuousIpsurMenu      cascade               "Weibull distribution"                          weibullIpsurMenu                     ""	""
-   item     weibullIpsurMenu         command               "Weibull quantiles..."                          weibullQuantiles.ipsur               ""	""
-   item     weibullIpsurMenu         command               "Weibull probabilities..."                      weibullProbabilities.ipsur           ""	""
-   item     weibullIpsurMenu         command               "Plot weibull distribution..."                  weibullDistributionPlot.ipsur        ""	""
-   item     weibullIpsurMenu	       command               "Simulate weibull variates..."                  weibullSimulate.ipsur  	            ""	""
-
-##########################################################################################################
-# Discrete Distributions
-
-    menu    discreteIpsurMenu        distributionsMenu       ""                                              ""                                   ""	""
-    item    distributionsMenu          cascade               "IPSUR - Discrete Distributions"                        discreteIpsurMenu                    ""	""
-
-    menu    binomialIpsurMenu        discreteIpsurMenu     ""                                              ""                                   ""	""
-    item    discreteIpsurMenu        cascade               "Binomial distribution"                         binomialIpsurMenu                    ""	""
-    item    binomialIpsurMenu        command               "Binomial quantiles..."                         binomialQuantiles.ipsur              ""	""
-    item    binomialIpsurMenu        command               "Binomial tail probabilities..."                binomialProbabilities.ipsur          ""	""
-    item    binomialIpsurMenu        command               "Binomial probabilities..."                     binomialMass.ipsur                   ""	""
-    item    binomialIpsurMenu        command               "Plot binomial distribution..."                 binomialDistributionPlot.ipsur       ""	""
-    item    binomialIpsurMenu        command	             "Simulate binomial variates..."		             binomialSimulate.ipsur  	            ""	""
-
-    menu    disuniformIpsurMenu      discreteIpsurMenu    ""                                               ""                                   ""	""
-    item    discreteIpsurMenu        cascade              "Discrete Uniform distribution"                  disuniformIpsurMenu                  ""	""
-#    item    disuniformMenu          command               "Discrete Uniform quantiles..."                 disunifQuantiles                    ""	""
-#    item    disuniformMenu          command               "Discrete Uniform probabilities..."             disunifProbabilities                ""	""
-#    item    disuniformMenu          command               "Plot discrete uniform distribution..."         disunifDistributionPlot             ""	""
-    item    disuniformIpsurMenu	     command              "Simulate discrete uniform variates..."          disunifSimulate.ipsur  	           ""	""
-
-    menu    geomIpsurMenu            discreteIpsurMenu    ""                                               ""                                   ""	""
-    item    discreteIpsurMenu        cascade              "Geometric distribution"                         geomIpsurMenu                        ""	""
-    item    geomIpsurMenu            command              "Geometric quantiles..."                         geomQuantiles.ipsur                  ""	""
-    item    geomIpsurMenu            command              "Geometric tail probabilities..."                geomProbabilities.ipsur              ""	""
-    item    geomIpsurMenu            command              "Geometric probabilities..."                     geomMass.ipsur                       ""	""
-    item    geomIpsurMenu            command              "Plot geometric distribution..."                 geomDistributionPlot.ipsur           ""	""
-    item    geomIpsurMenu            command              "Simulate geometric variates..."                 geomSimulate.ipsur                   ""	""
-    menu    hyperIpsurMenu           discreteIpsurMenu    ""                                               ""                                   ""	""
-    item    discreteIpsurMenu        cascade              "Hypergeometric distribution"                    hyperIpsurMenu                       ""	""
-    item    hyperIpsurMenu           command              "Hypergeometric quantiles..."                    hyperQuantiles.ipsur                 ""	""
-    item    hyperIpsurMenu           command              "Hypergeometric tail probabilities..."           hyperProbabilities.ipsur             ""	""
-    item    hyperIpsurMenu           command              "Hypergeometric probabilities..."                hyperMass.ipsur                      ""	""
-    item    hyperIpsurMenu           command              "Plot hypergeometric distribution..."            hyperDistributionPlot.ipsur          ""	""
-    item    hyperIpsurMenu           command              "Simulate hypergeometric variates..."            hyperSimulate.ipsur                  ""	""
-   menu     nbinomIpsurMenu          discreteIpsurMenu    ""                                               ""                                   ""	""
-   item     discreteIpsurMenu        cascade              "Negative binomial distribution"                 nbinomIpsurMenu                      ""	""
-   item     nbinomIpsurMenu          command              "Negative binomial quantiles..."                 negbinomialQuantiles.ipsur           ""	""
-   item     nbinomIpsurMenu          command              "Negative binomial tail probabilities..."        negbinomialProbabilities.ipsur       ""	""
-   item     nbinomIpsurMenu          command              "Negative binomial probabilities..."             negbinomialMass.ipsur                ""	""
-   item     nbinomIpsurMenu          command              "Plot negative binomial distribution..."         negbinomialDistributionPlot.ipsur    ""	""
-   item     nbinomIpsurMenu	         command              "Simulate negative binomial variates..."         nbinomSimulate.ipsur                 ""	""
-
-    menu    PoissonIpsurMenu         discreteIpsurMenu    ""                                               ""                                   ""	""
-    item    discreteIpsurMenu        cascade              "Poisson distribution"                           PoissonIpsurMenu                     ""	""
-    item    PoissonIpsurMenu         command              "Poisson quantiles..."                           poissonQuantiles.ipsur               ""	""
-    item    PoissonIpsurMenu         command              "Poisson tail probabilities..."                  poissonProbabilities.ipsur           ""	""
-    item    PoissonIpsurMenu         command              "Poisson probabilities..."                       PoissonMass.ipsur                    ""	""
-    item    PoissonIpsurMenu         command              "Plot Poisson distribution..."                   PoissonDistributionPlot.ipsur        ""	""
-    item    PoissonIpsurMenu         command              "Simulate Poisson variates..."                   poisSimulate.ipsur                   ""	""
 
 
 ##########################################################################################################
@@ -158,7 +50,6 @@
 
     menu    samplingIpsurMenu        distributionsMenu       ""                                              ""                                   ""	""
     item    distributionsMenu          cascade               "IPSUR - Sampling Distributions"                        samplingIpsurMenu                    ""	""
-
 
     menu    cntsamplingIpsurMenu    samplingIpsurMenu    ""                                                 ""                                    ""	""
     item    samplingIpsurMenu       cascade               "Continuous Distributions"                        cntsamplingIpsurMenu                  ""	""
@@ -184,39 +75,161 @@
     item    dscsamplingIpsurMenu   command               "Negative binomial population..."                  negbinomialDistributionSamples.ipsur  ""	""
     item    dscsamplingIpsurMenu   command               "Poisson population..."                            PoissonDistributionSamples.ipsur      ""	""
 
+##########################################################################################################
+# Discrete Distributions
+
+    menu    discreteIpsurMenu        distributionsMenu       ""                                              ""                                   ""	""
+    item    distributionsMenu          cascade               "IPSUR - Discrete Distributions"                        discreteIpsurMenu                    ""	""
+
+    menu    PoissonIpsurMenu         discreteIpsurMenu    ""                                               ""                                   ""	""
+    item    discreteIpsurMenu        cascade              "Poisson distribution"                           PoissonIpsurMenu                     ""	""
+    item    PoissonIpsurMenu         command              "Poisson quantiles..."                           poissonQuantiles.ipsur               ""	""
+    item    PoissonIpsurMenu         command              "Poisson tail probabilities..."                  poissonProbabilities.ipsur           ""	""
+    item    PoissonIpsurMenu         command              "Poisson probabilities..."                       PoissonMass.ipsur                    ""	""
+    item    PoissonIpsurMenu         command              "Plot Poisson distribution..."                   PoissonDistributionPlot.ipsur        ""	""
+    item    PoissonIpsurMenu         command              "Simulate Poisson variates..."                   poisSimulate.ipsur                   ""	""
+
+   menu     nbinomIpsurMenu          discreteIpsurMenu    ""                                               ""                                   ""	""
+   item     discreteIpsurMenu        cascade              "Negative binomial distribution"                 nbinomIpsurMenu                      ""	""
+   item     nbinomIpsurMenu          command              "Negative binomial quantiles..."                 negbinomialQuantiles.ipsur           ""	""
+   item     nbinomIpsurMenu          command              "Negative binomial tail probabilities..."        negbinomialProbabilities.ipsur       ""	""
+   item     nbinomIpsurMenu          command              "Negative binomial probabilities..."             negbinomialMass.ipsur                ""	""
+   item     nbinomIpsurMenu          command              "Plot negative binomial distribution..."         negbinomialDistributionPlot.ipsur    ""	""
+   item     nbinomIpsurMenu	         command              "Simulate negative binomial variates..."         nbinomSimulate.ipsur                 ""	""
+
+    menu    hyperIpsurMenu           discreteIpsurMenu    ""                                               ""                                   ""	""
+    item    discreteIpsurMenu        cascade              "Hypergeometric distribution"                    hyperIpsurMenu                       ""	""
+    item    hyperIpsurMenu           command              "Hypergeometric quantiles..."                    hyperQuantiles.ipsur                 ""	""
+    item    hyperIpsurMenu           command              "Hypergeometric tail probabilities..."           hyperProbabilities.ipsur             ""	""
+    item    hyperIpsurMenu           command              "Hypergeometric probabilities..."                hyperMass.ipsur                      ""	""
+    item    hyperIpsurMenu           command              "Plot hypergeometric distribution..."            hyperDistributionPlot.ipsur          ""	""
+    item    hyperIpsurMenu           command              "Simulate hypergeometric variates..."            hyperSimulate.ipsur                  ""	""
+
+    menu    geomIpsurMenu            discreteIpsurMenu    ""                                               ""                                   ""	""
+    item    discreteIpsurMenu        cascade              "Geometric distribution"                         geomIpsurMenu                        ""	""
+    item    geomIpsurMenu            command              "Geometric quantiles..."                         geomQuantiles.ipsur                  ""	""
+    item    geomIpsurMenu            command              "Geometric tail probabilities..."                geomProbabilities.ipsur              ""	""
+    item    geomIpsurMenu            command              "Geometric probabilities..."                     geomMass.ipsur                       ""	""
+    item    geomIpsurMenu            command              "Plot geometric distribution..."                 geomDistributionPlot.ipsur           ""	""
+    item    geomIpsurMenu            command              "Simulate geometric variates..."                 geomSimulate.ipsur                   ""	""
+
+    menu    disuniformIpsurMenu      discreteIpsurMenu    ""                                               ""                                   ""	""
+    item    discreteIpsurMenu        cascade              "Discrete Uniform distribution"                  disuniformIpsurMenu                  ""	""
+#    item    disuniformMenu          command               "Discrete Uniform quantiles..."                 disunifQuantiles                    ""	""
+#    item    disuniformMenu          command               "Discrete Uniform probabilities..."             disunifProbabilities                ""	""
+#    item    disuniformMenu          command               "Plot discrete uniform distribution..."         disunifDistributionPlot             ""	""
+    item    disuniformIpsurMenu	     command              "Simulate discrete uniform variates..."          disunifSimulate.ipsur  	           ""	""
+
+    menu    binomialIpsurMenu        discreteIpsurMenu     ""                                              ""                                   ""	""
+    item    discreteIpsurMenu        cascade               "Binomial distribution"                         binomialIpsurMenu                    ""	""
+    item    binomialIpsurMenu        command               "Binomial quantiles..."                         binomialQuantiles.ipsur              ""	""
+    item    binomialIpsurMenu        command               "Binomial tail probabilities..."                binomialProbabilities.ipsur          ""	""
+    item    binomialIpsurMenu        command               "Binomial probabilities..."                     binomialMass.ipsur                   ""	""
+    item    binomialIpsurMenu        command               "Plot binomial distribution..."                 binomialDistributionPlot.ipsur       ""	""
+    item    binomialIpsurMenu        command	             "Simulate binomial variates..."		             binomialSimulate.ipsur  	            ""	""
+
+
+##########################################################################################################
+#  Continuous Distributions
+
+    menu    continuousIpsurMenu      distributionsMenu       ""                                              ""                                   ""	""
+    item    distributionsMenu          cascade               "IPSUR - Continuous Distributions"                      continuousIpsurMenu                  ""	""
+
+
+   menu     weibullIpsurMenu         continuousIpsurMenu   ""                                              ""                                   ""	""
+   item     continuousIpsurMenu      cascade               "Weibull distribution"                          weibullIpsurMenu                     ""	""
+   item     weibullIpsurMenu         command               "Weibull quantiles..."                          weibullQuantiles.ipsur               ""	""
+   item     weibullIpsurMenu         command               "Weibull probabilities..."                      weibullProbabilities.ipsur           ""	""
+   item     weibullIpsurMenu         command               "Plot weibull distribution..."                  weibullDistributionPlot.ipsur        ""	""
+   item     weibullIpsurMenu	       command               "Simulate weibull variates..."                  weibullSimulate.ipsur  	            ""	""
+
+    menu    uniformIpsurMenu         continuousIpsurMenu   ""                                              ""                                   ""	""
+    item    continuousIpsurMenu      cascade               "Uniform distribution"                          uniformIpsurMenu                     ""	""
+    item    uniformIpsurMenu         command               "Uniform quantiles..."                          uniformQuantiles.ipsur               ""	""
+    item    uniformIpsurMenu         command               "Uniform probabilities..."                      uniformProbabilities.ipsur           ""	""
+    item    uniformIpsurMenu         command               "Plot uniform distribution..."                  unifDistributionPlot.ipsur           ""	""
+    item    uniformIpsurMenu	       command               "Simulate uniform variates..."                  unifSimulate.ipsur  	                ""	""
+
+    menu    tIpsurMenu               continuousIpsurMenu   ""                                              ""                                   ""	""
+    item    continuousIpsurMenu      cascade               "t distribution"                                tIpsurMenu                           ""	""
+    item    tIpsurMenu               command               "t quantiles..."                                tQuantiles.ipsur                     ""	""
+    item    tIpsurMenu               command               "t probabilities..."                            tProbabilities.ipsur                 ""	""
+    item    tIpsurMenu               command               "Plot t distribution..."                        tDistributionPlot.ipsur              ""	""
+    item    tIpsurMenu	             command               "Simulate t variates..."                        tSimulate.ipsur   	                  ""	""
+
+    menu    normalIpsurMenu          continuousIpsurMenu   ""                                              ""                                   ""	""
+    item    continuousIpsurMenu      cascade               "Normal distribution"                           normalIpsurMenu                      ""	""
+    item    normalIpsurMenu          command               "Normal quantiles..."                           normalQuantiles.ipsur                ""	""
+    item    normalIpsurMenu          command               "Normal probabilities..."                       normalProbabilities.ipsur            ""	""
+    item    normalIpsurMenu          command               "Plot normal distribution..."                   normalDistributionPlot.ipsur         ""	""
+    item    normalIpsurMenu	         command               "Simulate normal variates..."                   normalSimulate.ipsur  	              ""	""
+
+    menu    logisticIpsurMenu          continuousIpsurMenu   ""                                              ""                                   ""	""
+    item    continuousIpsurMenu      cascade               "Logistic distribution"                         logisticIpsurMenu                    ""	""
+    item    logisticIpsurMenu        command               "Logistic quantiles..."                         logisticQuantiles.ipsur              ""	""
+    item    logisticIpsurMenu        command               "Logistic probabilities..."                     logisticProbabilities.ipsur          ""	""
+    item    logisticIpsurMenu        command               "Plot logistic distribution..."                 logisticDistributionPlot.ipsur       ""	""
+   item     logisticIpsurMenu	       command               "Simulate logistic variates..."                 logisSimulate.ipsur 		              ""	""
+
+    menu    lognormalIpsurMenu       continuousIpsurMenu   ""                                              ""                                   ""	""
+    item    continuousIpsurMenu      cascade               "Log normal distribution"                       lognormalIpsurMenu                   ""	""
+    item    lognormalIpsurMenu       command               "Log normal quantiles..."                       lognormalQuantiles.ipsur             ""	""
+    item    lognormalIpsurMenu       command               "Log normal probabilities..."                   lognormalProbabilities.ipsur         ""	""
+    item    lognormalIpsurMenu       command               "Plot log normal distribution..."               lognormalDistributionPlot.ipsur      ""	""
+    item    lognormalIpsurMenu	     command               "Simulate log normal variates..."               lnormalSimulate.ipsur                ""	""
+
+    menu    gammaIpsurMenu           continuousIpsurMenu   ""                                              ""                                   ""	""
+    item    continuousIpsurMenu      cascade               "Gamma distribution"                            gammaIpsurMenu                       ""	""
+    item    gammaIpsurMenu           command               "Gamma quantiles..."                            gammaQuantiles.ipsur                 ""	""
+    item    gammaIpsurMenu           command               "Gamma probabilities..."                        gammaProbabilities.ipsur             ""	""
+    item    gammaIpsurMenu           command               "Plot gamma distribution..."                    gammaDistributionPlot.ipsur          ""	""
+    item    gammaIpsurMenu           command               "Simulate gamma variates..."                    gammaSimulate.ipsur                  ""	""
+
+    menu    FIpsurMenu               continuousIpsurMenu   ""                                              ""                                   ""	""
+    item    continuousIpsurMenu      cascade               "F distribution"                                FIpsurMenu                           ""	""
+    item    FIpsurMenu               command               "F quantiles..."                                FQuantiles.ipsur                     ""	""
+    item    FIpsurMenu               command               "F probabilities..."                            FProbabilities.ipsur                 ""	""
+    item    FIpsurMenu               command               "Plot F distribution..."                        FDistributionPlot.ipsur              ""	""
+    item    FIpsurMenu               command               "Simulate F variates..."                        fSimulate.ipsur                      ""	""
+
+    menu    expIpsurMenu             continuousIpsurMenu   ""                                              ""                                   ""	""
+    item    continuousIpsurMenu      cascade               "Exponential distribution"                      expIpsurMenu                         ""	""
+    item    expIpsurMenu             command               "Exponential quantiles..."                      expQuantiles.ipsur                   ""	""
+    item    expIpsurMenu             command               "Exponential probabilities..."                  expProbabilities.ipsur               ""	""
+    item    expIpsurMenu             command               "Plot exponential distribution..."              expDistributionPlot.ipsur            ""	""
+    item    expIpsurMenu             command               "Simulate exponential variates..."              expSimulate.ipsur                    ""	""
+
+    menu    chisqIpsurMenu           continuousIpsurMenu   ""                                              ""                                   ""	""
+    item    continuousIpsurMenu      cascade               "Chi-squared distribution"                      chisqIpsurMenu                       ""	""
+    item    chisqIpsurMenu           command               "Chi-squared quantiles..."                      chisqQuantiles.ipsur                 ""	""
+    item    chisqIpsurMenu           command               "Chi-squared probabilities..."                  chisqProbabilities.ipsur             ""	""
+    item    chisqIpsurMenu           command               "Plot chi-squared distribution..."              chisquareDistributionPlot.ipsur      ""	""
+    item    chisqIpsurMenu           command               "Simulate chi-squared variates..."              chisqSimulate.ipsur                  ""	""
+
+    menu    cauchyIpsurMenu          continuousIpsurMenu   ""                                              ""                                   ""	""
+    item    continuousIpsurMenu      cascade               "Cauchy distribution"                           cauchyIpsurMenu                      ""	""
+    item    cauchyIpsurMenu          command               "Cauchy quantiles..."                           cauchyQuantiles.ipsur                ""	""
+    item    cauchyIpsurMenu          command               "Cauchy probabilities..."                       cauchyProbabilities.ipsur            ""	""
+    item    cauchyIpsurMenu          command               "Plot Cauchy distribution..."                   cauchyDistributionPlot.ipsur         ""	""
+    item    cauchyIpsurMenu          command               "Simulate Cauchy variates..."                   cauchySimulate.ipsur                 ""	""
+
+    menu    betaIpsurMenu            continuousIpsurMenu   ""                                              ""                                   ""	""
+    item    continuousIpsurMenu      cascade               "Beta distribution"                             betaIpsurMenu                        ""	""
+    item    betaIpsurMenu            command               "Beta quantiles..."                             betaQuantiles.ipsur                  ""	""
+    item    betaIpsurMenu            command               "Beta probabilities..."                         betaProbabilities.ipsur              ""	""
+    item    betaIpsurMenu            command               "Plot beta distribution..."                     betaDistributionPlot.ipsur           ""	""
+    item    betaIpsurMenu            command               "Simulate beta variates..."                     betaSimulate.ipsur                   ""	""
+
+#############################
+# Save for eventual Probability menu
+#    item    distributionsMenu         command               "IPSUR - Birthday Problem..."                           birthdayProbabilities.ipsur           ""	""
 
 ################################################################################################################################################
 ################################################################################################################################################
-# End Probability Menu
+# End Distributions Menu
 
-#Plot menus can be sorted later
- item    BarGraphMenu    command         "IPSUR - Enter table..."                                barPlotSumTable             ""             "packageAvailable('abind')"   #barPlotSumm.R
 
- item    proportionsMenu command         "IPSUR - Enter table for single-sample..."              enterTableSinglePropTest    ""                                          "packageAvailable('abind')"  #enterTableProportions
-item    proportionsMenu command         "IPSUR - Enter table for independent samples..."        enterTableMultiPropTest     ""                                          "packageAvailable('abind')"   #enterTableProportions
 
-    item    graphsMenu      command         "IPSUR - Index plot..."                                 indexPlot                   "numericP()"          ""	#graphs-menu
-    item    graphsMenu      command         "IPSUR - Histogram..."                                  Histogram                   "numericP()"          ""	#graphs-menu
-    item    graphsMenu      command         "IPSUR - Boxplot..."                                    boxPlot                     "numericP()"          ""	#graphs-menu
-    item    graphsMenu      command         "IPSUR - Scatterplot..."                                scatterPlot                 "numericP(2)" "packageAvailable('car')"	#graphs-menu
-    item    graphsMenu      command         "IPSUR - Scatterplot matrix..."                         scatterPlotMatrix           "numericP(3)" "packageAvailable('car')" #graphs-menu
- item    BarGraphMenu    command         "IPSUR - Variable(s) in Active data set..."             barGraph                    "factorsP()"   "packageAvailable('abind')" #graphs-menu
-    item    graphsMenu      command         "IPSUR - Pareto Diagram..."                             paretoChart                 "factorsP()"  "packageAvailable('qcc')" #graphs-menu
-    item    graphsMenu      command         "IPSUR - Quantile-comparison plot..."                   QQPlot                      "numericP()" "packageAvailable('car')"  #graphs-menu
-    item    graphsMenu      command         "IPSUR - XY conditioning plot..."                       Xyplot                      "numericP(2)"          "" #graphs-menu
-    item    graphsMenu      command         "IPSUR - Strip chart..."                                stripChart                  "numericP()"          "" #graphs-menu
 
-    item    graphsMenu      command         "IPSUR - Line graph..."                                 linePlot                    "numericP(2)"          "" #linePlot
 
-    item    proportionsMenu command         "IPSUR - Test for equality of several proportions..."   multiSampleProportionsTest  "multiLevelFactorsP() & twoLevelFactorsP()" "packageAvailable('abind')" #multiSamplePropTest
 
-    menu    powerMenu       statisticsMenu  ""                                              ""                          ""		                                      ""
-    item    powerMenu      command          "IPSUR - Power for t-tests..."                          powerTtest                  ""		                                      "" #power
-    item    powerMenu      command          "IPSUR - Power for two proportions..."                  powerProptest               ""		                                      "" #power
-    item    powerMenu      command          "IPSUR - Power for balanced ANOVA..."                   powerAnovatest              ""		                                      "" #power
-
-    item    summariesMenu   command         "IPSUR - Frequency distributions..."                    frequencyDistribution       "activeDataSetP()"          "" #statistics-summaries-menu
-    item    summariesMenu   command         "IPSUR - Numerical summaries..."                        numericalSummaries          "numericP()" "packageAvailable('abind')" #statistics-summaries-menu
-
-    item    tablesMenu      command         "IPSUR - Two-way table..."                              twoWayTable                 "factorsP(2)" "packageAvailable('abind')" #statistics-tables-menu
-    item    tablesMenu      command         "IPSUR - Enter and analyze two-way table..."            enterTable                  ""              "packageAvailable('abind')" #statistics-tables-menu

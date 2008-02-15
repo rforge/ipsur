@@ -5,7 +5,7 @@
 #  Added marginal sums option
 #  Added simulate p-value option
 
-twoWayTable <- function(){
+twoWayTable.ipsur <- function(){
     require("abind")
     initializeDialog(title=gettextRcmdr("Two-Way Table"))
     variablesFrame <- tkframe(top)
@@ -125,7 +125,7 @@ twoWayTable <- function(){
 #  Added simulate p-value option
 # not yet
 
-enterTable <- function(){
+enterTable.ipsur <- function(){
     require("abind")
     env <- environment()
     initializeDialog(title=gettextRcmdr("Enter Two-Way Table"))

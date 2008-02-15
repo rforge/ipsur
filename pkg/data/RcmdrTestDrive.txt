@@ -1,4 +1,4 @@
-Order	Smoking	Gender	Race	Before	After	Salary	Reduction	Parking
+order	smoking	gender	race	before	after	salary	reduction	parking
 1	Nonsmoker	Female	Caucasian	72.6	75.2	618.65	9	2
 2	Nonsmoker	Male	AfricanAmer	75.3	73.2	544.56	62	1
 3	Nonsmoker	Female	Caucasian	75.5	74.5	550.24	19	4

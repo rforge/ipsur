@@ -1,8 +1,0 @@
-
-
-export(
-IPSURgetAnswer, IPSURweb,
-pbirthday.ipsur, 
-qbirthday.ipsur)
-
-

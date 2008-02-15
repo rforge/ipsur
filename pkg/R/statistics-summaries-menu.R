@@ -4,7 +4,7 @@
 # change percentages to relative frequencies    
 # Make it possible to analyze numeric vectors instead of factors only
 
-frequencyDistribution <- function(){
+frequencyDistribution.ipsur <- function(){
     initializeDialog(title=gettextRcmdr("Frequency Distribution"))
     xBox <- variableListBox(top, Variables(), title=gettextRcmdr("Variable (pick one)"))
     optionsFrame <- tkframe(top)
@@ -109,12 +109,13 @@ frequencyDistribution <- function(){
 
 # add skewness and kurtosis as options
 
-numericalSummaries <- function(){
+numericalSummaries.ipsur <- function(){
     require(abind)
+    require(e1071)
     initializeDialog(title=gettextRcmdr("Numerical Summaries"))
     xBox <- variableListBox(top, Numeric(), selectmode="multiple", title=gettextRcmdr("Variables (pick one or more)"))
-    checkBoxes(frame="checkBoxFrame", boxes=c("mean", "sd"), initialValues=c("1", "1"), labels=gettextRcmdr(c("Mean", "Standard Deviation")))
-    quantilesVariable <- tclVar("1")
+    checkBoxes(frame="checkBoxFrame", boxes=c("mean", "sd", "skewness", "kurtosis"), initialValues=c("1", "1", "1", "1"), labels=gettextRcmdr(c("Mean", "Standard Deviation", "Skewness", "Kurtosis")))
+    quantilesVariable <- tclVar("0")
     quantilesFrame <- tkframe(top)
     quantilesCheckBox <- tkcheckbutton(quantilesFrame, variable=quantilesVariable)
     quantiles <- tclVar("0,.25,.5,.75,1")
@@ -133,8 +134,8 @@ numericalSummaries <- function(){
             else paste("c(", paste('"', x, '"', collapse=", ", sep=""), ")", sep="")
         vars <- paste(.activeDataSet, "[,", vars, "]", sep="")
         stats <- paste("c(",
-            paste(c('"mean"', '"sd"', '"quantiles"')
-                [c(tclvalue(meanVariable), tclvalue(sdVariable), tclvalue(quantilesVariable)) == 1], 
+            paste(c('"mean"', '"sd"', '"skewness"', '"kurtosis"', '"quantiles"')
+                [c(tclvalue(meanVariable), tclvalue(sdVariable),tclvalue(skewnessVariable), tclvalue(kurtosisVariable),  tclvalue(quantilesVariable)) == 1], 
                 collapse=", "), ")", sep="")
         if (stats == "c()"){
              errorCondition(recall=numericalSummaries, message=gettextRcmdr("No statistics selected."))
@@ -142,9 +143,9 @@ numericalSummaries <- function(){
             }               
         command <- if (.groups != FALSE) {
             grps <- paste(.activeDataSet, "$", .groups, sep="")
-            paste("numSummary(", vars, ", groups=", grps, ", statistics=", stats, ")", sep="")
+            paste("numSummaryIPSUR(", vars, ", groups=", grps, ", statistics=", stats, ")", sep="")
             }
-        else  paste("numSummary(", vars, ", statistics=", stats, ")", sep="")
+        else  paste("numSummaryIPSUR(", vars, ", statistics=", stats, ")", sep="")
         doItAndPrint(command) 
         tkfocus(CommanderWindow())
         }
