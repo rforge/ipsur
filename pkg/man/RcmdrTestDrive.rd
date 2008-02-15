@@ -12,15 +12,15 @@
 
 
   \describe{
-    \item{Order}{sequential order}
-    \item{Smoking}{smoking status}
-    \item{Gender}{gender of victim}
-    \item{Race}{race of victim}
-    \item{Before}{life expectancy before exposure}
-    \item{After}{life expectancy after exposure}
-    \item{Salary}{salary at retirement}
-    \item{Reduction}{potential salary reduction}
-    \item{Parking}{number of unpaid parking tickets}
+    \item{order}{sequential order}
+    \item{smoking}{smoking status}
+    \item{gender}{gender of victim}
+    \item{race}{race of victim}
+    \item{before}{life expectancy before exposure}
+    \item{after}{life expectancy after exposure}
+    \item{salary}{salary at retirement}
+    \item{reduction}{potential salary reduction}
+    \item{parking}{number of unpaid parking tickets}
   }
 }
 \details{
