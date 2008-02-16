@@ -1,3 +1,6 @@
+# Last modified Feb 16, 2008
+
+
 `binomialDistributionPlot.ipsur` <-
 function () 
 {
@@ -84,7 +87,7 @@ function ()
                 sep = ""))
             doItAndPrint(paste("points(q[2:(length(q))], .x, pch=16, cex=1.2)", 
                 sep = ""))
-            doItAndPrint(paste("segments(  q[1:(length(q)-1)], .x, q[2:(length(q))], .x, lwd = 2)", 
+            doItAndPrint(paste("segments(  q[1:(length(q)-1)], .x, q[2:(length(q))], .x)",
                 sep = ""))
         }
         doItAndPrint("abline( h = 0, lty = 2, col = \"grey\" )")
@@ -111,6 +114,9 @@ function ()
     tkgrid.configure(quantileButton, sticky = "w")
     dialogSuffix(rows = 5, columns = 2, focus = trialsEntry)
 }
+
+
+
 `binomialMass.ipsur` <-
 function () 
 {
@@ -167,6 +173,9 @@ function ()
     tkgrid.configure(probEntry, sticky = "w")
     dialogSuffix(rows = 3, columns = 2, focus = trialsEntry)
 }
+
+
+
 `binomialProbabilities.ipsur` <-
 function () 
 {
@@ -227,6 +236,9 @@ function ()
     tkgrid.configure(upperTailButton, sticky = "w")
     dialogSuffix(rows = 6, columns = 2, focus = probabilitiesEntry)
 }
+
+
+
 `binomialQuantiles.ipsur` <-
 function () 
 {
@@ -287,6 +299,9 @@ function ()
     tkgrid.configure(upperTailButton, sticky = "w")
     dialogSuffix(rows = 6, columns = 2, focus = quantilesEntry)
 }
+
+
+
 `geomDistributionPlot.ipsur` <-
 function () 
 {
@@ -358,7 +373,7 @@ function ()
                 sep = ""))
             doItAndPrint(paste("points(q[2:(length(q))], .x, pch=16, cex=1.2)", 
                 sep = ""))
-            doItAndPrint(paste("segments(  q[1:(length(q)-1)], .x, q[2:(length(q))], .x, lwd = 2)", 
+            doItAndPrint(paste("segments(  q[1:(length(q)-1)], .x, q[2:(length(q))], .x)",
                 sep = ""))
         }
         doItAndPrint("abline( h = 0, lty = 2, col = \"grey\" )")
@@ -382,6 +397,9 @@ function ()
     tkgrid.configure(quantileButton, sticky = "w")
     dialogSuffix(rows = 5, columns = 2, focus = probEntry)
 }
+
+
+
 `geomMass.ipsur` <-
 function () 
 {
@@ -423,6 +441,9 @@ function ()
     tkgrid.configure(probEntry, sticky = "w")
     dialogSuffix(rows = 2, columns = 2, focus = probEntry)
 }
+
+
+
 `geomProbabilities.ipsur` <-
 function () 
 {
@@ -471,6 +492,9 @@ function ()
     tkgrid.configure(upperTailButton, sticky = "w")
     dialogSuffix(rows = 6, columns = 1, focus = probabilitiesEntry)
 }
+
+
+
 `geomQuantiles.ipsur` <-
 function () 
 {
@@ -517,6 +541,9 @@ function ()
     tkgrid.configure(upperTailButton, sticky = "w")
     dialogSuffix(rows = 6, columns = 2, focus = quantilesEntry)
 }
+
+
+
 `hyperDistributionPlot.ipsur` <-
 function () 
 {
@@ -608,7 +635,7 @@ function ()
                 sep = ""))
             doItAndPrint(paste("points(q[2:(length(q))], .x, pch=16, cex=1.2)", 
                 sep = ""))
-            doItAndPrint(paste("segments(  q[1:(length(q)-1)], .x, q[2:(length(q))], .x, lwd = 2)", 
+            doItAndPrint(paste("segments(  q[1:(length(q)-1)], .x, q[2:(length(q))], .x)",
                 sep = ""))
         }
         doItAndPrint("abline( h = 0, lty = 2, col = \"grey\" )")
@@ -638,6 +665,9 @@ function ()
     tkgrid.configure(quantileButton, sticky = "w")
     dialogSuffix(rows = 5, columns = 2, focus = mEntry)
 }
+
+
+
 `hyperMass.ipsur` <-
 function () 
 {
@@ -701,6 +731,9 @@ function ()
     tkgrid.configure(kEntry, sticky = "w")
     dialogSuffix(rows = 2, columns = 2, focus = mEntry)
 }
+
+
+
 `hyperProbabilities.ipsur` <-
 function () 
 {
@@ -772,6 +805,9 @@ function ()
     tkgrid.configure(upperTailButton, sticky = "w")
     dialogSuffix(rows = 6, columns = 2, focus = ProbabilitiesEntry)
 }
+
+
+
 `hyperQuantiles.ipsur` <-
 function () 
 {
@@ -839,6 +875,9 @@ function ()
     tkgrid.configure(upperTailButton, sticky = "w")
     dialogSuffix(rows = 6, columns = 2, focus = quantilesEntry)
 }
+
+
+
 `negbinomialDistributionPlot.ipsur` <-
 function () 
 {
@@ -926,7 +965,7 @@ function ()
                 sep = ""))
             doItAndPrint(paste("points(q[2:(length(q))], .x, pch=16, cex=1.2)", 
                 sep = ""))
-            doItAndPrint(paste("segments(  q[1:(length(q)-1)], .x, q[2:(length(q))], .x, lwd = 2)", 
+            doItAndPrint(paste("segments(  q[1:(length(q)-1)], .x, q[2:(length(q))], .x)",
                 sep = ""))
         }
         doItAndPrint("abline( h = 0, lty = 2, col = \"grey\" )")
@@ -953,6 +992,8 @@ function ()
     tkgrid.configure(quantileButton, sticky = "w")
     dialogSuffix(rows = 5, columns = 2, focus = trialsEntry)
 }
+
+
 `negbinomialMass.ipsur` <-
 function () 
 {
@@ -1006,6 +1047,9 @@ function ()
     tkgrid.configure(probEntry, sticky = "w")
     dialogSuffix(rows = 3, columns = 2, focus = trialsEntry)
 }
+
+
+
 `negbinomialProbabilities.ipsur` <-
 function () 
 {
@@ -1066,6 +1110,8 @@ function ()
     tkgrid.configure(upperTailButton, sticky = "w")
     dialogSuffix(rows = 6, columns = 2, focus = ProbabilitiesEntry)
 }
+
+
 `negbinomialQuantiles.ipsur` <-
 function () 
 {
@@ -1126,6 +1172,8 @@ function ()
     tkgrid.configure(upperTailButton, sticky = "w")
     dialogSuffix(rows = 6, columns = 2, focus = quantilesEntry)
 }
+
+
 `PoissonDistributionPlot.ipsur` <-
 function () 
 {
@@ -1197,7 +1245,7 @@ function ()
                 sep = ""))
             doItAndPrint(paste("points(q[2:(length(q))], .x, pch=16, cex=1.2)", 
                 sep = ""))
-            doItAndPrint(paste("segments(  q[1:(length(q)-1)], .x, q[2:(length(q))], .x, lwd = 2)", 
+            doItAndPrint(paste("segments(  q[1:(length(q)-1)], .x, q[2:(length(q))], .x)",
                 sep = ""))
         }
         doItAndPrint("abline( h = 0, lty = 2, col = \"grey\" )")
@@ -1221,6 +1269,8 @@ function ()
     tkgrid.configure(quantileButton, sticky = "w")
     dialogSuffix(rows = 4, columns = 2, focus = meanEntry)
 }
+
+
 `PoissonMass.ipsur` <-
 function () 
 {
@@ -1264,6 +1314,8 @@ function ()
     tkgrid.configure(meanEntry, sticky = "w")
     dialogSuffix(rows = 2, columns = 2, focus = meanEntry)
 }
+
+
 `poissonProbabilities.ipsur` <-
 function () 
 {
@@ -1312,6 +1364,8 @@ function ()
     tkgrid.configure(upperTailButton, sticky = "w")
     dialogSuffix(rows = 6, columns = 1, focus = probabilitiesEntry)
 }
+
+
 `poissonQuantiles.ipsur` <-
 function () 
 {

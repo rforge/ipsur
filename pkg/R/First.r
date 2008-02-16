@@ -1,4 +1,4 @@
-
+# Last modified Feb 15, 2008
 
 # Note: the following function (with contributions from Richard Heiberger) 
 # can be included in any Rcmdr plug-in package to cause the package to load

@@ -1,4 +1,4 @@
-
+# Last modified Feb 14, 2008
 
 `betaDistributionSamples.ipsur` <-
 function () 

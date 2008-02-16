@@ -1,4 +1,4 @@
-
+# Last modified Feb 16, 2008
 
 `checkMultiLevelFactors` <-
 function (n = 1) 

@@ -1,4 +1,4 @@
-
+# Last modified Feb 16, 2008
 
 `numSummaryIPSUR` <-
 function (data, statistics = c("mean", "sd", "skewness", "kurtosis", 
