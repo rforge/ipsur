@@ -1,10 +1,7 @@
-
-
 `binomialDistributionPlot.ipsur` <-
 function () 
 {
     initializeDialog(title = gettextRcmdr("Binomial Distribution"))
-    
     trialsVar <- tclVar("1")
     trialsEntry <- tkentry(top, width = "6", textvariable = trialsVar)
     probVar <- tclVar("0.5")
@@ -14,9 +11,8 @@ function ()
         value = "Probability")
     distributionButton <- tkradiobutton(top, variable = functionVar, 
         value = "Cumulative Probability")
-    ######
-    quantileButton <- tkradiobutton(top, variable=functionVar, value="Quantile Function")
-    ######
+    quantileButton <- tkradiobutton(top, variable = functionVar, 
+        value = "Quantile Function")
     onOK <- function() {
         closeDialog()
         trials <- tclvalue(trialsVar)
@@ -50,11 +46,8 @@ function ()
                 "\", type=\"h\")", sep = ""))
             doItAndPrint(paste("points(.x, dbinom(.x, size=", 
                 trials, ", prob=", prob, "), pch=16)", sep = ""))
-        
-#######################################################################			
-		    } else if (fun == "Cumulative Probability"){
-#######################################################################
-        
+        }
+        else if (fun == "Cumulative Probability") {
             justDoIt(paste("plot( stepfun(.x, pbinom((xmin-1):xmax", 
                 ", size=", trials, ", prob=", prob, ")), verticals=F, do.p=F,", 
                 " xlab=\"Number of Successes\", ylab=\"Cumulative Probability\", main=\"Binomial Distribution: Trials = ", 
@@ -72,32 +65,28 @@ function ()
                 " size=", trials, ", prob=", prob, "), pch = 1, cex=1.2 )", 
                 sep = ""))
             doItAndPrint("abline( h = 1, lty = 2, col = \"grey\" )")
-######################################################################################################################		 
-     } else if (fun == "Quantile Function"){
-			
-      # Binomial Model parameters
-			#Generate Variables
-			doItAndPrint(paste("q <- pbinom((xmin-1):xmax, size =", trials,",prob = ", prob,")", sep=""))
-		
-			#Generate Label Strings
-			# Model labels
-			main <- paste('"Binomial QF\n size=', trials,', prob=', prob,'"', sep="")
-			ylab <- '"Number of Successes"'
-			xlab <- '"Cumulative Probability"'
-		
-			#Generate Plot
-			command <- paste('plot(q[1:(length(q)-1)], .x, xlim=c(0,1), main =', main,', xlab = ',xlab,',ylab = ', ylab,', cex = 1.2)',sep="")
-			justDoIt(command)
-			logger(command)
-			#Reference lines
-			doItAndPrint(paste('abline( v = 0, col = "grey" )',sep=""))
-			doItAndPrint(paste('abline( v = 1, lty = 2, col = "grey" )',sep=""))
-			# points of right continuity
-			doItAndPrint(paste('points(q[2:(length(q))], .x, pch=16, cex=1.2)',sep=""))
-			# constant quantile values
-			doItAndPrint(paste('segments(  q[1:(length(q)-1)], .x, q[2:(length(q))], .x, lwd = 2)',sep=""))
-		}
-######################################################################################################################
+        }
+        else if (fun == "Quantile Function") {
+            doItAndPrint(paste("q <- pbinom((xmin-1):xmax, size =", 
+                trials, ",prob = ", prob, ")", sep = ""))
+            main <- paste("\"Binomial QF\n size=", trials, ", prob=", 
+                prob, "\"", sep = "")
+            ylab <- "\"Number of Successes\""
+            xlab <- "\"Cumulative Probability\""
+            command <- paste("plot(q[1:(length(q)-1)], .x, xlim=c(0,1), main =", 
+                main, ", xlab = ", xlab, ",ylab = ", ylab, ", cex = 1.2)", 
+                sep = "")
+            justDoIt(command)
+            logger(command)
+            doItAndPrint(paste("abline( v = 0, col = \"grey\" )", 
+                sep = ""))
+            doItAndPrint(paste("abline( v = 1, lty = 2, col = \"grey\" )", 
+                sep = ""))
+            doItAndPrint(paste("points(q[2:(length(q))], .x, pch=16, cex=1.2)", 
+                sep = ""))
+            doItAndPrint(paste("segments(  q[1:(length(q)-1)], .x, q[2:(length(q))], .x, lwd = 2)", 
+                sep = ""))
+        }
         doItAndPrint("abline( h = 0, lty = 2, col = \"grey\" )")
         remove(.x, xmin, xmax, envir = .GlobalEnv)
         logger("remove(.x, xmin, xmax)")
@@ -112,21 +101,16 @@ function ()
         densityButton, sticky = "e")
     tkgrid(tklabel(top, text = gettextRcmdr("Plot distribution function")), 
         distributionButton, sticky = "e")
-    ######
-    tkgrid(tklabel(top, text=gettextRcmdr("Plot quantile function")),quantileButton, sticky="e")
-    ######
+    tkgrid(tklabel(top, text = gettextRcmdr("Plot quantile function")), 
+        quantileButton, sticky = "e")
     tkgrid(buttonsFrame, columnspan = 2, sticky = "w")
     tkgrid.configure(trialsEntry, sticky = "w")
     tkgrid.configure(probEntry, sticky = "w")
     tkgrid.configure(densityButton, sticky = "w")
     tkgrid.configure(distributionButton, sticky = "w")
-    ######
-    tkgrid.configure(quantileButton, sticky="w")
-    ######
+    tkgrid.configure(quantileButton, sticky = "w")
     dialogSuffix(rows = 5, columns = 2, focus = trialsEntry)
 }
-
-
 `binomialMass.ipsur` <-
 function () 
 {
@@ -183,8 +167,6 @@ function ()
     tkgrid.configure(probEntry, sticky = "w")
     dialogSuffix(rows = 3, columns = 2, focus = trialsEntry)
 }
-
-
 `binomialProbabilities.ipsur` <-
 function () 
 {
@@ -245,8 +227,6 @@ function ()
     tkgrid.configure(upperTailButton, sticky = "w")
     dialogSuffix(rows = 6, columns = 2, focus = probabilitiesEntry)
 }
-
-
 `binomialQuantiles.ipsur` <-
 function () 
 {
@@ -307,8 +287,6 @@ function ()
     tkgrid.configure(upperTailButton, sticky = "w")
     dialogSuffix(rows = 6, columns = 2, focus = quantilesEntry)
 }
-
-
 `geomDistributionPlot.ipsur` <-
 function () 
 {
@@ -320,9 +298,8 @@ function ()
         value = "Probability")
     distributionButton <- tkradiobutton(top, variable = functionVar, 
         value = "Cumulative Probability")
-    #################################
-    quantileButton <- tkradiobutton(top, variable=functionVar, value="Quantile Function")
-    #################################
+    quantileButton <- tkradiobutton(top, variable = functionVar, 
+        value = "Quantile Function")
     onOK <- function() {
         closeDialog()
         prob <- tclvalue(probVar)
@@ -347,10 +324,8 @@ function ()
                 prob, "\", type=\"h\")", sep = ""))
             doItAndPrint(paste("points(.x, dgeom(.x, prob=", 
                 prob, "), pch=16)", sep = ""))
-#######################################################################			
-		    } else if (fun == "Cumulative Probability"){
-#######################################################################
-
+        }
+        else if (fun == "Cumulative Probability") {
             justDoIt(paste("plot( stepfun(.x, pgeom((xmin-1):xmax", 
                 ", prob=", prob, ")), verticals=F, do.p=F,", 
                 " xlab=\"Number of Failures until Success\", ylab=\"Cumulative Probability\", main=\"Geometric Distribution: Prob of success = ", 
@@ -364,34 +339,28 @@ function ()
             doItAndPrint(paste("points( .x, pgeom((xmin-1):(xmax-1),", 
                 ", prob=", prob, "), pch = 1, cex=1.2 )", sep = ""))
             doItAndPrint("abline( h = 1, lty = 2, col = \"grey\" )")
-        
-######################################################################################################################		 
-     } else if (fun == "Quantile Function"){
-			
-      # Geometric Model parameters
-			#Generate Variables
-			doItAndPrint(paste("q <- pgeom((xmin-1):xmax, prob =", prob,")", sep=""))
-		
-			#Generate Label Strings
-			# Model labels
-			main <- paste('"Geometric QF: prob=', prob,'"', sep="")
-			ylab <- '"Number of Failures until First Success"'
-			xlab <- '"Cumulative Probability"'
-		
-			#Generate Plot
-			command <- paste('plot(q[1:(length(q)-1)], .x, xlim=c(0,1), main =', main,', xlab = ',xlab,',ylab = ', ylab,', cex = 1.2)',sep="")
-			justDoIt(command)
-			logger(command)
-			#Reference lines
-			doItAndPrint(paste('abline( v = 0, col = "grey" )',sep=""))
-			doItAndPrint(paste('abline( v = 1, lty = 2, col = "grey" )',sep=""))
-			# points of right continuity
-			doItAndPrint(paste('points(q[2:(length(q))], .x, pch=16, cex=1.2)',sep=""))
-			# constant quantile values
-			doItAndPrint(paste('segments(  q[1:(length(q)-1)], .x, q[2:(length(q))], .x, lwd = 2)',sep=""))
-		}
-######################################################################################################################
-        
+        }
+        else if (fun == "Quantile Function") {
+            doItAndPrint(paste("q <- pgeom((xmin-1):xmax, prob =", 
+                prob, ")", sep = ""))
+            main <- paste("\"Geometric QF: prob=", prob, "\"", 
+                sep = "")
+            ylab <- "\"Number of Failures until First Success\""
+            xlab <- "\"Cumulative Probability\""
+            command <- paste("plot(q[1:(length(q)-1)], .x, xlim=c(0,1), main =", 
+                main, ", xlab = ", xlab, ",ylab = ", ylab, ", cex = 1.2)", 
+                sep = "")
+            justDoIt(command)
+            logger(command)
+            doItAndPrint(paste("abline( v = 0, col = \"grey\" )", 
+                sep = ""))
+            doItAndPrint(paste("abline( v = 1, lty = 2, col = \"grey\" )", 
+                sep = ""))
+            doItAndPrint(paste("points(q[2:(length(q))], .x, pch=16, cex=1.2)", 
+                sep = ""))
+            doItAndPrint(paste("segments(  q[1:(length(q)-1)], .x, q[2:(length(q))], .x, lwd = 2)", 
+                sep = ""))
+        }
         doItAndPrint("abline( h = 0, lty = 2, col = \"grey\" )")
         remove(.x, xmin, xmax, envir = .GlobalEnv)
         logger("remove(.x, xmin, xmax)")
@@ -404,20 +373,15 @@ function ()
         densityButton, sticky = "e")
     tkgrid(tklabel(top, text = gettextRcmdr("Plot distribution function")), 
         distributionButton, sticky = "e")
-    #############
-    tkgrid(tklabel(top, text=gettextRcmdr("Plot quantile function")),quantileButton, sticky="e")
-    #############
+    tkgrid(tklabel(top, text = gettextRcmdr("Plot quantile function")), 
+        quantileButton, sticky = "e")
     tkgrid(buttonsFrame, columnspan = 2, sticky = "w")
     tkgrid.configure(probEntry, sticky = "w")
     tkgrid.configure(densityButton, sticky = "w")
     tkgrid.configure(distributionButton, sticky = "w")
-    #############
-    tkgrid.configure(quantileButton, sticky="w")
-    #############
+    tkgrid.configure(quantileButton, sticky = "w")
     dialogSuffix(rows = 5, columns = 2, focus = probEntry)
 }
-
-
 `geomMass.ipsur` <-
 function () 
 {
@@ -459,8 +423,6 @@ function ()
     tkgrid.configure(probEntry, sticky = "w")
     dialogSuffix(rows = 2, columns = 2, focus = probEntry)
 }
-
-
 `geomProbabilities.ipsur` <-
 function () 
 {
@@ -509,8 +471,6 @@ function ()
     tkgrid.configure(upperTailButton, sticky = "w")
     dialogSuffix(rows = 6, columns = 1, focus = probabilitiesEntry)
 }
-
-
 `geomQuantiles.ipsur` <-
 function () 
 {
@@ -557,8 +517,6 @@ function ()
     tkgrid.configure(upperTailButton, sticky = "w")
     dialogSuffix(rows = 6, columns = 2, focus = quantilesEntry)
 }
-
-
 `hyperDistributionPlot.ipsur` <-
 function () 
 {
@@ -574,9 +532,8 @@ function ()
         value = "Probability")
     distributionButton <- tkradiobutton(top, variable = functionVar, 
         value = "Cumulative Probability")
-    #################################
-    quantileButton <- tkradiobutton(top, variable=functionVar, value="Quantile Function")
-    #################################
+    quantileButton <- tkradiobutton(top, variable = functionVar, 
+        value = "Quantile Function")
     onOK <- function() {
         closeDialog()
         m <- tclvalue(mVar)
@@ -615,11 +572,8 @@ function ()
                 m, ", n=", n, ", k=", k, "\", type=\"h\")", sep = ""))
             doItAndPrint(paste("points(.x, dhyper(.x, m=", m, 
                 ", n=", n, ", k=", k, "), pch=16)", sep = ""))
-
-#######################################################################			
-		    } else if (fun == "Cumulative Probability"){
-#######################################################################
-
+        }
+        else if (fun == "Cumulative Probability") {
             justDoIt(paste("plot( stepfun(.x, phyper((xmin-1):xmax", 
                 ", m=", m, ", n=", n, ", k=", k, ")), verticals=F, do.p=F,", 
                 " xlab=\"Number of White Balls in Sample\", ylab=\"Cumulative Probability\", main=\"Hypergeometric Distribution: m=", 
@@ -635,33 +589,28 @@ function ()
                 ", m=", m, ", n=", n, ", k=", k, "), pch = 1, cex=1.2 )", 
                 sep = ""))
             doItAndPrint("abline( h = 1, lty = 2, col = \"grey\" )")
-        
-######################################################################################################################		 
-     } else if (fun == "Quantile Function"){
-			
-      # Hypergeometric Model parameters
-			#Generate Variables
-			doItAndPrint(paste("q <- phyper((xmin-1):xmax, m=", m, ", n=", n, ", k=", k,")", sep=""))
-		
-			#Generate Label Strings
-			# Model labels
-			main <- paste('"Hypergeometric QF\n m=', m, ', n=', n, ', k=', k,'"', sep="")
-			ylab <- '"Number of White Balls in Sample"'
-			xlab <- '"Cumulative Probability"'
-		
-			#Generate Plot
-			command <- paste('plot(q[1:(length(q)-1)], .x, xlim=c(0,1), main =', main,', xlab = ',xlab,',ylab = ', ylab,', cex = 1.2)',sep="")
-			justDoIt(command)
-			logger(command)
-			#Reference lines
-			doItAndPrint(paste('abline( v = 0, col = "grey" )',sep=""))
-			doItAndPrint(paste('abline( v = 1, lty = 2, col = "grey" )',sep=""))
-			# points of right continuity
-			doItAndPrint(paste('points(q[2:(length(q))], .x, pch=16, cex=1.2)',sep=""))
-			# constant quantile values
-			doItAndPrint(paste('segments(  q[1:(length(q)-1)], .x, q[2:(length(q))], .x, lwd = 2)',sep=""))
-		}
-######################################################################################################################
+        }
+        else if (fun == "Quantile Function") {
+            doItAndPrint(paste("q <- phyper((xmin-1):xmax, m=", 
+                m, ", n=", n, ", k=", k, ")", sep = ""))
+            main <- paste("\"Hypergeometric QF\n m=", m, ", n=", 
+                n, ", k=", k, "\"", sep = "")
+            ylab <- "\"Number of White Balls in Sample\""
+            xlab <- "\"Cumulative Probability\""
+            command <- paste("plot(q[1:(length(q)-1)], .x, xlim=c(0,1), main =", 
+                main, ", xlab = ", xlab, ",ylab = ", ylab, ", cex = 1.2)", 
+                sep = "")
+            justDoIt(command)
+            logger(command)
+            doItAndPrint(paste("abline( v = 0, col = \"grey\" )", 
+                sep = ""))
+            doItAndPrint(paste("abline( v = 1, lty = 2, col = \"grey\" )", 
+                sep = ""))
+            doItAndPrint(paste("points(q[2:(length(q))], .x, pch=16, cex=1.2)", 
+                sep = ""))
+            doItAndPrint(paste("segments(  q[1:(length(q)-1)], .x, q[2:(length(q))], .x, lwd = 2)", 
+                sep = ""))
+        }
         doItAndPrint("abline( h = 0, lty = 2, col = \"grey\" )")
         remove(.x, xmin, xmax, envir = .GlobalEnv)
         logger("remove(.x, xmin, xmax)")
@@ -678,22 +627,17 @@ function ()
         densityButton, sticky = "e")
     tkgrid(tklabel(top, text = gettextRcmdr("Plot distribution function")), 
         distributionButton, sticky = "e")
-    #############
-    tkgrid(tklabel(top, text=gettextRcmdr("Plot quantile function")),quantileButton, sticky="e")
-    #############
+    tkgrid(tklabel(top, text = gettextRcmdr("Plot quantile function")), 
+        quantileButton, sticky = "e")
     tkgrid(buttonsFrame, columnspan = 2, sticky = "w")
     tkgrid.configure(mEntry, sticky = "w")
     tkgrid.configure(nEntry, sticky = "w")
     tkgrid.configure(kEntry, sticky = "w")
     tkgrid.configure(densityButton, sticky = "w")
     tkgrid.configure(distributionButton, sticky = "w")
-    #############
-    tkgrid.configure(quantileButton, sticky="w")
-    #############
+    tkgrid.configure(quantileButton, sticky = "w")
     dialogSuffix(rows = 5, columns = 2, focus = mEntry)
 }
-
-
 `hyperMass.ipsur` <-
 function () 
 {
@@ -757,8 +701,6 @@ function ()
     tkgrid.configure(kEntry, sticky = "w")
     dialogSuffix(rows = 2, columns = 2, focus = mEntry)
 }
-
-
 `hyperProbabilities.ipsur` <-
 function () 
 {
@@ -830,8 +772,6 @@ function ()
     tkgrid.configure(upperTailButton, sticky = "w")
     dialogSuffix(rows = 6, columns = 2, focus = ProbabilitiesEntry)
 }
-
-
 `hyperQuantiles.ipsur` <-
 function () 
 {
@@ -899,137 +839,120 @@ function ()
     tkgrid.configure(upperTailButton, sticky = "w")
     dialogSuffix(rows = 6, columns = 2, focus = quantilesEntry)
 }
-
-
 `negbinomialDistributionPlot.ipsur` <-
 function () 
 {
-    initializeDialog(title=gettextRcmdr("Negative Binomial Distribution"))
+    initializeDialog(title = gettextRcmdr("Negative Binomial Distribution"))
     trialsVar <- tclVar("1")
-    trialsEntry <- tkentry(top, width="6", textvariable=trialsVar)
+    trialsEntry <- tkentry(top, width = "6", textvariable = trialsVar)
     probVar <- tclVar("0.5")
-    probEntry <- tkentry(top, width="6", textvariable=probVar)
+    probEntry <- tkentry(top, width = "6", textvariable = probVar)
     functionVar <- tclVar("Probability")
-    densityButton <- tkradiobutton(top, variable=functionVar, value="Probability")
-    distributionButton <- tkradiobutton(top, variable=functionVar, value="Cumulative Probability")
-    #################################
-    quantileButton <- tkradiobutton(top, variable=functionVar, value="Quantile Function")
-    #################################
-    onOK <- function(){
+    densityButton <- tkradiobutton(top, variable = functionVar, 
+        value = "Probability")
+    distributionButton <- tkradiobutton(top, variable = functionVar, 
+        value = "Cumulative Probability")
+    quantileButton <- tkradiobutton(top, variable = functionVar, 
+        value = "Quantile Function")
+    onOK <- function() {
         closeDialog()
         trials <- tclvalue(trialsVar)
-        if ( trials =="" ) {
-              errorCondition(recall=negbinomialDistributionPlot.ipsur, message=gettextRcmdr("Target number of successes was not specified."))
-              return()
+        if (trials == "") {
+            errorCondition(recall = negbinomialDistributionPlot.ipsur, 
+                message = gettextRcmdr("Target number of successes was not specified."))
+            return()
         }
         prob <- tclvalue(probVar)
-        if ( prob =="" ) {
-              errorCondition(recall=negbinomialDistributionPlot.ipsur, message=gettextRcmdr("Probability of success was not specified."))
-              return()
+        if (prob == "") {
+            errorCondition(recall = negbinomialDistributionPlot.ipsur, 
+                message = gettextRcmdr("Probability of success was not specified."))
+            return()
         }
         fun <- tclvalue(functionVar)
-        command <- paste("qnbinom(.0005, size=", trials,", prob=", prob, ")", sep="")
-              logger(paste("xmin <- ", command, sep=""))
-              assign("xmin", justDoIt(command), envir=.GlobalEnv)
-        command <- paste("qnbinom(.9995, size=", trials,", prob=", prob, ")", sep="")
-              logger(paste("xmax <- ", command, sep=""))
-              assign("xmax", justDoIt(command), envir=.GlobalEnv)
-        command <- paste("xmin:xmax", sep="")
-              logger(paste(".x <- ", command, sep=""))
-              assign(".x", justDoIt(command), envir=.GlobalEnv)
-        
-        if (fun == "Probability"){
-            
-			
-      			doItAndPrint(paste("plot(.x, dnbinom(.x, size=", trials, ", prob=", prob,
-                      '), xlab="Number of Failures until Target Successes", ylab="Probability Mass", main="Negative Binomial Distribution: Target = ',
-                      trials, ', Prob of success = ', prob, '", type="h")', sep=""))
-                  
-      			
-      			
-      			doItAndPrint(paste("points(.x, dnbinom(.x, size=", trials, ", prob=", prob,
-                      '), pch=16)', sep=""))
-#######################################################################			
-		    } else if (fun == "Cumulative Probability"){
-#######################################################################
-            justDoIt(paste('plot( stepfun(xmin:xmax, pnbinom((xmin-1):xmax',
-                ', size=', trials, ', prob=', prob,
-                ')), verticals=F, do.p=F,',
-                ' xlab="Number of Failures until Target Successes", ylab="Cumulative Probability", main="Negative Binomial Distribution: Target = ',
-                trials, ', Probability of success = ', prob, '")', sep=""))
-
-            logger(paste('plot( stepfun(xmin:xmax, pnbinom((xmin-1):xmax',
-                ', size=', trials, ', prob=', prob,
-                ')), verticals=F, do.p=F,',
-                ' xlab="Number of Failures until Target Successes", ylab="Cumulative Probability", main="Negative Binomial Distribution: Target = ',
-                trials, ', Probability of success = ', prob, '")', sep=""))
-
-			     doItAndPrint('abline( h = 1, lty = 2, col = "grey" )')
-			     doItAndPrint('abline( h = 0, lty = 2, col = "grey" )')
-
-            # left continuity points
-            doItAndPrint( paste(
-            'points( .x, pnbinom(.x,',
-                ' size=', trials, ', prob=', prob,
-                '), pch = 16, cex=1.2 )',sep="") )
-
-            # right discontinuities
-            doItAndPrint( paste(
-            'points( .x, pnbinom((xmin-1):(xmax-1),',
-                    ' size=', trials, ', prob=', prob,
-                    '), pch = 1, cex=1.2 )',sep="") )
-
-######################################################################################################################		 
-     } else if (fun == "Quantile Function"){
-			
-      # Negative Binomial Model parameters
-			#Generate Variables
-			doItAndPrint(paste("q <- pnbinom((xmin-1):xmax, size =", trials,",prob = ", prob,")", sep=""))
-		
-			#Generate Label Strings
-			# Model labels
-			main <- paste('"Negative Binomial QF\n size=', trials,', prob=', prob,'"', sep="")
-			ylab <- '"Number of Failures until Target Successes"'
-			xlab <- '"Cumulative Probability"'
-		
-			#Generate Plot
-			command <- paste('plot(q[1:(length(q)-1)], .x, xlim=c(0,1), main =', main,', xlab = ',xlab,',ylab = ', ylab,', cex = 1.2)',sep="")
-			justDoIt(command)
-			logger(command)
-			#Reference lines
-			doItAndPrint(paste('abline( v = 0, col = "grey" )',sep=""))
-			doItAndPrint(paste('abline( v = 1, lty = 2, col = "grey" )',sep=""))
-			# points of right continuity
-			doItAndPrint(paste('points(q[2:(length(q))], .x, pch=16, cex=1.2)',sep=""))
-			# constant quantile values
-			doItAndPrint(paste('segments(  q[1:(length(q)-1)], .x, q[2:(length(q))], .x, lwd = 2)',sep=""))
-		}
-######################################################################################################################
-        doItAndPrint('abline( h = 0, lty = 2, col = "grey" )')
-        remove(.x, xmin, xmax, envir=.GlobalEnv)
+        command <- paste("qnbinom(.0005, size=", trials, ", prob=", 
+            prob, ")", sep = "")
+        logger(paste("xmin <- ", command, sep = ""))
+        assign("xmin", justDoIt(command), envir = .GlobalEnv)
+        command <- paste("qnbinom(.9995, size=", trials, ", prob=", 
+            prob, ")", sep = "")
+        logger(paste("xmax <- ", command, sep = ""))
+        assign("xmax", justDoIt(command), envir = .GlobalEnv)
+        command <- paste("xmin:xmax", sep = "")
+        logger(paste(".x <- ", command, sep = ""))
+        assign(".x", justDoIt(command), envir = .GlobalEnv)
+        if (fun == "Probability") {
+            doItAndPrint(paste("plot(.x, dnbinom(.x, size=", 
+                trials, ", prob=", prob, "), xlab=\"Number of Failures until Target Successes\", ylab=\"Probability Mass\", main=\"Negative Binomial Distribution: Target = ", 
+                trials, ", Prob of success = ", prob, "\", type=\"h\")", 
+                sep = ""))
+            doItAndPrint(paste("points(.x, dnbinom(.x, size=", 
+                trials, ", prob=", prob, "), pch=16)", sep = ""))
+        }
+        else if (fun == "Cumulative Probability") {
+            justDoIt(paste("plot( stepfun(xmin:xmax, pnbinom((xmin-1):xmax", 
+                ", size=", trials, ", prob=", prob, ")), verticals=F, do.p=F,", 
+                " xlab=\"Number of Failures until Target Successes\", ylab=\"Cumulative Probability\", main=\"Negative Binomial Distribution: Target = ", 
+                trials, ", Probability of success = ", prob, 
+                "\")", sep = ""))
+            logger(paste("plot( stepfun(xmin:xmax, pnbinom((xmin-1):xmax", 
+                ", size=", trials, ", prob=", prob, ")), verticals=F, do.p=F,", 
+                " xlab=\"Number of Failures until Target Successes\", ylab=\"Cumulative Probability\", main=\"Negative Binomial Distribution: Target = ", 
+                trials, ", Probability of success = ", prob, 
+                "\")", sep = ""))
+            doItAndPrint("abline( h = 1, lty = 2, col = \"grey\" )")
+            doItAndPrint("abline( h = 0, lty = 2, col = \"grey\" )")
+            doItAndPrint(paste("points( .x, pnbinom(.x,", " size=", 
+                trials, ", prob=", prob, "), pch = 16, cex=1.2 )", 
+                sep = ""))
+            doItAndPrint(paste("points( .x, pnbinom((xmin-1):(xmax-1),", 
+                " size=", trials, ", prob=", prob, "), pch = 1, cex=1.2 )", 
+                sep = ""))
+        }
+        else if (fun == "Quantile Function") {
+            doItAndPrint(paste("q <- pnbinom((xmin-1):xmax, size =", 
+                trials, ",prob = ", prob, ")", sep = ""))
+            main <- paste("\"Negative Binomial QF\n size=", trials, 
+                ", prob=", prob, "\"", sep = "")
+            ylab <- "\"Number of Failures until Target Successes\""
+            xlab <- "\"Cumulative Probability\""
+            command <- paste("plot(q[1:(length(q)-1)], .x, xlim=c(0,1), main =", 
+                main, ", xlab = ", xlab, ",ylab = ", ylab, ", cex = 1.2)", 
+                sep = "")
+            justDoIt(command)
+            logger(command)
+            doItAndPrint(paste("abline( v = 0, col = \"grey\" )", 
+                sep = ""))
+            doItAndPrint(paste("abline( v = 1, lty = 2, col = \"grey\" )", 
+                sep = ""))
+            doItAndPrint(paste("points(q[2:(length(q))], .x, pch=16, cex=1.2)", 
+                sep = ""))
+            doItAndPrint(paste("segments(  q[1:(length(q)-1)], .x, q[2:(length(q))], .x, lwd = 2)", 
+                sep = ""))
+        }
+        doItAndPrint("abline( h = 0, lty = 2, col = \"grey\" )")
+        remove(.x, xmin, xmax, envir = .GlobalEnv)
         logger("remove(.x, xmin, xmax)")
         tkfocus(CommanderWindow())
-	}        
-    OKCancelHelp(helpSubject="dnbinom")
-    tkgrid(tklabel(top, text=gettextRcmdr("size (target number of successes)")), trialsEntry, sticky="e")
-    tkgrid(tklabel(top, text=gettextRcmdr("prob (of success in each trial)")), probEntry, sticky="e")
-    tkgrid(tklabel(top, text=gettextRcmdr("Plot probability mass function")), densityButton, sticky="e")
-    tkgrid(tklabel(top, text=gettextRcmdr("Plot distribution function")), distributionButton, sticky="e")
-	  #############
-    tkgrid(tklabel(top, text=gettextRcmdr("Plot quantile function")),quantileButton, sticky="e")
-    #############
-    tkgrid(buttonsFrame, columnspan=2, sticky="w")
-    tkgrid.configure(trialsEntry, sticky="w")
-    tkgrid.configure(probEntry, sticky="w")
-    tkgrid.configure(densityButton, sticky="w")
-    tkgrid.configure(distributionButton, sticky="w")
-	  #############
-    tkgrid.configure(quantileButton, sticky="w")
-    #############
-    dialogSuffix(rows=5, columns=2, focus=trialsEntry)
+    }
+    OKCancelHelp(helpSubject = "dnbinom")
+    tkgrid(tklabel(top, text = gettextRcmdr("size (target number of successes)")), 
+        trialsEntry, sticky = "e")
+    tkgrid(tklabel(top, text = gettextRcmdr("prob (of success in each trial)")), 
+        probEntry, sticky = "e")
+    tkgrid(tklabel(top, text = gettextRcmdr("Plot probability mass function")), 
+        densityButton, sticky = "e")
+    tkgrid(tklabel(top, text = gettextRcmdr("Plot distribution function")), 
+        distributionButton, sticky = "e")
+    tkgrid(tklabel(top, text = gettextRcmdr("Plot quantile function")), 
+        quantileButton, sticky = "e")
+    tkgrid(buttonsFrame, columnspan = 2, sticky = "w")
+    tkgrid.configure(trialsEntry, sticky = "w")
+    tkgrid.configure(probEntry, sticky = "w")
+    tkgrid.configure(densityButton, sticky = "w")
+    tkgrid.configure(distributionButton, sticky = "w")
+    tkgrid.configure(quantileButton, sticky = "w")
+    dialogSuffix(rows = 5, columns = 2, focus = trialsEntry)
 }
-
-
 `negbinomialMass.ipsur` <-
 function () 
 {
@@ -1083,8 +1006,6 @@ function ()
     tkgrid.configure(probEntry, sticky = "w")
     dialogSuffix(rows = 3, columns = 2, focus = trialsEntry)
 }
-
-
 `negbinomialProbabilities.ipsur` <-
 function () 
 {
@@ -1145,8 +1066,6 @@ function ()
     tkgrid.configure(upperTailButton, sticky = "w")
     dialogSuffix(rows = 6, columns = 2, focus = ProbabilitiesEntry)
 }
-
-
 `negbinomialQuantiles.ipsur` <-
 function () 
 {
@@ -1207,8 +1126,6 @@ function ()
     tkgrid.configure(upperTailButton, sticky = "w")
     dialogSuffix(rows = 6, columns = 2, focus = quantilesEntry)
 }
-
-
 `PoissonDistributionPlot.ipsur` <-
 function () 
 {
@@ -1220,9 +1137,8 @@ function ()
         value = "Probability")
     distributionButton <- tkradiobutton(top, variable = functionVar, 
         value = "Cumulative Probability")
-    #################################
-    quantileButton <- tkradiobutton(top, variable=functionVar, value="Quantile Function")
-    ################################# 
+    quantileButton <- tkradiobutton(top, variable = functionVar, 
+        value = "Quantile Function")
     onOK <- function() {
         closeDialog()
         mean <- tclvalue(meanVar)
@@ -1232,12 +1148,10 @@ function ()
             return()
         }
         fun <- tclvalue(functionVar)
-        command <- paste("qpois(.0005, lambda=", mean, ")", 
-            sep = "")
+        command <- paste("qpois(.0005, lambda=", mean, ")", sep = "")
         logger(paste("xmin <- ", command, sep = ""))
         assign("xmin", justDoIt(command), envir = .GlobalEnv)
-        command <- paste("qpois(.9995, lambda=", mean, ")", 
-            sep = "")
+        command <- paste("qpois(.9995, lambda=", mean, ")", sep = "")
         logger(paste("xmax <- ", command, sep = ""))
         assign("xmax", justDoIt(command), envir = .GlobalEnv)
         command <- paste("xmin:xmax", sep = "")
@@ -1249,11 +1163,8 @@ function ()
                 mean, "\", type=\"h\")", sep = ""))
             doItAndPrint(paste("points(.x, dpois(.x, lambda=", 
                 mean, "), pch=16)", sep = ""))
-
-#######################################################################			
-		    } else if (fun == "Cumulative Probability"){
-#######################################################################
-
+        }
+        else if (fun == "Cumulative Probability") {
             justDoIt(paste("plot( stepfun(xmin:xmax, ppois((xmin-1):xmax", 
                 ", lambda=", mean, ")), verticals=F, do.p=F,", 
                 " xlab=\"x\", ylab=\"Cumulative Probability\", main=\"Poisson Distribution: lambda = ", 
@@ -1267,35 +1178,28 @@ function ()
             doItAndPrint(paste("points( .x, ppois((xmin-1):(xmax-1),", 
                 " lambda=", mean, "), pch = 1, cex=1.2 )", sep = ""))
             doItAndPrint("abline( h = 1, lty = 2, col = \"grey\" )")
-        
-######################################################################################################################		 
-     } else if (fun == "Quantile Function"){
-			
-      # Poisson Model parameters
-			#Generate Variables
-			doItAndPrint(paste("q <- ppois((xmin-1):xmax, lambda =", mean,")", sep=""))
-		
-			#Generate Label Strings
-			# Model labels
-			main <- paste('"Poisson QF: lambda=', mean, '"', sep="")
-			ylab <- '"Poisson Quantiles"'
-			xlab <- '"Cumulative Probability"'
-		
-			#Generate Plot
-			command <- paste('plot(q[1:(length(q)-1)], .x, xlim=c(0,1), main =', main,', xlab = ',xlab,',ylab = ', ylab,', cex = 1.2)',sep="")
-			justDoIt(command)
-			logger(command)
-			#Reference lines
-			doItAndPrint(paste('abline( v = 0, col = "grey" )',sep=""))
-			doItAndPrint(paste('abline( v = 1, lty = 2, col = "grey" )',sep=""))
-			# points of right continuity
-			doItAndPrint(paste('points(q[2:(length(q))], .x, pch=16, cex=1.2)',sep=""))
-			# constant quantile values
-			doItAndPrint(paste('segments(  q[1:(length(q)-1)], .x, q[2:(length(q))], .x, lwd = 2)',sep=""))
-		}
-######################################################################################################################        
-        
-        
+        }
+        else if (fun == "Quantile Function") {
+            doItAndPrint(paste("q <- ppois((xmin-1):xmax, lambda =", 
+                mean, ")", sep = ""))
+            main <- paste("\"Poisson QF: lambda=", mean, "\"", 
+                sep = "")
+            ylab <- "\"Poisson Quantiles\""
+            xlab <- "\"Cumulative Probability\""
+            command <- paste("plot(q[1:(length(q)-1)], .x, xlim=c(0,1), main =", 
+                main, ", xlab = ", xlab, ",ylab = ", ylab, ", cex = 1.2)", 
+                sep = "")
+            justDoIt(command)
+            logger(command)
+            doItAndPrint(paste("abline( v = 0, col = \"grey\" )", 
+                sep = ""))
+            doItAndPrint(paste("abline( v = 1, lty = 2, col = \"grey\" )", 
+                sep = ""))
+            doItAndPrint(paste("points(q[2:(length(q))], .x, pch=16, cex=1.2)", 
+                sep = ""))
+            doItAndPrint(paste("segments(  q[1:(length(q)-1)], .x, q[2:(length(q))], .x, lwd = 2)", 
+                sep = ""))
+        }
         doItAndPrint("abline( h = 0, lty = 2, col = \"grey\" )")
         remove(.x, xmin, xmax, envir = .GlobalEnv)
         logger("remove(.x, xmin, xmax)")
@@ -1308,20 +1212,15 @@ function ()
         densityButton, sticky = "e")
     tkgrid(tklabel(top, text = gettextRcmdr("Plot distribution function")), 
         distributionButton, sticky = "e")
-    #############
-    tkgrid(tklabel(top, text=gettextRcmdr("Plot quantile function")),quantileButton, sticky="e")
-    #############
+    tkgrid(tklabel(top, text = gettextRcmdr("Plot quantile function")), 
+        quantileButton, sticky = "e")
     tkgrid(buttonsFrame, columnspan = 2, sticky = "w")
     tkgrid.configure(meanEntry, sticky = "w")
     tkgrid.configure(densityButton, sticky = "w")
     tkgrid.configure(distributionButton, sticky = "w")
-    #############
-    tkgrid.configure(quantileButton, sticky="w")
-    #############
+    tkgrid.configure(quantileButton, sticky = "w")
     dialogSuffix(rows = 4, columns = 2, focus = meanEntry)
 }
-
-
 `PoissonMass.ipsur` <-
 function () 
 {
@@ -1365,8 +1264,6 @@ function ()
     tkgrid.configure(meanEntry, sticky = "w")
     dialogSuffix(rows = 2, columns = 2, focus = meanEntry)
 }
-
-
 `poissonProbabilities.ipsur` <-
 function () 
 {
@@ -1415,8 +1312,6 @@ function ()
     tkgrid.configure(upperTailButton, sticky = "w")
     dialogSuffix(rows = 6, columns = 1, focus = probabilitiesEntry)
 }
-
-
 `poissonQuantiles.ipsur` <-
 function () 
 {

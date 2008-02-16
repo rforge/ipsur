@@ -1,105 +1,107 @@
-
-
-barGraph.ipsur <- function(){
-    initializeDialog(title=gettextRcmdr("Bar Graph"))
-    variableBox <- variableListBox(top, Factors(), title=gettextRcmdr("Variable (pick one)"))
+`barGraph.ipsur` <-
+function () 
+{
+    initializeDialog(title = gettextRcmdr("Bar Graph"))
+    variableBox <- variableListBox(top, Factors(), title = gettextRcmdr("Variable (pick one)"))
     .groups <- FALSE
-    onOK <- function(){
+    onOK <- function() {
         variable <- getSelection(variableBox)
         closeDialog()
-        if (length(variable) == 0){
-            errorCondition(recall=barGraph.ipsur, message=gettextRcmdr("You must select a variable"))
+        if (length(variable) == 0) {
+            errorCondition(recall = barGraph.ipsur, message = gettextRcmdr("You must select a variable"))
             return()
-            }
-        ############################################################
+        }
         title <- tclvalue(titleVariable)
         leg <- tclvalue(legendVariable) == "1"
         prop <- tclvalue(propVariable) == "1"
         besid <- tclvalue(typeVariable) == "beside"
-        
-        if (tclvalue(coloVariable) == 1){
-            if (.groups == FALSE){
-            colcomm <- paste(', col=rainbow(length(table(', ActiveDataSet(), "$", variable, '))))', sep="")
-            } else {
-            colcomm <- paste(', col=rainbow(length(table(', ActiveDataSet(), "$", .groups, '))))', sep="")
+        if (tclvalue(coloVariable) == 1) {
+            if (.groups == FALSE) {
+                colcomm <- paste(", col=rainbow(length(table(", 
+                  ActiveDataSet(), "$", variable, "))))", sep = "")
             }
-        } else {
-            colcomm <- ', col=NULL)'
+            else {
+                colcomm <- paste(", col=rainbow(length(table(", 
+                  ActiveDataSet(), "$", .groups, "))))", sep = "")
+            }
         }
-        ############################################################
-    
-     if (prop){
-        
-        if (.groups == FALSE) {
-        command <- paste("barplot(prop.table(table(", ActiveDataSet(), "$", variable, ')), main="', title, '", xlab="',
-            variable, '", ylab="Relative Frequency", legend.text=', leg, colcomm, sep="")
-        logger(command)
-        justDoIt(command)
-        } else {
-        command <- paste("barplot(prop.table(table(", ActiveDataSet(), "$", .groups, ", ", 
-              ActiveDataSet(), "$", variable, ')), main="', title, '", xlab="',
-            variable, '", ylab="Relative Frequency", legend.text=', leg, ', beside=', besid, colcomm, sep="")
-        logger(command)
-        justDoIt(command)
+        else {
+            colcomm <- ", col=NULL)"
         }
-        
-     } else {
-     
-        if (.groups == FALSE) {
-        command <- paste("barplot(table(", ActiveDataSet(), "$", variable, '), main="', title, '", xlab="',
-            variable, '", ylab="Frequency", legend.text=', leg, colcomm, sep="")
-        logger(command)
-        justDoIt(command)
-        } else {
-        command <- paste("barplot(table(", ActiveDataSet(), "$", .groups, ", ", 
-              ActiveDataSet(), "$", variable, '), main="', title, '", xlab="',
-            variable, '", ylab="Frequency", legend.text=', leg, ', beside=', besid, colcomm, sep="")
-        logger(command)
-        justDoIt(command)
+        if (prop) {
+            if (.groups == FALSE) {
+                command <- paste("barplot(prop.table(table(", 
+                  ActiveDataSet(), "$", variable, ")), main=\"", 
+                  title, "\", xlab=\"", variable, "\", ylab=\"Relative Frequency\", legend.text=", 
+                  leg, colcomm, sep = "")
+                logger(command)
+                justDoIt(command)
+            }
+            else {
+                command <- paste("barplot(prop.table(table(", 
+                  ActiveDataSet(), "$", .groups, ", ", ActiveDataSet(), 
+                  "$", variable, ")), main=\"", title, "\", xlab=\"", 
+                  variable, "\", ylab=\"Relative Frequency\", legend.text=", 
+                  leg, ", beside=", besid, colcomm, sep = "")
+                logger(command)
+                justDoIt(command)
+            }
         }
-
-     }   
+        else {
+            if (.groups == FALSE) {
+                command <- paste("barplot(table(", ActiveDataSet(), 
+                  "$", variable, "), main=\"", title, "\", xlab=\"", 
+                  variable, "\", ylab=\"Frequency\", legend.text=", 
+                  leg, colcomm, sep = "")
+                logger(command)
+                justDoIt(command)
+            }
+            else {
+                command <- paste("barplot(table(", ActiveDataSet(), 
+                  "$", .groups, ", ", ActiveDataSet(), "$", variable, 
+                  "), main=\"", title, "\", xlab=\"", variable, 
+                  "\", ylab=\"Frequency\", legend.text=", leg, 
+                  ", beside=", besid, colcomm, sep = "")
+                logger(command)
+                justDoIt(command)
+            }
+        }
         activateMenus()
         tkfocus(CommanderWindow())
-        }    
-        
+    }
     groupsBox(barGraph.ipsur)
-    OKCancelHelp(helpSubject="barplot")    
-    radioButtons(name="type", buttons=c("segmented", "beside"),
-        labels=gettextRcmdr(c("Stacked bars", "Side-by-side bars")), title=gettextRcmdr("Display groups with:"))
+    OKCancelHelp(helpSubject = "barplot")
+    radioButtons(name = "type", buttons = c("segmented", "beside"), 
+        labels = gettextRcmdr(c("Stacked bars", "Side-by-side bars")), 
+        title = gettextRcmdr("Display groups with:"))
     optionsFrame <- tkframe(top)
     legendVariable <- tclVar("1")
-    legendCheckBox <- tkcheckbutton(optionsFrame, variable=legendVariable)
+    legendCheckBox <- tkcheckbutton(optionsFrame, variable = legendVariable)
     propVariable <- tclVar("0")
-    propCheckBox <- tkcheckbutton(optionsFrame, variable=propVariable)
+    propCheckBox <- tkcheckbutton(optionsFrame, variable = propVariable)
     coloVariable <- tclVar("0")
-    coloCheckBox <- tkcheckbutton(optionsFrame, variable=coloVariable)
-    ###################################################################
+    coloCheckBox <- tkcheckbutton(optionsFrame, variable = coloVariable)
     titleFrame <- tkframe(top)
     titleVariable <- tclVar(gettextRcmdr(""))
-    titleField <- tkentry(titleFrame, width="40", textvariable=titleVariable)
-    tkgrid(tklabel(titleFrame, text=gettextRcmdr("Title: "), fg="blue"), titleField, sticky="w")
-    tkgrid(titleFrame, sticky="w")
-    ###################################################################
-    tkgrid(getFrame(variableBox), sticky="nw")
-    tkgrid(tklabel(top, text=gettextRcmdr("Options:"), fg="blue"), sticky="w")
-    tkgrid(tklabel(optionsFrame, text=gettextRcmdr("Relative Frequencies: "), justify="left"),
-        propCheckBox, sticky="w")
-    tkgrid(tklabel(optionsFrame, text=gettextRcmdr("Rainbow: "), justify="left"),
-        coloCheckBox, sticky="w")
-    tkgrid(tklabel(optionsFrame, text=gettextRcmdr("Legend: "), justify="left"),
-        legendCheckBox, sticky="w")
-    tkgrid(optionsFrame, sticky="w")
-    tkgrid(groupsFrame, sticky="w")
-    tkgrid(typeFrame, sticky="w")
-    tkgrid(buttonsFrame, sticky="w")
-    dialogSuffix(rows=2, columns=1)
-    }
-
-
-
-
-
+    titleField <- tkentry(titleFrame, width = "40", textvariable = titleVariable)
+    tkgrid(tklabel(titleFrame, text = gettextRcmdr("Title: "), 
+        fg = "blue"), titleField, sticky = "w")
+    tkgrid(titleFrame, sticky = "w")
+    tkgrid(getFrame(variableBox), sticky = "nw")
+    tkgrid(tklabel(top, text = gettextRcmdr("Options:"), fg = "blue"), 
+        sticky = "w")
+    tkgrid(tklabel(optionsFrame, text = gettextRcmdr("Relative Frequencies: "), 
+        justify = "left"), propCheckBox, sticky = "w")
+    tkgrid(tklabel(optionsFrame, text = gettextRcmdr("Rainbow: "), 
+        justify = "left"), coloCheckBox, sticky = "w")
+    tkgrid(tklabel(optionsFrame, text = gettextRcmdr("Legend: "), 
+        justify = "left"), legendCheckBox, sticky = "w")
+    tkgrid(optionsFrame, sticky = "w")
+    tkgrid(groupsFrame, sticky = "w")
+    tkgrid(typeFrame, sticky = "w")
+    tkgrid(buttonsFrame, sticky = "w")
+    dialogSuffix(rows = 2, columns = 1)
+}
 `barPlotSumTable` <-
 function () 
 {
@@ -283,10 +285,6 @@ function ()
     tkgrid(buttonsFrame, columnspan = 2, sticky = "w")
     dialogSuffix(rows = 7, columns = 2)
 }
-
-
-
-
 `boxPlot.ipsur` <-
 function () 
 {
@@ -390,10 +388,6 @@ function ()
     tkgrid(buttonsFrame, sticky = "w")
     dialogSuffix(rows = 4, columns = 1)
 }
-
-
-
-
 `paretoChart` <-
 function () 
 {
@@ -440,9 +434,6 @@ function ()
     tkgrid(buttonsFrame, sticky = "w")
     dialogSuffix(rows = 2, columns = 1)
 }
-
-
-
 `stripChart` <-
 function () 
 {
