@@ -4,6 +4,7 @@
 function () 
 {
     initializeDialog(title = gettextRcmdr("Binomial Distribution"))
+    
     trialsVar <- tclVar("1")
     trialsEntry <- tkentry(top, width = "6", textvariable = trialsVar)
     probVar <- tclVar("0.5")
