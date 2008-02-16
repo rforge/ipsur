@@ -33,7 +33,8 @@
   item    graphsMenu      command         "IPSUR - Boxplot..."              boxPlot.ipsur     "numericP()"    "" 
   item    graphsMenu      command         "IPSUR - Strip chart..."          stripChart        "numericP()"    ""
   item    graphsMenu      command         "IPSUR - Pareto chart..."         paretoChart       "factorsP()"    "packageAvailable('qcc')" 
-  item    graphsMenu      command         "IPSUR - Bar Graphs enter table..."   barPlotSumTable   ""			    "packageAvailable('abind')"  
+  item    graphsMenu      command         "IPSUR - Bar Graph..."           barGraph.ipsur     "factorsP()"    ""
+  item    graphsMenu      command         "IPSUR - Bar Graph enter table..."   barPlotSumTable   ""			    "packageAvailable('abind')"
 
 
 #################################################################################################################################################

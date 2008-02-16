@@ -12,7 +12,7 @@ function ()
     onOK <- function() {
         x <- getSelection(xBox)
         if (length(x) == 0) {
-            errorCondition(recall = frequencyDistribution, message = gettextRcmdr("You must select a variable."))
+            errorCondition(recall = frequencyDistribution.ipsur, message = gettextRcmdr("You must select a variable."))
             return()
         }
         goodnessOfFit <- tclvalue(goodnessOfFitVariable)
@@ -129,12 +129,12 @@ function ()
     quantilesCheckBox <- tkcheckbutton(quantilesFrame, variable = quantilesVariable)
     quantiles <- tclVar("0,.25,.5,.75,1")
     quantilesEntry <- tkentry(quantilesFrame, width = "20", textvariable = quantiles)
-    groupsBox(recall = numericalSummaries, label = gettextRcmdr("Summarize by:"), 
+    groupsBox(recall = numericalSummaries.ipsur, label = gettextRcmdr("Summarize by:"), 
         initialLabel = gettextRcmdr("Summarize by groups"))
     onOK <- function() {
         x <- getSelection(xBox)
         if (length(x) == 0) {
-            errorCondition(recall = numericalSummaries, message = gettextRcmdr("You must select a variable."))
+            errorCondition(recall = numericalSummaries.ipsur, message = gettextRcmdr("You must select a variable."))
             return()
         }
         closeDialog()
@@ -152,7 +152,7 @@ function ()
             tclvalue(kurtosisVariable), tclvalue(quantilesVariable)) == 
             1], collapse = ", "), ")", sep = "")
         if (stats == "c()") {
-            errorCondition(recall = numericalSummaries, message = gettextRcmdr("No statistics selected."))
+            errorCondition(recall = numericalSummaries.ipsur, message = gettextRcmdr("No statistics selected."))
             return()
         }
         command <- if (.groups != FALSE) {
@@ -165,7 +165,7 @@ function ()
         doItAndPrint(command)
         tkfocus(CommanderWindow())
     }
-    OKCancelHelp(helpSubject = "numSummary")
+    OKCancelHelp(helpSubject = "numSummaryIPSUR")
     tkgrid(getFrame(xBox), sticky = "nw")
     tkgrid(checkBoxFrame, sticky = "w")
     tkgrid(tklabel(quantilesFrame, text = gettextRcmdr("Quantiles")), 

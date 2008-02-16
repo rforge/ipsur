@@ -84,16 +84,16 @@ function ()
         }
         counts <- na.omit(counts)
         if (length(counts) != nrows * ncols) {
-            errorCondition(recall = enterTable, message = sprintf(gettextRcmdr("Number of valid entries (%d)\nnot equal to number of rows (%d) * number of columns (%d)."), 
+            errorCondition(recall = enterTable.ipsur, message = sprintf(gettextRcmdr("Number of valid entries (%d)\nnot equal to number of rows (%d) * number of columns (%d)."), 
                 length(counts), nrows, ncols))
             return()
         }
         if (length(unique(row.names)) != nrows) {
-            errorCondition(recall = enterTable, message = gettextRcmdr("Row names are not unique."))
+            errorCondition(recall = enterTable.ipsur, message = gettextRcmdr("Row names are not unique."))
             return()
         }
         if (length(unique(col.names)) != ncols) {
-            errorCondition(recall = enterTable, message = gettextRcmdr("Column names are not unique."))
+            errorCondition(recall = enterTable.ipsur, message = gettextRcmdr("Column names are not unique."))
             return()
         }
         percents <- as.character(tclvalue(percentsVariable))
@@ -214,11 +214,11 @@ function ()
         row <- getSelection(rowBox)
         column <- getSelection(columnBox)
         if (length(row) == 0 || length(column) == 0) {
-            errorCondition(recall = twoWayTable, message = gettextRcmdr("You must select two variables."))
+            errorCondition(recall = twoWayTable.ipsur, message = gettextRcmdr("You must select two variables."))
             return()
         }
         if (row == column) {
-            errorCondition(recall = twoWayTable, message = gettextRcmdr("Row and column variables are the same."))
+            errorCondition(recall = twoWayTable.ipsur, message = gettextRcmdr("Row and column variables are the same."))
             return()
         }
         percents <- as.character(tclvalue(percentsVariable))
