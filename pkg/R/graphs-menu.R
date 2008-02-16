@@ -102,6 +102,10 @@ function ()
     tkgrid(buttonsFrame, sticky = "w")
     dialogSuffix(rows = 2, columns = 1)
 }
+
+
+
+
 `barPlotSumTable` <-
 function () 
 {
@@ -285,6 +289,10 @@ function ()
     tkgrid(buttonsFrame, columnspan = 2, sticky = "w")
     dialogSuffix(rows = 7, columns = 2)
 }
+
+
+
+
 `boxPlot.ipsur` <-
 function () 
 {
@@ -388,6 +396,10 @@ function ()
     tkgrid(buttonsFrame, sticky = "w")
     dialogSuffix(rows = 4, columns = 1)
 }
+
+
+
+
 `paretoChart` <-
 function () 
 {
@@ -434,6 +446,9 @@ function ()
     tkgrid(buttonsFrame, sticky = "w")
     dialogSuffix(rows = 2, columns = 1)
 }
+
+
+
 `stripChart` <-
 function () 
 {

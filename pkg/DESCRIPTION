@@ -1,6 +1,6 @@
-Package: IPSUR
+Package: RcmdrPlugin.IPSUR
 Version: 0.1-4
-Date: 2008-01-11
+Date: 2008-02-14
 Title: Introduction to Probability and Statistics Using R
 Author: G. Jay Kerns <gkerns@ysu.edu> with contributions by Theophilius Boye and Tyler Drombosky, adapted from the work of John Fox et al.
 Maintainer: G. Jay Kerns <gkerns@ysu.edu>
@@ -10,5 +10,5 @@ LazyLoad: no
 Description:
  This package accompanies G. Andy Chang and G. Jay Kerns, Introduction to Probability and Statistics Using R (in progress).
   The package contributes functions unique to the book as well as specific configuration and selected functionality to the R Commander by John Fox.
-License: GPL version 2 or newer
+License: GPL-3
 URL: http://www.r-project.org, http://ipsur.r-forge.r-project.org/

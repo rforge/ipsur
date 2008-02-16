@@ -2,26 +2,27 @@
 \alias{IPSUR-package}
 \alias{IPSUR}
 \alias{ipsur}
+\alias{RcmdrPlugin.IPSUR}
 \docType{package}
 \title{
 Introduction to Probability and Statistics Using R
 }
 \description{
   This package accompanies G. Andy Chang and G. Jay Kerns, Introduction to Probability and Statistics Using R (in progress).
-  The package contributes functions unique to the book as well as specific configuration and selected functionality to the R Commander by John Fox.
+  This RcmdrPlugin contributes functions unique to the book as well as specific configuration and selected functionality to the R Commander by John Fox.
 
 }
 \details{
 \tabular{ll}{
-Package: \tab IPSUR\cr
-Version: \tab 0.1-3\cr
-Date: \tab 2006-01-15\cr
-Depends: \tab R (>= 2.1.0), car (>= 1.0-15), grDevices, tcltk, utils\cr
-Suggests: \tab abind, distr, distrEx, effects (>= 1.0-7), foreign, grid, lattice, lmtest, MASS, mgcv, multcomp (>= 0.991-2), nlme, nnet, qcc, relimp, rgl, RODBC\cr
+Package: \tab RcmdrPlugin.IPSUR\cr
+Version: \tab 0.1-4\cr
+Date: \tab 2008-02-14\cr
+Depends: \tab Rcmdr (>= 1.3-0), rgl\cr
+Suggests: \tab abind, distr, distrEx, e1071, effects (>= 1.0-7), foreign, grid, lattice, lmtest, MASS, mgcv, multcomp (>= 0.991-2), nlme, nnet, qcc, relimp, rgl, RODBC\cr
 LazyLoad: \tab no\cr
-License: \tab GPL version 2 or newer\cr
+License: \tab GPL version 3\cr
 URL: \tab http://www.r-project.org,
-http://www.cc.ysu.edu/~gjkerns/IPSUR/package\cr
+http://ipsur.r-forge.r-project.org/\cr
 }
 
 }

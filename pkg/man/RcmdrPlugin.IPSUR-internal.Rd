@@ -1,7 +1,7 @@
 \name{RcmdrIPSURPlugin-internal}
 \title{Internal Rcmdr IPSUR Plugin objects}
-\alias{barGraph.ipsur}
 \alias{barPlotSumTable}
+\alias{barGraph.ipsur }
 \alias{betaDistributionPlot.ipsur}
 \alias{betaDistributionSamples.ipsur}
 \alias{betaProbabilities.ipsur}

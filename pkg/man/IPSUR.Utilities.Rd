@@ -12,7 +12,7 @@
   patterned after their Rcmdr equivalents. Additional R code
   can be placed in files with file type \code{.R} in the \code{etc} subdirectory
   of the package. Add menus, submenus, and menu items by editing the file
-  \code{Rcmdr-menus.txt} in the same directory.
+  \code{menus.txt} in the same directory.
 }
 
 \usage{
