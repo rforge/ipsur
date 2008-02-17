@@ -10,5 +10,5 @@ LazyLoad: no
 Description:
  This package accompanies G. Andy Chang and G. Jay Kerns, Introduction to Probability and Statistics Using R (in progress).
   The package contributes functions unique to the book as well as specific configuration and selected functionality to the R Commander by John Fox.
-License: GPL-3
+License: GPL (>= 2)
 URL: http://www.r-project.org, http://ipsur.r-forge.r-project.org/
