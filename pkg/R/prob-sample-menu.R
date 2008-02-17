@@ -1,4 +1,5 @@
 # Last modified Feb 14, 2008
+# simulations optimized by Tyler Drombosky 2007
 
 `betaDistributionSamples.ipsur` <-
 function () 

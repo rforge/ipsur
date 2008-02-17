@@ -1,7 +1,8 @@
+
 # Last modified Feb 14, 2008
 
 `betaDistributionPlot.ipsur` <-
-function () 
+function()
 {
     initializeDialog(title = gettextRcmdr("Beta Distribution"))
     shape1Var <- tclVar("1")
