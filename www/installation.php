@@ -3,9 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>IPSUR Project</title>
-	<link rel="Shortcut Icon" href="favicon.ico">
-
-	<style type="text/css">
+	<link rel="Shortcut Icon" href="favicon.ico"><style type="text/css">
 	<!--
 		@import url("main.css");
 		body {
@@ -74,9 +72,8 @@
 			</ul>
 		</li>
 		<li>
-			<strong>Installing the <span class="name">IPSUR</span> package</strong>:cthere are several methods 
-			for installing the IPSUR package.
-			<br />
+			<strong>Installing the <span class="name">IPSUR</span> package</strong>: there are several methods for installing the IPSUR package. 
+                    <br />
 			<br />
 			<ul>
 				<li>
@@ -91,7 +88,7 @@
 					
 						<br />
 			      
-				  		<span class="name">install.packages("IPSUR", repos="http://cran.r-project.org", dep=T)</span>
+				  		<span class="name">install.packages("RcmdrPlugin.IPSUR", repos="http://cran.r-project.org", dep=TRUE)</span>
 						
 					</div>
 				</li>
@@ -109,11 +106,8 @@
 					<div class="name" align="center">
 					
 						<br />
-					
-					    install.packages(&quot;IPSUR&quot;, contriburl = &quot;http://www.cc.ysu.edu/~gjkerns/IPSUR/package&quot;, 
-						type=&quot;source&quot;)
-						
-					</div>
+                           install.packages("RcmdrPlugin.IPSUR", contriburl = "http://www.cc.ysu.edu/~gjkerns/IPSUR/package", type="source")
+                        </div>
 					
 					<p>
 						(<strong>note</strong>: you must have the correct compilation tools installed) 
@@ -131,9 +125,8 @@
 			<div class="name" align="center">
 			
 				<br />
-				  
-				library(IPSUR)
-			</div>
+                       library(RcmdrPlugin.IPSUR)
+                    </div>
 		</li>
 			  
 		<li>
