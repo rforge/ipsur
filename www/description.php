@@ -39,7 +39,7 @@
 <p class="articleTitle">Description of IPSUR:</p>
 <blockquote>
 <p>
-	<iframe width="600" height="700" src="http://cran.r-project.org/src/contrib/Descriptions/IPSUR.html"></iframe>
+	<iframe width="600" height="700" src="http://cran.r-project.org/web/packages/RcmdrPlugin.IPSUR/index.html"></iframe>
 </p>
 </blockquote>
 
