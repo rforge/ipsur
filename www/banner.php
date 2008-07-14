@@ -14,7 +14,7 @@
 						alt="Introduction to Probability and Statistics Using R" 
 						width="500" height="100" border="0" />
 				</a>
-				G. Jay Kerns, Youngstown State University<br />Dr. G. Andy Chang, Youngstown State University 
+				G. Jay Kerns, Youngstown State University<br />G. Andy Chang, Youngstown State University 
 			</p>
 		</td>
   	</tr>
