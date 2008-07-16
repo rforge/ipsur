@@ -45,7 +45,7 @@
 <div id="list">
 	<ol type="I">
 		<li>
-			THE R COMMANDER: describes how the IPSUR implementation of the R Commander differs from the standard installation.
+			THE R COMMANDER: describes extra features the IPSUR plugin offers.
 		</li>
       	<li>
 			DATA: describes certain datasets provided by the package.
@@ -60,25 +60,10 @@
 			THE R COMMANDER
 			<ol type="A">
 				<li>
-					The Commander
-					<ul>
-						<li>
-							An IPSUR-Probability menu is added.
-						</li>
-						<li>
-							Distributions menu is omitted.
-						</li>
-						<li>
-							Additional packages are recommended at startup.
-						</li>
-					</ul>
-				</li>
-				
-				<li>
 					Statistics Menu
 					<ul>
 						<li>
-							Summaries, Frequency Distribution
+							Summaries
 							<ol type="i">
 								<li>
 									Allows numerical variables that are not necessarily factors to be 
@@ -86,12 +71,18 @@
 									goodness-of-fit test.
 								</li>
 								<li>
+									Sample skewness and kurtosis were added to the Numerical Summaries.
+								</li>
+								<li>
+									Adds Fisher's exact test with a simulate p-value option.
+								</li>
+								<li>
 									Calculates relative frequencies instead of percentages.
 								</li>
 							</ol>
 						</li>
 						<li>
-							Summaries, Contingency Tables, Two-Way Table
+							Contingency Tables
 							<ol type="i">
 								<li>
 									Option &quot;Add Marginal Distributions&quot; is available which
@@ -100,6 +91,17 @@
 								<li>
 									Hypothesis Tests has additional &quot;Simulate p-value&quot; 
 									option with customizable number of Iterations.
+								</li>
+							</ol>
+						</li>
+						<li>
+							Proportions
+							<ol type="i">
+								<li>
+									Enter table... of summarized data for a one-sample proportion test.
+								</li>
+								<li>
+									Enter table... of summarized data of independent samples for a test of equality of several proportions.
 								</li>
 							</ol>
 						</li>
@@ -133,6 +135,9 @@
 							and Horizontal, Variable box width are the default settings.
 						</li>
 						<li>
+							It is possible to plot Bar Graphs by groups.  Further, if only summarized data are available then you can "Enter a table" for a bar graph.
+						</li>
+						<li>
 							Pareto Diagrams were added.
 						</li>
 						<li>
@@ -141,7 +146,7 @@
 					</ul>
 				</li>
 				<li>
-					IPSUR-Probability Menu
+					Distributions Menu
 					<ul>
 						<li>
 							Birthday Problem dialog menu available corresponding to the 
@@ -187,6 +192,9 @@
 						</li>
 						<li>
 							Discrete CDFs are plotted as right-continuous step functions.
+						</li>
+						<li>
+							Plots for Quantile functions are available, and in the discrete case are left-continuous step functions.
 						</li>
 					</ul>
 				</li>
