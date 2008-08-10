@@ -1,6 +1,6 @@
 Package: RcmdrPlugin.IPSUR
-Version: 0.1-4
-Date: 2008-02-14
+Version: 0.1-5
+Date: 2008-08-10
 Title: Introduction to Probability and Statistics Using R
 Author: G. Jay Kerns <gkerns@ysu.edu> with contributions by Theophilius Boye and Tyler Drombosky, adapted from the work of John Fox et al.
 Maintainer: G. Jay Kerns <gkerns@ysu.edu>
