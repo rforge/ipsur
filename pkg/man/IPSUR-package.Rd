@@ -15,9 +15,9 @@ Introduction to Probability and Statistics Using R
 \details{
 \tabular{ll}{
 Package: \tab RcmdrPlugin.IPSUR\cr
-Version: \tab 0.1-5\cr
-Date: \tab 2008-08-10\cr
-Depends: \tab Rcmdr (>= 1.3-0), rgl\cr
+Version: \tab 0.1-6\cr
+Date: \tab 2008-08-11\cr
+Depends: \tab Rcmdr (>= 1.4-0), rgl\cr
 Suggests: \tab abind, distr, distrEx, e1071, effects (>= 1.0-7), foreign, grid, lattice, lmtest, MASS, mgcv, multcomp (>= 0.991-2), nlme, nnet, qcc, relimp, rgl, RODBC\cr
 LazyLoad: \tab no\cr
 License: \tab GPL version 3\cr
