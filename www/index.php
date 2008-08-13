@@ -61,9 +61,9 @@ G. Jay Kerns: <a href="mailto:gkerns@ysu.edu">gkerns@ysu.edu</a> (<a href="http:
 G. Andy Chang: <a href="mailto:gchang@ysu.edu">gchang@ysu.edu</a> (<a href="http://www.cc.ysu.edu/~ghchang/">home page</a>)</p>
         <p>&nbsp;</p>
       </blockquote>
-	  <p align="center">
-	  (C) R Foundation, from http://www.r-project.org
-	  <p align="center"><!-- Start of StatCounter Code -->
+	   <p align="center">
+	  R logo &copy; the R Foundation, <font face="Courier New"><a href="http://www.r-project.org" style="text-decoration: none"><span style="text-decoration: none">http://www.r-project.org</span></a></font>
+	  </p><!-- Start of StatCounter Code -->
 <script type="text/javascript" language="javascript">
 var sc_project=1820586; 
 var sc_invisible=0; 

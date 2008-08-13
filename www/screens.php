@@ -63,9 +63,9 @@
 <!--END: Page Content-->	
 
 <!--BEGIN: Footer-->
-<p align="center">
-	(C) R Foundation, from http://www.r-project.org
-<p align="center">
+ <p align="center">
+	  R logo &copy; the R Foundation, <font face="Courier New"><a href="http://www.r-project.org" style="text-decoration: none"><span style="text-decoration: none">http://www.r-project.org</span></a></font>
+	  </p>
 <!--END: Footer-->  
 	
 		<!--Close main table-->
