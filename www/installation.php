@@ -85,9 +85,7 @@
 					
 						<br />
 			      
-				  		<spa<p align="center">
-	  (C) R Foundation, from http://www.r-project.org
-	  <p align="center">n class="name">install.packages("RcmdrPlugin.IPSUR", repos="http://cran.r-project.org", dep=TRUE)</span>
+				  		<span class="name">install.packages("RcmdrPlugin.IPSUR", repos="http://cran.r-project.org", dep=TRUE)</span>
 						
 					</div>
 				</li>
@@ -102,9 +100,7 @@
                            install.packages("RcmdrPlugin.IPSUR", repos = "http://www.cran.r-project.org", type="source")
                         </div>
 					
-					<p><p align="center">
-	  (C) R Foundation, from http://www.r-project.org
-	  <p align="center">
+					<p>
 						(<strong>note</strong>: you must have the correct compilation tools installed) 
 					</p>
 					<p>
@@ -123,9 +119,6 @@
                        library(RcmdrPlugin.IPSUR)
                     </div>
 		</li>
-			  <p align="center">
-	  (C) R Foundation, from http://www.r-project.org
-	  <p align="center">
 		<li>
 			<strong></strong><strong>Installing the Dependencies:</strong> When <span class="name">Rcmdr</span> loads it will ask 
 			you to download a bunch of additional packages. Once this procedure is finished, you will be almost 

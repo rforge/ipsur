@@ -119,9 +119,7 @@
 	Note that in order to install from source, you must have the necessary development tools installed.  In Windows, a good way to get started would be to look at the <span class="name">R Tools</span> page maintained by Duncan Murdoch, which you can find <a href="http://www.murdoch-sutherland.com/Rtools/index.html">here</a>.  Under Ubuntu Linux, this means that you should have the <span class="name">r-base-dev</span> package installed, which you can get with the Synaptic Package Manager. For more information, please see the <a href="http://cran.r-project.org/doc/manuals/R-admin.html">R Installation and Administration Manual</a>.
 </p>	
 	
-<p>For all OSes, the general idea to install from source is to open a terminal window, then <span class="name">cd</span> to the directory in which the source code is saved, and finally issue the command <span class="name">R CMD INSTALL RcmdrPlugin.IPSUR_x.<p align="center">
-	(C) R Foundation, from http://www.r-project.org
-<p align="center">x-x</span>, where <span class="name">x.x-x</span> is the version that you have downloaded.  Given that you have the correct compilation tools installed and that your system is configured correctly, you should have the package installed in a few moments. 
+<p>For all OSes, the general idea to install from source is to open a terminal window, then <span class="name">cd</span> to the directory in which the source code is saved, and finally issue the command <span class="name">R CMD INSTALL RcmdrPlugin.IPSUR_x.x-x</span>, where x.x-x is the version that you have downloaded.  Given that you have the correct compilation tools installed and that your system is configured correctly, you should have the package installed in a few moments. 
 </p>
 </p>
 <!--END: Page Content-->

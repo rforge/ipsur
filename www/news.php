@@ -149,9 +149,7 @@
 									Enter table for single sample...
 								</li>
 								<li>
-						<p align="center">
-	(C) R Foundation, from http://www.r-project.org
-<p align="center">			Enter table for independent samples...
+									Enter table for independent samples...
 								</li>
 							</ol>
 						</li>

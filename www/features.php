@@ -102,9 +102,7 @@
 								</li>
 								<li>
 									Enter table... of summarized data of independent samples for a test of equality of several proportions.
-				<p align="center">
-	(C) R Foundation, from http://www.r-project.org
-<p align="center">				</li>
+					</li>
 							</ol>
 						</li>
 						<li>
@@ -186,10 +184,7 @@
 							A Sampling Distributions menu is added. This is similar to (and indeed was 
 							wholly inspired by) the Distributions menu in R Commander, with cosmetic 
 							differences to the interface. Rows are samples and columns are observations.
-							Noncentrality parameters are available.  A difference is that one may calculate 
-				<p align="center">
-	(C) R Foundation, from http://www.r-project.org
-<p align="center">			up to three (3) sample statistics of choice from the simulated values, 
+							Noncentrality parameters are available.  A difference is that one may calculate up to three (3) sample statistics of choice from the simulated values, 
 							which can be later analyzed with the R Commander. A &quot;discard original 
 							observations&quot; option is available in case the number of simulated values 
 							is inconveniently large.

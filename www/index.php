@@ -64,6 +64,7 @@ G. Andy Chang: <a href="mailto:gchang@ysu.edu">gchang@ysu.edu</a> (<a href="http
 	   <p align="center">
 	  R logo &copy; the R Foundation, <font face="Courier New"><a href="http://www.r-project.org" style="text-decoration: none"><span style="text-decoration: none">http://www.r-project.org</span></a></font>
 	  </p><!-- Start of StatCounter Code -->
+ <p align="center">
 <script type="text/javascript" language="javascript">
 var sc_project=1820586; 
 var sc_invisible=0; 
@@ -74,7 +75,7 @@ var sc_security="c80f8f9a";
 <script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"></a> 
 </noscript>
 <!-- End of StatCounter Code -->
-	  
+ </p>	  
 	  </td>
   </tr>
 </table>
