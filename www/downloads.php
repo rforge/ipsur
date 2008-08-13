@@ -39,13 +39,13 @@
             </p>
 <blockquote>
 <p>
-                The current released version of the IPSUR package is 0.1-4. There are binary packages available for computers running Windows and MacOS X, and source code for Linux distributions. Downloads for the released version are from CRAN, the Comprehensive R Archive Network. 
+                The current released version of the IPSUR package is 0.1-5. There are binary packages available for computers running Windows and MacOS X, and source code for Linux distributions. Downloads for the released version are from CRAN, the Comprehensive R Archive Network. 
                 
     
 	<p>
               </p>
     <div align="center">
-		<strong>IPSUR Released Version 0.1-4 </strong>
+		<strong>IPSUR Released Version 0.1-5 </strong>
 		<br /><a href="http://cran.r-project.org/web/packages/RcmdrPlugin.IPSUR/index.html">CRAN IPSUR Package</a>
 	</div>
     
@@ -53,7 +53,7 @@
                 <br />
                  The current development version of the IPSUR package is 0.1-5. This contains very early code for new features and is not suitable for production environments. The development version should be used for testing purposes only. Development downloads are from the project page hosted at R-Forge. </p>
     <div align="center">
-		<strong>IPSUR Development Version 0.1-5 </strong>
+		<strong>IPSUR Development Version 0.1-6 </strong>
 		<br /><a href="https://r-forge.r-project.org/R/?group_id=58">R-Forge IPSUR Package</a>
 	</div>
     
