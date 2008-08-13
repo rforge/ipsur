@@ -51,7 +51,7 @@
     
 	<p>
                 <br />
-                 The current development version of the IPSUR package is 0.1-5. This contains very early code for new features and is not suitable for production environments. The development version should be used for testing purposes only. Development downloads are from the project page hosted at R-Forge. </p>
+                 The current development version of the IPSUR package is 0.1-6. This contains very early code for new features and is not suitable for production environments. The development version should be used for testing purposes only. Development downloads are from the project page hosted at R-Forge. </p>
     <div align="center">
 		<strong>IPSUR Development Version 0.1-6 </strong>
 		<br /><a href="https://r-forge.r-project.org/R/?group_id=58">R-Forge IPSUR Package</a>
