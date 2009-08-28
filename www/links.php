@@ -57,7 +57,7 @@
 	<br />
 	<a href="http://www.sciviews.org/_rgui/projects/Editors.html">Script Editors </a>
 	<br />
-	<a href="CRAN" class="name">Tinn-R</a> 
+	<a href="http://www.sciviews.org/Tinn-R/" class="name">Tinn-R</a> 
 	<br />
 	<a href="http://www.textpad.com/">TextPad</a>
 </p>
