@@ -2,9 +2,9 @@ Package: IPSUR
 Type: Package
 Title: Introduction to Probability and Statistics Using R
 Version: 1.0
-Date: 2009-09-03
+Date: 2009-12-08
 Author: G. Jay Kerns
 Maintainer: G. Jay Kerns <gkerns@ysu.edu>
-Description: More about what it does (maybe more than one line)
+Description: This is a self-contained textbook on probability and statistics for students with differential and integral calculus.  It is released under the GNU Free Documentation License.
 License: file LICENSE
 LazyLoad: yes
