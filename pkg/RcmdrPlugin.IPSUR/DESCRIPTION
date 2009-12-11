@@ -5,7 +5,7 @@ Title: Introduction to Probability and Statistics Using R
 Author: G. Jay Kerns <gkerns@ysu.edu> with contributions by Theophilius Boye and Tyler Drombosky, adapted from the work of John Fox et al.
 Maintainer: G. Jay Kerns <gkerns@ysu.edu>
 Depends: Rcmdr (>= 1.4-0)
-Suggests: abind, distr, distrEx, e1071, effects (>= 1.0-7), foreign, grid, lattice, lmtest, MASS, mgcv, multcomp (>= 0.991-2), nlme, nnet, qcc, relimp, rgl, RODBC
+Suggests: abind, distr, distrEx, e1071, effects (>= 1.0-7), foreign, grid, lattice, lmtest, MASS, mgcv, multcomp (>= 0.991-2), nlme, nnet, qcc, relimp, RODBC
 LazyLoad: no
 Description:
  This package accompanies G. Andy Chang and G. Jay Kerns, Introduction to Probability and Statistics Using R (in progress).
