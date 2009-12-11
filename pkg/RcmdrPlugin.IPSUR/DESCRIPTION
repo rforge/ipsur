@@ -8,7 +8,6 @@ Depends: Rcmdr (>= 1.4-0)
 Suggests: abind, distr, distrEx, e1071, effects (>= 1.0-7), foreign, grid, lattice, lmtest, MASS, mgcv, multcomp (>= 0.991-2), nlme, nnet, qcc, relimp, RODBC
 LazyLoad: no
 Description:
- This package accompanies G. Andy Chang and G. Jay Kerns, Introduction to Probability and Statistics Using R (in progress).
-  The package contributes functions unique to the book as well as specific configuration and selected functionality to the R Commander by John Fox.
+ This package is an R Commander plugin that accompanies IPSUR, an Introduction to Probability and Statistics Using R.
 License: GPL (>= 2)
 URL: http://www.r-project.org, http://ipsur.r-forge.r-project.org/

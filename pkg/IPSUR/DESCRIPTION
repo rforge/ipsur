@@ -5,7 +5,7 @@ Version: 1.0
 Date: 2009-12-08
 Author: G. Jay Kerns
 Maintainer: G. Jay Kerns <gkerns@ysu.edu>
-Depends: actuar, aplpack, coin, DAAG, distr, distrEx, e1071, exactRankTests, HH, Hmisc, lattice, lmtest, mvtnorm, odfWeave, prob, qcc, RcmdrPlugin.IPSUR, Rcmdr, reshape, scatterplot3d, TeachingDemos, vcd
+Suggests: actuar, aplpack, coin, DAAG, distr, distrEx, e1071, exactRankTests, HH, Hmisc, lattice, lmtest, mvtnorm, odfWeave, prob, qcc, RcmdrPlugin.IPSUR, Rcmdr, reshape, scatterplot3d, TeachingDemos, vcd
 Description: This is a self-contained textbook on probability and statistics for students with a background in differential and integral calculus.  It is released under the GNU Free Documentation License.
 License: file LICENSE
 LazyLoad: yes
