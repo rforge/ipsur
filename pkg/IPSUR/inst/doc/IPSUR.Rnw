@@ -74,6 +74,8 @@
 \normalfont\ttfamily}%
  \item[]}
 {\end{list}}
+  \theoremstyle{remark}
+  \newtheorem{note}[thm]{Note}
   \theoremstyle{plain}
   \newtheorem{ax}[thm]{Axiom}
   \theoremstyle{plain}
@@ -84,8 +86,6 @@
   \newtheorem{defn}[thm]{Definition}
   \theoremstyle{remark}
   \newtheorem{rem}[thm]{Remark}
-  \theoremstyle{remark}
-  \newtheorem{note}[thm]{Note}
   \theoremstyle{plain}
   \newtheorem{cor}[thm]{Corollary}
   \theoremstyle{plain}
@@ -139,7 +139,7 @@
 \newcommand{\vP}{|\mathrm{I\! P}|}
 \newcommand{\nvP}{\|\mathrm{I\! P}\|}
 %\newcommand{\E}{\mathrm{I\! E}}
-\newcommand{\R}{\mathrm{I\! R}}
+\newcommand{\R}{\mathbb{R}}
 \newcommand{\vE}{|\mathrm{I\! E}|}
 \newcommand{\nvE}{\|\mathrm{I\! E}\|}
 \renewcommand{\d}{\mathrm{d}}
@@ -3367,10 +3367,7 @@ We end with random variables and their connection to probability measures,
 which paves the way for the next two chapters.
 
 
-\section{Interpreting Probabilities\label{sec:Interpreting-Probabilities}}
-
-
-\subsection{Random Experiments, Sample Spaces and Events\label{sub:Random-Experiments,-Sample}}
+\section{Random Experiments\label{sec:Random-Experiments,-Sample}}
 
 In this book we distinguish between two types of experiments: \emph{deterministic}
 and \emph{random}. A \emph{deterministic} experiment is one whose
@@ -3384,12 +3381,231 @@ But there are all sorts of other random experiments, like how many
 red lights you encounter on the drive home, how many ants traverse
 a certain patch of sidewalk over a short period, \emph{etc}. 
 
+
+\subsection{Sample Spaces}
+
 For a random experiment $E$, the set of all possible outcomes of
 $E$ is called the \emph{sample space} and is denoted by the letter
-$S$. For the coin flipping experiment, $S$ would be the results
-{}``Head'' and {}``Tail'', which we may represent by $S=\left\{ H,T\right\} $.
+$S$. For the coin-toss experiment, $S$ would be the results {}``Head''
+and {}``Tail'', which we may represent by $S=\left\{ H,T\right\} $.
 Formally, the performance of a random experiment is the unpredictable
 selection of an outcome in $S$.
+
+
+\subsection{How to do it with \textsf{R}}
+
+This book does probability with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
+package. There a sample space is represented most simply with a \emph{data
+frame}, that is, a rectangular collection of variables (see Section
+BLANK). Each row of the data frame corresponds to an outcome of the
+experiment. This choice is convenient both for its simplicity and
+its compatibility with the \textsf{R} Commander. However, this structure
+is not rich enough to describe some of the more interesting probabilistic
+applications we will encounter later; to handle those we will need
+to consider a more general \emph{list} data structure. See Section
+BLANK for details.
+
+Note that the machinery doing the work to generate most of the sample
+spaces below is the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!expand.grid!\inputencoding{utf8}
+function in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!base!\inputencoding{utf8}
+package, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!combn!\inputencoding{utf8}
+in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!combinat!\inputencoding{utf8}
+package and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!permsn!\inputencoding{utf8}
+in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
+package.
+
+Consider the random experiment of tossing a coin. The outcomes are
+$H$ and $T$. We can set up the sample space quickly with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!tosscoin!\inputencoding{utf8}
+function: 
+
+<<echo=TRUE,print=TRUE>>= 
+library(prob)
+tosscoin(1) 
+@
+
+The number \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!1!\inputencoding{utf8}
+tells \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!tosscoin!\inputencoding{utf8}
+that we only want to toss the coin once. We could toss it three times: 
+
+<<echo=TRUE,print=TRUE>>= 
+tosscoin(3) 
+@ 
+
+Alternatively we could roll a fair die: 
+
+<<echo=TRUE,print=TRUE>>= 
+rolldie(1) 
+@
+
+The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rolldie!\inputencoding{utf8}
+function defaults to a 6-sided die, but we can modify that with the
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!nsides!\inputencoding{utf8}
+argument. The command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rolldie(3, nsides = 4)!\inputencoding{utf8}
+would be used to roll a 4-sided die three times.
+
+Perhaps we would like to draw one card from a standard set of playing
+cards (it is a long data frame):
+
+<<echo=TRUE,print=TRUE>>= 
+head(cards()) 
+@
+
+The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cards!\inputencoding{utf8}
+function that we just used has optional arguments \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!jokers!\inputencoding{utf8}
+(if you would like Jokers to be in the deck) and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!makespace!\inputencoding{utf8}
+which we will discuss later.
+
+Additionally, the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!roulette!\inputencoding{utf8}
+function gives the standard sample space for one spin on a roulette
+wheel. There are EU and USA versions available. Interested readers
+may contribute any other game or sample spaces that may be of general
+interest.
+
+
+\subsection{Sampling from Urns}
+
+This is perhaps the most fundamental type of random experiment. The
+idea is that we have an urn that contains a bunch of distinguishable
+objects (balls) inside. We shake up the urn, reach inside, grab a
+ball, and take a look. That's all.
+
+But of course that is not all; there are all sorts of variations on
+this theme. Maybe we would like to grab more than one ball, say, two
+balls. What are all of the possible outcomes of the experiment now?
+It depends on how we sample. One way would be to select a ball, take
+a look, put it back, and sample again. Another way would be to select
+a ball, take a look, and sample again (equivalently, just reach in
+and grab two balls). There are certainly more possible outcomes in
+the former case than in the latter. In the first (second) case we
+say that sampling is done \emph{with} (\emph{without}) \emph{replacement}.
+
+There is more. Suppose we do not actually keep track of which ball
+came first. All we observe are the two balls, and we have no idea
+about the order in which they were selected. We call this \emph{unordered
+sampling} (in contrast to \emph{ordered}) because the order of the
+selections does not matter with respect to what we observe. We might
+as well have selected the balls and put them in a bag before looking.
+
+Note that this one general class of random experiments contains as
+a special case all of the common elementary random experiments. Tossing
+a coin twice is equivalent to selecting two balls labeled $H$ and
+$T$ from an urn, with replacement. The die-roll experiment is equivalent
+to selecting a ball from an urn with six elements, labeled 1 through
+6, with replacement.
+
+
+\subsection{How to do it with \textsf{R} }
+
+The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
+package accomplishes sampling from urns with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples(x, size, replace, ordered)!\inputencoding{utf8}
+function. The argument \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
+represents the urn from which sampling is to be done. The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!size!\inputencoding{utf8}
+argument tells how large the sample will be. The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ordered!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!replace!\inputencoding{utf8}
+arguments are logical and specify how sampling will be performed.
+We will discuss each in turn. 
+\begin{example}
+Let our urn simply contain three balls, labeled 1, 2, and 3, respectively.
+We are going to take a sample of size 2 from the urn. 
+\end{example}
+
+\subsubsection*{Ordered, With Replacement}
+
+If sampling is with replacement, then we can get any outcome 1, 2,
+or 3 on any draw. Further, by {}``ordered'' we mean that we shall
+keep track of the order of the draws that we observe. We can accomplish
+this in \textsf{R} with
+
+<<echo=TRUE,print=TRUE>>=
+urnsamples(1:3, size = 2, replace = TRUE, ordered = TRUE)
+@ 
+
+Notice that rows 2 and 4 are identical, save for the order in which
+the numbers are shown. Further, note that every possible pair of the
+numbers 1 through 3 are listed. This experiment is equivalent to rolling
+a 3-sided die twice, which we could have accomplished with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rolldie(2, nsides = 3)!\inputencoding{utf8}.
+
+
+\subsubsection*{Ordered, Without Replacement}
+
+Here sampling is without replacement, so we may not observe the same
+number twice in any row. Order is still important, however, so we
+expect to see the outcomes \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!1,2!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!2,1!\inputencoding{utf8}
+somewhere in our data frame. 
+
+<<echo=TRUE,print=TRUE>>= 
+urnsamples(1:3, size = 2, replace = FALSE, ordered = TRUE)
+@ 
+
+This is just as we expected. Notice that there are less rows in this
+answer due to the more restrictive sampling procedure. If the numbers
+1, 2, and 3 represented {}``Fred'', {}``Mary'', and {}``Sue'',
+respectively, then this experiment would be equivalent to selecting
+two people of the three to serve as president and vice-president of
+a company, respectively, and the sample space shown above lists all
+possible ways that this could be done.
+
+
+\subsubsection*{Unordered, Without Replacement}
+
+Again, we may not observe the same outcome twice, but in this case,
+we will only retain those outcomes which (when jumbled) would not
+duplicate earlier ones. 
+
+<<echo=TRUE,print=TRUE>>= 
+urnsamples(1:3, size = 2, replace = FALSE, ordered = FALSE) 
+@ 
+
+This experiment is equivalent to reaching in the urn, picking a pair,
+and looking to see what they are. This is the default setting of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples!\inputencoding{utf8},
+so we would have received the same output by simply typing \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples(1:3, 2)!\inputencoding{utf8}.
+
+
+\subsubsection*{Unordered, With Replacement}
+
+The last possibility is perhaps the most interesting. We replace the
+balls after every draw, but we do not remember the order in which
+the draws come. 
+
+<<echo=TRUE,print=TRUE>>= 
+urnsamples(1:3, size = 2, replace = TRUE, ordered = FALSE) 
+@ 
+
+We may interpret this experiment in a number of alternative ways.
+One way is to consider this as simply putting two 3-sided dice in
+a cup, shaking the cup, and looking inside as in a game of Liar's
+Dice, for instance. Each row of the sample space is a potential pair
+we could observe. Another way is to view each outcome as a separate
+way to distribute two identical golf balls into three boxes labeled
+1, 2, and 3. Regardless of the interpretation, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples!\inputencoding{utf8}
+lists every possible way that the experiment can conclude.
+
+Note that the urn does not need to contain numbers; we could have
+just as easily taken our urn to be \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x = c("Red","Blue","Green")!\inputencoding{utf8}.
+But, there is an \textbf{important} point to mention before proceeding.
+Astute readers will notice that in our example, the balls in the urn
+were \textit{distinguishable} in the sense that each had a unique
+label to distinguish it from the others in the urn. A natural question
+would be, {}``What happens if your urn has indistinguishable elements,
+for example, what if \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x = c("Red","Red","Blue")!\inputencoding{utf8}?''
+The answer is that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples!\inputencoding{utf8}
+behaves as if each ball in the urn is distinguishable, regardless
+of its actual contents. We may thus imagine that while there are two
+red balls in the urn, the balls are such that we can tell them apart
+(in principle) by looking closely enough at the imperfections on their
+surface.
+
+In this way, when the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
+argument of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples!\inputencoding{utf8}
+has repeated elements, the resulting sample space may appear to be
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ordered = TRUE!\inputencoding{utf8}
+even when, in fact, the call to the function was \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples(..., ordered = FALSE)!\inputencoding{utf8}.
+Similar remarks apply for the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!replace!\inputencoding{utf8}
+argument. We investigate this issue further in Section BLANK.
+
+
+\subsection{Events}
 
 An \emph{event} $A$ is merely a collection of outcomes, or in other
 words, a subset of the sample space%
@@ -3406,11 +3622,209 @@ experiment the events $A=\left\{ \mbox{Heads}\right\} $ and $B=\left\{ \mbox{Tai
 would be mutually exclusive. Now would be a good time to review the
 algebra of sets in Appendix BLANK.
 
-For the remainder of this section, let us take a look at the coin-toss
-experiment more closely. What do we mean when we say {}``the probability
-of Heads'' or write $\P(\mbox{Heads})$? Given a coin and an itchy
-thumb, how do we go about finding what $\P(\mbox{Heads})$ should
-be? We will discuss three popular approaches to this problem.
+
+\subsection{How to do it with \textsf{R}}
+
+Given a data frame sample/probability space \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!S!\inputencoding{utf8},
+we may extract rows using the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]![]!\inputencoding{utf8}
+operator: 
+
+<<echo=TRUE,print=TRUE>>= 
+S <- tosscoin(2, makespace = TRUE) 
+S[1:3, ] 
+S[c(2,4), ] 
+@ 
+
+and so forth. We may also extract rows that satisfy a logical expression
+using the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!subset!\inputencoding{utf8}
+function, for instance 
+
+<<echo=TRUE,print=FALSE>>= 
+S <- cards() 
+@ 
+
+<<echo=TRUE,print=TRUE>>= 
+subset(S, suit == "Heart") 
+subset(S, rank %in% 7:9)
+@ 
+
+We could continue indefinitely. Also note that mathematical expressions
+are allowed: 
+
+<<echo=TRUE,print=TRUE>>= 
+subset(rolldie(3), X1+X2+X3 > 16) 
+@
+
+
+\subsection{Functions for Finding Subsets}
+
+It does not take long before the subsets of interest become more and
+more complicated to specify. Yet the main idea is that we have a particular
+logical condition that we would like to apply to each row. If the
+row satisfies the condition, then it should be in the subset and it
+should not be in the subset otherwise.
+
+There are many ways to construct logical expressions, and there is
+an abundance of material that does a great job describing how to go
+about it. The ease with which the expression may be coded depends
+of course on the question being asked. 
+
+
+\subsubsection*{The function \texttt{isin()}}
+
+Experienced users of \textsf{R} will no doubt be familiar with the
+function \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!%in%!\inputencoding{utf8}.
+It can be used in the following way. 
+
+<<echo=TRUE,print=FALSE>>= 
+x = 1:10 
+y = 3:7 
+y %in% x
+@ 
+
+Notice that the value is a vector of length 5 which tests if each
+element of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!y!\inputencoding{utf8}
+is in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!y!\inputencoding{utf8},
+in turn. But perhaps we would like to know whether the \emph{whole}
+vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!y!\inputencoding{utf8}
+is in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}.
+We can do this with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!isin!\inputencoding{utf8}
+function. 
+
+<<echo=TRUE,print=TRUE>>= 
+isin(x,y) 
+@
+
+Of course, one may ask why we did not try something like \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!all(y %in% x)!\inputencoding{utf8},
+which would give a single result, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!TRUE!\inputencoding{utf8}.
+The reason is that the answers are different in the case that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!y!\inputencoding{utf8}
+has repeated values. Compare: 
+
+<<echo=TRUE,print=FALSE>>= 
+x <- 1:10 
+y <- c(3,3,7) 
+@ 
+
+<<echo=TRUE,print=TRUE>>= 
+all(y %in% x)
+isin(x,y) 
+@ 
+
+The reason for the above is of course that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
+contains the value 3, but \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
+does not have two 3's. The difference becomes significant when rolling
+multiple dice, playing cards, \emph{etc}. Note that there is an argument
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ordered!\inputencoding{utf8},
+which tests whether the elements of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!y!\inputencoding{utf8}
+appear in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
+in the order in which they are specified in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!y!\inputencoding{utf8}.
+The consequences are 
+
+<<echo=TRUE,print=TRUE>>= 
+isin(x, c(3,4,5), ordered = TRUE) 
+isin(x, c(3,5,4), ordered = TRUE) 
+@ 
+
+The connection to probability is that we are given a data frame sample
+space and we would like to find a subset of the space. A \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!data.frame!\inputencoding{utf8}
+method has been written for \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!isin!\inputencoding{utf8}
+that simply applies the function to each row of the data frame. Certainly,
+one could extend the function to work for columns or entries instead
+of rows, but simplicity is a primary goal of the \texttt{prob} package.
+It is easy enough for experienced users to modify the code as desired
+to serve their purposes.
+
+We can see the method in action with the following: 
+
+<<echo=TRUE,print=FALSE>>= 
+S <- rolldie(4) 
+subset(S, isin(S, c(2,2,6), ordered = TRUE)) 
+@
+
+There are a few other functions written to find useful subsets, namely,
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!countrep!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!isrep!\inputencoding{utf8}.
+Essentially these were written to test for (or count) a specific number
+of designated values in outcomes. See the documentation for details.
+
+
+\subsection{Set Union, Intersection, and Difference}
+
+Given subsets $A$ and $B$, it is often useful to manipulate them
+in an algebraic fashion. To this end, we have three set operations
+at our disposal: union, intersection, and difference. Below is a table
+that summarizes the pertinent information about these operations.
+
+\begin{center}
+\begin{tabular}{|l|c|l|l|}
+\hline 
+% after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+Name  & Denoted  & Defined by elements  & Code \tabularnewline
+\hline 
+Union  & $A\cup B$  & in $A$ or $B$ or both  & \texttt{union(A,B)} \tabularnewline
+Intersection  & $A\cap B$  & in both $A$ and $B$  & \texttt{intersect(A,B)} \tabularnewline
+Difference  & $A\textbackslash B$  & in $A$ but not in $B$  & \texttt{setdiff(A,B)} \tabularnewline
+\hline
+\end{tabular}
+\par\end{center}
+
+Some examples follow. 
+
+<<echo=TRUE,print=FALSE>>= 
+S = cards() 
+A = subset(S, suit == "Heart") 
+B = subset(S, rank %in% 7:9)
+@ 
+
+We can now do some set algebra: 
+
+<<echo=TRUE,print=TRUE>>= 
+union(A,B) 
+intersect(A,B) 
+setdiff(A,B) 
+setdiff(B,A) 
+@ 
+
+Notice that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!setdiff!\inputencoding{utf8}
+is not symmetric. Further, note that we can calculate the \emph{complement}
+of a set $A$, denoted $A^{c}$ and defined to be the elements of
+$S$ that are not in $A$ simply with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!setdiff(S,A)!\inputencoding{utf8}.
+
+There have been methods written for \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!intersect!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!setdiff!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!subset!\inputencoding{utf8},
+and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!union!\inputencoding{utf8}
+in the case that the input objects are of class \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ps!\inputencoding{utf8}.
+See Section 9.1.
+\begin{note}
+When you load the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
+package you will most certainly notice the message: {}``\texttt{The
+following object(s) are masked from package:base: intersect setdiff,
+subset, union}''. The reason for this message is that there already
+exist methods for the functions \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!intersect!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!setdiff!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!subset!\inputencoding{utf8},
+and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!union!\inputencoding{utf8}
+in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!base!\inputencoding{utf8}
+package which ships with \textsf{R}. However, these methods were designed
+for when the arguments are vectors of the same mode. Since we are
+manipulating sample spaces which are data frames and lists, it was
+necessary to write methods to handle those cases as well. When the
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
+package is loaded, \textsf{R} recognizes that there are multiple versions
+of the same function in the search path and acts to shield the new
+definitions from the existing ones. But there is no cause for alarm,
+thankfully, because the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
+functions have been carefully defined to match the usual \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!base!\inputencoding{utf8}
+package definition in the case that the arguments are vectors.
+\end{note}
+
+\section{Interpreting Probabilities\label{sec:Interpreting-Probabilities}}
+
+Let us take a look at the coin-toss experiment more closely. What
+do we mean when we say {}``the probability of Heads'' or write $\P(\mbox{Heads})$?
+Given a coin and an itchy thumb, how do we go about finding what $\P(\mbox{Heads})$
+should be? We introduce three popular approaches to this problem.
 
 
 \subsection{The Measure Theory Approach}
@@ -3469,7 +3883,7 @@ for more information.
 
 This approach states that the way to determine $\P(\mbox{Heads})$
 is to flip the coin repeatedly, in exactly the same way each time.
-Keep a tally of the number of flips and the number of heads observed.
+Keep a tally of the number of flips and the number of Heads observed.
 Then a good approximation to $\P(\mbox{Heads})$ will be\begin{equation}
 \P(\mbox{Heads})\approx\frac{\mbox{number of observed Heads}}{\mbox{total number of flips}}.\end{equation}
 
@@ -4412,15 +4826,15 @@ are said to be independent \emph{pairwise}. Note that pairwise independence
 is not the same as mutual independence when the number of events is
 larger than two.
 \end{defn}
-You can now see the pattern for $n$ events, $n>3$. The events will
-be mutually independent if they satisfy the product equality pairwise,
-then in groups of three, in groups of four, and so forth, up to all
-$n$ events at once. For $n$ events, there will be $2^{n}-n-1$ equations
-that must be satisfied (see Exercise BLANK). Although these are stringent
-requirements for a set of events to be mutually independent, the good
-news is that for most of the situations that we will be considering
-in this book all of the conditions will be met (or at least we will
-assume that they are).
+We can now deduce the pattern for $n$ events, $n>3$. The events
+will be mutually independent only if they satisfy the product equality
+pairwise, then in groups of three, in groups of four, and so forth,
+up to all $n$ events at once. For $n$ events, there will be $2^{n}-n-1$
+equations that must be satisfied (see Exercise BLANK). Although these
+requirements for a set of events to be mutually independent may seem
+stringent, the good news is that for most of the situations considered
+in this book the conditions will all be met (or at least we will suppose
+that they are).
 \begin{example}
 Toss ten coins. What is the probability of observing at least one
 Head? Answer: Let $A_{i}=\left\{ \mbox{the }i^{\text{th}}\mbox{ coin shows }H\right\} ,\ i=1,2,\ldots,10$.
@@ -4429,10 +4843,10 @@ with each other, this is one of the situations where all of the $A_{i}$
 may be considered mutually independent due to the nature of the tossing.
 Of course, the only way that there will not be at least one Head showing
 is if all tosses are Tails. Therefore,\begin{align*}
-\P(\mbox{at least one }H) & =1-\P(\mbox{all }T)\\
- & =1-\P(A_{1}^{c}\cap A_{2}^{c}\cap\cdots\cap A_{10}^{c})\\
- & =1-\P(A_{1}^{c})\P(A_{2}^{c})\cdots\P(A_{10}^{c})\\
- & =1-\left(\frac{1}{2}\right)^{10}\end{align*}
+\P(\mbox{at least one }H) & =1-\P(\mbox{all }T),\\
+ & =1-\P(A_{1}^{c}\cap A_{2}^{c}\cap\cdots\cap A_{10}^{c}),\\
+ & =1-\P(A_{1}^{c})\P(A_{2}^{c})\cdots\P(A_{10}^{c}),\\
+ & =1-\left(\frac{1}{2}\right)^{10},\end{align*}
 which is approximately $0.9990234$.
 \end{example}
 
@@ -4448,7 +4862,7 @@ with $\P(A)>0$. Then \begin{equation}
 \P(B_{k}|A)=\frac{\P(B_{k})\P(A|B_{k})}{\sum_{i=1}^{n}\P(B_{i})\P(A|B_{i})},\quad k=1,2,\ldots,n.\end{equation}
 \end{thm}
 \begin{proof}
-The proof comes from looking at $\P(B_{k}\cap A)$ in two different
+The proof follows from looking at $\P(B_{k}\cap A)$ in two different
 ways. For simplicity, suppose that $P(B_{k})>0$ for all $k$. Then\[
 \P(A)\P(B_{k}|A)=\P(B_{k}\cap A)=\P(B_{k})\P(A|B_{k}).\]
 Since $\P(A)>0$ we may divide through to obtain \[
@@ -4596,14 +5010,14 @@ available at the time.
 \section{Random Variables\label{sec:Random-Variables}}
 
 We already know about experiments, sample spaces, and events. In this
-section, we are interested in a number that is associated with the
-experiment $E$. We conduct the random experiment $E$, and after
-seeing the outcome $\omega$ in $S$ we calculate a number $X$. That
-is, to each outcome $\omega$ in the sample space we associate a number
+section, we are interested in a \emph{number} that is associated with
+the experiment. We conduct a random experiment $E$, and after seeing
+the outcome $\omega$ in $S$ we calculate a number $X$. That is,
+to each outcome $\omega$ in the sample space we associate a number
 $X(\omega)=x$. 
 \begin{defn}
-A random variable $X$ is a function $X:S\to\R$ that associates to
-each outcome $\omega\in S$ exactly one number $X(\omega)=x$. 
+A \emph{random variable} $X$ is a function $X:S\to\R$ that associates
+to each outcome $\omega\in S$ exactly one number $X(\omega)=x$. 
 \end{defn}
 We usually denote random variables by uppercase letters such as $X$,
 $Y$, and $Z$, and we denote their observed values by lowercase letters
@@ -4617,19 +5031,23 @@ Now define the random variable $X=\mbox{the number of heads}$. That
 is, for example, $X(HH)=2$, while $X(HT)=1$. We may make a table
 of the possibilities:
 
+%
+\begin{table}[H]
 \begin{tabular}{c|cccc}
 $\omega\in S$ & $HH$ & $HT$ & $TH$ & $TT$\tabularnewline
 \hline
 $X(\omega)=x$ & 2 & 1 & 1 & 0\tabularnewline
 \end{tabular}
+\end{table}
+
 
 Taking a look at the second row of the table, we see that the support
-of $X$, the set of all numbers that $X$ assumes, would be $S_{X}=\left\{ 0,1,2\right\} $.
+of $X$ -- the set of all numbers that $X$ assumes -- would be $S_{X}=\left\{ 0,1,2\right\} $.
 \end{example}
 
 \begin{example}
 Let $E$ be the experiment of flipping a coin repeatedly until observing
-a head. The sample space would be $S=\left\{ H,\ TH,\ TTH,\ TTTH,\ \ldots\right\} $.
+a Head. The sample space would be $S=\left\{ H,\ TH,\ TTH,\ TTTH,\ \ldots\right\} $.
 Now define the random variable $Y=\mbox{the number of Tails before the first head}$.
 Then the support of $Y$ would be $S_{Y}=\left\{ 0,1,2,\ldots\right\} $.
 \end{example}
@@ -4837,7 +5255,7 @@ satisfy
 \label{exa:Toss-a-coin}Toss a coin 3 times. The sample space would
 be\[
 S=\left\{ HHH,\ HTH,\ THH,\ TTH,\ HHT,\ HTT,\ THT,\ TTT\right\} .\]
-Now let $X$ be the number of heads observed. Then $X$ has support
+Now let $X$ be the number of Heads observed. Then $X$ has support
 $S_{X}=\left\{ 0,1,2,3\right\} $. Assuming that the coin is fair
 and was tossed in exactly the same way each time, it is not unreasonable
 to suppose that the outcomes in the sample space are all equally likely.
