@@ -1,10 +1,3 @@
-% Meta information - fill between {} and do not remove %
-% \VignetteIndexEntry{An Introduction to Probability and Statistics Using R}
-% \VignetteDepends{}
-% \VignetteKeywords{}
-% \VignettePackage{IPSUR}
-% Package
-
 %% LyX 1.6.5 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
 \documentclass[12pt,english,nogin]{book}
@@ -86,7 +79,7 @@
   \theoremstyle{plain}
   \newtheorem{prop}[thm]{Proposition}
   \theoremstyle{plain}
-  \newtheorem{cor}[thm]{Corollary}
+  \newtheorem{fact}[thm]{Fact}
   \theoremstyle{definition}
   \newtheorem{defn}[thm]{Definition}
   \theoremstyle{remark}
@@ -94,13 +87,20 @@
   \theoremstyle{remark}
   \newtheorem{note}[thm]{Note}
   \theoremstyle{plain}
-  \newtheorem{fact}[thm]{Fact}
+  \newtheorem{cor}[thm]{Corollary}
   \theoremstyle{plain}
   \newtheorem{assumption}[thm]{Assumption}
   \theoremstyle{remark}
   \newtheorem*{note*}{Note}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+% Meta information - fill between {} and do not remove %
+% \VignetteIndexEntry{An Introduction to Probability and Statistics Using R}
+% \VignetteDepends{}
+% \VignetteKeywords{}
+% \VignettePackage{IPSUR}
+% Package
+
 
 \usepackage{amssymb}
 \usepackage{amsmath}
@@ -666,12 +666,11 @@ line at the top should be deleted before distributing to students.
 
 We use the notation \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
 for simple objects, and use \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!stem.leaf!\inputencoding{utf8}
-notation (with the open and closing parentheses) to denote functions
-although, technically, a function object is written without the parentheses.
-The sequence {}``\textsf{Statistics} \textsf{\lyxarrow{}} \textsf{Summaries}
-\textsf{\lyxarrow{}} \textsf{Active Dataset}'' means to click the
-\textsf{Statistics} menu item, next click the \textsf{Summaries} submenu
-item , and finally click \textsf{Active Dataset}.
+notation to denote functions. The sequence {}``\textsf{Statistics}
+\textsf{\lyxarrow{}} \textsf{Summaries} \textsf{\lyxarrow{}} \textsf{Active
+Dataset}'' means to click the \textsf{Statistics} menu item, next
+click the \textsf{Summaries} submenu item , and finally click \textsf{Active
+Dataset}.
 
 \listoffigures
 \addcontentsline{toc}{chapter}{List of Figures} 
@@ -711,9 +710,9 @@ percentages, and so forth.
 Inferential statistics does more. There is an inference associated
 with the data set.
 
-The word statistics seems to have come from the Latin root status,
-or state, and the word Statistik was the German word for Political
-Science. It was important to describe the electorate, so information
+The word statistics seems to have come from the Latin root \emph{status},
+or state, and the word \emph{Statistik} was the German word for political
+science. It was important to describe the electorate, so information
 collection and data keeping became important.
 
 Sir Francis Galton
@@ -726,6 +725,20 @@ Some point later Adolphe Quetelet
 Cousin of Charles Darwin
 
 Sir Ronald Aylmer Fisher and Pearson
+
+I would like to mention that there are two schools of thought of statistics:
+Frequentist and Bayesian. The difference between the schools is related
+to how the two groups interpret the underlying probability (see Section
+BLANK). The frequentist school gained a lot of ground among statisticians
+due in large part to the work of Fisher, Neyman, and Pearson in the
+early twentieth century. That dominance lasted until inexpensive computing
+power became widely available; nowadays the Bayesian school is garnering
+more attention, at an increasing rate.
+
+This book is devoted mostly to the frequentist viewpoint because that
+is how I was trained, with the conspicuous exception of Sections BLANK,
+BLANK, and BLANK. I plan to add more Bayesian material in later editions
+of this book. 
 
 
 \chapter{An Introduction to \textsf{R}}
@@ -790,8 +803,8 @@ The instructions for obtaining \textsf{R} largely depend on the user's
 hardware and operating system. The \textsf{R} Project has written
 an \textsf{R} Installation and Administration manual with complete,
 precise instructions about what to do, together with all sorts of
-additional information. The following is simply a primer to get a
-person started.
+additional information. The following is just a primer to get a person
+started.
 
 
 \subsection{Installing \textsf{R}}
@@ -806,7 +819,9 @@ for your operating system:
 On MS-Windows, click the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!.exe!\inputencoding{utf8}
 program file to start installation. When it asks for \textquotedbl{}Customized
 startup options\textquotedbl{}, specify \textsf{Yes}. In the next
-window, be sure to select the SDI (single-window) option. 
+window, be sure to select the SDI (single-window) option; this is
+useful later when we discuss three dimensional plots with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rgl!\inputencoding{utf8}
+package.
 
 
 \subsection{Installing and Loading Add-on Packages}
@@ -821,21 +836,18 @@ getOption("defaultPackages")
 @
 
 The base packages are maintained by a select group of volunteers,
-members of the \textsf{R} Foundation, called {}``\textsf{R} Core''.
-In addition to the base packages, there are literally thousands of
-additional contributed packages written by individuals all over the
-world. These are stored worldwide on mirrors of the Comprehensive
-\textsf{R} Archive Network, or \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!CRAN!\inputencoding{utf8}
+called {}``\textsf{R} Core''. In addition to the base packages,
+there are literally thousands of additional contributed packages written
+by individuals all over the world. These are stored worldwide on mirrors
+of the Comprehensive \textsf{R} Archive Network, or \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!CRAN!\inputencoding{utf8}
 for short. Given an active Internet connection, anybody is free to
-download and install these packages, and even inspect the source code.
+download and install these packages and even inspect the source code.
 
 To install a package named \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!foo!\inputencoding{utf8},
 open up \textsf{R} and type \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!install.packages(foo)!\inputencoding{utf8}.
 To install \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!foo!\inputencoding{utf8}
 and additionally install all of the other packages on which \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!foo!\inputencoding{utf8}
-depends, instead type
-
-\inputencoding{latin9}
+depends, instead type \inputencoding{latin9}
 \begin{lstlisting}[basicstyle={\ttfamily}]
 install.packages(foo, depends = TRUE)
 \end{lstlisting}
@@ -865,7 +877,7 @@ manual, \url{http://cran.r-project.org/manuals.html}.
 
 \section{Communicating with \textsf{R}}
 
-There are three basic methods for communicating with the software.
+There are three basic methods for communicating with \textsf{R}.
 \begin{enumerate}
 \item At the Command Prompt (\texttt{>}).
 
@@ -880,17 +892,17 @@ in the Console Window.
 Another way is to open a text file with a text editor (say, NotePad
 or Microsoft$\circledR$ Word). The user writes code in the text file,
 then when satisfied, (s)he copy-pastes it at the Command Prompt in
-\textsf{R}. Then \textsf{R} will compile all of the code at once and
-give output in the Console Window.
+\textsf{R}. Then \textsf{R} will run all of the code at once and give
+output in the Console Window.
 
 A disadvantage to this method is that all of the code is written in
 the same way with the same font. It can become confusing with longer
-scripts, and there is no way to efficiently identify mistakes in the
-code. To address this problem, software developers have designed powerful
-IDE / Script Editors.
+scripts, and it is more difficult to efficiently identify mistakes
+in the code. To address this problem, software developers have designed
+powerful \emph{script editors}.
 
 \item Graphical User Interfaces (GUIs): These are actually much more general
-than what I am saying,
+than discussed here.
 
 \begin{enumerate}
 \item R Gui
@@ -902,7 +914,7 @@ than what I am saying,
 \item IDE / Script Editors.
 
 
-There are programs specially designed to aid the communication and
+These are programs specially designed to aid the communication and
 code writing process. The advantage to using Script Editors is that
 they have additional functions and options to help the user write
 code more efficiently, including \textsf{R} syntax highlighting, automatic
@@ -910,14 +922,13 @@ code completion, delimiter matching, and dynamic help on the \textsf{R}
 functions as they are written. In addition, they typically have all
 of the text editing features of programs like Microsoft$\circledR$
 Word. Lastly, most script editors are fully customizable in the sense
-that the user can customize the appearance of the interface and can
-choose what colors to display, when to display them, and how they
-are to be displayed.
+that the user can customize the appearance of the interface to choose
+what colors to display, when to display them, and how to display them.
 
 Some of the more popular script editors can be downloaded from the
-R-Project website at \\
-\url{http://www.sciviews.org/_rgui/}. On the left side of the
-screen (under \textbf{Projects}) there are several choices available.
+R-Project website at \url{http://www.sciviews.org/_rgui/}. On the
+left side of the screen (under \textbf{Projects}) there are several
+choices available.
 \begin{itemize}
 \item \textsf{\textbf{R}}\textbf{WinEdt}: This option is coordinated with
 WinEdt for \LaTeX{} and has features such as code highlighting, remote
@@ -936,8 +947,8 @@ systems. If you are on MacOS or Linux, a comparable alternative is
 Sci-Views - Komodo Edit.
 \item \textbf{Bluefish}: This open-source script editor is for Mac OSX users.
 Other alternatives for Mac users are SubEthaEdit, AlphaTk, and Eclipse.
-I have not used these yet, so I cannot comment on their strengths
-and weaknesses. Try them out, and let me know!
+I have tried Eclipse only, and only briefly, so I cannot comment on
+their strengths and weaknesses. Try them out, and let me know!
 \item \textbf{Emacs} / \textbf{ESS}: Click Emacs (ESS) or Emacs (ESS/Windows).
 This will take you to download sites with sophisticated programs for
 editing, compiling, and coordinating software such as \texttt{S-Plus},
@@ -953,14 +964,15 @@ others do not, and the learning curve is much more steep.
 with respect to modifying, searching, editing, and manipulating, text.
 And if Emacs can't do it, then you extend Emacs by writing a program
 in the Lisp language.
-\item In particular, a team of individuals have written an Emacs extension
+\item In particular, a team of volunteers have written an Emacs extension
 called ESS, which stands for Emacs Speaks Statistics. Using ESS, one
-can speak to R and do all of the tricks 
+can speak to R and do all of the tricks that the other script editors
+offer, and much, much, more.
 \item If you want to learn Emacs, and if you grew up with Microsoft$\circledR$
 Windows or Macintosh, then you are going to need to relearn everything
 you thought you knew about computers your whole life. (Or, since Emacs
-is completely customizable, you can reconfigure Emacs to do what you
-want to with it.)
+is completely customizable, you can reconfigure Emacs to behave like
+you want.)
 \end{itemize}
 \end{itemize}
 \end{enumerate}
@@ -1001,9 +1013,8 @@ The script can be reopened later with \textsf{File}\emph{ }\textsf{\lyxarrow{}}\
 
 \paragraph*{Graphical User Interfaces (GUIs)}
 
-The term graphical user interface will Strictly For example, the usual
-way to interact with R in Microsoft Windows is with Rgui, mentioned
-above. And whil is
+The usual way to interact with R in Microsoft$\circledR$ Windows
+is with Rgui, mentioned above.
 \begin{enumerate}
 \item The \textsf{R} Commander (\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}):
 this is the one that we will be using in this book. It provides a
@@ -1028,23 +1039,30 @@ this is an alternative to the \inputencoding{latin9}\lstinline[basicstyle={\ttfa
 which is based on GTk instead of Tcl/Tk. Benefits include being able
 to drag and drop datasets to make plots.
 \item Rattle (\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rattle!\inputencoding{utf8}):
-this GUI was specifically designed for applications in Data Mining,
-but it provides general functionality that deserves mention here.
+this GUI was specifically designed for data mining applications, but
+it provides general functionality that deserves mention here.
 \item Others: there are many more GUIs which exist but which the author
 has tried only in passing: \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!RKward!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!RPad!\inputencoding{utf8}
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!RPad!\inputencoding{utf8}.
 \end{enumerate}
 
 \section{Basic \textsf{R} Operations and Concepts}
 
-You should read Introduction to \textsf{R}
+The \textsf{R} developers have written an introductory document entitled,
+{}``Introduction to R''. There is a sample session include which
+shows what basic interaction with \textsf{R} looks like. I recommend
+that all new users of R read this document, but there are concepts
+mentioned there which will be unfamiliar to the beginner.
 
-They have a sample session
+Below are some of the most basic operations that can be done with
+\textsf{R}. Almost every book about R begins with a section like the
+one below; look around to see all sorts of things that can be done
+at this most basic level.
 
 
 \subsection{Arithmetic}
 
-<<two, keep.source = TRUE>>=
+<<keep.source = TRUE>>=
 2 + 3       # add
 4 * 5 / 6   # multiply and divide
 7^8         # 7 to the 8th power
@@ -1078,8 +1096,8 @@ It is often convenient to assign numbers and values to variables (objects)
 to be used later. The proper way to assign values to a variable is
 with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!<-!\inputencoding{utf8}
 operator (with a space on either side). The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!=!\inputencoding{utf8}
-symbol works too, but it is recommended by the R masters to reserve
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!=!\inputencoding{utf8}
+symbol works too, but it is recommended by the \textsf{R} masters
+to reserve \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!=!\inputencoding{utf8}
 for specifying arguments to functions (discussed later). In this book
 we will follow their advice and use \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!<-!\inputencoding{utf8}
 for assignment. Once a variable is assigned, you can print out its
@@ -1137,8 +1155,8 @@ stands for {}``not a number''; it is represented internally as \inputencoding{la
 
 \subsection{Vectors}
 
-All of this time we have been manipulating vectors of length 1. The
-current discussion relates to vectors with multiple entries.
+All of this time we have been manipulating vectors of length 1. Now
+let us move to vectors with multiple entries.
 
 
 \paragraph*{Entering data vectors}
@@ -1157,15 +1175,15 @@ x
 \item \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!scan!\inputencoding{utf8}:
 This method is useful when the data are stored somewhere else. For
 instance, you may type \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x <- scan()!\inputencoding{utf8}
-at the command prompt and R will display the number \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!1:!\inputencoding{utf8}
+at the command prompt and R will display \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!1:!\inputencoding{utf8}
 to indicate that it is waiting for the first data value. Type a value
-and press Enter, at which point R will display \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!2:!\inputencoding{utf8},
+and press \textsf{Enter}, at which point \textsf{R} will display \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!2:!\inputencoding{utf8},
 and so forth. Note that entering an empty line stops the scan. This
-method is especially handy when you have a column of values, say stored
-in a text file or spreadsheet. You may copy and paste them all at
-the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!1:!\inputencoding{utf8}
-prompt, and R will store all of the values instantly in the vector
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}.
+method is especially handy when you have a column of values, say,
+stored in a text file or spreadsheet. You may copy and paste them
+all at the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!1:!\inputencoding{utf8}
+prompt, and \textsf{R} will store all of the values instantly in the
+vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}.
 \item repeated data; regular patterns: \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!LETTERS!\inputencoding{utf8},
 \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!letters!\inputencoding{utf8}
 \end{enumerate}
@@ -1173,7 +1191,7 @@ The type of a vector is usually taken by \textsf{R} to be the most
 general type of any of its elements.
 
 
-\paragraph*{indexing data vectors}
+\paragraph*{Indexing data vectors}
 \begin{enumerate}
 \item workspace: \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!objects()!\inputencoding{utf8},
 \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ls()!\inputencoding{utf8},
@@ -1196,11 +1214,11 @@ sd(x)        # sample standard deviation
 The great thing about \textsf{R} is that it is open-source, which
 means that anybody is free to look under the hood of a function and
 see how things are calculated. For accessing the sources see this
-article BLANK. In short,
+article BLANK. In short:
 \begin{enumerate}
 \item Type the name of the function without any parentheses or arguments.
 If you are lucky then the code for the entire function will be printed,
-right there looking at you. For example, suppose that we would like
+right there looking at you. For instance, suppose that we would like
 to see how the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!intersect!\inputencoding{utf8}
 function works:
 
@@ -1210,9 +1228,9 @@ intersect
 @
 
 \item If instead it shows \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!UseMethod("!\inputencoding{utf8}\emph{something}\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!")!\inputencoding{utf8}then
-you will need to decide on the class of the object to be inputted
-and look at the method that will be dispatched to that object. For
-instance, typing \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rev!\inputencoding{utf8}
+you will need to decide on the \emph{class} of the object to be inputted
+and next look at the \emph{method} that will be \emph{dispatched}
+to that object. For instance, typing \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rev!\inputencoding{utf8}
 says 
 
 
@@ -1240,9 +1258,9 @@ method can be viewed with
 rev.default
 @
 
-\item Some functions are hidden by a namespace (see the R Manual BLANK),
-and are not visible on the first try. For example, if we try to look
-at the code for \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!wilcox.test!\inputencoding{utf8}
+\item Some functions are hidden by a \emph{namespace} (see the R Manual
+BLANK), and are not visible on the first try. For example, if we try
+to look at the code for \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!wilcox.test!\inputencoding{utf8}
 (see Chapter BLANK) we get the following:
 
 
@@ -1255,14 +1273,14 @@ If we were to try \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!wilco
 we would get a {}``not found'' error, because it is hidden behind
 the namespace for the package \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!stats!\inputencoding{utf8}
 (shown in the last line when we tried \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!wilcox.test!\inputencoding{utf8}).
-In cases like these we must prefix the package name to the front of
-the function name with three colons; the command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!stats:::wilcox.test.default!\inputencoding{utf8}
+In cases like these we prefix the package name to the front of the
+function name with three colons; the command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!stats:::wilcox.test.default!\inputencoding{utf8}
 will show the source code, omitted here for brevity.
 
 \item If it shows \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!.Internal(!\inputencoding{utf8}\emph{something}\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!)!\inputencoding{utf8}
 or \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!.Primitive("!\inputencoding{utf8}\emph{something}\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!")!\inputencoding{utf8},
-then it will be necessary to download the source code of R (\emph{not}
-a binary version with an \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!.exe!\inputencoding{utf8}
+then it will be necessary to download the source code of \textsf{R}
+(which is \emph{not} a binary version with an \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!.exe!\inputencoding{utf8}
 extension) and search inside the code there. See Ligges for more discussion
 on this. An example is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!exp!\inputencoding{utf8}:
 
@@ -1270,6 +1288,10 @@ on this. An example is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!
 <<>>=
 exp
 @
+
+Be warned that most of the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!.Internal!\inputencoding{utf8}
+functions are written in other computer languages which the beginner
+may not understand, at least initially.
 
 \end{enumerate}
 
@@ -1332,13 +1354,60 @@ to see a few examples of how the \inputencoding{latin9}\lstinline[basicstyle={\t
 function works.
 
 
-\subsection{R Help Mailing Lists}
+\subsection{\textsf{R} Help Mailing Lists}
+
+There are several mailing lists associated with \textsf{R}, and there
+is a huge community of people that read and answer questions related
+to R. See here \url{http://www.r-project.org/mail.html} for an idea
+of what is available. Particularly pay attention to the bottom of
+the page which lists several special interest groups (SIGs) related
+to \textsf{R}.
+
+Bear in mind that R is free software, which means that it was written
+by volunteers, and the people who frequent the mailing lists are also
+volunteers which are not paid by customer support fees. Consequently,
+if you want to use the mailing lists for free advice then you must
+adhere to some basic etiquette, else you may not get a reply, or worse,
+you may receive a reply which is a bit less cordial than you are used
+to. Below are a few considerations which the author would like to
+highlight.
 \begin{enumerate}
-\item Read the Posting Guide
-\item get rid of the command prompts
-\item \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!dump()!\inputencoding{utf8}
-\item \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!sessionInfo()!\inputencoding{utf8}
-\item FAQ
+\item Read the FAQ (\url{http://cran.r-project.org/faqs.html}). Note that
+there are multiple FAQs for multiple operating systems. You should
+do this now, even without a question at the moment, to learn a lot
+about the idiosyncracies of \textsf{R}.
+\item Search the archives. Even if your question is not a FAQ, there is
+a very high likelihood that your question has been asked before on
+the mailing list. If you want to know about topic \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!foo!\inputencoding{utf8},
+then you can do \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!RSiteSearch("foo")!\inputencoding{utf8}
+to search the mailing list archives (and the online help) for it. 
+\item Do a Google search. 
+\end{enumerate}
+If your question is not a FAQ, has not been asked on \textsf{R}-help
+before, and does not yield to a Google (or alternative) search, then,
+and only then, you may consider asking R-help. Below are a few considerations
+that the author would like to highlight. 
+\begin{enumerate}
+\item \textbf{Read the posting guide (\url{http://www.r-project.org/posting-guide.html})
+before posting.} This will save you a lot of trouble and pain.
+\item Get rid of the command prompts (\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!>!\inputencoding{utf8})
+from output. Readers of your message will take the text from your
+mail and copy-paste into an \textsf{R} session. If you make the readers'
+job easier then it will increase the likelihood of a response.
+\item Questions are often related to a specific data set, and the best way
+to communicate the data is with a \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!dump()!\inputencoding{utf8}
+command. For instance, if your question involves data stored in a
+vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8},
+you can type \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!dump("x","")!\inputencoding{utf8}
+at the command prompt and copy-paste the output into the body of your
+email message. Then the reader may easily copy-paste the message from
+your email into \textsf{R} and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
+will be available to him/her.
+\item Sometimes the answer the question is related to the operating system
+used, the attached packages, or the exact version of \textsf{R} being
+used. The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!sessionInfo()!\inputencoding{utf8}
+command collects all of this information to be copy-pasted into an
+email.
 \end{enumerate}
 
 \section*{Some References}
@@ -1389,9 +1458,13 @@ that a name must start with ‘.’ or a letter, and if it starts with
 \section{Other tips}
 
 It is unnecessary to retype commands repeatedly, since \textsf{R}
-remembers what you have entered on the command line. To cycle through
-the previous commands, just push the $\uparrow$ (up arrow) key (or
-on Emacs, do \textsf{Alt+p}). 
+remembers what you have recently entered on the command line. On the
+Microsoft$\circledR$ Windows \textsf{R}Gui, to cycle through the
+previous commands just push the $\uparrow$ (up arrow) key. On Emacs/ESS
+the command is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Alt-p!\inputencoding{utf8}
+(which means hold down the \textsf{Alt} button and press {}``\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!p!\inputencoding{utf8}'').
+More generally, the command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!history()!\inputencoding{utf8}
+will show a whole list of recently entered commands.
 
 Missing values in \textsf{R} are denoted by \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!NA!\inputencoding{utf8}.
 Operations on data vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!NA!\inputencoding{utf8}
@@ -1408,7 +1481,7 @@ remove one or more variables, use \inputencoding{latin9}\lstinline[basicstyle={\
 or more simply use \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rm(var1, var2, var3)!\inputencoding{utf8},
 and to remove all objects use \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rm(list = ls())!\inputencoding{utf8}.
 \begin{enumerate}
-\item Another use of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!scan()!\inputencoding{utf8}
+\item Another use of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!scan!\inputencoding{utf8}
 is when you have a long list of numbers (separated by spaces or on
 different lines) already typed somewhere else, say in a text file.
 To enter all the data in one fell swoop, first highlight and copy
@@ -1419,13 +1492,29 @@ command in the \textsf{R} console, and paste the numbers at the \inputencoding{l
 prompt with \textsf{Edit}\emph{ }\textsf{\lyxarrow{}}\emph{ }\textsf{Paste}.
 All of the numbers will automatically be entered into the vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}.\end{enumerate}
 \begin{itemize}
-\item \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!history()!\inputencoding{utf8}
-
-\begin{itemize}
-\item Ctrl + L
-\item .Rprofile
-\end{itemize}
-\item DON'T save the workspace when quitting.
+\item The command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Ctrl+l!\inputencoding{utf8}
+clears the screen in the Microsoft$\circledR$ Windows \textsf{R}Gui.
+The comparable command for Emacs/ESS is 
+\item Once you use \textsf{R} for awhile there may be some commands that
+you wish to run automatically whenever \textsf{R} starts. These commands
+may be saved in a file called \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rprofile.site!\inputencoding{utf8}
+which is usually in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!etc!\inputencoding{utf8}
+folder, which lives in the \textsf{R} home directory (which on Microsoft$\circledR$
+Windows usually is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!C:\Program Files\R!\inputencoding{utf8}).
+Alternatively, you can make a file \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!.Rprofile!\inputencoding{utf8}
+to be stored in the user's home directory, or anywhere \textsf{R}
+is invoked. This allows for multiple configurations for different
+projects or users. See {}``Customizing the Environment'' of \emph{An
+Introduction to }\textsf{\emph{R}} for more details.
+\item When exiting \textsf{R} the user is given the option to {}``save
+the workspace''. I recommend that beginners DO NOT save the workspace
+when quitting. If \textsf{Yes} is selected, then all of the objects
+and data currently in \textsf{R}'s memory is saved in a file located
+in the working directory called \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!.RData!\inputencoding{utf8}.
+This file is then automatically loaded the next time \textsf{R} starts
+(in which case \textsf{R} will say \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]![previously saved workspace restored]!\inputencoding{utf8}).
+This is a valuable feature for experienced users of \textsf{R}, but
+I find that it causes more trouble than it saves with beginners.
 \end{itemize}
 
 \section{Chapter Exercises}
@@ -1519,8 +1608,8 @@ x <- round(rnorm(12, mean = 3, sd = 0.3), 3) * 1000
 names(x) <- c("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")
 @
 \begin{xca}
-The twelve monthly sales of Hummer H2 vehicles in the United States
-during 2002 were 
+The twelve monthly sales of Ramen noodles in the United States during
+2009 were 
 
 <<echo = FALSE>>=
 x
@@ -1530,7 +1619,7 @@ Note that the first entry above was the sales from January, the second
 entry was from February, and so forth.
 \begin{enumerate}
 \item Enter these data into a variable \texttt{H2}. Use \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cumsum!\inputencoding{utf8}
-to find the cumulative total sales for 2002. What was the total number
+to find the cumulative total sales for 2009. What was the total number
 sold? 
 \item Using \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!diff!\inputencoding{utf8},
 find the month with the greatest increase from the previous month,
@@ -1665,7 +1754,7 @@ with descriptive statistics.
 \section{Types of Data\label{sec:Types-of-Data}}
 
 Loosely speaking, a datum is any piece of collected information, and
-a dataset is a grr
+a data set is a collection of data related to each other in some way.
 
 
 \subsection{Quantitative Data\label{sub:Quantitative-Data}}
@@ -1676,9 +1765,9 @@ data can be further subdivided into two categories.
 \item Discrete data take values in a finite or countably infinite set of
 numbers. Examples include: counts, number of arrivals, number of successes,
 attendance.
-\item Continuous data take values in a range of numbers.(or scale data or
-interval data or measurement data) Examples include: Height, Weight,
-Length, Time, 
+\item Continuous data take values in an interval of numbers. These are also
+known as scale data, interval data, or measurement data. Examples
+include: height, weight, length, time, \emph{etc}.
 \end{itemize}
 
 \subsection*{Displaying Quantitative Data\label{sub:Displaying-Quantitative-Data}}
@@ -1689,17 +1778,17 @@ There are many graphs available for displaying quantitative data.
 \paragraph*{Strip charts (also known as Dot plots)}
 
 These are done with a call to the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!stripchart!\inputencoding{utf8}
-function. Strip charts can be used to display numerical data when
-the data set is not too large. Along the horizontal axis is a numerical
-scale, above which the values are plotted. There are three methods
-to plot on strip charts.
+function, and are often used when the data set is not too large. Along
+the horizontal axis is a numerical scale above which the data values
+are plotted. There are three methods for strip charts.
 \begin{itemize}
-\item Overplot: plots ties covering each other. This method is good for
-seeing only the distinct values assumed by the dataset.
+\item Overplot: plots ties covering each other. This method is good to display
+only the distinct values assumed by the dataset.
 \item Jitter: adds some noise to the data in the $y$ direction so that
-data values aren't covered up by ties.
-\item Stack: stacks repeats on top of one another. This method is best used
-for discrete data.
+data values are not covered up by ties.
+\item Stack: plots repeated values stacked on top of one another. This method
+is best used for discrete data with a lot of ties; if there are no
+repeats then this method is identical to overplot.
 \end{itemize}
 %
 \begin{figure}
@@ -1721,12 +1810,12 @@ par(mfrow = c(1,1)) # back to normal
 
 \paragraph*{Histogram}
 
-Used for continuous data. Done with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Hist!\inputencoding{utf8}
-function, which is a wrapper for the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!hist!\inputencoding{utf8}
-function.These plots are some of the most common summary displays,
-and they are likely the ones most often identified as {}``Bar Graphs''
-(see below.) The scale on the $y$ axis can be frequency, percentage,
-or density (relative frequency).
+Used for continuous data. There are many ways to plot histograms,
+one of the easiest is done with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!hist!\inputencoding{utf8}
+function. These plots are some of the most common summary displays,
+and they are often misidentified as {}``Bar Graphs'' (see below.)
+The scale on the $y$ axis can be frequency, percentage, or density
+(relative frequency).
 
 A histogram is constructed by first deciding on a set of classes,
 or bins. The bins partition the real line into a set of classes into
@@ -1765,14 +1854,14 @@ par(mfrow = c(1,1)) # back to normal
 
 \paragraph*{Stemplots (more to be said in Section \ref{sec:Exploratory-Data-Analysis})}
 
-Stemplots have two basic parts: stems and leaves. The final digit
-of the data values is taken to be a leaf, and the leading digit(s)
-is (are) taken to be stems. A vertical line is drawn, and to the left
-of the line are listed the stems. To the right of the line, the leaves
-are listed beside their corresponding stem. There will typically be
-several leaves for each stem, in which case the leaves accumulate
-to the right. It is sometimes necessary to round the data values,
-especially for larger data sets.
+Stemplots have two basic parts: \emph{stems} and \emph{leaves}. The
+final digit of the data values is taken to be a \emph{leaf}, and the
+leading digit(s) is (are) taken to be \emph{stems}. A vertical line
+is drawn, and to the left of the line are listed the stems. To the
+right of the line, the leaves are listed beside their corresponding
+stem. There will typically be several leaves for each stem, in which
+case the leaves accumulate to the right. It is sometimes necessary
+to round the data values, especially for larger data sets.
 
 Consider the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!UKDriverDeaths!\inputencoding{utf8}
 data. We construct a stem and leaf diagram in \textsf{R} with the
@@ -1788,7 +1877,7 @@ stem.leaf(UKDriverDeaths, depth = FALSE)
 Notice that in the arguments we are not showing {}``depths''. To
 learn more about this option and many others, see Section \ref{sec:Exploratory-Data-Analysis}.
 An advantage of using the stemplot is that the original data values
-are not lost in the display, as they are with a histogram.
+are not lost in the display, in contrast to a histogram.
 
 
 \paragraph*{Index Plot}
@@ -1797,11 +1886,11 @@ Done with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!plot!\inp
 function. These are good for plotting data which are ordered in the
 dataset, for example, when the data are measured over time. That is,
 the first observation was measured at time 1, the second at time 2,
-etc. It is a two dimensional plot, in which the index is the $x$
-variable and the observation is the $y$ variable. There are two plotting
-methods for index plots:
+\emph{etc}. It is a two dimensional plot, in which the index is the
+$x$ variable and the observation is the $y$ variable. There are
+two plotting methods for index plots:
 \begin{itemize}
-\item Spikes: this draws a vertical line from the $x$-axis to the observation
+\item Spikes: draws a vertical line from the $x$-axis to the observation
 height.
 \item Points: plots a simple point at the observation height.
 \end{itemize}
@@ -1827,27 +1916,24 @@ par(mfrow = c(1,1)) # back to normal
 Qualitative data are simply any type of data that are not numerical,
 or do not represent numerical quantities. Examples of qualitative
 variables include a subject's name, gender, race/ethnicity, political
-party, socio-economic status.
+party, socio-economic status, driver's license number, social security
+number (SSN).
 
-While some qualitative data only identify the observation (such as
-{}``name''), a large portion of qualitative data serve to subdivide
-a dataset into categories. Such categorial data have a
+While some qualitative data serve only to \emph{identify} the observation
+(such a subject's name, driver's license number, or SSN), and other
+qualitiative data serve to subdivide a data set into categories. In
+the above examples, gender, race, political party, and socio-economic
+status may be considered as factors.
 
-In the above examples, gender, race, political party, and socio-economic
-status may be considered as factors, while name would not be a factor.
-
-{}``A factor is a variable whose affect on another variable (called
-the response variable) is of interest to the experimenter''. they
-can be quantitative or qualitative. {}``Factor levels are the values
-of the factor utilized in the experiment.'' {}``categorical variables
-which indicate a subdivision of data such as social class, diagnosis,
-stage of disease, etc.'' They have a special status in \textsf{R}.
-They can be numeric or categorical, but even when numeric, their values
-don't have any numeric meaning (stage II cancer +stage1 cancer isn't
-stage 3 cancer).
+Factor levels are the values of the factor utilized in the experiment.''
+{}``categorical variables which indicate a subdivision of data such
+as social class, diagnosis, stage of disease, etc.'' They have a
+special status in \textsf{R}. They can be numeric or categorical,
+but even when numeric, their values don't have any numeric meaning
+(stage II cancer + stage I cancer isn't stage III cancer).
 
 The possible values for a factor are called its levels. For instance,
-the factor gender would have 2 levels, namely, male and female.
+the factor gender would have two levels, namely, male and female.
 
 
 \subsection*{Displaying Qualitative Data}
@@ -2033,30 +2119,32 @@ There are other shapes including uniform, J-shaped, etc.
 
 Introduced by Pearson in 1905 \url{http://jeff560.tripod.com/k.html}Another
 component to the shape of a distribution is how {}``peaked'' it
-is. Some distributions tend to have a flat shape with tails that are
-very thin; these are called \emph{platykurtic}. Examples are the uniformOn
-the other end of the spectrum are distributions with a steep peak,
-or spike, often accompanied by heavy tails; these are called \emph{leptokurtic}.
-Examples are the Laplace distribution and the logistic distribution.
-In the middle are distributions (called \emph{mesokurtic}) with a
-rounded peak and moderately sized tails. The standard example of a
-mesokurtic distribution is the famous bell-shaped curve, also known
-as the Gaussian, or normal, distribution, and binomial distribution
-can be mesokurtic for specific choices of $p$. 
+is. Some distributions tend to have a flat shape with thin tails.
+These are called \emph{platykurtic}, and an example of a platykurtic
+distribution is the uniform distribution; see Section BLANK. On the
+other end of the spectrum are distributions with a steep peak, or
+spike, which is accompanied by heavy tails; these are called \emph{leptokurtic}.
+Examples of leptokurtic distributions are the Laplace distribution
+and the logistic distribution. See Section BLANK. In between are distributions
+(called \emph{mesokurtic}) with a rounded peak and moderately sized
+tails. The standard example of a mesokurtic distribution is the famous
+bell-shaped curve, also known as the Gaussian, or normal, distribution,
+and binomial distribution can be mesokurtic for specific choices of
+$p$. See Sections BLANK, BLANK, and BLANK.
 
 
 \subsection{Clusters and Gaps\label{sub:Clusters-and-Gaps}}
 
 Clusters or gaps are sometimes observed in quantitative data distributions.
-indicate clumping of the data about distinct values, and gaps may
-exist between clusters. Clusters often suggest natural underlying
-grouping to the data. For example, perhaps we are studying how response
-time on a driving test is affected by alcohol consumption. There are
-two groups: one that receives an alcoholic beverage before taking
-a computerized driving test, and another group that receives a non-alcoholic
+They indicate clumping of the data about distinct values, and gaps
+may exist between clusters. Clusters often suggest an underlying grouping
+to the data. For example, perhaps we are studying how response time
+on a driving test is affected by alcohol consumption. Suppose there
+are two groups: one that received an alcoholic beverage before taking
+a computerized driving test, and another group that received a non-alcoholic
 beverage before taking the test. If response times are measured, we
-may see two clumps, with the lower clump having the lower response
-time.
+would conceivably observe two clumps, or groups of similar response
+times, with the alcoholic group showing a longer response time.
 
 
 \subsection{Extreme Observations and other Unusual Features\label{sub:Extreme-Observations-and}}
@@ -2074,13 +2162,12 @@ can often be fixed.
 \item \textbf{Maybe the observation was not meant for the study}, because
 it does not belong to the population of interest. For example, in
 medical reasearch some subjects may have relevant complications in
-their genealogical history that would suggest that they are inappropriate
-to be included in the experiment. Or when a manufacturing company
-is studying the properties of one of its devices, perhaps the product
-is malfunctioning and is not representative of the majority of the
-items. 
+their genealogical history that would rule out their participation
+in the experiment. Or when a manufacturing company investigates the
+properties of one of its devices, perhaps a particular product is
+malfunctioning and is not representative of the majority of the items.
 \item \textbf{Maybe it indicates a deeper trend or phenomenon}. Many of
-the most exciting scientific discoveries have been made when the investigator
+the most influential scientific discoveries were made when the investigator
 noticed an unexpected result, a value that was not predicted by the
 classical theory. Albert Einstein, Louis Pasteur, and others built
 their careers on exactly this circumstance.
@@ -2102,22 +2189,23 @@ we may want to see how the
 There
 
 The \textbf{\emph{sample mean}} is denoted $\xbar$ (read {}``$x$-bar'')
-and is simply the familiar arithmetic average of the observations\begin{equation}
+and is simply the arithmetic average of the observations:\begin{equation}
 \xbar=\frac{x_{1}+x_{2}+\cdots+x_{n}}{n}=\frac{1}{n}\sum_{i=1}^{n}x_{i}.\end{equation}
 
 \begin{itemize}
 \item Good: natural, easy to compute, has nice mathematical properties
 \item Bad: sensitive to extreme values
 \end{itemize}
-Is best used for datasets that are not highly skewed without extreme
-observations.
+It is appropriate for use with datasets that are not highly skewed
+without extreme observations.
 
 The \textbf{\emph{sample median}} is another popular measure of center
 and is denoted $\tilde{x}$. To calculate its value, first sort the
 data into an increasing sequence of numbers. If the data set has an
 odd number of observations then $\tilde{x}$ is the value of the middle
-observation (in the $(n+1)/2$ position); otherwise, there are two
-middle observations and $\tilde{x}$ is the average of their values.
+observation, which lies in position $(n+1)/2$; otherwise, there are
+two middle observations and $\tilde{x}$ is the average of those middle
+values.
 \begin{itemize}
 \item Good: resistant to extreme values, easy to describe
 \item Bad: not as mathematically tractable, need to sort the data to calculate
@@ -2156,21 +2244,27 @@ argument; \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mean(x, trim 
 
 \subsection{Order Statistics and the Sample Quantiles\label{sub:Order-Statistics-and}}
 
-A common first step in analyzing a data set is sorting the values.
+A common first step in an analysis of a data set is to sort the values.
 Given a data set $x_{1}$, $x_{2}$, \ldots{},$x_{n}$, we may sort
 the values to obtain an increasing sequence\begin{equation}
 x_{(1)}\leq x_{(2)}\leq x_{(3)}\leq\cdots\leq x_{(n)}\end{equation}
-and the resulting values are called the order statistics. The $k$$^{\text{th}}$
-entry in the list, $x_{(k)}$, is the $k$$^{\text{th}}$ order statistic.
+and the resulting values are called the \emph{order statistics}. The
+$k$$^{\text{th}}$ entry in the list, $x_{(k)}$, is the $k$$^{\text{th}}$
+order statistic, and approximately $100(k/n)$\% of the observations
+fall below $x_{(k)}$. The order statistics give an indication of
+the shape of the data distribution, in the sense that a person can
+look at the order statistics and have an idea about where the data
+are concentrated, and where they are sparse.
 
-There are unfortunately many definitions of the sample quantiles.
-In fact, R is equipped to calculate them using 9 distinct definitions!
+The \emph{sample quantiles} are related to the order statistics. Unfortunately,
+there is not a universally accepted definition of them. Indeed, \textsf{R}
+is equipped to calculate quantiles using nine distinct definitions!
 We will describe the default method (\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!type = 7!\inputencoding{utf8}),
 but the interested reader can see the details for the other methods
 with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!?quantile!\inputencoding{utf8}.
 
 Suppose the dataset has $n$ observations. Find the sample quantile
-of order $p$ ($0<p<1$) , denoted $\tilde{q}_{p}$ , in the following
+of order $p$ ($0<p<1$), denoted $\tilde{q}_{p}$ , in the following
 way:
 \begin{enumerate}
 \item Sort the data to obtain the order statistics $x_{(1)}$, $x_{(2)}$,
@@ -2181,18 +2275,18 @@ is an integer and $d$ is a decimal.
 \tilde{q}_{p}=x_{(k)}+d(x_{(k+1)}-x_{(k)}).\end{equation}
 
 \end{enumerate}
-The interpretation of $\tilde{q}_{p}$ is that approximately $100p$
-\% of the data fall below the value $\tilde{q}_{p}$ . 
+The interpretation of $\tilde{q}_{p}$ is that approximately $100p$\%
+of the data fall below the value $\tilde{q}_{p}$ . 
 
 Keep in mind that there is not a unique definition of percentiles,
-quartiles etc. Open a different book, and you'll find a different
+quartiles, \emph{etc}. Open a different book, and you'll find a different
 procedure. The difference is small and seldom plays a role except
-in small datasets with repeated values. In fact, most people don't
-notice.
+in small datasets with repeated values. In fact, most people do not
+even notice in common use.
 
-Clearly, the most popular sample quantile is $\tilde{q}_{0.50}$ ,
-a.k.a. the sample median, $\tilde{x}$. The closest runners-up are
-the \emph{first quartile} $\tilde{q}_{0.25}$ and the \emph{third
+Clearly, the most popular sample quantile is $\tilde{q}_{0.50}$,
+also known as the sample median, $\tilde{x}$. The closest runners-up
+are the \emph{first quartile} $\tilde{q}_{0.25}$ and the \emph{third
 quartile} $\tilde{q}_{0.75}$ (the \emph{second quartile} is the median). 
 
 
@@ -2202,30 +2296,33 @@ quartile} $\tilde{q}_{0.75}$ (the \emph{second quartile} is the median).
 \paragraph*{At the Command Prompt}
 
 We can find the order statistics of a data set stored in a vector
-x with the command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!sort(x)!\inputencoding{utf8}. 
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
+with the command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!sort(x)!\inputencoding{utf8}. 
 
 You can calculate the sample quantiles of any order $p$ where $0<p<1$
 for a dataset stored in a data vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
 with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!quantile!\inputencoding{utf8}
-function, for example, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!quantile(x, probs = c(0, 0.25, 0.37))!\inputencoding{utf8}.
-Simply change the values in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
-argument to the value $p$ .
+function, for instance, the command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!quantile(x, probs = c(0, 0.25, 0.37))!\inputencoding{utf8}
+will return the smallest observation, the first quartile, $\tilde{q}_{0.25}$,
+and the 37th sample quantile, $\tilde{q}_{0.37}$. For $\tilde{q}_{p}$
+simply change the values in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
+argument to the value $p$.
 
 
 \paragraph*{In \textsf{R} Commander}
 
 In \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
-we can find the order statistics of a variable in the Active data
-set by doing: \textsf{Data\lyxarrow{}Manage variables in Active data
-set\ldots{}\lyxarrow{}Compute new variable}\textsf{\emph{\ldots{}}}.
-In the \textsf{Expression to compute} dialog simply type \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!sort(varname)!\inputencoding{utf8},
+we can find the order statistics of a variable in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Active data set!\inputencoding{utf8}
+by doing \textsf{Data\lyxarrow{}Manage variables in Active data set\ldots{}\lyxarrow{}Compute
+new variable}\textsf{\emph{\ldots{}}}. In the \textsf{Expression
+to compute} dialog simply type \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!sort(varname)!\inputencoding{utf8},
 where \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!varname!\inputencoding{utf8}
 is the variable that it is desired to sort.
 
 In \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8},
-one can calculate the sample quantiles for a particular variable with
+we can calculate the sample quantiles for a particular variable with
 the sequence \textsf{Statistics\lyxarrow{}Summaries\lyxarrow{}Numerical
-Summaries\ldots{}}. You can automatically calculate the quartiles
+Summaries\ldots{}}. We can automatically calculate the quartiles
 for all variables in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Active data set!\inputencoding{utf8}
 with the sequence \textsf{Statistics\lyxarrow{}Summaries\lyxarrow{}Active
 Dataset}.
@@ -2236,14 +2333,14 @@ Dataset}.
 
 \paragraph*{Sample Variance and Standard Deviation}
 
-The sample variance is denoted $s^{2}$ and is calculated with the
-formula\begin{equation}
-s^{2}=\frac{1}{n-1}\sum_{i=1}^{n}(x_{i}-\xbar)^{2}\end{equation}
-The sample standard deviation is $s=\sqrt{s^{2}}$. Intuitively, the
-sample variance is approximately the average squared distance of the
-observations from the sample mean. The sample standard deviation is
-used to scale the estimate back to the measurement units of the original
-data. 
+The \emph{sample variance} is denoted $s^{2}$ and is calculated with
+the formula\begin{equation}
+s^{2}=\frac{1}{n-1}\sum_{i=1}^{n}(x_{i}-\xbar)^{2}.\end{equation}
+The \emph{sample standard deviation} is $s=\sqrt{s^{2}}$. Intuitively,
+the sample variance is approximately the average squared distance
+of the observations from the sample mean. The sample standard deviation
+is used to scale the estimate back to the measurement units of the
+original data. 
 \begin{itemize}
 \item Good: tractable, has nice mathematical/statistical properties
 \item Bad: sensitive to extreme values
@@ -2253,10 +2350,10 @@ data.
 
 Just as the sample mean is sensitive to extreme values, so the associated
 measure of spread is similarly sensitive to extremes. Further, the
-situation is exascerbated by the fact that the extreme distances are
+problem is exascerbated by the fact that the extreme distances are
 squared. We know that the sample quartiles are resistant to extremes,
-and a measure of spread associated with them is the Interquartile
-Range ($IQR$) defined by $IQR=q_{0.75}-q_{0.25}$. 
+and a measure of spread associated with them is the \emph{interquartile
+range} ($IQR$) defined by $IQR=q_{0.75}-q_{0.25}$. 
 \begin{itemize}
 \item Good: stable, resistant to outliers, robust to nonnormality, easy
 to explain
@@ -2267,8 +2364,8 @@ to explain
 \paragraph*{Median Absolute Deviation }
 
 The $IQR$ is useful as a first attempt at robustness to extreme observations,
-however, a much more robust choice is given by the Median Absolute
-Deviation ($MAD$). The absolute deviations are the nonnegative numbers
+however, a much more robust choice is given by the \emph{median absolute
+deviation} ($MAD$). The absolute deviations are the nonnegative numbers
 $|x_{1}-\tilde{x}|,\ |x_{2}-\tilde{x}|,\ldots,|x_{n}-\tilde{x}|$,
 and the $MAD$ is proportional to the median of these values:\begin{equation}
 MAD\propto\mbox{median}(|x_{1}-\tilde{x}|,\ |x_{2}-\tilde{x}|,\ldots,|x_{n}-\tilde{x}|)\end{equation}
@@ -2276,7 +2373,7 @@ That is, the $MAD=c\cdot\mbox{median}(|x_{1}-\tilde{x}|,\ |x_{2}-\tilde{x}|,\ldo
 where $c$ is a constant chosen so that the $MAD$ has nice properties.
 The value of $c$ in \textsf{R} is by default $c=1.4286$. This value
 is chosen to ensure that the estimator of $\sigma$ is correct, on
-the average.
+the average, under suitable sampling assumptions.
 \begin{itemize}
 \item Good: stable, excellently robust, even more so than the $IQR$
 \item Bad: not tractable, not well known or easy to explain, need to sort
@@ -2298,12 +2395,11 @@ However, once we are looking at the three numbers it is important
 to understand that the estimators are not all measuring the same quantity,
 on the average. In particular, it can be shown that when the data
 follow an approximately bell-shaped distribution, then on the average,
-the ssd $s$ and the $MAD$ will be the approximately the same value,
-namely $\sigma.$ However, it can be shown that in repeating a certain
-experiment many times over, the $IQR$ will be on the average 1.349
-times larger than $s$ and the $MAD$. Therefore, when comparing these
-three numbers side by side, one should first divide the $IQR$ by
-1.349. See Chapter BLANK for more details.
+the sample standard deviation $s$ and the $MAD$ will be the approximately
+the same value, namely, $\sigma.$ However, it can also be shown that
+in repeating a certain experiment many times, the $IQR$ will be on
+the average 1.349 times larger than $s$ and the $MAD$. See Chapter
+BLANK for more details.
 
 
 \subsection{How to do it with \textsf{R}}
@@ -2324,17 +2420,16 @@ is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mad(x)!\inputencodin
 \paragraph*{In \textsf{R} Commander}
 
 In \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
-we can calculate the $SSD$ with the \textsf{Statistics} \textsf{\lyxarrow{}}
-Summaries \textsf{\lyxarrow{}} \textsf{Numerical Summaries}\ldots{}
-combination. \textsf{R} Commander will not calculate the $IQR$ or
-$MAD$.
+we can calculate the sample standard deviation with the \textsf{Statistics\lyxarrow{}Summaries\lyxarrow{}Numerical
+Summaries}\ldots{} combination. \textsf{R} Commander does not calculate
+the $IQR$ or $MAD$ in any of the menu selections, by default.
 
 Chebychev's Rule: The proportion of observations within $k$ standard
 deviations of the mean, where , is at least , i.e., at least 75\%,
 89\%, and 94\% of the data are within 2, 3, and 4 standard deviations
 of the mean, respectively.
 
-Empirical Rule If data follow a bell-shaped curve, then approximately
+Empirical Rule: If data follow a bell-shaped curve, then approximately
 68\%, 95\%, and 99.7\% of the data are within 1, 2, and 3 standard
 deviations of the mean, respectively. 
 
@@ -2351,11 +2446,13 @@ g_{1}=\frac{1}{n}\frac{\sum_{i=1}^{n}(x_{i}-\xbar)^{3}}{s^{3}}.\end{equation}
 The sample skewness can be any value $-\infty<g_{1}<\infty$. The
 sign of $g_{1}$ indicates the direction of skewness of the distribution.
 Samples that have $g_{1}>0$ indicate right-skewed distributions (or
-positively skewed), and samples with $g_{1}<0$ indicate distributions
-that are left (negatively) skewed. Values of $g_{1}$ near zero indicate
-a symetric distribution. These are not hard and fast rules, however;
-the value of $g_{1}$ is subject to sampling variability and thus
-only provides a suggestion to the skewness of the underlying distribution.
+positively skewed), and samples with $g_{1}<0$ indicate left-skewed
+distributions (or negatively skewed). Values of $g_{1}$ near zero
+indicate a symmetric distribution. These are not hard and fast rules,
+however. The value of $g_{1}$ is subject to sampling variability
+and thus only provides a suggestion to the skewness of the underlying
+distribution. 
+
 Need to talk about {}``how big is big?'' Rule of thumb is to should
 be no bigger than $2\cdot\sqrt{6/n}$. Reference to Tabachnick \&
 Fidell.
@@ -2370,22 +2467,17 @@ g_{2}=\frac{1}{n}\frac{\sum_{i=1}^{n}(x_{i}-\xbar)^{4}}{s^{4}}-3.\end{equation}
 The first term in the formula is always nonnegative, implying that
 the sample excess kurtosis takes values $-3\leq g_{2}<\infty$. The
 subtraction of 3 may seem mysterious to the reader, but it is done
-so that mound shaped samples have values of $g_{2}$ near $0$, and
-is associated with the fourth cumulant over the square root of the
-second cumulant. Samples with $g_{2}>0$ are called leptokurtic, and
-samples with $g_{2}<0$ are called platykurtic. Samples with $g_{2}\approx0$
-are called mesokurtic. $ $
+so that mound shaped samples have values of $g_{2}$ near $0$. Samples
+with $g_{2}>0$ are called leptokurtic, and samples with $g_{2}<0$
+are called platykurtic. Samples with $g_{2}\approx0$ are called mesokurtic.
+$ $
 
 Notice that both the sample skewness and the sample kurtosis are independent
-of location and scale, in other words, the value of $g_{1}$ and $g_{2}$
-does not depend on the units used for measurement.
+of location and scale, in other words, the values of $g_{1}$ and
+$g_{2}$ do not depend on the measurement units.
 
 Need to talk about {}``how big is big?'' Rule of thumb is to divide
 by $2\cdot\sqrt{24/n}$. Reference to Tabachnick \& Fidell.
-
-sdfasdfsdf
-
-fasdaf
 
 
 \subsection{How to do it with \textsf{R}}
@@ -2406,15 +2498,16 @@ by default.
 
 This field was founded (mostly) by John Tukey (1915-2000). Its tools
 are useful when not much is known regarding the underlying causes
-associated with the dataset, and are often used for checking assumptions.We
-do a project and collect some data... then what? We look at the data
-using important visual tools.
+associated with the dataset, and are often used for checking assumptions.
+For example, suppose we perform an experiment and collect some data\ldots{}
+now what? We look at the data using exploratory visual tools.
 
 
 \subsection{More About Stemplots}
 
-The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!stem.leaf!\inputencoding{utf8}
-function has several options available. 
+There are many bells and whistles associated with stemplots, and the
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!stem.leaf!\inputencoding{utf8}
+function can do many of them.
 \begin{enumerate}
 \item Trim Outliers.
 \item Splitting Stems. 
@@ -2428,8 +2521,6 @@ inward and including the outliers.
 x <- c(109, 84, 73, 42, 61, 51,54, 71, 47, 70, 65, 57,69, 82, 76, 60, 38, 81,76, 85, 58, 73, 65, 42)
 stem.leaf(x)
 @
-
-The 
 
 
 \paragraph*{Variations:}
@@ -2455,12 +2546,11 @@ what you expected. There are several reasons for this:
 \begin{itemize}
 \item Stemplots by default will trim extreme observations (defined in Section
 \ref{sub:Outliers}) from the display. This in some cases will result
-in stem plots that are not as wide as you may have expected.
-\item The leafs digit is chosen automatically by \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!stem.leaf()!\inputencoding{utf8}
+in stemplots that are not as wide as expected.
+\item The leafs digit is chosen automatically by \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!stem.leaf!\inputencoding{utf8}
 according to an algorithm that the computer believes will represent
-the data well. Depending on the choice of the digit, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!stem.leaf()!\inputencoding{utf8}
-may drop digits from the data or round the values in ways that you
-may have not expected.
+the data well. Depending on the choice of the digit, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!stem.leaf!\inputencoding{utf8}
+may drop digits from the data or round the values in unexpected ways.
 \end{itemize}
 <<>>=
 stem.leaf(rivers)
@@ -2477,16 +2567,20 @@ Given a dataset $x_{1}$, $x_{2}$, \ldots{}, $x_{n}$, the hinges
 are found by the following method: 
 \begin{itemize}
 \item Find the order statistics $x_{(1)}$, $x_{(2)}$, \ldots{}, $x_{(n)}$. 
-\item The \emph{lower hinge} $h_{L}$ is in position $L=\left\lfloor (n+3)/2\right\rfloor /2$.
-If the result is not an integer, then the hinge is the average of
-the adjacent order statistics.
+\item The \emph{lower hinge} $h_{L}$ is in position $L=\left\lfloor (n+3)/2\right\rfloor /2$,
+where the symbol $\left\lfloor x\right\rfloor $ denotes the largest
+integer less than or equal to $x$. If the position $L$ is not an
+integer, then the hinge $h_{L}$ is the average of the adjacent order
+statistics.
 \item The \emph{upper hinge} $h_{U}$ is in position $n+1-L$.
 \end{itemize}
-Now that we have the hinges, the Five Number Summary ($5NS$) is defined
+Given the hinges, the \emph{five number summary} ($5NS$) is defined
 to be\begin{equation}
 5NS=(x_{(1)},\ h_{L},\ \tilde{x},\ h_{U},\ x_{(n)})\end{equation}
-An advantage of the $5NS$ is that it reduces a large dataset to a
-set of only five numbers. 
+An advantage of the $5NS$ is that it reduces a potentially large
+dataset to a shorter list of only five numbers, and further, these
+numbers give insight regarding the shape of a data distribution similar
+to the sample quantiles in Section BLANK.
 
 
 \subsection{How to do it with \textsf{R}}
@@ -2502,51 +2596,65 @@ function.
 \subsection{Boxplots\label{sub:Boxplots} }
 
 A boxplot is essentially a graphical representation of the $5NS$.
-These are a useful alternative to stripcharts when the sample size
-is large. 
+It can be a handy alternative to a stripchart when the sample size
+is large.
 
-A boxplot is constructed by drawing a box with sides located at the
-upper and lower hinges. A line is drawn parallel to the sides to denote
-the sample median. Lastly, whiskers are extended from the sides of
-the box extending to the maximum and minimum values.
+A boxplot is constructed by drawing a box alongside the data axis
+with sides located at the upper and lower hinges. A line is drawn
+parallel to the sides to denote the sample median. Lastly, whiskers
+are extended from the sides of the box to the maximum and minimum
+data values (more precisely, to the most extreme values that are not
+potential outliers, defined below).
 
-Boxplots are useful for quick visual summaries of data sets, and the
+Boxplots are good for quick visual summaries of data sets, and the
 relative positions of the values in the $5NS$ are good at indicating
 the underlying shape of the data distribution, although perhaps not
-as effectively as a histogram. One of the strongest advantages of
-boxplots is that they help to objectively identify extreme observations
-in the data set, as described in the next section.
+as effectively as a histogram. Perhaps the greatest advantage of a
+boxplot is that it can help to objectively identify extreme observations
+in the data set as described in the next section.
 
-Boxplots are good because you can address all features of datasets
-using boxplots:
-\begin{enumerate}
-\item Center: a measure of center is given by the sample median, $\tilde{x}$.
-\item Spread: this can be judged by the width of the box, $h_{U}-h_{L}$.
+Boxplots are also good because one can visually assess multiple features
+of the data set simultaneously:
+\begin{description}
+\item [{Center}] can be estimated by the sample median, $\tilde{x}$.
+\item [{Spread}] can be judged by the width of the box, $h_{U}-h_{L}$.
 We know that this will be close to the $IQR$, which can be compared
-to $s$ and the $MAD$ after dividing by 1.349.
-\item Shape: boxes with unbalanced whiskers indicate skewness in the direction
-of the long whisker. Skewed distributions often have the median tending
-in the opposite direction of skewness. Kurtosis can be assessed using
-the box and whiskers. A wide box with short whiskers will tend to
-be platykurtic, while a skinny box with wide whiskers indicates leptokurtic
-distributions.
-\item Extreme observations are identified with open circles (see below).
-\end{enumerate}
+to $s$ and the $MAD$, perhaps after rescaling if appropriate.
+\item [{Shape}] is indicated by the relative lengths of the whiskers, and
+the position of the median inside the box. Boxes with unbalanced whiskers
+indicate skewness in the direction of the long whisker. Skewed distributions
+often have the median tending in the opposite direction of skewness.
+Kurtosis can be assessed using the box and whiskers. A wide box with
+short whiskers will tend to be platykurtic, while a skinny box with
+wide whiskers indicates leptokurtic distributions.
+\item [{Extreme~observations}] are identified with open circles (see below).
+\end{description}
 
 \subsection{Outliers\label{sub:Outliers} }
 
-A potential outlier is defined to be any observation that extends
-beyond 1.5 times the $IQR$ from the box. A suspected outlier is any
-observation that extends beyond 3 $IQR$ from the box. In \textsf{R},
-potential and suspected outliers (if present) are denoted by open
-circles. In this case, the whiskers of the boxplot are then shortened
-to extend to the most extreme observation that is not a potential
-outlier. If an outlier is displayed in a boxplot, the index of the
-observation may be identified in a subsequent plot with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
+A \emph{potential outlier} is any observation that falls beyond 1.5
+times the width of the box on either side, that is, any observation
+less than $h_{L}-1.5(h_{U}-h_{L})$ or greater than $h_{U}+1.5(h_{U}-h_{L})$.
+A \emph{suspected outlier} is any observation that falls beyond 3
+times the width of the box on either side. In \textsf{R}, both potential
+and suspected outliers (if present) are denoted by open circles; there
+is no distinction between the two. 
+
+When potential outliers are present, the whiskers of the boxplot are
+then shortened to extend to the most extreme observation that is not
+a potential outlier. If an outlier is displayed in a boxplot, the
+index of the observation may be identified in a subsequent plot in
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
 by clicking the \textsf{Identify outliers with mouse} option in the
 \textsf{Boxplot} dialog.
 
-What do we do about outliers? They merit further investigation.
+What do we do about outliers? They merit further investigation. The
+primary goal is to determine why the observation is outlying, if possible.
+If the observation is a typographical error, then it should be corrected
+before continuing. If the observation is from a subject that does
+not belong to the population of interest, then perhaps the datum should
+be removed. Otherwise, perhaps the value is hinting at some hidden
+structure to the data.
 
 
 \subsubsection*{Standardizing variables}
@@ -2557,24 +2665,22 @@ that does not depend on the measurement units.
 
 \section{Multivariate Data and Data Frames\label{sec:Multivariate-Data}}
 
-Sometimes more than one measurement is taken on a single individual
-in a particular study. Bivariate Data and Data Frames
-
 We have had experience with vectors of data, which are long lists
 of numbers. Typically, each entry in the vector is a single measurement
-on a subject, or experimental unit in the study. Vectors can be formed
-with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!c!\inputencoding{utf8}
-function or the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!scan()!\inputencoding{utf8}
-function. However, in statistics one often encounters situations where
-there are two (or more) measurements associated with each subject
-in the study, and we would like to display the information in a rectangular
-array or table. In the table, each row corresponds to a subject in
-the study, and the columns contain the measurements for each respective
-variable. For example, if one were to measure the height and weight
-of each of 11 persons in a research study, the information could be
-represented with a rectangular array: there would be 11 rows. Each
-row would have the person's height in the first column and weight
-in the second column.
+on a subject or experimental unit in the study. We saw in Section
+BLANK how to form vectors with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!c!\inputencoding{utf8}
+function or the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!scan!\inputencoding{utf8}
+function. 
+
+However, statistical studies often involve experiments where there
+are two (or more) measurements associated with each subject. We display
+the measured information in a rectangular array, or table. In the
+table, each row corresponds to a subject, and the columns contain
+the measurements for each respective variable. For instance, if one
+were to measure the height and weight of each of 11 persons in a research
+study, the information could be represented with a rectangular array.
+There would be 11 rows. Each row would have the person's height in
+the first column and weight in the second column.
 
 The corresponding objects in \textsf{R} are called \emph{data frames},
 and they can be constructed with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!data.frame!\inputencoding{utf8}
@@ -2585,16 +2691,22 @@ and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!y!\inputencoding{ut
 and we want to make a data frame out of them.
 \end{example}
 <<>>=
-x = 5:8
-y = 3:6
+x <- 5:8
+y <- letters[3:6]
 data.frame(x,y)
 @
 
 Notice that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
 and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!y!\inputencoding{utf8}
-are the same length. This is \emph{necessary}. Also notice that the
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!data.frame!\inputencoding{utf8}
-function is a convenient way to print out tables in \textsf{R}.
+are the same length. This is \emph{necessary}. Also notice that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
+is a numeric vector and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!y!\inputencoding{utf8}
+is a character vector. We may choose numeric and character vectors
+(or even factors) for the columns of the dataframe, but each column
+must be of exactly one type. That is, we can have a column for \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!height!\inputencoding{utf8}
+and a column for \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!gender!\inputencoding{utf8},
+but we will get an error if we try to mix function \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!height!\inputencoding{utf8}
+(numeric) and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!gender!\inputencoding{utf8}
+(character or factor) information in the same column.
 
 
 \subsection{Bivariate Data\label{sub:Bivariate-Data}}
@@ -2604,7 +2716,7 @@ What about the correlation coefficient?
 
 \subsubsection*{Displaying Bivariate Data}
 \begin{itemize}
-\item Two-Way Tables. You can do this with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!table()!\inputencoding{utf8},
+\item Two-Way Tables. You can do this with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!table!\inputencoding{utf8},
 or in \textsf{R} Commander by following \textsf{Statistics \lyxarrow{}Contingency
 Tables \lyxarrow{}} \textsf{Two-way Tables}. You can also enter and
 analyze a two-way table. Example: BLANK
@@ -2641,7 +2753,7 @@ matplot(rnorm(100), rnorm(100), type="b", lty=1, pch=1)
 
 Displaying Multivariate Data
 \begin{itemize}
-\item Multi-Way Tables. You can do this with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!table()!\inputencoding{utf8},
+\item Multi-Way Tables. You can do this with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!table!\inputencoding{utf8},
 or in \textsf{R} Commander by following \textsf{Statistics} \textsf{\lyxarrow{}}
 \textsf{Contingency Tables} \textsf{\lyxarrow{}} \textsf{Multi-way
 Tables}. Example: BLANK
@@ -2687,8 +2799,8 @@ boxplots are proportional to $\sqrt{n_{i}}$, where $n_{i}$ is the
 size of the $i^{\text{th}}$ group. Why? Because many statistics have
 variability proportional to the reciprocal of the square root of the
 sample size.
-\item Notches: (if requested) extend to $1.58\cdot IQR/\sqrt{n}$. The idea
-appears to be to give roughly a 95\% confidence interval for the difference
+\item Notches: (if requested) extend to $1.58\cdot(h_{U}-h_{L})/\sqrt{n}$.
+The idea is to give roughly a 95\% confidence interval for the difference
 in two medians. See Chapter BLANK.
 \end{itemize}
 \item Stripchart(Rcmdr, console)
@@ -2847,8 +2959,8 @@ names(RcmdrTestDrive)
 
 To load the data in the \textsf{R} Commander (\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}),
 click the \textsf{Data Set} button, and select \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!RcmdrTestDrive!\inputencoding{utf8}
-as the active data set. To learn more about the data and where they
-come from, type \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!?RcmdrTestDrive!\inputencoding{utf8}
+as the active data set. To learn more about the data set and where
+it comes from, type \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!?RcmdrTestDrive!\inputencoding{utf8}
 at the command line.
 \begin{xca}
 Perform a summary of all variables in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!RcmdrTestDrive!\inputencoding{utf8}.
@@ -3232,7 +3344,7 @@ to our statements above.\end{enumerate}
 \chapter{Probability}
 
 In this chapter, we define the basic terminology associated with probability
-and derive some of its properties. We discuss two interpretations
+and derive some of its properties. We discuss three interpretations
 of probability. We discuss conditional probability and independent
 events, along with Bayes' Theorem. We finish the chapter with an introduction
 to random variables.
@@ -3263,57 +3375,103 @@ which paves the way for the next two chapters.
 In this book we distinguish between two types of experiments: \emph{deterministic}
 and \emph{random}. A \emph{deterministic} experiment is one whose
 outcome may be predicted with certainty beforehand, such as combining
-Hydrogen and Oxygen, or adding two numbers such as $2+3$. In contrast,
-a \emph{random} experiment is one whose outcome is determined by chance.
-We posit that the outcome of a random experiment may not be predicted
-with certainty beforehand, even in principle. An example of a random
-experiment would be flipping a coin. For the remainer of what follows,
-we will focus on random experiments.
+Hydrogen and Oxygen, or adding two numbers such as $2+3$. A \emph{random}
+experiment is one whose outcome is determined by chance. We posit
+that the outcome of a random experiment may not be predicted with
+certainty beforehand, even in principle. Examples of random experiments
+include flipping a coin, rolling a die, and throwing a dart on a board.
+But there are all sorts of other random experiments, like how many
+red lights you encounter on the drive home, how many ants traverse
+a certain patch of sidewalk over a short period, \emph{etc}. 
 
 For a random experiment $E$, the set of all possible outcomes of
-$E$ is called the \textbf{\emph{sample space}} and is denoted by
-the letter $S$. For the coin flipping experiment, $S$ would be the
-results {}``Head'' and {}``Tail'', which we may represent by $S=\left\{ H,T\right\} $.
+$E$ is called the \emph{sample space} and is denoted by the letter
+$S$. For the coin flipping experiment, $S$ would be the results
+{}``Head'' and {}``Tail'', which we may represent by $S=\left\{ H,T\right\} $.
 Formally, the performance of a random experiment is the unpredictable
 selection of an outcome in $S$.
 
-An \textbf{\emph{event}} $A$ is merely a collection of outcomes,
-or in other words, a subset of the sample space%
+An \emph{event} $A$ is merely a collection of outcomes, or in other
+words, a subset of the sample space%
 \footnote{This naive definition works for finite or countably infinite sample
 spaces, but is inadequate for sample spaces in general. In this book,
 we will not address the subtleties that arise, but will refer the
 interested reader to any text on advanced probability or measure theory.%
-}. After performing a random experiment $E$, we say that the event
-$A$ \emph{occurred} if the outcome belongs to $A$. 
+}. After the performance of a random experiment $E$ we say that the
+event $A$ \emph{occurred} if the experiment's outcome belongs to
+$A$. We say that a bunch of events $A_{1}$, $A_{2}$, $A_{3}$,
+\ldots{} are \emph{mutually exclusive} or \emph{disjoint} if $A_{i}\cap A_{j}=\emptyset$
+for any distinct pair $A_{i}\neq A_{j}$. For instance, in the coin-toss
+experiment the events $A=\left\{ \mbox{Heads}\right\} $ and $B=\left\{ \mbox{Tails}\right\} $
+would be mutually exclusive. Now would be a good time to review the
+algebra of sets in Appendix BLANK.
 
-The events $A_{1}$, $A_{2}$, $A_{3}$, \ldots{} are said to be
-\emph{mutually exclusive} or \emph{disjoint} if $A_{i}\cap A_{j}=\emptyset$
-for any distinct pair $A_{i}\neq A_{j}$.
+For the remainder of this section, let us take a look at the coin-toss
+experiment more closely. What do we mean when we say {}``the probability
+of Heads'' or write $\P(\mbox{Heads})$? Given a coin and an itchy
+thumb, how do we go about finding what $\P(\mbox{Heads})$ should
+be? We will discuss three popular approaches to this problem.
 
-Now would be a good time to review the algebra of sets in Appendix
-BLANK.
 
+\subsection{The Measure Theory Approach}
 
-\subsection{The Measure Theoretic Approach}
+This approach states that the way to handle $\P(\mbox{Heads})$ is
+to define a mathematical function, called a \emph{probability measure},
+on the sample space. Probability measures satisfy certain axioms (to
+be introduced later) and have special mathematical properties, so
+not just any mathematical function will do. But in any given physical
+circumstance there are typically a large class of probability measures
+from which to choose, and it is left to the experimenter to make a
+reasonable choice -- which is usually based on considerations of objectivity.
+For the tossing coin example, a valid probability measure assigns
+probability $p$ to the event $\left\{ \mbox{Heads}\right\} $, where
+$p$ is some number $0\leq p\leq1$. An experimenter that wishes to
+capitalize on the symmetry of the the coin to balance the outcome
+of $\left\{ \mbox{Heads}\right\} $ and $\left\{ \mbox{Tails}\right\} $
+would choose $p=1/2$.
 
-Probabilities are assigned to events according to a function. Probability
-is formalized and founded on a set of mathematical axioms. Events
-are assigned probabilities by means of a function known as a \emph{probability
-measure}. Probability measures are defined and their properties are
-studied. Probabilities are assigned to events by means of the probability
-measure. In this way, the probability of an event is simply a value
-of a mathematical function.
+Once the probability measure is chosen (or determined), there is not
+much left to do. All assignments of probability are made by the probability
+function, and the experimenter needs only to plug the event $A$ into
+to the probability function to find $\P(\mbox{Heads})$. In this way,
+the probability of an event is simply a calculated value, nothing
+more, nothing less. Of course this is not the whole story; there are
+many theorems and consequences associated with this approach that
+will keep us occupied for the remainder of this book. It is called
+measure theory because the measure (probability) of a set (event)
+is associated with how big it is (how likely it is to occur).
+
+The measure theory approach works well in situations where there is
+symmetry to the experiment, such as flipping a balanced coin or spinning
+an arrow around a circle with well-defined pie slices. It is also
+good because of its mathematical simplicity, elegance, and flexibility.
+There are literally volumes of information that one can prove about
+probability measures, and the cold rules of mathematics allow us to
+analyze intricate probabilistic problems with confidence. The large
+degree of flexibility is also a disadvantage, however. When symmetry
+fails it is not always obvious what an {}``objective'' choice of
+probability measure should be; for instance, what probability should
+we assign to $\left\{ \mbox{Heads}\right\} $ if we spin the coin
+rather than flip it? (It is not $1/2$.) Furthermore, the mathematical
+rules can be restrictive if we wish to incorporate subjective knowledge
+into the mathematical model, knowledge which changes over time and
+depends on the experimenter, for example, personal knowledge about
+the properties of the specific coin being flipped, or of the person
+doing the flipping.
+
+The mathematician who revolutionized this way to do probability theory
+was Andrey Kolmogorov, who published a landmark monograph in 1933.
+See \url{http://www-history.mcs.st-andrews.ac.uk/Mathematicians/Kolmogorov.html}
+for more information.
 
 
 \subsection{Relative Frequency Approach}
 
-Mention Richard Edlar von Mises
-
-This approach states that the way to determine $\P(A)$ is to flip
-the coin repeatedly, in exactly the same way each time. Keep a tally
-of the number of flips and the number of Heads observed. Then a good
-approximation to $\P(A)$ will be\begin{equation}
-\P(A)\approx\frac{\mbox{number of observed heads}}{\mbox{total number of flips}}.\end{equation}
+This approach states that the way to determine $\P(\mbox{Heads})$
+is to flip the coin repeatedly, in exactly the same way each time.
+Keep a tally of the number of flips and the number of heads observed.
+Then a good approximation to $\P(\mbox{Heads})$ will be\begin{equation}
+\P(\mbox{Heads})\approx\frac{\mbox{number of observed Heads}}{\mbox{total number of flips}}.\end{equation}
 
 
 The basis for this approach is the celebrated \textbf{Law of Large
@@ -3332,49 +3490,54 @@ As the reasoning goes, to learn about the probability of an event
 $A$ we need only repeat the random experiment to get a reasonable
 estimate of its numerical value, and if we are not satisfied with
 our estimate then we may simply repeat the experiment more times,
-all the while confident that with more and more experiments, our estimate
-will stabilize at the true value.,The frequentist approach is good
-because it is assumption free and does not need symmetry like the
-classical method. The drawback to the method is that one can never
-know the exact value of a probability, only a long-run approximation.
-It also does not work well with experiments that can not be repeated
-indefinitely, say, the probability that it will rain today, the chances
-that you get will get an A in your Statistics class, or the probability
-that the world is destroyed by nuclear war. 
+all the while confident that with more and more experiments our estimate
+will stabilize to the true value. The frequentist approach is good
+because it relatively light on assumptions and does not worry about
+symmetry or claims of objectivity like the measure-theoretic approach.
+It is perfect for the spinning coin experiment. One drawback to the
+method is that one can never know the exact value of a probability,
+only a long-run approximation. It also does not work well with experiments
+that can not be repeated indefinitely, say, the probability that it
+will rain today, the chances that you get will get an A in your Statistics
+class, or the probability that the world is destroyed by nuclear war.
+
+This approach was espoused by Richard von Mises in the early twentieth
+century, and some of his main ideas were incorporated into the measure
+theory approach. See \url{http://www-history.mcs.st-andrews.ac.uk/Biographies/Mises.html}
+for more.
 
 
-\subsection{Subjective View}
+\subsection{The Subjective Approach}
 
-Mention Richard T. Cox.
+The subjective approach interprets probability as the experimenter's
+\emph{degree of belief} that the event will occur. The estimate of
+the probability of an event is based on the totality of the individual's
+knowledge at the time. As new information becomes available, the estimate
+is modified accordingly to best reflect his/her current knowledge.
+The method by which the probabilities are updated is commonly done
+with Bayes' Rule, discussed in Section BLANK. 
 
-The estimate of the probability of an event is based on the totality
-of the individual's knowledge at the time. As new information becomes
-available, the estimate is modified accordingly to best reflect one's
-current knowledge. The method by which the probabilities are updated
-is commonly done with Bayes' Rule, discussed in Section BLANK.
-
-This approach works well in situations that may not be repeated indefinitely.
-The chances that you get an A in this class, the probability of a
-devastating nuclear war, or the likelihood that a cure for the common
-cold will be discovered.
-
-The subjective view represents a probability by the degree of belief
-that a certain event will occur. So for example, a person may have
-$\P(A)=1/2$ in the absence of additional information. However, perhaps
-the observer knows additional information about the coin or the thrower,
-that would shift the probability in a certain direction.
-
-Subjective probabilities are strongest with events that cannot be
-repeated indefinitely.
-
-The author has witnessed probabilistic incidents in which the. Parlor
+So for the coin toss example, a person may have $\P(\mbox{Heads})=1/2$
+in the absence of additional information. But perhaps the observer
+knows additional information about the coin or the thrower that would
+shift the probability in a certain direction. For instance, parlor
 magicians may be trained to be quite skilled at tossing coins, and
 some are so skilled that they may toss a fair coin and get nothing
-but Heads, indefinitely. I have \emph{seen} this. It has been reported
-in Bringing Down the House that MIT students were good enough with
-cards to be able to cut a deck of cards to the same location, every
-single time. Be wary about assuming that the outcomes are equally
-likely.
+but Heads, indefinitely. I have \emph{seen} this. It was similarly
+claimed in \emph{Bringing Down the House} BLANK that MIT students
+were accomplished enough with cards to be able to cut a deck to the
+same location, every single time. In such cases, one clearly should
+use the additional information to assign $\P(\mbox{Heads})$ away
+from the symmetry value of $1/2$.
+
+This approach works well in situations that cannot be repeated indefinitely,
+for example, to assign your probability that you will get an A in
+this class, the chances of a devastating nuclear war, or the likelihood
+that a cure for the common cold will be discovered.
+
+The roots of subjective probability reach back a long time. See \url{http://en.wikipedia.org/wiki/Subjective_probability}
+for a short discussion and links to references about the subjective
+approach. 
 
 
 \section{Properties of Probability\label{sec:Properties-of-Probability}}
@@ -3382,12 +3545,10 @@ likely.
 
 \subsection{Probability Functions\label{sub:Probability-Functions}}
 
-A probability function is a rule that associates with each event $A$
-of the sample space a unique number $\P(A)=p$, called the probability
-of $A$. 
-
-Any probability function $\P$ satisfies the following three Kolmogorov
-Axioms:
+A \emph{probability function} is a rule that associates with each
+event $A$ of the sample space a unique number $\P(A)=p$, called
+the probability of $A$. Any probability function $\P$ satisfies
+the following three Kolmogorov Axioms:
 \begin{ax}
 $\P(A)\geq0$ for any event $A\subset S$.
 \end{ax}
@@ -3403,17 +3564,18 @@ and furthermore,\begin{equation}
 \P\left(\bigcup_{i=1}^{\infty}A_{i}\right)=\sum_{i=1}^{\infty}\P(A_{i}).\end{equation}
 
 \end{ax}
-The intuitive meanings of the axioms are as follows: first, the probability
-of an event should never be negative. And since the sample space contains
-all possible outcomes, its probability should be 1, or 100\%. The
-final axiom may look intimidating, but it simply means that for a
-sequence of disjoint events (in other words, that do not overlap),
-their total probability should be the sum of their individual probabilities,
-or pieces. So for example, the chance of rolling a 1 or a 2 on a die
-is the chance of rolling a 2 plus the chance of rolling a 1.
+The intuition behind the axioms: first, the probability of an event
+should never be negative. And since the sample space contains all
+possible outcomes, its probability should be one, or 100\%. The final
+axiom may look intimidating, but it simply means that for a sequence
+of disjoint events (in other words, sets that do not overlap), their
+total probability (measure) should equal the sum of its parts. For
+example, the chance of rolling a 1 or a 2 on a die is the chance of
+rolling a 1 plus the chance of rolling a 2. The connection to measure
+theory could not be more clear.
 
 
-\subsection{Properties: }
+\subsection{Properties}
 
 For any events $A$ and $B$,
 \begin{enumerate}
@@ -3468,23 +3630,23 @@ equal chances of occurring. The probability function associated with
 this model must satisfy $\P(S)=1$, by Axiom 2. On the other hand,
 it must also satisfy\[
 \P(S)=\P(\left\{ a_{1},\ a_{2},\ldots,a_{N}\right\} )=\P(a_{1}\cup a_{2}\cup\cdots\cup a_{N})=\sum_{i=1}^{N}\P(a_{i}),\]
-by Axiom 3. Since $\P(a_{i})$ is the same for all $i$, each must
-necessarily equal $1/N$. 
+by Axiom 3. Since $\P(a_{i})$ is the same for all $i$, each one
+necessarily equals $1/N$. 
 
 For an event $A\subset S$, we write it as a collection of elementary
 outcomes: if $A=\left\{ a_{i_{1}},a_{i_{2}},\ldots,a_{i_{k}}\right\} $
 then $A$ has $k$ elements and \begin{align*}
-\P(A) & =\P(a_{i_{1}})+\P(a_{i_{2}})+\cdots+\P(a_{i_{k}})\\
- & =\frac{1}{N}+\frac{1}{N}+\cdots+\frac{1}{N}\\
- & =\frac{k}{N}=\frac{\#(A)}{\#(S)}\end{align*}
+\P(A) & =\P(a_{i_{1}})+\P(a_{i_{2}})+\cdots+\P(a_{i_{k}}),\\
+ & =\frac{1}{N}+\frac{1}{N}+\cdots+\frac{1}{N},\\
+ & =\frac{k}{N}=\frac{\#(A)}{\#(S)}.\end{align*}
 In other words, under the equally likely model, the probability of
-an event $A$ depends only on the number of elementary events that
+an event $A$ is determined by the number of elementary events that
 $A$ contains.
 \begin{example}
-Consider the random experiment $E$ above of tossing a coin. Then
-the sample space $S=\{H,T\}$, and under the equally likely model,
-these two outcomes have $\P(H)=\P(T)=1/2$. This model is taken when
-it is reasonable to assume that the coin is fair.
+Consider the random experiment $E$ of tossing a coin. Then the sample
+space is $S=\{H,T\}$, and under the equally likely model, these two
+outcomes have $\P(H)=\P(T)=1/2$. This model is taken when it is reasonable
+to assume that the coin is fair.
 \end{example}
 
 \begin{example}
@@ -3501,8 +3663,8 @@ thus, $\P(\mbox{at least 1 Head})=3/4$.
 What is $\P(\mbox{no Heads})$? Notice that the event $\left\{ \mbox{no Heads}\right\} =\left\{ \mbox{at least one Head}\right\} ^{c}$,
 which by Property BLANK means $\P(\mbox{no Heads})=1-\P(\mbox{at least one Head})=1-3/4=1/4$.
 It is obvious in this simple example that the only outcome with no
-Heads is $TT$, however, the complement trick is useful in more complicated
-circumstances.
+Heads is $TT$, however, this complementation trick is useful in more
+complicated circumstances.
 \end{example}
 
 \begin{example}
@@ -3515,7 +3677,7 @@ BBG, & BGG, & GBG, & GGG\end{array}\right\} .\]
 Note that for many reasons (for instance, it turns out that girls
 are slightly more likely to be born than boys), this sample space
 is \emph{not} equally likely. For the sake of argument, however, we
-will assume that the outcomes each have probability $1/8$.
+will assume that the elementary outcomes each have probability $1/8$.
 
 What is $\P(\mbox{exactly 2 Boys})$? Inspecting the sample space
 reveals three outcomes with exactly two boys: $\left\{ BBG,\, BGB,\, GBB\right\} $.
@@ -3539,18 +3701,19 @@ the six outcomes are equally likely.
 
 \begin{example}
 Consider a standard deck of 52 cards. These are usually labeled with
-the four suits: Clubs, Diamonds, Hearts, and Spades, and the 13 ranks:
-2, 3, 4, \ldots{}, 10, Jack (J), Queen (Q), King (K), and Ace (A).
-Depending on the game played, the Ace may be ranked below 2 or above
-King. 
+the four \emph{suits}: Clubs, Diamonds, Hearts, and Spades, and the
+13 \emph{ranks}: 2, 3, 4, \ldots{}, 10, Jack (J), Queen (Q), King
+(K), and Ace (A). Depending on the game played, the Ace may be ranked
+below 2 or above King. 
 
 Let the random experiment $E$ consist of drawing exactly one card
-from a well-shuffled deck, and the outcome be the face of the card.
-Define the events $A=\left\{ \mbox{draw an Ace}\right\} $ and $B=\left\{ \mbox{draw a Club}\right\} $.
-Keep in mind: we are only drawing one card. 
+from a well-shuffled deck, and let the outcome be the face of the
+card. Define the events $A=\left\{ \mbox{draw an Ace}\right\} $ and
+$B=\left\{ \mbox{draw a Club}\right\} $. Bear in mind: we are only
+drawing one card.
 
 Immediately we have $\P(A)=4/52$ since there are four Aces in the
-deck; similarly, there are $13$ Clubs implying $\P(B)=13/52$.
+deck; similarly, there are $13$ Clubs which implies $\P(B)=13/52$.
 
 What is $\P(A\cap B)$? We realize that there is only one card of
 the 52 which is an Ace and a Club at the same time, namely, the Ace
@@ -3558,20 +3721,20 @@ of Clubs. Therefore $\P(A\cap B)=1/52$.
 
 To find $\P(A\cup B)$ we may use the above with the General Addition
 Rule to get\begin{eqnarray*}
-\P(A\cup B) & = & \P(A)+\P(B)-\P(A\cap B)\\
- & = & 4/52+13/52-1/52\\
+\P(A\cup B) & = & \P(A)+\P(B)-\P(A\cap B),\\
+ & = & 4/52+13/52-1/52,\\
  & = & 16/52.\end{eqnarray*}
 
 \end{example}
 
 \begin{example}
-Remaining with the deck of cards, let the random experiment be selecting
-a five card stud poker hand, where {}``five card stud'' means that
-we draw exactly five cards from the deck without replacement, no more,
-and no less. It turns out that the sample space $S$ is so large and
-complicated that we will be obliged to settle for the trivial description
-$S=\left\{ \mbox{all possible 5 card hands}\right\} $ for the time
-being. We will have a more precise description later.
+Staying with the deck of cards, let another random experiment be the
+selection of a five card stud poker hand, where {}``five card stud''
+means that we draw exactly five cards from the deck without replacement,
+no more, and no less. It turns out that the sample space $S$ is so
+large and complicated that we will be obliged to settle for the trivial
+description $S=\left\{ \mbox{all possible 5 card hands}\right\} $
+for the time being. We will have a more precise description later.
 
 What is $\P(\mbox{Royal Flush})$, or in other words, $\P(\mbox{A, K, Q, J, 10 all in the same suit})$? 
 
@@ -3583,14 +3746,14 @@ under the equally likely model. Such is the subject of the next section.
 
 \section{Counting Methods\label{sec:Methods-of-Counting}}
 
-The equally-likely model is convenient and popular for studying random
-experiments. And when the equally likely model applies, finding the
-probability of an event $A$ amounts to nothing more than counting
+The equally-likely model is a convenient and popular way to analyze
+random experiments. And when the equally likely model applies, finding
+the probability of an event $A$ amounts to nothing more than counting
 the number of outcomes that $A$ contains (together with the number
 of events in $S$). Hence, to be a master of probability one must
 be skilled at counting outcomes in events of all kinds.
 \begin{prop}
-(The Multiplication Principle). Suppose that an experiment is composed
+The Multiplication Principle. Suppose that an experiment is composed
 of two successive steps. Further suppose that the first step may be
 performed in $n_{1}$ distinct ways while the second step may be performed
 in $n_{2}$ distinct ways. Then the experiment may be performed in
@@ -3607,18 +3770,18 @@ five (5) available toppings:\[
 \mbox{pepperoni, sausage, anchovies, olives, and green peppers.}\]
 How many distinct pizzas are possible?
 
-There are many ways to approach the problem, but perhaps the quickest
-avenue uses the Multiplication Principle directly. We will separate
-the action of ordering the pizza into a series of stages. At the first
+There are many ways to approach the problem, but the quickest avenue
+employs the Multiplication Principle directly. We will separate the
+action of ordering the pizza into a series of stages. At the first
 stage, we will decide whether or not to include pepperoni on the pizza
 (two possibilities). At the next stage, we will decide whether or
 not to include sausage on the pizza (again, two possibilities). We
 will continue in this fashion until at last we will decide whether
 or not to include green peppers on the pizza.
 
-At each stage we had two options, ways to select a pizza to be made.
-The Multiplication Principle says that we should multiply the 2's
-to find the total number of possible pizzas: $2\cdot2\cdot2\cdot2\cdot2=2^{5}=32$.
+At each stage we will have had two options, or ways, to select a pizza
+to be made. The Multiplication Principle says that we should multiply
+the 2's to find the total number of possible pizzas: $2\cdot2\cdot2\cdot2\cdot2=2^{5}=32$.
 \end{example}
 
 \begin{example}
@@ -3638,31 +3801,30 @@ the bag and select $k$ balls at random. How many possible sequences
 might we observe?
 \begin{prop}
 The number of ways in which one may select an ordered sample of $k$
-subjects from a population containing $n$ distinguishable members
-is
+subjects from a population that has $n$ distinguishable members is
 \begin{itemize}
 \item $n^{k}$ if sampling is done with replacement,
 \item $n(n-1)(n-2)\cdots(n-k+1)$ if sampling is done without replacement.
 \end{itemize}
 \end{prop}
-Recall from calculus the notion of \emph{factorials}: \begin{eqnarray*}
+Recall from calculus the notation for \emph{factorials}: \begin{eqnarray*}
 1! & = & 1,\\
 2! & = & 2\cdot1=2,\\
 3! & = & 3\cdot2\cdot1=6,\\
  & \vdots\\
 n! & = & n(n-1)(n-2)\cdots3\cdot2\cdot1.\end{eqnarray*}
 
-\begin{cor}
-The number of permutations of $n$ elements is $n!$.\end{cor}
+\begin{fact}
+The number of permutations of $n$ elements is $n!$.\end{fact}
 \begin{example}
 Take a coin and flip it 7 times. How many sequences of Heads and Tails
 are possible? \textbf{Answer:} $2^{7}=128$.
 \end{example}
 
 \begin{example}
-In a class of 20 students, we want to randomly select a class president,
-a class vice-president, and a treasurer. How many ways can this be
-done? \textbf{Answer:} $20\cdot19\cdot18=6840$.
+In a class of 20 students, we randomly select a class president, a
+class vice-president, and a treasurer. How many ways can this be done?
+\textbf{Answer:} $20\cdot19\cdot18=6840$.
 \end{example}
 
 \begin{example}
@@ -3674,7 +3836,7 @@ of 3 movies could we possibly watch? \textbf{Answer:} $5\cdot4\cdot3=60$.
 \subsection{Unordered Samples}
 
 The number of ways in which one may select an unordered sample of
-$k$ subjects from a population containing $n$ distinguishable members
+$k$ subjects from a population that has g $n$ distinguishable members
 is
 \begin{itemize}
 \item $(n-1+k)!/[(n-1)!k!]$ if sampling is done with replacement,
@@ -3687,9 +3849,9 @@ and is read {}``$n$ choose $k$''.
 \begin{example}
 You rent five movies to watch over the span of two nights, but only
 wish to watch 3 movies the first night. Your friend, Fred, wishes
-to borrow 2 movies to watch at his house on the first night. You owe
-Fred a favor, and allow him to select 2 movies from the set of 5.
-How many choices does Fred have? \textbf{Answer:} ${5 \choose 2}=10$.
+to borrow some movies to watch at his house on the first night. You
+owe Fred a favor, and allow him to select 2 movies from the set of
+5. How many choices does Fred have? \textbf{Answer:} ${5 \choose 2}=10$.
 \end{example}
 
 \begin{example}
@@ -3729,29 +3891,30 @@ together in a room. Each person announces the date of his/her birthday
 in turn. The question is: what is the probability of at least one
 match? If we let the event $A$ represent $\left\{ \mbox{there is at least one match}\right\} $,
 then would like to know $\P(A)$, but as we will see, it is more convenient
-to calculate $\P(A^{c})$. Introduced in 1939 by Richard von Mises.
-(Encyclopedia Brittanica). First , we will ignore leap years and assume
-that there are only 365 days in a year. Second, we will assume that
-births are equally distributed over the course of a year (which is
-not true due to all sorts of complications such as hospital delivery
-schedules). See \url{http://en.wikipedia.org/wiki/Birthday_problem}
+to calculate $\P(A^{c})$.
+
+For starters we will ignore leap years and assume that there are only
+365 days in a year. Second, we will assume that births are equally
+distributed over the course of a year (which is not true due to all
+sorts of complications such as hospital delivery schedules). See \url{http://en.wikipedia.org/wiki/Birthday_problem}
 for more.
 
-First, let us consider the sample space. There are 365 possibilities
+Let us next think about the sample space. There are 365 possibilities
 for the first person's birthday, 365 possibilities for the second,
 and so forth. The total number of possible birthday sequences is therefore
 $\#(S)=365^{n}$.
 
-The only situation in which $A$ would \emph{not} occur is if there
-are \emph{no} matches among all people in the room, that is, only
-when everybody's birthday is different, so\[
+Now we will use the complementation trick we saw in Example BLANK.
+We realize that the only situation in which $A$ does \emph{not} occur
+is if there are \emph{no} matches among all people in the room, that
+is, only when everybody's birthday is different, so\[
 \P(A)=1-\P(A^{c})=1-\frac{\#(A^{c})}{\#(S)},\]
-since the outcomes are equally likely. Let us suppose that there are
-no matches. The first person has one of 365 possible birthdays. The
-second person must not match the first, thus, the second person has
-only 364 available birthdays from which to choose. Similarly, the
-third person has only 363 possible days, and so forth, until we reach
-the $n$$^{\text{th}}$ person, who has only $365-n+1$ remaining
+since the outcomes are equally likely. Let us then suppose that there
+are no matches. The first person has one of 365 possible birthdays.
+The second person must not match the first, thus, the second person
+has only 364 available birthdays from which to choose. Similarly,
+the third person has only 363 possible birthdays, and so forth, until
+we reach the $n$$^{\text{th}}$ person, who has only $365-n+1$ remaining
 possible days for a birthday. By the Multiplication Principle, we
 have $\#(A^{c})=365\cdot364\cdots(365-n+1)$, and\begin{equation}
 \P(A)=1-\frac{365\cdot364\cdots(365-n+1)}{365^{n}}=1-\frac{364}{365}\cdot\frac{363}{365}\cdots\frac{(365-n+1)}{365}.\end{equation}
@@ -3766,9 +3929,9 @@ we are ignoring leap years). So how many people does it take so that
 there is an equal chance of a match and no match?
 
 When I have asked this question to students, the usual response is
-somewhere around $n=180$ people in the room. The reasoning seems
-to be that in order to get a 50\% chance of a match, there must be
-50\% of the available days to be occupied. The number of students
+{}``somewhere around $n=180$ people'' in the room. The reasoning
+seems to be that in order to get a 50\% chance of a match, there should
+be 50\% of the available days to be occupied. The number of students
 in a typical classroom is 25, so as a companion question I ask students
 to estimate the probability of a match when there are $n=25$ students
 in the room. Common estimates are a 1\%, or 0.5\%, or even 0.1\% chance
@@ -3830,11 +3993,11 @@ cards from the deck, in succession. Let $A=\left\{ \mbox{first card drawn is an 
 and $B=\left\{ \mbox{second card drawn is an Ace}\right\} $. Since
 there are four Aces in the deck, it is natural to assign $\P(A)=4/52$.
 Suppose we look at the first card. What now is the probability of
-$B$? Of course, the answer depends on the value of the first card:
-if the first card is an Ace, then the probability that the second
+$B$? Of course, the answer depends on the value of the first card.
+If the first card is an Ace, then the probability that the second
 also is an Ace should be $3/51$, but if the first card is not an
 Ace, then the probability that the second is an Ace should be $4/51$.
-As notation for these two situations, we write\[
+As notation for these two situations we write\[
 \P(B|A)=3/51,\quad\P(B|A^{c})=4/51.\]
 
 \begin{defn}
@@ -3843,7 +4006,7 @@ is defined by\begin{equation}
 \P(B|A)=\frac{\P(A\cap B)}{\P(A)},\quad\mbox{if }\P(A)>0.\end{equation}
 We will not be discussing a conditional probability of $B$ given
 $A$ when $\P(A)=0$, even though this theory exists, is well developed,
-and forms the foundation of the study of stochastic processes%
+and forms the foundation for the study of stochastic processes%
 \footnote{Conditional probability in this case is defined by means of \emph{conditional
 expectation}, a topic that is well beyond the scope of this text.
 The interested reader should consult an advanced text on probability
@@ -3913,7 +4076,8 @@ given $A$ is 1/2.
 
 \subsection{How to do it with \textsf{R}}
 
-The first thing to do is set up the probability space using the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rolldie!\inputencoding{utf8}
+Continuing with Example BLANK, the first thing to do is set up the
+probability space with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rolldie!\inputencoding{utf8}
 function.
 
 <<keep.source = TRUE>>=
@@ -3940,8 +4104,8 @@ prob(B, given = A)
 @
 
 Note that we do not actually need to define the events $A$ and $B$
-separately, as long as we reference the original probability space
-$S$ as the first argument of the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob()!\inputencoding{utf8}
+separately as long as we reference the original probability space
+$S$ as the first argument of the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
 calculation:
 
 <<keep.source = TRUE>>=
@@ -3949,14 +4113,16 @@ prob(S, X1==X2, given = (X1 + X2 >= 8) )
 prob(S, X1+X2 >= 8, given = (X1==X2) )
 @
 
-The following theorem establishes that conditional probability acts
-just like regular probability when the event being conditioned is
-fixed.
+
+\subsection{Properties and Rules}
+
+The following theorem establishes that conditional probability behaves
+just like regular probability when the conditioned event is fixed. 
 \begin{thm}
 For any fixed event $A$ with $\P(A)>0$,
 \begin{enumerate}
 \item $\P(B|A)\geq0,$ for all events $B\subset S$,
-\item $\P(S|A)=1$,
+\item $\P(S|A)=1$, and
 \item If $B_{1}$, $B_{2}$, $B_{3}$,\ldots{} are disjoint events, then\begin{equation}
 \P\left(\left.\bigcup_{k=1}^{\infty}B_{k}\:\right|A\right)=\sum_{k=1}^{\infty}\P(B_{k}|A).\end{equation}
 
@@ -3964,9 +4130,8 @@ For any fixed event $A$ with $\P(A)>0$,
 \end{thm}
 In other words, $\P(\cdot|A)$ is a legitimate probability function.
 With this fact in mind, the following properties are immediate:
-
-
-\subsection*{Properties}
+\begin{prop}
+For any events $A$, $B$, and $C$ with $\P(A)>0$,
 \begin{enumerate}
 \item $\P(B^{c}|A)=1-\P(B|A).$
 \item If $B\subset C$ then $\P(B|A)\leq\P(C|A)$.
@@ -3976,15 +4141,57 @@ With this fact in mind, the following properties are immediate:
 And more generally, for events $A_{1}$, $A_{2}$, $A_{3}$,\ldots{},
 $A_{n}$,\begin{equation}
 \P(A_{1}\cap A_{2}\cap\cdots\cap A_{n})=\P(A_{1})\P(A_{2}|A_{1})\cdots\P(A_{n}|A_{1}\cap A_{2}\cap\cdots\cap A_{n-1}).\end{equation}
+
 \end{enumerate}
+\end{prop}
+
+
+The Multiplication Rule is very important because it allows us to
+find probabilities in random experiments that have a sequential structure,
+as the next example shows.
 \begin{example}
-In Example BLANK we discussed drawing two cards from a standard playing
-deck. Now we may answer, what is $\P(\mbox{both Aces})$?\[
-\P(\mbox{both Aces})=\P(A\cap B)=\P(A)\P(B|A)=\frac{4}{52}\cdot\frac{3}{51}\approx0.059.\]
+In Example BLANK we drew two cards from a standard playing deck. Now
+we may answer, what is $\P(\mbox{both Aces})$?\[
+\P(\mbox{both Aces})=\P(A\cap B)=\P(A)\P(B|A)=\frac{4}{52}\cdot\frac{3}{51}\approx0.00452.\]
 
 \end{example}
 
 \subsection{How to do it with \textsf{R}}
+
+Continuing Example BLANK, we set up the probability space by way of
+a three step process. First we employ the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cards!\inputencoding{utf8}
+function to get a data frame \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!L!\inputencoding{utf8}
+with two columns: \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rank!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!suit!\inputencoding{utf8}.
+Both columns are stored internally as factors with 13 and 4 levels,
+respectively.
+
+Next we sample two cards randomly from the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!L!\inputencoding{utf8}
+data frame by way of the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples!\inputencoding{utf8}
+function. It returns a list \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!M!\inputencoding{utf8}
+which contains all possible pairs of rows from \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!L!\inputencoding{utf8}
+(there are \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!choose(52,2)!\inputencoding{utf8}
+of them). The sample space for this experiment is exactly the list
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!M!\inputencoding{utf8}.
+
+At long last we associate a probability model with the sample space.
+This is right down the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probspace!\inputencoding{utf8}
+function's alley. It assumes the equally likely model by default.
+We call this result \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!N!\inputencoding{utf8}
+which is an object of class \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ps!\inputencoding{utf8}
+-- short for {}``probability space''. 
+
+But do not be intimidated. The object \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!N!\inputencoding{utf8}
+is nothing more than a list with two elements: \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!outcomes!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}.
+The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!outcomes!\inputencoding{utf8}
+element is itself just another list, with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!choose(52,2)!\inputencoding{utf8}
+entries, each one a data frame with two rows which correspond to the
+pair of cards chosen. The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
+element is just a vector with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!choose(52,2)!\inputencoding{utf8}
+entries all the same: \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!1/choose(52,2)!\inputencoding{utf8}.
+
+Putting all of this together we do
 
 <<>>=
 library(prob)
@@ -3993,11 +4200,22 @@ M <- urnsamples(L, size = 2)
 N <- probspace(M)
 @
 
-Now we can do some probability:
+Now that we have the probability space \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!N!\inputencoding{utf8}
+we are ready to do some probability. We use the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
+function, just like before. The only trick is to specify the event
+of interest correctly, and recall that we were interested in $\P(\mbox{both Aces})$.
+But if the cards are both Aces then the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rank!\inputencoding{utf8}
+of both cards should be \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"A"!\inputencoding{utf8},
+which sounds like a job for the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!all!\inputencoding{utf8}
+function:
 
 <<>>=
 prob(N, all(rank == "A"))
 @
+
+Note that this value matches what we found in Example BLANK, above.
+We could calculate all sorts of probabilities at this point; we are
+limited only by the complexity of the event's computer representation. 
 
 
 \begin{example}
@@ -4005,11 +4223,26 @@ Consider an urn with 10 balls inside, 7 of which are red and 3 of
 which are green. Select 3 balls successively from the urn. Let $A=\left\{ 1^{\text{st}}\mbox{ ball is red}\right\} $,
 $B=\left\{ 2^{\text{nd}}\mbox{ ball is red}\right\} $, and $C=\left\{ 3^{\text{rd}}\mbox{ ball is red}\right\} $.
 Then\[
-\P(\mbox{all 3 balls are red})=\P(A\cap B\cap C)=\frac{7}{10}\cdot\frac{6}{9}\cdot\frac{5}{8}.\]
+\P(\mbox{all 3 balls are red})=\P(A\cap B\cap C)=\frac{7}{10}\cdot\frac{6}{9}\cdot\frac{5}{8}\approx0.2917.\]
 
 \end{example}
 
 \subsection{How to do it with \textsf{R}}
+
+Example BLANK is similar to Example BLANK, but it is even easier.
+We need to set up an urn (vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!L!\inputencoding{utf8})
+to hold the balls, we sample from \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!L!\inputencoding{utf8}
+to get the sample space (data frame \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!M!\inputencoding{utf8}),
+and we associate a probability vector (column \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8})
+with the outcomes (rows of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!M!\inputencoding{utf8})
+of the sample space. The final result is a probability space (an ordinary
+data frame \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!N!\inputencoding{utf8}).
+
+It is easier for us this time because our urn is a vector instead
+of a \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cards()!\inputencoding{utf8}
+data frame. Before there were two dimensions of information associated
+with the outcomes (rank and suit) but presently we have only one dimension
+(color).
 
 <<>>=
 library(prob)
@@ -4018,9 +4251,53 @@ M <- urnsamples(L, size = 3, replace = FALSE, ordered = TRUE)
 N <- probspace(M)
 @
 
-Now we can do some probability
+Now let us think about how to set up the event $\left\{ \mbox{all 3 balls are red}\right\} $.
+Rows of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!N!\inputencoding{utf8}
+that satisfy this condition have \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!X1=="red" & X2=="red" & X3=="red"!\inputencoding{utf8},
+but there must be an easier way. Indeed, there is. The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!isrep!\inputencoding{utf8}
+function (short for {}``is repeated'') in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
+package was written for this purpose. The command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!isrep(N,"red",3)!\inputencoding{utf8}
+will test each row of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!N!\inputencoding{utf8}
+to see whether the value \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"red"!\inputencoding{utf8}
+appears \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!3!\inputencoding{utf8}
+times. The result is exactly what we need to define an event with
+the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
+function. Observe
 
+<<>>=
+prob(N, isrep(N, "red", 3))
+@
 
+Note that this answer matches what we found in Example BLANK. Now
+let us try some other probability questions. What is the probability
+of getting two \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"red"!\inputencoding{utf8}s?
+
+<<>>=
+prob(N, isrep(N, "red", 2))
+@
+
+Note that the exact value is $21/40$; we will learn a quick way to
+compute this in Section BLANK. What is the probability of observing
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"red"!\inputencoding{utf8},
+then \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"green"!\inputencoding{utf8},
+then \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"red"!\inputencoding{utf8}?
+
+<<>>=
+prob(N, isin(N, c("red","green","red"), ordered = TRUE))
+@
+
+Note that the exact value is $7/20$ (do it with the Multiplication
+Rule). What is the probability of observing \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"red"!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"green"!\inputencoding{utf8},
+and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"red"!\inputencoding{utf8},
+in no particular order?
+
+<<>>=
+prob(N, isin(N, c("red","green","red")))
+@
+
+We already knew this. It is the probability of observing two \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"red"!\inputencoding{utf8}s,
+above.
 
 
 \begin{example}
@@ -5952,96 +6229,6 @@ $(X-\mu)^{2}$ and distribute the expectation on the resulting terms.
 \end{xca}
 
 
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-
-
-
-
 
 \chapter{Continuous Distributions\label{cha:Continuous-Distributions}}
 
@@ -6960,9 +7147,7 @@ plot(function(x){mgfgamma(x, shape = 13, rate = 1)}, from=-0.1, to=0.1, ylab = "
 
 \setcounter{thm}{0}
 
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
+
 \begin{xca}
 Find the constant $c$ so that the given function is a valid pdf of
 a random variable $X$.\end{xca}
@@ -7017,16 +7202,8 @@ pnorm(0.87) - 1/2
 @
 
 \end{enumerate}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
 \end{xca}
 
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
 \begin{xca}
 Calculate the variance of $X\sim\mathsf{unif}(\mathtt{min}=a,\,\mathtt{max}=b)$.
 Hint: First calculate $\E X^{2}$.
@@ -7035,68 +7212,6 @@ type the exercise here
 \end{xca}
 
 
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
 
 
 
@@ -7986,9 +8101,7 @@ distribution.
 
 \setcounter{thm}{0}
 
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
+
 \begin{xca}
 Prove that $\mbox{Cov}(X,Y)=\E(XY)-(\E X)(\E Y).$ 
 
@@ -7996,114 +8109,6 @@ type here
 \end{xca}
 
 
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
 
 
 
@@ -8706,65 +8711,6 @@ LARGER sample size or a relatively SMALLER sample size in order for
 $\Xbar$'s distribution to be approximately bell shaped?
 \end{enumerate}
 
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
 \begin{xca}
 Let $X_{1}$,\ldots{}, $X_{25}$ be a random sample from a $\mathsf{norm}(\mathtt{mean}=37,\,\mathtt{sd}=45)$
 distribution. Find the following probabilities. Let $\Xbar$ be the
@@ -8783,39 +8729,6 @@ pnorm(43.1, mean = 37, sd = 9, lower.tail = FALSE)
 @
 
 \end{enumerate}
-\end{xca}
-
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
-\end{xca}
-
-
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{15}$ be a $SRS(15)$ from
-a $\mathsf{chisq}(\mathtt{df}=k)$ distribution.
-
-type the exercise here
 \end{xca}
 
 
@@ -10388,7 +10301,6 @@ and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!dist!\inputencoding
 We can take a look at some of the values in the data frame: 
 
 <<>>=
-data(cars)
 head(cars)
 @
 
@@ -11767,21 +11679,7 @@ show that\[
 
 \end{xca}
 
-\begin{xca}
-kljsdfjsd\end{xca}
-\begin{enumerate}
-\item s
-\item s
-\item s
-\end{enumerate}
 
-\subsection*{Section \ref{sec:Point-Estimation}}
-\begin{enumerate}
-\item s
-\item s
-\item s
-\item s
-\end{enumerate}
 
 \chapter{Multiple Linear Regression}
 
@@ -11852,7 +11750,6 @@ The data are in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!dat
 package and are already on the search path; they can be viewed with
 
 <<>>=
-data(trees)
 head(trees)
 @
 
@@ -13417,7 +13314,6 @@ dataset which gives the lengths (in miles) of 141 \textquotedbl{}major\textquote
 rivers in North America, as compiled by the US Geological Survey. 
 
 <<>>=
-data(rivers)
 stem(rivers)
 @
 
