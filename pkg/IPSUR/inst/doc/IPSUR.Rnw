@@ -3366,9 +3366,6 @@ events, then Bayes Theorem.
 We end with random variables and their connection to probability measures,
 which paves the way for the next two chapters.
 
-
-\section{Random Experiments\label{sec:Random-Experiments,-Sample}}
-
 In this book we distinguish between two types of experiments: \emph{deterministic}
 and \emph{random}. A \emph{deterministic} experiment is one whose
 outcome may be predicted with certainty beforehand, such as combining
@@ -3382,6 +3379,9 @@ red lights you encounter on the drive home, how many ants traverse
 a certain patch of sidewalk over a short period, \emph{etc}. 
 
 
+\section{Sample Spaces\label{sec:Random-Experiments,-Sample}}
+
+
 \subsection{Sample Spaces}
 
 For a random experiment $E$, the set of all possible outcomes of
@@ -3390,9 +3390,6 @@ $S$. For the coin-toss experiment, $S$ would be the results {}``Head''
 and {}``Tail'', which we may represent by $S=\left\{ H,T\right\} $.
 Formally, the performance of a random experiment is the unpredictable
 selection of an outcome in $S$.
-
-
-\subsection{How to do it with \textsf{R}}
 
 This book does probability with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
 package. There a sample space is represented most simply with a \emph{data
@@ -3418,7 +3415,7 @@ Consider the random experiment of tossing a coin. The outcomes are
 $H$ and $T$. We can set up the sample space quickly with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!tosscoin!\inputencoding{utf8}
 function: 
 
-<<echo=TRUE,print=TRUE>>= 
+<<>>= 
 library(prob)
 tosscoin(1) 
 @
@@ -3469,15 +3466,15 @@ idea is that we have an urn that contains a bunch of distinguishable
 objects (balls) inside. We shake up the urn, reach inside, grab a
 ball, and take a look. That's all.
 
-But of course that is not all; there are all sorts of variations on
-this theme. Maybe we would like to grab more than one ball, say, two
-balls. What are all of the possible outcomes of the experiment now?
-It depends on how we sample. One way would be to select a ball, take
-a look, put it back, and sample again. Another way would be to select
-a ball, take a look, and sample again (equivalently, just reach in
-and grab two balls). There are certainly more possible outcomes in
-the former case than in the latter. In the first (second) case we
-say that sampling is done \emph{with} (\emph{without}) \emph{replacement}.
+But there are all sorts of variations on this theme. Maybe we would
+like to grab more than one ball, say, two balls. What are all of the
+possible outcomes of the experiment now? It depends on how we sample.
+One way would be to select a ball, take a look, put it back, and sample
+again. Another way would be to select a ball, take a look -- but do
+not put it back -- and sample again (equivalently, just reach in and
+grab two balls). There are certainly more possible outcomes in the
+former case than in the latter. In the first (second) case we say
+that sampling is done \emph{with} (\emph{without}) \emph{replacement}.
 
 There is more. Suppose we do not actually keep track of which ball
 came first. All we observe are the two balls, and we have no idea
@@ -3491,7 +3488,7 @@ a special case all of the common elementary random experiments. Tossing
 a coin twice is equivalent to selecting two balls labeled $H$ and
 $T$ from an urn, with replacement. The die-roll experiment is equivalent
 to selecting a ball from an urn with six elements, labeled 1 through
-6, with replacement.
+6.
 
 
 \subsection{How to do it with \textsf{R} }
@@ -3566,7 +3563,7 @@ so we would have received the same output by simply typing \inputencoding{latin9
 
 The last possibility is perhaps the most interesting. We replace the
 balls after every draw, but we do not remember the order in which
-the draws come. 
+the draws came. 
 
 <<echo=TRUE,print=TRUE>>= 
 urnsamples(1:3, size = 2, replace = TRUE, ordered = FALSE) 
@@ -3574,11 +3571,11 @@ urnsamples(1:3, size = 2, replace = TRUE, ordered = FALSE)
 
 We may interpret this experiment in a number of alternative ways.
 One way is to consider this as simply putting two 3-sided dice in
-a cup, shaking the cup, and looking inside as in a game of Liar's
-Dice, for instance. Each row of the sample space is a potential pair
+a cup, shaking the cup, and looking inside -- as in a game of \emph{Liar's
+Dice}, for instance. Each row of the sample space is a potential pair
 we could observe. Another way is to view each outcome as a separate
-way to distribute two identical golf balls into three boxes labeled
-1, 2, and 3. Regardless of the interpretation, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples!\inputencoding{utf8}
+methodway to distribute two identical golf balls into three boxes
+labeled 1, 2, and 3. Regardless of the interpretation, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples!\inputencoding{utf8}
 lists every possible way that the experiment can conclude.
 
 Note that the urn does not need to contain numbers; we could have
@@ -3605,7 +3602,7 @@ Similar remarks apply for the \inputencoding{latin9}\lstinline[basicstyle={\ttfa
 argument. We investigate this issue further in Section BLANK.
 
 
-\subsection{Events}
+\section{Events}
 
 An \emph{event} $A$ is merely a collection of outcomes, or in other
 words, a subset of the sample space%
@@ -3819,12 +3816,12 @@ functions have been carefully defined to match the usual \inputencoding{latin9}\
 package definition in the case that the arguments are vectors.
 \end{note}
 
-\section{Interpreting Probabilities\label{sec:Interpreting-Probabilities}}
+\section{Model Assignment\label{sec:Interpreting-Probabilities}}
 
 Let us take a look at the coin-toss experiment more closely. What
 do we mean when we say {}``the probability of Heads'' or write $\P(\mbox{Heads})$?
 Given a coin and an itchy thumb, how do we go about finding what $\P(\mbox{Heads})$
-should be? We introduce three popular approaches to this problem.
+should be? There are three main approaches to this problem.
 
 
 \subsection{The Measure Theory Approach}
@@ -3951,7 +3948,137 @@ that a cure for the common cold will be discovered.
 
 The roots of subjective probability reach back a long time. See \url{http://en.wikipedia.org/wiki/Subjective_probability}
 for a short discussion and links to references about the subjective
-approach. 
+approach.
+
+
+\subsection{Equally Likely Model}
+
+
+\subsection{How to do it with \textsf{R}}
+
+In the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
+package, a probability space is an object of outcomes \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!S!\inputencoding{utf8}
+and a vector of probabilities (called {}``\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}'')
+with entries that correspond to each outcome in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!S!\inputencoding{utf8}.
+When \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!S!\inputencoding{utf8}
+is a data frame, we may simply add a column called \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
+to \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!S!\inputencoding{utf8}
+and we will be finished; the probability space will simply be a data
+frame which we may call \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!S!\inputencoding{utf8}.
+In the case that S is a list, we may combine the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!outcomes!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
+into a larger list, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!space!\inputencoding{utf8};
+it will have two components: \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!outcomes!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}.
+The only requirements we need are for the entries of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
+to be nonnegative and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!sum(probs)!\inputencoding{utf8}
+to be one.
+
+To accomplish this in \textsf{R}, we may use the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probspace!\inputencoding{utf8}
+function. The general syntax is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probspace(x, probs)!\inputencoding{utf8},
+where \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
+is a sample space of outcomes and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
+is a vector (of the same length as the number of outcomes in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}).
+The specific choice of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
+depends on the context of the problem, and some examples follow to
+demonstrate some of the more common choices.
+\begin{example}
+The Equally Likely Model asserts that every outcome of the sample
+space has the same probability, thus, if a sample space has $n$ outcomes,
+then \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
+would be a vector of length $n$ with identical entries $1/n$. The
+quickest way to generate \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
+is with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rep!\inputencoding{utf8}
+function. We will start with the experiment of rolling a die, so that
+$n=6$. We will construct the sample space, generate the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
+vector, and put them together with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probspace!\inputencoding{utf8}. 
+
+<<echo=TRUE,print=TRUE>>= 
+outcomes <- rolldie(1) 
+p <- rep(1/6, times = 6) 
+probspace(outcomes, probs = p) 
+@ 
+
+The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probspace!\inputencoding{utf8}
+function is designed to save us some time in many of the most common
+situations. For example, due to the especial simplicity of the sample
+space in this case, we could have achieved the same result with only
+(note the name change for the first column) 
+
+<<echo=TRUE,print=TRUE>>= 
+probspace(1:6, probs = p) 
+@ 
+
+Further, since the equally likely model plays such a fundamental role
+in the study of probability the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probspace!\inputencoding{utf8}
+function will assume that the equally model is desired if no \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
+are specified. Thus, we get the same answer with only 
+
+<<echo=TRUE,print=TRUE>>= 
+probspace(1:6) 
+@ 
+
+And finally, since rolling dice is such a common experiment in probability
+classes, the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rolldie!\inputencoding{utf8}
+function has an additional logical argument \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!makespace!\inputencoding{utf8}
+that will add a column of equally likely \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
+to the generated sample space: 
+
+<<echo=TRUE,print=TRUE>>= 
+rolldie(1, makespace = TRUE)
+@ 
+
+or just \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rolldie(1, TRUE)!\inputencoding{utf8}.
+Many of the other sample space functions {(}\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!tosscoin!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cards!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!roulette!\inputencoding{utf8},
+\textit{etc}.) have similar \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!makespace!\inputencoding{utf8}
+arguments. Check the documentation for details.
+
+\end{example}
+One sample space function that does NOT have a \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!makespace!\inputencoding{utf8}
+option is the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples!\inputencoding{utf8}
+function. This was intentional. The reason is that under the varied
+sampling assumptions the outcomes in the respective sample spaces
+are NOT, in general, equally likely. It is important for the user
+to carefully consider the experiment to decide whether or not the
+outcomes are equally likely and then use \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probspace!\inputencoding{utf8}
+to assign the model.
+\begin{example}
+An unbalanced coin. While the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!makespace!\inputencoding{utf8}
+argument to \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!tosscoin!\inputencoding{utf8}
+is useful to represent the tossing of a \emph{fair} coin, it is not
+always appropriate. For example, suppose our coin is not perfectly
+balanced, for instance, maybe the {}``$H$'' side is somewhat heavier
+such that the chances of a $H$ appearing in a single toss is 0.70
+instead of 0.5. We may set up the probability space with 
+
+<<echo=TRUE,print=TRUE>>= 
+probspace(tosscoin(1), probs = c(0.70, 0.30)) 
+@ 
+
+The same procedure can be used to represent an unbalanced die, roulette
+wheel, \textit{etc}.
+
+\end{example}
+
+\subsection{Words of Warning}
+
+It should be mentioned that while the splendour of \textsf{R }is uncontested,
+it, like everything else, has limits both with respect to the sample/probability
+spaces it can manage and with respect to the finite accuracy of the
+representation of most numbers (see the \textsf{R} FAQ 7.31). When
+playing around with probability, one may be tempted to set up a probability
+space for tossing 100 coins or rolling 50 dice in an attempt to answer
+some scintillating question. (Bear in mind: rolling a die just 9 times
+has a sample space with over \emph{10 million} outcomes.)
+
+Alas! Even if there were enough RAM to barely hold the sample space
+(and there were enough time to wait for it to be generated), the infinitesimal
+probabilities that are associated with SO MANY outcomes make it difficult
+for the underlying machinery to handle reliably. In some cases, special
+algorithms need to be called just to give something that holds asymptotically.
+User beware.
 
 
 \section{Properties of Probability\label{sec:Properties-of-Probability}}
@@ -4036,13 +4163,13 @@ $A_{n}$,\begin{equation}
 
 \subsection{Assigning Probabilities}
 
-One model that is of particular interest is the equally likely model.
+A model of particular interest is the \emph{equally likely model}.
 The idea is to divide the sample space $S$ into a finite collection
-of elementary events $\left\{ a_{1},\ a_{2},\ldots,a_{N}\right\} $,
-considered to be equally likely in the sense that each $a_{i}$ has
-equal chances of occurring. The probability function associated with
-this model must satisfy $\P(S)=1$, by Axiom 2. On the other hand,
-it must also satisfy\[
+of elementary events $\left\{ a_{1},\ a_{2},\ldots,a_{N}\right\} $
+that are equally likely in the sense that each $a_{i}$ has equal
+chances of occurring. The probability function associated with this
+model must satisfy $\P(S)=1$, by Axiom 2. On the other hand, it must
+also satisfy\[
 \P(S)=\P(\left\{ a_{1},\ a_{2},\ldots,a_{N}\right\} )=\P(a_{1}\cup a_{2}\cup\cdots\cup a_{N})=\sum_{i=1}^{N}\P(a_{i}),\]
 by Axiom 3. Since $\P(a_{i})$ is the same for all $i$, each one
 necessarily equals $1/N$. 
@@ -4155,8 +4282,64 @@ What is $\P(\mbox{Royal Flush})$, or in other words, $\P(\mbox{A, K, Q, J, 10 al
 It should be clear that there are only four possible royal flushes.
 Thus, if we could only count the number of outcomes in $S$ then we
 could simply divide four by that number and we would have our answer
-under the equally likely model. Such is the subject of the next section. 
+under the equally likely model. This is the subject of Section BLANK.
 \end{example}
+
+\subsection{How to do it with \textsf{R}}
+
+Now that we have ways to find subsets, we can at last move to calculating
+the probabilities associated with them. This is accomplished with
+the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
+function.
+
+Consider the experiment of drawing a card from a standard deck of
+playing cards. Let's denote the probability space associated with
+the experiment as \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!S!\inputencoding{utf8},
+and let the subsets \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!A!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!B!\inputencoding{utf8}
+be defined by the following: 
+
+<<echo=TRUE,print=FALSE>>= 
+S <- cards(makespace = TRUE) 
+A <- subset(S, suit == "Heart") 
+B <- subset(S, rank %in% 7:9)
+@ 
+
+Now it is easy to calculate 
+
+<<echo=TRUE,print=TRUE>>= 
+prob(A) 
+@ 
+
+Note that we can get the same answer with 
+
+<<echo=TRUE,print=TRUE>>= 
+prob(S, suit == "Heart") 
+@ 
+
+We also find \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob(B) = 0.23!\inputencoding{utf8}
+(listed here approximately, but 12/52 actually) and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob(S) = 1!\inputencoding{utf8}.
+Internally, the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
+function operates by summing the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
+column of its argument. It will find subsets on-the-fly if desired.
+
+We have as yet glossed over the details. More specifically, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
+has three arguments: \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8},
+which is a probability space (or a subset of one), \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!event!\inputencoding{utf8},
+which is a logical expression used to define a subset, and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!given!\inputencoding{utf8},
+which is described in the next section.
+
+\emph{WARNING}. The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!event!\inputencoding{utf8}
+argument is used to define a subset of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8},
+that is, the only outcomes used in the probability calculation will
+be those that are elements of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
+and satisfy \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!event!\inputencoding{utf8}
+simultaneously. In other words, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob(x, event)!\inputencoding{utf8}
+calculates \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob(intersect(x, subset(x, event)))!\inputencoding{utf8}.
+Consequently, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
+should be the entire probability space in the case that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!event!\inputencoding{utf8}
+is non-null.
+
 
 \section{Counting Methods\label{sec:Methods-of-Counting}}
 
@@ -4250,7 +4433,7 @@ of 3 movies could we possibly watch? \textbf{Answer:} $5\cdot4\cdot3=60$.
 \subsection{Unordered Samples}
 
 The number of ways in which one may select an unordered sample of
-$k$ subjects from a population that has g $n$ distinguishable members
+$k$ subjects from a population that has $n$ distinguishable members
 is
 \begin{itemize}
 \item $(n-1+k)!/[(n-1)!k!]$ if sampling is done with replacement,
@@ -4273,6 +4456,30 @@ Place 3 six-sided dice into a cup. Next, shake the cup well and pour
 out the dice. How many distinct rolls are possible? \textbf{Answer:}
 $(6-1+3)!/[(6-1)!3!]={8 \choose 5}=56$. 
 \end{example}
+
+\subsection{How to do it with \textsf{R}}
+
+You can compute $n!$ with the command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!factorial(n)!\inputencoding{utf8}
+and the binomial coefficient ${n \choose k}$ with the command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!choose(n,k)!\inputencoding{utf8}.
+
+The sample spaces we have computed so far have been relatively small,
+and we can visually study them without much trouble. However, it is
+\emph{very} easy to generate sample spaces that are prohibitively
+large. And while \textsf{R} is wonderful and powerful and does almost
+everything except wash windows, even \textsf{R} has limits of which
+we should be mindful.
+
+But we often do not need to actually generate the sample space; it
+suffices to count the number of outcomes. The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!nsamp!\inputencoding{utf8}
+function will calculate the number of rows in a sample space made
+by \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples!\inputencoding{utf8}
+without actually devoting the memory resources necessary to generate
+the space. The arguments are \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!n!\inputencoding{utf8},
+the number of (distinguishable) objects in the urn, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!k!\inputencoding{utf8},
+the sample size, and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!replace!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ordered!\inputencoding{utf8}
+as above.
+
 \begin{center}
 %
 \begin{table}
@@ -4288,17 +4495,104 @@ $(6-1+3)!/[(6-1)!3!]={8 \choose 5}=56$.
 \end{tabular}
 \par\end{centering}
 
-\caption{Sampling $k$ from $n$ objects with \textsf{urnsamples}()\label{tab:Sampling-k-from-n}}
+\caption{Sampling $k$ from $n$ objects with \texttt{urnsamples}\label{tab:Sampling-k-from-n}}
 
 \end{table}
 
 \par\end{center}
+\begin{example}
+We will compute the number of outcomes for each of the four \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples!\inputencoding{utf8}
+examples that we saw in Example BLANK. Recall that we took a sample
+of size two from an urn with three distinguishable elements.
+\end{example}
+<<echo=TRUE,print=TRUE>>= 
+nsamp(n=3, k=2, replace = TRUE, ordered = TRUE) 
+nsamp(n=3, k=2, replace = FALSE, ordered = TRUE) 
+nsamp(n=3, k=2, replace = FALSE, ordered = FALSE) 
+nsamp(n=3, k=2, replace = TRUE, ordered = FALSE) 
+@ 
+
+Compare these answers with the length of the data frames generated
+above.
 
 
-\subsection{How to do it with \textsf{R}}
-\begin{itemize}
-\item You can compute $n!$ with the command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!factorial(n)!\inputencoding{utf8}
-and binomial coefficients ${n \choose k}$ with the command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!choose(n,k)!\inputencoding{utf8}.\end{itemize}
+\subsubsection*{The Multiplication Principle}
+
+A benefit of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!nsamp!\inputencoding{utf8}
+is that it is \emph{vectorized} so that entering vectors instead of
+numbers for \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!n!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!k!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!replace!\inputencoding{utf8},
+and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ordered!\inputencoding{utf8}
+results in a vector of corresponding answers. This becomes particularly
+convenient for combinatorics problems.
+\begin{example}
+There are 11 artists who each submit a portfolio containing 7 paintings
+for competition in an art exhibition. Unfortunately, the gallery director
+only has space in the winners' section to accomodate 12 paintings
+in a row equally spread over three consecutive walls. The director
+decides to give the first, second, and third place winners each a
+wall to display the work of their choice. The walls boast 31 separate
+lighting options apiece. How many displays are possible?
+
+Answer: The judges will pick 3 (ranked) winners out of 11 (with \texttt{rep=FALSE},
+\texttt{ord=TRUE}). Each artist will select 4 of his/her paintings
+from 7 for display in a row (\texttt{rep=FALSE}, \texttt{ord=TRUE}),
+and lastly, each of the 3 walls has 31 lighting possibilities (\texttt{rep=TRUE},
+\texttt{ord=TRUE}). These three numbers can be calculated quickly
+with 
+
+<<echo=TRUE,print=FALSE>>= 
+n <- c(11,7,31) 
+k <- c(3,4,3) 
+r <- c(FALSE,FALSE,TRUE) 
+@ 
+
+<<echo=TRUE,print=TRUE>>= 
+x <- nsamp(n, k, rep = r, ord = TRUE) 
+@ 
+
+(Notice that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ordered!\inputencoding{utf8}
+is always \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!TRUE!\inputencoding{utf8};
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!nsamp!\inputencoding{utf8}
+will recycle \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ordered!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!replace!\inputencoding{utf8}
+to the appropriate length.) By the Multiplication Principle, the number
+of ways to complete the experiment is the product of the entries of
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}: 
+
+<<echo=TRUE,print=TRUE>>= 
+prod(x) 
+@ 
+
+Compare this with the some other ways to compute the same thing: 
+
+<<echo=TRUE,print=TRUE>>= 
+(11*10*9)*(7*6*5*4)*313 
+@
+
+or alternatively 
+
+<<echo=TRUE,print=TRUE>>= 
+prod(9:11)*prod(4:7)*313 
+@ 
+
+or even 
+
+<<echo=TRUE,print=TRUE>>= 
+prod(factorial(c(11,7))/factorial(c(8,3)))*313 
+@ 
+
+\end{example}
+As one can guess, in many of the standard counting problems there
+aren't substantial savings in the amount of typing; it is about the
+same using \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!nsamp!\inputencoding{utf8}
+versus \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!factorial!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!choose!\inputencoding{utf8}.
+But the virtue of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!nsamp!\inputencoding{utf8}
+\texttt{l}ies in its collecting the relevant counting formulas in
+a one-stop shop. Ultimately, it is up to the user to choose the method
+that works best for him/herself. 
 \begin{example}
 \textbf{The Birthday Problem.} Suppose that there are $n$ people
 together in a room. Each person announces the date of his/her birthday
@@ -4509,7 +4803,7 @@ B <- subset(S, X1 + X2 >= 8)
 
 And now we are ready to calculate probabilities. To do conditional
 probability, we use the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!given!\inputencoding{utf8}
-argument in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
+argument of the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
 function:
 
 <<keep.source = TRUE>>=
@@ -4850,6 +5144,58 @@ is if all tosses are Tails. Therefore,\begin{align*}
 which is approximately $0.9990234$.
 \end{example}
 
+\subsection{How to do it with \textsf{R}}
+
+
+\subsection{Independent, Repeated Experiments}
+
+In some situations it is desired to repeat a certain experiment multiple
+times under identical conditions and in an independent manner. We
+have seen many examples of this already: tossing a coin repeatedly,
+rolling a die or dice, \textit{etc}.
+\begin{example}
+An unbalanced coin continued. It was easy enough to set up the probability
+space for one toss, however, the situation becomes more complicated
+when there are multiple tosses involved. Clearly, the outcome $HHH$
+should not have the same probability as $TTT$, which should again
+not have the same probability as $HTH$. At the same time, there is
+symmetry in the experiment in that the coin does not remember the
+face it shows from toss to toss, and it is easy enough to toss the
+coin in a similar way repeatedly.
+
+The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!iidspace!\inputencoding{utf8}
+function was designed specifically for this situation. It has three
+arguments: \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8},
+which is a vector of outcomes, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ntrials!\inputencoding{utf8},
+which is an integer telling how many times to repeat the experiment,
+and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
+to specify the probabilities of the outcomes of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
+in a single trial. We may represent tossing our unbalanced coin three
+times with the following: 
+
+<<echo=TRUE,print=TRUE>>= 
+iidspace(c("H","T"), ntrials = 3, probs = c(0.7, 0.3)) 
+@ 
+
+As expected, the outcome $HHH$ has the largest probability, while
+$TTT$ has the smallest. (Since the trials are independent, $\P(HHH)=0.7^{3}$
+and $\P(TTT)=0.3^{3}$, \textit{etc}.) Note that the result of the
+function call is a probability space, not a sample space (which we
+could construct already with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!tosscoin!\inputencoding{utf8}
+or \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples!\inputencoding{utf8}
+functions). The same procedure could be used to model an unbalanced
+die or any other experiment that may be represented with a vector
+of possible outcomes.
+
+\end{example}
+Note that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!iidspace!\inputencoding{utf8}
+will assume \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
+has equally likely outcomes if no \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
+argument is specified. Also note that the argument \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
+is a \emph{vector}, not a data frame. Trying something like \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!iidspace(tosscoin(1),...)!\inputencoding{utf8}
+will give an error.
+
+
 \section{Bayes' Rule\label{sec:Bayes'-Rule}}
 
 We mentioned the subjective view of probability in Section BLANK.
@@ -5077,6 +5423,107 @@ all rational and irrational positive real numbers. For this reason%
 as an effective litmus test.%
 }, random variables with supports like $Z$ are called \emph{continuous
 random variables}, to be studied in Chapter BLANK.
+
+
+\subsection{How to do it with \textsf{R}}
+
+The primary vessel we use for this task is the \texttt{addrv()} function.
+There are two ways to use it, and will describe both.
+
+
+\subsubsection*{Supplying a Defining Formula}
+
+The first method is based on the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!transform!\inputencoding{utf8}
+function. See \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!?transform!\inputencoding{utf8}.
+The idea is to write a formula defining the random variable inside
+the function, and it will be added as a column to the data frame.
+As an example, let us roll a 4-sided die three times, and let's define
+the random variable $U=X1-X2+X3$. 
+
+<<echo=TRUE,print=FALSE>>= 
+S <- rolldie(3, nsides = 4, makespace = TRUE) 
+S <- addrv(S, U = X1-X2+X3) 
+@ 
+
+Now let's take a look at the values of $U$. In the interest of space,
+we will only reproduce the first few rows of $S$ (there are $4^{3}=64$
+rows in total). 
+
+<<echo=TRUE,print=TRUE>>= 
+head(S)
+@ 
+
+We see by looking at the $U$ column it is operating just like it
+should. We can now answer questions like
+
+<<echo=TRUE,print=TRUE>>= 
+prob(S, U > 6) 
+@ 
+
+
+\subsubsection*{Supplying a Function}
+
+Sometimes we have a function laying around that we would like to apply
+to some of the outcome variables, but it is unfortunately tedious
+to write out the formula defining what the new variable would be.
+The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!addrv!\inputencoding{utf8}
+function has an argument \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!FUN!\inputencoding{utf8}
+specifically for this case. Its value should be a legitimate function
+from \textsf{R}, such as \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!sum!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mean!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!median!\inputencoding{utf8},
+\emph{etc}. Or, you can define your own function. Continuing the previous
+example, let's define $V=\max(X1,X2,X3)$ and $W=X1+X2+X3$. 
+
+<<echo=TRUE,print=FALSE>>= 
+S <- addrv(S, FUN = max, invars = c("X1","X2","X3"), name = "V") 
+S <- addrv(S, FUN = sum, invars = c("X1","X2","X3"), name = "W") 
+head(S) 
+@ 
+
+Notice that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!addrv!\inputencoding{utf8}
+has an \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!invars!\inputencoding{utf8}
+argument to specify exactly to which columns one would like to apply
+the function \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!FUN!\inputencoding{utf8}.
+If no input variables are specified, then \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!addrv!\inputencoding{utf8}
+will apply \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!FUN!\inputencoding{utf8}
+to all non-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
+columns. Further, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!addrv!\inputencoding{utf8}
+has an optional argument \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!name!\inputencoding{utf8}
+to give the new variable; this can be useful when adding several random
+variables to a probability space (as above). If not specified, the
+default name is {}``\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!X!\inputencoding{utf8}''.
+
+
+\subsubsection*{Marginal Distributions}
+
+As we can see above, often after adding a random variable $V$ to
+a probability space one will find that $V$ has values that are repeated,
+so that it becomes difficult to understand what the ultimate behavior
+of $V$ actually is. We can use the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!marginal!\inputencoding{utf8}
+function to aggregate the rows of the sample space by values of $V$,
+all the while accumulating the probability associated with $V$'s
+distinct values. Continuing our example from above, suppose we would
+like to focus entirely on the values and probabilities of $V=\max(X1,X2,X3)$. 
+
+<<echo=TRUE,print=TRUE>>= 
+marginal(S, vars = "V") 
+@ 
+
+We could save the probability space of $V$ in a data frame and study
+it further, if we wish. As a final remark, we can calculate the marginal
+distributions of multiple variables desired using the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!vars!\inputencoding{utf8}
+argument. For example, suppose we would like to examine the joint
+distribution of $V$ and $W$. 
+
+<<echo=TRUE,print=TRUE>>= 
+marginal(S, vars = c("V", "W")) 
+@ 
+
+Note that the default value of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!vars!\inputencoding{utf8}
+is the names of all columns except \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}.
+This can be useful if there are duplicated rows in the probability
+space.
 
 
 \section{Chapter Exercises}
@@ -7822,9 +8269,9 @@ f_{Y}(y)=\int_{S_{X}}f_{X,Y}(x,y)\,\diff x,\quad y\in S_{Y}.\end{equation}
 
 \subsection{How to do it with \textsf{R}}
 
-We will show how to do Example BLANK using R; it is much simpler to
-do the example with R than without. First we set up the sample space
-with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rolldie!\inputencoding{utf8}
+We will show how to do Example BLANK using \textsf{R}; it is much
+simpler to do the example with \textsf{R} than without. First we set
+up the sample space with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rolldie!\inputencoding{utf8}
 function. Next, we add random variables $U$ and $V$ with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!addrv!\inputencoding{utf8}
 function. We take a look at the very top of the data frame (probability
 space) to make sure that everything is operating according to plan.
