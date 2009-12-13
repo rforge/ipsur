@@ -112,7 +112,7 @@
 \usepackage{makeidx}
 \usepackage{showidx}
 \usepackage{multicol}
-\usepackage{floatflt}
+%\usepackage{floatflt}
 \usepackage{url}
 \usepackage{srcltx}
 \usepackage{txfonts}
@@ -3373,16 +3373,13 @@ Hydrogen and Oxygen, or adding two numbers such as $2+3$. A \emph{random}
 experiment is one whose outcome is determined by chance. We posit
 that the outcome of a random experiment may not be predicted with
 certainty beforehand, even in principle. Examples of random experiments
-include flipping a coin, rolling a die, and throwing a dart on a board.
+include tossing a coin, rolling a die, and throwing a dart on a board.
 But there are all sorts of other random experiments, like how many
 red lights you encounter on the drive home, how many ants traverse
-a certain patch of sidewalk over a short period, \emph{etc}. 
+a certain patch of sidewalk over a short period, \emph{etc}.
 
 
-\section{Sample Spaces\label{sec:Random-Experiments,-Sample}}
-
-
-\subsection{Sample Spaces}
+\section{Sample Spaces}
 
 For a random experiment $E$, the set of all possible outcomes of
 $E$ is called the \emph{sample space} and is denoted by the letter
@@ -3391,29 +3388,57 @@ and {}``Tail'', which we may represent by $S=\left\{ H,T\right\} $.
 Formally, the performance of a random experiment is the unpredictable
 selection of an outcome in $S$.
 
-This book does probability with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
-package. There a sample space is represented most simply with a \emph{data
-frame}, that is, a rectangular collection of variables (see Section
-BLANK). Each row of the data frame corresponds to an outcome of the
-experiment. This choice is convenient both for its simplicity and
-its compatibility with the \textsf{R} Commander. However, this structure
-is not rich enough to describe some of the more interesting probabilistic
-applications we will encounter later; to handle those we will need
-to consider a more general \emph{list} data structure. See Section
-BLANK for details.
 
-Note that the machinery doing the work to generate most of the sample
-spaces below is the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!expand.grid!\inputencoding{utf8}
+\subsection{How to do it with \textsf{R}}
+
+This book does probability with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
+package. A sample space is represented by a \emph{data frame}, that
+is, a rectangular collection of variables (see Section BLANK). Each
+row of the data frame corresponds to an outcome of the experiment.
+This choice is convenient both for its simplicity and its compatibility
+with the \textsf{R} Commander. However, this structure is not rich
+enough to describe some of the more interesting probabilistic applications
+we will encounter later; to handle those we will need to consider
+a more general \emph{list} data structure. See Section BLANK for details.
+\begin{example}
+Consider the random experiment of dropping a styrofoam cup onto the
+floor from a height of four feet. The cup will hit the ground and
+eventually come to rest. It could land upside down, right side up
+, or it could land on its side. We represent these possible outcomes
+of the random experiment by the following.
+
+<<>>=
+S <- data.frame(lands = c("down","up","side"))
+S
+@
+
+The sample space \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!S!\inputencoding{utf8}
+contains the single column \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!lands!\inputencoding{utf8}
+which stores the outcomes \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"down"!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"up"!\inputencoding{utf8},
+and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"side"!\inputencoding{utf8}. 
+
+\end{example}
+Some sample spaces are so common that convenience wrappers have been
+designed to set them up quickly and efficiently. The underlying machinery
+that does the work includes the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!expand.grid!\inputencoding{utf8}
 function in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!base!\inputencoding{utf8}
 package, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!combn!\inputencoding{utf8}
 in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!combinat!\inputencoding{utf8}
-package and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!permsn!\inputencoding{utf8}
+package, and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!permsn!\inputencoding{utf8}
 in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
-package.
+package%
+\footnote{The seasoned \textsf{R} user can get the job done without the convenience
+wrappers. I encourage their use for the beginner to get started, but
+I also recommend that introductory students wean themselves as soon
+as possible. The wrappers were designed for ease and intuitive use,
+not for speed or efficiency. They are much too slow and bulky for
+any serious work. %
+}.
 
 Consider the random experiment of tossing a coin. The outcomes are
 $H$ and $T$. We can set up the sample space quickly with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!tosscoin!\inputencoding{utf8}
-function: 
+function:
 
 <<>>= 
 library(prob)
@@ -3450,21 +3475,19 @@ head(cards())
 The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cards!\inputencoding{utf8}
 function that we just used has optional arguments \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!jokers!\inputencoding{utf8}
 (if you would like Jokers to be in the deck) and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!makespace!\inputencoding{utf8}
-which we will discuss later.
-
-Additionally, the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!roulette!\inputencoding{utf8}
-function gives the standard sample space for one spin on a roulette
-wheel. There are EU and USA versions available. Interested readers
-may contribute any other game or sample spaces that may be of general
-interest.
+which we will discuss later. There is also a \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!roulette!\inputencoding{utf8}
+function which returns the sample space associated with one spin on
+a roulette wheel. There are EU and USA versions available. Interested
+readers may contribute any other game or sample spaces that may be
+of general interest.
 
 
 \subsection{Sampling from Urns}
 
-This is perhaps the most fundamental type of random experiment. The
-idea is that we have an urn that contains a bunch of distinguishable
-objects (balls) inside. We shake up the urn, reach inside, grab a
-ball, and take a look. That's all.
+This is perhaps the most fundamental type of random experiment. We
+have an urn that contains a bunch of distinguishable objects (balls)
+inside. We shake up the urn, reach inside, grab a ball, and take a
+look. That's all.
 
 But there are all sorts of variations on this theme. Maybe we would
 like to grab more than one ball, say, two balls. What are all of the
@@ -3500,7 +3523,7 @@ represents the urn from which sampling is to be done. The \inputencoding{latin9}
 argument tells how large the sample will be. The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ordered!\inputencoding{utf8}
 and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!replace!\inputencoding{utf8}
 arguments are logical and specify how sampling will be performed.
-We will discuss each in turn. 
+We will discuss each in turn.
 \begin{example}
 Let our urn simply contain three balls, labeled 1, 2, and 3, respectively.
 We are going to take a sample of size 2 from the urn. 
@@ -4029,7 +4052,7 @@ rolldie(1, makespace = TRUE)
 @ 
 
 or just \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rolldie(1, TRUE)!\inputencoding{utf8}.
-Many of the other sample space functions {(}\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!tosscoin!\inputencoding{utf8},
+Many of the other sample space functions (\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!tosscoin!\inputencoding{utf8},
 \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cards!\inputencoding{utf8},
 \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!roulette!\inputencoding{utf8},
 \textit{etc}.) have similar \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!makespace!\inputencoding{utf8}
