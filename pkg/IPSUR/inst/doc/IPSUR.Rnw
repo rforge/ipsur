@@ -3373,10 +3373,9 @@ Hydrogen and Oxygen, or adding two numbers such as $2+3$. A \emph{random}
 experiment is one whose outcome is determined by chance. We posit
 that the outcome of a random experiment may not be predicted with
 certainty beforehand, even in principle. Examples of random experiments
-include tossing a coin, rolling a die, and throwing a dart on a board.
-But there are all sorts of other random experiments, like how many
-red lights you encounter on the drive home, how many ants traverse
-a certain patch of sidewalk over a short period, \emph{etc}.
+include tossing a coin, rolling a die, and throwing a dart on a board,
+how many red lights you encounter on the drive home, how many ants
+traverse a certain patch of sidewalk over a short period, \emph{etc}.
 
 
 \section{Sample Spaces}
@@ -3391,21 +3390,22 @@ selection of an outcome in $S$.
 
 \subsection{How to do it with \textsf{R}}
 
-This book does probability with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
-package. A sample space is represented by a \emph{data frame}, that
-is, a rectangular collection of variables (see Section BLANK). Each
-row of the data frame corresponds to an outcome of the experiment.
-This choice is convenient both for its simplicity and its compatibility
-with the \textsf{R} Commander. However, this structure is not rich
-enough to describe some of the more interesting probabilistic applications
-we will encounter later; to handle those we will need to consider
-a more general \emph{list} data structure. See Section BLANK for details.
+Most of the probability work in this book is done with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
+package. A sample space is (usually) represented by a \emph{data frame},
+that is, a rectangular collection of variables (see Section BLANK).
+Each row of the data frame corresponds to an outcome of the experiment.
+The data frame choice is convenient both for its simplicity and its
+compatibility with the \textsf{R} Commander. Data frames alone are,
+however, not sufficient to describe some of the more interesting probabilistic
+applications we will study later; to handle those we will need to
+consider a more general \emph{list} data structure. See Section BLANK
+for details.
 \begin{example}
 Consider the random experiment of dropping a styrofoam cup onto the
-floor from a height of four feet. The cup will hit the ground and
-eventually come to rest. It could land upside down, right side up
-, or it could land on its side. We represent these possible outcomes
-of the random experiment by the following.
+floor from a height of four feet. The cup hits the ground and eventually
+comes to rest. It could land upside down, right side up, or it could
+land on its side. We represent these possible outcomes of the random
+experiment by the following.
 
 <<>>=
 S <- data.frame(lands = c("down","up","side"))
@@ -3413,15 +3413,15 @@ S
 @
 
 The sample space \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!S!\inputencoding{utf8}
-contains the single column \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!lands!\inputencoding{utf8}
+contains the column \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!lands!\inputencoding{utf8}
 which stores the outcomes \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"down"!\inputencoding{utf8},
 \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"up"!\inputencoding{utf8},
 and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"side"!\inputencoding{utf8}. 
 
 \end{example}
-Some sample spaces are so common that convenience wrappers have been
-designed to set them up quickly and efficiently. The underlying machinery
-that does the work includes the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!expand.grid!\inputencoding{utf8}
+Some sample spaces are so common that convenience wrappers were written
+to set them up with minimal effort. The underlying machinery that
+does the work includes the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!expand.grid!\inputencoding{utf8}
 function in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!base!\inputencoding{utf8}
 package, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!combn!\inputencoding{utf8}
 in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!combinat!\inputencoding{utf8}
@@ -3433,7 +3433,7 @@ wrappers. I encourage their use for the beginner to get started, but
 I also recommend that introductory students wean themselves as soon
 as possible. The wrappers were designed for ease and intuitive use,
 not for speed or efficiency. They are much too slow and bulky for
-any serious work. %
+serious work. %
 }.
 
 Consider the random experiment of tossing a coin. The outcomes are
@@ -3460,8 +3460,8 @@ rolldie(1)
 @
 
 The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rolldie!\inputencoding{utf8}
-function defaults to a 6-sided die, but we can modify that with the
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!nsides!\inputencoding{utf8}
+function defaults to a 6-sided die, but we can specify others with
+the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!nsides!\inputencoding{utf8}
 argument. The command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rolldie(3, nsides = 4)!\inputencoding{utf8}
 would be used to roll a 4-sided die three times.
 
@@ -3490,14 +3490,14 @@ inside. We shake up the urn, reach inside, grab a ball, and take a
 look. That's all.
 
 But there are all sorts of variations on this theme. Maybe we would
-like to grab more than one ball, say, two balls. What are all of the
-possible outcomes of the experiment now? It depends on how we sample.
-One way would be to select a ball, take a look, put it back, and sample
+like to grab more than one ball -- say, two balls. What are all of
+the possible outcomes of the experiment now? It depends on how we
+sample. We could select a ball, take a look, put it back, and sample
 again. Another way would be to select a ball, take a look -- but do
 not put it back -- and sample again (equivalently, just reach in and
-grab two balls). There are certainly more possible outcomes in the
-former case than in the latter. In the first (second) case we say
-that sampling is done \emph{with} (\emph{without}) \emph{replacement}.
+grab two balls). There are certainly more possible outcomes of the
+experiment in the former case than in the latter. In the first (second)
+case we say that sampling is done \emph{with} (\emph{without}) \emph{replacement}.
 
 There is more. Suppose we do not actually keep track of which ball
 came first. All we observe are the two balls, and we have no idea
@@ -3517,8 +3517,12 @@ to selecting a ball from an urn with six elements, labeled 1 through
 \subsection{How to do it with \textsf{R} }
 
 The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
-package accomplishes sampling from urns with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples(x, size, replace, ordered)!\inputencoding{utf8}
-function. The argument \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
+package accomplishes sampling from urns with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples!\inputencoding{utf8}
+function, which has arguments \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!size!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!replace!\inputencoding{utf8},
+and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ordered!\inputencoding{utf8}.
+The argument \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
 represents the urn from which sampling is to be done. The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!size!\inputencoding{utf8}
 argument tells how large the sample will be. The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ordered!\inputencoding{utf8}
 and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!replace!\inputencoding{utf8}
@@ -3527,7 +3531,6 @@ We will discuss each in turn.
 \begin{example}
 Let our urn simply contain three balls, labeled 1, 2, and 3, respectively.
 We are going to take a sample of size 2 from the urn. 
-\end{example}
 
 \subsubsection*{Ordered, With Replacement}
 
@@ -3601,6 +3604,7 @@ methodway to distribute two identical golf balls into three boxes
 labeled 1, 2, and 3. Regardless of the interpretation, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples!\inputencoding{utf8}
 lists every possible way that the experiment can conclude.
 
+\end{example}
 Note that the urn does not need to contain numbers; we could have
 just as easily taken our urn to be \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x = c("Red","Blue","Green")!\inputencoding{utf8}.
 But, there is an \textbf{important} point to mention before proceeding.
@@ -3678,35 +3682,36 @@ subset(rolldie(3), X1+X2+X3 > 16)
 
 \subsection{Functions for Finding Subsets}
 
-It does not take long before the subsets of interest become more and
-more complicated to specify. Yet the main idea is that we have a particular
-logical condition that we would like to apply to each row. If the
-row satisfies the condition, then it should be in the subset and it
-should not be in the subset otherwise.
-
-There are many ways to construct logical expressions, and there is
-an abundance of material that does a great job describing how to go
-about it. The ease with which the expression may be coded depends
-of course on the question being asked. 
+It does not take long before the subsets of interest become complicated
+to specify. Yet the main idea remains: we have a particular logical
+condition to apply to each row. If the row satisfies the condition,
+then it should be in the subset. It should not be in the subset otherwise.
+The ease with which the condition may be coded depends of course on
+the question being asked. Here are a few functions to get started.
 
 
-\subsubsection*{The function \texttt{isin()}}
+\subsubsection*{The \texttt{\%in\%} function}
 
-Experienced users of \textsf{R} will no doubt be familiar with the
-function \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!%in%!\inputencoding{utf8}.
-It can be used in the following way. 
+The function \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!%in%!\inputencoding{utf8}
+helps to learn whether each value of one vector lies somewhere inside
+another vector. 
 
 <<echo=TRUE,print=FALSE>>= 
-x = 1:10 
-y = 3:7 
+x <- 1:10 
+y <- 8:12 
 y %in% x
 @ 
 
-Notice that the value is a vector of length 5 which tests if each
-element of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!y!\inputencoding{utf8}
-is in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!y!\inputencoding{utf8},
-in turn. But perhaps we would like to know whether the \emph{whole}
-vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!y!\inputencoding{utf8}
+Notice that the returned value is a vector of length 5 which tests
+whether each element of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!y!\inputencoding{utf8}
+is in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8},
+in turn.
+
+
+\subsubsection*{The \texttt{isin} function}
+
+It is more common to want to know whether the \emph{whole} vector
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!y!\inputencoding{utf8}
 is in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}.
 We can do this with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!isin!\inputencoding{utf8}
 function. 
@@ -3732,12 +3737,12 @@ isin(x,y)
 
 The reason for the above is of course that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
 contains the value 3, but \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
-does not have two 3's. The difference becomes significant when rolling
-multiple dice, playing cards, \emph{etc}. Note that there is an argument
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ordered!\inputencoding{utf8},
+does not have \emph{two} 3's. The difference is important when rolling
+multiple dice, playing cards, \emph{etc}. Note that there is an optional
+argument \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ordered!\inputencoding{utf8}
 which tests whether the elements of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!y!\inputencoding{utf8}
 appear in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
-in the order in which they are specified in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!y!\inputencoding{utf8}.
+in the order in which they are appear in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!y!\inputencoding{utf8}.
 The consequences are 
 
 <<echo=TRUE,print=TRUE>>= 
@@ -3745,14 +3750,14 @@ isin(x, c(3,4,5), ordered = TRUE)
 isin(x, c(3,5,4), ordered = TRUE) 
 @ 
 
-The connection to probability is that we are given a data frame sample
-space and we would like to find a subset of the space. A \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!data.frame!\inputencoding{utf8}
-method has been written for \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!isin!\inputencoding{utf8}
+The connection to probability is that have a data frame sample space
+and we would like to find a subset of that space. A \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!data.frame!\inputencoding{utf8}
+method was written for \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!isin!\inputencoding{utf8}
 that simply applies the function to each row of the data frame. Certainly,
 one could extend the function to work for columns or entries instead
-of rows, but simplicity is a primary goal of the \texttt{prob} package.
-It is easy enough for experienced users to modify the code as desired
-to serve their purposes.
+of rows, but simplicity is a primary goal of the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
+package. It is easy enough for experienced users to modify the code
+as desired to serve their purposes.
 
 We can see the method in action with the following: 
 
@@ -3815,7 +3820,7 @@ There have been methods written for \inputencoding{latin9}\lstinline[basicstyle=
 \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!subset!\inputencoding{utf8},
 and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!union!\inputencoding{utf8}
 in the case that the input objects are of class \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ps!\inputencoding{utf8}.
-See Section 9.1.
+See Section BLANK.
 \begin{note}
 When you load the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
 package you will most certainly notice the message: {}``\texttt{The
@@ -3844,7 +3849,7 @@ package definition in the case that the arguments are vectors.
 Let us take a look at the coin-toss experiment more closely. What
 do we mean when we say {}``the probability of Heads'' or write $\P(\mbox{Heads})$?
 Given a coin and an itchy thumb, how do we go about finding what $\P(\mbox{Heads})$
-should be? There are three main approaches to this problem.
+should be? There are three mainstream approaches.
 
 
 \subsection{The Measure Theory Approach}
@@ -3854,44 +3859,45 @@ to define a mathematical function, called a \emph{probability measure},
 on the sample space. Probability measures satisfy certain axioms (to
 be introduced later) and have special mathematical properties, so
 not just any mathematical function will do. But in any given physical
-circumstance there are typically a large class of probability measures
+circumstance there are typically all sorts of probability measures
 from which to choose, and it is left to the experimenter to make a
-reasonable choice -- which is usually based on considerations of objectivity.
+reasonable choice -- usually based on considerations of objectivity.
 For the tossing coin example, a valid probability measure assigns
 probability $p$ to the event $\left\{ \mbox{Heads}\right\} $, where
 $p$ is some number $0\leq p\leq1$. An experimenter that wishes to
-capitalize on the symmetry of the the coin to balance the outcome
-of $\left\{ \mbox{Heads}\right\} $ and $\left\{ \mbox{Tails}\right\} $
-would choose $p=1/2$.
+incorporate the symmetry of the coin would choose $p=1/2$ to balance
+the likelihood of $\left\{ \mbox{Heads}\right\} $ and $\left\{ \mbox{Tails}\right\} $
+.
 
 Once the probability measure is chosen (or determined), there is not
 much left to do. All assignments of probability are made by the probability
-function, and the experimenter needs only to plug the event $A$ into
-to the probability function to find $\P(\mbox{Heads})$. In this way,
-the probability of an event is simply a calculated value, nothing
+function, and the experimenter needs only to plug the event $\left\{ \mbox{Heads}\right\} $
+into to the probability function to find $\P(\mbox{Heads})$. In this
+way, the probability of an event is simply a calculated value, nothing
 more, nothing less. Of course this is not the whole story; there are
 many theorems and consequences associated with this approach that
-will keep us occupied for the remainder of this book. It is called
-measure theory because the measure (probability) of a set (event)
-is associated with how big it is (how likely it is to occur).
+will keep us occupied for the remainder of this book. The approach
+is called \emph{measure theory} because the measure (probability)
+of a set (event) is associated with how big it is (how likely it is
+to occur).
 
-The measure theory approach works well in situations where there is
-symmetry to the experiment, such as flipping a balanced coin or spinning
-an arrow around a circle with well-defined pie slices. It is also
-good because of its mathematical simplicity, elegance, and flexibility.
-There are literally volumes of information that one can prove about
-probability measures, and the cold rules of mathematics allow us to
-analyze intricate probabilistic problems with confidence. The large
-degree of flexibility is also a disadvantage, however. When symmetry
-fails it is not always obvious what an {}``objective'' choice of
-probability measure should be; for instance, what probability should
-we assign to $\left\{ \mbox{Heads}\right\} $ if we spin the coin
-rather than flip it? (It is not $1/2$.) Furthermore, the mathematical
-rules can be restrictive if we wish to incorporate subjective knowledge
-into the mathematical model, knowledge which changes over time and
-depends on the experimenter, for example, personal knowledge about
-the properties of the specific coin being flipped, or of the person
-doing the flipping.
+The measure theory approach is well suited for situations where there
+is symmetry to the experiment, such as flipping a balanced coin or
+spinning an arrow around a circle with well-defined pie slices. It
+is also handy because of its mathematical simplicity, elegance, and
+flexibility. There are literally volumes of information that one can
+prove about probability measures, and the cold rules of mathematics
+allow us to analyze intricate probabilistic problems with vigor. 
+
+The large degree of flexibility is also a disadvantage, however. When
+symmetry fails it is not always obvious what an {}``objective''
+choice of probability measure should be; for instance, what probability
+should we assign to $\left\{ \mbox{Heads}\right\} $ if we spin the
+coin rather than flip it? (It is not $1/2$.) Furthermore, the mathematical
+rules are restrictive when we wish to incorporate subjective knowledge
+into the model, knowledge which changes over time and depends on the
+experimenter, such as personal knowledge about the properties of the
+specific coin being flipped, or of the person doing the flipping.
 
 The mathematician who revolutionized this way to do probability theory
 was Andrey Kolmogorov, who published a landmark monograph in 1933.
@@ -3908,15 +3914,15 @@ Then a good approximation to $\P(\mbox{Heads})$ will be\begin{equation}
 \P(\mbox{Heads})\approx\frac{\mbox{number of observed Heads}}{\mbox{total number of flips}}.\end{equation}
 
 
-The basis for this approach is the celebrated \textbf{Law of Large
-Numbers}, which may be loosely described as follows. Let $E$ be a
-random experiment in which the event $A$ either does or does not
-occur. Perform the experiment repeatedly, in an identical manner,
-in such a way that the successive experiments do not influence each
-other. After each experiment, keep a running tally of whether or not
-the event $A$ occurred. Let $S_{n}$ count the number of times that
-$A$ occurred in the $n$ experiments. Then the law of large numbers
-says that \begin{equation}
+The mathematical underpinning of this approach is the celebrated \textbf{Law
+of Large Numbers}, which may be loosely described as follows. Let
+$E$ be a random experiment in which the event $A$ either does or
+does not occur. Perform the experiment repeatedly, in an identical
+manner, in such a way that the successive experiments do not influence
+each other. After each experiment, keep a running tally of whether
+or not the event $A$ occurred. Let $S_{n}$ count the number of times
+that $A$ occurred in the $n$ experiments. Then the law of large
+numbers says that \begin{equation}
 \frac{S_{n}}{n}\to\P(A)\mbox{ \,\ as }n\to\infty.\end{equation}
 
 
@@ -3925,15 +3931,17 @@ $A$ we need only repeat the random experiment to get a reasonable
 estimate of its numerical value, and if we are not satisfied with
 our estimate then we may simply repeat the experiment more times,
 all the while confident that with more and more experiments our estimate
-will stabilize to the true value. The frequentist approach is good
-because it relatively light on assumptions and does not worry about
-symmetry or claims of objectivity like the measure-theoretic approach.
-It is perfect for the spinning coin experiment. One drawback to the
-method is that one can never know the exact value of a probability,
-only a long-run approximation. It also does not work well with experiments
-that can not be repeated indefinitely, say, the probability that it
-will rain today, the chances that you get will get an A in your Statistics
-class, or the probability that the world is destroyed by nuclear war.
+will stabilize to the true value. 
+
+The frequentist approach is good because it is relatively light on
+assumptions and does not worry about symmetry or claims of objectivity
+like the measure-theoretic approach does. It is perfect for the spinning
+coin experiment. One drawback to the method is that one can never
+know the exact value of a probability, only a long-run approximation.
+It also does not work well with experiments that can not be repeated
+indefinitely, say, the probability that it will rain today, the chances
+that you get will get an A in your Statistics class, or the probability
+that the world is destroyed by nuclear war.
 
 This approach was espoused by Richard von Mises in the early twentieth
 century, and some of his main ideas were incorporated into the measure
@@ -3974,7 +3982,37 @@ for a short discussion and links to references about the subjective
 approach.
 
 
-\subsection{Equally Likely Model}
+\subsection{Equally Likely Model (ELM)}
+
+We have seen several approaches to the assignment of a probability
+model to a given random experiment, and they are very different in
+thier underlying interpretation. But they all cross paths when it
+comes to the equally likely model that assigns equal probability to
+all elementary outcomes of the experiment.
+
+The ELM appears in the measure theory approach when the experiment
+boasts symmetry of some kind. If symmetry guarantees that all outcomes
+have equal {}``size'', and if outcomes with equal {}``size'' should
+get the same probability, then the ELM is a logical choice for the
+experimenter. Consider the balanced 6-sided die, the fair coin, or
+the dart board with equal-sized wedges.
+
+The ELM appears in the subjective approach when the experimenter resorts
+to indifference or ignorance with respect to his/her knowledge of
+the outcome of the experiment. If the experimenter has no prior knowledge
+to suggest that (s)he prefer Heads over Tails, then it is reasonable
+for the him/her to assign equal subjective probability to both possible
+outcomes.
+
+The ELM appears in the relative frequency approach as a fascinating
+fact of Nature: when we flip balanced coins over and over again, we
+observe that the proportion of times that the coin comes up Heads
+tends to $1/2$. Of course if we assume that the measure theory applies
+then we can prove that the sample proportion must tend to 1/2 as expected,
+but that is putting the cart before the horse, in a manner of speaking.
+
+The ELM only applies when there are finitely many elements to the
+sample space.
 
 
 \subsection{How to do it with \textsf{R}}
