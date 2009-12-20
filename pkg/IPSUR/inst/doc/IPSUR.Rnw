@@ -7,6 +7,9 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{listings}
+\lstset{basicstyle={\ttfamily},
+breaklines=true,
+language=R}
 \usepackage[letterpaper]{geometry}
 \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1.25in,rmargin=1.25in}
 \pagestyle{headings}
@@ -35,10 +38,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
 \providecommand{\LyX}{L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
 \newcommand{\noun}[1]{\textsc{#1}}
-\DeclareRobustCommand*{\lyxarrow}{%
-\@ifstar
-{\leavevmode\,$\triangleleft$\,\allowbreak}
-{\leavevmode\,$\triangleright$\,\allowbreak}}
 %% Because html converters don't know tabularnewline
 \providecommand{\tabularnewline}{\\}
 
@@ -101,7 +100,7 @@
 % \VignettePackage{IPSUR}
 % Package
 
-
+% user-loaded packages
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{latexsym}
@@ -122,7 +121,8 @@
 \usepackage{upgreek}
 
 
-
+%  user defined commands
+% special operators
 \renewcommand{\P}{%
   \mathop{\operator@font I\hspace{-1.5pt}P\hspace{.13pt}}}
 \newcommand{\E}{%
@@ -130,75 +130,23 @@
 \newcommand{\VAR}{\operatorname{var}}
 \newcommand{\COV}{\operatorname{cov}}
 \newcommand{\COR}{\operatorname{cor}}
+\renewcommand{\vec}[1]{\mbox{\boldmath$#1$}}
 
-%  user defined commands
-
-% Fancy Expectation Notation
-%\renewcommand{\P}{\mathrm{I\! P}}
-%\renewcommand{\P}{\mathbb{P}}
-\newcommand{\vP}{|\mathrm{I\! P}|}
-\newcommand{\nvP}{\|\mathrm{I\! P}\|}
-%\newcommand{\E}{\mathrm{I\! E}}
+% special symbols
+\newcommand{\me}{\mathrm{e}}
 \newcommand{\R}{\mathbb{R}}
-\newcommand{\vE}{|\mathrm{I\! E}|}
-\newcommand{\nvE}{\|\mathrm{I\! E}\|}
-\renewcommand{\d}{\mathrm{d}}
 \newcommand{\diff}{\mathrm{d}}
 \newcommand{\ybar}{\overline{y}}
 \newcommand{\xbar}{\overline{x}}
 \newcommand{\Xbar}{\overline{X}}
 \newcommand{\Ybar}{\overline{Y}}
-\newcommand{\hs}{\hspace*{20pt}}
 
-
+% special logos
 \providecommand{\IPSUR}
 {\textsc{I\kern 0ex\lower-.3ex\hbox{\small P}\kern -.5ex\lower.4ex\hbox{\footnotesize S}\kern -.25exU}\kern -.1ex\lower .15ex\hbox{\textsf{\large R}}\@}
 
 \providecommand{\IPSURtitle}
 {\fontsize{30}{35}\selectfont \textsc{I\kern -.16ex\lower-.5ex\hbox{\Large P}\kern -.5ex\lower.4ex\hbox{\Large S}\kern -.25exU}\kern -.1ex\lower .15ex\hbox{\textsf{\Huge R}}\@}
-
-% Greek Letters (new way)
-\newcommand{\ga}{\alpha}
-\newcommand{\gb}{\beta}
-\renewcommand{\gg}{\gamma} % old use was >>
-\newcommand{\gG}{\Gamma}
-\newcommand{\gd}{\delta}
-\newcommand{\gep}{\epsilon}  % use \geq for >=
-\newcommand{\gk}{\kappa}
-\newcommand{\gf}{\varphi}
-\newcommand{\gl}{\lambda}
-\newcommand{\gm}{\mu}
-\newcommand{\gn}{\nu}
-\newcommand{\go}{\omega}
-\newcommand{\gp}{\pi}
-\newcommand{\gs}{\sigma}
-\newcommand{\gth}{\theta}
-\newcommand{\gO}{\Omega}
-\newcommand{\gP}{\Pi}
-
-\renewcommand{\vec}[1]{\mbox{\boldmath$#1$}}
-
-% Color commands
-\newcommand{\nc}{\normalcolor}
-\newcommand{\cg}{\color[rgb]{0,0.5,0}}
-\newcommand{\me}{\mathrm{e}}
-
-
-%  Special commands I don't understand
-%\makeatletter
-%\newbox\tempbox
-%\newdimen\nomenwidth
-%\newenvironment{symbollist}[1]{%
-%\addvspace{12pt}
-%            \setbox\tempbox\hbox{#1\hskip1em}%
-%   \global\nomenwidth\wd\tempbox
-   %\section*{Sumbol Description}
-%\noindent{\SectionHeadFont Symbol Description}\vskip6pt
-%\begin{multicols}{2}}{%
-%        \end{multicols}\par\addvspace{12pt}}
-%\def\symbolentry#1#2{\par\noindent\@hangfrom{\hbox to \nomenwidth{#1\hss}}#2\par}
-%\makeatother
-
 
 % add Contents to TOC
 \pagenumbering{roman}
@@ -209,16 +157,6 @@
      \clearpage
 }
 
-
-% Make program listings prettier
-%\lstset{
-%keywordstyle = \color{blue},  
-%backgroundcolor=\color[gray]{0.93}
-%}
-
-
-
-
 %%  Sweave specific commands
 % make the input blue
 \DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl, formatcom=\color{red}}
@@ -228,22 +166,14 @@
 \fvset{listparameters={\setlength{\topsep}{0pt}}}
 \renewenvironment{Schunk}{\vspace{\topsep}}{\vspace{\topsep}}  
 
-
-
+% settings for program listings
 \lstset{
 language=R,
 breaklines=true,
 breakatwhitespace=true,
-%keywordstyle={\color{blue}\sffamily\bfseries},
-%keywordstyle={\color{blue}\sffamily},
-%keywordstyle={\sffamily},
 keywordstyle={\ttfamily},
 numberstyle = {\ttfamily},
-morestring=[b]",
-deletekeywords=
-{lower, set},
-morekeywords=
-{addmargins, addrv, Binom, bwplot, cards, DiscreteDistribution, E, head, histogram, kurtosis, marginal, mgamma, pbirthday, prob, probspace, rolldie, skewness, Stangle, stripchart, urnsamples, Vectorize, xyplot}
+morestring=[b]"
 }
 
 \AtBeginDocument{
@@ -499,49 +429,57 @@ and Wasserman (Irwin)
 \item Statistical Inference, 1st Ed, Casella and Berger (Duxbury)
 \item Monte Carlo Statistical Methods, 1st Ed., Robert and Casella (Springer)
 \item Introduction to Statistical Thought
-\item Using R for Introductory Statistics
-\item Introductory Statistics with R
-\item Data Analysis and Graphics using R
+\item Using \textsf{R} for Introductory Statistics
+\item Introductory Statistics with \textsf{R}
+\item Data Analysis and Graphics using \textsf{R}
 \end{itemize}
-Please note that the title of this book is {}``Introduction to Probability
-and Statistics Using R'', and not {}``Introduction to R Using Probability
-and Statistics''. The goal is probability and statistics; the tool
-is R. This mirrors my own experience with R, having learned while
-already employed as a statistician. Consequently there are many important
-topics from R which some individuals will feel are underdeveloped,
-glossed over, or omitted unnecessarily. Some will feel the same way
-about the probabilistic and/or statistical content. 
+Please bear in mind that the title of this book is {}``Introduction
+to Probability and Statistics Using \textsf{R}'', and not {}``Introduction
+to \textsf{R} Using Probability and Statistics'', nor even {}``Introduction
+to Probability and Statistics and \textsf{R} Using Words''. The goal
+is probability and statistics; the tool is \textsf{R}. There are consequently
+several important topics about \textsf{R} which some individuals will
+feel are underdeveloped, glossed over, or omitted unnecessarily. Some
+will feel the same way about the probabilistic and/or statistical
+content. Still others will just want to learn \textsf{R} and skip
+all of the mathematics.
 
-Regardess of any misgivings: here it is. I humbly invite said individuals
+Despite any misgivings: here it is. I humbly invite said individuals
 to take this book -- with the GNU-FDL in hand -- and make it better.
-
-There are many ways in which this book could be improved:
+In that spirit there are many ways in which this book could be improved:
 \begin{description}
 \item [{Better~data:}] the data analyzed in this book are almost entirely
-from the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,language=R]!datasets!\inputencoding{utf8}
-package in base R. There are three reasons for this: 
+from the \inputencoding{latin9}\lstinline[showstringspaces=false]!datasets!\inputencoding{utf8}
+package in base \textsf{R}. There are at least three reasons for this: 
 
 \begin{enumerate}
 \item I made a conscious effort to minimize dependence on contributed packages,
-\item The data are instantly available, already in the correct format, we
-do not need to waste time managing them, and 
+\item The data are instantly available, already in the correct format, and
+we do not need to waste time managing them, and
 \item The data are \emph{real}.
 \end{enumerate}
 I made no attempt to choose data sets that would be interesting to
 the students; rather, data were chosen for their potential to convey
-a statistical point. Unfortunately, many of the datasets are decades
-old or more (for instance, the data used to introduce simple linear
-regression are the speeds and stopping distances of cars in the 1920's).
+a statistical point. Many of the datasets are decades old, or more
+(for instance, the data used to introduce simple linear regression
+are the speeds and stopping distances of cars in the 1920's).
 
 In a perfect world with infinite time I would research and contribute
-recent, \emph{real} data in a context that engages the students. One
-day I hope to stumble across said infinite time.
+recent, \emph{real} data in a context crafted to engage the students
+in \emph{every} example. One day I hope to stumble over that time.
+In the meantime, I will add new data sets incrementally as time permits.
 
-\item [{More~proofs:}] for the sake of completeness. Th
-\item [{More~and~better~graphics:}] I haven't used the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,language=R]!ggplot2!\inputencoding{utf8}
-package
-\item [{More~and~better~exercises:}] I haven't used the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,language=R]!exams!\inputencoding{utf8}
-package.
+\item [{More~proofs:}] for the sake of completeness. Many proofs have
+been skipped. There is no rhyme or reason to the current omissions.
+I will add more proofs as time permits. 
+\item [{More~and~better~graphics:}] I have not used the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,language=R]!ggplot2!\inputencoding{utf8}
+package because I do not know how to use it yet. It is on my to-do
+list.
+\item [{More~and~better~exercises:}] There are not nearly enough exercises
+in the first edition. I have not used the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,language=R]!exams!\inputencoding{utf8}
+package, but I believe that it is a right way to move forward with
+this book. As I learn more about what the package can do I would like
+to incorporate it into later editions of this book.
 \end{description}
 
 \section*{About This Document}
@@ -627,10 +565,9 @@ branches of the manuscript, and more.
 
 There is a contributed package on \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!CRAN!\inputencoding{utf8},
 called \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!IPSUR!\inputencoding{utf8}.
-There are two objectives of the package. First, it houses the Document
-and makes it very easy to read the Document. Quite literally, there
-are only three commands that are needed to have this Document at one's
-fingertips:
+The package has two purposes. The first is to house the Document in
+an easy-to-access medium. Indeed, a student can have the Document
+at his/her fingertips with only three commands:
 
 <<eval = FALSE>>=
 install.packages(IPSUR)
@@ -638,39 +575,40 @@ library(IPSUR)
 read(IPSUR)
 @
 
-The second objective is related to the license under which \IPSUR\
-has been released. If one wants to distribute materials under the
-GNU-FDL then one must make the source code freely available to anyone
-that wants it. Having the package hosted on \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!CRAN!\inputencoding{utf8}
+The second purpose goes hand in hand with the Document's license;
+since \IPSUR\ is free, the source code must be freely available to
+anyone that wants it. Hosting the package on \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!CRAN!\inputencoding{utf8}
 satisfies this requirement nicely.
 
 
 \subsection*{Ancillary Materials}
 
-These are extra materials to enhance the \IPSUR\ experience.
+These are extra materials that accompany \IPSUR\.
 \begin{description}
-\item [{\texttt{IPSUR.RData}}] is a saved image of the R workspace at the
-completion of the Sweave processing of \IPSUR. This can be loaded
-into memory with File Load Workspace or with the command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!load(/path/to/IPSUR.Rdata)!\inputencoding{utf8}.
-Loading it into R will make every single object in the R workspace
-immediately available and in memory. In particular, the data BLANK
-from Exercise BLANK in Chapter BLANK on page BLANK will be loaded.
-Type BLANK at the command line to see for yourself. 
-\item [{\texttt{IPSUR.R}}] is the exported R code from \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!IPSUR.Rnw!\inputencoding{utf8}.
-With this script, literally every R command from the entirety of \IPSUR\
-can be resubmitted at the command line. Note that the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!set.seed!\inputencoding{utf8}
+\item [{\texttt{IPSUR.RData}}] is a saved image of the \textsf{R} workspace
+at the completion of the Sweave processing of \IPSUR. This can be
+loaded into memory with \textsf{File} $\triangleright$ \textsf{Load
+Workspace} or with the command \inputencoding{latin9}\lstinline[showstringspaces=false]!load("/path/to/IPSUR.Rdata")!\inputencoding{utf8}.
+Loading it into \textsf{R} will make every single object in the \textsf{R}
+workspace immediately available and in memory. In particular, the
+data BLANK from Exercise BLANK in Chapter BLANK on page BLANK will
+be loaded. Type BLANK at the command line to see for yourself. 
+\item [{\texttt{IPSUR.R}}] is the exported \textsf{R} code from \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR.Rnw!\inputencoding{utf8}.
+With this script, literally every \textsf{R} command from the entirety
+of \IPSUR\ can be resubmitted at the command line. Note that the
+\inputencoding{latin9}\lstinline[showstringspaces=false]!set.seed!\inputencoding{utf8}
 line at the top should be deleted before distributing to students.
 \end{description}
 
 \section*{Notation}
 
-We use the notation \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
-for simple objects, and use \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!stem.leaf!\inputencoding{utf8}
+We use the notation \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
+for simple objects, and use \inputencoding{latin9}\lstinline[showstringspaces=false]!stem.leaf!\inputencoding{utf8}
 notation to denote functions. The sequence {}``\textsf{Statistics}
-\textsf{\lyxarrow{}} \textsf{Summaries} \textsf{\lyxarrow{}} \textsf{Active
-Dataset}'' means to click the \textsf{Statistics} menu item, next
-click the \textsf{Summaries} submenu item , and finally click \textsf{Active
-Dataset}.
+\textsf{$\triangleright$} \textsf{Summaries} \textsf{$\triangleright$}
+\textsf{Active Dataset}'' means to click the \textsf{Statistics}
+menu item, next click the \textsf{Summaries} submenu item, and finally
+click \textsf{Active Dataset}.
 
 \listoffigures
 \addcontentsline{toc}{chapter}{List of Figures} 
@@ -755,7 +693,8 @@ R
 \item different platforms, the console, the terminal
 \item external programs such as Tinn-R, Emacs, or Eclipse
 \end{itemize}
-\item how to use R like a calculator (essentially arithmetic with R)
+\item how to use \textsf{R} like a calculator (essentially arithmetic with
+\textsf{R})
 
 \begin{itemize}
 \item basic mathematical functions
@@ -843,30 +782,26 @@ of the Comprehensive \textsf{R} Archive Network, or \inputencoding{latin9}\lstin
 for short. Given an active Internet connection, anybody is free to
 download and install these packages and even inspect the source code.
 
-To install a package named \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!foo!\inputencoding{utf8},
-open up \textsf{R} and type \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!install.packages(foo)!\inputencoding{utf8}.
-To install \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!foo!\inputencoding{utf8}
+To install a package named \inputencoding{latin9}\lstinline[showstringspaces=false]!foo!\inputencoding{utf8},
+open up \textsf{R} and type \inputencoding{latin9}\lstinline[showstringspaces=false]!install.packages("foo")!\inputencoding{utf8}.
+To install \inputencoding{latin9}\lstinline[showstringspaces=false]!foo!\inputencoding{utf8}
 and additionally install all of the other packages on which \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!foo!\inputencoding{utf8}
-depends, instead type \inputencoding{latin9}
-\begin{lstlisting}[basicstyle={\ttfamily}]
-install.packages(foo, depends = TRUE)
-\end{lstlisting}
-\inputencoding{utf8}
+depends, instead type \inputencoding{latin9}\lstinline[showstringspaces=false]!install.packages("foo", depends = TRUE)!\inputencoding{utf8}.
 
-The general command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!install.packages()!\inputencoding{utf8}
+The general command \inputencoding{latin9}\lstinline[showstringspaces=false]!install.packages()!\inputencoding{utf8}
 will (on most operating systems) open a window contaning a huge list
 of available packages; simply choose one or more to install.
 
 No matter how many packages are installed onto the system, each one
-must first be loaded for use. The way to load them is the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!library!\inputencoding{utf8}
-command. For instance, the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!foreign!\inputencoding{utf8}
+must first be loaded for use with the \inputencoding{latin9}\lstinline[showstringspaces=false]!library!\inputencoding{utf8}
+function. For instance, the \inputencoding{latin9}\lstinline[showstringspaces=false]!foreign!\inputencoding{utf8}
 package (in the base distribution) contains all sorts of functions
 needed to import data sets into \textsf{R} from other software such
 as SPSS, SAS, \emph{etc}. But none of those functions will be available
-until the command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!library(foreign)!\inputencoding{utf8}
+until the command \inputencoding{latin9}\lstinline[showstringspaces=false]!library(foreign)!\inputencoding{utf8}
 is issued. 
 
-Simply type \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!library()!\inputencoding{utf8}
+Simply type \inputencoding{latin9}\lstinline[showstringspaces=false]!library()!\inputencoding{utf8}
 at the command prompt (described below) to see a list of all available
 packages in your library.
 
@@ -879,7 +814,7 @@ manual, \url{http://cran.r-project.org/manuals.html}.
 
 There are three basic methods for communicating with \textsf{R}.
 \begin{enumerate}
-\item At the Command Prompt (\texttt{>}).
+\item At the command prompt (\texttt{>}).
 
 
 This is the most basic way to complete simple, one-line commands.
@@ -891,7 +826,7 @@ in the Console Window.
 
 Another way is to open a text file with a text editor (say, NotePad
 or Microsoft$\circledR$ Word). The user writes code in the text file,
-then when satisfied, (s)he copy-pastes it at the Command Prompt in
+then when satisfied, (s)he copy-pastes it at the command prompt in
 \textsf{R}. Then \textsf{R} will run all of the code at once and give
 output in the Console Window.
 
@@ -905,8 +840,8 @@ powerful \emph{script editors}.
 than discussed here.
 
 \begin{enumerate}
-\item R Gui
-\item The R Commander
+\item \textsf{R} Gui
+\item The \textsf{R} Commander
 \item PMG: Poor Man's GUI
 \item Rattle
 \item JGR (sounds like {}``jaguar'')
@@ -966,8 +901,8 @@ And if Emacs can't do it, then you extend Emacs by writing a program
 in the Lisp language.
 \item In particular, a team of volunteers have written an Emacs extension
 called ESS, which stands for Emacs Speaks Statistics. Using ESS, one
-can speak to R and do all of the tricks that the other script editors
-offer, and much, much, more.
+can speak to \textsf{R} and do all of the tricks that the other script
+editors offer, and much, much, more.
 \item If you want to learn Emacs, and if you grew up with Microsoft$\circledR$
 Windows or Macintosh, then you are going to need to relearn everything
 you thought you knew about computers your whole life. (Or, since Emacs
@@ -994,18 +929,18 @@ to write all at once at the command prompt. Furthermore, for longer
 scripts it is convenient to be able to only modify a certain piece
 of the script and run it again in \textsf{R}. 
 \begin{enumerate}
-\item R Editor (Windows): In Microsoft$\circledR$ Windows, \textsf{R} provides
-its own built-in script editor, called \textsf{R} Editor. From the
-console window, select \textsf{File}\emph{ }\textsf{\lyxarrow{}}\emph{
+\item \textsf{R} Editor (Windows): In Microsoft$\circledR$ Windows, \textsf{R}
+provides its own built-in script editor, called \textsf{R} Editor.
+From the console window, select \textsf{File}\emph{ }\textsf{$\triangleright$}\emph{
 }\textsf{New}\textsf{\emph{ }}\textsf{Script}\emph{.} A script window
 opens, and the lines of code can be written in the window. When satisfied
 with the code, the user highlights all of the commands and presses
 \textsf{Ctrl+R}. The commands are automatically run at once in \textsf{R}
 and the output is shown. To save the script for later, click \textsf{File}\emph{
-}\textsf{\lyxarrow{}}\emph{ }\textsf{Save as...} in \textsf{R} Editor.
-The script can be reopened later with \textsf{File}\emph{ }\textsf{\lyxarrow{}}\emph{
-}\textsf{Open Script...} in RGui.
-\item Tinn-R/Sciviews-K
+}\textsf{$\triangleright$}\emph{ }\textsf{Save as...} in \textsf{R}
+Editor. The script can be reopened later with \textsf{File}\emph{
+}\textsf{$\triangleright$}\emph{ }\textsf{Open Script...} in RGui.
+\item Tinn-\textsf{R}/Sciviews-K
 \item Emacs/ESS:
 \item JGR (read {}``Jaguar''): based on Java, so it is cross-platform.
 \item Kate, etc.
@@ -1013,34 +948,31 @@ The script can be reopened later with \textsf{File}\emph{ }\textsf{\lyxarrow{}}\
 
 \paragraph*{Graphical User Interfaces (GUIs)}
 
-The usual way to interact with R in Microsoft$\circledR$ Windows
-is with Rgui, mentioned above.
+The usual way to interact with \textsf{R} in Microsoft$\circledR$
+Windows is with \textsf{Rgui}, mentioned above.
 \begin{enumerate}
 \item The \textsf{R} Commander (\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}):
-this is the one that we will be using in this book. It provides a
-point-and-click interface to many of our basic statistical tasks.
-It is called the {}``Commander'' because every time you make a selection
-from the menus, the code corresponding to the task is listed in the
-output window. You can take this code, copy-and-paste it to a text
-file, then rerun it again later without even needing the \textsf{R}
-Commander. It is thus well suited for the introductory level.
-
-\begin{enumerate}
-\item In addition, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
-allows for user contributed {}``Plugins'', which are separate packages
+this one provides a point-and-click interface to many basic statistical
+tasks. It is called the {}``Commander'' because every time one makes
+a selection from the menus, the code corresponding to the task is
+listed in the output window. One can take this code, copy-and-paste
+it to a text file, then re-run it again at a later time without the
+\textsf{R} Commander's assistance. It is well suited for the introductory
+level.\\
+In addition, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
+allows for user-contributed {}``Plugins'' which are separate packages
 on \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!CRAN!\inputencoding{utf8}
-which add extra functionality to the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
-package. They are typically named with the prefix \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!RcmdrPlugin!\inputencoding{utf8},
+that add extra functionality to the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
+package. The plugins are typically named with the prefix \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!RcmdrPlugin!\inputencoding{utf8}
 to make them easy to identify in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!CRAN!\inputencoding{utf8}
-list.
-\end{enumerate}
+package list.
 \item Poor Man's GUI (\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!pmg!\inputencoding{utf8}):
-this is an alternative to the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8},
-which is based on GTk instead of Tcl/Tk. Benefits include being able
-to drag and drop datasets to make plots.
+this is an alternative to the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
+which is based on GTk instead of Tcl/Tk. Benefits include drag-and-drop
+datasets for plots.
 \item Rattle (\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rattle!\inputencoding{utf8}):
-this GUI was specifically designed for data mining applications, but
-it provides general functionality that deserves mention here.
+this GUI was specifically designed for data mining applications but
+it provides enough other general functionality to merit mention here.
 \item Others: there are many more GUIs which exist but which the author
 has tried only in passing: \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!RKward!\inputencoding{utf8},
 \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!RPad!\inputencoding{utf8}.
@@ -1049,15 +981,15 @@ has tried only in passing: \inputencoding{latin9}\lstinline[basicstyle={\ttfamil
 \section{Basic \textsf{R} Operations and Concepts}
 
 The \textsf{R} developers have written an introductory document entitled,
-{}``Introduction to R''. There is a sample session include which
-shows what basic interaction with \textsf{R} looks like. I recommend
-that all new users of R read this document, but there are concepts
-mentioned there which will be unfamiliar to the beginner.
+{}``Introduction to \textsf{R}''. There is a sample session included
+which shows what basic interaction with \textsf{R} looks like. I recommend
+that all new users of \textsf{R} read this document, but there are
+concepts mentioned there which will be unfamiliar to the beginner.
 
 Below are some of the most basic operations that can be done with
-\textsf{R}. Almost every book about R begins with a section like the
-one below; look around to see all sorts of things that can be done
-at this most basic level.
+\textsf{R}. Almost every book about \textsf{R} begins with a section
+like the one below; look around to see all sorts of things that can
+be done at this most basic level.
 
 
 \subsection{Arithmetic}
@@ -1100,15 +1032,15 @@ symbol works too, but it is recommended by the \textsf{R} masters
 to reserve \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!=!\inputencoding{utf8}
 for specifying arguments to functions (discussed later). In this book
 we will follow their advice and use \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!<-!\inputencoding{utf8}
-for assignment. Once a variable is assigned, you can print out its
-value by simply entering the variable name by itself.
+for assignment. Once a variable is assigned, its value can be printed
+by simply entering the variable name by itself.
 
 <<keep.source = TRUE>>=
 x <- 7*41/pi   # don't see the calculated value
 x              # take a look
 @
 
-In choosing a variable name, you can use letters, numbers, dots {}``\texttt{.}'',
+When choosing a variable name you can use letters, numbers, dots {}``\texttt{.}'',
 or underscore {}``\texttt{\_}'' characters. You cannot use mathematical
 operators, and a leading dot may not be followed by a number. Examples
 of valid names are: \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8},
@@ -1126,8 +1058,8 @@ become familiar:
 \begin{description}
 \item [{integer:}] the values $0$, $\pm1$, $\pm2$, \ldots{}; these
 are represented exactly by \textsf{R}.
-\item [{double:}] real numbers (rational and irrational); these are not
-represented exactly (save integers or fractions with a denominator
+\item [{double:}] real numbers (rational and irrational); these numbers
+are not represented exactly (save integers or fractions with a denominator
 that is a multiple of 2, see An Introduction to \textsf{R}).
 \item [{character:}] elements that are wrapped with pairs of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"!\inputencoding{utf8}
 or \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!'!\inputencoding{utf8};
@@ -1175,7 +1107,7 @@ x
 \item \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!scan!\inputencoding{utf8}:
 This method is useful when the data are stored somewhere else. For
 instance, you may type \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x <- scan()!\inputencoding{utf8}
-at the command prompt and R will display \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!1:!\inputencoding{utf8}
+at the command prompt and \textsf{R} will display \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!1:!\inputencoding{utf8}
 to indicate that it is waiting for the first data value. Type a value
 and press \textsf{Enter}, at which point \textsf{R} will display \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!2:!\inputencoding{utf8},
 and so forth. Note that entering an empty line stops the scan. This
@@ -1228,9 +1160,9 @@ intersect
 @
 
 \item If instead it shows \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!UseMethod("!\inputencoding{utf8}\emph{something}\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!")!\inputencoding{utf8}then
-you will need to decide on the \emph{class} of the object to be inputted
+you will need to identify the \emph{class} of the object to be inputted
 and next look at the \emph{method} that will be \emph{dispatched}
-to that object. For instance, typing \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rev!\inputencoding{utf8}
+to the object. For instance, typing \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rev!\inputencoding{utf8}
 says 
 
 
@@ -1258,9 +1190,9 @@ method can be viewed with
 rev.default
 @
 
-\item Some functions are hidden by a \emph{namespace} (see the R Manual
-BLANK), and are not visible on the first try. For example, if we try
-to look at the code for \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!wilcox.test!\inputencoding{utf8}
+\item Some functions are hidden by a \emph{namespace} (see the \textsf{R}
+Manual BLANK), and are not visible on the first try. For example,
+if we try to look at the code for \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!wilcox.test!\inputencoding{utf8}
 (see Chapter BLANK) we get the following:
 
 
@@ -1358,24 +1290,24 @@ function works.
 
 There are several mailing lists associated with \textsf{R}, and there
 is a huge community of people that read and answer questions related
-to R. See here \url{http://www.r-project.org/mail.html} for an idea
-of what is available. Particularly pay attention to the bottom of
-the page which lists several special interest groups (SIGs) related
-to \textsf{R}.
+to \textsf{R}. See here \url{http://www.r-project.org/mail.html}
+for an idea of what is available. Particularly pay attention to the
+bottom of the page which lists several special interest groups (SIGs)
+related to \textsf{R}.
 
-Bear in mind that R is free software, which means that it was written
-by volunteers, and the people who frequent the mailing lists are also
-volunteers which are not paid by customer support fees. Consequently,
-if you want to use the mailing lists for free advice then you must
-adhere to some basic etiquette, else you may not get a reply, or worse,
-you may receive a reply which is a bit less cordial than you are used
-to. Below are a few considerations which the author would like to
-highlight.
+Bear in mind that \textsf{R} is free software, which means that it
+was written by volunteers, and the people that frequent the mailing
+lists are also volunteers who are not paid by customer support fees.
+Consequently, if you want to use the mailing lists for free advice
+then you must adhere to some basic etiquette, or else you may not
+get a reply, or even worse, you may receive a reply which is a bit
+less cordial than you are used to. Below are a few considerations
+which the author would like to highlight.
 \begin{enumerate}
 \item Read the FAQ (\url{http://cran.r-project.org/faqs.html}). Note that
-there are multiple FAQs for multiple operating systems. You should
-do this now, even without a question at the moment, to learn a lot
-about the idiosyncracies of \textsf{R}.
+there are different FAQs for different operating systems. You should
+read these now, even without a question at the moment, to learn a
+lot about the idiosyncracies of \textsf{R}.
 \item Search the archives. Even if your question is not a FAQ, there is
 a very high likelihood that your question has been asked before on
 the mailing list. If you want to know about topic \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!foo!\inputencoding{utf8},
@@ -1385,8 +1317,8 @@ to search the mailing list archives (and the online help) for it.
 \end{enumerate}
 If your question is not a FAQ, has not been asked on \textsf{R}-help
 before, and does not yield to a Google (or alternative) search, then,
-and only then, you may consider asking R-help. Below are a few considerations
-that the author would like to highlight. 
+and only then, should you even consider asking \textsf{R}-help. Below
+are a few considerations that the author would like to highlight. 
 \begin{enumerate}
 \item \textbf{Read the posting guide (\url{http://www.r-project.org/posting-guide.html})
 before posting.} This will save you a lot of trouble and pain.
@@ -1417,7 +1349,7 @@ email.
 \begin{itemize}
 \item at the command line
 \item text editor
-\item the R Commander
+\item the \textsf{R} Commander
 \end{itemize}
 \item Data
 
@@ -1485,12 +1417,13 @@ and to remove all objects use \inputencoding{latin9}\lstinline[basicstyle={\ttfa
 is when you have a long list of numbers (separated by spaces or on
 different lines) already typed somewhere else, say in a text file.
 To enter all the data in one fell swoop, first highlight and copy
-the list of numbers to the Clipboard with \textsf{Edit}\emph{ }\textsf{\lyxarrow{}}\emph{
+the list of numbers to the Clipboard with \textsf{Edit}\emph{ }\textsf{$\triangleright$}\emph{
 }\textsf{Copy} (or by right-clicking and selecting \textsf{Copy}).
 Next type the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x <- scan()!\inputencoding{utf8}
 command in the \textsf{R} console, and paste the numbers at the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!1:!\inputencoding{utf8}
-prompt with \textsf{Edit}\emph{ }\textsf{\lyxarrow{}}\emph{ }\textsf{Paste}.
-All of the numbers will automatically be entered into the vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}.\end{enumerate}
+prompt with \textsf{Edit}\emph{ }\textsf{$\triangleright$}\emph{
+}\textsf{Paste}. All of the numbers will automatically be entered
+into the vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}.\end{enumerate}
 \begin{itemize}
 \item The command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Ctrl+l!\inputencoding{utf8}
 clears the screen in the Microsoft$\circledR$ Windows \textsf{R}Gui.
@@ -1740,7 +1673,7 @@ We introduce common measures used to quantify the considerations.
 \item This is followed by EDA in which we examine in more detail some visual
 and tabular devices; outliers are discussed here.
 \item Next we move to introducing dependence with multivariate data, and
-the technical R concept of data frames.
+the technical \textsf{R} concept of data frames.
 \item We end with graphical/numerical ways to compare data sets or subpopulations
 using the devices studied previously.
 \end{itemize}
@@ -1916,24 +1849,25 @@ par(mfrow = c(1,1)) # back to normal
 Qualitative data are simply any type of data that are not numerical,
 or do not represent numerical quantities. Examples of qualitative
 variables include a subject's name, gender, race/ethnicity, political
-party, socio-economic status, driver's license number, social security
-number (SSN).
+party, socio-economic status, driver's license number, and social
+security number (SSN).
 
-While some qualitative data serve only to \emph{identify} the observation
-(such a subject's name, driver's license number, or SSN), and other
-qualitiative data serve to subdivide a data set into categories. In
-the above examples, gender, race, political party, and socio-economic
-status may be considered as factors.
+Some qualitative data serve merely to \emph{identify} the observation
+(such a subject's name, driver's license number, or SSN), but other
+qualitiative data serve to \emph{subdivide} a data set into categories.
+The identification types do not play much of a role in statistics,
+but the latter subdivision types show up all the time, and we call
+them \emph{factors}. In the above examples, gender, race, political
+party, and socio-economic status would be considered factors. 
 
-Factor levels are the values of the factor utilized in the experiment.''
-{}``categorical variables which indicate a subdivision of data such
-as social class, diagnosis, stage of disease, etc.'' They have a
-special status in \textsf{R}. They can be numeric or categorical,
-but even when numeric, their values don't have any numeric meaning
-(stage II cancer + stage I cancer isn't stage III cancer).
+The possible values of a factor are called its \emph{levels}. For
+instance, the factor \emph{gender} would have two levels, namely,
+male and female.
 
-The possible values for a factor are called its levels. For instance,
-the factor gender would have two levels, namely, male and female.
+Factors have special status in \textsf{R}. They are represented internally
+by numbers, but even when they are written numerically their values
+do not convey any numeric meaning or obey any mathematical rules (that
+is, Stage III cancer is not Stage I cancer + Stage II cancer).
 
 
 \subsection*{Displaying Qualitative Data}
@@ -1944,10 +1878,10 @@ the factor gender would have two levels, namely, male and female.
 Here we choose a variable and count frequencies and list proportions.
 We can do this at the console with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!table!\inputencoding{utf8}
 function. In \textsf{R} Commander you can do it with \textsf{Statistics}
-\textsf{\lyxarrow{}} \textsf{Frequency Distribution\ldots{}.} Alternatively,
-to look at tables for all factors in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Active data set!\inputencoding{utf8}
-you can do \textsf{Statistics} \textsf{\lyxarrow{}} \textsf{Summaries}
-\textsf{\lyxarrow{}} \textsf{Active Dataset}.
+\textsf{$\triangleright$} \textsf{Frequency Distribution\ldots{}.}
+Alternatively, to look at tables for all factors in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Active data set!\inputencoding{utf8}
+you can do \textsf{Statistics} \textsf{$\triangleright$} \textsf{Summaries}
+\textsf{$\triangleright$} \textsf{Active Dataset}.
 
 <<keep.source = TRUE>>=
 Tbl <- table(state.division)
@@ -2293,7 +2227,7 @@ quartile} $\tilde{q}_{0.75}$ (the \emph{second quartile} is the median).
 \subsection{How to do it with \textsf{R}}
 
 
-\paragraph*{At the Command Prompt}
+\paragraph*{At the command prompt}
 
 We can find the order statistics of a data set stored in a vector
 \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
@@ -2309,23 +2243,23 @@ simply change the values in the \inputencoding{latin9}\lstinline[basicstyle={\tt
 argument to the value $p$.
 
 
-\paragraph*{In \textsf{R} Commander}
+\paragraph*{With the \textsf{R} Commander}
 
 In \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
 we can find the order statistics of a variable in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Active data set!\inputencoding{utf8}
-by doing \textsf{Data\lyxarrow{}Manage variables in Active data set\ldots{}\lyxarrow{}Compute
-new variable}\textsf{\emph{\ldots{}}}. In the \textsf{Expression
-to compute} dialog simply type \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!sort(varname)!\inputencoding{utf8},
+by doing \textsf{Data $\triangleright$ Manage variables in Active
+data set\ldots{} $\triangleright$ Compute new variable}\textsf{\emph{\ldots{}}}.
+In the \textsf{Expression to compute} dialog simply type \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!sort(varname)!\inputencoding{utf8},
 where \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!varname!\inputencoding{utf8}
 is the variable that it is desired to sort.
 
 In \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8},
 we can calculate the sample quantiles for a particular variable with
-the sequence \textsf{Statistics\lyxarrow{}Summaries\lyxarrow{}Numerical
-Summaries\ldots{}}. We can automatically calculate the quartiles
-for all variables in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Active data set!\inputencoding{utf8}
-with the sequence \textsf{Statistics\lyxarrow{}Summaries\lyxarrow{}Active
-Dataset}.
+the sequence \textsf{Statistics $\triangleright$ Summaries $\triangleright$
+Numerical Summaries\ldots{}}. We can automatically calculate the
+quartiles for all variables in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Active data set!\inputencoding{utf8}
+with the sequence \textsf{Statistics $\triangleright$ Summaries $\triangleright$
+Active Dataset}.
 
 
 \subsection{Measures of Spread\label{sub:Measures-of-Spread}}
@@ -2420,9 +2354,10 @@ is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mad(x)!\inputencodin
 \paragraph*{In \textsf{R} Commander}
 
 In \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
-we can calculate the sample standard deviation with the \textsf{Statistics\lyxarrow{}Summaries\lyxarrow{}Numerical
-Summaries}\ldots{} combination. \textsf{R} Commander does not calculate
-the $IQR$ or $MAD$ in any of the menu selections, by default.
+we can calculate the sample standard deviation with the \textsf{Statistics
+$\triangleright$ Summaries $\triangleright$ Numerical Summaries}\ldots{}
+combination. \textsf{R} Commander does not calculate the $IQR$ or
+$MAD$ in any of the menu selections, by default.
 
 Chebychev's Rule: The proportion of observations within $k$ standard
 deviations of the mean, where , is at least , i.e., at least 75\%,
@@ -2485,12 +2420,12 @@ by $2\cdot\sqrt{24/n}$. Reference to Tabachnick \& Fidell.
 
 \paragraph*{At the Command Prompt}
 
-First, we must load the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!e1071!\inputencoding{utf8}
-package (after installing it) with the command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!library(e1071)!\inputencoding{utf8}.
-Next, we may compute the sample skewness with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!skewness(x)!\inputencoding{utf8}
-and the sample excess kurtosis with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!kurtosis(x)!\inputencoding{utf8}.
-Both functions have a \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!na.rm!\inputencoding{utf8}
-argument which is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!TRUE!\inputencoding{utf8}
+First, we must load the \inputencoding{latin9}\lstinline[showstringspaces=false]!e1071!\inputencoding{utf8}
+package (after installing it) with the command \inputencoding{latin9}\lstinline[showstringspaces=false]!library(e1071)!\inputencoding{utf8}.
+Next, we may compute the sample skewness with \inputencoding{latin9}\lstinline[showstringspaces=false]!skewness(x)!\inputencoding{utf8}
+and the sample excess kurtosis with \inputencoding{latin9}\lstinline[showstringspaces=false]!kurtosis(x)!\inputencoding{utf8}.
+Both functions have a \inputencoding{latin9}\lstinline[showstringspaces=false]!na.rm!\inputencoding{utf8}
+argument which is \inputencoding{latin9}\lstinline[showstringspaces=false]!TRUE!\inputencoding{utf8}
 by default.
 
 
@@ -2539,7 +2474,7 @@ in the \textsf{R} Commander. We will describe \inputencoding{latin9}\lstinline[b
 since that is the one used by \textsf{R} Commander.
 
 
-\paragraph*{In R Commander}
+\paragraph*{With the \textsf{R} Commander}
 
 WARNING: Sometimes when making a stem plot the result will not be
 what you expected. There are several reasons for this:
@@ -2717,9 +2652,9 @@ What about the correlation coefficient?
 \subsubsection*{Displaying Bivariate Data}
 \begin{itemize}
 \item Two-Way Tables. You can do this with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!table!\inputencoding{utf8},
-or in \textsf{R} Commander by following \textsf{Statistics \lyxarrow{}Contingency
-Tables \lyxarrow{}} \textsf{Two-way Tables}. You can also enter and
-analyze a two-way table. Example: BLANK
+or in the \textsf{R} Commander by following \textsf{Statistics $\triangleright$
+Contingency Tables $\triangleright$} \textsf{Two-way Tables}. You
+can also enter and analyze a two-way table. Example: BLANK
 \item Scatterplot: look for linear association and correlation. Need a data
 set that has linear association. Example BLANK.
 \item Line Plot: good for displaying time series data. Example: BLANK
@@ -2754,8 +2689,8 @@ matplot(rnorm(100), rnorm(100), type="b", lty=1, pch=1)
 Displaying Multivariate Data
 \begin{itemize}
 \item Multi-Way Tables. You can do this with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!table!\inputencoding{utf8},
-or in \textsf{R} Commander by following \textsf{Statistics} \textsf{\lyxarrow{}}
-\textsf{Contingency Tables} \textsf{\lyxarrow{}} \textsf{Multi-way
+or in \textsf{R} Commander by following \textsf{Statistics} \textsf{$\triangleright$}
+\textsf{Contingency Tables} \textsf{$\triangleright$} \textsf{Multi-way
 Tables}. Example: BLANK
 \item Scatterplot Matrix. used for displaying pairwise scatterplots simultaneously.
 Again, look for linear association and correlation. Need data here
@@ -2781,10 +2716,10 @@ Some issues that we would like to address:
 
 \subsection{Numerically}
 
-I am thinking here about the \textsf{Statistics} \textsf{\lyxarrow{}}
-\textsf{Numerical Summaries} \textsf{\lyxarrow{}Summarize by groups}
-option or the \textsf{Statistics} \textsf{\lyxarrow{}} \textsf{Summaries}
-\textsf{\lyxarrow{}Table of Statistics} option. 
+I am thinking here about the \textsf{Statistics} \textsf{$\triangleright$}
+\textsf{Numerical Summaries} \textsf{$\triangleright$ Summarize by
+groups} option or the \textsf{Statistics} \textsf{$\triangleright$}
+\textsf{Summaries} \textsf{$\triangleright$Table of Statistics} option. 
 
 
 \subsection{Graphically}
@@ -2971,9 +2906,9 @@ summary(RcmdrTestDrive)
 \inputencoding{utf8}
 
 Alternatively, you can do this in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
-with the sequence \textsf{Statistics} \textsf{\lyxarrow{} Summaries}
-\textsf{\lyxarrow{} Active Data Set}. Report the values of the summary
-statistics for each variable.
+with the sequence \textsf{Statistics} \textsf{$\triangleright$ Summaries}
+\textsf{$\triangleright$ Active Data Set}. Report the values of the
+summary statistics for each variable.
 
 
 \paragraph*{Answers:}
@@ -2985,12 +2920,12 @@ summary(RcmdrTestDrive)
 
 \begin{xca}
 Make a table of the \emph{race} variable. Do this with \textsf{Statistics}
-\textsf{\lyxarrow{} Summaries} \textsf{\lyxarrow{} IPSUR - Frequency
-Distributions}\emph{...}
+\textsf{$\triangleright$ Summaries} \textsf{$\triangleright$ IPSUR
+- Frequency Distributions}\emph{...}
 \begin{enumerate}
 \item Which ethnicity has the highest frequency?
 \item Which ethnicity has the lowest frequency?
-\item Include a bar graph of \emph{race}. Do this with \textsf{Graphs} \textsf{\lyxarrow{}}
+\item Include a bar graph of \emph{race}. Do this with \textsf{Graphs} \textsf{$\triangleright$}
 \textsf{IPSUR - Bar Graph}...
 \end{enumerate}
 \end{xca}
@@ -3019,8 +2954,8 @@ barplot(table(RcmdrTestDrive$race), main="", xlab="race", ylab="Frequency", lege
 
 \begin{xca}
 Calculate the average \emph{salary} by the factor \emph{gender}. Do
-this with \textsf{Statistics} \textsf{\lyxarrow{} Summaries} \textsf{\lyxarrow{}
-Table of Statistics}\emph{...}
+this with \textsf{Statistics} \textsf{$\triangleright$ Summaries}
+\textsf{$\triangleright$ Table of Statistics}\emph{...}
 \begin{enumerate}
 \item Which \emph{gender} has the highest mean \emph{salary}? 
 \item Report the highest mean \emph{salary}.
@@ -3032,7 +2967,7 @@ method:
 
 \begin{quote}
 On the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8},
-click \textsf{Graphs} \textsf{\lyxarrow{}} \textsf{IPSUR - Boxplot}...\\
+click \textsf{Graphs} \textsf{$\triangleright$} \textsf{IPSUR - Boxplot}...\\
 In the \textsf{Variable} box, select \emph{salar}y.\\
 Click the \textsf{Plot by groups}... box and select \emph{gender}.
 Click \textsf{OK}.\\
@@ -3129,7 +3064,7 @@ close?
 \item Make a boxplot of \emph{reduction}, and include the boxplot in your
 report. You can do this with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!boxplot!\inputencoding{utf8}
 function, or in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
-with \textsf{Graphs} \textsf{\lyxarrow{}} \textsf{IPSUR - Boxplot}...
+with \textsf{Graphs} \textsf{$\triangleright$} \textsf{IPSUR - Boxplot}...
 \item Are there any potential/suspected outliers? If so, list their values.
 \emph{Hint:} use your answer to (a).
 \item Using the rules discussed in the text, classify answers to (8), if
@@ -5349,11 +5284,15 @@ Curly's filing accuracy in the past (due to historical performance
 evaluations). The performance information may be represented by the
 following table:
 
+%
+\begin{table}[H]
 \begin{tabular}{c|ccc}
  & Moe & Larry & Curly\tabularnewline
 \hline
 Misfile Rate & 0.003 & 0.007 & 0.010\tabularnewline
 \end{tabular}
+\end{table}
+
 
 In other words, on the average, Moe misfiles 0.3\% of the documents
 he is supposed to file. Notice that Moe was correct: he is the most
@@ -5396,11 +5335,15 @@ the document, since it incorporates the observed data that a randomly
 selected file was misplaced (which is governed by the misfile rate).
 We can use the same argument to calculate
 
+%
+\begin{table}[H]
 \begin{tabular}{c|ccc}
  & Moe & Larry & Curly\tabularnewline
 \hline
 Posterior Probability & $\P(M|A)\approx0.37$ & $\P(L|A)\approx0.43$ & $\P(C|A)\approx0.20$\tabularnewline
 \end{tabular}
+\end{table}
+
 
 The conclusion: \textbf{Larry} gets the axe. What is happening is
 an intricate interplay between the time on the job and the misfile
@@ -5472,7 +5415,7 @@ Larry, but Curly.
 There are two important points. First, we did not divide \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!post!\inputencoding{utf8}
 by the sum of its entries until the very last step; we do not need
 to calculate it, and it will save us computing time to postpone normalization
-until absolutely necessary, namely, when we finally want to interpret
+until absolutely necessary, namely, until we finally want to interpret
 them as probabilities.
 
 Second, the reader might be wondering what the boss would get if (s)he
@@ -5569,7 +5512,7 @@ The primary vessel for this task is the \inputencoding{latin9}\lstinline[basicst
 function. There are two ways to use it, and we will describe both.
 
 
-\subsubsection*{Supplying a Defining Formula}
+\subsubsection*{Supply a Defining Formula}
 
 The first method is based on the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!transform!\inputencoding{utf8}
 function. See \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!?transform!\inputencoding{utf8}.
@@ -5599,7 +5542,7 @@ prob(S, U > 6)
 @ 
 
 
-\subsubsection*{Supplying a Function}
+\subsubsection*{Supply a Function}
 
 Sometimes we have a function laying around that we would like to apply
 to some of the outcome variables, but it is unfortunately tedious
@@ -5724,7 +5667,7 @@ What do I want them to know?
 \item the idea of expectation and how to calculate it
 \item moment generating functions
 \item the dpqr family of functions, and their distr equivalents
-\item what a pmf is, supports,
+\item what a PMF is, supports,
 \end{itemize}
 
 \section{Discrete Random Variables\label{sec:Discrete-Random-Variables}}
@@ -5733,13 +5676,13 @@ What do I want them to know?
 \subsection{Probability Mass Functions\label{sub:Probability-Mass-Functions}}
 
 Discrete random variables are characterized by their supports which
-take the form \[
-S_{X}=\{u_{1},u_{2},\ldots,u_{k}\}\mbox{ or }S_{X}=\{u_{1},u_{2},u_{3}\ldots\}.\]
+take the form \begin{equation}
+S_{X}=\{u_{1},u_{2},\ldots,u_{k}\}\mbox{ or }S_{X}=\{u_{1},u_{2},u_{3}\ldots\}.\end{equation}
 Every discrete random variable $X$ has associated with it a probability
-mass function (pmf) $f_{X}:S_{X}\to[0,1]$ defined by \begin{equation}
+mass function (PMF) $f_{X}:S_{X}\to[0,1]$ defined by \begin{equation}
 f_{X}(x)=\P(X=x),\quad x\in S_{X}.\end{equation}
-Since values of the pmf represent probabilities, we know from Chapter
-BLANK that pmfs enjoy certain properties. In particular, all pmfs
+Since values of the PMF represent probabilities, we know from Chapter
+BLANK that PMFs enjoy certain properties. In particular, all PMFs
 satisfy 
 \begin{enumerate}
 \item $f_{X}(x)>0$ for $x\in S$,
@@ -5753,23 +5696,27 @@ Now let $X$ be the number of Heads observed. Then $X$ has support
 $S_{X}=\left\{ 0,1,2,3\right\} $. Assuming that the coin is fair
 and was tossed in exactly the same way each time, it is not unreasonable
 to suppose that the outcomes in the sample space are all equally likely.
-What is the pmf of $X$? Notice that $X$ is zero exactly when the
+What is the PMF of $X$? Notice that $X$ is zero exactly when the
 outcome $TTT$ occurs, and this event has probability $1/8$. Therefore,
 $f_{X}(0)=1/8$, and the same reasoning shows that $f_{X}(3)=1/8$.
 Exactly three outcomes result in $X=1$, thus, $f_{X}(1)=3/8$ and
 $f_{X}(3)$ holds the remaining $3/8$ probability (the total is 1).
-We can represent the pmf with a table:
+We can represent the PMF with a table:
 
+%
+\begin{table}[H]
 \begin{tabular}{c|cccc|c}
 $x\in S_{X}$ & 0 & 1 & 2 & 3 & Total\tabularnewline
 \hline
 $f_{X}(x)=\P(X=x)$ & 1/8 & 3/8 & 3/8 & 1/8 & 1\tabularnewline
 \end{tabular}
+\end{table}
+
 \end{example}
 
 \subsection{Mean, Variance, and Standard Deviation\label{sub:Mean,-Variance,-and}}
 
-There are numbers associated with pmfs. One important example is the
+There are numbers associated with PMFs. One important example is the
 mean $\mu$, also known as $\E X$:\begin{equation}
 \mu=\E X=\sum_{x\in S}xf_{X}(x).\end{equation}
 Another important number is the variance:\begin{equation}
@@ -5783,25 +5730,25 @@ Example \ref{exa:Toss-a-coin}.\[
 \mu=\sum_{x=0}^{3}xf_{X}(x)=0\cdot\frac{1}{8}+1\cdot\frac{3}{8}+2\cdot\frac{3}{8}+3\cdot\frac{1}{8}=3.5.\]
 We interpret $\mu=3.5$ by reasoning that if we were to repeat the
 random experiment many times, independently each time, observe many
-corresponding outcomes of the random variable $X$, then take the
-sample mean of the observations, then the calculated value would fall
-close to 3.5. The approximation would get better as we observe more
-and more values of $X$ (another form of the Law of Large Numbers;
-see Chapter BLANK). Another way it is commonly stated is that $X$
-is 3.5 {}``on the average'' or {}``in the long run''.\end{example}
+corresponding outcomes of the random variable $X$, and take the sample
+mean of the observations, then the calculated value would fall close
+to 3.5. The approximation would get better as we observe more and
+more values of $X$ (another form of the Law of Large Numbers; see
+Chapter BLANK). Another way it is commonly stated is that $X$ is
+3.5 {}``on the average'' or {}``in the long run''.\end{example}
 \begin{rem}
 Note that although we say $X$ is 3.5 on the average, we must keep
 in mind that our $X$ never actually equals 3.5 (in fact, it is impossible
 for $X$ to equal 3.5).
 \end{rem}
 Related to the probability mass function $f_{X}(x)=\P(X=x)$ is another
-important function called the cumulative distribution function (cdf),
+important function called the cumulative distribution function (CDF),
 $F_{X}$. It is defined by the formula\begin{equation}
 F_{X}(t)=\P(X\leq t),\quad-\infty<t<\infty.\end{equation}
 
 
-We know that all pmfs satisfy certain properties, and a similar statement
-may be made for cdfs. In particular, any cdf $F_{X}$ satisfies
+We know that all PMFs satisfy certain properties, and a similar statement
+may be made for CDFs. In particular, any CDF $F_{X}$ satisfies
 \begin{itemize}
 \item $F_{X}$ is nondecreasing ($t_{1}\leq t_{2}$ implies $F_{X}(t_{1})\leq F_{X}(t_{2})$).
 \item $F_{X}$ is right-continuous ($\lim_{t\to a^{+}}F_{X}(t)=F_{X}(a)$
@@ -5810,7 +5757,7 @@ for all $a\in\R$).
 \end{itemize}
 We say that $X$ has the distribution $F_{X}$ and we write $X\sim F_{X}$.
 In an abuse of notation we will also write $X\sim f_{X}$ and for
-the named distributions the pmf or cdf will be identified by the family
+the named distributions the PMF or CDF will be identified by the family
 name instead of the defining formula.
 
 
@@ -5830,8 +5777,8 @@ f <- c(1/8, 3/8, 3/8, 1/8)
 To calculate the mean $\mu$, we need to multiply the corresponding
 values of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
 and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!f!\inputencoding{utf8}
-and add them. This is easily accomplished in R since operations on
-vectors are performed \emph{element-wise} (see Section BLANK): 
+and add them. This is easily accomplished in \textsf{R} since operations
+on vectors are performed \emph{element-wise} (see Section BLANK): 
 
 <<>>=
 mu <- sum(x * f)
@@ -5840,7 +5787,7 @@ mu
 
 To compute the variance $\sigma^{2}$, we subtract the value of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mu!\inputencoding{utf8}
 from each entry in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8},
-square the answers, multiply by \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!pmf!\inputencoding{utf8},
+square the answers, multiply by \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!f!\inputencoding{utf8},
 and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!sum!\inputencoding{utf8}.
 The standard deviation $\sigma$ is simply the square root of $\sigma^{2}$.
 
@@ -5851,7 +5798,7 @@ sigma <- sqrt(sigma2)
 sigma
 @
 
-Finally, we may find the values of the cdf $F_{X}$ on the support
+Finally, we may find the values of the CDF $F_{X}$ on the support
 by accumulating the probabilities in $f_{X}$ with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cumsum!\inputencoding{utf8}
 function. 
 
@@ -5878,11 +5825,11 @@ E(X); var(X); sd(X)
 
 We have seen the basic building blocks of discrete distributions and
 we now study particular models that statisticians often encounter
-in the field. Perhaps the most fundamental of all is the discrete
-uniform distribution.
+in the field. Perhaps the most fundamental of all is the \emph{discrete
+uniform} distribution.
 
 A random variable $X$ with the discrete uniform distribution on the
-integers $1,2,\ldots,m$ has pmf\begin{equation}
+integers $1,2,\ldots,m$ has PMF\begin{equation}
 f_{X}(x)=\frac{1}{m},\quad x=1,2,\ldots,m.\end{equation}
 We write $X\sim\mathsf{disunif}(m)$. A random experiment where this
 distribution occurs is the choice of an integer at random between
@@ -5907,7 +5854,7 @@ and $\sigma^{2}=(6^{2}-1)/12=35/12$.
 \subsection{How to do it with \textsf{R}}
 
 
-\paragraph*{From the Console:}
+\paragraph*{From the console:}
 
 One can choose an integer at random with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=4]!sample!\inputencoding{utf8}
 function. The general syntax to simulate a discrete uniform random
@@ -5931,49 +5878,51 @@ examples follow.
 \item To flip a fair coin 1000 times: \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=2]!sample(c("H","T"), size = 1000, replace = TRUE)!\inputencoding{utf8}
 \end{itemize}
 
-\paragraph*{Using R Commander:}
+\paragraph*{With the \textsf{R} Commander:}
 
-Follow the sequence \textsf{Probability\lyxarrow{}Discrete Distributions\lyxarrow{}Discrete
-Uniform distribution\lyxarrow{}Simulate Discrete uniform variates\ldots{}. }
+Follow the sequence \textsf{Probability $\triangleright$ Discrete
+Distributions $\triangleright$ Discrete Uniform distribution $\triangleright$
+Simulate Discrete uniform variates\ldots{}. }
 
-Suppose we would like to roll a fair die 3000 times. In the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=2]!Number of samples!\inputencoding{utf8}
-field we enter \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=2]!1!\inputencoding{utf8}.
+Suppose we would like to roll a fair die 3000 times. In the \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=2]!Number of samples!\inputencoding{utf8}
+field we enter \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!1!\inputencoding{utf8}.
 Next, we describe what interval of integers to be sampled. Since there
-are six faces numbered 1 through 6, we set \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=2]!from = 1!\inputencoding{utf8},
-we set \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=2]!to = 6!\inputencoding{utf8},
-and set \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=2]!by = 1!\inputencoding{utf8}
+are six faces numbered 1 through 6, we set \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!from = 1!\inputencoding{utf8},
+we set \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!to = 6!\inputencoding{utf8},
+and set \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!by = 1!\inputencoding{utf8}
 (to indicate that we travel from 1 to 6 in increments of 1 unit).
 We will generate a list of 3000 numbers selected from among 1, 2,
 \ldots{}, 6, and we store the results of the simulation. For the
-time being, we select \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=2]!New Data set!\inputencoding{utf8}.
+time being, we select \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=2]!New Data set!\inputencoding{utf8}.
 Click \textsf{OK}.
 
-Since we are defining a new data set, the R Commander requests a name
-for the data set. The default name is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=2]!Simset1!\inputencoding{utf8},
+Since we are defining a new data set, the \textsf{R} Commander requests
+a name for the data set. The default name is \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!Simset1!\inputencoding{utf8},
 although in principle you could name it whatever you like (according
-to R's rules for object names). We wish to have a list that is 3000
-long, so we set \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=2]!Sample Size = 3000!\inputencoding{utf8}
+to \textsf{R}'s rules for object names). We wish to have a list that
+is 3000 long, so we set \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=2]!Sample Size = 3000!\inputencoding{utf8}
 and click \textsf{OK}.
 
-In the R Console window, R Commander should tell you that \texttt{Simset1}
-has been initialized, and it should also alert you that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=2]!There was 1 discrete uniform variate sample stored in Simset 1.!\inputencoding{utf8}''.
+In the \textsf{R} Console window, the \textsf{R} Commander should
+tell you that \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!Simset1!\inputencoding{utf8}
+has been initialized, and it should also alert you that \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=2]!There was 1 discrete uniform variate sample stored in Simset 1.!\inputencoding{utf8}.
 To take a look at the rolls of the die, we click \textsf{View data
 set} and a window opens. 
 
-The default name for the variable is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=2]!disunif.sim1!\inputencoding{utf8}.
+The default name for the variable is \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!disunif.sim1!\inputencoding{utf8}.
 
 
 \section{The Binomial Distribution\label{sec:The-Binomial-Distribution}}
 
-The binomial distribution is based on the concept of a \emph{Bernoulli
-trial}, which is a random experiment in which there are only two possible
-outcomes, denoted by success ($S$) and failure ($F$). We conduct
-the Bernoulli trial and let \[
+The binomial distribution is based on a \emph{Bernoulli trial}, which
+is a random experiment in which there are only two possible outcomes:
+success ($S$) and failure ($F$). We conduct the Bernoulli trial
+and let \[
 X=\begin{cases}
 1 & \mbox{if the outcome is \ensuremath{S}},\\
 0 & \mbox{if the outcome is \ensuremath{F}}.\end{cases}\]
 If the probability of success is $p$ then the probability of failure
-must be $1-p=q$ and the pmf of $X$ can be written\begin{equation}
+must be $1-p=q$ and the PMF of $X$ is\begin{equation}
 f_{X}(x)=p^{x}(1-p)^{1-x},\quad x=0,1.\end{equation}
 It is easy to calculate $\mu=\E X=p$ and $\E X^{2}=p$ so that $\sigma^{2}=p-p^{2}=p(1-p)$.
 
@@ -5987,7 +5936,7 @@ The Binomial model has three defining properties:
 \item the probability of success $p$ does not change between trials.
 \end{itemize}
 If $X$ counts the number of successes in the $n$ independent trials,
-then the pmf of $X$ is 
+then the PMF of $X$ is 
 
 \begin{equation}
 f_{X}(x)={n \choose x}p^{x}(1-p)^{n-x},\quad x=0,1,2,\ldots,n.\end{equation}
@@ -6015,8 +5964,8 @@ Exercise BLANK). Therefore\begin{alignat*}{1}
 
 \subsection{How to do it with \textsf{R}}
 
-The corresponding \textsf{R} function for the pmf is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!dbinom(x, size = n, prob = p)!\inputencoding{utf8},
-and the corresponding function for the cdf is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!pbinom(x, size = n, prob = p)!\inputencoding{utf8}. 
+The corresponding \textsf{R} function for the PMF is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!dbinom(x, size = n, prob = p)!\inputencoding{utf8},
+and the corresponding function for the CDF is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!pbinom(x, size = n, prob = p)!\inputencoding{utf8}. 
 \begin{example}
 Consider a four child family. Each child may be either a boy ($B$)
 or a girl ($G$). For simplicity we suppose that $\P(B)=\P(G)=1/2$
@@ -6026,18 +5975,19 @@ Further, $\P(X=2)$ is\[
 f_{X}(2)={4 \choose 2}(1/2)^{2}(1/2)^{2}=\frac{6}{2^{4}}.\]
 We can calculate it in \textsf{R} Commander under the \textsf{Binomial
 Distribution} menu with the \textsf{Binomial probabilities} menu item.
-\end{example}
+
 <<echo = FALSE>>=
 A <- data.frame(Pr=dbinom(0:4, size = 4, prob = 0.5))
 rownames(A) <- 0:4 
 A
 @
 
+\end{example}
 We know that the $\mathsf{binom}(\mathtt{size}=4,\,\mathtt{prob}=1/2)$
 distribution is supported on the integers 0, 1, 2, 3, and 4; thus
 the table is complete. We can read off the answer to be $\P(X=2)=0.3750$.
 
-~
+
 \begin{example}
 Roll 12 dice simultaneously, and let $X$ denote the number of 6's
 that appear. We wish to find the probability of getting seven, eight,
@@ -6050,28 +6000,33 @@ task is to find $\P(7\leq X\leq9)$. This is just\[
 mass table and add up the relevant rows. However, an alternative method
 is to notice that $\P(7\leq X\leq9)=\P(X\leq9)-\P(X\leq6)=F_{X}(9)-F_{X}(6)$,
 so we could get the same answer by using the \textsf{Binomial tail
-probabilities\ldots{} }menu in the R Commander or the following from
-the command line: 
-\end{example}
+probabilities\ldots{} }menu in the \textsf{R} Commander or the following
+from the command line: 
+
 <<keep.source = TRUE>>=
 pbinom(9, size = 12, prob = 1/6) - pbinom(6, size = 12, prob = 1/6)
 diff(pbinom(c(6,9), size = 12, prob = 1/6))  # same thing
 @
+
+\end{example}
+
 \begin{example}
 Toss a coin three times and let $X$ be the number of Heads observed.
 We know from before that $X\sim\mathsf{binom}(\mathtt{size}=3,\,\mathtt{prob}=1/2)$
-which implies the following pmf:
-\end{example}
-\begin{center}
+which implies the following PMF:
+
+%
+\begin{table}
 \begin{tabular}{c|cccc}
 $x=\mbox{\#of Heads}$ & 0 & 1 & 2 & 3\tabularnewline
 \hline
 $f(x)=\P(X=x)$ & 1/8 & 3/8 & 3/8 & 1/8\tabularnewline
 \end{tabular}
-\par\end{center}
+\end{table}
 
-Our next goal is to write down the cdf of $X$ explicitly. The first
-one is easy: it is impossible for $X$ to be negative, so if $x<0$
+
+Our next goal is to write down the CDF of $X$ explicitly. The first
+case is easy: it is impossible for $X$ to be negative, so if $x<0$
 then we should have $\P(X\leq x)=0$. Now choose a value $x$ satisfying
 $0\leq x<1$, say, $x=0.3$. The only way that $X\leq x$ could happen
 would be if $X=0$, therefore, $\P(X\leq x)$ should equal $\P(X=0)$,
@@ -6088,11 +6043,12 @@ F_{X}(x)=\P(X\leq x)=\begin{cases}
 \frac{1}{8}+\frac{3}{8}=\frac{4}{8}, & 1\leq x<2,\\
 \frac{4}{8}+\frac{3}{8}=\frac{7}{8}, & 2\leq x<3,\\
 1, & x\geq3.\end{cases}\]
-In particular, the cdf of $X$ is defined for the entire real line,
-$\R$. The cdf is right continuous and nondecreasing. A graph of the
-$\mathsf{binom}(\mathtt{size}=3,\,\mathtt{prob}=1/2)$ cdf is shown
+In particular, the CDF of $X$ is defined for the entire real line,
+$\R$. The CDF is right continuous and nondecreasing. A graph of the
+$\mathsf{binom}(\mathtt{size}=3,\,\mathtt{prob}=1/2)$ CDF is shown
 in Figure BLANK.
 
+\end{example}
 %
 \begin{figure}
 \begin{centering}
@@ -6111,13 +6067,15 @@ CDF}
 \end{figure}
 
 
-Another way to do this is with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!distr!\inputencoding{utf8}
+
+\begin{example}
+Another way to do Example BLANK is with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!distr!\inputencoding{utf8}
 family of packages. They use an object oriented approach to random
 variables, that is, a random variable is stored in an object \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!X!\inputencoding{utf8},
 and then questions about the random variable translate to functions
 on and involving \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!X!\inputencoding{utf8}.
-Random variables with distributions from the base \textsf{R} package
-may be defined simply by capitalizing the name of the distribution:
+Random variables with distributions from the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!base!\inputencoding{utf8}
+package are specified by capitalizing the name of the distribution:
 
 <<keep.source = TRUE>>=
 library(distr)
@@ -6125,17 +6083,23 @@ X <- Binom(size = 3, prob = 1/2)
 X
 @
 
-The analogue of the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!dbinom!\inputencoding{utf8}
-function for \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!X!\inputencoding{utf8}
-is the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!d(X)!\inputencoding{utf8}
-function, and the analogue of the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!pbinom!\inputencoding{utf8}
-function is the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!p(X)!\inputencoding{utf8}
+The analogue of the \inputencoding{latin9}\lstinline[showstringspaces=false]!dbinom!\inputencoding{utf8}
+function for \inputencoding{latin9}\lstinline[showstringspaces=false]!X!\inputencoding{utf8}
+is the \inputencoding{latin9}\lstinline[showstringspaces=false]!d(X)!\inputencoding{utf8}
+function, and the analogue of the \inputencoding{latin9}\lstinline[showstringspaces=false]!pbinom!\inputencoding{utf8}
+function is the \inputencoding{latin9}\lstinline[showstringspaces=false]!p(X)!\inputencoding{utf8}
 function. Compare the following:
 
 <<keep.source = TRUE>>=
 d(X)(1)   # pmf of X evaluated at x = 1
 p(X)(2)   # cdf of X evaluated at x = 2
 @
+
+\end{example}
+Random variables defined via the \inputencoding{latin9}\lstinline[showstringspaces=false]!distr!\inputencoding{utf8}
+package may be \emph{plotted}, which will return graphs of the PMF,
+CDF, and quantile function (introduced in Section BLANK). See Figure
+BLANK for an example.
 
 %
 \begin{figure}[H]
@@ -6145,7 +6109,7 @@ plot(X)
 @
 \par\end{centering}
 
-\caption{binom(size = 3, prob = 0.5) CDF}
+\caption{The \textsf{binom}(\texttt{size} = 3, \texttt{prob} = 0.5) CDF}
 
 \end{figure}
 
@@ -6155,16 +6119,14 @@ plot(X)
 \begin{centering}
 \begin{tabular}{cccc}
 \multicolumn{1}{c}{} &  & $\mathtt{X<-Binom(size=}n\mathtt{,\ prob=}p\mathtt{)}$\tabularnewline
-$\mathsf{dbinom}(x,\,\mathtt{size}=n,\,\mathtt{prob}=p)$ & $\P(X=x)$ & pmf & $\mathsf{d}(\mathtt{d(X)})(x)$\tabularnewline
-$\mathsf{pbinom}(x,\,\mathtt{size}=n,\,\mathtt{prob}=p)$ & $\P(X\leq x)$ & cdf & $\mathsf{p}(\mathtt{X})(x)$\tabularnewline
+$\mathsf{dbinom}(x,\,\mathtt{size}=n,\,\mathtt{prob}=p)$ & $\P(X=x)$ & PMF & $\mathsf{d}(\mathtt{d(X)})(x)$\tabularnewline
+$\mathsf{pbinom}(x,\,\mathtt{size}=n,\,\mathtt{prob}=p)$ & $\P(X\leq x)$ & CDF & $\mathsf{p}(\mathtt{X})(x)$\tabularnewline
 $\mathsf{rbinom}(k,\,\mathtt{size}=n,\,\mathtt{prob}=p)$ &  & random variates & $\mathsf{r}(\mathtt{X})(k)$\tabularnewline
  &  &  & \tabularnewline
 \end{tabular}
 \par\end{centering}
 
-\caption{correspondence between base R and distr with $X\sim\mathsf{dbinom}(\mathtt{size}=n,\,\mathtt{prob}=p)$}
-
-
+\caption{Correspondence between base \textsf{R} and \texttt{distr} with $X\sim\mathsf{dbinom}(\mathtt{size}=n,\,\mathtt{prob}=p)$}
 
 \end{table}
 
@@ -6175,48 +6137,68 @@ $\mathsf{rbinom}(k,\,\mathtt{size}=n,\,\mathtt{prob}=p)$ &  & random variates & 
 
 \subsection{The Expectation Operator\label{sub:The-Expectation-Operator}}
 
-We would like to generalize some of the concepts from Section BLANK.
-There we saw that every pmf has associated with it two important quantities:\begin{equation}
+We next generalize some of the concepts from Section BLANK. There
+we saw that every%
+\footnote{Not every, only those PMFs for which the (potentially infinite) series
+converges.%
+} PMF has two important numbers associated with it:\begin{equation}
 \mu=\sum_{x\in S}xf_{X}(x),\quad\sigma^{2}=\sum_{x\in S}(x-\mu)^{2}f_{X}(x).\end{equation}
-The intuitive content of $\mu$ is related to the notion that in repeated
-observations of $X$ we would expect the sample mean to closely approximate
-$\mu$ as the sample size increases without bound. For this reason
-we call $\mu$ the \emph{expected value} of $X$ and we write $\mu=\E X$,
-where $\E$ is an \emph{expectation operator}.
-
+Intuitively, for repeated observations of $X$ we would expect the
+sample mean to closely approximate $\mu$ as the sample size increases
+without bound. For this reason we call $\mu$ the \emph{expected value}
+of $X$ and we write $\mu=\E X$, where $\E$ is an \emph{expectation
+operator}.
+\begin{defn}
 More generally, given a function $g$ we define the \emph{expected
 value of} $g(X)$ by\begin{equation}
-\E\: g(X)=\sum_{x\in S}g(x)f_{X}(x).\end{equation}
-Using this notation we see that $\sigma^{2}=\E(X-\mu)^{2}$ and we
+\E\: g(X)=\sum_{x\in S}g(x)f_{X}(x),\end{equation}
+provided the (potentially infinite) series $\sum_{x}|g(x)|f(x)$ converges,
+and in that case we say that $\E g(X)$ \emph{exists}. 
+\end{defn}
+In this notation the variance is $\sigma^{2}=\E(X-\mu)^{2}$ and we
 prove the identity \begin{equation}
 \E(X-\mu)^{2}=\E X^{2}-(\E X)^{2}\end{equation}
-in Exercise BLANK.
+in Exercise BLANK. Intuitively, for repeated observations of $X$
+we would expect the sample mean of the $g(X)$ values to closely approximate
+$\E\ g(X)$ as the sample size increases without bound.
+
+Let us take the analogy further. If we expect $g(X)$ to be close
+to $\E g(X)$ on the average, where would we expect $3g(X)$ to be
+on the average? It could only be $3\E g(X)$. The following theorem
+makes this idea precise.
 \begin{thm}
 For any functions $g$ and $h$, any random variable $X$, and any
 constant $c$: 
-\begin{itemize}
+\begin{enumerate}
 \item $\E\: c=c$,
 \item $\E[c\cdot g(X)]=c\E g(X)$
-\item $\E[g(X)+h(Y)]=\E g(X)+\E h(X)$
-\end{itemize}
+\item $\E[g(X)+h(X)]=\E g(X)+\E h(X)$,
+\end{enumerate}
+provided $\E g(X)$ and $\E h(X)$ exist.
+
 \end{thm}
+\begin{proof}
+Go directly from the definition. For example,\[
+\E[c\cdot g(X)]=\sum_{x\in S}c\cdot g(x)f_{X}(x)=c\cdot\sum_{x\in S}g(x)f_{X}(x)=c\E g(X).\]
+
+\end{proof}
 
 \subsection{Moment Generating Functions\label{sub:Moment-Generating-Functions}}
-
-Given a random variable $X$, we define its moment generating function
-(abbreviated mgf) by the formula\begin{equation}
+\begin{defn}
+Given a random variable $X$, its \emph{moment generating function}
+(abbreviated MGF) is defined by the formula\begin{equation}
 M_{X}(t)=\E\:\me^{tX}=\sum_{x\in S}\me^{tx}f_{X}(x),\end{equation}
 provided the (potentially infinite) series exists and is finite for
 all $t$ in a neighborhood of zero (that is, for all $-\epsilon<t<\epsilon$,
-for some $\epsilon>0$). Note that for any mgf $M_{X}$, \begin{equation}
+for some $\epsilon>0$). 
+\end{defn}
+Note that for any MGF $M_{X}$, \begin{equation}
 M_{X}(0)=\E\me^{0\cdot X}=\E1=1.\end{equation}
-
-
-We will calculate the mgf for the special cases introduced above.
+We will calculate the MGF for the two distributions introduced above.
 \begin{example}
 $X\sim\mathsf{disunif}(m)$. 
 
-Since $f(x)=1/m$, the mgf takes the form\[
+Since $f(x)=1/m$, the MGF takes the form\[
 M(t)=\sum_{x=1}^{m}\me^{tx}\frac{1}{m}=\frac{1}{m}(\me^{t}+\me^{2t}+\cdots+\me^{mt}),\quad\mbox{for any \ensuremath{t}.}\]
 
 \end{example}
@@ -6234,42 +6216,46 @@ M_{X}(t)= & \sum_{x=0}^{n}\me^{tx}{n \choose x}p^{x}(1-p)^{n-x},\\
 \subsection*{Applications}
 
 There are two uses of moment generating functions that will be used
-in this book. The first is the fact that the mgf may be used to accurately
+in this book. The first is the fact that the MGF may be used to accurately
 identify probability distributions, which rests on the following:
 \begin{thm}
 The moment generating function, if it exists in a neighborhood of
-zero, determines a probability distribution \emph{uniquely}. 
-\end{thm}
-The proof of such a theorem is beyond the scope of a text like this
-one. Interested readers could consult BLANK.
+zero, determines a probability distribution \emph{uniquely}. \end{thm}
+\begin{proof}
+Unfortunately, the proof of such a theorem is beyond the scope of
+a text like this one. Interested readers could consult BLANK.
+\end{proof}
+
+
+We will see an example of Theorem BLANK in action.
 \begin{example}
-Suppose we encounter a random variable which has mgf \[
+Suppose we encounter a random variable which has MGF \[
 M_{X}(t)=(0.3+0.7\me^{t})^{13}.\]
 Then $X\sim\mathsf{binom}(\mathtt{size}=13,\,\mathtt{prob}=0.7)$.
 \end{example}
 
 
-The mgf is also known as a {}``Laplace Transform'' and is used in
+An MGF is also known as a {}``Laplace Transform'' and is used in
 that context in many branches of science and engineering.
 
 
 \subsection*{Why is it called a Moment Generating Function?}
 
-This brings us to the second powerful use of moment generating functions.
-For many of the models we study the mgf is simple indeed and allows
-us to determine the mean, variance, and even higher moments very quickly.
-Let us see why. We already know that
+This brings us to the second powerful use of MGFs. Many of the models
+we study have a simple MGF indeed which allows us to determine the
+mean, variance, and even higher moments very quickly. Let us see why.
+We already know that
 
 \begin{alignat*}{1}
 M(t)= & \sum_{x\in S}\me^{tx}f(x),\end{alignat*}
-Taking the derivative with respect to $t$ gives\begin{equation}
+Take the derivative with respect to $t$ to get\begin{equation}
 M'(t)=\frac{\diff}{\diff t}\left(\sum_{x\in S}\me^{tx}f(x)\right)=\sum_{x\in S}\ \frac{\diff}{\diff t}\left(\me^{tx}f(x)\right)=\sum_{x\in S}x\me^{tx}f(x),\end{equation}
-and so when we plug in zero for $t$ we get \begin{equation}
+and so if we plug in zero for $t$ we see \begin{equation}
 M'(0)=\sum_{x\in S}x\me^{0}f(x)=\sum_{x\in S}xf(x)=\mu=\E X.\end{equation}
 Similarly, $M''(t)=\sum x^{2}\me^{tx}f(x)$ so that $M''(0)=\E X^{2}$.
 And in general, we can see%
 \footnote{We are glossing over some significant mathematical details in our
-derivation. Suffice it to say that when the mgf exists in a neighborhood
+derivation. Suffice it to say that when the MGF exists in a neighborhood
 of $t=0$, the exchange of differentiation and summation is valid
 in that neighborhood, and our remarks hold true.%
 } that\begin{equation}
@@ -6300,11 +6286,11 @@ Therefore \begin{alignat*}{1}
 \begin{rem}
 We learned in this section that $M^{(r)}(0)=\E X^{r}$. We remember
 from Calculus II that certain functions $f$ can be represented by
-a Taylor Series expansion about a point $a$, which takes the form\begin{equation}
+a Taylor series expansion about a point $a$, which takes the form\begin{equation}
 f(x)=\sum_{r=0}^{\infty}\frac{f^{(r)}(a)}{r!}(x-a)^{r},\quad\mbox{for all \ensuremath{|x-a|<R},}\end{equation}
-where $R$ is a number called the \emph{radius of convergence} of
-the series (see Appendix BLANK). Now we may combine this information
-to say that if an mgf exists for all $t$ in the interval $(-\epsilon,\epsilon)$,
+where $R$ is called the \emph{radius of convergence} of the series
+(see Appendix BLANK). Now we may combine this information to say that
+if an MGF exists for all $t$ in the interval $(-\epsilon,\epsilon)$,
 then we may write\begin{equation}
 M_{X}(t)=\sum_{r=0}^{\infty}\frac{\E X^{r}}{r!}t^{r},\quad\mbox{for all \ensuremath{|t|<\epsilon}.}\end{equation}
 
@@ -6312,13 +6298,15 @@ M_{X}(t)=\sum_{r=0}^{\infty}\frac{\E X^{r}}{r!}t^{r},\quad\mbox{for all \ensurem
 
 \subsection{How to do it with \textsf{R}}
 
-The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!distr!\inputencoding{utf8}
-family of packages implements an object-oriented approach to random
-variables.
+The \inputencoding{latin9}\lstinline[showstringspaces=false]!distrEx!\inputencoding{utf8}
+package provides an expectation operator \inputencoding{latin9}\lstinline[showstringspaces=false]!E!\inputencoding{utf8}
+which can be used on random variables that have been defined in the
+ordinary \inputencoding{latin9}\lstinline[showstringspaces=false]!distr!\inputencoding{utf8}
+sense:
 
 <<>>=
+X <- Binom(size = 3, prob = 0.45)
 library(distrEx)
-X = Binom(size = 3, prob = 0.45)
 E(X)
 E(3*X + 4)
 @
@@ -6328,7 +6316,7 @@ is simply computed with direct summation. In the case that the random
 variable has infinite support and the function is crazy, then the
 expectation is not computed directly, rather, it is estimated by first
 generating a random sample from the underlying model and next computing
-a sample mean of the function of interest.
+a sample mean of the function of interest. 
 
 There are methods for other population parameters:
 
@@ -6337,10 +6325,10 @@ var(X)
 sd(X)
 @
 
-There are even methods for \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!IQR!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mad!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!skewness!\inputencoding{utf8},
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!kurtosis!\inputencoding{utf8}. 
+There are even methods for \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false]!IQR!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false]!mad!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false]!skewness!\inputencoding{utf8},
+and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false]!kurtosis!\inputencoding{utf8}.
 
 
 \section{The Empirical Distribution\label{sec:The-Empirical-Distribution}}
@@ -6349,30 +6337,28 @@ Do an experiment $n$ times and observe $n$ values $x_{1}$, $x_{2}$,
 \ldots{}, $x_{n}$ of a random variable $X$. For simplicity in most
 of the discussion that follows it will be convenient to suppose that
 the observed values are distinct, but comparable remarks remain valid
-even when the values are repeated. 
+even when the observed values are repeated. 
 \begin{defn}
-The empirical cumulative distribution function $F_{n}$ (written ecdf)
-is the probability distribution that places probability mass $1/n$
-on each of the values $x_{1}$, $x_{2}$, \ldots{}, $x_{n}$. The
-empirical pmf takes the form\[
-f_{X}(x)=\frac{1}{n},\quad x\in\left\{ x_{1},x_{2},...,x_{n}\right\} .\]
+The \emph{empirical cumulative distribution function} $F_{n}$ (written
+ECDF) is the probability distribution that places probability mass
+$1/n$ on each of the values $x_{1}$, $x_{2}$, \ldots{}, $x_{n}$.
+The empirical PMF takes the form\begin{equation}
+f_{X}(x)=\frac{1}{n},\quad x\in\left\{ x_{1},x_{2},...,x_{n}\right\} .\end{equation}
 If the value $x_{i}$ is repeated $k$ times, the mass at $x_{i}$
 is accumulated to $k/n$.
 \end{defn}
 
 
-The mean of the empirical distribution is\[
-\mu=\sum_{x\in S}xf_{X}(x)=\sum_{i=1}^{n}x_{i}\cdot\frac{1}{n}\]
+The mean of the empirical distribution is\begin{equation}
+\mu=\sum_{x\in S}xf_{X}(x)=\sum_{i=1}^{n}x_{i}\cdot\frac{1}{n}\end{equation}
 and we recognize this last quantity to be the sample mean, $\xbar$.
-We may similarly calculate the variance of the empirical distribution:\[
-\sigma^{2}=\sum_{x\in S}(x-\mu)^{2}f_{X}(x)=\sum_{i=1}^{n}(x_{i}-\xbar)^{2}\cdot\frac{1}{n}\]
+The variance of the empirical distribution is\begin{equation}
+\sigma^{2}=\sum_{x\in S}(x-\mu)^{2}f_{X}(x)=\sum_{i=1}^{n}(x_{i}-\xbar)^{2}\cdot\frac{1}{n}\end{equation}
 and this last quantity looks very close to what we already know to
 be the sample variance.\[
-s^{2}=\frac{1}{n-1}\sum_{i=1}^{n}(x_{i}-\xbar)^{2}\]
-
-
-The empirical quantile function is the inverse of the ecdf. We can
-get it in R with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!quantile(x, probs = p, type = 1)!\inputencoding{utf8}.
+s^{2}=\frac{1}{n-1}\sum_{i=1}^{n}(x_{i}-\xbar)^{2}.\]
+The \emph{empirical quantile function} is the inverse of the ECDF.
+See Section BLANK.
 
 
 \subsection{How to do it with \textsf{R}}
@@ -6381,8 +6367,8 @@ The empirical distribution is not directly available as a distribution
 in the same way that the other base probability distributions are,
 but there are plenty of resources available. 
 
-Given a data vector of observed values \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8},
-we can see the empirical cdf with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ecdf!\inputencoding{utf8}
+Given a data vector of observed values \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false]!x!\inputencoding{utf8},
+we can see the empirical CDF with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true]!ecdf!\inputencoding{utf8}
 function:
 
 <<>>=
@@ -6390,13 +6376,13 @@ x <- c(4, 7, 9, 11, 12)
 ecdf(x)
 @
 
-The above shows that the returned value of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ecdf(x)!\inputencoding{utf8}is
+The above shows that the returned value of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false]!ecdf(x)!\inputencoding{utf8}is
 not a number but rather a \emph{function}. It is not usually used
 in this form, by itself. More commonly it is used as an intermediate
 step in a more complicated calculation, for instance, in hypothesis
 testing (see Section BLANK) or resampling (see Chapter BLANK). It
-is nevertheless instructive to see what the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ecdf!\inputencoding{utf8}
-looks like, and there is a special plot method for \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ecdf!\inputencoding{utf8}
+is nevertheless instructive to see what the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false]!ecdf!\inputencoding{utf8}
+looks like, and there is a special plot method for \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,showstringspaces=false]!ecdf!\inputencoding{utf8}
 objects.
 
 <<eval = FALSE>>=
@@ -6411,7 +6397,7 @@ plot(ecdf(x))
 @
 \par\end{centering}
 
-\caption{The empirical cdf}
+\caption{The empirical CDF}
 
 \end{figure}
 
@@ -6421,9 +6407,9 @@ jumps exactly at the locations stored in \inputencoding{latin9}\lstinline[basics
 There are no repeated values in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
 so all of the jumps are equal to $1/5=0.2$.
 
-The empirical pdf is not usually of particular interest in itself,
+The empirical PDF is not usually of particular interest in itself,
 but if we really wanted we could define a function to serve as the
-empirical pdf:
+empirical PDF:
 
 <<keep.source = TRUE>>=
 epdf <- function(x) function(t){sum(x %in% t)/length(x)}
@@ -6432,8 +6418,8 @@ epdf(x)(0)       # should be 2/3
 @
 
 To simulate from the empirical distribution supported on the vector
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8},
-we can simply use the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!sample!\inputencoding{utf8}
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,showstringspaces=false]!x!\inputencoding{utf8},
+we can simply use the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,showstringspaces=false]!sample!\inputencoding{utf8}
 function.
 
 <<>>=
@@ -6441,9 +6427,12 @@ x <- c(0,0,1)
 sample(x, size = 7, replace = TRUE)       # should be 2/3
 @
 
+We can get the empirical quantile function in \textsf{R} with \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!quantile(x, probs = p, type = 1)!\inputencoding{utf8}.
+
 As we hinted above, the real significance of the empirical distribution
-is associated with its uses in more sophisticated applications. We
-will explore some of these in later chapters.
+is associated with its appearance in more sophisticated applications.
+We will explore some of these in later chapters -- see, for instance,
+Chapter BLANK.
 
 
 \section{Other Discrete Distributions\label{sec:Other-Discrete-Distributions}}
@@ -6452,7 +6441,7 @@ The binomial and discrete uniform distributions are very popular,
 and rightly so; they are simple and form the foundation for many,
 many more complicated distributions. But these only apply to a limited
 range of problems. In this section we introduce some situations for
-which we need more than the uniform and binomial. 
+which we need more than the uniform and binomial.
 
 
 \subsection{Dependent Bernoulli Trials\label{sec:Non-Bernoulli-Trials}}
@@ -6463,16 +6452,20 @@ which we need more than the uniform and binomial.
 Consider an urn with 7 white balls and 5 black balls. Let our random
 experiment be to randomly select 4 balls, without replacement, from
 the urn. Then the probability of observing 3 white balls (and thus
-1 black ball) would be \[
-\P(3W,1B)=\frac{{7 \choose 3}{5 \choose 1}}{{12 \choose 4}}.\]
+1 black ball) would be \begin{equation}
+\P(3W,1B)=\frac{{7 \choose 3}{5 \choose 1}}{{12 \choose 4}}.\end{equation}
 In general, consider sampling without replacement $K$ times from
 an urn with $M$ white balls and $N$ black balls. Let $X$ count
-the number of white balls in the sample. The pmf of $X$ is 
+the number of white balls in the sample. The PMF of $X$ is 
 
 \[
 f_{X}(x)=\frac{{M \choose x}{N \choose K-x}}{{M+N \choose K}},\quad x=0,1,2,\ldots,K.\]
 We say that $X$ has a \emph{hypergeometric distribution} and write
 $X\sim\mathsf{hyper}(\mathtt{m}=M,\,\mathtt{n}=N,\,\mathtt{k}=K)$.
+It is shown in Exercise BLANK that \begin{equation}
+\mu=K\frac{M}{M+N},\quad\sigma^{2}=K\frac{MN}{(M+N)^{2}}\frac{M+N-K}{M+N-1}.\end{equation}
+
+
 The associated \textsf{R} function is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=4]!dhyper(x, m = M, n = N, k = K)!\inputencoding{utf8}
 . The other functions are
 
@@ -6492,11 +6485,7 @@ The associated \textsf{R} function is \inputencoding{latin9}\lstinline[basicstyl
 \begin{lstlisting}[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=4]
 	rhyper(num, m = M, n = N, k = K)
 \end{lstlisting}
-\inputencoding{utf8}and these give the cdf, quantiles, and random variates, respectively.
-
-It is shown in Exercise BLANK that \[
-\mu=K\frac{M}{M+N},\quad\sigma^{2}=K\frac{MN}{(M+N)^{2}}\frac{M+N-K}{M+N-1}.\]
-
+\inputencoding{utf8}and these give the CDF, quantiles, and random variates, respectively.
 \begin{example}
 Suppose in a certain shipment of 250 Pentium processors there are
 17 defective processors. A quality control consultant randomly collects
@@ -6516,11 +6505,10 @@ To calculate it in \textsf{R} we just type
 dhyper(3, m = 17, n = 233, k = 5)
 @
 
-To find it with R Commander we click \emph{Probability} $\to$ \emph{Discrete
-Distributions} $\to$ \emph{Hypergeometric distribution}$\to$ \emph{Hypergeometric
-probabilities\ldots{}}.We fill in the parameters $m=17$, $n=233$,
-and $k=5$. Click \emph{OK}, and in the console window is shown the
-following table.
+To find it with the \textsf{R} Commander we click Probability $\to$
+Discrete Distributions $\to$ Hypergeometric distribution$\to$ Hypergeometric
+probabilities\emph{\ldots{}}.We fill in the parameters $m=17$, $n=233$,
+and $k=5$. Click OK, and the following table is shown in the window.
 
 <<>>=
 A <- data.frame(Pr=dhyper(0:4, m = 17, n = 233, k = 5))
@@ -6533,10 +6521,11 @@ We wanted $\P(X=3)$, and this is found from the table to be approximately
 
 We know from our above discussion that the sample space should be
 $x=0,1,2,3,4,5$, yet, in the table the probabilities are only displayed
-for $x=1,2,3$, and 4. What is happening? As it turns out, the R Commander
-will only display probabilities that are 0.00005 or greater. Since
-$x=5$ is not shown, it suggests that the outcome has a tiny probability.
-To find its exact value we may use the dhyper function:
+for $x=1,2,3$, and 4. What is happening? As it turns out, the \textsf{R}
+Commander will only display probabilities that are 0.00005 or greater.
+Since $x=5$ is not shown, it suggests that the outcome has a tiny
+probability. To find its exact value we may use the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false,tabsize=4]!dhyper!\inputencoding{utf8}
+function:
 
 <<>>=
 dhyper(5, m = 17, n = 233, k = 5)
@@ -6552,8 +6541,8 @@ that is, compute $\P(X\leq2)$.
 would be to add the 0, 1, and 2 entries in the above table. this gives
 $0.7011+0.2602+0.0362=0.9975$. Our answer should be correct up to
 the accuracy of 4 decimal places. However, a more precise method is
-provided by R Commander. Under the \textsf{Hypergeometric distribution}
-menu we select \textsf{Hypergeometric tail probabilities}\textsf{\emph{\ldots{}}}.
+provided by the \textsf{R} Commander. Under the \textsf{Hypergeometric
+distribution} menu we select \textsf{Hypergeometric tail probabilities}\textsf{\emph{\ldots{}}}.
 We fill in the parameters $m$, $n$, and $k$ as before, but in the
 \textsf{Variable value(s)} dialog box we enter the value 2. We notice
 that the \texttt{Lower tail} option is checked, and we leave that
@@ -6589,8 +6578,8 @@ $x$.
 
 
 We can randomly simulate as many observations of $X$ as we want in
-R Commander. Simply choose \textsf{Simulate hypergeometric variates\ldots{}}
-in the \textsf{Hypergeometric distribution} dialog.
+\textsf{R} Commander. Simply choose \textsf{Simulate hypergeometric
+variates\ldots{}} in the \textsf{Hypergeometric distribution} dialog.
 
 In the \textsf{Number of samples} dialog, type 1. Enter the parameters
 as above. Under the \textsf{Store Values} section, make sure \textsf{New
@@ -6628,7 +6617,7 @@ standard deviation of $X$. From the output above our estimate is
  with $\sigma=\sqrt{\sigma^{2}}\approx0.5583811944$. Our estimate
 was pretty close.
 
-From the Console we can generate random hypergeometric variates with
+From the console we can generate random hypergeometric variates with
 the \inputencoding{latin9}\lstinline!rhyper!\inputencoding{utf8}
 function, as demonstrated below.
 
@@ -6676,7 +6665,7 @@ of time it takes for a specified event of interest to occur.
 
 Suppose that we conduct Bernoulli trials repeatedly, noting the successes
 and failures. Let $X$ be the number of failures before a success.
-If $\P(S)=p$ then $X$ has pmf
+If $\P(S)=p$ then $X$ has PMF
 
 \begin{equation}
 f_{X}(x)=p(1-p)^{x},\quad x=0,1,2,\ldots\end{equation}
@@ -6696,7 +6685,7 @@ are
 \texttt{TRUE)}~\\
 \textsf{\textbf{rgeom}}\texttt{(n, prob)}
 
-and these give the cdf, quantiles, and random variates, respectively.
+and these give the CDF, quantiles, and random variates, respectively.
 We will find in the next section that the mean and variance are\begin{equation}
 \mu=\frac{1-p}{p}=\frac{q}{p},\quad\sigma^{2}=\frac{q}{p^{2}}\end{equation}
 
@@ -6719,7 +6708,7 @@ pgeom(4, prob = 0.812, lower.tail = FALSE)
 \begin{note}
 Some books use a slightly different definition of the geometric distribution.
 They consider Bernoulli trials and let $Y$ count instead the number
-of trials until a success, so that $Y$ has pmf\begin{equation}
+of trials until a success, so that $Y$ has PMF\begin{equation}
 f_{Y}(y)=p(1-p)^{y-1},\quad y=1,2,3,\ldots\end{equation}
 When they say {}``geometric distribution'', this is what they mean.
 It is not hard to see that the two definitions are related. In fact,
@@ -6733,7 +6722,7 @@ We may generalize the problem and consider the case where we wait
 for \emph{more} than one success. Suppose that we conduct Bernoulli
 trials repeatedly, noting the respective successes and failures. Let
 $X$ count the number of failures before $r$ successes. If $\P(S)=p$
-then $X$ has pmf
+then $X$ has PMF
 
 \begin{equation}
 f_{X}(x)={r+x-1 \choose r-1}p^{r}(1-p)^{x},\quad x=0,1,2,\ldots\end{equation}
@@ -6745,8 +6734,8 @@ $\sum f_{X}(x)=1$ follows from Calculus where we found the following
 generalization of the geometric series using Maclaurin's series expansion:\begin{alignat*}{1}
 \frac{1}{1-t}= & \sum_{k=0}^{\infty}t^{k},\quad\mbox{for \ensuremath{-1<t<1}},\mbox{ and}\\
 \frac{1}{(1-t)^{r}}= & \sum_{k=0}^{\infty}{r+k-1 \choose r-1}t^{k},\quad\mbox{for \ensuremath{-1<t<1}}.\end{alignat*}
-Therefore \[
-\sum_{x=0}^{\infty}f_{X}(x)=p^{r}\sum_{x=0}^{\infty}{r+x-1 \choose r-1}q^{x}=p^{r}(1-q)^{-r}=1,\]
+Therefore \begin{equation}
+\sum_{x=0}^{\infty}f_{X}(x)=p^{r}\sum_{x=0}^{\infty}{r+x-1 \choose r-1}q^{x}=p^{r}(1-q)^{-r}=1,\end{equation}
 since $|q|=|1-p|<1$. The associated \textsf{R} function is \textsf{\textbf{dnbinom}}\texttt{(x,
 size} \texttt{\textcolor{red}{=}} \texttt{r, prob} \texttt{\textcolor{red}{=}}
 \texttt{p)}. The other functions are
@@ -6757,7 +6746,7 @@ size} \texttt{\textcolor{red}{=}} \texttt{r, prob} \texttt{\textcolor{red}{=}}
 \texttt{TRUE)}~\\
 \textsf{\textbf{rnbinom}}\texttt{(n, size, prob)}
 
-and these give the cdf, quantiles, and random variates, respectively.
+and these give the CDF, quantiles, and random variates, respectively.
 \begin{example}
 We flip a coin repeatedly and let $X$ count the number of Tails until
 we get seven Heads. What is $\P(X=5)?$
@@ -6765,13 +6754,13 @@ we get seven Heads. What is $\P(X=5)?$
 \emph{Solution:} We know that $X\sim\mathsf{nbinom}(\mathtt{size}=7,\,\mathtt{prob}=1/2)$.
 \[
 \P(X=5)=f_{X}(5)={7+5-1 \choose 7-1}(1/2)^{7}(1/2)^{5}={11 \choose 6}2^{-12}\]
-and we can get this in R with
+and we can get this in \textsf{R} with
 \end{example}
 <<>>=
 dnbinom(5, size = 7, prob = 0.5)
 @
 
-Let us next compute the mgf of $X\sim\mathsf{nbinom}(\mathtt{size}=r,\,\mathtt{prob}=p)$.
+Let us next compute the MGF of $X\sim\mathsf{nbinom}(\mathtt{size}=r,\,\mathtt{prob}=p)$.
 
 \begin{alignat*}{1}
 M_{X}(t)= & \sum_{x=0}^{\infty}\me^{tx}\ {r+x-1 \choose r-1}p^{r}q^{x}\\
@@ -6798,15 +6787,15 @@ Finally we may say $\sigma^{2}=M''(0)-[M'(0)]^{2}=rq/p^{2}.$
 \end{example}
 
 \begin{example}
-A random variable has mgf\[
+A random variable has MGF\[
 M_{X}(t)=\left(\frac{0.19}{1-0.81\me^{t}}\right)^{31}.\]
 Then $X\sim\mathsf{nbinom}(\mathtt{size}=31,\,\mathtt{prob}=0.19)$.\end{example}
 \begin{note}
 As with the Geometric distribution, some books use a slightly different
 definition of the Negative Binomial distribution. They consider Bernoulli
 trials and let $Y$ be the number of trials until $r$ successes,
-so that $Y$ has pmf\[
-f_{Y}(y)={y-1 \choose r-1}p^{r}(1-p)^{y-r},\quad y=r,r+1,r+2,\ldots\]
+so that $Y$ has PMF\begin{equation}
+f_{Y}(y)={y-1 \choose r-1}p^{r}(1-p)^{y-r},\quad y=r,r+1,r+2,\ldots\end{equation}
 It is again not hard to see that if $X$ denotes our Negative Binomial
 and $Y$ theirs, then $Y=X+r$. Consequently, they have $\mu_{Y}=\mu_{X}+r$
 and $\sigma_{Y}^{2}=\sigma_{X}^{2}$.
@@ -6824,15 +6813,15 @@ which will become clear in a moment. The events might be:
 \item typing errors, or
 \item customers arriving in a bank.
 \end{itemize}
-Let $\gl$ be the average number of events in the time interval $[0,1]$.
-Let the random variable $X$ count the number of events occurring
-in the interval. Then under certain reasonable conditions it can be
-shown that
+Let $\lambda$ be the average number of events in the time interval
+$[0,1]$. Let the random variable $X$ count the number of events
+occurring in the interval. Then under certain reasonable conditions
+it can be shown that
 
-\[
-f_{X}(x)=\P(X=x)=\me^{-\lambda}\frac{\lambda^{x}}{x!},\quad x=0,1,2,\ldots\]
-We use the notation $X\sim\mathsf{pois}(\mathtt{lambda}=\gl)$. The
-associated \textsf{R} function is \textsf{\textbf{dpois}}\texttt{(x,
+\begin{equation}
+f_{X}(x)=\P(X=x)=\me^{-\lambda}\frac{\lambda^{x}}{x!},\quad x=0,1,2,\ldots\end{equation}
+We use the notation $X\sim\mathsf{pois}(\mathtt{lambda}=\lambda)$.
+The associated \textsf{R} function is \textsf{\textbf{dpois}}\texttt{(x,
 lambda} \texttt{\textcolor{red}{=}} \texttt{l)}. The other functions
 are
 
@@ -6842,7 +6831,7 @@ are
 \texttt{TRUE)}~\\
 \textsf{\textbf{rpois}}\texttt{(n, lambda)}
 
-and these give the cdf, quantiles, and random variates, respectively. 
+and these give the CDF, quantiles, and random variates, respectively. 
 
 
 \paragraph*{What are the reasonable conditions?}
@@ -6853,15 +6842,15 @@ Divide $[0,1]$ into subintervals of length $1/n$.
 \paragraph*{Assumptions:}
 \begin{itemize}
 \item The probability of an event occurring in a particular subinterval
-is $\approx\gl/n$.
+is $\approx\lambda/n$.
 \item The probability of two or more events occurring in any subinterval
 is $\approx0$.
 \item occurrences in disjoint subintervals are independent.\end{itemize}
 \begin{rem}
 If $X$ counts the number of events in the interval $[0,t]$ and $\lambda$
 is the average number that occur in unit time, then $X\sim\mathsf{pois}(\mathtt{lambda}=\lambda t)$,
-that is,\[
-\P(X=x)=\me^{-\lambda t}\frac{(\lambda t)^{x}}{x!},\quad x=0,1,2,3\ldots\]
+that is,\begin{equation}
+\P(X=x)=\me^{-\lambda t}\frac{(\lambda t)^{x}}{x!},\quad x=0,1,2,3\ldots\end{equation}
 \end{rem}
 \begin{example}
 On the average, five cars arrive at a particular car wash every hour.
@@ -6904,7 +6893,7 @@ tools of this section will give us the ability to consider infinitely
 many more. Given a random variable $X$ and a given function $h$,
 we may consider $Y=h(X)$. Since the values of $X$ are determined
 by chance, so are the values of $Y$. The question is, what is the
-pmf of the random variable $Y$? The answer, of course, depends on
+PMF of the random variable $Y$? The answer, of course, depends on
 $h$. In the case that $h$ is one-to-one (see Appendix BLANK), the
 solution can be found by simple substitution.
 \begin{example}
@@ -6920,8 +6909,8 @@ $X+r=Y$. We may let $h$ be defined by $h(x)=x+r$ so that $Y=h(X)$,
 and we notice that $h$ is linear and hence one-to-one. Finally, $X$
 takes values $0,\ 1,\ 2,\ldots$ implying that the support of $Y$
 would be $\left\{ r,\ r+1,\ r+2,\ldots\right\} $. Solving for $X$
-we get $X=Y-r$. Examining the pmf of $X$\[
-f_{X}(x)={r+x-1 \choose r-1}p^{r}(1-p)^{x}\]
+we get $X=Y-r$. Examining the PMF of $X$\begin{equation}
+f_{X}(x)={r+x-1 \choose r-1}p^{r}(1-p)^{x}\end{equation}
 we can substitute $x=y-r$ to get\begin{eqnarray*}
 f_{Y}(y) & = & f_{X}(y-r)\\
  & = & {r+(y-r)-1 \choose r-1}p^{r}(1-p)^{y-r}\\
@@ -6931,20 +6920,22 @@ f_{Y}(y) & = & f_{X}(y-r)\\
 
 
 Even when the function $h$ is not one-to-one, we may still find the
-pmf of $Y$ simply by accumulating, for each $y$, the probability
+PMF of $Y$ simply by accumulating, for each $y$, the probability
 of all the $x$'s that are mapped to that $y$.
 
 
 \begin{prop}
-Let $X$ be a discrete random variable with pmf $f_{X}$ supported
+Let $X$ be a discrete random variable with PMF $f_{X}$ supported
 on the set $S_{X}$. Let $Y=h(X)$ for some function $h$. Then $Y$
-has pmf $f_{Y}$ defined by\[
+has PMF $f_{Y}$ defined by\[
 f_{Y}(y)=\sum_{\{x\in S_{X}|\, h(x)=y\}}f_{X}(x)\]
  \end{prop}
 \begin{example}
 Let $X\sim\mathsf{binom}(\mathtt{size}=4,\,\mathtt{prob}=1/2)$, and
 let $Y=(X-1)^{2}$. Let us consider a table of values.
 
+%
+\begin{table}[H]
 \begin{tabular}{c|ccccc}
 $x$ & 0 & 1 & 2 & 3 & 4\tabularnewline
 \hline
@@ -6952,6 +6943,8 @@ $f_{X}(x)$ & $1/16$ & $1/4$ & $6/16$ & $1/4$ & $1/16$\tabularnewline
 \hline
 $y=(x-2)^{2}$ & 1 & 0 & 1 & 4 & 9\tabularnewline
 \end{tabular}
+\end{table}
+
 
 From this we see that $Y$ has support $S_{Y}=\{0,1,4,9\}$. We also
 see that $h(x)=(x-1)^{2}$ is not one-to-one on the support of $X$,
@@ -6959,7 +6952,7 @@ because both $x=0$ and $x=2$ are mapped by $h$ to $y=1$. Nevertheless,
 we see that $Y=0$ only when $X=1$, which has probability $1/4$;
 therefore, $f_{Y}(0)$ must equal $1/4$. A similar approach works
 for $y=4$ and $y=9$. And $Y=1$ exactly when $X=0$ or $X=2$, which
-has total probability $7/16$. In summary, the pmf of $Y$ may be
+has total probability $7/16$. In summary, the PMF of $Y$ may be
 written:
 
 \begin{tabular}{c|cccc}
@@ -7136,7 +7129,7 @@ of land.
 rnorm(1)
 @
 \begin{xca}
-Find the constant $c$ so that the given function is a valid pdf of
+Find the constant $c$ so that the given function is a valid PDF of
 a random variable $X$.\end{xca}
 \begin{enumerate}
 \item $f(x)=Cx^{n},\quad0<x<1$.
@@ -7162,7 +7155,7 @@ it is impossible to write all of the numbers down in a list; there
 are simply too many of them. 
 
 This chapter begins with continuous random variables and the associated
-pdfs and cdfs The continuous uniform distribution is highlighted,
+PDFs and CDFs The continuous uniform distribution is highlighted,
 along with the Gaussian, or normal, distribution. Some mathematical
 details pave the way for a catalogue of models.
 
@@ -7187,12 +7180,12 @@ and
 \item measurements of length of time are usually considered continuous.
 \end{itemize}
 Every continuous random variable $X$ has a \emph{probability density
-function} (pdf) denoted $f_{X}$ associated with it%
+function} (PDF) denoted $f_{X}$ associated with it%
 \footnote{Not true. There are pathological random variables with no density
 function. (This is one of the crazy things that can happen in the
 world of Measure Theory). But in this book we will not get even close
 to these anomolous beasts, and regardless it can be proved that the
-cdf always exists.%
+CDF always exists.%
 } that satisfies three basic properties:
 \begin{enumerate}
 \item $f_{X}(x)>0$ for $x\in S_{X}$,
@@ -7214,27 +7207,27 @@ for any number $c$. Therefore, when $a<b$ all of the following probabilities
 are the same: \begin{equation}
 \P(a\leq X\leq b)=\P(a<X\leq b)=\P(a\leq X<b)=\P(a<X<b).\end{equation}
 
-\item The pdf $f_{X}$ can sometimes be greater than 1. This is in contrast
-to the discrete case; every nonzero value of a pmf is a probability
+\item The PDF $f_{X}$ can sometimes be greater than 1. This is in contrast
+to the discrete case; every nonzero value of a PMF is a probability
 and is restricted to lie in the interval $[0,1]$.
 \end{itemize}
 \end{rem}
 We met the cumulative distribution function, $F_{X}$, in Chapter
 BLANK. Recall that it is defined by $F_{X}(t)=\P(X\leq t)$. While
-in the discrete case the cdf is unwieldly, in the continuous case
-the cdf has a relatively convenient form:\begin{equation}
+in the discrete case the CDF is unwieldly, in the continuous case
+the CDF has a relatively convenient form:\begin{equation}
 F_{X}(t)=\P(X\leq t)=\int_{-\infty}^{t}f_{X}(x)\:\diff x,\quad-\infty<t<\infty.\end{equation}
-We know that all pdfs satisfy certain properties, and a similar statement
-may be made for cdfs. In particular, any continuous cdf $F_{X}$ satisfies
+We know that all PDFs satisfy certain properties, and a similar statement
+may be made for CDFs. In particular, any continuous CDF $F_{X}$ satisfies
 \begin{itemize}
 \item $F_{X}$ is nondecreasing , that is, $t_{1}\leq t_{2}$ implies $F_{X}(t_{1})\leq F_{X}(t_{2})$.
 \item $F_{X}$ is continuous (see Appendix BLANK). Note the distinction
-from the discrete case: cdfs of discrete random variables are not
+from the discrete case: CDFs of discrete random variables are not
 continuous, they are only right continuous.
 \item $\lim_{t\to-\infty}F_{X}(t)=0$ and $\lim_{t\to\infty}F_{X}(t)=1$.
 \end{itemize}
 For continuous random variables, there is a convenient relationship
-between the cdf and pdf. Consider the derivative of $F_{X}$:\begin{equation}
+between the CDF and PDF. Consider the derivative of $F_{X}$:\begin{equation}
 F'_{X}(t)=\frac{\diff}{\diff t}F_{X}(t)=\frac{\diff}{\diff t}\,\int_{-\infty}^{t}f_{X}(x)\,\diff x=f_{X}(t),\end{equation}
 the last equality being true by the Fundamental Theorem of Calculus,
 part (2) (see Appendix BLANK). In short, $(F_{X})'=f_{X}$ in the
@@ -7259,9 +7252,9 @@ M_{X}(t)=\E\:\me^{tX}=\int_{-\infty}^{\infty}\me^{tx}f_{X}(x)\:\diff x,\end{equa
 provided the integral exists (is finite) for all $t$ in a neighborhood
 of $t=0$.
 \begin{example}
-Let the random variable $X$ have pdf \[
+Let the random variable $X$ have PDF \[
 f_{X}(x)=3x^{2},\quad0\leq x\leq1.\]
-We will see later that such a pdf belongs to the \emph{Beta} family
+We will see later that such a PDF belongs to the \emph{Beta} family
 of distributions. We can show that $\int_{-\infty}^{\infty}f(x)\diff x=1$.\begin{align*}
 \int_{-\infty}^{\infty}f_{X}(x)\diff x & =\int_{0}^{1}3x^{2}\:\diff x\\
  & =\left.x^{3}\right|_{x=0}^{1}\\
@@ -7287,7 +7280,7 @@ showing that $\sigma^{2}=3/5-(3/4)^{2}=3/80$.
 
 
 \begin{example}
-Let the random variable $X$ have pdf \[
+Let the random variable $X$ have PDF \[
 f_{X}(x)=\frac{3}{x^{4}},\quad x>1.\]
 Then we can show that $\int_{-\infty}^{\infty}f(x)\diff x=1$:\begin{align*}
 \int_{-\infty}^{\infty}f_{X}(x)\diff x & =\int_{1}^{\infty}\frac{3}{x^{4}}\:\diff x\\
@@ -7314,15 +7307,85 @@ formula $\sigma^{2}=\E X^{2}-\mu^{2}$:\begin{align*}
 showing that $\sigma^{2}=3-(3/2)^{2}=3/4$.
 \end{example}
 
+\subsection{How to do it with \textsf{R}}
+
+There exist utilities to calculate probabilities and expectations
+for general continuous random variables, but it is better to find
+a built-in model, if possible. Sometimes it is not possible. We show
+how to do it the long way, and the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,showstringspaces=false]!distr!\inputencoding{utf8}
+package way.
+\begin{example}
+Let $X$ have PDF $f(x)=3x^{2}$, $0<x<1$ and find $\P(0.14\leq X\leq0.71)$.
+
+<<>>=
+f <- function(x) 3*x^2
+integrate(f, lower = 0.14, upper = 0.71)
+@
+
+Compare this to the answer we found in Example BLANK. We could integrate
+the function $xf(x)=$ \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,showstringspaces=false]!3*x^3!\inputencoding{utf8}
+from zero to one to get the mean, and use the shortcut $\sigma^{2}=\E X^{2}-\left(\E X\right)^{2}$
+for the variance. 
+
+\end{example}
+
+\begin{example}
+Let $X$ have PDF $f(x)=3/x^{4}$, $x>1$. We may integrate the function
+$xf(x)=$ \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,showstringspaces=false]!3/x^3!\inputencoding{utf8}
+from zero to infinity to get the mean of $X$.
+
+<<>>=
+g <- function(x) 3/x^3
+integrate(g, lower = 1, upper = Inf)
+@
+
+Compare this to the answer we got in Example BLANK. Use \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,showstringspaces=false]!-Inf!\inputencoding{utf8}
+for $-\infty$.
+
+\end{example}
+
+\begin{example}
+Let us redo Example BLANK with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,showstringspaces=false]!distr!\inputencoding{utf8}
+package. The method is similar to Example BLANK in Chapter BLANK.
+We define an absolutely continuous random variable:
+
+<<>>=
+library(distr)
+f <- function(x) 3*x^2
+X <- AbscontDistribution(d = f, low1 = 0, up1 = 1)
+p(X)(0.71) - p(X)(0.14)
+@
+
+Compare this answer to what we found in Example BLANK. Now let us
+try expectation with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,showstringspaces=false]!distrEx!\inputencoding{utf8}
+package:
+
+<<>>=
+library(distrEx)
+E(X)
+var(X)
+3/80
+@
+
+Compare these answers to the ones we found in Example BLANK. Why are
+they different? Because the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,showstringspaces=false]!distrEx!\inputencoding{utf8}
+package resorts to numerical methods when it encounters a model it
+does not recognize. This means that the answers we get for calculations
+may not exactly match the theoretical values. Be careful.
+
+\end{example}
+
+
+
 \section{The Continuous Uniform Distribution\label{sec:The-Continuous-Uniform}}
 
 A random variable $X$ with the continous uniform distribution on
-the interval $(a,b)$ has pdf\begin{equation}
+the interval $(a,b)$ has PDF\begin{equation}
 f_{X}(x)=\frac{1}{b-a},\quad a<x<b.\end{equation}
 The associated \textsf{R} function is $\mathsf{dunif}(\mathtt{min}=a,\,\mathtt{max}=b)$.
 We write $X\sim\mathsf{unif}(\mathtt{min}=a,\,\mathtt{max}=b)$. Due
-to the particularly simple form of this pdf we can also write down
-explicitly a formula for the cdf $F_{X}$:\begin{equation}
+to the particularly simple form of this PDF we can also write down
+explicitly a formula for the CDF $F_{X}$:\begin{equation}
 F_{X}(t)=\begin{cases}
 0, & t<0,\\
 \frac{t-a}{b-a}, & a\leq t<b,\\
@@ -7354,7 +7417,7 @@ is left to Exercise BLANK.
 
 \section{The Normal Distribution\label{sec:The-Normal-Distribution}}
 
-Has pdf\begin{equation}
+Has PDF\begin{equation}
 f_{X}(x)=\frac{1}{\sigma\sqrt{2\pi}}\exp\left[\frac{-(x-\mu)^{2}}{2\sigma^{2}}\right],\quad-\infty<x<\infty.\end{equation}
 
 
@@ -7371,8 +7434,8 @@ in nature.
 Special case: when $\mu=0$ and $\sigma=1$ the random variable is
 said to have a \emph{standard normal} distribution and we write $Z\sim\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$.
 The lowercase greek letter phi ($\phi$) is used to denote the standard
-normal pdf and the capital greek letter phi $\Phi$ is used to denote
-the cdf: for $-\infty<z<\infty$,\begin{equation}
+normal PDF and the capital greek letter phi $\Phi$ is used to denote
+the CDF: for $-\infty<z<\infty$,\begin{equation}
 \phi(z)=\frac{1}{\sqrt{2\pi}}\,\me^{-z^{2}/2},\quad\Phi(t)=\int_{-\infty}^{t}\phi(z)\,\diff z\end{equation}
  
 \begin{prop}
@@ -7381,7 +7444,7 @@ If $X\sim\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$ then
 Z=\frac{X-\mu}{\sigma}\sim\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1).\end{equation}
 
 \end{prop}
-The mgf of $Z\sim\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$
+The MGF of $Z\sim\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$
 is relatively easy to derive:\begin{eqnarray*}
 M_{Z}(t) & = & \int_{-\infty}^{\infty}\me^{tz}\frac{1}{\sqrt{2\pi}}\me^{-z^{2}/2}\diff z,\\
  & = & \int_{-\infty}^{\infty}\frac{1}{\sqrt{2\pi}}\exp\left\{ -\frac{1}{2}\left(z^{2}+2tz+t^{2}\right)+\frac{t^{2}}{2}\right\} \diff z,\\
@@ -7394,7 +7457,7 @@ M_{Z}(t)=\me^{-t^{2}/2},\quad-\infty<t<\infty.\end{equation}
 
 
 \begin{example}
-The mgf of $X\sim\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$
+The MGF of $X\sim\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$
 is then not difficult either because \[
 Z=\frac{X-\mu}{\sigma},\mbox{ or rewriting, }X=\sigma Z+\mu.\]
 Therefore: \[
@@ -7403,8 +7466,8 @@ and we know that $M_{Z}(t)=\me^{t^{2}/2}$, thus substituting we get\[
 M_{X}(t)=\me^{t\mu}\me^{(\sigma t)^{2}/2}=\exp\left\{ \mu t+\sigma^{2}t^{2}/2\right\} ,\]
 for $-\infty<t<\infty$.\end{example}
 \begin{fact}
-The same argument above shows that if $X$ has mgf $M_{X}(t)$ then
-the mgf of $Y=a+bX$ is \begin{equation}
+The same argument above shows that if $X$ has MGF $M_{X}(t)$ then
+the MGF of $Y=a+bX$ is \begin{equation}
 M_{Y}(t)=\me^{ta}M_{X}(bt).\end{equation}
 
 \end{fact}
@@ -7434,7 +7497,7 @@ Now that we have experience with the pdistr family of functions, we
 can solve virtually any problem.
 
 Until now, we have been given two values and our task has been to
-find the area under the pdf between those values. In this section,
+find the area under the PDF between those values. In this section,
 we go in reverse: we are given an area, and we would like to find
 the value(s) that correspond to that area. 
 
@@ -7489,15 +7552,15 @@ and \inputencoding{latin9}\lstinline!qnorm(!\inputencoding{utf8}$\alpha$\inputen
 The goal of this section is to study methods for determining the distribution
 of $U=g(X)$ based on the distribution of $X$. In the discrete case
 all we needed to do was back substitute for $x=g^{-1}(u)$ in the
-pmf of $X$ (sometimes accumulating probability mass along the way).
+PMF of $X$ (sometimes accumulating probability mass along the way).
 But the continuous case we are required to be somewhat more sophisticated
 in our efforts. Now would be a good time to review Appendix BLANK.
 
 
 \subsection{The PDF Method}
 \begin{prop}
-Let $X$ have pdf $f_{X}$ and let $g$ be a function which is one-to-one
-with a differentiable inverse $g^{-1}$. Then the pdf of $U=g(X)$
+Let $X$ have PDF $f_{X}$ and let $g$ be a function which is one-to-one
+with a differentiable inverse $g^{-1}$. Then the PDF of $U=g(X)$
 is given by\begin{equation}
 f_{U}(u)=f_{X}\left[g^{-1}(u)\right]\ \left|\frac{\diff}{\diff u}g^{-1}(u)\right|.\end{equation}
 \end{prop}
@@ -7512,7 +7575,7 @@ f_{U}(u)=f_{X}(x)\left|\frac{\diff x}{\diff u}\right|.\end{equation}
 \end{rem}
 \begin{example}
 Let $X\sim\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$,
-and let $Y=\me^{X}$. What is the pdf of $Y$? 
+and let $Y=\me^{X}$. What is the PDF of $Y$? 
 
 Solution: Notice first that $\me^{x}>0$ for any $x$, so the support
 of $Y$ is $(0,\infty)$. Since the transformation is monotone, we
@@ -7526,7 +7589,7 @@ Section BLANK.
 
 \begin{example}
 Suppose $X\sim\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$ and
-let $Y=4-3X$. What is the pdf of $Y$?
+let $Y=4-3X$. What is the PDF of $Y$?
 \end{example}
 The support of $X$ is $(-\infty,\infty)$, and as $x$ goes from
 $-\infty$ to $\infty$, the quantity $y=4-3x$ also traverses $(-\infty,\infty)$.
@@ -7536,7 +7599,7 @@ f_{X}(x)=\frac{1}{\sqrt{2\pi}}\me^{-x^{2}/2},\quad-\infty<x<\infty,\]
  we have \begin{eqnarray*}
 f_{Y}(y) & = & f_{X}\left(\frac{y-4}{3}\right)\cdot\left|-\frac{1}{3}\right|,\quad-\infty<y<\infty,\\
  & = & \frac{1}{3\sqrt{2\pi}}\me^{-(y-4)^{2}/2\cdot3^{2}},\quad-\infty<y<\infty.\end{eqnarray*}
-We recognize the pdf of $Y$ to be that of a $\mathsf{norm}(\mathtt{mean}=4,\,\mathtt{sd}=3)$
+We recognize the PDF of $Y$ to be that of a $\mathsf{norm}(\mathtt{mean}=4,\,\mathtt{sd}=3)$
 distribution. Indeed, we may use an identical argument as the above
 to prove the following fact:
 \begin{fact}
@@ -7548,7 +7611,7 @@ inverse transformation $x=x(u)$. Instead, leave the transformation
 in the form $u=u(x)$ and calculate the derivative of the \emph{original}
 transformation\begin{equation}
 \diff u/\diff x=g'(x).\end{equation}
-Once this is known, we can get the pdf of $U$ with\begin{equation}
+Once this is known, we can get the PDF of $U$ with\begin{equation}
 f_{U}(u)=f_{X}(x)\left|\frac{1}{\diff u/\diff x}\right|.\end{equation}
 In many cases there are cancellations and the work is shorter. Of
 course, it is not always true that\begin{equation}
@@ -7569,10 +7632,10 @@ We know from Section BLANK that $f_{X}=F_{X}'$ in the continuous
 case. Starting from the equation $F_{Y}(y)=\P(Y\leq y)$, we may substitute
 $g(X)$ for $Y$, then solve for $X$ to obtain $\P[X\leq g^{-1}(y)]$,
 which is just another way to write $F_{X}[g^{-1}(y)]$. Differentiating
-this last quantity with respect to $y$ will yield the pdf of $Y$.
+this last quantity with respect to $y$ will yield the PDF of $Y$.
 \begin{example}
 Suppose $X\sim\mathsf{unif}(\mathtt{min}=0,\,\mathtt{max}=1)$ and
-suppose that we let $Y=-\ln\, X$. What is the pdf of $Y$?
+suppose that we let $Y=-\ln\, X$. What is the PDF of $Y$?
 
 The support set of $X$ is $(0,1),$ and $y$ traverses $(0,\infty)$
 as $x$ ranges from $0$ to $1$, so the support set of $Y$ is $S_{Y}=(0,\infty)$.
@@ -7583,12 +7646,12 @@ is \emph{monotone} (this point will be revisited later). Now since
 $X$ is continuous the two probabilities $\P(X<\me^{-y})$ and $\P(X\leq\me^{-y})$
 are equal; thus\[
 1-\P(X<\me^{-y})=1-\P(X\leq\me^{-y})=1-F_{X}(\me^{-y}).\]
-Now recalling that the cdf of a $\mathsf{unif}(\mathtt{min}=0,\,\mathtt{max}=1)$
+Now recalling that the CDF of a $\mathsf{unif}(\mathtt{min}=0,\,\mathtt{max}=1)$
 random variable satisfies $F(u)=u$ (see Equation BLANK), we can say
 \[
 F_{Y}(y)=1-F_{X}(\me^{-y})=1-\me^{-y},\quad\mbox{for }y>0.\]
-We have consequently found the formula for the cdf of $Y$; to obtain
-the pdf $f_{Y}$ we need only differentiate $F_{Y}$:\[
+We have consequently found the formula for the CDF of $Y$; to obtain
+the PDF $f_{Y}$ we need only differentiate $F_{Y}$:\[
 f_{Y}(y)=\frac{\diff}{\diff y}\left(1-\me^{-y}\right)=0-\me^{-y}(-1),\]
 or $f_{Y}(y)=\me^{-y}$ for $y>0$. This turns out to be a member
 of the exponential family of distributions, see Section BLANK. 
@@ -7596,39 +7659,39 @@ of the exponential family of distributions, see Section BLANK.
 
 \begin{example}
 \textbf{\emph{The Probability Integral Transform}}. Given a continuous
-random variable $X$ with strictly increasing cdf $F_{X}$, let the
+random variable $X$ with strictly increasing CDF $F_{X}$, let the
 random variable $Y$ be defined by $Y=F_{X}(X)$. Then the distribution
 of $Y$ is $\mathsf{unif}(\mathtt{min}=0,\,\mathtt{max}=1)$. 
 
-We can see why this is true by employing the cdf method. Note that
+We can see why this is true by employing the CDF method. Note that
 the support of $Y$ is $(0,1)$. And for any $0<y<1$,\[
 F_{Y}(y)=\P(Y\leq y)=\P(F_{X}(X)\leq y).\]
 Now since $F_{X}$ is strictly increasing, it has a well defined inverse
 function $F_{X}^{-1}$. Therefore\[
 \P(F_{X}(X)\leq y)=\P(X\leq F_{X}^{-1}(y))=F_{X}[F_{X}^{-1}(y)]=y.\]
 Summarizing, we have seen that $F_{Y}(y)=y$, $0<y<1$. But this is
-exactly the cdf of a $\mathsf{unif}(\mathtt{min}=0,\,\mathtt{max}=1)$
+exactly the CDF of a $\mathsf{unif}(\mathtt{min}=0,\,\mathtt{max}=1)$
 random variable. \end{example}
 \begin{fact}
 The Probability Integral Transform is true for all continuous random
-variables with continuous cdfs, not just for those with strictly increasing
-cdfs (but the proof is more complicated). The transform is \textbf{not}
+variables with continuous CDFs, not just for those with strictly increasing
+CDFs (but the proof is more complicated). The transform is \textbf{not}
 true for discrete random variables, or for continuous random variables
-having a discrete component (that is, with jumps in their cdf). \end{fact}
+having a discrete component (that is, with jumps in their CDF). \end{fact}
 \begin{example}
 Let $Z\sim\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$ and let
-$U=Z^{2}$. What is the pdf of $U$? 
+$U=Z^{2}$. What is the PDF of $U$? 
 
 Notice first that $Z^{2}\geq0$, and thus the support of $U$ is $[0,\infty)$.
 And for any $u\geq0$, \[
 F_{U}(u)=\P(U\leq u)=\P(Z^{2}\leq u).\]
 But $Z^{2}\leq u$ occurs if and only if $-\sqrt{u}\leq Z\leq\sqrt{u}$.
 The last probability above is simply the area under the standard normal
-pdf from $-\sqrt{u}$ to $\sqrt{u}$, and since $\phi$ is symmetric
+PDF from $-\sqrt{u}$ to $\sqrt{u}$, and since $\phi$ is symmetric
 about 0, we have\[
 \P(Z^{2}\leq u)=2\P(0\leq Z\leq\sqrt{u})=2\left[F_{Z}(\sqrt{u})-F_{Z}(0)\right]=2\Phi(\sqrt{u})-1,\]
-since $\Phi(0)=1/2$. To find the pdf of $U$, we differentiate the
-cdf, remembering that $\Phi'=\phi$.\[
+since $\Phi(0)=1/2$. To find the PDF of $U$, we differentiate the
+CDF, remembering that $\Phi'=\phi$.\[
 f_{U}(u)=\left(2\Phi(\sqrt{u})-1\right)'=2\phi(\sqrt{u})\cdot\frac{1}{2\sqrt{u}}=u^{-1/2}\phi(\sqrt{u}).\]
 Substituting,\[
 f_{U}(u)=u^{-1/2}\frac{1}{\sqrt{2\pi}}\,\me^{-(\sqrt{u})^{2}/2}=(2\pi u)^{-1/2}\me^{-u},\quad u>0.\]
@@ -7678,7 +7741,7 @@ not recognize is:
 $X_{n}$ from the distribution of $X$,
 \item Compute $Y_{1}=g(X_{1})$, $Y_{2}=g(X_{2})$, \ldots{}, $Y_{n}=g(X_{n})$
 and store them for use.
-\item Calculate the pdf, cdf, quantiles, and random variates using the simulated
+\item Calculate the PDF, CDF, quantiles, and random variates using the simulated
 values of $Y$.
 \end{enumerate}
 As long as the transformation is sufficiently nice, such as a linear
@@ -7714,8 +7777,8 @@ $X$'s were not the same so it should hardly be a surprise that the
 calculated $W$'s were not the same, either. This serves as a warning
 (in concert with the one that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!distr!\inputencoding{utf8}
 provides) that we should be careful to remember that complicated transformations
-computed by R are only approximate and may fluctuate slightly due
-to the nature of the way the estimates are calculated.
+computed by \textsf{R} are only approximate and may fluctuate slightly
+due to the nature of the way the estimates are calculated.
 
 
 \section{Other Continuous Distributions\label{sec:Other-Continuous-Distributions}}
@@ -7740,7 +7803,7 @@ f_{X}(x)=\lambda\me^{-\lambda x},\quad x>0\end{equation}
 The associated \textsf{R} function is $\mathsf{dexp}(\mathtt{x},\,\mathtt{rate=1})$.
 The parameter $\lambda$ measures the rate of arrivals (to be described
 later) and must be positive. The other functions are BLANK and give
-the cdf, quantiles, and random variates, respectively. The cdf is
+the CDF, quantiles, and random variates, respectively. The CDF is
 given by the formula\begin{equation}
 F_{X}(t)=1-\me^{-\lambda t},\quad t>0.\end{equation}
 The mean is $\mu=1/\lambda$ and the variance is $\sigma^{2}=1/\lambda^{2}$. 
@@ -7758,9 +7821,9 @@ can be seen with the following argument:\begin{align*}
  & =\P(\mbox{no events in [0,\emph{t})})\\
  & =\P(Y=0)\\
  & =\me^{-\lambda t},\end{align*}
-from the pmf of a Poisson distribution with parameter $\lambda t$.
+from the PMF of a Poisson distribution with parameter $\lambda t$.
 In other words, $\P(X\leq t)=1-\me^{-\lambda t}$, which is exactly
-the cdf of an $\mathsf{exp}(\mathtt{rate}=\lambda)$ distribution. 
+the CDF of an $\mathsf{exp}(\mathtt{rate}=\lambda)$ distribution. 
 
 This distribution is said to be \emph{memoryless} because exponential
 random variables \textquotedbl{}forget\textquotedbl{} how old they
@@ -7777,7 +7840,7 @@ See Exercise BLANK.
 
 This is a generalization of the exponential distribution. We say that
 $X$ has a gamma distribution and write $X\sim\mathsf{gamma}(\mathtt{shape}=\alpha,\,\mathtt{rate}=\lambda)$.
-It has pdf\[
+It has PDF\[
 f_{X}(x)=\frac{\lambda^{\alpha}}{\Gamma(\alpha)}\: x^{\alpha-1}\me^{-\lambda x},\quad x>0.\]
 
 
@@ -7791,7 +7854,7 @@ The associated \textsf{R} function is \textsf{dgamma}\texttt{(x, shape}
 \texttt{TRUE)}~\\
 \textsf{\textbf{rgamma}}\texttt{(n, shape, scale)}
 
-and these give the cdf, quantiles, and random variates, respectively.
+and these give the CDF, quantiles, and random variates, respectively.
 
 Remarks
 \begin{itemize}
@@ -7815,7 +7878,7 @@ to measure how long it takes until the third customer arrives.
 \subsection*{The Chi Square Distribution\label{sub:The-Chi-Square}}
 
 This is an important special case of the $\mathsf{gamma}$ distribution.
-Let $\alpha=p/2$ and $\lambda=1/2$. The pdf is given by\[
+Let $\alpha=p/2$ and $\lambda=1/2$. The PDF is given by\[
 f_{X}(x)=\frac{1}{\Gamma(p/2)2^{p/2}}\: x^{p/2-1}\me^{-x/2},\quad x>0\]
 
 
@@ -7828,7 +7891,7 @@ The other functions are
 \texttt{TRUE)}~\\
 \textsf{\textbf{rchisq}}\texttt{(n, df)}
 
-and these give the cdf, quantiles, and random variates, respectively.
+and these give the CDF, quantiles, and random variates, respectively.
 A random variable $X$ with p.d.f.\[
 f_{X}(x)=\frac{1}{\Gamma(p/2)2^{p/2}}x^{p/2-1}\me^{-x/2},\quad x>0,\]
 is said to have a chi-square distribution with $p$ degrees of freedom.
@@ -7899,7 +7962,8 @@ We can say the following:
 \item The $\mathsf{t}(\mathtt{df}=r)$ distribution looks just like a $\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$
 distribution, except it has heavier tails.
 \item The $\mathsf{t}(\mathtt{df}=1)$ distribution is also known as a standard
-{}``Cauchy distribution'', which is implemented in R with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!dcauchy!\inputencoding{utf8}
+{}``Cauchy distribution'', which is implemented in \textsf{R} with
+the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!dcauchy!\inputencoding{utf8}
 function and its relatives. The Cauchy distribution is quite pathological
 and is often a counterexample to many famous results. 
 \item The standard deviation of $\mathsf{t}(\mathtt{df}=r)$ is undefined
@@ -7964,7 +8028,7 @@ years earlier, and objected to the idea of calling the variance ratio
 \subsubsection*{The Cauchy Distribution\label{sub:The-Cauchy-Distribution}}
 
 This is a special case of the Student's $t$ distribution. It has
-pdf\begin{equation}
+PDF\begin{equation}
 f_{X}(x)=\frac{1}{\beta\pi}\left[1+\left(\frac{x-m}{\beta}\right)^{2}\right]^{-1},\quad-\infty<x<\infty\end{equation}
 
 
@@ -8009,7 +8073,7 @@ $\mu$ and the variance is $\pi^{2}\sigma^{2}/3$.
 
 This is a distribution derived from the normal distribution (hence
 the name). If $U\sim\mathtt{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$,
-then $X=\me^{U}$has pdf\begin{equation}
+then $X=\me^{U}$has PDF\begin{equation}
 f_{X}(x)=\frac{1}{\sigma x\sqrt{2\pi}}\exp\left[\frac{-(\ln x-\mu)^{2}}{2\sigma^{2}}\right],\quad0<x<\infty.\end{equation}
 We write $X\sim\mathsf{lnorm}(\mathtt{meanlog}=\mu,\,\mathtt{sdlog}=\sigma)$.
 The associated \textsf{R} function is $\mathsf{dlnorm}(\mathtt{x},\,\mathtt{meanlog=0},\,\mathtt{sdlog=1})$.
@@ -8019,7 +8083,7 @@ the distribution is right-skewed with a heavy tail.
 
 \subsubsection*{The Weibull Distribution\label{sub:The-Weibull-Distribution}}
 
-This has pdf
+This has PDF
 
 \begin{equation}
 f_{X}(x)=\frac{\alpha}{\beta}\left(\frac{x}{\beta}\right)^{\alpha-1}\exp\left(\frac{x}{\beta}\right)^{\alpha},\quad x>0.\end{equation}
@@ -8064,7 +8128,8 @@ plot(function(x){mgfgamma(x, shape = 13, rate = 1)}, from=-0.1, to=0.1, ylab = "
 @
 \par\end{centering}
 
-\caption{Plot of thegamma(shape = 13, rate = 1) mgf \label{fig:gamma-mgf}}
+\caption{Plot of the \textsf{gamma}(\texttt{shape} = 13, \texttt{rate} = 1)
+MGF \label{fig:gamma-mgf}}
 
 \end{figure}
 
@@ -8076,7 +8141,7 @@ plot(function(x){mgfgamma(x, shape = 13, rate = 1)}, from=-0.1, to=0.1, ylab = "
 
 
 \begin{xca}
-Find the constant $c$ so that the given function is a valid pdf of
+Find the constant $c$ so that the given function is a valid PDF of
 a random variable $X$.\end{xca}
 \begin{enumerate}
 \item $f(x)=Cx^{n},\quad0<x<1$.
@@ -8153,18 +8218,17 @@ any $s,t>0$,\[
 \chapter{Multivariate Distributions\label{cha:Multivariable-Distributions}}
 
 We have built up quite a catologue of distributions: discrete and
-continuous. All of them were univariate, however, meaning that we
-only considered one random variable at a time. We can nevertheless
-imagine many random variables associated with a single person: their
-height, their weight, their wrist circumference (all continuous),
-or their eye/hair color, shoe size, whether they are right handed,
-left handed, or ambidextrous (all categorical), and we can even surmise
-reasonable probability distributions to associate with each of these
-variables. 
+continuous. They were all univariate, however, meaning that we only
+considered one random variable at a time. We can nevertheless imagine
+many random variables associated with a single person: their height,
+their weight, their wrist circumference (all continuous), or their
+eye/hair color, shoe size, whether they are right handed, left handed,
+or ambidextrous (all categorical), and we can even surmise reasonable
+probability distributions to associate with each of these variables. 
 
 But there is a difference: for a single person, these variables are
-related. For instance, knowing a person's height betrays a lot of
-information concerning that person's weight.
+related. For instance, a person's height betrays a lot of information
+about that person's weight.
 
 The concept we are hinting at is the notion of \emph{dependence} between
 random variables. It is the focus of this chapter to study this concept
@@ -8186,46 +8250,46 @@ What do I want them to know?
 
 \section{Joint and Marginal Probability Distributions\label{sec:Joint-Probability-Distributions}}
 
-Consider two discrete random variables $X$ and $Y$ with pmfs $f_{X}$
+Consider two discrete random variables $X$ and $Y$ with PMFs $f_{X}$
 and $f_{Y}$ that are supported on the sample spaces $S_{X}$ and
 $S_{Y}$, respectively. Let $S_{X,Y}$ denote the set of all possible
 observed \emph{pairs} $(x,y)$, called the \emph{joint support set}
 of $X$ and $Y$. Then the \emph{joint probability mass function}
 of $X$ and $Y$ is the function $f_{X,Y}$ defined by\begin{equation}
 f_{X,Y}(x,y)=\P(X=x,\, Y=y),\quad\mbox{for }(x,y)\in S_{X,Y}.\end{equation}
-Every joint pmf satisfies\begin{equation}
+Every joint PMF satisfies\begin{equation}
 f_{X,Y}(x,y)>0\mbox{ for all }(x,y)\in S_{X,Y},\end{equation}
 and\begin{equation}
 \sum_{(x,y)\in S_{X,Y}}f_{X,Y}(x,y)=1.\end{equation}
 It is customary to extend the function $f_{X,Y}$ to be defined on
 all of $\R^{2}$ by setting $f_{X,Y}(x,y)=0$ for $(x,y)\not\in S_{X,Y}$. 
 
-In the context of this chapter, the pmfs $f_{X}$ and $f_{Y}$ are
-called the \emph{marginal pmfs} of $X$ and $Y$, respectively. If
-we are given only the joint pmf then we may recover each of the marginal
-pmfs by using the Theorem of Total Probability (see BLANK): observe\begin{eqnarray}
+In the context of this chapter, the PMFs $f_{X}$ and $f_{Y}$ are
+called the \emph{marginal PMFs} of $X$ and $Y$, respectively. If
+we are given only the joint PMF then we may recover each of the marginal
+PMFs by using the Theorem of Total Probability (see BLANK): observe\begin{eqnarray}
 f_{X}(x) & = & \P(X=x),\\
  & = & \sum_{y\in S_{Y}}\P(X=x,\, Y=y),\\
  & = & \sum_{y\in S_{Y}}f_{X,Y}(x,y).\end{eqnarray}
 By interchanging the roles of $X$ and $Y$ it is clear that \begin{equation}
 f_{Y}(y)=\sum_{x\in S_{Y}}f_{X,Y}(x,y).\end{equation}
-Given the joint pmf we may recover the marginal pmfs, but the converse
+Given the joint PMF we may recover the marginal PMFs, but the converse
 is not true. Even if we have \emph{both} marginal distributions they
-are not sufficient to determine the joint pmf; more information is
+are not sufficient to determine the joint PMF; more information is
 needed%
 \footnote{We are not at a total loss, however. There are Frechet bounds which
 pose limits on how large (and small) the joint distribution must be
 at each point.%
 }. 
 
-Associated with the joint pmf is the \emph{joint cumulative distribution
+Associated with the joint PMF is the \emph{joint cumulative distribution
 function} $F_{X,Y}$ defined by\[
 F_{X,Y}(x,y)=\P(X\leq x,\, Y\leq y),\quad\mbox{for }(x,y)\in\R^{2}.\]
-The bivariate joint cdf is not quite as tractable as the univariate
-cdfs, but in principle we could calculate it by adding up quantities
-of the form BLANK. The joint cdf is typically not used in practice
+The bivariate joint CDF is not quite as tractable as the univariate
+CDFs, but in principle we could calculate it by adding up quantities
+of the form BLANK. The joint CDF is typically not used in practice
 due to its inconvenient form; one can usually get by with the joint
-pmf alone.
+PMF alone.
 
 We now introduce some examples of bivariate discrete distributions.
 The first we have seen before, and the second is based on the first.
@@ -8235,7 +8299,7 @@ and let $Y$ be the face shown on the second roll. We have already
 seen this example in Chapter BLANK, Example BLANK. For this example,
 it suffices to define\[
 f_{X,Y}(x,y)=\frac{1}{36},\quad x=1,\ldots,6,\ y=1,\ldots,6.\]
-In this example the marginal pmfs are given by $f_{X}(x)=1/6$, $x=1,2,\ldots,6$,
+In this example the marginal PMFs are given by $f_{X}(x)=1/6$, $x=1,2,\ldots,6$,
 and $f_{Y}(y)=1/6$, $y=1,2,\ldots,6$, since\[
 f_{X}(x)=\sum_{y=1}^{6}\frac{1}{36}=\frac{1}{6},\quad x=1,\ldots,6,\]
 and the same computation with the letters switched works for $Y$. 
@@ -8317,22 +8381,22 @@ pair of random variables $(X,Y)$.
 Now continuing the reasoning we used for the discrete case, given
 two continuous random variables $X$ and $Y$ there similarly exists%
 \footnote{Strictly speaking, the joint density function does not necessarily
-exist. But the joint cdf always exists.%
+exist. But the joint CDF always exists.%
 } a function $f_{X,Y}(x,y)$ associated with $X$ and $Y$ called the
 \emph{joint probability density function} of $X$ and $Y$. Every
-joint pdf satisfies\begin{equation}
+joint PDF satisfies\begin{equation}
 f_{X,Y}(x,y)\geq0\mbox{ for all }(x,y)\in S_{X,Y},\end{equation}
 and\begin{equation}
 \iintop_{S_{X,Y}}f_{X,Y}(x,y)\,\diff x\,\diff y=1.\end{equation}
 
 
 In the continuous case we do not have such a simple interpretation
-for the joint pdf; however, we do have one for the joint cdf, namely,\[
+for the joint PDF; however, we do have one for the joint CDF, namely,\[
 F_{X,Y}(x,y)=\P(X\leq x,\, Y\leq y)=\int_{-\infty}^{x}\int_{-\infty}^{y}f_{X,Y}(u,v)\,\diff v\,\diff u,\]
-for $(x,y)\in\R^{2}$. If $X$ and $Y$ have the joint pdf $f_{X,Y}$,
+for $(x,y)\in\R^{2}$. If $X$ and $Y$ have the joint PDF $f_{X,Y}$,
 then the marginal density of $X$ may be recovered by\begin{equation}
 f_{X}(x)=\int_{S_{Y}}f_{X,Y}(x,y)\,\diff y,\quad x\in S_{X}\end{equation}
-and the marginal pdf of $Y$ may be found with \begin{equation}
+and the marginal PDF of $Y$ may be found with \begin{equation}
 f_{Y}(y)=\int_{S_{X}}f_{X,Y}(x,y)\,\diff x,\quad y\in S_{Y}.\end{equation}
 
 
@@ -8444,11 +8508,11 @@ conditional density of $ $$Y|\, X=x$, denoted $f_{Y|x}$, by \[
 f_{Y|x}(y|x)=\frac{f_{X,Y}(x,y)}{f_{X}(x)},\quad y\in S_{Y}.\]
 We define $f_{X|y}$ in a similar fashion.
 \begin{example}
-Let the joint pmf of $X$ and $Y$ be given by
+Let the joint PMF of $X$ and $Y$ be given by
 \end{example}
 
 \begin{example}
-Let the joint pdf of $X$ and $Y$ be given by
+Let the joint PDF of $X$ and $Y$ be given by
 \end{example}
 
 \subsection*{Bayesian Connection}
@@ -8463,7 +8527,7 @@ that we have about $\theta$.
 
 Our initial beliefs about $\theta$ are represented by a probability
 distribution, called the \emph{prior distribution}, denoted by $\pi$.
-The pdf $f_{X|\theta}$ is called the \emph{likelihood function},
+The PDF $f_{X|\theta}$ is called the \emph{likelihood function},
 also called the \emph{likelihood of} $X$ \emph{conditional on} $\theta$.
 Given an observation $X=x$, we would like to update our beliefs $\pi$
 to a new distribution, called the \emph{posterior distribution of}
@@ -8533,23 +8597,23 @@ If it happens that\[
 \P(X=x,Y=y)=\P(X=x)\P(Y=y),\quad\mbox{for every }x\in S_{X},\ y\in S_{Y},\]
 then we say that $X$ and $Y$ are \emph{independent random variables}.
 Otherwise, we say that $X$ and $Y$ are \emph{dependent}. Using the
-pmf notation from above, we see that independent discrete random variables
+PMF notation from above, we see that independent discrete random variables
 satisfy \[
 f_{X,Y}(x,y)=f_{X}(x)f_{Y}(y)\quad\mbox{for every }x\in S_{X},\ y\in S_{Y}.\]
 Now continuing the reasoning, given two continuous random variables
-$X$ and $Y$ with joint pdf $f_{X,Y}$ and respective marginal pdfs
+$X$ and $Y$ with joint PDF $f_{X,Y}$ and respective marginal PDFs
 $f_{X}$ and $f_{Y}$ that are supported on the sets $S_{X}$ and
 $S_{Y}$, if it happens that \[
 f_{X,Y}(x,y)=f_{X}(x)f_{Y}(y)\quad\mbox{for every }x\in S_{X},\ y\in S_{Y},\]
 then we say that $X$ and $Y$ are independent.
 \begin{example}
 In Example BLANK we considered the random experiment of rolling a
-fair die twice. There we found the joint pmf to be\[
+fair die twice. There we found the joint PMF to be\[
 f_{X,Y}(x,y)=\frac{1}{36},\quad x=1,\ldots,6,\ y=1,\ldots,6,\]
-and we found the marginal pmfs $f_{X}(x)=1/6$, $x=1,2,\ldots,6$,
+and we found the marginal PMFs $f_{X}(x)=1/6$, $x=1,2,\ldots,6$,
 and $f_{Y}(y)=1/6$, $y=1,2,\ldots,6$. Therefore in this experiment
 $X$ and $Y$ are independent since for every $x$ and $y$ in the
-joint support the joint pmf satisfies \[
+joint support the joint PMF satisfies \[
 f_{X,Y}(x,y)=\frac{1}{36}=\left(\frac{1}{6}\right)\left(\frac{1}{6}\right)=f_{X}(x)\, f_{Y}(y).\]
 
 \end{example}
@@ -8651,7 +8715,7 @@ and the proof is complete.
 \section{Exchangeable Random Variables\label{sec:Exchangeable-Random-Variables}}
 
 Two random variables $X$ and $Y$ are said to be \emph{exchangeable}
-if their joint cdf is a symmetric function of its arguments:\[
+if their joint CDF is a symmetric function of its arguments:\[
 F_{X,Y}(x,y)=F_{X,Y}(y,x),\quad\mbox{for all }(x,y)\in\R^{2}.\]
 When the joint density $f$ exists, we may equivalently say that $X$
 and $Y$ are exchangeable if $f(x,y)=f(y,x)$ for all $(x,y)$.
@@ -8681,7 +8745,7 @@ See Section BLANK for details.
 
 \section{The Bivariate Normal Distribution\label{sec:The-Bivariate-Normal}}
 
-The bivariate normal pdf is given by the unwieldly formula\begin{multline}
+The bivariate normal PDF is given by the unwieldly formula\begin{multline}
 f_{X,Y}(x,y)=\frac{1}{2\pi\,\sigma_{X}\sigma_{Y}\sqrt{1-\rho^{2}}}\exp\left\{ -\frac{1}{2(1-\rho^{2})}\left[\left(\frac{x-\mu_{X}}{\sigma_{X}}\right)^{2}+\cdots\right.\right.\\
 \left.\left.\cdots+2\rho\left(\frac{x-\mu_{X}}{\sigma_{X}}\right)\left(\frac{y-\mu_{Y}}{\sigma_{Y}}\right)+\left(\frac{y-\mu_{Y}}{\sigma_{Y}}\right)^{2}\right]\right\} ,\end{multline}
 for $(x,y)\in\R^{2}$. We write $(X,Y)\sim\mathsf{mvnorm}(\mathtt{mean}=\upmu,\,\mathtt{sigma}=\Sigma)$,
@@ -8690,7 +8754,7 @@ where\begin{equation}
 \sigma_{X}^{2} & \rho\sigma_{X}\sigma_{Y}\\
 \rho\sigma_{X}\sigma_{Y} & \sigma_{Y}^{2}\end{array}\right).\end{equation}
 See Appendix BLANK. The vector notation allows for a more compact
-rendering of the joint pdf:\begin{equation}
+rendering of the joint PDF:\begin{equation}
 f_{X,Y}(\mathbf{x})=\frac{1}{2\pi\left|\Sigma\right|^{1/2}}\exp\left\{ -\frac{1}{2}\left(\mathbf{x}-\upmu\right)^{\top}\Sigma^{-1}\left(\mathbf{x}-\upmu\right)\right\} ,\end{equation}
 where in an abuse of notation we have written $\mathbf{x}$ for $(x,y)$.
 Note that the formula only holds when $\rho\neq\pm1$.
@@ -8703,10 +8767,10 @@ are independent if and only if $\rho=0$.
 \end{rem}
 
 \begin{rem}
-Inspection of the joint pdf shows that if $\mu_{X}=\mu_{Y}$ and $\sigma_{X}=\sigma_{Y}$
+Inspection of the joint PDF shows that if $\mu_{X}=\mu_{Y}$ and $\sigma_{X}=\sigma_{Y}$
 then $X$ and $Y$ are exchangeable.
 \end{rem}
-The bivariate normal mgf is\begin{equation}
+The bivariate normal MGF is\begin{equation}
 M_{X,Y}(\mathbf{t})=\exp\left(\upmu^{\top}\mathbf{t}+\frac{1}{2}\mathbf{t}^{\top}\Sigma\mathbf{t}\right),\end{equation}
 where $\mathbf{t}=(t_{1},t_{2})$.
 
@@ -8749,9 +8813,9 @@ The code above is slightly shorter than that using persp and is easier
 to understand. One must be careful, however. If the library calls
 are swapped then the code will not work because both packages emdbook
 and mvtnorm have a function called {}``dmvnorm''; one must load
-them to the search path in the correct order or R will use the wrong
-one (the arguments are named differently and the underlying algorithms
-are different). %
+them to the search path in the correct order or \textsf{R} will use
+the wrong one (the arguments are named differently and the underlying
+algorithms are different). %
 } 
 
 %
@@ -8843,7 +8907,7 @@ print(cloud(probs ~ X1 + X2, data = S, type = c("p","h"), lwd = 2, pch = 16, cex
 @
 \par\end{centering}
 
-\caption{Plot of a multinomial pmf\label{fig:multinom-pmf2}}
+\caption{Plot of a multinomial PMF\label{fig:multinom-pmf2}}
 
 \end{figure}
 
@@ -8851,10 +8915,10 @@ print(cloud(probs ~ X1 + X2, data = S, type = c("p","h"), lwd = 2, pch = 16, cex
 
 \section{Bivariate Transformations of Random Variables\label{sec:Transformations-Multivariate}}
 
-We studied in Section BLANK how to find the pdf of $Y=g(X)$ given
-the pdf of $X$. But now we have two random variables $X$ and Y,
-with joint pdf $f_{X,Y}$, and we would like to consider the joint
-pdf of two new random variables\[
+We studied in Section BLANK how to find the PDF of $Y=g(X)$ given
+the PDF of $X$. But now we have two random variables $X$ and Y,
+with joint PDF $f_{X,Y}$, and we would like to consider the joint
+PDF of two new random variables\[
 U=g(X,Y)\quad\mbox{and}\quad V=h(X,Y),\]
 where $g$ and $h$ are two given functions, typically {}``nice''
 in the sense of Appendix BLANK. 
@@ -8862,7 +8926,7 @@ in the sense of Appendix BLANK.
 Suppose that the transformation $(x,y)\longmapsto(u,v)$ is one-to-one.
 Then an inverse transformation $x=x(u,v)$ and $y=y(u,v)$ exists,
 so let $\partial(x,y)/\partial(u,v)$ denote the Jacobian of the inverse
-transformation. Then the joint pdf of $(U,V)$ is given by
+transformation. Then the joint PDF of $(U,V)$ is given by
 
 \begin{equation}
 f_{U,V}(u,v)=f_{X,Y}\left[x(u,v),\, y(u,v)\right]\left|\frac{\partial(x,y)}{\partial(u,v)}\right|,\end{equation}
@@ -8878,7 +8942,7 @@ of the \emph{original} transformation\begin{equation}
 \frac{\partial(u,v)}{\partial(x,y)}=\left|\begin{array}{cc}
 \frac{\partial u}{\partial x} & \frac{\partial u}{\partial y}\\
 \frac{\partial v}{\partial x} & \frac{\partial v}{\partial y}\end{array}\right|=\frac{\partial u}{\partial x}\frac{\partial v}{\partial y}-\frac{\partial u}{\partial y}\frac{\partial v}{\partial x}.\end{equation}
-Once this is known, we can get the pdf of $(U,V)$ by\begin{equation}
+Once this is known, we can get the PDF of $(U,V)$ by\begin{equation}
 f_{U,V}(u,v)=f_{X,Y}(x,y)\left|\frac{1}{\frac{\partial(u,v)}{\partial(x,y)}}\right|.\end{equation}
 In some cases there will be a cancellation and the work will be a
 lot shorter. Of course, it is not always true that\begin{equation}
@@ -8899,25 +8963,26 @@ in which case the Jacobian of the inverse transformation is\[
 \begin{vmatrix}-3 & 2\\
 \frac{5}{2} & -\frac{3}{2}\end{vmatrix}=3\left(-\frac{3}{2}\right)-2\left(\frac{5}{2}\right)=-\frac{1}{2}.\]
 As $(x,y)$ traverses $\R^{2}$, so too does $(u,v)$. Since the joint
-pdf of $(X,Y)$ is\[
+PDF of $(X,Y)$ is\[
 f_{X,Y}(x,y)=\frac{1}{2\pi}\exp\left\{ -\frac{1}{2}\left(x^{2}+y^{2}\right)\right\} ,\quad(x,y)\in\R^{2},\]
-we get that the joint pdf of $(U,V)$ is
+we get that the joint PDF of $(U,V)$ is
 
 \begin{equation}
 f_{U,V}(u,v)=\frac{1}{2\pi}\exp\left\{ -\frac{1}{2}\left[\left(-3u+2v\right)^{2}+\left(\frac{5u-3v}{2}\right)^{2}\right]\right\} \cdot\frac{1}{2},\quad(u,v)\in\R^{2}.\end{equation}
 \end{example}
 \begin{rem}
-It may not be obvious, but Equation BLANK is the pdf of a $\mathsf{mvnorm}$
+It may not be obvious, but Equation BLANK is the PDF of a $\mathsf{mvnorm}$
 distribution. For a more general result see Proposition BLANK.
 \end{rem}
 
-\subsection{How to do it with R}
+\subsection{How to do it with \textsf{R}}
 
-It is possible to do the computations above in R with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Ryacas!\inputencoding{utf8}
+It is possible to do the computations above in \textsf{R} with the
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Ryacas!\inputencoding{utf8}
 package. The package is an interface to the open-source computer algebra
 system, {}``Yacas''. The user installs Yacas, then uses \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Ryacas!\inputencoding{utf8}
 to submit commands to Yacas, after which the output is displayed in
-the R console.
+the \textsf{R} console.
 
 We did not want to require users of the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!IPSUR!\inputencoding{utf8}
 package to install Yacas, so examples of its use is omitted. But there
@@ -8932,12 +8997,12 @@ have a whole bunch of them: $X_{1}$, $X_{2}$,\ldots{}, $X_{n}$,
 which we can shorten to $\mathbf{X}=(X_{1},X_{2},\ldots,X_{n})^{\mathrm{T}}$
 to make the formulas prettier (now may be a good time to check out
 Appendix BLANK). For $\mathbf{X}$ supported on the set $S_{\mathbf{X}}$,
-the joint pdf $f_{\mathbf{X}}$ (if it exists) satisfies\begin{equation}
+the joint PDF $f_{\mathbf{X}}$ (if it exists) satisfies\begin{equation}
 f_{\mathbf{X}}(\mathbf{x})\geq0,\quad\mbox{for }\mathbf{x}\in S_{\mathbf{X}},\end{equation}
 and\begin{equation}
 \int\!\!\!\int\cdots\int f_{\mathbf{X}}(\mathbf{x})\,\diff x_{1}\diff x_{2}\cdots\diff x_{n}=1,\end{equation}
 or even shorter: $\int f_{\mathbf{X}}(\mathbf{x})\,\diff\mathbf{x}=1$.
-The joint cdf $F_{\mathbf{X}}$ is defined by \begin{equation}
+The joint CDF $F_{\mathbf{X}}$ is defined by \begin{equation}
 F_{\mathbf{X}}(\mathbf{x})=\P(X_{1}\leq x_{1},\, X_{2}\leq x_{2},\ldots,\, X_{n}\leq x_{n}),\end{equation}
 for $\mathbf{x}\in\R^{n}$. The expectation of a function $g(\mathbf{X})$
 is defined just as we would imagine:\begin{equation}
@@ -8956,11 +9021,11 @@ from the joint distribution. And even if we are given all of the univariate
 marginals it is not enough to determine the joint distribution uniquely.
 
 We say that $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$ are \emph{mutually
-independent} if their joint pdf factors into the product of the marginals\begin{equation}
+independent} if their joint PDF factors into the product of the marginals\begin{equation}
 f_{\mathbf{X}}(\mathbf{x})=f_{X_{1}}(x_{1})\, f_{X_{2}}(x_{2})\,\cdots\, f_{X_{n}}(x_{n}),\end{equation}
 for every $\mathbf{x}$ in their joint support $S_{\mathbf{X}}$,
 and we say that $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$ are \emph{exchangeable}
-if their joint pdf (or cdf) is a symmetric function of its $n$ arguments,
+if their joint PDF (or CDF) is a symmetric function of its $n$ arguments,
 that is, if \begin{equation}
 f_{\mathbf{X}}(\mathbf{x^{\ast}})=f_{\mathbf{X}}(\mathbf{x}),\end{equation}
 for any reordering $\mathbf{x^{\ast}}$ of the elements of $\mathbf{x}=(x_{1},x_{2},\ldots,x_{n})$
@@ -9006,10 +9071,10 @@ Multiple exchangeable random variables; deFinetti's Theorem.
 
 The multivariate normal distribution immediately generalizes from
 the bivariate case. If the matrix $\Sigma$ is nonsingular then the
-joint pdf of $\mathbf{X}\sim\mathsf{mvnorm}(\mathtt{mean}=\upmu,\,\mathtt{sigma}=\Sigma)$
+joint PDF of $\mathbf{X}\sim\mathsf{mvnorm}(\mathtt{mean}=\upmu,\,\mathtt{sigma}=\Sigma)$
 is\begin{equation}
 f_{\mathbf{X}}(\mathbf{x})=\frac{1}{(2\pi)^{n/2}\left|\Sigma\right|^{1/2}}\exp\left\{ -\frac{1}{2}\left(\mathbf{x}-\upmu\right)^{\top}\Sigma^{-1}\left(\mathbf{x}-\upmu\right)\right\} ,\end{equation}
-and the mgf is\begin{equation}
+and the MGF is\begin{equation}
 M_{\mathbf{X}}(\mathbf{t})=\exp\left\{ \upmu^{\top}\mathbf{t}+\frac{1}{2}\mathbf{t}^{\top}\Sigma\mathbf{t}\right\} .\end{equation}
 
 
@@ -9021,12 +9086,12 @@ is distributed\begin{equation}
 \mathbf{Y}\sim\mathsf{mvnorm}(\mathtt{mean}=\mathbf{A}\upmu,\,\mathtt{sigma}=\mathbf{A}\Sigma\mathbf{A}^{\mathrm{T}}).\end{equation}
 \end{thm}
 \begin{proof}
-Look at the mgf of $\mathbf{Y}$:\begin{eqnarray*}
+Look at the MGF of $\mathbf{Y}$:\begin{eqnarray*}
 M_{\mathbf{Y}}(\mathbf{t}) & = & \E\,\exp\left\{ \mathbf{t}^{\mathrm{T}}(\mathbf{AX})\right\} ,\\
  & = & \E\,\exp\left\{ (\mathbf{A}^{\mathrm{T}}\mathbf{t})^{\mathrm{T}}\mathbf{X}\right\} ,\\
  & = & \exp\left\{ \upmu^{\mathrm{T}}(\mathbf{A}^{\top}\mathbf{t})+\frac{1}{2}(\mathbf{A}^{\mathrm{T}}\mathbf{t})^{\mathrm{T}}\Sigma(\mathbf{A}^{\mathrm{T}}\mathbf{t})\right\} ,\\
  & = & \exp\left\{ \left(\mathbf{A}\upmu\right)^{\mathrm{T}}\mathbf{t}+\frac{1}{2}\mathbf{t}^{\mathrm{T}}\left(\mathbf{A}\Sigma\mathbf{A}^{\mathrm{T}}\right)\mathbf{t}\right\} ,\end{eqnarray*}
-and the last expression is the mgf of an $\mathsf{mvnorm}(\mathtt{mean}=\mathbf{A}\upmu,\,\mathtt{sigma}=\mathbf{A}\Sigma\mathbf{A}^{\mathrm{T}})$
+and the last expression is the MGF of an $\mathsf{mvnorm}(\mathtt{mean}=\mathbf{A}\upmu,\,\mathtt{sigma}=\mathbf{A}\Sigma\mathbf{A}^{\mathrm{T}})$
 distribution.
 \end{proof}
 
@@ -9049,27 +9114,27 @@ type here
 
 \chapter{Sampling Distributions\label{cha:Sampling-Distributions}}
 
-This is an important chapter, and is the bridge between the probability
-and descriptive statistics that we studied in Chapters BLANK, BLANK
-and BLANK to inferential statistics which forms the latter part of
-this book.
+This is an important chapter; it is the bridge from probability and
+descriptive statistics that we studied in Chapters BLANK, BLANK and
+BLANK to inferential statistics which forms the latter part of this
+book.
 
-The link is as follows: there is a population (or populations) about
+Here is the link: we are presented with a \emph{population} about
 which we would like to learn. And while it would be desirable to examine
-every single member of the population(s), we find that it is either
-impossible or infeasible to for us to do so, thus, we resort to collecting
-a \emph{sample} instead. We do not lose heart. Our method will suffice,
+every single member of the population, we find that it is either impossible
+or infeasible to for us to do so, thus, we resort to collecting a
+\emph{sample} instead. We do not lose heart. Our method will suffice,
 provided the sample is \emph{representative} of the population. A
 good way to achieve this is to sample \emph{randomly} from the population(s).
 
 Supposing for the sake of argument that we have collected a random
 sample, the next task is to make some \emph{sense} out of the data
 because the complete list of sample information is usually cumbersome,
-unwieldly. We summarize the data set with a descriptive statistic,
-some quantity being calculated from the data (we saw many examples
-of these in Chapter BLANK). But our sample was random\ldots{} therefore,
-it stands to reason that our statistic will be random, too. How is
-the statistic distributed?
+unwieldly. We summarize the data set with a descriptive \emph{statistic},
+a quantity calculated from the data (we saw many examples of these
+in Chapter BLANK). But our sample was random\ldots{} therefore, it
+stands to reason that our statistic will be random, too. How is the
+statistic distributed?
 
 The probability distribution associated with the population (from
 which we sample) is called the \emph{population distribution}, and
@@ -9145,9 +9210,9 @@ The next fact will be useful to us when it comes time to prove the
 Central Limit Theorem in Section BLANK.
 \begin{prop}
 Let $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$ be a $SRS(n)$ from a
-population distribution with mgf $M(t)$. Then the mgf of $\Xbar$
-is given by\[
-M_{\Xbar}(t)=\left[M\left(\frac{t}{n}\right)\right]^{n}.\]
+population distribution with MGF $M(t)$. Then the MGF of $\Xbar$
+is given by\begin{equation}
+M_{\Xbar}(t)=\left[M\left(\frac{t}{n}\right)\right]^{n}.\end{equation}
 
 \end{prop}
 \begin{proof}
@@ -9178,7 +9243,7 @@ sampling distribution.
 \begin{proof}
 The mean and standard deviation of $\Xbar$ follow directly from Proposition
 BLANK. To address the shape, first remember from Chapter BLANK that
-the $\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$ mgf is
+the $\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$ MGF is
 of the form\[
 M(t)=\exp\left\{ \mu t+\sigma^{2}t^{2}/2\right\} .\]
 Now use Proposition BLANK to find\begin{eqnarray*}
@@ -9186,7 +9251,7 @@ M_{\Xbar}(t) & = & \left[M\left(\frac{t}{n}\right)\right]^{n}\\
  & = & \left[\exp\left\{ \mu(t/n)+\sigma^{2}(t/n)^{2}/2\right\} \right]^{n}\\
  & = & \exp\left\{ \, n\cdot\left[\mu(t/n)+\sigma^{2}(t/n)^{2}/2\right]\right\} \\
  & = & \exp\left\{ \mu t+(\sigma/\sqrt{n})^{2}t^{2}/2\right\} ,\end{eqnarray*}
-and we recognize this last quantity as the mgf of a $\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma/\sqrt{n})$
+and we recognize this last quantity as the MGF of a $\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma/\sqrt{n})$
 distribution.
 \end{proof}
 
@@ -9219,8 +9284,8 @@ Statistics.
 \begin{prop}
 Let $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$ be a $SRS(n)$ from a
 $\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$ distribution.
-Then the quantity \[
-T=\frac{\Xbar-\mu}{S/\sqrt{n}}\]
+Then the quantity \begin{equation}
+T=\frac{\Xbar-\mu}{S/\sqrt{n}}\end{equation}
  has a $\mathsf{t}(\mathtt{df}=n-1)$ sampling distribution.
 \end{prop}
 \begin{proof}
@@ -9246,17 +9311,17 @@ distribution.
 
 This distribution was first published by W.~S.~Gosset (1900) under
 the pseudonym Student, and the distribution has consequently come
-to be known as Student's $t$ distribution. The pdf of $T$ can be
+to be known as Student's $t$ distribution. The PDF of $T$ can be
 derived explicitly using the techniques of Section BLANK; it takes
 the form 
 
-\[
-f_{X}(x)=\frac{\Gamma[(r+1)/2]}{\sqrt{r\pi}\ \Gamma(r/2)}\left(1+\frac{x^{2}}{r}\right)^{-(r+1)/2},\quad\-\infty<x<\infty\]
+\begin{equation}
+f_{X}(x)=\frac{\Gamma[(r+1)/2]}{\sqrt{r\pi}\ \Gamma(r/2)}\left(1+\frac{x^{2}}{r}\right)^{-(r+1)/2},\quad\-\infty<x<\infty\end{equation}
 
 
-Any random variable $T$ with the preceding pdf is said to have Student's
+Any random variable $T$ with the preceding PDF is said to have Student's
 $t$ distribution with $r$ \emph{degrees of freedom} ($\mathtt{df}$),
-and we write $T\sim\mathsf{t}(\mathtt{df}=r)$. The shape of the pdf
+and we write $T\sim\mathsf{t}(\mathtt{df}=r)$. The shape of the PDF
 is similar to the normal, but the tails are considerably heavier.
 See Figure BLANK. As with the Normal distribution, there are four
 functions in \textsf{R} associated with the $t$ distribution, namely
@@ -9264,9 +9329,9 @@ functions in \textsf{R} associated with the $t$ distribution, namely
 compute the p.d.f., c.d.f., quantiles, and generate random variates,
 respectively.
 
-Similar to that done for the normal we may define $\mathtt{t}_{\alpha}(\mathtt{df}=n-1)$
+Similar to that done for the normal we may define $\mathsf{t}_{\alpha}(\mathtt{df}=n-1)$
 as the number on the $x$-axis such that there is exactly $\alpha$
-area under the $\mathtt{t}(\mathtt{df})$ curve to its right.
+area under the $\mathsf{t}(\mathtt{df}=n-1)$ curve to its right.
 \begin{example}
 Find $t_{[0.01]}^{(23)}$ with the quantile function:
 \end{example}
@@ -9344,7 +9409,7 @@ to begin to show a bell-shape. Regardless, for a given population
 the approximation tends to be better for larger sample sizes. 
 \end{rem}
 
-\subsection{How to do it with R}
+\subsection{How to do it with \textsf{R}}
 
 I am thinking about some demonstrations, such as in TeachingDemos
 or distr
@@ -9479,7 +9544,7 @@ not quite so tidy to describe analytically. What do we do then?
 As it turns out, we do not need to know the exact analytical form
 of the sampling distribution; sometimes it is enough to approximate
 it with a simulated distribution. In this section, we will show you
-how. Note that R is particularly well suited to compute simulated
+how. Note that \textsf{R} is particularly well suited to compute simulated
 sampling distributions, much more so than SPSS or SAS, say.
 
 
@@ -9886,7 +9951,7 @@ text(mle, mleobj/6, substitute(hat(theta)==a, list(a=round(mle, 4))), cex = 2, p
 \end{figure}
 
 
-In general, we have a family of pdfs $f(x|\theta)$ indexed by a parameter
+In general, we have a family of PDFs $f(x|\theta)$ indexed by a parameter
 $\theta$ in some parameter space $\Theta$. We want to learn about
 $\theta$. We take a $SRS(n)$:\[
 X_{1},\, X_{2},\,\ldots,X_{n}\mbox{ which are i.i.d.\,\mbox{f(x|\ensuremath{\theta})}.}\]
@@ -9974,7 +10039,7 @@ $\sigma^{2}$. We use $n-1$ so that, on the average, our estimator
 of $\sigma^{2}$ will be exactly right. 
 
 
-\subsection{How to do it with R}
+\subsection{How to do it with \textsf{R}}
 
 R can be used to find maximum likelihood estimators in a lot of diverse
 settings. We will discuss only the most basic here and will leave
@@ -9990,7 +10055,7 @@ Let us see how to do Example BLANK. Recall that our likelihood function
 was given by\[
 L(p)=p^{\sum x_{i}}(1-p)^{n-\sum x_{i}}.\]
 Notice that the likelihood is just a product of $\mathsf{binom}(\mathtt{size}=1,\,\mathtt{prob}=p)$
-pmfs. We first give some sample data (in the vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!datavals!\inputencoding{utf8}),
+PMFs. We first give some sample data (in the vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!datavals!\inputencoding{utf8}),
 next we define the likelihood function \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!L!\inputencoding{utf8},
 and finally we \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!optimize!\inputencoding{utf8}
 \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!L!\inputencoding{utf8}
@@ -10017,10 +10082,10 @@ evaluated at the MLE which is approximately \Sexpr{round(A$objective, 3)}.
 
 We previously remarked that it is usually more numerically convenient
 to maximize the log-likelihood (or minimize the negative log-likelihood),
-and we can just as easily do this with R. We just need to calculate
-the log-likelihood beforehand which (for this example) is\[
+and we can just as easily do this with \textsf{R}. We just need to
+calculate the log-likelihood beforehand which (for this example) is\[
 -l(p)=-\sum x_{i}\ln\, p-\left(n-\sum x_{i}\right)\ln(1-p).\]
-It is done in R with
+It is done in \textsf{R} with
 
 <<>>=
 minuslogL <- function(p,x) -sum(dbinom(x, size = 1, prob = p, log = TRUE))
@@ -10273,7 +10338,7 @@ distribution.
 \end{enumerate}
 \end{example}
 
-\subsection{How to do it with R}
+\subsection{How to do it with \textsf{R}}
 
 library(HH)
 
@@ -10349,7 +10414,7 @@ The resulting interval has approximately $100(1-\alpha)\%$ confidence.
 \end{itemize}
 \end{itemize}
 
-\subsection{How to Do It in R}
+\subsection{How to do it with \textsf{R}}
 
 
 \section{Confidence Intervals for Proportions}
@@ -10420,7 +10485,7 @@ restricted to the interval $[0,1]$, so we can truncate our confidence
 interval to those values on either side.
 \end{rem}
 
-\subsection{How to Do It in R}
+\subsection{How to do it with \textsf{R}}
 
 <<>>=
 library(Hmisc)
@@ -10452,7 +10517,7 @@ B <- with(A, untable(A, Freq))
 I am thinking one and two sample problems here.
 
 
-\subsection{How to do it with R}
+\subsection{How to do it with \textsf{R}}
 
 I am thinking about sigma.test() and var.test() here.
 
@@ -10535,7 +10600,7 @@ If we do not have a good value for the estimate $p^{\ast}$ then we
 may use $p^{\ast}=1/2$. 
 \end{rem}
 
-\subsection{How to do it with R}
+\subsection{How to do it with \textsf{R}}
 
 I am thinking about 
 
@@ -10755,24 +10820,24 @@ is less than 10. You can use it all of the time, but you will have
 a decrease in power. For large samples the correction does not matter.
 
 
-\paragraph*{How to do it with the \textsf{R} Commander }
+\paragraph*{With the \textsf{R} Commander}
 
 If you already know the number of successes and failures, then you
-can use the menu \textsf{Statistics\lyxarrow{}Proportions\lyxarrow{}IPSUR
-Enter table for single sample\ldots{}}
+can use the menu \textsf{Statistics $\triangleright$ Proportions
+$\triangleright$ IPSUR Enter table for single sample\ldots{}}
 
 Otherwise, your data -- the raw successes and failures -- should be
 in a column of the Active Data Set. Furthermore, the data must be
 stored as a {}``factor'' internally. If the data are not a factor
-but are numeric then you can use the menu \textsf{Data\lyxarrow{}Manage
-variables in active data set\lyxarrow{}Convert numeric variables
-to factors\ldots{}} to convert the variable to a factor. Or, you
-can always use the \inputencoding{latin9}\lstinline!factor!\inputencoding{utf8}
+but are numeric then you can use the menu \textsf{Data $\triangleright$
+Manage variables in active data set $\triangleright$ Convert numeric
+variables to factors\ldots{}} to convert the variable to a factor.
+Or, you can always use the \inputencoding{latin9}\lstinline!factor!\inputencoding{utf8}
 function.
 
 Once your unsummarized data is a column, then you can use the menu
-\textsf{Statistics\lyxarrow{}Proportions\lyxarrow{}Single-sample
-proportion test\ldots{}}
+\textsf{Statistics $\triangleright$ Proportions $\triangleright$
+Single-sample proportion test\ldots{}}
 
 
 \section{One Sample Tests for Means and Variances}
@@ -10836,7 +10901,7 @@ Give some data and a hypothesis.
 \end{enumerate}
 \end{example}
 
-\subsection{How to do it with R}
+\subsection{How to do it with \textsf{R}}
 
 z.test() in TeachingDemos
 
@@ -10896,11 +10961,11 @@ t.test(x, mu = 0, conf.level = 0.90, alternative = "greater")
 @
 
 
-\paragraph*{How to do it with the \textsf{R} Commander}
+\paragraph*{With the \textsf{R} Commander}
 
 Your data should be in a single numeric column (a variable) of the
-Active Data Set. Use the menu \textsf{Statistics\lyxarrow{}Means\lyxarrow{}Single-sample
-t-test\ldots{}}
+Active Data Set. Use the menu \textsf{Statistics $\triangleright$
+Means $\triangleright$ Single-sample t-test\ldots{}}
 
 
 \section{Two-Sample Tests for Means and Variances}
@@ -11125,8 +11190,8 @@ values of $x$. This turns out to be a difficult problem%
 especially about the future.''%
 }, so instead we first tackle an easier problem: we estimate $\E Y$.
 How can we accomplish this? Well, we know that $Y$ depends somehow
-on $x,$ so it stands to reason that\[
-\E Y=\mu(x),\ \mbox{a function of }x.\]
+on $x,$ so it stands to reason that\begin{equation}
+\E Y=\mu(x),\ \mbox{a function of }x.\end{equation}
 But we should be able to say more than that. To focus our efforts
 we impose some structure on the functional form of $\mu$. For instance,
 \begin{itemize}
@@ -11548,8 +11613,8 @@ above. It is not a coincidence.
 The estimate $S$ for $\sigma$ is called the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Residual standard error!\inputencoding{utf8}
 and for the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cars!\inputencoding{utf8}
 data is shown a few lines up on the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!summary(cars.lm)!\inputencoding{utf8}
-output (see How to do it with R in Section BLANK). We may read it
-from there to be $S\approx$\Sexpr{round(summary(cars.lm)$sigma, 2)},
+output (see How to do it with \textsf{R} in Section BLANK). We may
+read it from there to be $S\approx$\Sexpr{round(summary(cars.lm)$sigma, 2)},
 or we can access it directly from the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!summary!\inputencoding{utf8}
 object.
 
@@ -12155,13 +12220,14 @@ is found by fitting a linear model to the centered squared residuals\begin{equat
 W_{i}=E_{i}^{2}-\frac{SSE}{n},\quad i=1,2,\ldots,n.\end{equation}
 By default the same explanatory variables are used in the new model
 which produces fitted values $\hat{W}_{i}$, $i=1,2,\ldots,n$. The
-Breusch-Pagan test statistic in R is then calculated with \begin{equation}
+Breusch-Pagan test statistic in \textsf{R} is then calculated with
+\begin{equation}
 BP=n\sum_{i=1}^{n}\hat{W}_{i}^{2}\div\sum_{i=1}^{n}W_{i}^{2}.\end{equation}
 We reject the null hypothesis if $BP$ is too large, which happens
 when the explained variation in the new model is large relative to
 the unexplained variation in the original model.
 
-We do it in R with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!bptest!\inputencoding{utf8}
+We do it in \textsf{R} with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!bptest!\inputencoding{utf8}
 function from the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!lmtest!\inputencoding{utf8}
 package. 
 
@@ -12217,8 +12283,9 @@ We may statistically test whether there is evidence of autocorrelation
 in the residuals with the Durbin-Watson test. The test is based on
 the statistic\begin{equation}
 D=\frac{\sum_{i=2}^{n}(E_{i}-E_{i-1})^{2}}{\sum_{j=1}^{n}E_{j}^{2}}.\end{equation}
-Exact critical values are difficult to obtain, but R will calculate
-the \emph{p-}value to great accuracy. It is performed with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!dwtest!\inputencoding{utf8}
+Exact critical values are difficult to obtain, but \textsf{R} will
+calculate the \emph{p-}value to great accuracy. It is performed with
+the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!dwtest!\inputencoding{utf8}
 function from the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!lmtest!\inputencoding{utf8}
 package. We will conduct a two sided test that the correlation is
 not zero, which is not the default (the default is to test that the
@@ -12236,11 +12303,11 @@ in the residuals.
 
 \subsection{Remedial Measures}
 
-We will often find problems with our model, suggesting that at least
-one of the three regression assumptions is violated. What do we do
-then? There are many measures statisticians use to restore a semblance
-of satisfying the assumptions. For the problems listed below we mention
-specific steps one can take to improve the model.
+We often find problems with our model that suggest that at least one
+of the three regression assumptions is violated. What do we do then?
+There are many measures at the statistician's disposal, and we mention
+specific steps one can take to improve the model under certain types
+of violation.
 \begin{description}
 \item [{Mean~response~is~not~linear.}] We can directly modify the model
 to better approximate the mean response. In particular, perhaps a
@@ -12249,15 +12316,15 @@ polynomial regression function of the form \[
 would be appropriate. Alternatively, we could have a function of the
 form\[
 \mu(x)=\beta_{0}\me^{\beta_{1}x}.\]
-Models such as these are studied in nonlinear regression methods.
+Models like these are studied in nonlinear regression courses.
 \item [{Error~variance~is~not~constant.}] Sometimes a transformation
 of the dependent variable will take care of the problem. There is
 a large class of them called \emph{Box-Cox transformations}. They
 take the form \begin{equation}
 Y^{\ast}=Y^{\lambda},\end{equation}
- where $\gl$ is a constant. (The method proposed by Box and Cox will
-determine a suitable value of $\gl$ automatically by maximum likelihood).
-The class contains the transformations \begin{alignat*}{1}
+ where $\lambda$ is a constant. (The method proposed by Box and Cox
+will determine a suitable value of $\lambda$ automatically by maximum
+likelihood). The class contains the transformations \begin{alignat*}{1}
 \lambda=2,\quad & Y^{\ast}=Y^{2}\\
 \lambda=0.5,\quad & Y^{\ast}=\sqrt{Y}\\
 \lambda=0,\quad & Y^{\ast}=\ln\: Y\\
@@ -12750,7 +12817,7 @@ surface will be many-D\ldots{} in general, a hyperplane. But when
 there are only two explanatory variables the hyperplane is just an
 ordinary plane and we can look at it with a 3D scatterplot. 
 
-One way to do this is with the R Commander in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
+One way to do this is with the \textsf{R} Commander in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
 package. It has a 3D scatterplot option under the \textsf{Graphs}
 menu. It is especially great because the resulting graph is dynamic;
 it can be moved around with the mouse, zoomed, \emph{etc}. But that
@@ -13630,7 +13697,7 @@ will be defined by\begin{equation}
 \mathtt{yes}, & \mbox{if }\mathtt{Height}>76,\\
 \mathtt{no}, & \mbox{if }\mathtt{Height}\leq76.\end{cases}\end{equation}
 We can construct \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Tall!\inputencoding{utf8}
-very quickly in R with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!cut!\inputencoding{utf8}
+very quickly in \textsf{R} with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!cut!\inputencoding{utf8}
 function:
 
 <<>>=
@@ -13695,19 +13762,20 @@ with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=fa
 and trees with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Tall = no!\inputencoding{utf8}. 
 \begin{rem}
 We were somewhat disingenuous when we defined the dummy variable \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Tallyes!\inputencoding{utf8}
-because, in truth, R defines \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Tallyes!\inputencoding{utf8}
+because, in truth, \textsf{R} defines \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Tallyes!\inputencoding{utf8}
 automatically without input from the user%
-\footnote{That is, R by default handles contrasts according to its internal
-settings which may be customized by the user for fine control. Given
-that we will not investigate contrasts further in this book it does
-not serve the discussion to delve into those settings, either. The
-interested reader should check ?contrasts for details.%
+\footnote{That is, \textsf{R} by default handles contrasts according to its
+internal settings which may be customized by the user for fine control.
+Given that we will not investigate contrasts further in this book
+it does not serve the discussion to delve into those settings, either.
+The interested reader should check ?contrasts for details.%
 }. Indeed, the author fit the model beforehand and wrote the discussion
-afterward with the knowledge of what R would do so that the output
-the reader saw would match what (s)he had previously read. The way
-that R handles factors internally is part of a much larger topic concerning
-\emph{contrasts}, which falls outside the scope of this book. The
-interested reader should see BLANK or BLANK for more.
+afterward with the knowledge of what \textsf{R} would do so that the
+output the reader saw would match what (s)he had previously read.
+The way that \textsf{R} handles factors internally is part of a much
+larger topic concerning \emph{contrasts}, which falls outside the
+scope of this book. The interested reader should see BLANK or BLANK
+for more.
 \end{rem}
 
 \begin{rem}
@@ -13715,8 +13783,8 @@ In general, if an explanatory variable \inputencoding{latin9}\lstinline[basicsty
 is qualitative with $n$ levels \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!bar1!\inputencoding{utf8},
 \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!bar2!\inputencoding{utf8},
 \ldots{}, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!barn!\inputencoding{utf8}
-then R will by default automatically define $n-1$ indicator variables
-in the following way:\begin{eqnarray*}
+then \textsf{R} will by default automatically define $n-1$ indicator
+variables in the following way:\begin{eqnarray*}
 \mathtt{foobar2} & = & \begin{cases}
 1, & \mbox{if }\mathtt{foo}=\mathtt{"bar2"},\\
 0, & \mbox{otherwise.}\end{cases},\,\ldots,\,\mathtt{foobarn}=\begin{cases}
@@ -13725,7 +13793,7 @@ in the following way:\begin{eqnarray*}
 The level \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!bar1!\inputencoding{utf8}
 is represented by $\mathtt{foobar2}=\cdots=\mathtt{foobarn}=0$. We
 just need to make sure that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!foo!\inputencoding{utf8}
-is stored as a factor and R will take care of the rest.
+is stored as a factor and \textsf{R} will take care of the rest.
 \end{rem}
 
 \subsection*{Graphing the Regression Lines}
@@ -13790,7 +13858,7 @@ function in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstri
 package and the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!xyplot!\inputencoding{utf8}
 function in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!lattice!\inputencoding{utf8}
 package. We elected to introduce the reader to the above approach
-since many advanced plots in R are done in a similar, consecutive
+since many advanced plots in \textsf{R} are done in a similar, consecutive
 fashion.
 
 
@@ -14146,14 +14214,14 @@ and go on about our business.
 \textbf{An Alternative:} We don't know what the underlying population
 distributions is, so let us \emph{estimate} it, just like we would
 with any other parameter. The statistic we use is the \emph{empirical
-cdf}, that is, the function that places mass $1/n$ at each of the
+CDF}, that is, the function that places mass $1/n$ at each of the
 observed data points $x_{1},\ldots,x_{n}$ (see Section BLANK). As
 the sample size increases, we would expect the approximation to get
 better and better (with i.i.d.~observations, it does, and there is
 a wonderful theorem by Glivenko and Cantelli that proves it). And
 now that we have an (estimated) population distribution, it is easy
 to find the sampling distribution of any statistic we like: just \textbf{sample}
-from the empirical cdf many, many times, calculate the statistic each
+from the empirical CDF many, many times, calculate the statistic each
 time, and make a histogram. Done! Of course, the number of samples
 needed to get a representative histogram is prohibitively large\ldots{}human
 beings are simply too slow (and clumsy) to do this tedious procedure.
@@ -14171,7 +14239,7 @@ for the sampling distribution, we merely tell the computer to sample
 more. In this sense, we are limited only by our current computational
 speed and pocket book.
 \begin{rem}
-Due to the special structure of the empirical cdf, to get an i.i.d.~sample
+Due to the special structure of the empirical CDF, to get an i.i.d.~sample
 one needs only to take a random sample of size $n$, with replacement,
 from the observed data $x_{1},\ldots,x_{n}$. Repeats are expected
 and acceptable. Since we already sampled to get the original data,
@@ -14630,6 +14698,21 @@ accuracy desired.
 
 \section{Chapter Exercises}
 
+
+\chapter{Categorical Data Analysis}
+
+In revision. Coming soon.
+
+
+\chapter{Nonparametric Statistics}
+
+In revision. Coming soon.
+
+
+\chapter{Time Series}
+
+In revision. Coming soon.
+
 \appendix
 
 \chapter{Data\label{cha:Data}}
@@ -14851,7 +14934,7 @@ stack
 
 \chapter{Mathematical Machinery}
 
-This Appendix houses many of the standard definitions and theorems
+This appendix houses many of the standard definitions and theorems
 that are used at some point during the narrative. It is targeted for
 someone reading the book who forgets the precise definition of something
 and would like a quick reminder of an exact statement. No proofs are
@@ -15531,11 +15614,11 @@ the most prevalent desktop operating system in the world. Those who
 own Windows also typically own some version of Microsoft Office, thus
 Microsoft Word is the default word processor for many, many people. 
 
-The standard way to write an R report with Microsoft$\circledR$ Word
-is to generate material with \textsf{R} and then copy-paste the material
-at selected places in a Word document. The advantage to this approach
-is that Word is nicely designed to make it easy to copy-and-paste
-from the R console to the Word document.
+The standard way to write an \textsf{R} report with Microsoft$\circledR$
+Word is to generate material with \textsf{R} and then copy-paste the
+material at selected places in a Word document. The advantage to this
+approach is that Word is nicely designed to make it easy to copy-and-paste
+from the \textsf{R} console to the Word document.
 
 A disadvantage to this approach is that is does not work on all operating
 systems (not on Linux, in particular). Another disadvantage is that
@@ -15588,12 +15671,12 @@ commands) will generate a brand new report.
 
 One disadvantage is that the source \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!.odt!\inputencoding{utf8}
 file is not easy to read, because it is difficult to visually distinguish
-the noweb parts (where the R code is) from the non-noweb parts. This
-can be fixed by manually changing the font of the noweb sections to,
-for instance, Courier font, size \texttt{10pt}. But it is extra work.
-It would be nice if a program would discriminate between the two different
-sections and automatically typeset the respective parts in their correct
-fonts. This one of the advantages to \LyX{}.
+the noweb parts (where the \textsf{R} code is) from the non-noweb
+parts. This can be fixed by manually changing the font of the noweb
+sections to, for instance, Courier font, size \texttt{10pt}. But it
+is extra work. It would be nice if a program would discriminate between
+the two different sections and automatically typeset the respective
+parts in their correct fonts. This one of the advantages to \LyX{}.
 
 Another advantage of OO.o is that even after you have generated the
 outfile, it is fully editable just like any other \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!.odt!\inputencoding{utf8}
@@ -15675,7 +15758,7 @@ to use \LaTeX{}. That being said, it is better to know \LaTeX{} already
 when migrating to \LyX{}, because you understand all of the machinery
 going on under the hood.
 
-Program Listings and the R language
+Program Listings and the \textsf{R} language
 
 This book was written with \LyX{}.
 
@@ -15758,8 +15841,8 @@ realized out of millions. It is electronically distributed under the
 GNU FDL, and {}``free'' in both senses: speech and beer. 
 
 There are four components to \IPSUR: the Document, the Program used
-to generate it, the R package that holds the Program, and the Ancillaries
-that accompany it.
+to generate it, the \textsf{R} package that holds the Program, and
+the Ancillaries that accompany it.
 
 The majority of the data and exercises have been designed to be randomly
 generated. Different realizations of this book will have different
@@ -15790,10 +15873,10 @@ text and exercises, complete with updated manuals. A method I recommend
 for finding a seed is to look down at your watch at this very moment
 and record the 6 digit hour, minute, and second (say, 9:52:59am):
 choose that for a seed%
-\footnote{In fact, this is essentially the method used by R to select an initial
-random seed (see ?set.seed). However, the instructor should set the
-seed manually so that the book can be regenerated at a later time,
-if necessary.%
+\footnote{In fact, this is essentially the method used by \textsf{R} to select
+an initial random seed (see ?set.seed). However, the instructor should
+set the seed manually so that the book can be regenerated at a later
+time, if necessary.%
 }. This method already provides for over 43,000 books, without taking
 military time into account. An alternative would be to go to \textsf{R}
 and type 
@@ -15814,8 +15897,8 @@ below in the How to Use This Document section.
 \section{Generating This Document}
 
 You will need three (3) things to generate this document for yourself,
-in addition to a current R distribution which at the time of this
-writing is \texttt{\Sexpr{version$version.string}:}
+in addition to a current \textsf{R} distribution which at the time
+of this writing is \texttt{\Sexpr{version$version.string}:}
 \begin{enumerate}
 \item a \LaTeX{} distribution,
 \item Sweave (which comes with \textsf{R} automatically), and 
@@ -15828,10 +15911,10 @@ Live (\url{http://www.tug.org/texlive/}). There are plenty of other
 perfectly suitable \LaTeX{} distributions depending on your operating
 system, one such alternative being Mik\TeX{} (\url{http://miktex.org/})
 for Microsoft Windows.
-\item [{Sweave:}] If you have R installed, then the required Sweave files
-are already on your system\ldots{} somewhere. The only problems that
-you may have are likely associated with making sure that your \LaTeX{}
-distribution knows where to find the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Sweave.sty!\inputencoding{utf8}
+\item [{Sweave:}] If you have \textsf{R} installed, then the required Sweave
+files are already on your system\ldots{} somewhere. The only problems
+that you may have are likely associated with making sure that your
+\LaTeX{} distribution knows where to find the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Sweave.sty!\inputencoding{utf8}
 file. See the Sweave Homepage (\url{http://www.statistik.lmu.de/~leisch/Sweave/})
 for guidance on how to get it working on your particular operating
 system.
@@ -15880,7 +15963,8 @@ and the \textsf{\textbf{answers}} branch are turned \textsf{OFF}.
 Use \LyX{} or your \LaTeX{} editor with Sweave to generate your unique
 PDF copy of the book and distribute this copy to your students. (See
 the \LyX{} User's Guide to learn more about branches; the ones referenced
-above can be found under \textsf{Document \lyxarrow{}Settings \lyxarrow{}Branches}.)
+above can be found under \textsf{Document $\triangleright$ Settings
+$\triangleright$ Branches}.)
 \item Turn the \textsf{\textbf{maintext}} branch\textsf{}%
 \footnote{You can leave the \textsf{\textbf{maintext}} branch \textsf{ON} when
 generating the solutions manuals, but (1) all of the page numbers
@@ -15954,8 +16038,8 @@ is: {}``Please refer to the preceding paragraph.''
 
 The goal of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!RcmdrTestDrive!\inputencoding{utf8}
 was to have a data set sufficiently rich in the types of data represented
-such that a person could load it into the R Commander and be able
-to explore all of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}'s
+such that a person could load it into the \textsf{R} Commander and
+be able to explore all of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}'s
 menu options at once. I decided early-on that an efficient way to
 do this would be to generate the data set randomly, and later add
 to the list of variables as more \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
