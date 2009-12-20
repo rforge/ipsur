@@ -583,7 +583,7 @@ satisfies this requirement nicely.
 
 \subsection*{Ancillary Materials}
 
-These are extra materials that accompany \IPSUR\.
+These are extra materials that accompany \IPSUR.
 \begin{description}
 \item [{\texttt{IPSUR.RData}}] is a saved image of the \textsf{R} workspace
 at the completion of the Sweave processing of \IPSUR. This can be
@@ -6439,7 +6439,7 @@ Chapter BLANK.
 
 The binomial and discrete uniform distributions are very popular,
 and rightly so; they are simple and form the foundation for many,
-many more complicated distributions. But these only apply to a limited
+many more complicated distributions. But they only apply to a limited
 range of problems. In this section we introduce some situations for
 which we need more than the uniform and binomial.
 
@@ -6505,10 +6505,12 @@ To calculate it in \textsf{R} we just type
 dhyper(3, m = 17, n = 233, k = 5)
 @
 
-To find it with the \textsf{R} Commander we click Probability $\to$
-Discrete Distributions $\to$ Hypergeometric distribution$\to$ Hypergeometric
-probabilities\emph{\ldots{}}.We fill in the parameters $m=17$, $n=233$,
-and $k=5$. Click OK, and the following table is shown in the window.
+To find it with the \textsf{R} Commander we go \textsf{Probability}
+$\triangleright$ \textsf{Discrete Distributions} $\triangleright$
+\textsf{Hypergeometric distribution} $\triangleright$ \textsf{Hypergeometric
+probabilities}\ldots{}.We fill in the parameters $m=17$, $n=233$,
+and $k=5$. Click \textsf{OK}, and the following table is shown in
+the window.
 
 <<>>=
 A <- data.frame(Pr=dhyper(0:4, m = 17, n = 233, k = 5))
@@ -6524,7 +6526,7 @@ $x=0,1,2,3,4,5$, yet, in the table the probabilities are only displayed
 for $x=1,2,3$, and 4. What is happening? As it turns out, the \textsf{R}
 Commander will only display probabilities that are 0.00005 or greater.
 Since $x=5$ is not shown, it suggests that the outcome has a tiny
-probability. To find its exact value we may use the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false,tabsize=4]!dhyper!\inputencoding{utf8}
+probability. To find its exact value we use the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false,tabsize=4]!dhyper!\inputencoding{utf8}
 function:
 
 <<>>=
