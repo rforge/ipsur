@@ -223,6 +223,7 @@ morestring=[b]"
 
 <<echo = FALSE>>=
 set.seed(42)
+options(width = 70)
 #library(random)
 #i_seed <- randomNumbers(n = 624, col = 1, min = -1e+09, max = 1e+09)
 #.Random.seed[2:626] <- as.integer(c(1, i_seed))
@@ -380,7 +381,7 @@ Statistics Using \textsf{R}}
 \noindent \IPSUR: Introduction to Probability and Statistics Using
 \textsf{R}
 
-\noindent Copyright \textcopyright~2009 G.~Jay Kerns
+\noindent Copyright \textcopyright~2010 G.~Jay Kerns
 
 \medskip{}
 
@@ -445,8 +446,8 @@ content. Still others will just want to learn \textsf{R} and skip
 all of the mathematics.
 
 Despite any misgivings: here it is. I humbly invite said individuals
-to take this book -- with the GNU-FDL in hand -- and make it better.
-In that spirit there are many ways in which this book could be improved:
+to take this book, with the GNU-FDL in hand, and make it better. In
+that spirit there are many ways in which this book could be improved:
 \begin{description}
 \item [{Better~data:}] the data analyzed in this book are almost entirely
 from the \inputencoding{latin9}\lstinline[showstringspaces=false]!datasets!\inputencoding{utf8}
@@ -770,7 +771,7 @@ and \emph{contributed} packages (which must be downloaded for installation).
 For example, on the version of \textsf{R} being used for this document
 the default base packages loaded at startup are 
 
-<<>>=
+<<keep.source = TRUE>>=
 getOption("defaultPackages")
 @
 
@@ -1151,7 +1152,7 @@ article BLANK. In short:
 \item Type the name of the function without any parentheses or arguments.
 If you are lucky then the code for the entire function will be printed,
 right there looking at you. For instance, suppose that we would like
-to see how the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!intersect!\inputencoding{utf8}
+to see how the \inputencoding{latin9}\lstinline[showstringspaces=false]!intersect!\inputencoding{utf8}
 function works:
 
 
@@ -1159,10 +1160,10 @@ function works:
 intersect
 @
 
-\item If instead it shows \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!UseMethod("!\inputencoding{utf8}\emph{something}\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!")!\inputencoding{utf8}then
+\item If instead it shows \inputencoding{latin9}\lstinline[showstringspaces=false]!UseMethod("!\inputencoding{utf8}\emph{something}\inputencoding{latin9}\lstinline[showstringspaces=false]!")!\inputencoding{utf8}then
 you will need to identify the \emph{class} of the object to be inputted
 and next look at the \emph{method} that will be \emph{dispatched}
-to the object. For instance, typing \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rev!\inputencoding{utf8}
+to the object. For instance, typing \inputencoding{latin9}\lstinline[showstringspaces=false]!rev!\inputencoding{utf8}
 says 
 
 
@@ -1171,19 +1172,19 @@ rev
 @
 
 The output is telling us that there are multiple methods associated
-with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rev!\inputencoding{utf8}
+with the \inputencoding{latin9}\lstinline[showstringspaces=false]!rev!\inputencoding{utf8}
 function. To see what these are, type
 
 <<>>=
 methods(rev)
 @
 
-Now we learn that there are two different \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rev(x)!\inputencoding{utf8}
-functions, which are chosen depending on what \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
-is. There is one for \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!dendrogram!\inputencoding{utf8}
-objects and a \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!default!\inputencoding{utf8}
+Now we learn that there are two different \inputencoding{latin9}\lstinline[showstringspaces=false]!rev(x)!\inputencoding{utf8}
+functions, which are chosen depending on what \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
+is. There is one for \inputencoding{latin9}\lstinline[showstringspaces=false]!dendrogram!\inputencoding{utf8}
+objects and a \inputencoding{latin9}\lstinline[showstringspaces=false]!default!\inputencoding{utf8}
 method for everything else. Simply type the name to see what each
-method does. For example, the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!default!\inputencoding{utf8}
+method does. For example, the \inputencoding{latin9}\lstinline[showstringspaces=false]!default!\inputencoding{utf8}
 method can be viewed with
 
 <<>>=
@@ -1192,7 +1193,7 @@ rev.default
 
 \item Some functions are hidden by a \emph{namespace} (see the \textsf{R}
 Manual BLANK), and are not visible on the first try. For example,
-if we try to look at the code for \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!wilcox.test!\inputencoding{utf8}
+if we try to look at the code for \inputencoding{latin9}\lstinline[showstringspaces=false]!wilcox.test!\inputencoding{utf8}
 (see Chapter BLANK) we get the following:
 
 
@@ -1201,27 +1202,27 @@ wilcox.test
 methods(wilcox.test)
 @
 
-If we were to try \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!wilcox.test.default!\inputencoding{utf8}
+If we were to try \inputencoding{latin9}\lstinline[showstringspaces=false]!wilcox.test.default!\inputencoding{utf8}
 we would get a {}``not found'' error, because it is hidden behind
-the namespace for the package \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!stats!\inputencoding{utf8}
-(shown in the last line when we tried \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!wilcox.test!\inputencoding{utf8}).
+the namespace for the package \inputencoding{latin9}\lstinline[showstringspaces=false]!stats!\inputencoding{utf8}
+(shown in the last line when we tried \inputencoding{latin9}\lstinline[showstringspaces=false]!wilcox.test!\inputencoding{utf8}).
 In cases like these we prefix the package name to the front of the
-function name with three colons; the command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!stats:::wilcox.test.default!\inputencoding{utf8}
+function name with three colons; the command \inputencoding{latin9}\lstinline[showstringspaces=false]!stats:::wilcox.test.default!\inputencoding{utf8}
 will show the source code, omitted here for brevity.
 
-\item If it shows \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!.Internal(!\inputencoding{utf8}\emph{something}\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!)!\inputencoding{utf8}
-or \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!.Primitive("!\inputencoding{utf8}\emph{something}\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!")!\inputencoding{utf8},
+\item If it shows \inputencoding{latin9}\lstinline[showstringspaces=false]!.Internal(!\inputencoding{utf8}\emph{something}\inputencoding{latin9}\lstinline[showstringspaces=false]!)!\inputencoding{utf8}
+or \inputencoding{latin9}\lstinline[showstringspaces=false]!.Primitive("!\inputencoding{utf8}\emph{something}\inputencoding{latin9}\lstinline[showstringspaces=false]!")!\inputencoding{utf8},
 then it will be necessary to download the source code of \textsf{R}
-(which is \emph{not} a binary version with an \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!.exe!\inputencoding{utf8}
+(which is \emph{not} a binary version with an \inputencoding{latin9}\lstinline[showstringspaces=false]!.exe!\inputencoding{utf8}
 extension) and search inside the code there. See Ligges for more discussion
-on this. An example is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!exp!\inputencoding{utf8}:
+on this. An example is \inputencoding{latin9}\lstinline[showstringspaces=false]!exp!\inputencoding{utf8}:
 
 
 <<>>=
 exp
 @
 
-Be warned that most of the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!.Internal!\inputencoding{utf8}
+Be warned that most of the \inputencoding{latin9}\lstinline[showstringspaces=false]!.Internal!\inputencoding{utf8}
 functions are written in other computer languages which the beginner
 may not understand, at least initially.
 
@@ -1247,42 +1248,42 @@ system including installation, the complete language definition, and
 add-on packages.
 \item \textsf{\textbf{R}}\textbf{ functions (text)\ldots{}}: use this if
 you know the \emph{exact} name of the function you want to know more
-about, for example, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mean!\inputencoding{utf8}
-or \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!plot!\inputencoding{utf8}.
-Typing \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mean!\inputencoding{utf8}
-in the window is equivalent to typing \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!help("mean")!\inputencoding{utf8}
-at the command line, or more simply, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!?mean!\inputencoding{utf8}.
+about, for example, \inputencoding{latin9}\lstinline[showstringspaces=false]!mean!\inputencoding{utf8}
+or \inputencoding{latin9}\lstinline[showstringspaces=false]!plot!\inputencoding{utf8}.
+Typing \inputencoding{latin9}\lstinline[showstringspaces=false]!mean!\inputencoding{utf8}
+in the window is equivalent to typing \inputencoding{latin9}\lstinline[showstringspaces=false]!help("mean")!\inputencoding{utf8}
+at the command line, or more simply, \inputencoding{latin9}\lstinline[showstringspaces=false]!?mean!\inputencoding{utf8}.
 Note that this method only works if the function of interest is contained
-in a package that is already loaded into the search path with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!library!\inputencoding{utf8}.
+in a package that is already loaded into the search path with \inputencoding{latin9}\lstinline[showstringspaces=false]!library!\inputencoding{utf8}.
 \item \textbf{HTML Help}: use this to browse the manuals with point-and-click
 links. It also has a Search Engine \& Keywords for searching the help
 page titles, with point-and-click links for the search results. This
 is possibly the best help method for beginners. It can be started
-from the command line with the command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!help.start()!\inputencoding{utf8}.
+from the command line with the command \inputencoding{latin9}\lstinline[showstringspaces=false]!help.start()!\inputencoding{utf8}.
 \item \textbf{Search help\ldots{}}: use this if you do not know the exact
 name of the function of interest, or if the function is in a package
-that has not been loaded yet. For example, you may enter \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!plo!\inputencoding{utf8}
+that has not been loaded yet. For example, you may enter \inputencoding{latin9}\lstinline[showstringspaces=false]!plo!\inputencoding{utf8}
 and a text window will return listing all the help files with an alias,
-concept, or title matching `\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!plo!\inputencoding{utf8}'
-using regular expression matching; it is equivalent to typing \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!help.search("plo")!\inputencoding{utf8}
+concept, or title matching `\inputencoding{latin9}\lstinline[showstringspaces=false]!plo!\inputencoding{utf8}'
+using regular expression matching; it is equivalent to typing \inputencoding{latin9}\lstinline[showstringspaces=false]!help.search("plo")!\inputencoding{utf8}
 at the command line. The advantage is that you do not need to know
 the exact name of the function; the disadvantage is that you cannot
 point-and-click the results. Therefore, one may wish to use the HTML
-Help search engine instead. An equivalent way is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!??plo!\inputencoding{utf8}
+Help search engine instead. An equivalent way is \inputencoding{latin9}\lstinline[showstringspaces=false]!??plo!\inputencoding{utf8}
 at the command line.
 \item \textbf{search.r-project.org\ldots{}}: this will search for words
 in help lists and email archives of the \textsf{R} Project. It can
 be very useful for finding other questions that other users have asked.
 \item \textbf{Apropos\ldots{}}: use this for more sophisticated partial
-name matching of functions. See \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!?apropos!\inputencoding{utf8}
+name matching of functions. See \inputencoding{latin9}\lstinline[showstringspaces=false]!?apropos!\inputencoding{utf8}
 for details.
 \end{itemize}
 On the help pages for a function there are sometimes {}``Examples''
 listed at the bottom of the page, which will work if copy-pasted at
-the command line ( unless marked otherwise). The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!example!\inputencoding{utf8}
+the command line ( unless marked otherwise). The \inputencoding{latin9}\lstinline[showstringspaces=false]!example!\inputencoding{utf8}
 function will run the code automatically, skipping the intermediate
-step. For instance, we may try \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!example(mean)!\inputencoding{utf8}
-to see a few examples of how the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mean!\inputencoding{utf8}
+step. For instance, we may try \inputencoding{latin9}\lstinline[showstringspaces=false]!example(mean)!\inputencoding{utf8}
+to see a few examples of how the \inputencoding{latin9}\lstinline[showstringspaces=false]!mean!\inputencoding{utf8}
 function works.
 
 
@@ -1310,8 +1311,8 @@ read these now, even without a question at the moment, to learn a
 lot about the idiosyncracies of \textsf{R}.
 \item Search the archives. Even if your question is not a FAQ, there is
 a very high likelihood that your question has been asked before on
-the mailing list. If you want to know about topic \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!foo!\inputencoding{utf8},
-then you can do \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!RSiteSearch("foo")!\inputencoding{utf8}
+the mailing list. If you want to know about topic \inputencoding{latin9}\lstinline[showstringspaces=false]!foo!\inputencoding{utf8},
+then you can do \inputencoding{latin9}\lstinline[showstringspaces=false]!RSiteSearch("foo")!\inputencoding{utf8}
 to search the mailing list archives (and the online help) for it. 
 \item Do a Google search. 
 \end{enumerate}
@@ -1322,24 +1323,24 @@ are a few considerations that the author would like to highlight.
 \begin{enumerate}
 \item \textbf{Read the posting guide (\url{http://www.r-project.org/posting-guide.html})
 before posting.} This will save you a lot of trouble and pain.
-\item Get rid of the command prompts (\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!>!\inputencoding{utf8})
+\item Get rid of the command prompts (\inputencoding{latin9}\lstinline[showstringspaces=false]!>!\inputencoding{utf8})
 from output. Readers of your message will take the text from your
 mail and copy-paste into an \textsf{R} session. If you make the readers'
 job easier then it will increase the likelihood of a response.
 \item Questions are often related to a specific data set, and the best way
-to communicate the data is with a \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!dump!\inputencoding{utf8}
+to communicate the data is with a \inputencoding{latin9}\lstinline[showstringspaces=false]!dump!\inputencoding{utf8}
 command. For instance, if your question involves data stored in a
-vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8},
-you can type \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!dump("x","")!\inputencoding{utf8}
+vector \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8},
+you can type \inputencoding{latin9}\lstinline[showstringspaces=false]!dump("x","")!\inputencoding{utf8}
 at the command prompt and copy-paste the output into the body of your
 email message. Then the reader may easily copy-paste the message from
-your email into \textsf{R} and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
+your email into \textsf{R} and \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
 will be available to him/her.
 \item Sometimes the answer the question is related to the operating system
 used, the attached packages, or the exact version of \textsf{R} being
-used. The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!sessionInfo()!\inputencoding{utf8}
+used. The \inputencoding{latin9}\lstinline[showstringspaces=false]!sessionInfo()!\inputencoding{utf8}
 command collects all of this information to be copy-pasted into an
-email.
+email. See Appendix BLANK.
 \end{enumerate}
 
 \section*{Some References}
@@ -1393,48 +1394,48 @@ It is unnecessary to retype commands repeatedly, since \textsf{R}
 remembers what you have recently entered on the command line. On the
 Microsoft$\circledR$ Windows \textsf{R}Gui, to cycle through the
 previous commands just push the $\uparrow$ (up arrow) key. On Emacs/ESS
-the command is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Alt-p!\inputencoding{utf8}
-(which means hold down the \textsf{Alt} button and press {}``\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!p!\inputencoding{utf8}'').
-More generally, the command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!history()!\inputencoding{utf8}
+the command is \inputencoding{latin9}\lstinline[showstringspaces=false]!Alt-p!\inputencoding{utf8}
+(which means hold down the \textsf{Alt} button and press {}``\inputencoding{latin9}\lstinline[showstringspaces=false]!p!\inputencoding{utf8}'').
+More generally, the command \inputencoding{latin9}\lstinline[showstringspaces=false]!history()!\inputencoding{utf8}
 will show a whole list of recently entered commands.
 
-Missing values in \textsf{R} are denoted by \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!NA!\inputencoding{utf8}.
-Operations on data vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!NA!\inputencoding{utf8}
+Missing values in \textsf{R} are denoted by \inputencoding{latin9}\lstinline[showstringspaces=false]!NA!\inputencoding{utf8}.
+Operations on data vector \inputencoding{latin9}\lstinline[showstringspaces=false]!NA!\inputencoding{utf8}
 values treat them as if the values can't be found. This means adding
 (as well as subtracting and all of the other mathematical operations)
-a number to \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!NA!\inputencoding{utf8}
-results in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!NA!\inputencoding{utf8}.
+a number to \inputencoding{latin9}\lstinline[showstringspaces=false]!NA!\inputencoding{utf8}
+results in \inputencoding{latin9}\lstinline[showstringspaces=false]!NA!\inputencoding{utf8}.
 
 To find out what all variables are in the current work environment,
-use the commands \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!objects()!\inputencoding{utf8}
-or \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ls()!\inputencoding{utf8}.
+use the commands \inputencoding{latin9}\lstinline[showstringspaces=false]!objects()!\inputencoding{utf8}
+or \inputencoding{latin9}\lstinline[showstringspaces=false]!ls()!\inputencoding{utf8}.
 These list all available objects in the workspace. If you wish to
-remove one or more variables, use \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!remove(var1, var2, var3)!\inputencoding{utf8},
-or more simply use \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rm(var1, var2, var3)!\inputencoding{utf8},
-and to remove all objects use \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rm(list = ls())!\inputencoding{utf8}.
+remove one or more variables, use \inputencoding{latin9}\lstinline[showstringspaces=false]!remove(var1, var2, var3)!\inputencoding{utf8},
+or more simply use \inputencoding{latin9}\lstinline[showstringspaces=false]!rm(var1, var2, var3)!\inputencoding{utf8},
+and to remove all objects use \inputencoding{latin9}\lstinline[showstringspaces=false]!rm(list = ls())!\inputencoding{utf8}.
 \begin{enumerate}
-\item Another use of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!scan!\inputencoding{utf8}
+\item Another use of \inputencoding{latin9}\lstinline[showstringspaces=false]!scan!\inputencoding{utf8}
 is when you have a long list of numbers (separated by spaces or on
 different lines) already typed somewhere else, say in a text file.
 To enter all the data in one fell swoop, first highlight and copy
 the list of numbers to the Clipboard with \textsf{Edit}\emph{ }\textsf{$\triangleright$}\emph{
 }\textsf{Copy} (or by right-clicking and selecting \textsf{Copy}).
-Next type the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x <- scan()!\inputencoding{utf8}
-command in the \textsf{R} console, and paste the numbers at the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!1:!\inputencoding{utf8}
+Next type the \inputencoding{latin9}\lstinline[showstringspaces=false]!x <- scan()!\inputencoding{utf8}
+command in the \textsf{R} console, and paste the numbers at the \inputencoding{latin9}\lstinline[showstringspaces=false]!1:!\inputencoding{utf8}
 prompt with \textsf{Edit}\emph{ }\textsf{$\triangleright$}\emph{
 }\textsf{Paste}. All of the numbers will automatically be entered
-into the vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}.\end{enumerate}
+into the vector \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}.\end{enumerate}
 \begin{itemize}
-\item The command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Ctrl+l!\inputencoding{utf8}
+\item The command \inputencoding{latin9}\lstinline[showstringspaces=false]!Ctrl+l!\inputencoding{utf8}
 clears the screen in the Microsoft$\circledR$ Windows \textsf{R}Gui.
 The comparable command for Emacs/ESS is 
 \item Once you use \textsf{R} for awhile there may be some commands that
 you wish to run automatically whenever \textsf{R} starts. These commands
-may be saved in a file called \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rprofile.site!\inputencoding{utf8}
-which is usually in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!etc!\inputencoding{utf8}
+may be saved in a file called \inputencoding{latin9}\lstinline[showstringspaces=false]!Rprofile.site!\inputencoding{utf8}
+which is usually in the \inputencoding{latin9}\lstinline[showstringspaces=false]!etc!\inputencoding{utf8}
 folder, which lives in the \textsf{R} home directory (which on Microsoft$\circledR$
-Windows usually is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!C:\Program Files\R!\inputencoding{utf8}).
-Alternatively, you can make a file \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!.Rprofile!\inputencoding{utf8}
+Windows usually is \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!C:\Program Files\R!\inputencoding{utf8}).
+Alternatively, you can make a file \inputencoding{latin9}\lstinline[showstringspaces=false]!.Rprofile!\inputencoding{utf8}
 to be stored in the user's home directory, or anywhere \textsf{R}
 is invoked. This allows for multiple configurations for different
 projects or users. See {}``Customizing the Environment'' of \emph{An
@@ -1443,9 +1444,9 @@ Introduction to }\textsf{\emph{R}} for more details.
 the workspace''. I recommend that beginners DO NOT save the workspace
 when quitting. If \textsf{Yes} is selected, then all of the objects
 and data currently in \textsf{R}'s memory is saved in a file located
-in the working directory called \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!.RData!\inputencoding{utf8}.
+in the working directory called \inputencoding{latin9}\lstinline[showstringspaces=false]!.RData!\inputencoding{utf8}.
 This file is then automatically loaded the next time \textsf{R} starts
-(in which case \textsf{R} will say \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]![previously saved workspace restored]!\inputencoding{utf8}).
+(in which case \textsf{R} will say \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]![previously saved workspace restored]!\inputencoding{utf8}).
 This is a valuable feature for experienced users of \textsf{R}, but
 I find that it causes more trouble than it saves with beginners.
 \end{itemize}
@@ -1459,13 +1460,13 @@ answers. \emph{Please Note}: only answers are required; it is not
 necessary to submit the \textsf{R} output on the screen. 
 \begin{xca}
 Write out line \Sexpr{sample(3:12, size = 1)} of the source code
-for the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!plot!\inputencoding{utf8}
+for the \inputencoding{latin9}\lstinline[showstringspaces=false]!plot!\inputencoding{utf8}
 function.
 \end{xca}
 
 \paragraph*{Solution:}
 
-Type \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!plot!\inputencoding{utf8}
+Type \inputencoding{latin9}\lstinline[showstringspaces=false]!plot!\inputencoding{utf8}
 at the command line (with no parentheses).
 
 <<>>=
@@ -1485,12 +1486,12 @@ Let our small data set of size \Sexpr{length(x)} be
 x
 @
 
-\noindent Enter this data into a vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}.
+\noindent Enter this data into a vector \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}.
 \begin{enumerate}
-\item Raise all of the numbers in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
+\item Raise all of the numbers in \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
 to the power \Sexpr{k[1]}. 
-\item Subtract \Sexpr{k[2]} from each number in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}.
-\item Add \Sexpr{k[3]} to all of the numbers in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8},
+\item Subtract \Sexpr{k[2]} from each number in \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}.
+\item Add \Sexpr{k[3]} to all of the numbers in \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8},
 then take the (natural) logarithm of the answers.
 \end{enumerate}
 Use vectorization of functions to do all of the above, using a single
@@ -1520,7 +1521,7 @@ x
 @
 \begin{enumerate}
 \item What is the smallest amount? The largest?
-\item Find the average amount with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mean!\inputencoding{utf8}.
+\item Find the average amount with \inputencoding{latin9}\lstinline[showstringspaces=false]!mean!\inputencoding{utf8}.
 \item Calculate the difference of the mean value from the largest and smallest
 amounts (the first number will be positive, the second will be negative).
 \end{enumerate}
@@ -1551,13 +1552,13 @@ x
 Note that the first entry above was the sales from January, the second
 entry was from February, and so forth.
 \begin{enumerate}
-\item Enter these data into a variable \texttt{H2}. Use \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cumsum!\inputencoding{utf8}
+\item Enter these data into a variable \texttt{H2}. Use \inputencoding{latin9}\lstinline[showstringspaces=false]!cumsum!\inputencoding{utf8}
 to find the cumulative total sales for 2009. What was the total number
 sold? 
-\item Using \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!diff!\inputencoding{utf8},
+\item Using \inputencoding{latin9}\lstinline[showstringspaces=false]!diff!\inputencoding{utf8},
 find the month with the greatest increase from the previous month,
 and the month with the greatest decrease from the previous month.
-\emph{Hint:} Dont know how to use \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!diff!\inputencoding{utf8}?
+\emph{Hint:} Dont know how to use \inputencoding{latin9}\lstinline[showstringspaces=false]!diff!\inputencoding{utf8}?
 No problem! Check it out using the \textsf{Help} system.
 \end{enumerate}
 \end{xca}
@@ -1566,8 +1567,8 @@ No problem! Check it out using the \textsf{Help} system.
 
 \paragraph*{Solution:}
 
-First enter the data into a vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}.
-You can make it fancy with the months of the year with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!names!\inputencoding{utf8}
+First enter the data into a vector \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}.
+You can make it fancy with the months of the year with the \inputencoding{latin9}\lstinline[showstringspaces=false]!names!\inputencoding{utf8}
 function. 
 
 <<>>=
@@ -1575,7 +1576,7 @@ names(x) <- c("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov",
 x
 @
 
-Now let's check out \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cumsum!\inputencoding{utf8}
+Now let's check out \inputencoding{latin9}\lstinline[showstringspaces=false]!cumsum!\inputencoding{utf8}
 :
 
 <<>>=
@@ -1583,21 +1584,21 @@ cumsum(x)
 @
 
 This shows that the total amount sold was \Sexpr{max(cumsum(x))}.
-We next check out what \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!diff!\inputencoding{utf8}
+We next check out what \inputencoding{latin9}\lstinline[showstringspaces=false]!diff!\inputencoding{utf8}
 does:
 
 <<>>=
 diff(x)
 @
 
-We see that the first entry of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!diff(x)!\inputencoding{utf8}
+We see that the first entry of \inputencoding{latin9}\lstinline[showstringspaces=false]!diff(x)!\inputencoding{utf8}
 is the difference in sales, February minus January. The second entry
 is March minus February, and so forth. The greatest increase from
 the previous month was \Sexpr{max(diff(x))}, which happened in {}``\Sexpr{names(x)[which(diff(x)==max(diff(x)))+1]}''.
 The greatest decrease from the previous month was \Sexpr{min(diff(x))},
 which happened in {}``\Sexpr{names(x)[which(diff(x)==min(diff(x)))+1]}''.
 (These can be found by inspection of the output or even quicker with
-a command like \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!max(diff(x))!\inputencoding{utf8}).
+a command like \inputencoding{latin9}\lstinline[showstringspaces=false]!max(diff(x))!\inputencoding{utf8}).
 
 \normalsize
 
@@ -1617,16 +1618,16 @@ times (in minutes):
 commute
 @
 \begin{enumerate}
-\item \noindent Enter these data into \textsf{R}. Use the function \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!max!\inputencoding{utf8}
-to find the longest travel time, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!min!\inputencoding{utf8}
-to find the smallest, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mean!\inputencoding{utf8}
-to find the average time, and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!sd!\inputencoding{utf8}
+\item \noindent Enter these data into \textsf{R}. Use the function \inputencoding{latin9}\lstinline[showstringspaces=false]!max!\inputencoding{utf8}
+to find the longest travel time, \inputencoding{latin9}\lstinline[showstringspaces=false]!min!\inputencoding{utf8}
+to find the smallest, \inputencoding{latin9}\lstinline[showstringspaces=false]!mean!\inputencoding{utf8}
+to find the average time, and \inputencoding{latin9}\lstinline[showstringspaces=false]!sd!\inputencoding{utf8}
 to find the sample standard deviation of the times.
 \item Oops! The \Sexpr{commute[k]} was a mistake. It should have been \Sexpr{new},
 instead. How can you fix this (without retyping the whole vector)?
-Correct the mistake and report the new \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!max!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!min!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mean!\inputencoding{utf8},
+Correct the mistake and report the new \inputencoding{latin9}\lstinline[showstringspaces=false]!max!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!min!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!mean!\inputencoding{utf8},
 and sample standard deviation.
 \end{enumerate}
 \end{xca}
@@ -1710,7 +1711,7 @@ There are many graphs available for displaying quantitative data.
 
 \paragraph*{Strip charts (also known as Dot plots)}
 
-These are done with a call to the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!stripchart!\inputencoding{utf8}
+These are done with a call to the \inputencoding{latin9}\lstinline[showstringspaces=false]!stripchart!\inputencoding{utf8}
 function, and are often used when the data set is not too large. Along
 the horizontal axis is a numerical scale above which the data values
 are plotted. There are three methods for strip charts.
@@ -1744,7 +1745,7 @@ par(mfrow = c(1,1)) # back to normal
 \paragraph*{Histogram}
 
 Used for continuous data. There are many ways to plot histograms,
-one of the easiest is done with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!hist!\inputencoding{utf8}
+one of the easiest is done with the \inputencoding{latin9}\lstinline[showstringspaces=false]!hist!\inputencoding{utf8}
 function. These plots are some of the most common summary displays,
 and they are often misidentified as {}``Bar Graphs'' (see below.)
 The scale on the $y$ axis can be frequency, percentage, or density
@@ -1796,10 +1797,10 @@ stem. There will typically be several leaves for each stem, in which
 case the leaves accumulate to the right. It is sometimes necessary
 to round the data values, especially for larger data sets.
 
-Consider the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!UKDriverDeaths!\inputencoding{utf8}
+Consider the \inputencoding{latin9}\lstinline[showstringspaces=false]!UKDriverDeaths!\inputencoding{utf8}
 data. We construct a stem and leaf diagram in \textsf{R} with the
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!stem.leaf!\inputencoding{utf8}
-function from the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!aplpack!\inputencoding{utf8}
+\inputencoding{latin9}\lstinline[showstringspaces=false]!stem.leaf!\inputencoding{utf8}
+function from the \inputencoding{latin9}\lstinline[showstringspaces=false]!aplpack!\inputencoding{utf8}
 package.
 
 <<>>=
@@ -1815,7 +1816,7 @@ are not lost in the display, in contrast to a histogram.
 
 \paragraph*{Index Plot}
 
-Done with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!plot!\inputencoding{utf8}
+Done with the \inputencoding{latin9}\lstinline[showstringspaces=false]!plot!\inputencoding{utf8}
 function. These are good for plotting data which are ordered in the
 dataset, for example, when the data are measured over time. That is,
 the first observation was measured at time 1, the second at time 2,
@@ -1876,10 +1877,10 @@ is, Stage III cancer is not Stage I cancer + Stage II cancer).
 \paragraph*{Tables}
 
 Here we choose a variable and count frequencies and list proportions.
-We can do this at the console with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!table!\inputencoding{utf8}
+We can do this at the console with the \inputencoding{latin9}\lstinline[showstringspaces=false]!table!\inputencoding{utf8}
 function. In \textsf{R} Commander you can do it with \textsf{Statistics}
 \textsf{$\triangleright$} \textsf{Frequency Distribution\ldots{}.}
-Alternatively, to look at tables for all factors in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Active data set!\inputencoding{utf8}
+Alternatively, to look at tables for all factors in the \inputencoding{latin9}\lstinline[showstringspaces=false]!Active data set!\inputencoding{utf8}
 you can do \textsf{Statistics} \textsf{$\triangleright$} \textsf{Summaries}
 \textsf{$\triangleright$} \textsf{Active Dataset}.
 
@@ -1919,8 +1920,8 @@ par(mfrow = c(1,1)) # back to normal
 
 \paragraph*{Pareto Diagrams }
 
-These can be done with the \textsf{R} Commander, or with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!pareto.chart!\inputencoding{utf8}
-function at the console (from the package \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!qcc!\inputencoding{utf8}).
+These can be done with the \textsf{R} Commander, or with the \inputencoding{latin9}\lstinline[showstringspaces=false]!pareto.chart!\inputencoding{utf8}
+function at the console (from the package \inputencoding{latin9}\lstinline[showstringspaces=false]!qcc!\inputencoding{utf8}).
 
 %
 \begin{figure}
@@ -1964,10 +1965,10 @@ with \textsf{S}.
 \subsection{Logical Data\label{sub:Logical-Data}}
 
 There is another type of information recognized by \textsf{R} which
-does not fall into the above categories. The value is either \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!TRUE!\inputencoding{utf8}
-or \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!FALSE!\inputencoding{utf8}
-(note that equivalently you can use \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!1 = TRUE!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!0 = FALSE!\inputencoding{utf8}).
+does not fall into the above categories. The value is either \inputencoding{latin9}\lstinline[showstringspaces=false]!TRUE!\inputencoding{utf8}
+or \inputencoding{latin9}\lstinline[showstringspaces=false]!FALSE!\inputencoding{utf8}
+(note that equivalently you can use \inputencoding{latin9}\lstinline[showstringspaces=false]!1 = TRUE!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!0 = FALSE!\inputencoding{utf8}).
 Here is an example of a logical vector:
 
 <<>>=
@@ -1977,11 +1978,11 @@ v
 @
 
 Many functions in \textsf{R} have options that the user may or may
-not want to activate in the function call. For example, the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!stem.leaf!\inputencoding{utf8}
-function has the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!depths!\inputencoding{utf8}
-argument which is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!TRUE!\inputencoding{utf8}
+not want to activate in the function call. For example, the \inputencoding{latin9}\lstinline[showstringspaces=false]!stem.leaf!\inputencoding{utf8}
+function has the \inputencoding{latin9}\lstinline[showstringspaces=false]!depths!\inputencoding{utf8}
+argument which is \inputencoding{latin9}\lstinline[showstringspaces=false]!TRUE!\inputencoding{utf8}
 by default. We saw in Section BLANK how to turn the option off, simply
-enter \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!stem.leaf(x, depths = FALSE)!\inputencoding{utf8}
+enter \inputencoding{latin9}\lstinline[showstringspaces=false]!stem.leaf(x, depths = FALSE)!\inputencoding{utf8}
 and depths will not be shown on the display. 
 
 
@@ -1989,14 +1990,14 @@ and depths will not be shown on the display.
 
 Missing data are a persistent and prevalent problem in many statistical
 analyses, especially those associated with the social sciences. \textsf{R}
-reserves the special symbol \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!NA!\inputencoding{utf8}
+reserves the special symbol \inputencoding{latin9}\lstinline[showstringspaces=false]!NA!\inputencoding{utf8}
 to representing missing data. You can test which entries in a data
-vector are missing with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!is.na!\inputencoding{utf8}
-function. Certain functions are equipped with a \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!na.rm!\inputencoding{utf8}
-argument, which when \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!TRUE!\inputencoding{utf8}
+vector are missing with the \inputencoding{latin9}\lstinline[showstringspaces=false]!is.na!\inputencoding{utf8}
+function. Certain functions are equipped with a \inputencoding{latin9}\lstinline[showstringspaces=false]!na.rm!\inputencoding{utf8}
+argument, which when \inputencoding{latin9}\lstinline[showstringspaces=false]!TRUE!\inputencoding{utf8}
 will ignore missing data in the function arguments and will return
 the function value. Other functions are not equipped and will return
-an error if \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!NA!\inputencoding{utf8}s
+an error if \inputencoding{latin9}\lstinline[showstringspaces=false]!NA!\inputencoding{utf8}s
 are present.
 
 
@@ -2166,14 +2167,14 @@ of what remains. We will denote it by $\xbar_{t=0.05}$.
 \subsection{How to do it with \textsf{R}}
 \begin{itemize}
 \item You can calculate the frequencies or relative frequencies with the
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!table!\inputencoding{utf8}
+\inputencoding{latin9}\lstinline[showstringspaces=false]!table!\inputencoding{utf8}
 function.
-\item You can calculate the sample mean of a data vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
-with the command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mean(x)!\inputencoding{utf8}. 
-\item You can calculate the sample median of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
-with the command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!median(x)!\inputencoding{utf8}.
-\item You can calculate the trimmed mean with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!trim!\inputencoding{utf8}
-argument; \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mean(x, trim = 0.05)!\inputencoding{utf8}.
+\item You can calculate the sample mean of a data vector \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
+with the command \inputencoding{latin9}\lstinline[showstringspaces=false]!mean(x)!\inputencoding{utf8}. 
+\item You can calculate the sample median of \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
+with the command \inputencoding{latin9}\lstinline[showstringspaces=false]!median(x)!\inputencoding{utf8}.
+\item You can calculate the trimmed mean with the \inputencoding{latin9}\lstinline[showstringspaces=false]!trim!\inputencoding{utf8}
+argument; \inputencoding{latin9}\lstinline[showstringspaces=false]!mean(x, trim = 0.05)!\inputencoding{utf8}.
 \end{itemize}
 
 \subsection{Order Statistics and the Sample Quantiles\label{sub:Order-Statistics-and}}
@@ -2193,9 +2194,9 @@ are concentrated, and where they are sparse.
 The \emph{sample quantiles} are related to the order statistics. Unfortunately,
 there is not a universally accepted definition of them. Indeed, \textsf{R}
 is equipped to calculate quantiles using nine distinct definitions!
-We will describe the default method (\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!type = 7!\inputencoding{utf8}),
+We will describe the default method (\inputencoding{latin9}\lstinline[showstringspaces=false]!type = 7!\inputencoding{utf8}),
 but the interested reader can see the details for the other methods
-with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!?quantile!\inputencoding{utf8}.
+with \inputencoding{latin9}\lstinline[showstringspaces=false]!?quantile!\inputencoding{utf8}.
 
 Suppose the dataset has $n$ observations. Find the sample quantile
 of order $p$ ($0<p<1$), denoted $\tilde{q}_{p}$ , in the following
@@ -2230,34 +2231,34 @@ quartile} $\tilde{q}_{0.75}$ (the \emph{second quartile} is the median).
 \paragraph*{At the command prompt}
 
 We can find the order statistics of a data set stored in a vector
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
-with the command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!sort(x)!\inputencoding{utf8}. 
+\inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
+with the command \inputencoding{latin9}\lstinline[showstringspaces=false]!sort(x)!\inputencoding{utf8}. 
 
 You can calculate the sample quantiles of any order $p$ where $0<p<1$
-for a dataset stored in a data vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
-with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!quantile!\inputencoding{utf8}
-function, for instance, the command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!quantile(x, probs = c(0, 0.25, 0.37))!\inputencoding{utf8}
+for a dataset stored in a data vector \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
+with the \inputencoding{latin9}\lstinline[showstringspaces=false]!quantile!\inputencoding{utf8}
+function, for instance, the command \inputencoding{latin9}\lstinline[showstringspaces=false]!quantile(x, probs = c(0, 0.25, 0.37))!\inputencoding{utf8}
 will return the smallest observation, the first quartile, $\tilde{q}_{0.25}$,
 and the 37th sample quantile, $\tilde{q}_{0.37}$. For $\tilde{q}_{p}$
-simply change the values in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
+simply change the values in the \inputencoding{latin9}\lstinline[showstringspaces=false]!probs!\inputencoding{utf8}
 argument to the value $p$.
 
 
 \paragraph*{With the \textsf{R} Commander}
 
-In \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
-we can find the order statistics of a variable in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Active data set!\inputencoding{utf8}
+In \inputencoding{latin9}\lstinline[showstringspaces=false]!Rcmdr!\inputencoding{utf8}
+we can find the order statistics of a variable in the \inputencoding{latin9}\lstinline[showstringspaces=false]!Active data set!\inputencoding{utf8}
 by doing \textsf{Data $\triangleright$ Manage variables in Active
 data set\ldots{} $\triangleright$ Compute new variable}\textsf{\emph{\ldots{}}}.
-In the \textsf{Expression to compute} dialog simply type \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!sort(varname)!\inputencoding{utf8},
-where \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!varname!\inputencoding{utf8}
+In the \textsf{Expression to compute} dialog simply type \inputencoding{latin9}\lstinline[showstringspaces=false]!sort(varname)!\inputencoding{utf8},
+where \inputencoding{latin9}\lstinline[showstringspaces=false]!varname!\inputencoding{utf8}
 is the variable that it is desired to sort.
 
-In \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8},
+In \inputencoding{latin9}\lstinline[showstringspaces=false]!Rcmdr!\inputencoding{utf8},
 we can calculate the sample quantiles for a particular variable with
 the sequence \textsf{Statistics $\triangleright$ Summaries $\triangleright$
 Numerical Summaries\ldots{}}. We can automatically calculate the
-quartiles for all variables in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Active data set!\inputencoding{utf8}
+quartiles for all variables in the \inputencoding{latin9}\lstinline[showstringspaces=false]!Active data set!\inputencoding{utf8}
 with the sequence \textsf{Statistics $\triangleright$ Summaries $\triangleright$
 Active Dataset}.
 
@@ -2341,19 +2342,19 @@ BLANK for more details.
 
 \paragraph*{At the Command Prompt}
 
-From the console we may compute the sample range with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!range(x)!\inputencoding{utf8}
-and the sample variance with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!var(x)!\inputencoding{utf8}.
-The sample standard deviation may be found with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!sqrt(var(x))!\inputencoding{utf8}
-or simply \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!sd(x)!\inputencoding{utf8}.
-The console syntax for the $IQR$ is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!IQR(x)!\inputencoding{utf8},
-where \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
+From the console we may compute the sample range with \inputencoding{latin9}\lstinline[showstringspaces=false]!range(x)!\inputencoding{utf8}
+and the sample variance with \inputencoding{latin9}\lstinline[showstringspaces=false]!var(x)!\inputencoding{utf8}.
+The sample standard deviation may be found with \inputencoding{latin9}\lstinline[showstringspaces=false]!sqrt(var(x))!\inputencoding{utf8}
+or simply \inputencoding{latin9}\lstinline[showstringspaces=false]!sd(x)!\inputencoding{utf8}.
+The console syntax for the $IQR$ is \inputencoding{latin9}\lstinline[showstringspaces=false]!IQR(x)!\inputencoding{utf8},
+where \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
 is a numeric vector. The console command for the median absolute deviation
-is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mad(x)!\inputencoding{utf8}.
+is \inputencoding{latin9}\lstinline[showstringspaces=false]!mad(x)!\inputencoding{utf8}.
 
 
 \paragraph*{In \textsf{R} Commander}
 
-In \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
+In \inputencoding{latin9}\lstinline[showstringspaces=false]!Rcmdr!\inputencoding{utf8}
 we can calculate the sample standard deviation with the \textsf{Statistics
 $\triangleright$ Summaries $\triangleright$ Numerical Summaries}\ldots{}
 combination. \textsf{R} Commander does not calculate the $IQR$ or
@@ -2405,7 +2406,6 @@ subtraction of 3 may seem mysterious to the reader, but it is done
 so that mound shaped samples have values of $g_{2}$ near $0$. Samples
 with $g_{2}>0$ are called leptokurtic, and samples with $g_{2}<0$
 are called platykurtic. Samples with $g_{2}\approx0$ are called mesokurtic.
-$ $
 
 Notice that both the sample skewness and the sample kurtosis are independent
 of location and scale, in other words, the values of $g_{1}$ and
@@ -2441,7 +2441,7 @@ now what? We look at the data using exploratory visual tools.
 \subsection{More About Stemplots}
 
 There are many bells and whistles associated with stemplots, and the
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!stem.leaf!\inputencoding{utf8}
+\inputencoding{latin9}\lstinline[showstringspaces=false]!stem.leaf!\inputencoding{utf8}
 function can do many of them.
 \begin{enumerate}
 \item Trim Outliers.
@@ -2468,9 +2468,9 @@ More than one part per stem and trim outliers.
 
 \paragraph*{At the Command Prompt}
 
-The basic command is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!stem(x)!\inputencoding{utf8}
-or a more sophisticated version written by Peter Wolf called \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!stem.leaf(x)!\inputencoding{utf8}
-in the \textsf{R} Commander. We will describe \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!stem.leaf!\inputencoding{utf8}
+The basic command is \inputencoding{latin9}\lstinline[showstringspaces=false]!stem(x)!\inputencoding{utf8}
+or a more sophisticated version written by Peter Wolf called \inputencoding{latin9}\lstinline[showstringspaces=false]!stem.leaf(x)!\inputencoding{utf8}
+in the \textsf{R} Commander. We will describe \inputencoding{latin9}\lstinline[showstringspaces=false]!stem.leaf!\inputencoding{utf8}
 since that is the one used by \textsf{R} Commander.
 
 
@@ -2482,9 +2482,9 @@ what you expected. There are several reasons for this:
 \item Stemplots by default will trim extreme observations (defined in Section
 \ref{sub:Outliers}) from the display. This in some cases will result
 in stemplots that are not as wide as expected.
-\item The leafs digit is chosen automatically by \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!stem.leaf!\inputencoding{utf8}
+\item The leafs digit is chosen automatically by \inputencoding{latin9}\lstinline[showstringspaces=false]!stem.leaf!\inputencoding{utf8}
 according to an algorithm that the computer believes will represent
-the data well. Depending on the choice of the digit, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!stem.leaf!\inputencoding{utf8}
+the data well. Depending on the choice of the digit, \inputencoding{latin9}\lstinline[showstringspaces=false]!stem.leaf!\inputencoding{utf8}
 may drop digits from the data or round the values in unexpected ways.
 \end{itemize}
 <<>>=
@@ -2523,8 +2523,8 @@ to the sample quantiles in Section BLANK.
 
 \paragraph*{At the Command Prompt}
 
-If the data are stored in a vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!x!\inputencoding{utf8},
-then you can compute the $5NS$ with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!fivenum!\inputencoding{utf8}
+If the data are stored in a vector \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8},
+then you can compute the $5NS$ with the \inputencoding{latin9}\lstinline[showstringspaces=false]!fivenum!\inputencoding{utf8}
 function.
 
 
@@ -2579,7 +2579,7 @@ When potential outliers are present, the whiskers of the boxplot are
 then shortened to extend to the most extreme observation that is not
 a potential outlier. If an outlier is displayed in a boxplot, the
 index of the observation may be identified in a subsequent plot in
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
+\inputencoding{latin9}\lstinline[showstringspaces=false]!Rcmdr!\inputencoding{utf8}
 by clicking the \textsf{Identify outliers with mouse} option in the
 \textsf{Boxplot} dialog.
 
@@ -2603,8 +2603,8 @@ that does not depend on the measurement units.
 We have had experience with vectors of data, which are long lists
 of numbers. Typically, each entry in the vector is a single measurement
 on a subject or experimental unit in the study. We saw in Section
-BLANK how to form vectors with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!c!\inputencoding{utf8}
-function or the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!scan!\inputencoding{utf8}
+BLANK how to form vectors with the \inputencoding{latin9}\lstinline[showstringspaces=false]!c!\inputencoding{utf8}
+function or the \inputencoding{latin9}\lstinline[showstringspaces=false]!scan!\inputencoding{utf8}
 function. 
 
 However, statistical studies often involve experiments where there
@@ -2618,11 +2618,11 @@ There would be 11 rows. Each row would have the person's height in
 the first column and weight in the second column.
 
 The corresponding objects in \textsf{R} are called \emph{data frames},
-and they can be constructed with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!data.frame!\inputencoding{utf8}
+and they can be constructed with the \inputencoding{latin9}\lstinline[showstringspaces=false]!data.frame!\inputencoding{utf8}
 function. Each row is an observation, and each column is a variable.
 \begin{example}
-Suppose we have two vectors \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!y!\inputencoding{utf8}
+Suppose we have two vectors \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!y!\inputencoding{utf8}
 and we want to make a data frame out of them.
 \end{example}
 <<>>=
@@ -2631,16 +2631,16 @@ y <- letters[3:6]
 data.frame(x,y)
 @
 
-Notice that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!y!\inputencoding{utf8}
-are the same length. This is \emph{necessary}. Also notice that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
-is a numeric vector and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!y!\inputencoding{utf8}
+Notice that \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!y!\inputencoding{utf8}
+are the same length. This is \emph{necessary}. Also notice that \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
+is a numeric vector and \inputencoding{latin9}\lstinline[showstringspaces=false]!y!\inputencoding{utf8}
 is a character vector. We may choose numeric and character vectors
 (or even factors) for the columns of the dataframe, but each column
 must be of exactly one type. That is, we can have a column for \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!height!\inputencoding{utf8}
-and a column for \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!gender!\inputencoding{utf8},
-but we will get an error if we try to mix function \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!height!\inputencoding{utf8}
-(numeric) and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!gender!\inputencoding{utf8}
+and a column for \inputencoding{latin9}\lstinline[showstringspaces=false]!gender!\inputencoding{utf8},
+but we will get an error if we try to mix function \inputencoding{latin9}\lstinline[showstringspaces=false]!height!\inputencoding{utf8}
+(numeric) and \inputencoding{latin9}\lstinline[showstringspaces=false]!gender!\inputencoding{utf8}
 (character or factor) information in the same column.
 
 
@@ -2651,7 +2651,7 @@ What about the correlation coefficient?
 
 \subsubsection*{Displaying Bivariate Data}
 \begin{itemize}
-\item Two-Way Tables. You can do this with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!table!\inputencoding{utf8},
+\item Two-Way Tables. You can do this with \inputencoding{latin9}\lstinline[showstringspaces=false]!table!\inputencoding{utf8},
 or in the \textsf{R} Commander by following \textsf{Statistics $\triangleright$
 Contingency Tables $\triangleright$} \textsf{Two-way Tables}. You
 can also enter and analyze a two-way table. Example: BLANK
@@ -2688,7 +2688,7 @@ matplot(rnorm(100), rnorm(100), type="b", lty=1, pch=1)
 
 Displaying Multivariate Data
 \begin{itemize}
-\item Multi-Way Tables. You can do this with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!table!\inputencoding{utf8},
+\item Multi-Way Tables. You can do this with \inputencoding{latin9}\lstinline[showstringspaces=false]!table!\inputencoding{utf8},
 or in \textsf{R} Commander by following \textsf{Statistics} \textsf{$\triangleright$}
 \textsf{Contingency Tables} \textsf{$\triangleright$} \textsf{Multi-way
 Tables}. Example: BLANK
@@ -2878,8 +2878,8 @@ print(coplot(conc ~ uptake | Type * Treatment, data = CO2))
 \paragraph*{Directions: }
 
 Open \textsf{R} and issue the following commands at the command line
-to get started. Note that you need to have the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!RcmdrPlugin.IPSUR!\inputencoding{utf8}
-package installed, and for some exercises you need the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!e1071!\inputencoding{utf8}
+to get started. Note that you need to have the \inputencoding{latin9}\lstinline[showstringspaces=false]!RcmdrPlugin.IPSUR!\inputencoding{utf8}
+package installed, and for some exercises you need the \inputencoding{latin9}\lstinline[showstringspaces=false]!e1071!\inputencoding{utf8}
 package.
 \begin{lyxcode}
 library(RcmdrPlugin.IPSUR)~\\
@@ -2892,20 +2892,20 @@ attach(RcmdrTestDrive)
 names(RcmdrTestDrive)
 @
 
-To load the data in the \textsf{R} Commander (\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}),
-click the \textsf{Data Set} button, and select \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!RcmdrTestDrive!\inputencoding{utf8}
+To load the data in the \textsf{R} Commander (\inputencoding{latin9}\lstinline[showstringspaces=false]!Rcmdr!\inputencoding{utf8}),
+click the \textsf{Data Set} button, and select \inputencoding{latin9}\lstinline[showstringspaces=false]!RcmdrTestDrive!\inputencoding{utf8}
 as the active data set. To learn more about the data set and where
-it comes from, type \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!?RcmdrTestDrive!\inputencoding{utf8}
+it comes from, type \inputencoding{latin9}\lstinline[showstringspaces=false]!?RcmdrTestDrive!\inputencoding{utf8}
 at the command line.
 \begin{xca}
-Perform a summary of all variables in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!RcmdrTestDrive!\inputencoding{utf8}.
+Perform a summary of all variables in \inputencoding{latin9}\lstinline[showstringspaces=false]!RcmdrTestDrive!\inputencoding{utf8}.
 You can do this with the command \inputencoding{latin9}
-\begin{lstlisting}[basicstyle={\ttfamily}]
+\begin{lstlisting}[showstringspaces=false]
 summary(RcmdrTestDrive)
 \end{lstlisting}
 \inputencoding{utf8}
 
-Alternatively, you can do this in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
+Alternatively, you can do this in the \inputencoding{latin9}\lstinline[showstringspaces=false]!Rcmdr!\inputencoding{utf8}
 with the sequence \textsf{Statistics} \textsf{$\triangleright$ Summaries}
 \textsf{$\triangleright$ Active Data Set}. Report the values of the
 summary statistics for each variable.
@@ -2932,7 +2932,7 @@ Make a table of the \emph{race} variable. Do this with \textsf{Statistics}
 
 \paragraph*{Solution:}
 
-First we will make a table of the \emph{race} variable with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!table!\inputencoding{utf8}
+First we will make a table of the \emph{race} variable with the \inputencoding{latin9}\lstinline[showstringspaces=false]!table!\inputencoding{utf8}
 function.
 
 <<>>=
@@ -2966,7 +2966,7 @@ standard deviation?
 method:
 
 \begin{quote}
-On the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8},
+On the \inputencoding{latin9}\lstinline[showstringspaces=false]!Rcmdr!\inputencoding{utf8},
 click \textsf{Graphs} \textsf{$\triangleright$} \textsf{IPSUR - Boxplot}...\\
 In the \textsf{Variable} box, select \emph{salar}y.\\
 Click the \textsf{Plot by groups}... box and select \emph{gender}.
@@ -2981,14 +2981,14 @@ How does the boxplot compare to your answers to (1) and (3)?
 \paragraph*{Solution:}
 
 We can generate a table listing the average salaries by gender with
-two methods. The first uses \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!tapply!\inputencoding{utf8}:
+two methods. The first uses \inputencoding{latin9}\lstinline[showstringspaces=false]!tapply!\inputencoding{utf8}:
 
 <<>>=
 x = tapply(RcmdrTestDrive$salary, list(gender=RcmdrTestDrive$gender), mean, na.rm=TRUE)
 x
 @
 
-The second method uses the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!by!\inputencoding{utf8}
+The second method uses the \inputencoding{latin9}\lstinline[showstringspaces=false]!by!\inputencoding{utf8}
 function:
 
 <<keep.source = TRUE>>=
@@ -3007,7 +3007,7 @@ the highest mean salary is \Sexpr{names(x)[which(x==max(x))]}.
 
 
 Depending on our answer above, we would do something like \inputencoding{latin9}
-\begin{lstlisting}[basicstyle={\ttfamily}]
+\begin{lstlisting}[showstringspaces=false]
 mean(salary[gender == Male])
 \end{lstlisting}
 \inputencoding{utf8} for example. For these data, the highest mean salary is 
@@ -3052,8 +3052,8 @@ gender.\end{enumerate}
 \begin{xca}
 For this problem we will study the variable \emph{reduction}.
 \begin{enumerate}
-\item Find the order statistics and store them in a vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}.
-\emph{Hint: }\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x <- sort(reduction)!\inputencoding{utf8}
+\item Find the order statistics and store them in a vector \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}.
+\emph{Hint: }\inputencoding{latin9}\lstinline[showstringspaces=false]!x <- sort(reduction)!\inputencoding{utf8}
 \item Find $x_{(137)}$, the 137$^{\text{th}}$ order statistic.
 \item Find the IQR.
 \item Find the Five Number Summary (5NS).
@@ -3062,8 +3062,8 @@ would be.
 \item Compare your answers (3) and (5). Are they the same? If not, are they
 close?
 \item Make a boxplot of \emph{reduction}, and include the boxplot in your
-report. You can do this with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!boxplot!\inputencoding{utf8}
-function, or in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
+report. You can do this with the \inputencoding{latin9}\lstinline[showstringspaces=false]!boxplot!\inputencoding{utf8}
+function, or in \inputencoding{latin9}\lstinline[showstringspaces=false]!Rcmdr!\inputencoding{utf8}
 with \textsf{Graphs} \textsf{$\triangleright$} \textsf{IPSUR - Boxplot}...
 \item Are there any potential/suspected outliers? If so, list their values.
 \emph{Hint:} use your answer to (a).
@@ -3113,7 +3113,7 @@ be considered a suspected outlier.
 
 \begin{xca}
 In this problem we will compare the variables \emph{before} and \emph{after}.
-Don't forget \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!library(e1071)!\inputencoding{utf8}.
+Don't forget \inputencoding{latin9}\lstinline[showstringspaces=false]!library(e1071)!\inputencoding{utf8}.
 \begin{enumerate}
 \item Examine the two measures of center for both variables that you found
 in Exercise BLANK. Judging from these measures, which variable has
@@ -3141,7 +3141,7 @@ in problem 1. Judging from these measures, which variable has a higher
 center?
 
 
-We may take a look at the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!summary(RcmdrTestDrive)!\inputencoding{utf8}
+We may take a look at the \inputencoding{latin9}\lstinline[showstringspaces=false]!summary(RcmdrTestDrive)!\inputencoding{utf8}
 output from Exercise BLANK. Here we will repeat the relevant summary
 statistics.
 
@@ -3210,8 +3210,8 @@ IQR(after)/1.349
 @
 
 Judging from the values above, we would decide which variable has
-the higher spread. Look at how close the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mad!\inputencoding{utf8}
-and the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!IQR!\inputencoding{utf8}
+the higher spread. Look at how close the \inputencoding{latin9}\lstinline[showstringspaces=false]!mad!\inputencoding{utf8}
+and the \inputencoding{latin9}\lstinline[showstringspaces=false]!IQR!\inputencoding{utf8}
 (after suitable rescaling) are; it goes to show why the rescaling
 is important.
 
@@ -3325,7 +3325,7 @@ selection of an outcome in $S$.
 
 \subsection{How to do it with \textsf{R}}
 
-Most of the probability work in this book is done with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
+Most of the probability work in this book is done with the \inputencoding{latin9}\lstinline[showstringspaces=false]!prob!\inputencoding{utf8}
 package. A sample space is (usually) represented by a \emph{data frame},
 that is, a rectangular collection of variables (see Section BLANK).
 Each row of the data frame corresponds to an outcome of the experiment.
@@ -3347,21 +3347,21 @@ S <- data.frame(lands = c("down","up","side"))
 S
 @
 
-The sample space \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!S!\inputencoding{utf8}
-contains the column \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!lands!\inputencoding{utf8}
-which stores the outcomes \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"down"!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"up"!\inputencoding{utf8},
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"side"!\inputencoding{utf8}. 
+The sample space \inputencoding{latin9}\lstinline[showstringspaces=false]!S!\inputencoding{utf8}
+contains the column \inputencoding{latin9}\lstinline[showstringspaces=false]!lands!\inputencoding{utf8}
+which stores the outcomes \inputencoding{latin9}\lstinline[showstringspaces=false]!"down"!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!"up"!\inputencoding{utf8},
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!"side"!\inputencoding{utf8}. 
 
 \end{example}
 Some sample spaces are so common that convenience wrappers were written
 to set them up with minimal effort. The underlying machinery that
-does the work includes the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!expand.grid!\inputencoding{utf8}
-function in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!base!\inputencoding{utf8}
-package, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!combn!\inputencoding{utf8}
-in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!combinat!\inputencoding{utf8}
-package, and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!permsn!\inputencoding{utf8}
-in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
+does the work includes the \inputencoding{latin9}\lstinline[showstringspaces=false]!expand.grid!\inputencoding{utf8}
+function in the \inputencoding{latin9}\lstinline[showstringspaces=false]!base!\inputencoding{utf8}
+package, \inputencoding{latin9}\lstinline[showstringspaces=false]!combn!\inputencoding{utf8}
+in the \inputencoding{latin9}\lstinline[showstringspaces=false]!combinat!\inputencoding{utf8}
+package, and \inputencoding{latin9}\lstinline[showstringspaces=false]!permsn!\inputencoding{utf8}
+in the \inputencoding{latin9}\lstinline[showstringspaces=false]!prob!\inputencoding{utf8}
 package%
 \footnote{The seasoned \textsf{R} user can get the job done without the convenience
 wrappers. I encourage their use for the beginner to get started, but
@@ -3371,7 +3371,7 @@ not for speed or efficiency.%
 }.
 
 Consider the random experiment of tossing a coin. The outcomes are
-$H$ and $T$. We can set up the sample space quickly with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!tosscoin!\inputencoding{utf8}
+$H$ and $T$. We can set up the sample space quickly with the \inputencoding{latin9}\lstinline[showstringspaces=false]!tosscoin!\inputencoding{utf8}
 function:
 
 <<>>= 
@@ -3379,8 +3379,8 @@ library(prob)
 tosscoin(1) 
 @
 
-The number \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!1!\inputencoding{utf8}
-tells \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!tosscoin!\inputencoding{utf8}
+The number \inputencoding{latin9}\lstinline[showstringspaces=false]!1!\inputencoding{utf8}
+tells \inputencoding{latin9}\lstinline[showstringspaces=false]!tosscoin!\inputencoding{utf8}
 that we only want to toss the coin once. We could toss it three times: 
 
 <<echo=TRUE,print=TRUE>>= 
@@ -3393,10 +3393,10 @@ Alternatively we could roll a fair die:
 rolldie(1) 
 @
 
-The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rolldie!\inputencoding{utf8}
+The \inputencoding{latin9}\lstinline[showstringspaces=false]!rolldie!\inputencoding{utf8}
 function defaults to a 6-sided die, but we can specify others with
-the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!nsides!\inputencoding{utf8}
-argument. The command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rolldie(3, nsides = 4)!\inputencoding{utf8}
+the \inputencoding{latin9}\lstinline[showstringspaces=false]!nsides!\inputencoding{utf8}
+argument. The command \inputencoding{latin9}\lstinline[showstringspaces=false]!rolldie(3, nsides = 4)!\inputencoding{utf8}
 would be used to roll a 4-sided die three times.
 
 Perhaps we would like to draw one card from a standard set of playing
@@ -3406,10 +3406,10 @@ cards (it is a long data frame):
 head(cards()) 
 @
 
-The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cards!\inputencoding{utf8}
-function that we just used has optional arguments \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!jokers!\inputencoding{utf8}
-(if you would like Jokers to be in the deck) and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!makespace!\inputencoding{utf8}
-which we will discuss later. There is also a \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!roulette!\inputencoding{utf8}
+The \inputencoding{latin9}\lstinline[showstringspaces=false]!cards!\inputencoding{utf8}
+function that we just used has optional arguments \inputencoding{latin9}\lstinline[showstringspaces=false]!jokers!\inputencoding{utf8}
+(if you would like Jokers to be in the deck) and \inputencoding{latin9}\lstinline[showstringspaces=false]!makespace!\inputencoding{utf8}
+which we will discuss later. There is also a \inputencoding{latin9}\lstinline[showstringspaces=false]!roulette!\inputencoding{utf8}
 function which returns the sample space associated with one spin on
 a roulette wheel. There are EU and USA versions available. Interested
 readers may contribute any other game or sample spaces that may be
@@ -3450,16 +3450,16 @@ to selecting a ball from an urn with six elements, labeled 1 through
 
 \subsection{How to do it with \textsf{R} }
 
-The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
-package accomplishes sampling from urns with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples!\inputencoding{utf8}
-function, which has arguments \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!size!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!replace!\inputencoding{utf8},
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ordered!\inputencoding{utf8}.
-The argument \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
-represents the urn from which sampling is to be done. The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!size!\inputencoding{utf8}
-argument tells how large the sample will be. The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ordered!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!replace!\inputencoding{utf8}
+The \inputencoding{latin9}\lstinline[showstringspaces=false]!prob!\inputencoding{utf8}
+package accomplishes sampling from urns with the \inputencoding{latin9}\lstinline[showstringspaces=false]!urnsamples!\inputencoding{utf8}
+function, which has arguments \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!size!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!replace!\inputencoding{utf8},
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!ordered!\inputencoding{utf8}.
+The argument \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
+represents the urn from which sampling is to be done. The \inputencoding{latin9}\lstinline[showstringspaces=false]!size!\inputencoding{utf8}
+argument tells how large the sample will be. The \inputencoding{latin9}\lstinline[showstringspaces=false]!ordered!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!replace!\inputencoding{utf8}
 arguments are logical and specify how sampling will be performed.
 We will discuss each in turn.
 \begin{example}
@@ -3480,15 +3480,15 @@ urnsamples(1:3, size = 2, replace = TRUE, ordered = TRUE)
 Notice that rows 2 and 4 are identical, save for the order in which
 the numbers are shown. Further, note that every possible pair of the
 numbers 1 through 3 are listed. This experiment is equivalent to rolling
-a 3-sided die twice, which we could have accomplished with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rolldie(2, nsides = 3)!\inputencoding{utf8}.
+a 3-sided die twice, which we could have accomplished with \inputencoding{latin9}\lstinline[showstringspaces=false]!rolldie(2, nsides = 3)!\inputencoding{utf8}.
 
 
 \subsubsection*{Ordered, Without Replacement}
 
 Here sampling is without replacement, so we may not observe the same
 number twice in any row. Order is still important, however, so we
-expect to see the outcomes \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!1,2!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!2,1!\inputencoding{utf8}
+expect to see the outcomes \inputencoding{latin9}\lstinline[showstringspaces=false]!1,2!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!2,1!\inputencoding{utf8}
 somewhere in our data frame. 
 
 <<echo=TRUE,print=TRUE>>= 
@@ -3515,8 +3515,8 @@ urnsamples(1:3, size = 2, replace = FALSE, ordered = FALSE)
 @ 
 
 This experiment is equivalent to reaching in the urn, picking a pair,
-and looking to see what they are. This is the default setting of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples!\inputencoding{utf8},
-so we would have received the same output by simply typing \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples(1:3, 2)!\inputencoding{utf8}.
+and looking to see what they are. This is the default setting of \inputencoding{latin9}\lstinline[showstringspaces=false]!urnsamples!\inputencoding{utf8},
+so we would have received the same output by simply typing \inputencoding{latin9}\lstinline[showstringspaces=false]!urnsamples(1:3, 2)!\inputencoding{utf8}.
 
 
 \subsubsection*{Unordered, With Replacement}
@@ -3535,31 +3535,31 @@ a cup, shaking the cup, and looking inside -- as in a game of \emph{Liar's
 Dice}, for instance. Each row of the sample space is a potential pair
 we could observe. Another way is to view each outcome as a separate
 methodway to distribute two identical golf balls into three boxes
-labeled 1, 2, and 3. Regardless of the interpretation, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples!\inputencoding{utf8}
+labeled 1, 2, and 3. Regardless of the interpretation, \inputencoding{latin9}\lstinline[showstringspaces=false]!urnsamples!\inputencoding{utf8}
 lists every possible way that the experiment can conclude.
 
 \end{example}
 Note that the urn does not need to contain numbers; we could have
-just as easily taken our urn to be \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x = c("Red","Blue","Green")!\inputencoding{utf8}.
+just as easily taken our urn to be \inputencoding{latin9}\lstinline[showstringspaces=false]!x = c("Red","Blue","Green")!\inputencoding{utf8}.
 But, there is an \textbf{important} point to mention before proceeding.
 Astute readers will notice that in our example, the balls in the urn
 were \textit{distinguishable} in the sense that each had a unique
 label to distinguish it from the others in the urn. A natural question
 would be, {}``What happens if your urn has indistinguishable elements,
-for example, what if \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x = c("Red","Red","Blue")!\inputencoding{utf8}?''
-The answer is that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples!\inputencoding{utf8}
+for example, what if \inputencoding{latin9}\lstinline[showstringspaces=false]!x = c("Red","Red","Blue")!\inputencoding{utf8}?''
+The answer is that \inputencoding{latin9}\lstinline[showstringspaces=false]!urnsamples!\inputencoding{utf8}
 behaves as if each ball in the urn is distinguishable, regardless
 of its actual contents. We may thus imagine that while there are two
 red balls in the urn, the balls are such that we can tell them apart
 (in principle) by looking closely enough at the imperfections on their
 surface.
 
-In this way, when the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
-argument of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples!\inputencoding{utf8}
+In this way, when the \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
+argument of \inputencoding{latin9}\lstinline[showstringspaces=false]!urnsamples!\inputencoding{utf8}
 has repeated elements, the resulting sample space may appear to be
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ordered = TRUE!\inputencoding{utf8}
-even when, in fact, the call to the function was \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples(..., ordered = FALSE)!\inputencoding{utf8}.
-Similar remarks apply for the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!replace!\inputencoding{utf8}
+\inputencoding{latin9}\lstinline[showstringspaces=false]!ordered = TRUE!\inputencoding{utf8}
+even when, in fact, the call to the function was \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!urnsamples(..., ordered = FALSE)!\inputencoding{utf8}.
+Similar remarks apply for the \inputencoding{latin9}\lstinline[showstringspaces=false]!replace!\inputencoding{utf8}
 argument. We investigate this issue further in Section BLANK.
 
 
@@ -3583,8 +3583,8 @@ algebra of sets in Appendix BLANK.
 
 \subsection{How to do it with \textsf{R}}
 
-Given a data frame sample/probability space \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!S!\inputencoding{utf8},
-we may extract rows using the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]![]!\inputencoding{utf8}
+Given a data frame sample/probability space \inputencoding{latin9}\lstinline[showstringspaces=false]!S!\inputencoding{utf8},
+we may extract rows using the \inputencoding{latin9}\lstinline[showstringspaces=false]![]!\inputencoding{utf8}
 operator: 
 
 <<echo=TRUE,print=TRUE>>= 
@@ -3594,7 +3594,7 @@ S[c(2,4), ]
 @ 
 
 and so forth. We may also extract rows that satisfy a logical expression
-using the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!subset!\inputencoding{utf8}
+using the \inputencoding{latin9}\lstinline[showstringspaces=false]!subset!\inputencoding{utf8}
 function, for instance 
 
 <<echo=TRUE,print=FALSE>>= 
@@ -3626,7 +3626,7 @@ the question being asked. Here are a few functions to get started.
 
 \subsubsection*{The \texttt{\%in\%} function}
 
-The function \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!%in%!\inputencoding{utf8}
+The function \inputencoding{latin9}\lstinline[showstringspaces=false]!%in%!\inputencoding{utf8}
 helps to learn whether each value of one vector lies somewhere inside
 another vector. 
 
@@ -3637,26 +3637,26 @@ y %in% x
 @ 
 
 Notice that the returned value is a vector of length 5 which tests
-whether each element of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!y!\inputencoding{utf8}
-is in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8},
+whether each element of \inputencoding{latin9}\lstinline[showstringspaces=false]!y!\inputencoding{utf8}
+is in \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8},
 in turn.
 
 
 \subsubsection*{The \texttt{isin} function}
 
 It is more common to want to know whether the \emph{whole} vector
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!y!\inputencoding{utf8}
-is in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}.
-We can do this with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!isin!\inputencoding{utf8}
+\inputencoding{latin9}\lstinline[showstringspaces=false]!y!\inputencoding{utf8}
+is in \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}.
+We can do this with the \inputencoding{latin9}\lstinline[showstringspaces=false]!isin!\inputencoding{utf8}
 function. 
 
 <<echo=TRUE,print=TRUE>>= 
 isin(x,y) 
 @
 
-Of course, one may ask why we did not try something like \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!all(y %in% x)!\inputencoding{utf8},
-which would give a single result, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!TRUE!\inputencoding{utf8}.
-The reason is that the answers are different in the case that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!y!\inputencoding{utf8}
+Of course, one may ask why we did not try something like \inputencoding{latin9}\lstinline[showstringspaces=false]!all(y %in% x)!\inputencoding{utf8},
+which would give a single result, \inputencoding{latin9}\lstinline[showstringspaces=false]!TRUE!\inputencoding{utf8}.
+The reason is that the answers are different in the case that \inputencoding{latin9}\lstinline[showstringspaces=false]!y!\inputencoding{utf8}
 has repeated values. Compare: 
 
 <<echo=TRUE,print=FALSE>>= 
@@ -3669,14 +3669,14 @@ all(y %in% x)
 isin(x,y) 
 @ 
 
-The reason for the above is of course that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
-contains the value 3, but \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
+The reason for the above is of course that \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
+contains the value 3, but \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
 does not have \emph{two} 3's. The difference is important when rolling
 multiple dice, playing cards, \emph{etc}. Note that there is an optional
-argument \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ordered!\inputencoding{utf8}
-which tests whether the elements of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!y!\inputencoding{utf8}
-appear in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
-in the order in which they are appear in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!y!\inputencoding{utf8}.
+argument \inputencoding{latin9}\lstinline[showstringspaces=false]!ordered!\inputencoding{utf8}
+which tests whether the elements of \inputencoding{latin9}\lstinline[showstringspaces=false]!y!\inputencoding{utf8}
+appear in \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
+in the order in which they are appear in \inputencoding{latin9}\lstinline[showstringspaces=false]!y!\inputencoding{utf8}.
 The consequences are 
 
 <<echo=TRUE,print=TRUE>>= 
@@ -3685,8 +3685,8 @@ isin(x, c(3,5,4), ordered = TRUE)
 @ 
 
 The connection to probability is that have a data frame sample space
-and we would like to find a subset of that space. A \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!data.frame!\inputencoding{utf8}
-method was written for \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!isin!\inputencoding{utf8}
+and we would like to find a subset of that space. A \inputencoding{latin9}\lstinline[showstringspaces=false]!data.frame!\inputencoding{utf8}
+method was written for \inputencoding{latin9}\lstinline[showstringspaces=false]!isin!\inputencoding{utf8}
 that simply applies the function to each row of the data frame. We
 can see the method in action with the following: 
 
@@ -3696,8 +3696,8 @@ subset(S, isin(S, c(2,2,6), ordered = TRUE))
 @
 
 There are a few other functions written to find useful subsets, namely,
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!countrep!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!isrep!\inputencoding{utf8}.
+\inputencoding{latin9}\lstinline[showstringspaces=false]!countrep!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!isrep!\inputencoding{utf8}.
 Essentially these were written to test for (or count) a specific number
 of designated values in outcomes. See the documentation for details.
 
@@ -3739,37 +3739,37 @@ setdiff(A,B)
 setdiff(B,A) 
 @ 
 
-Notice that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!setdiff!\inputencoding{utf8}
+Notice that \inputencoding{latin9}\lstinline[showstringspaces=false]!setdiff!\inputencoding{utf8}
 is not symmetric. Further, note that we can calculate the \emph{complement}
 of a set $A$, denoted $A^{c}$ and defined to be the elements of
-$S$ that are not in $A$ simply with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!setdiff(S,A)!\inputencoding{utf8}.
+$S$ that are not in $A$ simply with \inputencoding{latin9}\lstinline[showstringspaces=false]!setdiff(S,A)!\inputencoding{utf8}.
 
-There have been methods written for \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!intersect!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!setdiff!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!subset!\inputencoding{utf8},
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!union!\inputencoding{utf8}
-in the case that the input objects are of class \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ps!\inputencoding{utf8}.
+There have been methods written for \inputencoding{latin9}\lstinline[showstringspaces=false]!intersect!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!setdiff!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!subset!\inputencoding{utf8},
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!union!\inputencoding{utf8}
+in the case that the input objects are of class \inputencoding{latin9}\lstinline[showstringspaces=false]!ps!\inputencoding{utf8}.
 See Section BLANK.
 \begin{note}
-When you load the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
+When you load the \inputencoding{latin9}\lstinline[showstringspaces=false]!prob!\inputencoding{utf8}
 package you will most certainly notice the message: {}``\texttt{The
 following object(s) are masked from package:base: intersect setdiff,
 subset, union}''. The reason for this message is that there already
-exist methods for the functions \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!intersect!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!setdiff!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!subset!\inputencoding{utf8},
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!union!\inputencoding{utf8}
-in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!base!\inputencoding{utf8}
+exist methods for the functions \inputencoding{latin9}\lstinline[showstringspaces=false]!intersect!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!setdiff!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!subset!\inputencoding{utf8},
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!union!\inputencoding{utf8}
+in the \inputencoding{latin9}\lstinline[showstringspaces=false]!base!\inputencoding{utf8}
 package which ships with \textsf{R}. However, these methods were designed
 for when the arguments are vectors of the same mode. Since we are
 manipulating sample spaces which are data frames and lists, it was
 necessary to write methods to handle those cases as well. When the
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
+\inputencoding{latin9}\lstinline[showstringspaces=false]!prob!\inputencoding{utf8}
 package is loaded, \textsf{R} recognizes that there are multiple versions
 of the same function in the search path and acts to shield the new
 definitions from the existing ones. But there is no cause for alarm,
-thankfully, because the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
-functions have been carefully defined to match the usual \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!base!\inputencoding{utf8}
+thankfully, because the \inputencoding{latin9}\lstinline[showstringspaces=false]!prob!\inputencoding{utf8}
+functions have been carefully defined to match the usual \inputencoding{latin9}\lstinline[showstringspaces=false]!base!\inputencoding{utf8}
 package definition in the case that the arguments are vectors.
 \end{note}
 
@@ -3946,41 +3946,41 @@ the sample space.
 
 \subsection{How to do it with \textsf{R}}
 
-In the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
-package, a probability space is an object of outcomes \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!S!\inputencoding{utf8}
-and a vector of probabilities (called {}``\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}'')
-with entries that correspond to each outcome in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!S!\inputencoding{utf8}.
-When \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!S!\inputencoding{utf8}
-is a data frame, we may simply add a column called \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
-to \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!S!\inputencoding{utf8}
+In the \inputencoding{latin9}\lstinline[showstringspaces=false]!prob!\inputencoding{utf8}
+package, a probability space is an object of outcomes \inputencoding{latin9}\lstinline[showstringspaces=false]!S!\inputencoding{utf8}
+and a vector of probabilities (called {}``\inputencoding{latin9}\lstinline[showstringspaces=false]!probs!\inputencoding{utf8}'')
+with entries that correspond to each outcome in \inputencoding{latin9}\lstinline[showstringspaces=false]!S!\inputencoding{utf8}.
+When \inputencoding{latin9}\lstinline[showstringspaces=false]!S!\inputencoding{utf8}
+is a data frame, we may simply add a column called \inputencoding{latin9}\lstinline[showstringspaces=false]!probs!\inputencoding{utf8}
+to \inputencoding{latin9}\lstinline[showstringspaces=false]!S!\inputencoding{utf8}
 and we will be finished; the probability space will simply be a data
-frame which we may call \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!S!\inputencoding{utf8}.
-In the case that S is a list, we may combine the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!outcomes!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
-into a larger list, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!space!\inputencoding{utf8};
-it will have two components: \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!outcomes!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}.
-The only requirements we need are for the entries of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
-to be nonnegative and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!sum(probs)!\inputencoding{utf8}
+frame which we may call \inputencoding{latin9}\lstinline[showstringspaces=false]!S!\inputencoding{utf8}.
+In the case that S is a list, we may combine the \inputencoding{latin9}\lstinline[showstringspaces=false]!outcomes!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!probs!\inputencoding{utf8}
+into a larger list, \inputencoding{latin9}\lstinline[showstringspaces=false]!space!\inputencoding{utf8};
+it will have two components: \inputencoding{latin9}\lstinline[showstringspaces=false]!outcomes!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!probs!\inputencoding{utf8}.
+The only requirements we need are for the entries of \inputencoding{latin9}\lstinline[showstringspaces=false]!probs!\inputencoding{utf8}
+to be nonnegative and \inputencoding{latin9}\lstinline[showstringspaces=false]!sum(probs)!\inputencoding{utf8}
 to be one.
 
-To accomplish this in \textsf{R}, we may use the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probspace!\inputencoding{utf8}
-function. The general syntax is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probspace(x, probs)!\inputencoding{utf8},
-where \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
-is a sample space of outcomes and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
-is a vector (of the same length as the number of outcomes in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}).
-The specific choice of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
+To accomplish this in \textsf{R}, we may use the \inputencoding{latin9}\lstinline[showstringspaces=false]!probspace!\inputencoding{utf8}
+function. The general syntax is \inputencoding{latin9}\lstinline[showstringspaces=false]!probspace(x, probs)!\inputencoding{utf8},
+where \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
+is a sample space of outcomes and \inputencoding{latin9}\lstinline[showstringspaces=false]!probs!\inputencoding{utf8}
+is a vector (of the same length as the number of outcomes in \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}).
+The specific choice of \inputencoding{latin9}\lstinline[showstringspaces=false]!probs!\inputencoding{utf8}
 depends on the context of the problem, and some examples follow to
 demonstrate some of the more common choices.
 \begin{example}
 The Equally Likely Model asserts that every outcome of the sample
 space has the same probability, thus, if a sample space has $n$ outcomes,
-then \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
+then \inputencoding{latin9}\lstinline[showstringspaces=false]!probs!\inputencoding{utf8}
 would be a vector of length $n$ with identical entries $1/n$. The
-quickest way to generate \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
-is with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rep!\inputencoding{utf8}
+quickest way to generate \inputencoding{latin9}\lstinline[showstringspaces=false]!probs!\inputencoding{utf8}
+is with the \inputencoding{latin9}\lstinline[showstringspaces=false]!rep!\inputencoding{utf8}
 function. We will start with the experiment of rolling a die, so that
-$n=6$. We will construct the sample space, generate the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
+$n=6$. We will construct the sample space, generate the \inputencoding{latin9}\lstinline[showstringspaces=false]!probs!\inputencoding{utf8}
 vector, and put them together with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probspace!\inputencoding{utf8}. 
 
 <<echo=TRUE,print=TRUE>>= 
@@ -3989,7 +3989,7 @@ p <- rep(1/6, times = 6)
 probspace(outcomes, probs = p) 
 @ 
 
-The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probspace!\inputencoding{utf8}
+The \inputencoding{latin9}\lstinline[showstringspaces=false]!probspace!\inputencoding{utf8}
 function is designed to save us some time in many of the most common
 situations. For example, due to the especial simplicity of the sample
 space in this case, we could have achieved the same result with only
@@ -4000,8 +4000,8 @@ probspace(1:6, probs = p)
 @ 
 
 Further, since the equally likely model plays such a fundamental role
-in the study of probability the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probspace!\inputencoding{utf8}
-function will assume that the equally model is desired if no \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
+in the study of probability the \inputencoding{latin9}\lstinline[showstringspaces=false]!probspace!\inputencoding{utf8}
+function will assume that the equally model is desired if no \inputencoding{latin9}\lstinline[showstringspaces=false]!probs!\inputencoding{utf8}
 are specified. Thus, we get the same answer with only 
 
 <<echo=TRUE,print=TRUE>>= 
@@ -4009,34 +4009,34 @@ probspace(1:6)
 @ 
 
 And finally, since rolling dice is such a common experiment in probability
-classes, the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rolldie!\inputencoding{utf8}
-function has an additional logical argument \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!makespace!\inputencoding{utf8}
-that will add a column of equally likely \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
+classes, the \inputencoding{latin9}\lstinline[showstringspaces=false]!rolldie!\inputencoding{utf8}
+function has an additional logical argument \inputencoding{latin9}\lstinline[showstringspaces=false]!makespace!\inputencoding{utf8}
+that will add a column of equally likely \inputencoding{latin9}\lstinline[showstringspaces=false]!probs!\inputencoding{utf8}
 to the generated sample space: 
 
 <<echo=TRUE,print=TRUE>>= 
 rolldie(1, makespace = TRUE)
 @ 
 
-or just \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rolldie(1, TRUE)!\inputencoding{utf8}.
-Many of the other sample space functions (\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!tosscoin!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cards!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!roulette!\inputencoding{utf8},
-\textit{etc}.) have similar \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!makespace!\inputencoding{utf8}
+or just \inputencoding{latin9}\lstinline[showstringspaces=false]!rolldie(1, TRUE)!\inputencoding{utf8}.
+Many of the other sample space functions (\inputencoding{latin9}\lstinline[showstringspaces=false]!tosscoin!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!cards!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!roulette!\inputencoding{utf8},
+\textit{etc}.) have similar \inputencoding{latin9}\lstinline[showstringspaces=false]!makespace!\inputencoding{utf8}
 arguments. Check the documentation for details.
 
 \end{example}
-One sample space function that does NOT have a \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!makespace!\inputencoding{utf8}
-option is the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples!\inputencoding{utf8}
+One sample space function that does NOT have a \inputencoding{latin9}\lstinline[showstringspaces=false]!makespace!\inputencoding{utf8}
+option is the \inputencoding{latin9}\lstinline[showstringspaces=false]!urnsamples!\inputencoding{utf8}
 function. This was intentional. The reason is that under the varied
 sampling assumptions the outcomes in the respective sample spaces
 are NOT, in general, equally likely. It is important for the user
 to carefully consider the experiment to decide whether or not the
-outcomes are equally likely and then use \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probspace!\inputencoding{utf8}
+outcomes are equally likely and then use \inputencoding{latin9}\lstinline[showstringspaces=false]!probspace!\inputencoding{utf8}
 to assign the model.
 \begin{example}
-An unbalanced coin. While the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!makespace!\inputencoding{utf8}
-argument to \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!tosscoin!\inputencoding{utf8}
+An unbalanced coin. While the \inputencoding{latin9}\lstinline[showstringspaces=false]!makespace!\inputencoding{utf8}
+argument to \inputencoding{latin9}\lstinline[showstringspaces=false]!tosscoin!\inputencoding{utf8}
 is useful to represent the tossing of a \emph{fair} coin, it is not
 always appropriate. For example, suppose our coin is not perfectly
 balanced, for instance, maybe the {}``$H$'' side is somewhat heavier
@@ -4277,15 +4277,15 @@ under the equally likely model. This is the subject of Section BLANK.
 
 \subsection{How to do it with \textsf{R}}
 
-Probabilities are calculated in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
-package with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
+Probabilities are calculated in the \inputencoding{latin9}\lstinline[showstringspaces=false]!prob!\inputencoding{utf8}
+package with the \inputencoding{latin9}\lstinline[showstringspaces=false]!prob!\inputencoding{utf8}
 function.
 
 Consider the experiment of drawing a card from a standard deck of
 playing cards. Let's denote the probability space associated with
-the experiment as \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!S!\inputencoding{utf8},
-and let the subsets \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!A!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!B!\inputencoding{utf8}
+the experiment as \inputencoding{latin9}\lstinline[showstringspaces=false]!S!\inputencoding{utf8},
+and let the subsets \inputencoding{latin9}\lstinline[showstringspaces=false]!A!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!B!\inputencoding{utf8}
 be defined by the following: 
 
 <<echo=TRUE,print=FALSE>>= 
@@ -4306,27 +4306,27 @@ Note that we can get the same answer with
 prob(S, suit == "Heart") 
 @ 
 
-We also find \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob(B) = 0.23!\inputencoding{utf8}
+We also find \inputencoding{latin9}\lstinline[showstringspaces=false]!prob(B) = 0.23!\inputencoding{utf8}
 (listed here approximately, but 12/52 actually) and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob(S) = 1!\inputencoding{utf8}.
-Internally, the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
+Internally, the \inputencoding{latin9}\lstinline[showstringspaces=false]!prob!\inputencoding{utf8}
 function operates by summing the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
 column of its argument. It will find subsets on-the-fly if desired.
 
-We have as yet glossed over the details. More specifically, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
-has three arguments: \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8},
-which is a probability space (or a subset of one), \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!event!\inputencoding{utf8},
-which is a logical expression used to define a subset, and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!given!\inputencoding{utf8},
+We have as yet glossed over the details. More specifically, \inputencoding{latin9}\lstinline[showstringspaces=false]!prob!\inputencoding{utf8}
+has three arguments: \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8},
+which is a probability space (or a subset of one), \inputencoding{latin9}\lstinline[showstringspaces=false]!event!\inputencoding{utf8},
+which is a logical expression used to define a subset, and \inputencoding{latin9}\lstinline[showstringspaces=false]!given!\inputencoding{utf8},
 which is described in Section BLANK.
 
-\emph{WARNING}. The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!event!\inputencoding{utf8}
-argument is used to define a subset of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8},
+\emph{WARNING}. The \inputencoding{latin9}\lstinline[showstringspaces=false]!event!\inputencoding{utf8}
+argument is used to define a subset of \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8},
 that is, the only outcomes used in the probability calculation will
-be those that are elements of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
-and satisfy \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!event!\inputencoding{utf8}
-simultaneously. In other words, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob(x, event)!\inputencoding{utf8}
-calculates \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob(intersect(x, subset(x, event)))!\inputencoding{utf8}.
-Consequently, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
-should be the entire probability space in the case that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!event!\inputencoding{utf8}
+be those that are elements of \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
+and satisfy \inputencoding{latin9}\lstinline[showstringspaces=false]!event!\inputencoding{utf8}
+simultaneously. In other words, \inputencoding{latin9}\lstinline[showstringspaces=false]!prob(x, event)!\inputencoding{utf8}
+calculates \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!prob(intersect(x, subset(x, event)))!\inputencoding{utf8}.
+Consequently, \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
+should be the entire probability space in the case that \inputencoding{latin9}\lstinline[showstringspaces=false]!event!\inputencoding{utf8}
 is non-null.
 
 
@@ -4448,8 +4448,8 @@ $(6-1+3)!/[(6-1)!3!]={8 \choose 5}=56$.
 
 \subsection{How to do it with \textsf{R}}
 
-The factorial $n!$ is computed with the command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!factorial(n)!\inputencoding{utf8}
-and the binomial coefficient ${n \choose k}$ with the command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!choose(n,k)!\inputencoding{utf8}.
+The factorial $n!$ is computed with the command \inputencoding{latin9}\lstinline[showstringspaces=false]!factorial(n)!\inputencoding{utf8}
+and the binomial coefficient ${n \choose k}$ with the command \inputencoding{latin9}\lstinline[showstringspaces=false]!choose(n,k)!\inputencoding{utf8}.
 
 The sample spaces we have computed so far have been relatively small,
 and we can visually study them without much trouble. However, it is
@@ -4459,14 +4459,14 @@ everything except wash windows, even \textsf{R} has limits of which
 we should be mindful.
 
 But we often do not need to actually generate the sample space; it
-suffices to count the number of outcomes. The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!nsamp!\inputencoding{utf8}
+suffices to count the number of outcomes. The \inputencoding{latin9}\lstinline[showstringspaces=false]!nsamp!\inputencoding{utf8}
 function will calculate the number of rows in a sample space made
-by \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples!\inputencoding{utf8}
+by \inputencoding{latin9}\lstinline[showstringspaces=false]!urnsamples!\inputencoding{utf8}
 without actually devoting the memory resources necessary to generate
-the space. The arguments are \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!n!\inputencoding{utf8},
-the number of (distinguishable) objects in the urn, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!k!\inputencoding{utf8},
-the sample size, and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!replace!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ordered!\inputencoding{utf8},
+the space. The arguments are \inputencoding{latin9}\lstinline[showstringspaces=false]!n!\inputencoding{utf8},
+the number of (distinguishable) objects in the urn, \inputencoding{latin9}\lstinline[showstringspaces=false]!k!\inputencoding{utf8},
+the sample size, and \inputencoding{latin9}\lstinline[showstringspaces=false]!replace!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!ordered!\inputencoding{utf8},
 as above.
 
 \begin{center}
@@ -4474,12 +4474,12 @@ as above.
 \begin{table}
 \begin{centering}
 \begin{tabular}{l|cc}
- & \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=4]!ordered = TRUE!\inputencoding{utf8} & \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=4]!ordered = FALSE!\inputencoding{utf8}\tabularnewline
+ & \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false,tabsize=4]!ordered = TRUE!\inputencoding{utf8} & \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=4]!ordered = FALSE!\inputencoding{utf8}\tabularnewline
 \hline
  &  & \tabularnewline
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=4]!replace = TRUE!\inputencoding{utf8} & $n^{k}$ & $\frac{(n-1+k)!}{(n-1)!k!}$\tabularnewline
+\inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=4]!replace = TRUE!\inputencoding{utf8} & $n^{k}$ & $\frac{(n-1+k)!}{(n-1)!k!}$\tabularnewline
  &  & \tabularnewline
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=4]!replace = FALSE!\inputencoding{utf8} & $\frac{n!}{(n-k)!}$ & ${n \choose k}$\tabularnewline
+\inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=4]!replace = FALSE!\inputencoding{utf8} & $\frac{n!}{(n-k)!}$ & ${n \choose k}$\tabularnewline
 \multicolumn{1}{l}{} &  & \tabularnewline
 \end{tabular}
 \par\end{centering}
@@ -4490,7 +4490,7 @@ as above.
 
 \par\end{center}
 \begin{example}
-We will compute the number of outcomes for each of the four \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples!\inputencoding{utf8}
+We will compute the number of outcomes for each of the four \inputencoding{latin9}\lstinline[showstringspaces=false]!urnsamples!\inputencoding{utf8}
 examples that we saw in Example BLANK. Recall that we took a sample
 of size two from an urn with three distinguishable elements.
 \end{example}
@@ -4507,12 +4507,12 @@ above.
 
 \subsubsection*{The Multiplication Principle}
 
-A benefit of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!nsamp!\inputencoding{utf8}
+A benefit of \inputencoding{latin9}\lstinline[showstringspaces=false]!nsamp!\inputencoding{utf8}
 is that it is \emph{vectorized} so that entering vectors instead of
-numbers for \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!n!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!k!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!replace!\inputencoding{utf8},
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ordered!\inputencoding{utf8}
+numbers for \inputencoding{latin9}\lstinline[showstringspaces=false]!n!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!k!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!replace!\inputencoding{utf8},
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!ordered!\inputencoding{utf8}
 results in a vector of corresponding answers. This becomes particularly
 convenient for combinatorics problems.
 \begin{example}
@@ -4541,14 +4541,14 @@ r <- c(FALSE,FALSE,TRUE)
 x <- nsamp(n, k, rep = r, ord = TRUE) 
 @ 
 
-(Notice that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ordered!\inputencoding{utf8}
-is always \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!TRUE!\inputencoding{utf8};
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!nsamp!\inputencoding{utf8}
-will recycle \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ordered!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!replace!\inputencoding{utf8}
+(Notice that \inputencoding{latin9}\lstinline[showstringspaces=false]!ordered!\inputencoding{utf8}
+is always \inputencoding{latin9}\lstinline[showstringspaces=false]!TRUE!\inputencoding{utf8};
+\inputencoding{latin9}\lstinline[showstringspaces=false]!nsamp!\inputencoding{utf8}
+will recycle \inputencoding{latin9}\lstinline[showstringspaces=false]!ordered!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!replace!\inputencoding{utf8}
 to the appropriate length.) By the Multiplication Principle, the number
 of ways to complete the experiment is the product of the entries of
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}: 
+\inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}: 
 
 <<echo=TRUE,print=TRUE>>= 
 prod(x) 
@@ -4575,10 +4575,10 @@ prod(factorial(c(11,7))/factorial(c(8,3)))*313
 \end{example}
 As one can guess, in many of the standard counting problems there
 aren't substantial savings in the amount of typing; it is about the
-same using \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!nsamp!\inputencoding{utf8}
-versus \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!factorial!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!choose!\inputencoding{utf8}.
-But the virtue of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!nsamp!\inputencoding{utf8}
+same using \inputencoding{latin9}\lstinline[showstringspaces=false]!nsamp!\inputencoding{utf8}
+versus \inputencoding{latin9}\lstinline[showstringspaces=false]!factorial!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!choose!\inputencoding{utf8}.
+But the virtue of \inputencoding{latin9}\lstinline[showstringspaces=false]!nsamp!\inputencoding{utf8}
 \texttt{l}ies in its collecting the relevant counting formulas in
 a one-stop shop. Ultimately, it is up to the user to choose the method
 that works best for him/herself. 
@@ -4677,7 +4677,7 @@ vertical line is at $n=23$.\label{fig:The-Birthday-Problem}}
 \inputencoding{utf8}
 
 There is a \textsf{Birthday problem} item in the \textsf{Probability}
-menu of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!RcmdrPlugin.IPSUR!\inputencoding{utf8}.
+menu of \inputencoding{latin9}\lstinline[showstringspaces=false]!RcmdrPlugin.IPSUR!\inputencoding{utf8}.
 
 In the base \textsf{R} version, one can compute approximate probabilities
 for the more general case of probabilities other than 1/2, for differing
@@ -4775,7 +4775,7 @@ given $A$ is 1/2.
 \subsection{How to do it with \textsf{R}}
 
 Continuing with Example BLANK, the first thing to do is set up the
-probability space with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rolldie!\inputencoding{utf8}
+probability space with the \inputencoding{latin9}\lstinline[showstringspaces=false]!rolldie!\inputencoding{utf8}
 function.
 
 <<keep.source = TRUE>>=
@@ -4792,8 +4792,8 @@ B <- subset(S, X1 + X2 >= 8)
 @
 
 And now we are ready to calculate probabilities. To do conditional
-probability, we use the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!given!\inputencoding{utf8}
-argument of the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
+probability, we use the \inputencoding{latin9}\lstinline[showstringspaces=false]!given!\inputencoding{utf8}
+argument of the \inputencoding{latin9}\lstinline[showstringspaces=false]!prob!\inputencoding{utf8}
 function:
 
 <<keep.source = TRUE>>=
@@ -4803,7 +4803,7 @@ prob(B, given = A)
 
 Note that we do not actually need to define the events $A$ and $B$
 separately as long as we reference the original probability space
-$S$ as the first argument of the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
+$S$ as the first argument of the \inputencoding{latin9}\lstinline[showstringspaces=false]!prob!\inputencoding{utf8}
 calculation:
 
 <<keep.source = TRUE>>=
@@ -4833,7 +4833,7 @@ For any events $A$, $B$, and $C$ with $\P(A)>0$,
 \begin{enumerate}
 \item $\P(B^{c}|A)=1-\P(B|A).$
 \item If $B\subset C$ then $\P(B|A)\leq\P(C|A)$.
-\item $\P[(B\cup C)|A]=\P(B|A)+\P(C|A)-\P[(B\cap C|A)].$$ $
+\item $\P[(B\cup C)|A]=\P(B|A)+\P(C|A)-\P[(B\cap C|A)].$
 \item \textbf{The Multiplication Rule.} For any two events $A$ and $B$,\begin{equation}
 \P(A\cap B)=\P(A)\P(B|A).\end{equation}
 And more generally, for events $A_{1}$, $A_{2}$, $A_{3}$,\ldots{},
@@ -4857,37 +4857,37 @@ we may answer, what is $\P(\mbox{both Aces})$?\[
 \subsection{How to do it with \textsf{R}}
 
 Continuing Example BLANK, we set up the probability space by way of
-a three step process. First we employ the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cards!\inputencoding{utf8}
-function to get a data frame \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!L!\inputencoding{utf8}
-with two columns: \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rank!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!suit!\inputencoding{utf8}.
+a three step process. First we employ the \inputencoding{latin9}\lstinline[showstringspaces=false]!cards!\inputencoding{utf8}
+function to get a data frame \inputencoding{latin9}\lstinline[showstringspaces=false]!L!\inputencoding{utf8}
+with two columns: \inputencoding{latin9}\lstinline[showstringspaces=false]!rank!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!suit!\inputencoding{utf8}.
 Both columns are stored internally as factors with 13 and 4 levels,
 respectively.
 
-Next we sample two cards randomly from the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!L!\inputencoding{utf8}
-data frame by way of the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples!\inputencoding{utf8}
-function. It returns a list \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!M!\inputencoding{utf8}
-which contains all possible pairs of rows from \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!L!\inputencoding{utf8}
-(there are \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!choose(52,2)!\inputencoding{utf8}
+Next we sample two cards randomly from the \inputencoding{latin9}\lstinline[showstringspaces=false]!L!\inputencoding{utf8}
+data frame by way of the \inputencoding{latin9}\lstinline[showstringspaces=false]!urnsamples!\inputencoding{utf8}
+function. It returns a list \inputencoding{latin9}\lstinline[showstringspaces=false]!M!\inputencoding{utf8}
+which contains all possible pairs of rows from \inputencoding{latin9}\lstinline[showstringspaces=false]!L!\inputencoding{utf8}
+(there are \inputencoding{latin9}\lstinline[showstringspaces=false]!choose(52,2)!\inputencoding{utf8}
 of them). The sample space for this experiment is exactly the list
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!M!\inputencoding{utf8}.
+\inputencoding{latin9}\lstinline[showstringspaces=false]!M!\inputencoding{utf8}.
 
 At long last we associate a probability model with the sample space.
-This is right down the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probspace!\inputencoding{utf8}
+This is right down the \inputencoding{latin9}\lstinline[showstringspaces=false]!probspace!\inputencoding{utf8}
 function's alley. It assumes the equally likely model by default.
-We call this result \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!N!\inputencoding{utf8}
-which is an object of class \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ps!\inputencoding{utf8}
+We call this result \inputencoding{latin9}\lstinline[showstringspaces=false]!N!\inputencoding{utf8}
+which is an object of class \inputencoding{latin9}\lstinline[showstringspaces=false]!ps!\inputencoding{utf8}
 -- short for {}``probability space''. 
 
-But do not be intimidated. The object \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!N!\inputencoding{utf8}
-is nothing more than a list with two elements: \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!outcomes!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}.
-The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!outcomes!\inputencoding{utf8}
-element is itself just another list, with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!choose(52,2)!\inputencoding{utf8}
+But do not be intimidated. The object \inputencoding{latin9}\lstinline[showstringspaces=false]!N!\inputencoding{utf8}
+is nothing more than a list with two elements: \inputencoding{latin9}\lstinline[showstringspaces=false]!outcomes!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!probs!\inputencoding{utf8}.
+The \inputencoding{latin9}\lstinline[showstringspaces=false]!outcomes!\inputencoding{utf8}
+element is itself just another list, with \inputencoding{latin9}\lstinline[showstringspaces=false]!choose(52,2)!\inputencoding{utf8}
 entries, each one a data frame with two rows which correspond to the
-pair of cards chosen. The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
-element is just a vector with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!choose(52,2)!\inputencoding{utf8}
-entries all the same: \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!1/choose(52,2)!\inputencoding{utf8}.
+pair of cards chosen. The \inputencoding{latin9}\lstinline[showstringspaces=false]!probs!\inputencoding{utf8}
+element is just a vector with \inputencoding{latin9}\lstinline[showstringspaces=false]!choose(52,2)!\inputencoding{utf8}
+entries all the same: \inputencoding{latin9}\lstinline[showstringspaces=false]!1/choose(52,2)!\inputencoding{utf8}.
 
 Putting all of this together we do
 
@@ -4898,7 +4898,7 @@ M <- urnsamples(L, size = 2)
 N <- probspace(M)
 @
 
-Now that we have the probability space \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!N!\inputencoding{utf8}
+Now that we have the probability space \inputencoding{latin9}\lstinline[showstringspaces=false]!N!\inputencoding{utf8}
 we are ready to do some probability. We use the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
 function, just like before. The only trick is to specify the event
 of interest correctly, and recall that we were interested in $\P(\mbox{both Aces})$.
@@ -4928,16 +4928,16 @@ Then\[
 \subsection{How to do it with \textsf{R}}
 
 Example BLANK is similar to Example BLANK, but it is even easier.
-We need to set up an urn (vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!L!\inputencoding{utf8})
-to hold the balls, we sample from \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!L!\inputencoding{utf8}
-to get the sample space (data frame \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!M!\inputencoding{utf8}),
-and we associate a probability vector (column \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8})
-with the outcomes (rows of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!M!\inputencoding{utf8})
+We need to set up an urn (vector \inputencoding{latin9}\lstinline[showstringspaces=false]!L!\inputencoding{utf8})
+to hold the balls, we sample from \inputencoding{latin9}\lstinline[showstringspaces=false]!L!\inputencoding{utf8}
+to get the sample space (data frame \inputencoding{latin9}\lstinline[showstringspaces=false]!M!\inputencoding{utf8}),
+and we associate a probability vector (column \inputencoding{latin9}\lstinline[showstringspaces=false]!probs!\inputencoding{utf8})
+with the outcomes (rows of \inputencoding{latin9}\lstinline[showstringspaces=false]!M!\inputencoding{utf8})
 of the sample space. The final result is a probability space (an ordinary
-data frame \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!N!\inputencoding{utf8}).
+data frame \inputencoding{latin9}\lstinline[showstringspaces=false]!N!\inputencoding{utf8}).
 
 It is easier for us this time because our urn is a vector instead
-of a \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cards()!\inputencoding{utf8}
+of a \inputencoding{latin9}\lstinline[showstringspaces=false]!cards()!\inputencoding{utf8}
 data frame. Before there were two dimensions of information associated
 with the outcomes (rank and suit) but presently we have only one dimension
 (color).
@@ -4950,16 +4950,16 @@ N <- probspace(M)
 @
 
 Now let us think about how to set up the event $\left\{ \mbox{all 3 balls are red}\right\} $.
-Rows of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!N!\inputencoding{utf8}
-that satisfy this condition have \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!X1=="red" & X2=="red" & X3=="red"!\inputencoding{utf8},
-but there must be an easier way. Indeed, there is. The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!isrep!\inputencoding{utf8}
-function (short for {}``is repeated'') in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
-package was written for this purpose. The command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!isrep(N,"red",3)!\inputencoding{utf8}
-will test each row of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!N!\inputencoding{utf8}
-to see whether the value \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"red"!\inputencoding{utf8}
-appears \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!3!\inputencoding{utf8}
+Rows of \inputencoding{latin9}\lstinline[showstringspaces=false]!N!\inputencoding{utf8}
+that satisfy this condition have \inputencoding{latin9}\lstinline[showstringspaces=false]!X1=="red" & X2=="red" & X3=="red"!\inputencoding{utf8},
+but there must be an easier way. Indeed, there is. The \inputencoding{latin9}\lstinline[showstringspaces=false]!isrep!\inputencoding{utf8}
+function (short for {}``is repeated'') in the \inputencoding{latin9}\lstinline[showstringspaces=false]!prob!\inputencoding{utf8}
+package was written for this purpose. The command \inputencoding{latin9}\lstinline[showstringspaces=false]!isrep(N,"red",3)!\inputencoding{utf8}
+will test each row of \inputencoding{latin9}\lstinline[showstringspaces=false]!N!\inputencoding{utf8}
+to see whether the value \inputencoding{latin9}\lstinline[showstringspaces=false]!"red"!\inputencoding{utf8}
+appears \inputencoding{latin9}\lstinline[showstringspaces=false]!3!\inputencoding{utf8}
 times. The result is exactly what we need to define an event with
-the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
+the \inputencoding{latin9}\lstinline[showstringspaces=false]!prob!\inputencoding{utf8}
 function. Observe
 
 <<>>=
@@ -4968,7 +4968,7 @@ prob(N, isrep(N, "red", 3))
 
 Note that this answer matches what we found in Example BLANK. Now
 let us try some other probability questions. What is the probability
-of getting two \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"red"!\inputencoding{utf8}s?
+of getting two \inputencoding{latin9}\lstinline[showstringspaces=false]!"red"!\inputencoding{utf8}s?
 
 <<>>=
 prob(N, isrep(N, "red", 2))
@@ -4976,25 +4976,25 @@ prob(N, isrep(N, "red", 2))
 
 Note that the exact value is $21/40$; we will learn a quick way to
 compute this in Section BLANK. What is the probability of observing
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"red"!\inputencoding{utf8},
-then \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"green"!\inputencoding{utf8},
-then \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"red"!\inputencoding{utf8}?
+\inputencoding{latin9}\lstinline[showstringspaces=false]!"red"!\inputencoding{utf8},
+then \inputencoding{latin9}\lstinline[showstringspaces=false]!"green"!\inputencoding{utf8},
+then \inputencoding{latin9}\lstinline[showstringspaces=false]!"red"!\inputencoding{utf8}?
 
 <<>>=
 prob(N, isin(N, c("red","green","red"), ordered = TRUE))
 @
 
 Note that the exact value is $7/20$ (do it with the Multiplication
-Rule). What is the probability of observing \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"red"!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"green"!\inputencoding{utf8},
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"red"!\inputencoding{utf8},
+Rule). What is the probability of observing \inputencoding{latin9}\lstinline[showstringspaces=false]!"red"!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!"green"!\inputencoding{utf8},
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!"red"!\inputencoding{utf8},
 in no particular order?
 
 <<>>=
 prob(N, isin(N, c("red","green","red")))
 @
 
-We already knew this. It is the probability of observing two \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"red"!\inputencoding{utf8}s,
+We already knew this. It is the probability of observing two \inputencoding{latin9}\lstinline[showstringspaces=false]!"red"!\inputencoding{utf8}s,
 above.
 
 
@@ -5018,7 +5018,7 @@ and notice that $A\cap B$ and $A^{c}\cap B$ are disjoint. Therefore\begin{align*
 \end{example}
 
 \begin{example}
-We saw the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!RcmdrTestDrive!\inputencoding{utf8}
+We saw the \inputencoding{latin9}\lstinline[showstringspaces=false]!RcmdrTestDrive!\inputencoding{utf8}
 data set in Chapter BLANK in which a two-way table of the smoking
 status versus the gender was
 
@@ -5156,13 +5156,13 @@ multiple times under identical conditions and in an independent manner.
 We have seen many examples of this already: tossing a coin repeatedly,
 rolling a die or dice, \textit{etc}.
 
-The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!iidspace!\inputencoding{utf8}
+The \inputencoding{latin9}\lstinline[showstringspaces=false]!iidspace!\inputencoding{utf8}
 function was designed specifically for this situation. It has three
-arguments: \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8},
-which is a vector of outcomes, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ntrials!\inputencoding{utf8},
+arguments: \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8},
+which is a vector of outcomes, \inputencoding{latin9}\lstinline[showstringspaces=false]!ntrials!\inputencoding{utf8},
 which is an integer telling how many times to repeat the experiment,
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
-to specify the probabilities of the outcomes of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!probs!\inputencoding{utf8}
+to specify the probabilities of the outcomes of \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
 in a single trial. 
 
 
@@ -5187,18 +5187,18 @@ As expected, the outcome $HHH$ has the largest probability, while
 $TTT$ has the smallest. (Since the trials are independent, $\P(HHH)=0.7^{3}$
 and $\P(TTT)=0.3^{3}$, \textit{etc}.) Note that the result of the
 function call is a probability space, not a sample space (which we
-could construct already with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!tosscoin!\inputencoding{utf8}
-or \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!urnsamples!\inputencoding{utf8}
+could construct already with the \inputencoding{latin9}\lstinline[showstringspaces=false]!tosscoin!\inputencoding{utf8}
+or \inputencoding{latin9}\lstinline[showstringspaces=false]!urnsamples!\inputencoding{utf8}
 functions). The same procedure could be used to model an unbalanced
 die or any other experiment that may be represented with a vector
 of possible outcomes.
 
 \end{example}
-Note that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!iidspace!\inputencoding{utf8}
-will assume \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
-has equally likely outcomes if no \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
-argument is specified. Also note that the argument \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
-is a \emph{vector}, not a data frame. Something like \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!iidspace(tosscoin(1),...)!\inputencoding{utf8}
+Note that \inputencoding{latin9}\lstinline[showstringspaces=false]!iidspace!\inputencoding{utf8}
+will assume \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
+has equally likely outcomes if no \inputencoding{latin9}\lstinline[showstringspaces=false]!probs!\inputencoding{utf8}
+argument is specified. Also note that the argument \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
+is a \emph{vector}, not a data frame. Something like \inputencoding{latin9}\lstinline[showstringspaces=false]!iidspace(tosscoin(1),...)!\inputencoding{utf8}
 would give an error.
 
 
@@ -5369,7 +5369,7 @@ available at the time.
 
 \subsection{How to do it with \textsf{R}}
 
-There are not any special functions for Bayes' Rule in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prob!\inputencoding{utf8}
+There are not any special functions for Bayes' Rule in the \inputencoding{latin9}\lstinline[showstringspaces=false]!prob!\inputencoding{utf8}
 package, but problems like the ones above are easy enough to do by
 hand.
 \begin{example}
@@ -5387,15 +5387,15 @@ post / sum(post)
 
 
 Compare these answers with what we got in Example BLANK. We would
-replace \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prior!\inputencoding{utf8}
-with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!post!\inputencoding{utf8}
-in a future calculation. We could raise \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!like!\inputencoding{utf8}
+replace \inputencoding{latin9}\lstinline[showstringspaces=false]!prior!\inputencoding{utf8}
+with \inputencoding{latin9}\lstinline[showstringspaces=false]!post!\inputencoding{utf8}
+in a future calculation. We could raise \inputencoding{latin9}\lstinline[showstringspaces=false]!like!\inputencoding{utf8}
 to a power to see how the posterior is affected by future document
 mistakes. (Do you see why? Think back to Section BLANK.)
 
 
 \begin{example}
-Let us incorporate the posterior probability (\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!post!\inputencoding{utf8})
+Let us incorporate the posterior probability (\inputencoding{latin9}\lstinline[showstringspaces=false]!post!\inputencoding{utf8})
 information from the last example and suppose that the assistants
 misfile seven more documents. Using Bayes' Rule, what would the new
 posterior probabilities be?
@@ -5412,7 +5412,7 @@ Larry, but Curly.
 \end{example}
 
 
-There are two important points. First, we did not divide \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!post!\inputencoding{utf8}
+There are two important points. First, we did not divide \inputencoding{latin9}\lstinline[showstringspaces=false]!post!\inputencoding{utf8}
 by the sum of its entries until the very last step; we do not need
 to calculate it, and it will save us computing time to postpone normalization
 until absolutely necessary, namely, until we finally want to interpret
@@ -5508,14 +5508,14 @@ random variables}, to be studied in Chapter BLANK.
 
 \subsection{How to do it with \textsf{R}}
 
-The primary vessel for this task is the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!addrv!\inputencoding{utf8}
+The primary vessel for this task is the \inputencoding{latin9}\lstinline[showstringspaces=false]!addrv!\inputencoding{utf8}
 function. There are two ways to use it, and we will describe both.
 
 
 \subsubsection*{Supply a Defining Formula}
 
-The first method is based on the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!transform!\inputencoding{utf8}
-function. See \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!?transform!\inputencoding{utf8}.
+The first method is based on the \inputencoding{latin9}\lstinline[showstringspaces=false]!transform!\inputencoding{utf8}
+function. See \inputencoding{latin9}\lstinline[showstringspaces=false]!?transform!\inputencoding{utf8}.
 The idea is to write a formula defining the random variable inside
 the function, and it will be added as a column to the data frame.
 As an example, let us roll a 4-sided die three times, and let us define
@@ -5547,12 +5547,12 @@ prob(S, U > 6)
 Sometimes we have a function laying around that we would like to apply
 to some of the outcome variables, but it is unfortunately tedious
 to write out the formula defining what the new variable would be.
-The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!addrv!\inputencoding{utf8}
-function has an argument \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!FUN!\inputencoding{utf8}
+The \inputencoding{latin9}\lstinline[showstringspaces=false]!addrv!\inputencoding{utf8}
+function has an argument \inputencoding{latin9}\lstinline[showstringspaces=false]!FUN!\inputencoding{utf8}
 specifically for this case. Its value should be a legitimate function
-from \textsf{R}, such as \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!sum!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mean!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!median!\inputencoding{utf8},
+from \textsf{R}, such as \inputencoding{latin9}\lstinline[showstringspaces=false]!sum!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!mean!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!median!\inputencoding{utf8},
 \emph{etc}. Or, you can define your own function. Continuing the previous
 example, let's define $V=\max(X1,X2,X3)$ and $W=X1+X2+X3$. 
 
@@ -5562,18 +5562,18 @@ S <- addrv(S, FUN = sum, invars = c("X1","X2","X3"), name = "W")
 head(S) 
 @ 
 
-Notice that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!addrv!\inputencoding{utf8}
-has an \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!invars!\inputencoding{utf8}
+Notice that \inputencoding{latin9}\lstinline[showstringspaces=false]!addrv!\inputencoding{utf8}
+has an \inputencoding{latin9}\lstinline[showstringspaces=false]!invars!\inputencoding{utf8}
 argument to specify exactly to which columns one would like to apply
-the function \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!FUN!\inputencoding{utf8}.
-If no input variables are specified, then \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!addrv!\inputencoding{utf8}
+the function \inputencoding{latin9}\lstinline[showstringspaces=false]!FUN!\inputencoding{utf8}.
+If no input variables are specified, then \inputencoding{latin9}\lstinline[showstringspaces=false]!addrv!\inputencoding{utf8}
 will apply \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!FUN!\inputencoding{utf8}
-to all non-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}
-columns. Further, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!addrv!\inputencoding{utf8}
-has an optional argument \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!name!\inputencoding{utf8}
+to all non-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!probs!\inputencoding{utf8}
+columns. Further, \inputencoding{latin9}\lstinline[showstringspaces=false]!addrv!\inputencoding{utf8}
+has an optional argument \inputencoding{latin9}\lstinline[showstringspaces=false]!name!\inputencoding{utf8}
 to give the new variable; this can be useful when adding several random
 variables to a probability space (as above). If not specified, the
-default name is {}``\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!X!\inputencoding{utf8}''.
+default name is {}``\inputencoding{latin9}\lstinline[showstringspaces=false]!X!\inputencoding{utf8}''.
 
 
 \subsubsection*{Marginal Distributions}
@@ -5581,7 +5581,7 @@ default name is {}``\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!X!\
 As we can see above, often after adding a random variable $V$ to
 a probability space one will find that $V$ has values that are repeated,
 so that it becomes difficult to understand what the ultimate behavior
-of $V$ actually is. We can use the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!marginal!\inputencoding{utf8}
+of $V$ actually is. We can use the \inputencoding{latin9}\lstinline[showstringspaces=false]!marginal!\inputencoding{utf8}
 function to aggregate the rows of the sample space by values of $V$,
 all the while accumulating the probability associated with $V$'s
 distinct values. Continuing our example from above, suppose we would
@@ -5593,7 +5593,7 @@ marginal(S, vars = "V")
 
 We could save the probability space of $V$ in a data frame and study
 it further, if we wish. As a final remark, we can calculate the marginal
-distributions of multiple variables desired using the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!vars!\inputencoding{utf8}
+distributions of multiple variables desired using the \inputencoding{latin9}\lstinline[showstringspaces=false]!vars!\inputencoding{utf8}
 argument. For example, suppose we would like to examine the joint
 distribution of $V$ and $W$. 
 
@@ -5601,8 +5601,8 @@ distribution of $V$ and $W$.
 marginal(S, vars = c("V", "W")) 
 @ 
 
-Note that the default value of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!vars!\inputencoding{utf8}
-is the names of all columns except \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!probs!\inputencoding{utf8}.
+Note that the default value of \inputencoding{latin9}\lstinline[showstringspaces=false]!vars!\inputencoding{utf8}
+is the names of all columns except \inputencoding{latin9}\lstinline[showstringspaces=false]!probs!\inputencoding{utf8}.
 This can be useful if there are duplicated rows in the probability
 space.
 
@@ -6737,9 +6737,9 @@ As usual it should be clear that $f_{X}(x)\geq0$ and the fact that
 $\sum f_{X}(x)=1$ follows from a generalization of the geometric
 series, using a Maclaurin's series expansion:\begin{alignat*}{1}
 \frac{1}{1-t}= & \sum_{k=0}^{\infty}t^{k},\quad\mbox{for \ensuremath{-1<t<1}},\mbox{ and}\\
-\frac{1}{(1-t)^{r}}= & \sum_{k=0}^{\infty}{r+k-1 \choose r-1}t^{k},\quad\mbox{for \ensuremath{-1<t<1}}.\end{alignat*}
+\frac{1}{(1-t)^{r}}= & \sum_{k=0}^{\infty}{r+k-1 \choose r-1}\, t^{k},\quad\mbox{for \ensuremath{-1<t<1}}.\end{alignat*}
 Therefore \begin{equation}
-\sum_{x=0}^{\infty}f_{X}(x)=p^{r}\sum_{x=0}^{\infty}{r+x-1 \choose r-1}q^{x}=p^{r}(1-q)^{-r}=1,\end{equation}
+\sum_{x=0}^{\infty}f_{X}(x)=p^{r}\sum_{x=0}^{\infty}{r+x-1 \choose r-1}\, q^{x}=p^{r}(1-q)^{-r}=1,\end{equation}
 since $|q|=|1-p|<1$. 
 \begin{example}
 We flip a coin repeatedly and let $X$ count the number of Tails until
@@ -6893,10 +6893,10 @@ and we notice that $h$ is linear and hence one-to-one. Finally, $X$
 takes values $0,\ 1,\ 2,\ldots$ implying that the support of $Y$
 would be $\left\{ r,\ r+1,\ r+2,\ldots\right\} $. Solving for $X$
 we get $X=Y-r$. Examining the PMF of $X$\begin{equation}
-f_{X}(x)={r+x-1 \choose r-1}\, p^{r}(1-p)^{x}\end{equation}
+f_{X}(x)={r+x-1 \choose r-1}\, p^{r}(1-p)^{x},\end{equation}
 we can substitute $x=y-r$ to get\begin{eqnarray*}
-f_{Y}(y) & = & f_{X}(y-r)\\
- & = & {r+(y-r)-1 \choose r-1}\, p^{r}(1-p)^{y-r}\\
+f_{Y}(y) & = & f_{X}(y-r),\\
+ & = & {r+(y-r)-1 \choose r-1}\, p^{r}(1-p)^{y-r},\\
  & = & {y-1 \choose r-1}\, p^{r}(1-p)^{y-r},\quad y=r,\, r+1,\ldots\end{eqnarray*}
 
 \end{example}
@@ -6939,7 +6939,7 @@ has total probability $7/16$. In summary, the PMF of $Y$ may be
 written:
 
 %
-\begin{table}
+\begin{table}[H]
 \begin{tabular}{c|cccc}
 $y$ & 0 & 1 & 4 & 9\tabularnewline
 \hline
@@ -6949,13 +6949,13 @@ $f_{X}(x)$ & $1/4$ & $7/16$ & $1/4$ & $1/16$\tabularnewline
 
 
 Note that there is not a special name for the distribution of $Y$,
-it simply serves as an example of what to do when the transformation
-of a random variable is not one-to-one. The method is the same for
-more complicated problems.\end{example}
+it is just an example of what to do when the transformation of a random
+variable is not one-to-one. The method is the same for more complicated
+problems.\end{example}
 \begin{prop}
 If $X$ is a random variable with $\E X=\mu$ and $\mbox{Var}(X)=\sigma^{2}$,
-then the mean and variance of $Y=mX+b$ is \[
-\mu_{Y}=m\mu+b,\quad\sigma_{Y}^{2}=m^{2}\sigma^{2},\quad\sigma_{Y}=|m|\sigma.\]
+then the mean and variance of $Y=mX+b$ is \begin{equation}
+\mu_{Y}=m\mu+b,\quad\sigma_{Y}^{2}=m^{2}\sigma^{2},\quad\sigma_{Y}=|m|\sigma.\end{equation}
 
 \end{prop}
 
@@ -7145,10 +7145,6 @@ This chapter begins with continuous random variables and the associated
 PDFs and CDFs The continuous uniform distribution is highlighted,
 along with the Gaussian, or normal, distribution. Some mathematical
 details pave the way for a catalogue of models.
-
-What do I want them to know?
-
-want to introduce quantile functions somewhere here
 
 
 \section{Continuous Random Variables\label{sec:Continuous-Random-Variables}}
@@ -7352,7 +7348,7 @@ p(X)(0.71) - p(X)(0.14)
 @
 
 Compare this answer to what we found in Example BLANK. Now let us
-try expectation with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,showstringspaces=false]!distrEx!\inputencoding{utf8}
+try expectation with the \inputencoding{latin9}\lstinline[showstringspaces=false]!distrEx!\inputencoding{utf8}
 package:
 
 <<>>=
@@ -7363,7 +7359,7 @@ var(X)
 @
 
 Compare these answers to the ones we found in Example BLANK. Why are
-they different? Because the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,showstringspaces=false]!distrEx!\inputencoding{utf8}
+they different? Because the \inputencoding{latin9}\lstinline[showstringspaces=false]!distrEx!\inputencoding{utf8}
 package resorts to numerical methods when it encounters a model it
 does not recognize. This means that the answers we get for calculations
 may not exactly match the theoretical values. Be careful.
@@ -7398,27 +7394,24 @@ The mean of $X\sim\mathsf{unif}(\mathtt{min}=a,\,\mathtt{max}=b)$
 is relatively simple to calculate:
 
 \begin{align*}
-\mu=\E X & =\int_{-\infty}^{\infty}xf_{X}(x)\diff x,\\
- & =\int_{a}^{b}x\frac{1}{b-a}\diff x,\\
- & =\frac{1}{b-a}\ \frac{x^{2}}{2}|_{x=a}^{b},\\
+\mu=\E X & =\int_{-\infty}^{\infty}x\, f_{X}(x)\,\diff x,\\
+ & =\int_{a}^{b}x\ \frac{1}{b-a}\ \diff x,\\
+ & =\left.\frac{1}{b-a}\ \frac{x^{2}}{2}\ \right|_{x=a}^{b},\\
  & =\frac{1}{b-a}\ \frac{b^{2}-a^{2}}{2},\\
  & =\frac{b+a}{2},\end{align*}
 using the popular formula for the difference of squares. The variance
-of a the $\mathsf{unif}(\mathtt{min}=a,\,\mathtt{max}=b)$ distribution
 is left to Exercise BLANK.
 
 
 \section{The Normal Distribution\label{sec:The-Normal-Distribution}}
 
 We say that $X$ has a \emph{normal distribution} if it has PDF\begin{equation}
-f_{X}(x)=\frac{1}{\sigma\sqrt{2\pi}}\exp\left[\frac{-(x-\mu)^{2}}{2\sigma^{2}}\right],\quad-\infty<x<\infty.\end{equation}
+f_{X}(x)=\frac{1}{\sigma\sqrt{2\pi}}\exp\left\{ \frac{-(x-\mu)^{2}}{2\sigma^{2}}\right\} ,\quad-\infty<x<\infty.\end{equation}
+We write $X\sim\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$,
+and the associated \textsf{R} function is \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!dnorm(x, mean = 0, sd = 1)!\inputencoding{utf8}.
 
-
-The associated \textsf{R} function is \textsf{dnorm}\texttt{(x, mean}
-\texttt{\textcolor{red}{=}} \texttt{0, sd} \texttt{\textcolor{red}{=}}
-\texttt{1)}. We write $X\sim\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$.
-The familiar bell-shaped curve, the normal distribution is also called
-the \emph{Gaussian distribution} because the German mathematician
+The familiar bell-shaped curve, the normal distribution is also known
+as the \emph{Gaussian distribution} because the German mathematician
 C.~F.~Gauss largely contributed to its mathematical development.
 This distribution is by far the most important distribution, continuous
 or discrete. The normal model appears in the theory of all sorts of
@@ -7551,9 +7544,8 @@ The goal of this section is to determine the distribution of $U=g(X)$
 based on the distribution of $X$. In the discrete case all we needed
 to do was back substitute for $x=g^{-1}(u)$ in the PMF of $X$ (sometimes
 accumulating probability mass along the way). In the continuous case,
-however, we need somewhat more sophisticated efforts. We introduce 
-
-Now would be a good time to review Appendix BLANK.
+however, we need more sophisticated tools. Now would be a good time
+to review Appendix BLANK.
 
 
 \subsection{The PDF Method}
@@ -7564,13 +7556,9 @@ is given by\begin{equation}
 f_{U}(u)=f_{X}\left[g^{-1}(u)\right]\ \left|\frac{\diff}{\diff u}g^{-1}(u)\right|.\end{equation}
 \end{prop}
 \begin{rem}
-There are a few tricks that can help when changing variables:
-\begin{itemize}
-\item The formula in Equation BLANK is nice, but does not really make any
+The formula in Equation BLANK is nice, but does not really make any
 sense. It is better to write in the intuitive form\begin{equation}
 f_{U}(u)=f_{X}(x)\left|\frac{\diff x}{\diff u}\right|.\end{equation}
-
-\end{itemize}
 \end{rem}
 \begin{example}
 Let $X\sim\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$,
@@ -16282,10 +16270,12 @@ Detective Pyork E.~Pig
 
 \chapter{\textsf{R} Session Information}
 
-
+If you ever write the \textsf{R} help mailing list with a question,
+then you should include your session information in the email; it
+makes the reader's job easier and is requested by the Posting Guide.
+Here is how to do that, and below is what the output looks like. 
 
 <<keep.source = TRUE>>=
-options(width = 80)
 sessionInfo()
 @
 
@@ -16296,17 +16286,19 @@ sessionInfo()
 \chapter{GNU Free Documentation License}
 
 \begin{center}
-GNU Free Documentation License 
+\textbf{\large Version 1.3, 3 November 2008}\bigskip{}
+
 \par\end{center}
+
+\noindent Copyright (C) 2000, 2001, 2002, 2007, 2008 Free Software
+Foundation, Inc.
 
 \begin{center}
-Version 1.3, 3 November 2008\bigskip{}
-
+\url{http://fsf.org/}
 \par\end{center}
 
-Copyright (C) 2000, 2001, 2002, 2007, 2008 Free Software Foundation,
-Inc. <http://fsf.org/> Everyone is permitted to copy and distribute
-verbatim copies of this license document, but changing it is not allowed.
+\noindent Everyone is permitted to copy and distribute verbatim copies
+of this license document, but changing it is not allowed.
 
 
 \section*{0. PREAMBLE}
