@@ -1,6 +1,6 @@
 %% LyX 1.6.5 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
-\documentclass[12pt,english,nogin]{book}
+\documentclass[10pt,english,nogin]{book}
 \usepackage{lmodern}
 \renewcommand{\sfdefault}{lmss}
 \renewcommand{\ttdefault}{lmtt}
@@ -10,8 +10,8 @@
 \lstset{basicstyle={\ttfamily},
 breaklines=true,
 language=R}
-\usepackage[letterpaper]{geometry}
-\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1.25in,rmargin=1.25in}
+\usepackage[paperwidth=6in,paperheight=9in]{geometry}
+\geometry{verbose,tmargin=0.75in,bmargin=0.75in,lmargin=0.75in,rmargin=0.75in}
 \pagestyle{headings}
 \setcounter{tocdepth}{1}
 \usepackage{color}
@@ -223,7 +223,7 @@ morestring=[b]"
 
 <<echo = FALSE>>=
 set.seed(42)
-options(width = 70)
+options(width = 60)
 #library(random)
 #i_seed <- randomNumbers(n = 624, col = 1, min = -1e+09, max = 1e+09)
 #.Random.seed[2:626] <- as.integer(c(1, i_seed))
@@ -1641,7 +1641,7 @@ c(max(commute), min(commute), mean(commute), sd(commute))
 @
 
 
-\chapter{Describing Data Distributions \label{cha:Describing-Data-Distributions}}
+\chapter{Data Description \label{cha:Describing-Data-Distributions}}
 
 What would I like them to know?
 \begin{itemize}
@@ -1727,7 +1727,7 @@ repeats then this method is identical to overplot.
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true, height = 4, width = 6>>=
+<<echo = FALSE, fig=true, height = 2.5, width = 4.5>>=
 par(mfrow = c(1,3)) # 3 plots: 1 row, 3 columns
 stripchart(uspop, xlab="length", ylim=c(0, 2))
 stripchart(rivers, method="jitter", xlab="length")
@@ -1772,10 +1772,10 @@ Pearson: The Scientific Life in a Statistical Age, p. 236.
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true, height = 4, width = 6>>=
+<<echo = FALSE, fig=true, height = 2.5, width = 4.5>>=
 par(mfrow = c(1,2)) # 2 plots: 1 row, 2 columns
-hist(volcano, freq = TRUE)
-hist(volcano, freq = FALSE)
+hist(volcano, freq = TRUE, main = "", cex.lab = 0.8)
+hist(volcano, freq = FALSE, main = "")
 par(mfrow = c(1,1)) # back to normal
 @
 \par\end{centering}
@@ -1831,7 +1831,7 @@ height.
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true, height = 8, width = 6>>=
+<<echo = FALSE, fig=true, height = 6, width = 4.5>>=
 par(mfrow = c(2,1)) # 2 plots: 1 row, 2 columns
 plot(LakeHuron, type = "p")
 plot(LakeHuron, type = "h")
@@ -1904,7 +1904,7 @@ Figure \ref{fig:bar-gr-stateregion}.
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true, height = 4, width = 7>>=
+<<echo = FALSE, fig=true, height = 2.5, width = 4.5>>=
 par(mfrow = c(1,2)) # 2 plots: 1 row, 2 columns
 barplot(table(state.region), cex.names=0.60)
 barplot(prop.table(table(state.region)), cex.names=0.60)
@@ -1926,7 +1926,7 @@ function at the console (from the package \inputencoding{latin9}\lstinline[shows
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true, height = 5, width = 6>>=
+<<echo = FALSE, fig=true, height = 3.5, width = 4.5>>=
 library(qcc)
 pareto.chart(table(state.division), ylab="Frequency")
 @
@@ -2673,7 +2673,7 @@ set that has linear association. Example BLANK.
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true, height = 4, width = 6>>=
+<<echo = FALSE, fig=true, height = 2.5, width = 4.5>>=
 matplot(rnorm(100), rnorm(100), type="b", lty=1, pch=1)
 @
 \par\end{centering}
@@ -2796,7 +2796,7 @@ bwplot( \textasciitilde{}before | gender)
 %
 \begin{figure}[H]
 \begin{centering}
-<<echo = FALSE, fig=true, height = 4, width = 4>>=
+<<echo = FALSE, fig=true, height = 3, width = 3>>=
 library(lattice)
 print(bwplot(~ weight | feed, data = chickwts))
 @
@@ -2817,7 +2817,7 @@ histogram(\textasciitilde{} after | race)
 %
 \begin{figure}[H]
 \begin{centering}
-<<echo = FALSE, fig=true, height = 4, width = 4>>=
+<<echo = FALSE, fig=true, height = 3, width = 3>>=
 library(lattice)
 print(histogram(~age | education, data = infert))
 @
@@ -2836,7 +2836,7 @@ xyplot( salary \textasciitilde{} time | race)
 %
 \begin{figure}[H]
 \begin{centering}
-<<echo = FALSE, fig=true, height = 4, width = 4>>=
+<<echo = FALSE, fig=true, height = 3, width = 3>>=
 library(lattice)
 print(xyplot(Petal.Length ~ Petal.Width | Species, data = iris))
 @
@@ -2855,7 +2855,7 @@ do ?coplot and look at the examples
 %
 \begin{figure}[H]
 \begin{centering}
-<<echo = FALSE, fig=true, height = 4, width = 4>>=
+<<echo = FALSE, fig=true, height = 3, width = 3>>=
 library(lattice)
 print(coplot(conc ~ uptake | Type * Treatment, data = CO2))
 @
@@ -2946,7 +2946,7 @@ has the lowest frequency.
 \item The graph is shown below.
 \end{enumerate}
 \begin{center}
-<<echo = FALSE, fig=true, height = 4, width = 6>>=
+<<echo = FALSE, fig=true, height = 2.5, width = 4.5>>=
 barplot(table(RcmdrTestDrive$race), main="", xlab="race", ylab="Frequency", legend.text=FALSE, col=NULL) 
 @
 \par\end{center}
@@ -2983,8 +2983,8 @@ How does the boxplot compare to your answers to (1) and (3)?
 We can generate a table listing the average salaries by gender with
 two methods. The first uses \inputencoding{latin9}\lstinline[showstringspaces=false]!tapply!\inputencoding{utf8}:
 
-<<>>=
-x = tapply(RcmdrTestDrive$salary, list(gender=RcmdrTestDrive$gender), mean, na.rm=TRUE)
+<<keep.source = TRUE>>=
+x <- tapply(salary, list(gender = gender), mean)
 x
 @
 
@@ -2992,7 +2992,7 @@ The second method uses the \inputencoding{latin9}\lstinline[showstringspaces=fal
 function:
 
 <<keep.source = TRUE>>=
-by(salary, gender, mean, na.rm=TRUE) # another way to do it
+by(salary, gender, mean, na.rm = TRUE)
 @
 
 Now to answer the questions:
@@ -3022,7 +3022,7 @@ deviation?
 
 
 <<>>=
-y = tapply(RcmdrTestDrive$salary, list(gender=RcmdrTestDrive$gender), sd, na.rm=TRUE)
+y <- tapply(salary, list(gender = gender), sd)
 y
 @
 
@@ -3037,7 +3037,7 @@ compare to your answers to (1) and (3)?
 The graph is shown below.
 
 \begin{center}
-<<echo = FALSE, fig=true, height = 4, width = 6>>=
+<<echo = FALSE, fig=true, height = 2.5, width = 4.5>>=
 boxplot(salary~gender, xlab="salary", ylab="gender", main="", notch=FALSE, varwidth=TRUE, horizontal=TRUE, data=RcmdrTestDrive) 
 @
 \par\end{center}
@@ -3094,21 +3094,22 @@ of each other.
 \noindent The boxplot of \emph{reduction} is below.
 
 \begin{center}
-<<echo = FALSE, fig=true, height = 4, width = 6>>=
+<<echo = FALSE, fig=true, height = 2.5, width = 4.5>>=
 boxplot(reduction, xlab="reduction", main="", notch=FALSE, varwidth=TRUE, horizontal=TRUE, data=RcmdrTestDrive) 
 @
 \par\end{center}
 
 <<>>=
-in.fence = 1.5 * (fivenum(x)[4] - fivenum(x)[2]) + fivenum(x)[4]
-out.fence = 3 * (fivenum(x)[4] - fivenum(x)[2]) + fivenum(x)[4]
-which(x > in.fence)
-which(x > out.fence)
+temp <- fivenum(x)
+inF <- 1.5 * (temp[4] - temp[2]) + temp[4]
+outF <- 3 * (temp[4] - temp[2]) + temp[4]
+which(x > inF)
+which(x > outF)
 @
 
-Observations \Sexpr{which(x > in.fence)} would be considered potential
-outliers, while observation(s) \Sexpr{which(x > out.fence)} would
-be considered a suspected outlier.
+Observations \Sexpr{which(x > inF)} would be considered potential
+outliers, while observation(s) \Sexpr{which(x > outF)} would be considered
+a suspected outlier.
 
 
 \begin{xca}
@@ -3165,7 +3166,7 @@ for \emph{after}?
 The boxplot of \emph{before} is shown below.
 
 \begin{center}
-<<echo = FALSE, fig=true, height = 4, width = 6>>=
+<<echo = FALSE, fig=true, height = 2.5, width = 4.5>>=
 boxplot(before, xlab="before", main="", notch=FALSE, varwidth=TRUE, horizontal=TRUE, data=RcmdrTestDrive) 
 @
 \par\end{center}
@@ -3181,7 +3182,7 @@ is set up to have a fairly symmetric distribution.
 A boxplot of \emph{after} is shown next.
 
 \begin{center}
-<<echo = FALSE, fig=true, height = 4, width = 6>>=
+<<echo = FALSE, fig=true, height = 2.5, width = 4.5>>=
 boxplot(after, xlab="after", notch=FALSE, varwidth=TRUE, horizontal=TRUE, data=RcmdrTestDrive) 
 @
 \par\end{center}
@@ -3260,13 +3261,13 @@ to your answers to (4) and (5).
 The graphs are shown below.
 
 \begin{center}
-<<echo = FALSE, fig=true, height = 4, width = 6>>=
+<<echo = FALSE, fig=true, height = 2.5, width = 4.5>>=
 hist(before, xlab="before", data=RcmdrTestDrive) 
 @
 \par\end{center}
 
 \begin{center}
-<<echo = FALSE, fig=true, height = 4, width = 6>>=
+<<echo = FALSE, fig=true, height = 2.5, width = 4.5>>=
 hist(after, xlab="after", data=RcmdrTestDrive) 
 @
 \par\end{center}
@@ -4780,8 +4781,8 @@ function.
 
 <<keep.source = TRUE>>=
 library(prob)
-S <- rolldie(2, makespace = TRUE)  # assumes equally likely model
-head(S)                           #  first few rows
+S <- rolldie(2, makespace = TRUE)  # assumes ELM
+head(S)                            #  first few rows
 @
 
 Next we define the events
@@ -5054,8 +5055,8 @@ that $\P(\left\{ \mbox{second card is an Ace}\right\} )=4/52$.
 Toss a coin twice. The sample space is $S=\left\{ HH,\ HT,\ TH,\ TT\right\} $.
 We know that $\P(1^{\text{st}}\mbox{ toss is }H)=2/4$, $\P(2^{\text{nd}}\mbox{ toss is }H)=2/4$,
 and $\P(\mbox{both }H)=1/4$. Then\begin{align*}
-\P(2^{\text{nd}}\mbox{ toss is }H\ |\ 1^{\text{st}}\mbox{ toss is }H) & =\frac{\P(\mbox{both }H)}{\P(1^{\text{st}}\mbox{ toss is }H)}\\
- & =\frac{1/4}{2/4}\\
+\P(2^{\text{nd}}\mbox{ toss is }H\ |\ 1^{\text{st}}\mbox{ toss is }H) & =\frac{\P(\mbox{both }H)}{\P(1^{\text{st}}\mbox{ toss is }H)},\\
+ & =\frac{1/4}{2/4},\\
  & =\P(2^{\text{nd}}\mbox{ toss is }H).\end{align*}
 Intuitively, this means that the information that the first toss is
 $H$ has no bearing on the probability that the second toss is $H$.
@@ -5179,7 +5180,7 @@ is easy enough to toss the coin in a similar way repeatedly.
 We may represent tossing our unbalanced coin three times with the
 following: 
 
-<<echo=TRUE,print=TRUE>>= 
+<<keep.source = TRUE>>= 
 iidspace(c("H","T"), ntrials = 3, probs = c(0.7, 0.3)) 
 @ 
 
@@ -5236,11 +5237,15 @@ working at a company: Moe, Larry, and Curly. Their primary job duty
 is to file paperwork in the filing cabinet when papers become available.
 The three assistants have different work schedules:
 
+%
+\begin{table}[H]
 \begin{tabular}{c|ccc}
  & Moe & Larry & Curly\tabularnewline
 \hline
 Workload & 60\% & 30\% & 10\%\tabularnewline
 \end{tabular}
+\end{table}
+
 
 That is, Moe works 60\% of the time, Larry works 30\% of the time,
 and Curly does the remaining 10\%, and they file documents at approximately
@@ -5252,11 +5257,15 @@ filed the document. What are these events' respective probabilities?
 In the absence of additional information, reasonable prior probabilities
 would just be
 
+%
+\begin{table}[H]
 \begin{tabular}{c|ccc}
  & Moe & Larry & Curly\tabularnewline
 \hline
 Prior Probability & $\P(M)=0.60$ & $\P(L)=0.30$ & $\P(C)=0.10$\tabularnewline
 \end{tabular}
+\end{table}
+
 
 Now, the boss comes in one day, opens up the file cabinet, and selects
 a file at random. The boss discovers that the file has been misplaced.
@@ -5275,7 +5284,7 @@ information. Moe's likelihood of having misfiled a document is smaller
 than Larry's and Curly's, since he is a diligent worker who pays close
 attention to his work. Moe admits that he works longer than the others,
 but he doesn't make as many mistakes as they do. Thus, Moe recommends
-that - before making a decision - the boss should update the probability
+that -- before making a decision -- the boss should update the probability
 (initially based on workload alone) to incorporate the likelihood
 of having observed a misfiled document.
 
@@ -5718,7 +5727,8 @@ $f_{X}(x)=\P(X=x)$ & 1/8 & 3/8 & 3/8 & 1/8 & 1\tabularnewline
 
 There are numbers associated with PMFs. One important example is the
 mean $\mu$, also known as $\E X$:\begin{equation}
-\mu=\E X=\sum_{x\in S}xf_{X}(x).\end{equation}
+\mu=\E X=\sum_{x\in S}xf_{X}(x),\end{equation}
+provided the (potentially infinite) series $\sum|x|f_{X}(x)$ is convergent.
 Another important number is the variance:\begin{equation}
 \sigma^{2}=\E(X-\mu)^{2}=\sum_{x\in S}(x-\mu)^{2}f_{X}(x),\end{equation}
 which can be computed (see Exercise BLANK) with the alternate formula
@@ -5815,7 +5825,7 @@ and standard deviation with the functions \inputencoding{latin9}\lstinline[shows
 and \inputencoding{latin9}\lstinline[showstringspaces=false]!sd!\inputencoding{utf8}:
 
 <<keep.source = TRUE>>=
-library(distrEx)     # note: distrEx depends on distr
+library(distrEx)
 X <- DiscreteDistribution(supp = 0:3, prob = c(1,3,3,1)/8)
 E(X); var(X); sd(X)
 @
@@ -5917,10 +5927,10 @@ The default name for the variable is \inputencoding{latin9}\lstinline[showstring
 The binomial distribution is based on a \emph{Bernoulli trial}, which
 is a random experiment in which there are only two possible outcomes:
 success ($S$) and failure ($F$). We conduct the Bernoulli trial
-and let \[
+and let \begin{equation}
 X=\begin{cases}
 1 & \mbox{if the outcome is \ensuremath{S}},\\
-0 & \mbox{if the outcome is \ensuremath{F}}.\end{cases}\]
+0 & \mbox{if the outcome is \ensuremath{F}}.\end{cases}\end{equation}
 If the probability of success is $p$ then the probability of failure
 must be $1-p=q$ and the PMF of $X$ is\begin{equation}
 f_{X}(x)=p^{x}(1-p)^{1-x},\quad x=0,1.\end{equation}
@@ -5953,11 +5963,11 @@ We next find the mean:
 = & n\cdot p\sum_{x=1}^{n}\frac{(n-1)!}{(x-1)!(n-x)!}p^{x-1}q^{n-x},\\
 = & np\,\sum_{x-1=0}^{n-1}{n-1 \choose x-1}p^{(x-1)}(1-p)^{(n-1)-(x-1)},\\
 = & np.\end{alignat*}
- Using a similar argument, we find that $\E X(X-1)=n(n-1)p^{2}$ (see
-Exercise BLANK). Therefore\begin{alignat*}{1}
-\sigma^{2}= & \E X(X-1)+\E X-[\E X]^{2}\\
-= & n(n-1)p^{2}+np-(np)^{2}\\
-= & n^{2}p^{2}-np^{2}+np-n^{2}p^{2}\\
+ A similar argument shows that $\E X(X-1)=n(n-1)p^{2}$ (see Exercise
+BLANK). Therefore\begin{alignat*}{1}
+\sigma^{2}= & \E X(X-1)+\E X-[\E X]^{2},\\
+= & n(n-1)p^{2}+np-(np)^{2},\\
+= & n^{2}p^{2}-np^{2}+np-n^{2}p^{2},\\
 = & np-np^{2}=np(1-p).\end{alignat*}
 
 \begin{example}
@@ -6008,7 +6018,7 @@ probabilities\ldots{} }menu in the \textsf{R} Commander or the following
 from the command line: 
 
 <<keep.source = TRUE>>=
-pbinom(9, size = 12, prob = 1/6) - pbinom(6, size = 12, prob = 1/6)
+pbinom(9, size=12, prob=1/6) - pbinom(6, size=12, prob=1/6)
 diff(pbinom(c(6,9), size = 12, prob = 1/6))  # same thing
 @
 
@@ -6020,7 +6030,7 @@ We know from before that $X\sim\mathsf{binom}(\mathtt{size}=3,\,\mathtt{prob}=1/
 which implies the following PMF:
 
 %
-\begin{table}
+\begin{table}[H]
 \begin{tabular}{c|cccc}
 $x=\mbox{\#of Heads}$ & 0 & 1 & 2 & 3\tabularnewline
 \hline
@@ -6056,7 +6066,7 @@ in Figure BLANK.
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig = true, height = 4, width = 6>>=
+<<echo = FALSE, fig = true, height = 2.5, width = 4.5>>=
 plot(0, xlim = c(-1.2, 4.2), ylim = c(-0.04, 1.04), type = "n", xlab = "number of successes", ylab = "cumulative probability")
 abline(h = c(0,1), lty = 2, col = "grey")
 lines(stepfun(0:3, pbinom(-1:3, size = 3, prob = 0.5)), verticals = FALSE, do.p = FALSE)
@@ -6108,7 +6118,7 @@ BLANK for an example.
 %
 \begin{figure}[H]
 \begin{centering}
-<<echo = FALSE, fig=true, height = 3, width = 6>>=
+<<echo = FALSE, fig=true, height = 2.25, width = 4.5>>=
 plot(X)
 @
 \par\end{centering}
@@ -6724,9 +6734,9 @@ then $X$ has PMF
 
 \begin{equation}
 f_{X}(x)={r+x-1 \choose r-1}\, p^{r}(1-p)^{x},\quad x=0,1,2,\ldots\end{equation}
-We say that $X$ has a \emph{Negative Binomial distribution} and we
-write $X\sim\mathsf{nbinom}(\mathtt{size}=r,\,\mathtt{prob}=p)$.
-The associated \textsf{R} functions are \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=4]!dnbinom(x, size, prob)!\inputencoding{utf8},
+We say that $X$ has a \emph{Negative Binomial distribution} and write
+$X\sim\mathsf{nbinom}(\mathtt{size}=r,\,\mathtt{prob}=p)$. The associated
+\textsf{R} functions are \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=4]!dnbinom(x, size, prob)!\inputencoding{utf8},
 \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=4]!pnbinom!\inputencoding{utf8},
 \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=4]!qnbinom!\inputencoding{utf8},
 and \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=4]!rnbinom!\inputencoding{utf8},
@@ -6735,9 +6745,9 @@ respectively.
 
 As usual it should be clear that $f_{X}(x)\geq0$ and the fact that
 $\sum f_{X}(x)=1$ follows from a generalization of the geometric
-series, using a Maclaurin's series expansion:\begin{alignat*}{1}
+series by means of a Maclaurin's series expansion:\begin{alignat}{1}
 \frac{1}{1-t}= & \sum_{k=0}^{\infty}t^{k},\quad\mbox{for \ensuremath{-1<t<1}},\mbox{ and}\\
-\frac{1}{(1-t)^{r}}= & \sum_{k=0}^{\infty}{r+k-1 \choose r-1}\, t^{k},\quad\mbox{for \ensuremath{-1<t<1}}.\end{alignat*}
+\frac{1}{(1-t)^{r}}= & \sum_{k=0}^{\infty}{r+k-1 \choose r-1}\, t^{k},\quad\mbox{for \ensuremath{-1<t<1}}.\end{alignat}
 Therefore \begin{equation}
 \sum_{x=0}^{\infty}f_{X}(x)=p^{r}\sum_{x=0}^{\infty}{r+x-1 \choose r-1}\, q^{x}=p^{r}(1-q)^{-r}=1,\end{equation}
 since $|q|=|1-p|<1$. 
@@ -6749,7 +6759,7 @@ we get seven Heads. What is $\P(X=5)?$
 \[
 \P(X=5)=f_{X}(5)={7+5-1 \choose 7-1}(1/2)^{7}(1/2)^{5}={11 \choose 6}2^{-12}\]
 and we can get this in \textsf{R} with
-\end{example}
+
 <<>>=
 dnbinom(5, size = 7, prob = 0.5)
 @
@@ -6763,7 +6773,7 @@ M_{X}(t)= & \sum_{x=0}^{\infty}\me^{tx}\ {r+x-1 \choose r-1}p^{r}q^{x}\\
 and so \begin{equation}
 M_{X}(t)=\left(\frac{p}{1-q\me^{t}}\right)^{r},\quad\mbox{for \ensuremath{q\me^{t}<1}}.\end{equation}
 We see that $q\me^{t}<1$ when $t<-\ln(1-p)$.
-\begin{example}
+
 Let $X\sim\mathsf{nbinom}(\mathtt{size}=r,\mathtt{prob}=p)\mbox{ with \ensuremath{M(t)=p^{r}(1-q\me^{t})^{-r}}}$.
 We proclaimed above the values of the mean and variance. Now we are
 equipped with the tools to find these directly.
@@ -6773,7 +6783,7 @@ M'(t)= & p^{r}(-r)(1-q\me^{t})^{-r-1}(-q\me^{t}),\\
 = & rq\me^{t}p^{r}(1-q\me^{t})^{-r-1},\\
 = & \frac{rq\me^{t}}{1-q\me^{t}}M(t),\mbox{ and so }\\
 M'(0)= & \frac{rq}{1-q}\cdot1=\frac{rq}{p}.\end{alignat*}
-Thus $\mu=rq/p$. We next find $\E X^{2}$ by calculating\begin{alignat*}{1}
+Thus $\mu=rq/p$. We next find $\E X^{2}$.\begin{alignat*}{1}
 M''(0)= & \left.\frac{rq\me^{t}(1-q\me^{t})-rq\me^{t}(-q\me^{t})}{(1-q\me^{t})^{2}}M(t)+\frac{rq\me^{t}}{1-q\me^{t}}M'(t)\right|_{t=0},\\
 = & \frac{rqp+rq^{2}}{p^{2}}\cdot1+\frac{rq}{p}\left(\frac{rq}{p}\right),\\
 = & \frac{rq}{p^{2}}+\left(\frac{rq}{p}\right)^{2}.\end{alignat*}
@@ -9084,7 +9094,7 @@ every single member of the population, we find that it is either impossible
 or infeasible to for us to do so, thus, we resort to collecting a
 \emph{sample} instead. We do not lose heart. Our method will suffice,
 provided the sample is \emph{representative} of the population. A
-good way to achieve this is to sample \emph{randomly} from the population(s).
+good way to achieve this is to sample \emph{randomly} from the population.
 
 Supposing for the sake of argument that we have collected a random
 sample, the next task is to make some \emph{sense} out of the data
@@ -15083,7 +15093,7 @@ $i=0,1,\ldots,n-1$, of length $\Delta x_{i}=(b-a)/n$ where $x_{0}=a$
 and $x_{n}=b$, and let $x_{i}^{\ast}$ be any points chosen from
 the respective subintervals. Then the \emph{definite integral} of
 $f$ from $a$ to $b$ is defined by\begin{equation}
-\int_{a}^{b}f(x)\diff x=\lim_{n\to\infty}\sum_{i=0}^{n-1}f(x_{i}^{\ast})\Delta x_{i},\end{equation}
+\int_{a}^{b}f(x)\,\diff x=\lim_{n\to\infty}\sum_{i=0}^{n-1}f(x_{i}^{\ast})\,\Delta x_{i},\end{equation}
 provided the limit exists, and in that case, we say that $f$ is \emph{integrable}
 from $a$ to $b$. \end{defn}
 \begin{thm}
@@ -15092,7 +15102,7 @@ $[a,b]$. Then
 \begin{enumerate}
 \item the function $g$ defined by $g(x)=\int_{a}^{x}f(t)\:\diff t$, $a\leq x\leq b$,
 is continuous on $[a,b]$ and differentiable on $(a,b)$ with $g'(x)=f(x)$.
-\item $\int_{a}^{b}f(x)\diff x=F(b)-F(a)$, where $F$ is any \emph{antiderivative}
+\item $\int_{a}^{b}f(x)\,\diff x=F(b)-F(a)$, where $F$ is any \emph{antiderivative}
 of $f$, that is, any function $F$ satisfying $F'=f$.
 \end{enumerate}
 \end{thm}
@@ -15114,9 +15124,9 @@ then\begin{equation}
 \begin{tabular}{|c|c|c|}
 \hline 
  &  & \tabularnewline
-$\int x^{n}\diff x=x^{n+1}/(n+1),\ n\neq-1$ & $\int\me^{x}\diff x=\me^{x}$ & $\int x^{-1}\diff x=\ln|x|$\tabularnewline
+$\int x^{n}\,\diff x=x^{n+1}/(n+1),\ n\neq-1$ & $\int\me^{x}\,\diff x=\me^{x}$ & $\int x^{-1}\,\diff x=\ln|x|$\tabularnewline
  &  & \tabularnewline
-$\int\tan x\:\diff x=\ln|\sec x|$ & $\int a^{x}\diff x=a^{x}/\ln a$ & $\int(x^{2}+1)^{-1}\diff x=\tan^{-1}x$\tabularnewline
+$\int\tan x\:\diff x=\ln|\sec x|$ & $\int a^{x}\,\diff x=a^{x}/\ln a$ & $\int(x^{2}+1)^{-1}\,\diff x=\tan^{-1}x$\tabularnewline
  &  & \tabularnewline
 \hline
 \end{tabular}
@@ -15148,22 +15158,22 @@ provided the limit on the right-hand side exists or is infinite.
 
 If $\int_{a}^{t}f(x)\diff x$ exists for every number $t\geq a$,
 then we define \begin{equation}
-\int_{a}^{\infty}f(x)\diff x=\lim_{t\to\infty}\int_{a}^{t}f(x)\diff x,\end{equation}
+\int_{a}^{\infty}f(x)\,\diff x=\lim_{t\to\infty}\int_{a}^{t}f(x)\,\diff x,\end{equation}
 provided this limit exists as a finite number, and in that case we
-say that $\int_{a}^{\infty}f(x)\diff x$ is \emph{convergent}. Otherwise,
+say that $\int_{a}^{\infty}f(x)\,\diff x$ is \emph{convergent}. Otherwise,
 we say that the improper integral is \emph{divergent}.
 
-If $\int_{t}^{b}f(x)\diff x$ exists for every number $t\leq b$,
+If $\int_{t}^{b}f(x)\,\diff x$ exists for every number $t\leq b$,
 then we define \begin{equation}
-\int_{-\infty}^{b}f(x)\diff x=\lim_{t\to-\infty}\int_{t}^{b}f(x)\diff x,\end{equation}
+\int_{-\infty}^{b}f(x)\,\diff x=\lim_{t\to-\infty}\int_{t}^{b}f(x)\,\diff x,\end{equation}
 provided this limit exists as a finite number, and in that case we
-say that $\int_{-\infty}^{b}f(x)\diff x$ is \emph{convergent}. Otherwise,
-we say that the improper integral is \emph{divergent}.
+say that $\int_{-\infty}^{b}f(x)\,\diff x$ is \emph{convergent}.
+Otherwise, we say that the improper integral is \emph{divergent}.
 
-If both $\int_{a}^{\infty}f(x)\diff x$ and $\int_{-\infty}^{a}f(x)\diff x$
+If both $\int_{a}^{\infty}f(x)\,\diff x$ and $\int_{-\infty}^{a}f(x)\,\diff x$
 are convergent, then we define\begin{equation}
-\int_{-\infty}^{\infty}f(x)\diff x=\int_{-\infty}^{a}f(x)\d x+\int_{a}^{\infty}f(x)\diff x,\end{equation}
-and we say that $\int_{-\infty}^{\infty}f(x)\diff x$ is \emph{convergent}.
+\int_{-\infty}^{\infty}f(x)\,\diff x=\int_{-\infty}^{a}f(x)\,\diff x+\int_{a}^{\infty}f(x)\diff x,\end{equation}
+and we say that $\int_{-\infty}^{\infty}f(x)\,\diff x$ is \emph{convergent}.
 Otherwise, we say that the improper integral is \emph{divergent}.
 
 
