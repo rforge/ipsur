@@ -1,6 +1,6 @@
 %% LyX 1.6.5 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
-\documentclass[10pt,english,nogin]{book}
+\documentclass[12pt,english,nogin]{book}
 \usepackage{lmodern}
 \renewcommand{\sfdefault}{lmss}
 \renewcommand{\ttdefault}{lmtt}
@@ -10,8 +10,8 @@
 \lstset{basicstyle={\ttfamily},
 breaklines=true,
 language=R}
-\usepackage[paperwidth=6in,paperheight=9in]{geometry}
-\geometry{verbose,tmargin=0.75in,bmargin=0.75in,lmargin=0.75in,rmargin=0.75in}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
 \pagestyle{headings}
 \setcounter{tocdepth}{1}
 \usepackage{color}
@@ -368,7 +368,7 @@ return(normal.and.t.dist(mu.H0 = mu, obs.mean = obs.mean, std.dev = std.dev, n =
 @
 
 
-\title{\fontsize{36}{42}\selectfont Introduction to Probability\\ and
+\title{\fontsize{24}{28}\selectfont Introduction to Probability\\ and
 Statistics Using \textsf{R}}
 
 
@@ -402,19 +402,34 @@ Free Documentation License''.
 
 \addcontentsline{toc}{chapter}{Preface}
 
-Why did I write this book?
+This book was expanded from lecture materials I have used in a one
+semester upper-division undergraduate course entitled \emph{Probability
+and Statistics} at Youngstown State University. Those lecture materials,
+in turn, were based on notes that I transcribed as a student at Bowling
+Green State University. The course for which the materials were written
+is 50-50 Probability and Statistics, and the attendees include mathematics,
+engineering, and computer science majors (among others). The prerequisites
+for the course are a full year of Calculus.
 
-The goal for this book is to write a more or less self contained,
-essentially complete, correct, textbook. There should be plenty of
-exercises for the student, and the problems should have full solutions
-for some, and no solutions for others (so that the instructor may
-assign them for grading).
+In an attempt to be correct I have included material in this book
+which I would normally not mention during the course of a standard
+lecture. For instance, I normally do not highlight the intricacies
+of measurability conditions or absolute integrability when speaking
+to the class. Moreover, I typically stray from the matrix approach
+to multiple linear regression bacause many of my students have not
+yet been formally trained in linear algebra. It is important, however,
+in my mind for the students to hold something in their hands which
+acknowledges the world of mathematics and statistics beyond, and which
+may be useful to them for many semesters to come. I would rather overshoot
+than undershoot my target.
 
-For this reason I have constructed this book to have many of the exercises
-randomly generated. The concept of the problem remains the same, but
-the numbers have changed. This makes it more difficult for students
-to copy off of each other and from sharing answers from semester to
-semester.
+This document's goal is to be a more or less self contained, essentially
+complete, correct, textbook. There should be plenty of exercises for
+the student, and the problems should have full solutions for some,
+and no solutions for others (so that the instructor may assign them
+for grading). For this reason I have constructed this book to have
+many randomly generated exercises. The numbers change, but the concept
+of the problem remains the same.
 
 This book was inspired by 
 \begin{itemize}
@@ -1469,7 +1484,7 @@ function.
 Type \inputencoding{latin9}\lstinline[showstringspaces=false]!plot!\inputencoding{utf8}
 at the command line (with no parentheses).
 
-<<>>=
+<<keep.source = TRUE>>=
 plot
 @
 
@@ -1727,7 +1742,7 @@ repeats then this method is identical to overplot.
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true, height = 2.5, width = 4.5>>=
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 par(mfrow = c(1,3)) # 3 plots: 1 row, 3 columns
 stripchart(uspop, xlab="length", ylim=c(0, 2))
 stripchart(rivers, method="jitter", xlab="length")
@@ -1772,7 +1787,7 @@ Pearson: The Scientific Life in a Statistical Age, p. 236.
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true, height = 2.5, width = 4.5>>=
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 par(mfrow = c(1,2)) # 2 plots: 1 row, 2 columns
 hist(volcano, freq = TRUE, main = "", cex.lab = 0.8)
 hist(volcano, freq = FALSE, main = "")
@@ -1831,7 +1846,7 @@ height.
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true, height = 6, width = 4.5>>=
+<<echo = FALSE, fig=true, height = 8, width = 6>>=
 par(mfrow = c(2,1)) # 2 plots: 1 row, 2 columns
 plot(LakeHuron, type = "p")
 plot(LakeHuron, type = "h")
@@ -1904,7 +1919,7 @@ Figure \ref{fig:bar-gr-stateregion}.
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true, height = 2.5, width = 4.5>>=
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 par(mfrow = c(1,2)) # 2 plots: 1 row, 2 columns
 barplot(table(state.region), cex.names=0.60)
 barplot(prop.table(table(state.region)), cex.names=0.60)
@@ -1926,7 +1941,7 @@ function at the console (from the package \inputencoding{latin9}\lstinline[shows
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true, height = 3.5, width = 4.5>>=
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 library(qcc)
 pareto.chart(table(state.division), ylab="Frequency")
 @
@@ -2673,7 +2688,7 @@ set that has linear association. Example BLANK.
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true, height = 2.5, width = 4.5>>=
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 matplot(rnorm(100), rnorm(100), type="b", lty=1, pch=1)
 @
 \par\end{centering}
@@ -2796,7 +2811,7 @@ bwplot( \textasciitilde{}before | gender)
 %
 \begin{figure}[H]
 \begin{centering}
-<<echo = FALSE, fig=true, height = 3, width = 3>>=
+<<echo = FALSE, fig=true, height = 4, width = 4>>=
 library(lattice)
 print(bwplot(~ weight | feed, data = chickwts))
 @
@@ -2817,7 +2832,7 @@ histogram(\textasciitilde{} after | race)
 %
 \begin{figure}[H]
 \begin{centering}
-<<echo = FALSE, fig=true, height = 3, width = 3>>=
+<<echo = FALSE, fig=true, height = 4, width = 4>>=
 library(lattice)
 print(histogram(~age | education, data = infert))
 @
@@ -2836,7 +2851,7 @@ xyplot( salary \textasciitilde{} time | race)
 %
 \begin{figure}[H]
 \begin{centering}
-<<echo = FALSE, fig=true, height = 3, width = 3>>=
+<<echo = FALSE, fig=true, height = 4, width = 4>>=
 library(lattice)
 print(xyplot(Petal.Length ~ Petal.Width | Species, data = iris))
 @
@@ -2855,7 +2870,7 @@ do ?coplot and look at the examples
 %
 \begin{figure}[H]
 \begin{centering}
-<<echo = FALSE, fig=true, height = 3, width = 3>>=
+<<echo = FALSE, fig=true, height = 4, width = 4>>=
 library(lattice)
 print(coplot(conc ~ uptake | Type * Treatment, data = CO2))
 @
@@ -3853,7 +3868,7 @@ each other. After each experiment, keep a running tally of whether
 or not the event $A$ occurred. Let $S_{n}$ count the number of times
 that $A$ occurred in the $n$ experiments. Then the law of large
 numbers says that \begin{equation}
-\frac{S_{n}}{n}\to\P(A)\mbox{ \,\ as }n\to\infty.\end{equation}
+\frac{S_{n}}{n}\to\P(A)\mbox{ as }n\to\infty.\end{equation}
 
 
 As the reasoning goes, to learn about the probability of an event
@@ -6066,7 +6081,7 @@ in Figure BLANK.
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig = true, height = 2.5, width = 4.5>>=
+<<echo = FALSE, fig = true, height = 4.5, width = 6>>=
 plot(0, xlim = c(-1.2, 4.2), ylim = c(-0.04, 1.04), type = "n", xlab = "number of successes", ylab = "cumulative probability")
 abline(h = c(0,1), lty = 2, col = "grey")
 lines(stepfun(0:3, pbinom(-1:3, size = 3, prob = 0.5)), verticals = FALSE, do.p = FALSE)
@@ -6118,8 +6133,8 @@ BLANK for an example.
 %
 \begin{figure}[H]
 \begin{centering}
-<<echo = FALSE, fig=true, height = 2.25, width = 4.5>>=
-plot(X)
+<<echo = FALSE, fig=true, height = 4, width = 6>>=
+plot(X, cex = 0.2)
 @
 \par\end{centering}
 
@@ -6131,9 +6146,31 @@ plot(X)
 %
 \begin{table}
 \begin{centering}
+\begin{tabular}{lllll}
+\multicolumn{5}{l}{Given $X\sim\mathsf{dbinom}(\mathtt{size}=n,\,\mathtt{prob}=p)$.}\tabularnewline
+ &  &  &  & \tabularnewline
+How to do: &  & with $\mathtt{stats}$ (default)  &  & with $\mathtt{distr}$\tabularnewline
+\hline
+PMF: $\P(X=x)$ &  & $\mathtt{dbinom(x,size=n,prob=p)}$ &  & $\mathtt{d(X)(x)}$\tabularnewline
+CDF: $\P(X\leq x)$ &  & $\mathtt{pbinom(x,size=n,prob=p)}$ &  & $\mathtt{p(X)(x)}$\tabularnewline
+Simulate $k$ variates &  & $\mathtt{rbinom(k,size=n,prob=p)}$ &  & $\mathtt{r(X)(k)}$\tabularnewline
+\hline
+ &  &  &  & \tabularnewline
+\multicolumn{5}{r}{For $\mathtt{distr}$ need $\mathtt{X=Binom(size=n,prob=p)}$}\tabularnewline
+\end{tabular}
+\par\end{centering}
+
+\caption{Correspondence between \texttt{stats} and \texttt{distr}}
+
+\end{table}
+
+
+%
+\begin{table}
+\begin{centering}
 \begin{tabular}{cccc}
 \multicolumn{1}{c}{} &  & $\mathtt{X<-Binom(size=}n\mathtt{,\ prob=}p\mathtt{)}$\tabularnewline
-$\mathsf{dbinom}(x,\,\mathtt{size}=n,\,\mathtt{prob}=p)$ & $\P(X=x)$ & PMF & $\mathsf{d}(\mathtt{d(X)})(x)$\tabularnewline
+$\mathsf{dbinom}(x,\,\mathtt{size}=n,\,\mathtt{prob}=p)$ & $\P(X=x)$ & PMF & $\mathtt{d(X)}(x)$\tabularnewline
 $\mathsf{pbinom}(x,\,\mathtt{size}=n,\,\mathtt{prob}=p)$ & $\P(X\leq x)$ & CDF & $\mathsf{p}(\mathtt{X})(x)$\tabularnewline
 $\mathsf{rbinom}(k,\,\mathtt{size}=n,\,\mathtt{prob}=p)$ &  & random variates & $\mathsf{r}(\mathtt{X})(k)$\tabularnewline
  &  &  & \tabularnewline
@@ -6406,7 +6443,7 @@ plot(ecdf(x))
 %
 \begin{figure}[H]
 \begin{centering}
-<<echo = FALSE, fig=true, height = 3, width = 6>>=
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 plot(ecdf(x))
 @
 \par\end{centering}
@@ -8093,7 +8130,7 @@ plot(function(x){mgfgamma(x, shape = 13, rate = 1)}, from=-0.1, to=0.1, ylab = "
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true, height = 4, width = 5>>=
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 plot(function(x){mgfgamma(x, shape = 13, rate = 1)}, from=-0.1, to=0.1, ylab = "gamma mgf")
 @
 \par\end{centering}
@@ -8872,7 +8909,7 @@ is a factor.%
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true, height = 4, width = 6>>=
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 library(lattice)
 print(cloud(probs ~ X1 + X2, data = S, type = c("p","h"), lwd = 2, pch = 16, cex = 1.5), screen = list(z = 15, x = -70))
 @
@@ -9540,7 +9577,7 @@ Now let's take a look at a plot of the simulated values
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true, height = 4, width = 6>>=
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 hist(iqrs)
 @
 \par\end{centering}
@@ -9574,7 +9611,7 @@ Now let's take a look at a plot of the simulated values
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true, height = 4, width = 6>>=
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 hist(mads)
 @
 \par\end{centering}
@@ -9802,7 +9839,7 @@ See Figure BLANK.
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true, height = 4, width = 6>>=
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 heights = rep(0, 16)
 for (j in 7:15) heights[j] <- dhyper(3, m = 7, n = j - 7, k = 4)
 plot(6:15, heights[6:15], pch = 16, cex = 1.5, xlab = "number of fish in pond", ylab = "Likelihood")
@@ -9898,7 +9935,7 @@ The result is shown in Figure BLANK.
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true, height = 4, width = 6>>=
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 dat <- rbinom(27, size = 1, prob = 0.3)
 like <- function(x){
 r <- 1
@@ -10773,7 +10810,7 @@ prop.test(x = nheads, n = 100, p = 0.50, alternative = "two.sided", conf.level =
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true>>=
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 library(HH)
 plot(prop.test(x = nheads, n = 100, p = 0.50, alternative = "two.sided", conf.level = 0.95, correct = FALSE), 'Hypoth')
 @
@@ -11021,7 +11058,7 @@ Plot for the intuition of between versus within
 AND%
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig = true>>=
+<<echo = FALSE, fig = true, height = 4.5, width = 6>>=
 y1 <- rnorm(300, mean = c(2,8,22))
 plot(y1, xlim = c(-1,25), ylim = c(0,0.45) , type = "n")
 f <- function(x){dnorm(x, mean = 2)}
@@ -11044,7 +11081,7 @@ rug(y1)
 Plots for the hypothesis tests:%
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig = true>>=
+<<echo = FALSE, fig = true, height = 4.5, width = 6>>=
 y2 <- rnorm(300, mean = c(4,4.1,4.3))
 hist(y2, 30, prob = TRUE)
 f <- function(x){dnorm(x, mean = 4)/3}
@@ -11062,7 +11099,7 @@ curve(f, add = TRUE, lwd = 2)
 lkjljdflsjdljsdlsdfljsldsd%
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig = true>>=
+<<echo = FALSE, fig = true, height = 4.5, width = 6>>=
 library(HH)
 old.omd <- par(omd = c(.05,.88, .05,1))
 F.setup(df1 = 5, df2 = 30)
@@ -11084,7 +11121,7 @@ hdskfs
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig = true>>=
+<<echo = FALSE, fig = true, height = 4.5, width = 6>>=
 library(HH)
 old.omd <- par(omd = c(.05,.88, .05,1))
 F.setup(df1 = 5, df2 = 30)
@@ -11282,7 +11319,7 @@ a simple scatterplot of the data with the command \inputencoding{latin9}\lstinli
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true, height = 4, width = 6>>=
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 plot(dist ~ speed, data = cars)
 @
 \par\end{centering}
@@ -11401,7 +11438,7 @@ are the coefficients of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]
 (see Figure \ref{fig:Scatter-cars-regline}): %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true, height = 4, width = 6>>=
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 plot(dist ~ speed, data = cars)
 abline(coef(cars.lm))
 @
@@ -11807,7 +11844,7 @@ package. The graph is displayed in Figure \ref{fig:Scatter-cars-CIPI}.
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true, height = 4, width = 6>>=
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 library(HH)
 print(ci.plot(cars.lm))
 @
@@ -12079,7 +12116,7 @@ normal.
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true, height = 4, width = 6>>=
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 plot(cars.lm, which = 2)
 @
 \par\end{centering}
@@ -12166,7 +12203,7 @@ does appear to be somewhat of a slight fanning-out of the residuals.
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true, height = 4, width = 6>>=
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 plot(cars.lm, which = 3)
 @
 \par\end{centering}
@@ -12233,7 +12270,7 @@ cyclical wave pattern or structure to the residual plot.
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true, height = 4, width = 6>>=
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 plot(cars.lm, which = 1)
 @
 \par\end{centering}
@@ -12548,7 +12585,7 @@ We can look at a plot of the Cook's distances with the command \inputencoding{la
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true, height = 4, width = 6>>=
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 plot(cars.lm, which = 4)
 @
 \par\end{centering}
