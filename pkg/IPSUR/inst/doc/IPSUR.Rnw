@@ -63,6 +63,8 @@ language=R}
   \newtheorem{xca}[thm]{Exercise}
  \theoremstyle{definition}
   \newtheorem{example}[thm]{Example}
+  \theoremstyle{plain}
+  \newtheorem{fact}[thm]{Fact}
 \newenvironment{lyxcode}
 {\par\begin{list}{}{
 \setlength{\rightmargin}{\leftmargin}
@@ -79,8 +81,6 @@ language=R}
   \newtheorem{ax}[thm]{Axiom}
   \theoremstyle{plain}
   \newtheorem{prop}[thm]{Proposition}
-  \theoremstyle{plain}
-  \newtheorem{fact}[thm]{Fact}
   \theoremstyle{definition}
   \newtheorem{defn}[thm]{Definition}
   \theoremstyle{remark}
@@ -223,7 +223,7 @@ morestring=[b]"
 
 <<echo = FALSE>>=
 set.seed(42)
-options(width = 60)
+options(width = 70)
 #library(random)
 #i_seed <- randomNumbers(n = 624, col = 1, min = -1e+09, max = 1e+09)
 #.Random.seed[2:626] <- as.integer(c(1, i_seed))
@@ -368,14 +368,14 @@ return(normal.and.t.dist(mu.H0 = mu, obs.mean = obs.mean, std.dev = std.dev, n =
 @
 
 
-\title{\fontsize{24}{28}\selectfont Introduction to Probability\\ and
+\title{\fontsize{30}{35}\selectfont Introduction to Probability\\ and
 Statistics Using \textsf{R}}
 
 
-\date{\noun{First Edition}}
+\date{\fontsize{24}{28}\selectfont \noun{First Edition}}
 
 
-\author{\fontsize{18}{21}\selectfont G.~Jay Kerns}
+\author{\fontsize{24}{28}\selectfont G.~Jay Kerns}
 
 \maketitle
 \noindent \IPSUR: Introduction to Probability and Statistics Using
@@ -414,22 +414,21 @@ for the course are a full year of Calculus.
 In an attempt to be correct I have included material in this book
 which I would normally not mention during the course of a standard
 lecture. For instance, I normally do not highlight the intricacies
-of measurability conditions or absolute integrability when speaking
-to the class. Moreover, I typically stray from the matrix approach
-to multiple linear regression bacause many of my students have not
-yet been formally trained in linear algebra. It is important, however,
-in my mind for the students to hold something in their hands which
-acknowledges the world of mathematics and statistics beyond, and which
-may be useful to them for many semesters to come. I would rather overshoot
-than undershoot my target.
+of measure theory or absolute integrability when speaking to the class.
+Moreover, I typically stray from the matrix approach to multiple linear
+regression bacause many of my students have not yet been formally
+trained in linear algebra. It is important, however, in my mind for
+the students to hold something in their hands which acknowledges the
+world of mathematics and statistics beyond, and which may be useful
+to them for many semesters to come.
 
 This document's goal is to be a more or less self contained, essentially
 complete, correct, textbook. There should be plenty of exercises for
 the student, and the problems should have full solutions for some,
 and no solutions for others (so that the instructor may assign them
-for grading). For this reason I have constructed this book to have
-many randomly generated exercises. The numbers change, but the concept
-of the problem remains the same.
+for grading). I have constructed this book to have many randomly generated
+exercises. The numbers change, but the concept of the problem remains
+the same.
 
 This book was inspired by 
 \begin{itemize}
@@ -1465,6 +1464,8 @@ This file is then automatically loaded the next time \textsf{R} starts
 This is a valuable feature for experienced users of \textsf{R}, but
 I find that it causes more trouble than it saves with beginners.
 \end{itemize}
+\newpage{}
+
 
 \section{Chapter Exercises}
 
@@ -1730,15 +1731,15 @@ These are done with a call to the \inputencoding{latin9}\lstinline[showstringspa
 function, and are often used when the data set is not too large. Along
 the horizontal axis is a numerical scale above which the data values
 are plotted. There are three methods for strip charts.
-\begin{itemize}
-\item Overplot: plots ties covering each other. This method is good to display
-only the distinct values assumed by the dataset.
-\item Jitter: adds some noise to the data in the $y$ direction so that
+\begin{description}
+\item [{Overplot}] plots ties covering each other. This method is good
+to display only the distinct values assumed by the dataset.
+\item [{Jitter}] adds some noise to the data in the $y$ direction so that
 data values are not covered up by ties.
-\item Stack: plots repeated values stacked on top of one another. This method
-is best used for discrete data with a lot of ties; if there are no
-repeats then this method is identical to overplot.
-\end{itemize}
+\item [{Stack}] plots repeated values stacked on top of one another. This
+method is best used for discrete data with a lot of ties; if there
+are no repeats then this method is identical to overplot.
+\end{description}
 %
 \begin{figure}
 \begin{centering}
@@ -1811,13 +1812,13 @@ right of the line, the leaves are listed beside their corresponding
 stem. There will typically be several leaves for each stem, in which
 case the leaves accumulate to the right. It is sometimes necessary
 to round the data values, especially for larger data sets.
-
+\begin{example}
 Consider the \inputencoding{latin9}\lstinline[showstringspaces=false]!UKDriverDeaths!\inputencoding{utf8}
 data. We construct a stem and leaf diagram in \textsf{R} with the
 \inputencoding{latin9}\lstinline[showstringspaces=false]!stem.leaf!\inputencoding{utf8}
 function from the \inputencoding{latin9}\lstinline[showstringspaces=false]!aplpack!\inputencoding{utf8}
 package.
-
+\end{example}
 <<>>=
 library(aplpack)
 stem.leaf(UKDriverDeaths, depth = FALSE)
@@ -1955,7 +1956,7 @@ pareto.chart(table(state.division), ylab="Frequency")
 
 \paragraph*{Pie Graphs }
 
-These can be done with the \textsf{R} Commander, but these have lost
+These can be done with the \textsf{R} Commander, but they have lost
 popularity in recent years. The reason is that the human eye cannot
 judge angles very well. Use it to display 2 to 6 fractions of one
 unit. Can only show marked differences in values. Pie charts are a
@@ -1987,9 +1988,9 @@ or \inputencoding{latin9}\lstinline[showstringspaces=false]!FALSE!\inputencoding
 Here is an example of a logical vector:
 
 <<>>=
-x <- c(5,7)
-v <- (x<6)
-v
+x <- 5:9
+y <- (x < 7.3)
+y
 @
 
 Many functions in \textsf{R} have options that the user may or may
@@ -1998,7 +1999,15 @@ function has the \inputencoding{latin9}\lstinline[showstringspaces=false]!depths
 argument which is \inputencoding{latin9}\lstinline[showstringspaces=false]!TRUE!\inputencoding{utf8}
 by default. We saw in Section BLANK how to turn the option off, simply
 enter \inputencoding{latin9}\lstinline[showstringspaces=false]!stem.leaf(x, depths = FALSE)!\inputencoding{utf8}
-and depths will not be shown on the display. 
+and depths will not be shown on the display.
+
+We can swap \inputencoding{latin9}\lstinline[showstringspaces=false]!TRUE!\inputencoding{utf8}
+with \inputencoding{latin9}\lstinline[showstringspaces=false]!FALSE!\inputencoding{utf8}
+with the exclamation point \inputencoding{latin9}\lstinline[showstringspaces=false]*!*\inputencoding{utf8}.
+
+<<>>=
+!y
+@
 
 
 \subsection{Missing Data\label{sub:Missing-Data}}
@@ -2006,14 +2015,51 @@ and depths will not be shown on the display.
 Missing data are a persistent and prevalent problem in many statistical
 analyses, especially those associated with the social sciences. \textsf{R}
 reserves the special symbol \inputencoding{latin9}\lstinline[showstringspaces=false]!NA!\inputencoding{utf8}
-to representing missing data. You can test which entries in a data
-vector are missing with the \inputencoding{latin9}\lstinline[showstringspaces=false]!is.na!\inputencoding{utf8}
-function. Certain functions are equipped with a \inputencoding{latin9}\lstinline[showstringspaces=false]!na.rm!\inputencoding{utf8}
-argument, which when \inputencoding{latin9}\lstinline[showstringspaces=false]!TRUE!\inputencoding{utf8}
-will ignore missing data in the function arguments and will return
-the function value. Other functions are not equipped and will return
-an error if \inputencoding{latin9}\lstinline[showstringspaces=false]!NA!\inputencoding{utf8}s
-are present.
+to representing missing data.
+
+Ordinary arithmetic with \inputencoding{latin9}\lstinline[showstringspaces=false]!NA!\inputencoding{utf8}
+values give \inputencoding{latin9}\lstinline[showstringspaces=false]!NA!\inputencoding{utf8}'s
+(addition, subtraction, \emph{etc}.) and applying a function to a
+vector that has an \inputencoding{latin9}\lstinline[showstringspaces=false]!NA!\inputencoding{utf8}
+in it will usually give an \inputencoding{latin9}\lstinline[showstringspaces=false]!NA!\inputencoding{utf8}.
+
+<<>>=
+x <- c(3, 7, NA, 4, 7)
+y <- c(5, NA, 1, 2, 2)
+x + y
+@
+
+Some functions have a \inputencoding{latin9}\lstinline[showstringspaces=false]!na.rm!\inputencoding{utf8}
+argument which when \inputencoding{latin9}\lstinline[showstringspaces=false]!TRUE!\inputencoding{utf8}
+will ignore missing data as if it were not there (such as \inputencoding{latin9}\lstinline[showstringspaces=false]!mean!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!var!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!sd!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!IQR!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!mad!\inputencoding{utf8},
+\ldots{}). 
+
+<<>>=
+sum(x)
+sum(x, na.rm = TRUE)
+@
+
+Other functions do not have a \inputencoding{latin9}\lstinline[showstringspaces=false]!na.rm!\inputencoding{utf8}
+argument and will return \inputencoding{latin9}\lstinline[showstringspaces=false]!NA!\inputencoding{utf8}
+or an error if the argument has \inputencoding{latin9}\lstinline[showstringspaces=false]!NA!\inputencoding{utf8}s.
+In those cases we can find the locations of any \inputencoding{latin9}\lstinline[showstringspaces=false]!NA!\inputencoding{utf8}s
+with the \inputencoding{latin9}\lstinline[showstringspaces=false]!is.na!\inputencoding{utf8}
+function and remove those cases with the \inputencoding{latin9}\lstinline[showstringspaces=false]![]!\inputencoding{utf8}
+operator.
+
+<<>>=
+is.na(x)
+z <- x[!is.na(x)]
+sum(z)
+@
+
+The analogue of \inputencoding{latin9}\lstinline[showstringspaces=false]!is.na!\inputencoding{utf8}
+for rectangular data sets (or data frames) is the \inputencoding{latin9}\lstinline[showstringspaces=false]!complete.cases!\inputencoding{utf8}
+function. See Section BLANK.
 
 
 \section{Features of Data Distributions\label{sec:Features-of-Data}}
@@ -2045,24 +2091,27 @@ value.
 
 \subsection{Shape\label{sub:Shape}}
 
-The shape of
+When we speak of the \emph{shape} of a dataset, we are usually referring
+to the shape exhibited by an associated graphical display, such as
+a histogram. The shape can tell us a lot about any underlying structure
+to the data, and can help us decide which statistical procedure we
+should use to analyze them.
 
 
 \paragraph*{Symmetry and Skewness}
 
-When we discuss the shape of a dataset, we are usually referring to
-the shape exhibited by an associated graphical display, such as a
-histogram.
+A distribution is said to be \emph{right-skewed} (or \emph{positively
+skewed}) if the right tail seems to be stretched from the center.
+A \emph{left-skewed} (or \emph{negatively skewed}) distribution is
+stretched to the left side. A symmetric distribution has a graph that
+is balanced about its center, in the sense that half of the graph
+may be reflected about a central line of symmetry to match the other
+half.
 
-skewness, symmetry A distribution is said to be right-skewed (or positively
-skewed) if the right tail seems to be stretched from the center. A
-left skewed (or negatively skewed) distribution is stretched to the
-left side. A symmetric distribution has a graph that may be reflected
-about a central line of symmetry.
-
-Examples of skewed distributions:
-
-There are other shapes including uniform, J-shaped, etc.
+We have already encountered skewed distributions: both the discoveries
+data in Figure BLANK and the volcano data in Figure BLANK appear right-skewed.
+The UKDriverDeaths data in Example BLANK is relatively symmetric (but
+note the one extreme value 2654 identified at the bottom of the stemplot).
 
 
 \paragraph*{Kurtosis}
@@ -2136,9 +2185,7 @@ we may want to see how the
 
 \subsection{Measures of Center\label{sub:Measures-of-Center}}
 
-There
-
-The \textbf{\emph{sample mean}} is denoted $\xbar$ (read {}``$x$-bar'')
+The \emph{sample mean} is denoted $\xbar$ (read {}``$x$-bar'')
 and is simply the arithmetic average of the observations:\begin{equation}
 \xbar=\frac{x_{1}+x_{2}+\cdots+x_{n}}{n}=\frac{1}{n}\sum_{i=1}^{n}x_{i}.\end{equation}
 
@@ -2149,10 +2196,10 @@ and is simply the arithmetic average of the observations:\begin{equation}
 It is appropriate for use with datasets that are not highly skewed
 without extreme observations.
 
-The \textbf{\emph{sample median}} is another popular measure of center
-and is denoted $\tilde{x}$. To calculate its value, first sort the
-data into an increasing sequence of numbers. If the data set has an
-odd number of observations then $\tilde{x}$ is the value of the middle
+The \emph{sample median} is another popular measure of center and
+is denoted $\tilde{x}$. To calculate its value, first sort the data
+into an increasing sequence of numbers. If the data set has an odd
+number of observations then $\tilde{x}$ is the value of the middle
 observation, which lies in position $(n+1)/2$; otherwise, there are
 two middle observations and $\tilde{x}$ is the average of those middle
 values.
@@ -2169,11 +2216,11 @@ in the magnitude of an observation $x_{k}$ results in a corresponding
 change in the value of the mean. Hence, the sample mean is said to
 be sensitive to extreme observations.
 
-The \textbf{\emph{trimmed mean}} is a measure designed to address
-the sensitivity of the sample mean to extreme observations. The idea
-is to {}``trim'' a fraction (less than 1/2) of the observations
-off each end of the ordered list, and then calculate the sample mean
-of what remains. We will denote it by $\xbar_{t=0.05}$.
+The \emph{trimmed mean} is a measure designed to address the sensitivity
+of the sample mean to extreme observations. The idea is to {}``trim''
+a fraction (less than 1/2) of the observations off each end of the
+ordered list, and then calculate the sample mean of what remains.
+We will denote it by $\xbar_{t=0.05}$.
 \begin{itemize}
 \item Good: resistant to extreme values, shares nice statistical properties
 \item Bad: need to sort the data
@@ -2181,8 +2228,7 @@ of what remains. We will denote it by $\xbar_{t=0.05}$.
 
 \subsection{How to do it with \textsf{R}}
 \begin{itemize}
-\item You can calculate the frequencies or relative frequencies with the
-\inputencoding{latin9}\lstinline[showstringspaces=false]!table!\inputencoding{utf8}
+\item You can calculate frequencies or relative frequencies with the \inputencoding{latin9}\lstinline[showstringspaces=false]!table!\inputencoding{utf8}
 function.
 \item You can calculate the sample mean of a data vector \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
 with the command \inputencoding{latin9}\lstinline[showstringspaces=false]!mean(x)!\inputencoding{utf8}. 
@@ -2214,17 +2260,16 @@ but the interested reader can see the details for the other methods
 with \inputencoding{latin9}\lstinline[showstringspaces=false]!?quantile!\inputencoding{utf8}.
 
 Suppose the dataset has $n$ observations. Find the sample quantile
-of order $p$ ($0<p<1$), denoted $\tilde{q}_{p}$ , in the following
-way:
-\begin{enumerate}
-\item Sort the data to obtain the order statistics $x_{(1)}$, $x_{(2)}$,
-\ldots{},$x_{(n)}$. 
-\item Calculate $(n-1)p+1$ and write it in the form $k.d$, where $k$
-is an integer and $d$ is a decimal.
-\item The sample quantile $\tilde{q}_{p}$ is then\begin{equation}
+of order $p$ ($0<p<1$), denoted $\tilde{q}_{p}$ , as follows:
+\begin{description}
+\item [{First~step:}] sort the data to obtain the order statistics $x_{(1)}$,
+$x_{(2)}$, \ldots{},$x_{(n)}$. 
+\item [{Second~step:}] calculate $(n-1)p+1$ and write it in the form
+$k.d$, where $k$ is an integer and $d$ is a decimal.
+\item [{Third~step:}] The sample quantile $\tilde{q}_{p}$ is\begin{equation}
 \tilde{q}_{p}=x_{(k)}+d(x_{(k+1)}-x_{(k)}).\end{equation}
 
-\end{enumerate}
+\end{description}
 The interpretation of $\tilde{q}_{p}$ is that approximately $100p$\%
 of the data fall below the value $\tilde{q}_{p}$ . 
 
@@ -2295,6 +2340,34 @@ original data.
 \item Good: tractable, has nice mathematical/statistical properties
 \item Bad: sensitive to extreme values
 \end{itemize}
+We will spend a lot of time with the variance and standard deviation
+in the coming chapters. In the meantime, the following two rules give
+some meaning to the standard deviation, in that there are bounds on
+how much of the data can fall past a certain distance from the mean.
+\begin{fact}
+Chebychev's Rule: The proportion of observations within $k$ standard
+deviations of the mean is at least $1-1/k^{2}$, \emph{i.e.}, at least
+75\%, 89\%, and 94\% of the data are within 2, 3, and 4 standard deviations
+of the mean, respectively.
+\end{fact}
+
+
+Note that Chebychev's Rule does not say anything about when $k=1$,
+because $1-1/1^{2}=0$, which states that at least 0\% of the observations
+are within one standard deviation of the mean (which is not saying
+much).
+
+Chebychev's Rule applies to any data distribution, \emph{any} list
+of numbers, no matter where it came from or what the histogram looks
+like. The price for such generality is that the bounds are not very
+tight; if we know more about how the data are shaped then we can say
+more about how much of the data can fall a given distance from the
+mean.
+\begin{fact}
+Empirical Rule: If data follow a bell-shaped curve, then approximately
+68\%, 95\%, and 99.7\% of the data are within 1, 2, and 3 standard
+deviations of the mean, respectively. 
+\end{fact}
 
 \paragraph*{Interquartile Range}
 
@@ -2313,21 +2386,20 @@ to explain
 
 \paragraph*{Median Absolute Deviation }
 
-The $IQR$ is useful as a first attempt at robustness to extreme observations,
-however, a much more robust choice is given by the \emph{median absolute
-deviation} ($MAD$). The absolute deviations are the nonnegative numbers
-$|x_{1}-\tilde{x}|,\ |x_{2}-\tilde{x}|,\ldots,|x_{n}-\tilde{x}|$,
-and the $MAD$ is proportional to the median of these values:\begin{equation}
-MAD\propto\mbox{median}(|x_{1}-\tilde{x}|,\ |x_{2}-\tilde{x}|,\ldots,|x_{n}-\tilde{x}|)\end{equation}
+A measure even more robust than the $IQR$ is the \emph{median absolute
+deviation} ($MAD$). To calculate it we first get the median $\widetilde{x}$,
+next the \emph{absolute deviations} $|x_{1}-\tilde{x}|$, $|x_{2}-\tilde{x}|$,
+\ldots{}, $|x_{n}-\tilde{x}|$, and the $MAD$ is proportional to
+the median of those deviations:\begin{equation}
+MAD\propto\mbox{median}(|x_{1}-\tilde{x}|,\ |x_{2}-\tilde{x}|,\ldots,|x_{n}-\tilde{x}|).\end{equation}
 That is, the $MAD=c\cdot\mbox{median}(|x_{1}-\tilde{x}|,\ |x_{2}-\tilde{x}|,\ldots,|x_{n}-\tilde{x}|)$,
 where $c$ is a constant chosen so that the $MAD$ has nice properties.
 The value of $c$ in \textsf{R} is by default $c=1.4286$. This value
 is chosen to ensure that the estimator of $\sigma$ is correct, on
-the average, under suitable sampling assumptions.
+the average, under suitable sampling assumptions (see Section BLANK).
 \begin{itemize}
-\item Good: stable, excellently robust, even more so than the $IQR$
-\item Bad: not tractable, not well known or easy to explain, need to sort
-the data twice.
+\item Good: stable, very robust, even more so than the $IQR$.
+\item Bad: not tractable, not well known and less easy to explain.
 \end{itemize}
 
 \subsubsection*{Comparing Apples to Apples}
@@ -2346,25 +2418,23 @@ to understand that the estimators are not all measuring the same quantity,
 on the average. In particular, it can be shown that when the data
 follow an approximately bell-shaped distribution, then on the average,
 the sample standard deviation $s$ and the $MAD$ will be the approximately
-the same value, namely, $\sigma.$ However, it can also be shown that
-in repeating a certain experiment many times, the $IQR$ will be on
-the average 1.349 times larger than $s$ and the $MAD$. See Chapter
-BLANK for more details.
+the same value, namely, $\sigma$, but the $IQR$ will be on the average
+1.349 times larger than $s$ and the $MAD$. See Chapter BLANK for
+more details.
 
 
 \subsection{How to do it with \textsf{R}}
 
 
-\paragraph*{At the Command Prompt}
+\paragraph*{At the command prompt}
 
 From the console we may compute the sample range with \inputencoding{latin9}\lstinline[showstringspaces=false]!range(x)!\inputencoding{utf8}
-and the sample variance with \inputencoding{latin9}\lstinline[showstringspaces=false]!var(x)!\inputencoding{utf8}.
-The sample standard deviation may be found with \inputencoding{latin9}\lstinline[showstringspaces=false]!sqrt(var(x))!\inputencoding{utf8}
-or simply \inputencoding{latin9}\lstinline[showstringspaces=false]!sd(x)!\inputencoding{utf8}.
-The console syntax for the $IQR$ is \inputencoding{latin9}\lstinline[showstringspaces=false]!IQR(x)!\inputencoding{utf8},
+and the sample variance with \inputencoding{latin9}\lstinline[showstringspaces=false]!var(x)!\inputencoding{utf8},
 where \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
-is a numeric vector. The console command for the median absolute deviation
-is \inputencoding{latin9}\lstinline[showstringspaces=false]!mad(x)!\inputencoding{utf8}.
+is a numeric vector. The sample standard deviation is \inputencoding{latin9}\lstinline[showstringspaces=false]!sqrt(var(x))!\inputencoding{utf8}
+or just \inputencoding{latin9}\lstinline[showstringspaces=false]!sd(x)!\inputencoding{utf8}.
+The $IQR$ is \inputencoding{latin9}\lstinline[showstringspaces=false]!IQR(x)!\inputencoding{utf8}
+and the median absolute deviation is \inputencoding{latin9}\lstinline[showstringspaces=false]!mad(x)!\inputencoding{utf8}.
 
 
 \paragraph*{In \textsf{R} Commander}
@@ -2375,25 +2445,15 @@ $\triangleright$ Summaries $\triangleright$ Numerical Summaries}\ldots{}
 combination. \textsf{R} Commander does not calculate the $IQR$ or
 $MAD$ in any of the menu selections, by default.
 
-Chebychev's Rule: The proportion of observations within $k$ standard
-deviations of the mean, where , is at least , i.e., at least 75\%,
-89\%, and 94\% of the data are within 2, 3, and 4 standard deviations
-of the mean, respectively.
-
-Empirical Rule: If data follow a bell-shaped curve, then approximately
-68\%, 95\%, and 99.7\% of the data are within 1, 2, and 3 standard
-deviations of the mean, respectively. 
-
 
 \subsection{Measures of Shape\label{sub:Measures-of-Shape}}
 
 
 \paragraph*{Sample Skewness}
 
-The sample skewness, denoted by $g_{1}$, is defined by the formula\begin{equation}
+The \emph{sample skewness}, denoted by $g_{1}$, is defined by the
+formula\begin{equation}
 g_{1}=\frac{1}{n}\frac{\sum_{i=1}^{n}(x_{i}-\xbar)^{3}}{s^{3}}.\end{equation}
-
-
 The sample skewness can be any value $-\infty<g_{1}<\infty$. The
 sign of $g_{1}$ indicates the direction of skewness of the distribution.
 Samples that have $g_{1}>0$ indicate right-skewed distributions (or
@@ -2404,44 +2464,64 @@ however. The value of $g_{1}$ is subject to sampling variability
 and thus only provides a suggestion to the skewness of the underlying
 distribution. 
 
-Need to talk about {}``how big is big?'' Rule of thumb is to should
-be no bigger than $2\cdot\sqrt{6/n}$. Reference to Tabachnick \&
-Fidell.
+We still need to know how big is {}``big'', that is, how do we judge
+whether an observed value of $g_{1}$ is far enough away from zero
+for the data set to be considered skewed to the right or left? A good
+rule of thumb is that data sets with skewness larger than $2\sqrt{6/n}$
+in magnitude are substantially skewed, in the direction of the sign
+of $g_{1}$. See Tabachnick \& Fidell BLANK for details.
 
 
 \paragraph*{Sample Excess Kurtosis}
 
-The sample excess kurtosis, denoted by $g_{2}$, is given by the formula\begin{equation}
+The \emph{sample excess kurtosis}, denoted by $g_{2}$, is given by
+the formula\begin{equation}
 g_{2}=\frac{1}{n}\frac{\sum_{i=1}^{n}(x_{i}-\xbar)^{4}}{s^{4}}-3.\end{equation}
+The first term in the formula is always nonnegative, so the sample
+excess kurtosis takes values $-3\leq g_{2}<\infty$. The subtraction
+of 3 may seem mysterious to the reader, but it is done so that mound
+shaped samples have values of $g_{2}$ near zero. Samples with $g_{2}>0$
+are called \emph{leptokurtic}, and samples with $g_{2}<0$ are called
+\emph{platykurtic}. Samples with $g_{2}\approx0$ are called \emph{mesokurtic}.
 
+As a rule of thumb, if $|g_{2}|>4\sqrt{6/n}$ then the sample excess
+kurtosis is substantially different from zero in the direction of
+the sign of $g_{2}$. See Tabachnick \& Fidell BLANK for details.
 
-The first term in the formula is always nonnegative, implying that
-the sample excess kurtosis takes values $-3\leq g_{2}<\infty$. The
-subtraction of 3 may seem mysterious to the reader, but it is done
-so that mound shaped samples have values of $g_{2}$ near $0$. Samples
-with $g_{2}>0$ are called leptokurtic, and samples with $g_{2}<0$
-are called platykurtic. Samples with $g_{2}\approx0$ are called mesokurtic.
-
-Notice that both the sample skewness and the sample kurtosis are independent
-of location and scale, in other words, the values of $g_{1}$ and
-$g_{2}$ do not depend on the measurement units.
-
-Need to talk about {}``how big is big?'' Rule of thumb is to divide
-by $2\cdot\sqrt{24/n}$. Reference to Tabachnick \& Fidell.
+Notice that both the sample skewness and the sample kurtosis are invariant
+with respect to location and scale, that is, the values of $g_{1}$
+and $g_{2}$ do not depend on the measurement units of the data.
 
 
 \subsection{How to do it with \textsf{R}}
 
-
-\paragraph*{At the Command Prompt}
-
-First, we must load the \inputencoding{latin9}\lstinline[showstringspaces=false]!e1071!\inputencoding{utf8}
-package (after installing it) with the command \inputencoding{latin9}\lstinline[showstringspaces=false]!library(e1071)!\inputencoding{utf8}.
-Next, we may compute the sample skewness with \inputencoding{latin9}\lstinline[showstringspaces=false]!skewness(x)!\inputencoding{utf8}
-and the sample excess kurtosis with \inputencoding{latin9}\lstinline[showstringspaces=false]!kurtosis(x)!\inputencoding{utf8}.
-Both functions have a \inputencoding{latin9}\lstinline[showstringspaces=false]!na.rm!\inputencoding{utf8}
-argument which is \inputencoding{latin9}\lstinline[showstringspaces=false]!TRUE!\inputencoding{utf8}
+The \inputencoding{latin9}\lstinline[showstringspaces=false]!e1071!\inputencoding{utf8}
+package has the \inputencoding{latin9}\lstinline[showstringspaces=false]!skewness!\inputencoding{utf8}
+function for the sample skewness and the \inputencoding{latin9}\lstinline[showstringspaces=false]!kurtosis!\inputencoding{utf8}
+function for the sample excess kurtosis. Both functions have a \inputencoding{latin9}\lstinline[showstringspaces=false]!na.rm!\inputencoding{utf8}
+argument which is \inputencoding{latin9}\lstinline[showstringspaces=false]!FALSE!\inputencoding{utf8}
 by default.
+\begin{example}
+We said earlier that the \inputencoding{latin9}\lstinline[showstringspaces=false]!discoveries!\inputencoding{utf8}
+data looked positively skewed; let's see what the statistics say:
+\end{example}
+<<>>=
+library(e1071)
+skewness(discoveries)
+2*sqrt(6/length(discoveries))
+@
+
+The data are definitely skewed to the right. Let us check the sample
+excess kurtosis of the \inputencoding{latin9}\lstinline[showstringspaces=false]!UKDriverDeaths!\inputencoding{utf8}
+data:
+
+<<>>=
+kurtosis(UKDriverDeaths)
+4*sqrt(6/length(UKDriverDeaths))
+@
+
+so that the \inputencoding{latin9}\lstinline[showstringspaces=false]!UKDriverDeaths!\inputencoding{utf8}
+data appear to be mesokurtic, or at least not substantially leptokurtic.
 
 
 \section{Exploratory Data Analysis\label{sec:Exploratory-Data-Analysis}}
@@ -2458,30 +2538,42 @@ now what? We look at the data using exploratory visual tools.
 There are many bells and whistles associated with stemplots, and the
 \inputencoding{latin9}\lstinline[showstringspaces=false]!stem.leaf!\inputencoding{utf8}
 function can do many of them.
-\begin{enumerate}
-\item Trim Outliers.
-\item Splitting Stems. 
-\item Depths: these are used to give insight into the balance of the observations
-as they accumulate toward the median. In a column beside the standard
-stemplot, the frequency of the stem containing the sample median is
-shown in parentheses. Next, frequencies are accumulated from the outside
-inward and including the outliers.
-\end{enumerate}
-<<>>=
-x <- c(109, 84, 73, 42, 61, 51,54, 71, 47, 70, 65, 57,69, 82, 76, 60, 38, 81,76, 85, 58, 73, 65, 42)
-stem.leaf(x)
-@
-
-
-\paragraph*{Variations:}
-
-More than one part per stem and trim outliers.
-
+\begin{description}
+\item [{Trim~Outliers:}] Some data sets have observations that fall far
+from the bulk of the other data (in a sense made more precise in Section
+BLANK). These extreme observations often obscure the underlying structure
+to the data and are best left out of the data display. The \inputencoding{latin9}\lstinline[showstringspaces=false]!trim.outliers!\inputencoding{utf8}
+argument (which is \inputencoding{latin9}\lstinline[showstringspaces=false]!TRUE!\inputencoding{utf8}
+by default) will separate the extreme observations from the others
+and graph the stemplot without them; they are listed at the bottom
+(respectively, top) of the stemplot with the label \inputencoding{latin9}\lstinline[showstringspaces=false]!HI!\inputencoding{utf8}
+(respectively \inputencoding{latin9}\lstinline[showstringspaces=false]!LO!\inputencoding{utf8}). 
+\item [{Split~Stems:}] The standard stemplot has only one line per stem,
+which means that all observations with first digit \inputencoding{latin9}\lstinline[showstringspaces=false]!3!\inputencoding{utf8}
+are plotted on the same line, regardless of the value of the second
+digit. But this gives some stemplots a {}``skyscraper'' appearance,
+with too many observations stacked onto the same stem. We can often
+fix the display by increasing the number of lines available for a
+given stem. For example, we could make two lines per stem, say, \inputencoding{latin9}\lstinline[showstringspaces=false]!3*!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!3.!\inputencoding{utf8}.
+Observations with second digit 0 through 4 would go on the upper line,
+while observations with second digit 5 through 9 would go on the lower
+line. (We could do a similar thing with five lines per stem, or even
+ten lines per stem.) The end result is a more spread out stemplot
+which often looks better.
+\item [{Depths:}] these are used to give insight into the balance of the
+observations as they accumulate toward the median. In a column beside
+the standard stemplot, the frequency of the stem containing the sample
+median is shown in parentheses. Next, frequencies are accumulated
+from the outside inward, including the outliers. Distributions that
+are more symmetric will have better balanced depths on either side
+of the sample median.
+\end{description}
 
 \subsection{How to do it with \textsf{R}}
 
 
-\paragraph*{At the Command Prompt}
+\paragraph*{At the command prompt}
 
 The basic command is \inputencoding{latin9}\lstinline[showstringspaces=false]!stem(x)!\inputencoding{utf8}
 or a more sophisticated version written by Peter Wolf called \inputencoding{latin9}\lstinline[showstringspaces=false]!stem.leaf(x)!\inputencoding{utf8}
@@ -2502,13 +2594,43 @@ according to an algorithm that the computer believes will represent
 the data well. Depending on the choice of the digit, \inputencoding{latin9}\lstinline[showstringspaces=false]!stem.leaf!\inputencoding{utf8}
 may drop digits from the data or round the values in unexpected ways.
 \end{itemize}
+Let us take a look at the \inputencoding{latin9}\lstinline[showstringspaces=false]!rivers!\inputencoding{utf8}
+data set.
+
 <<>>=
 stem.leaf(rivers)
 @
 
+The stemplot shows a right-skewed shape to the \inputencoding{latin9}\lstinline[showstringspaces=false]!rivers!\inputencoding{utf8}
+data distribution. Notice that the last digit of each of the data
+values were dropped from the display. Notice also that there were
+eight extreme observations identified by the computer, and their exact
+values are listed at the bottom of the stemplot. Look at the scale
+on the left of the stemplot and try to imagine how ridiculous the
+graph would have looked had we tried to include enough stems to include
+these other eight observations; the stemplot would have stretched
+over several pages. Notice finally that we can use the depths to approximate
+the sample median for these data. The median lies in the row identified
+by \inputencoding{latin9}\lstinline[showstringspaces=false]!(18)!\inputencoding{utf8},
+which means that the median is the average of the ninth and tenth
+observation on that row. Those two values correspond to \inputencoding{latin9}\lstinline[showstringspaces=false]!43!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!43!\inputencoding{utf8},
+so a good guess for the median would be 430. (For the record, the
+sample median is $\widetilde{x}=425$. Recall that stemplots round
+the data to the nearest stem-leaf pair.) 
+
+Next let us see what the \inputencoding{latin9}\lstinline[showstringspaces=false]!precip!\inputencoding{utf8}
+data look like.
+
 <<>>=
 stem.leaf(precip)
 @
+
+Here is an example of split stems, with two lines per stem. The final
+digit of each datum has been dropped for the display. The data appear
+to be left skewed with four extreme values to the left and one extreme
+value to the right. The sample median is approximately 37 (it turns
+out to be 36.6).
 
 
 \subsection{Hinges and the Five Number Summary\label{sub:Hinges-and-the} }
@@ -2524,19 +2646,15 @@ integer, then the hinge $h_{L}$ is the average of the adjacent order
 statistics.
 \item The \emph{upper hinge} $h_{U}$ is in position $n+1-L$.
 \end{itemize}
-Given the hinges, the \emph{five number summary} ($5NS$) is defined
-to be\begin{equation}
-5NS=(x_{(1)},\ h_{L},\ \tilde{x},\ h_{U},\ x_{(n)})\end{equation}
+Given the hinges, the \emph{five number summary} ($5NS$) is \begin{equation}
+5NS=(x_{(1)},\ h_{L},\ \tilde{x},\ h_{U},\ x_{(n)}).\end{equation}
 An advantage of the $5NS$ is that it reduces a potentially large
 dataset to a shorter list of only five numbers, and further, these
-numbers give insight regarding the shape of a data distribution similar
-to the sample quantiles in Section BLANK.
+numbers give insight regarding the shape of the data distribution
+similar to the sample quantiles in Section BLANK.
 
 
 \subsection{How to do it with \textsf{R}}
-
-
-\paragraph*{At the Command Prompt}
 
 If the data are stored in a vector \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8},
 then you can compute the $5NS$ with the \inputencoding{latin9}\lstinline[showstringspaces=false]!fivenum!\inputencoding{utf8}
@@ -2607,7 +2725,10 @@ be removed. Otherwise, perhaps the value is hinting at some hidden
 structure to the data.
 
 
-\subsubsection*{Standardizing variables}
+\subsection{How to do it with \textsf{R}}
+
+
+\subsection{Standardizing variables}
 
 It is sometimes useful to compare datasets with each other, on a scale
 that does not depend on the measurement units.
@@ -2624,13 +2745,13 @@ function.
 
 However, statistical studies often involve experiments where there
 are two (or more) measurements associated with each subject. We display
-the measured information in a rectangular array, or table. In the
-table, each row corresponds to a subject, and the columns contain
-the measurements for each respective variable. For instance, if one
-were to measure the height and weight of each of 11 persons in a research
-study, the information could be represented with a rectangular array.
-There would be 11 rows. Each row would have the person's height in
-the first column and weight in the second column.
+the measured information in a rectangular array in which each row
+corresponds to a subject, and the columns contain the measurements
+for each respective variable. For instance, if one were to measure
+the height and weight of each of 11 persons in a research study, the
+information could be represented with a rectangular array. There would
+be 11 rows. Each row would have the person's height in the first column
+and weight in the second column.
 
 The corresponding objects in \textsf{R} are called \emph{data frames},
 and they can be constructed with the \inputencoding{latin9}\lstinline[showstringspaces=false]!data.frame!\inputencoding{utf8}
@@ -2689,7 +2810,7 @@ set that has linear association. Example BLANK.
 \begin{figure}
 \begin{centering}
 <<echo = FALSE, fig=true, height = 4.5, width = 6>>=
-matplot(rnorm(100), rnorm(100), type="b", lty=1, pch=1)
+matplot(sort(rnorm(100)), rnorm(100), type="b", lty=1, pch=1)
 @
 \par\end{centering}
 
@@ -2885,6 +3006,10 @@ print(coplot(conc ~ uptake | Type * Treatment, data = CO2))
 \paragraph*{Shingle Plots}
 
 
+
+\newpage{}
+
+
 \section{Chapter Exercises}
 
 \setcounter{thm}{0}
@@ -2961,7 +3086,7 @@ has the lowest frequency.
 \item The graph is shown below.
 \end{enumerate}
 \begin{center}
-<<echo = FALSE, fig=true, height = 2.5, width = 4.5>>=
+<<echo = FALSE, fig=true, height = 4, width = 6>>=
 barplot(table(RcmdrTestDrive$race), main="", xlab="race", ylab="Frequency", legend.text=FALSE, col=NULL) 
 @
 \par\end{center}
@@ -3052,7 +3177,7 @@ compare to your answers to (1) and (3)?
 The graph is shown below.
 
 \begin{center}
-<<echo = FALSE, fig=true, height = 2.5, width = 4.5>>=
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 boxplot(salary~gender, xlab="salary", ylab="gender", main="", notch=FALSE, varwidth=TRUE, horizontal=TRUE, data=RcmdrTestDrive) 
 @
 \par\end{center}
@@ -3109,7 +3234,7 @@ of each other.
 \noindent The boxplot of \emph{reduction} is below.
 
 \begin{center}
-<<echo = FALSE, fig=true, height = 2.5, width = 4.5>>=
+<<echo = FALSE, fig=true, height = 4, width = 6>>=
 boxplot(reduction, xlab="reduction", main="", notch=FALSE, varwidth=TRUE, horizontal=TRUE, data=RcmdrTestDrive) 
 @
 \par\end{center}
@@ -3181,7 +3306,7 @@ for \emph{after}?
 The boxplot of \emph{before} is shown below.
 
 \begin{center}
-<<echo = FALSE, fig=true, height = 2.5, width = 4.5>>=
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 boxplot(before, xlab="before", main="", notch=FALSE, varwidth=TRUE, horizontal=TRUE, data=RcmdrTestDrive) 
 @
 \par\end{center}
@@ -3197,7 +3322,7 @@ is set up to have a fairly symmetric distribution.
 A boxplot of \emph{after} is shown next.
 
 \begin{center}
-<<echo = FALSE, fig=true, height = 2.5, width = 4.5>>=
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 boxplot(after, xlab="after", notch=FALSE, varwidth=TRUE, horizontal=TRUE, data=RcmdrTestDrive) 
 @
 \par\end{center}
@@ -3276,13 +3401,13 @@ to your answers to (4) and (5).
 The graphs are shown below.
 
 \begin{center}
-<<echo = FALSE, fig=true, height = 2.5, width = 4.5>>=
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 hist(before, xlab="before", data=RcmdrTestDrive) 
 @
 \par\end{center}
 
 \begin{center}
-<<echo = FALSE, fig=true, height = 2.5, width = 4.5>>=
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 hist(after, xlab="after", data=RcmdrTestDrive) 
 @
 \par\end{center}
@@ -3380,7 +3505,7 @@ package, and \inputencoding{latin9}\lstinline[showstringspaces=false]!permsn!\in
 in the \inputencoding{latin9}\lstinline[showstringspaces=false]!prob!\inputencoding{utf8}
 package%
 \footnote{The seasoned \textsf{R} user can get the job done without the convenience
-wrappers. I encourage their use for the beginner to get started, but
+wrappers. I encourage the beginner to use them to get started, but
 I also recommend that introductory students wean themselves as soon
 as possible. The wrappers were designed for ease and intuitive use,
 not for speed or efficiency.%
@@ -3767,11 +3892,16 @@ and \inputencoding{latin9}\lstinline[showstringspaces=false]!union!\inputencodin
 in the case that the input objects are of class \inputencoding{latin9}\lstinline[showstringspaces=false]!ps!\inputencoding{utf8}.
 See Section BLANK.
 \begin{note}
-When you load the \inputencoding{latin9}\lstinline[showstringspaces=false]!prob!\inputencoding{utf8}
-package you will most certainly notice the message: {}``\texttt{The
-following object(s) are masked from package:base: intersect setdiff,
-subset, union}''. The reason for this message is that there already
-exist methods for the functions \inputencoding{latin9}\lstinline[showstringspaces=false]!intersect!\inputencoding{utf8},
+When the \inputencoding{latin9}\lstinline[showstringspaces=false]!prob!\inputencoding{utf8}
+package loads you will notice a message: {}``\inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!The!\inputencoding{utf8}
+\inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!following!\inputencoding{utf8}
+\inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!object(s)!\inputencoding{utf8}
+\inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!are masked from package:base!\inputencoding{utf8}
+\inputencoding{latin9}\lstinline[showstringspaces=false]!: intersect!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!setdiff!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!union!\inputencoding{utf8}''.
+The reason for this message is that there already exist methods for
+the functions \inputencoding{latin9}\lstinline[showstringspaces=false]!intersect!\inputencoding{utf8},
 \inputencoding{latin9}\lstinline[showstringspaces=false]!setdiff!\inputencoding{utf8},
 \inputencoding{latin9}\lstinline[showstringspaces=false]!subset!\inputencoding{utf8},
 and \inputencoding{latin9}\lstinline[showstringspaces=false]!union!\inputencoding{utf8}
@@ -4340,7 +4470,14 @@ that is, the only outcomes used in the probability calculation will
 be those that are elements of \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
 and satisfy \inputencoding{latin9}\lstinline[showstringspaces=false]!event!\inputencoding{utf8}
 simultaneously. In other words, \inputencoding{latin9}\lstinline[showstringspaces=false]!prob(x, event)!\inputencoding{utf8}
-calculates \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!prob(intersect(x, subset(x, event)))!\inputencoding{utf8}.
+calculates 
+
+\inputencoding{latin9}
+\begin{lstlisting}[breaklines=true,showstringspaces=false]
+prob(intersect(x, subset(x, event)))
+\end{lstlisting}
+\inputencoding{utf8}
+
 Consequently, \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
 should be the entire probability space in the case that \inputencoding{latin9}\lstinline[showstringspaces=false]!event!\inputencoding{utf8}
 is non-null.
@@ -5054,15 +5191,17 @@ B & =S\cap B\\
  & =(A\cup A^{c})\cap B\\
  & =(A\cap B)\cup(A^{c}\cap B)\end{align*}
 and notice that $A\cap B$ and $A^{c}\cap B$ are disjoint. Therefore\begin{align*}
-\P(B) & =\P(A\cap B)+\P(A^{c}\cap B)\\
- & =\P(A)\P(B|A)+\P(A^{c})\P(B|A^{c})\\
- & =\frac{5}{8}\cdot\frac{3}{9}+\frac{3}{8}\cdot\frac{2}{9}\\
- & =\frac{21}{72}\ \end{align*}
+\P(B) & =\P(A\cap B)+\P(A^{c}\cap B),\\
+ & =\P(A)\P(B|A)+\P(A^{c})\P(B|A^{c}),\\
+ & =\frac{5}{8}\cdot\frac{3}{9}+\frac{3}{8}\cdot\frac{2}{9},\\
+ & =\frac{21}{72},\end{align*}
 (which is 7/24 in lowest terms).
 
 \end{example}
 Using the same reasoning, one can return to Example BLANK and show
-that $\P(\left\{ \mbox{second card is an Ace}\right\} )=4/52$. 
+that\[
+\P(\left\{ \mbox{second card is an Ace}\right\} )=4/52.\]
+. 
 
 
 \section{Independent Events\label{sec:Independent-Events}}
@@ -5082,11 +5221,11 @@ Events $A$ and $B$ are said to be \emph{independent} if \begin{equation}
 Otherwise, the events are said to be \emph{dependent}. 
 \end{defn}
 The connection with the above example stems from the following. We
-know from Section BLANK that when $\P(B)>0$ we may write \[
-\P(A|B)=\frac{\P(A\cap B)}{\P(B)}.\]
+know from Section BLANK that when $\P(B)>0$ we may write \begin{equation}
+\P(A|B)=\frac{\P(A\cap B)}{\P(B)}.\end{equation}
 In the case that $A$ and $B$ are independent, the numerator of the
-fraction factors so that $\P(B)$ cancels with the result:\[
-\P(A|B)=\P(A)\quad\mbox{when \mbox{\emph{A},\emph{ B}} are independent.}\]
+fraction factors so that $\P(B)$ cancels with the result:\begin{equation}
+\P(A|B)=\P(A)\quad\mbox{when \mbox{\emph{A},\emph{ B}} are independent.}\end{equation}
 The interpretation in the case of independence is that the information
 that the event $B$ occurred does not influence the probability of
 the event $A$ occurring. Similarly, $\P(B|A)=\P(B)$, and so the
@@ -5510,14 +5649,13 @@ In this case, the sample space is inconvenient to describe. Yet the
 support of $Z$ would be $(0,\infty)$. Of course, it is reasonable
 to suppose that the coin will return to Earth in a short amount of
 time; in practice, the set $(0,\infty)$ is admittedly too large.
-However, we will soon see that in similar situations it is mathematically
-convenient to study the extended set rather than restrict it to a
-smaller one.
+However, we will find that in many circumstances it is mathematically
+convenient to study the extended set rather than a restricted one.
 \end{example}
 There are important differences between the supports of $X$, $Y$,
 and $Z$. The support of $X$ is a finite collection of elements that
 can be inspected all at once. And while the support of $Y$ cannot
-be exhaustively written down, nevertheless its elements can be listed
+be exhaustively written down, its elements can nevertheless be listed
 in a naturally ordered sequence. Random variables with supports similar
 to those of $X$ and $Y$ are called \emph{discrete random variables}.
 We study these in Chapter BLANK.
@@ -5629,6 +5767,8 @@ Note that the default value of \inputencoding{latin9}\lstinline[showstringspaces
 is the names of all columns except \inputencoding{latin9}\lstinline[showstringspaces=false]!probs!\inputencoding{utf8}.
 This can be useful if there are duplicated rows in the probability
 space.
+
+\newpage{}
 
 
 \section{Chapter Exercises}
@@ -7005,6 +7145,8 @@ then the mean and variance of $Y=mX+b$ is \begin{equation}
 \mu_{Y}=m\mu+b,\quad\sigma_{Y}^{2}=m^{2}\sigma^{2},\quad\sigma_{Y}=|m|\sigma.\end{equation}
 
 \end{prop}
+\newpage{}
+
 
 \section{Chapter Exercises}
 
@@ -8141,6 +8283,8 @@ MGF \label{fig:gamma-mgf}}
 \end{figure}
 
 
+\newpage{}
+
 
 \section{Chapter Exercises}
 
@@ -8224,9 +8368,9 @@ any $s,t>0$,\[
 
 \chapter{Multivariate Distributions\label{cha:Multivariable-Distributions}}
 
-We have built up quite a catologue of distributions: discrete and
+We have built up quite a catologue of distributions, discrete and
 continuous. They were all univariate, however, meaning that we only
-considered one random variable at a time. We can nevertheless imagine
+considered one random variable at a time. We can imagine nevertheless
 many random variables associated with a single person: their height,
 their weight, their wrist circumference (all continuous), or their
 eye/hair color, shoe size, whether they are right handed, left handed,
@@ -8440,10 +8584,10 @@ head(UV)
 xtabs(round(probs,3) ~ V + U, data = UV)
 @
 
-(We have only shown the first few rows of the joint distribution.
-The complete data frame has 11 rows.) Note that we can continue the
-process and examine the marginal distributions of $U$ and $V$ separately.
-We need only submit the following:
+(We have only shown the first few rows of the data frame; the complete
+one has 11 rows.) Note that we can continue the process and examine
+the marginal distributions of $U$ and $V$ separately. We need only
+submit the following:
 
 <<>>=
 marginal(UV, vars = "U")
@@ -8473,8 +8617,8 @@ or in the discrete case\begin{equation}
 \subsection{Covariance and Correlation}
 
 There are two very special cases of joint expectation: the \emph{covariance}
-and the \emph{correlation}. These are numeric measures which help
-us quantify the dependence between $X$ and $Y$. 
+and the \emph{correlation}. These are measures which help us quantify
+the dependence between $X$ and $Y$. 
 \begin{defn}
 The \emph{covariance} of $X$ and $Y$ is \begin{equation}
 \mbox{Cov}(X,Y)=\E(X-\E X)(Y-\E Y).\end{equation}
@@ -9102,6 +9246,8 @@ distribution.
 \end{proof}
 
 
+\newpage{}
+
 
 \section{Chapter Exercises}
 
@@ -9223,9 +9369,9 @@ M_{\Xbar}(t)=\left[M\left(\frac{t}{n}\right)\right]^{n}.\end{equation}
 \end{prop}
 \begin{proof}
 Go from the definition:\begin{eqnarray*}
-M_{\Xbar}(t) & = & \E\,\me^{t\Xbar}\\
- & = & \E\,\me^{t(X_{1}+\cdots+X_{n})/n}\\
- & = & \E\,\me^{tX_{1}/n}\me^{tX_{2}/n}\cdots\me^{tX_{n}/n}\end{eqnarray*}
+M_{\Xbar}(t) & = & \E\,\me^{t\Xbar},\\
+ & = & \E\,\me^{t(X_{1}+\cdots+X_{n})/n},\\
+ & = & \E\,\me^{tX_{1}/n}\me^{tX_{2}/n}\cdots\me^{tX_{n}/n}.\end{eqnarray*}
 And because $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$ are independent,
 Proposition BLANK allows us to distribute the expectation among each
 term in the product, which is\[
@@ -9253,9 +9399,9 @@ the $\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$ MGF is
 of the form\[
 M(t)=\exp\left\{ \mu t+\sigma^{2}t^{2}/2\right\} .\]
 Now use Proposition BLANK to find\begin{eqnarray*}
-M_{\Xbar}(t) & = & \left[M\left(\frac{t}{n}\right)\right]^{n}\\
- & = & \left[\exp\left\{ \mu(t/n)+\sigma^{2}(t/n)^{2}/2\right\} \right]^{n}\\
- & = & \exp\left\{ \, n\cdot\left[\mu(t/n)+\sigma^{2}(t/n)^{2}/2\right]\right\} \\
+M_{\Xbar}(t) & = & \left[M\left(\frac{t}{n}\right)\right]^{n},\\
+ & = & \left[\exp\left\{ \mu(t/n)+\sigma^{2}(t/n)^{2}/2\right\} \right]^{n},\\
+ & = & \exp\left\{ \, n\cdot\left[\mu(t/n)+\sigma^{2}(t/n)^{2}/2\right]\right\} ,\\
  & = & \exp\left\{ \mu t+(\sigma/\sqrt{n})^{2}t^{2}/2\right\} ,\end{eqnarray*}
 and we recognize this last quantity as the MGF of a $\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma/\sqrt{n})$
 distribution.
@@ -9267,13 +9413,13 @@ distribution.
 \begin{thm}
 \label{thm:Xbar-andS}Let $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$
 be a $SRS(n)$ from a $\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$
-distribution, and let\[
-\Xbar=\sum_{i=1}^{n}X_{i}\quad\mbox{and}\quad S^{2}=\frac{1}{n-1}\sum_{i=1}^{n}(X_{i}-\Xbar)^{2}.\]
+distribution, and let\begin{equation}
+\Xbar=\sum_{i=1}^{n}X_{i}\quad\mbox{and}\quad S^{2}=\frac{1}{n-1}\sum_{i=1}^{n}(X_{i}-\Xbar)^{2}.\end{equation}
 Then
 \begin{enumerate}
 \item $\Xbar$ and $S^{2}$ are independent, and
-\item The rescaled sample variance \[
-\frac{(n-1)}{\sigma^{2}}S^{2}=\frac{\sum_{i=1}^{n}(X_{i}-\Xbar)^{2}}{\sigma^{2}}\]
+\item The rescaled sample variance \begin{equation}
+\frac{(n-1)}{\sigma^{2}}S^{2}=\frac{\sum_{i=1}^{n}(X_{i}-\Xbar)^{2}}{\sigma^{2}}\end{equation}
 has \textup{a $\mathsf{chisq}(\mathtt{df}=n-1)$ sampling distribution.}
 \end{enumerate}
 \end{thm}
@@ -9299,8 +9445,8 @@ Divide the numerator and denominator by $\sigma$ and rewrite\[
 T=\frac{\frac{\Xbar-\mu}{\sigma/\sqrt{n}}}{S/\sigma}=\frac{\frac{\Xbar-\mu}{\sigma/\sqrt{n}}}{\sqrt{\left.\frac{(n-1)S^{2}}{\sigma^{2}}\right\slash (n-1)}}.\]
 Now let \[
 Z=\frac{\Xbar-\mu}{\sigma/\sqrt{n}}\quad\mbox{and}\quad V=\frac{(n-1)S^{2}}{\sigma^{2}},\]
-so that\[
-T=\frac{Z}{\sqrt{V/r}},\]
+so that\begin{equation}
+T=\frac{Z}{\sqrt{V/r}},\end{equation}
 where $r=n-1$.
 
 We know from Section \ref{sub:Samp-Mean-Dist} that $Z\sim\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$
@@ -9387,12 +9533,12 @@ Z=\frac{\Xbar-\mu}{\sigma/\sqrt{n}}\end{equation}
 approaches a $\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$ distribution
 as $n\to\infty$. \end{thm}
 \begin{rem}
-Since we suppose that $X_{1},X_{2},...,X_{n}$ are iid, we already
-know from Section \ref{sub:Simple-Random-Samples} that $\Xbar$ has
-mean $\mu$ and standard deviation $\sigma/\sqrt{n}$, so that $Z$
-has mean 0 and standard deviation 1. The beauty of the CLT is that
-it addresses the \emph{shape} of $Z$'s distribution when the sample
-size is large.
+Since we suppose that $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$ are
+iid, we already know from Section \ref{sub:Simple-Random-Samples}
+that $\Xbar$ has mean $\mu$ and standard deviation $\sigma/\sqrt{n}$,
+so that $Z$ has mean 0 and standard deviation 1. The beauty of the
+CLT is that it addresses the \emph{shape} of $Z$'s distribution when
+the sample size is large.
 \end{rem}
 
 \begin{rem}
@@ -9457,8 +9603,8 @@ Even if the distribution of the samples is not
 \end{rem}
 
 
-In the special case that $\mu_{X}=\mu_{Y}$, we have shown that \[
-\frac{\Xbar-\Ybar}{\sqrt{\sigma_{X}^{2}/n_{1}+\sigma_{Y}^{2}/n_{2}}}\]
+In the special case that $\mu_{X}=\mu_{Y}$, we have shown that \begin{equation}
+\frac{\Xbar-\Ybar}{\sqrt{\sigma_{X}^{2}/n_{1}+\sigma_{Y}^{2}/n_{2}}}\end{equation}
 has a $\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$ sampling distribution,
 or in other words, $\Xbar-\Ybar$ has a $\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=\sqrt{\sigma_{X}^{2}/n_{1}+\sigma_{Y}^{2}/n_{2}})$
 sampling distribution. This will play a role when it comes time to
@@ -9536,8 +9682,8 @@ indeed, the definition of Snedecor's $F$ distribution.
 
 \begin{rem}
 In the special case that $\sigma_{X}=\sigma_{Y}$, we have shown that
-\[
-F=\frac{S_{X}^{2}}{S_{Y}^{2}}\]
+\begin{equation}
+F=\frac{S_{X}^{2}}{S_{Y}^{2}}\end{equation}
 has an $\mathsf{f}(\mathtt{df1}=n_{1}-1,\,\mathtt{df2}=n_{2}-1)$
 sampling distribution. This will be important in Chapter BLANK.
 \end{rem}
@@ -9562,8 +9708,8 @@ iqrs <- replicate(100, IQR(rnorm(100)))
 
 We can look at the mean of the simulated values
 
-<<>>=
-mean(iqrs)
+<<keep.source = TRUE>>=
+mean(iqrs)    # close to 1
 @
 
 and we can see the standard deviation
@@ -9577,8 +9723,8 @@ Now let's take a look at a plot of the simulated values
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
-hist(iqrs)
+<<echo = FALSE, fig=true, height = 4, width = 6>>=
+hist(iqrs, breaks = 20)
 @
 \par\end{centering}
 
@@ -9596,8 +9742,8 @@ mads <- replicate(100, mad(rnorm(100)))
 
 We can look at the mean of the simulated values
 
-<<>>=
-mean(mads)
+<<keep.source = TRUE>>=
+mean(mads)    # close to 1.349
 @
 
 and we can see the standard deviation
@@ -9611,8 +9757,8 @@ Now let's take a look at a plot of the simulated values
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
-hist(mads)
+<<echo = FALSE, fig=TRUE, height = 4, width = 6>>=
+hist(mads, breaks = 20)
 @
 \par\end{centering}
 
@@ -9620,6 +9766,8 @@ hist(mads)
 
 \end{figure}
 
+
+\newpage{}
 
 
 \section{Chapter Exercises}
@@ -10163,8 +10311,8 @@ for the time being.
 
 \section{Confidence Intervals for Means}
 
-Given $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$ an $SRS(n)$ from a
-$\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$ distribution
+We are given $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$ that are an $SRS(n)$
+from a $\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$ distribution,
 where $\mu$ is unknown. We know that we may estimate $\mu$ with
 $\Xbar$, and we have seen that this estimator is the MLE. But how
 good is our estimate? We know that \begin{equation}
@@ -10621,7 +10769,11 @@ also thinking about replicate
 
 \section{Other Topics}
 
+I am thinking about fitdistr from the MASS package.
+
 Mention mle from the stats4 package
+
+\newpage{}
 
 
 \section{Chapter Exercises}
@@ -11163,6 +11315,8 @@ The meaning of the
 \subsection{How to do it with \textsf{R}}
 
 I am thinking about replicate() here.
+
+\newpage{}
 
 
 \section{Chapter Exercises}
@@ -12675,6 +12829,8 @@ is shown in the bottom right corner of Figure BLANK). Observations
 1 and 2 fall on the far right side of the plot, near the horizontal
 axis.
 
+\newpage{}
+
 
 \section{Chapter Exercises}
 
@@ -14164,6 +14320,8 @@ aksdjfl\[
 AIC=-2\ln L+2(p+1)\]
 
 
+\newpage{}
+
 
 \section{Chapter Exercises}
 \begin{enumerate}
@@ -14701,6 +14859,8 @@ accuracy desired.
 \item Relationship between two variables. 
 \end{itemize}
 \end{itemize}
+\newpage{}
+
 
 \section{Chapter Exercises}
 
