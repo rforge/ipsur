@@ -13,6 +13,7 @@ language=R}
 \usepackage[a4paper]{geometry}
 \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
 \pagestyle{headings}
+\setcounter{secnumdepth}{2}
 \setcounter{tocdepth}{1}
 \usepackage{color}
 \usepackage{babel}
@@ -119,6 +120,8 @@ language=R}
 \usepackage{textcomp}
 %\usepackage{pslatex}
 \usepackage{upgreek}
+\usepackage[subfigure]{tocloft}
+\setlength{\cftfignumwidth}{1.5cm}
 
 
 %  user defined commands
@@ -148,14 +151,6 @@ language=R}
 \providecommand{\IPSURtitle}
 {\fontsize{30}{35}\selectfont \textsc{I\kern -.16ex\lower-.5ex\hbox{\Large P}\kern -.5ex\lower.4ex\hbox{\Large S}\kern -.25exU}\kern -.1ex\lower .15ex\hbox{\textsf{\Huge R}}\@}
 
-% add Contents to TOC
-\pagenumbering{roman}
-\let\myTOC\tableofcontents
-\renewcommand{\tableofcontents}{
-     \pdfbookmark[1]{Contents}{}
-     \myTOC
-     \clearpage
-}
 
 %%  Sweave specific commands
 % make the input blue
@@ -175,6 +170,18 @@ keywordstyle={\ttfamily},
 numberstyle = {\ttfamily},
 morestring=[b]"
 }
+
+
+
+%\newcommand...@figure{ \@dottedtocline{1}{1.5em}{2.3em} }
+%\usepackage{tocloft}
+%\setlength{\cftfignumwidth}{3em}
+% get the list of figures right
+%\newcounter{myfigure}[chapter]
+%\renewcommand{\thefigure}{\thechapter.\thefigure}
+%\makeatletter
+%\@addtoreset{myfigure}{chapter}
+%\makeatother
 
 \AtBeginDocument{
   \def\labelitemii{\(\circ\)}
@@ -393,6 +400,8 @@ with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
 Texts. A copy of the license is included in the section entitled ``GNU
 Free Documentation License''. 
 
+\newpage{}
+
 \tableofcontents{}
 
 
@@ -402,14 +411,14 @@ Free Documentation License''.
 
 \addcontentsline{toc}{chapter}{Preface}
 
-This book was expanded from lecture materials I have used in a one
-semester upper-division undergraduate course entitled \emph{Probability
-and Statistics} at Youngstown State University. Those lecture materials,
-in turn, were based on notes that I transcribed as a student at Bowling
-Green State University. The course for which the materials were written
-is 50-50 Probability and Statistics, and the attendees include mathematics,
-engineering, and computer science majors (among others). The prerequisites
-for the course are a full year of Calculus.
+This book was expanded from lecture materials I use in a one semester
+upper-division undergraduate course entitled \emph{Probability and
+Statistics} at Youngstown State University. Those lecture materials,
+in turn, are based on notes that I transcribed as a graduate student
+at Bowling Green State University. The course for which the materials
+were written is 50-50 Probability and Statistics, and the attendees
+include mathematics, engineering, and computer science majors (among
+others). The prerequisites for the course are a full year of Calculus.
 
 In an attempt to be correct I have included material in this book
 which I would normally not mention during the course of a standard
@@ -421,6 +430,19 @@ trained in linear algebra. It is important, however, in my mind for
 the students to hold something in their hands which acknowledges the
 world of mathematics and statistics beyond, and which may be useful
 to them for many semesters to come.
+
+I normally only have time in one semester to cover a small subset
+of this book. I typically cover the material in Chapter 2 in one class
+period with a take-home assignment for the students. I spend a lot
+of time on Data Description, Probability, Discrete and Continuous
+Distributions. I mention selected facts from Multivariate Distributions
+in passing, and discuss the meaty parts of Sampling Distributions
+before moving right along to Estimation (which is another one I dwell
+on considerably). Hypothesis Testing goes faster after all of the
+previous work, and by that time the end of the semester is in sight.
+I normally choose one or two final chapters (sometimes three) from
+the remaining to survey, and regret in retrospect that I did not have
+the chance to cover more.
 
 This document's goal is to be a more or less self contained, essentially
 complete, correct, textbook. There should be plenty of exercises for
@@ -625,8 +647,12 @@ notation to denote functions. The sequence {}``\textsf{Statistics}
 menu item, next click the \textsf{Summaries} submenu item, and finally
 click \textsf{Active Dataset}.
 
+\newpage{}
+
 \listoffigures
 \addcontentsline{toc}{chapter}{List of Figures} 
+
+\newpage{}
 
 \listoftables
 \addcontentsline{toc}{chapter}{List of Tables} 
@@ -4806,9 +4832,9 @@ remove(g)
 @
 \par\end{centering}
 
-\caption{The Birthday Problem: the horizontal line is at $p=0.50$ and the
-vertical line is at $n=23$.\label{fig:The-Birthday-Problem}}
-
+\caption{The Birthday Problem\label{fig:The-Birthday-Problem}}
+{\small The horizontal line is at $p=0.50$ and the vertical line
+is at $n=23$.}
 \end{figure}
 
 
@@ -8465,11 +8491,24 @@ We see that the support of $U$ is $S_{U}=\left\{ 1,2,\ldots,6\right\} $
 and the support of $V$ is $S_{V}=\left\{ 2,3,\ldots,12\right\} $.
 We may represent the sample space with a matrix, and for each entry
 in the matrix we may calculate the value that $U$ assumes. The result
-is in Table BLANK. 
+is in the left half of Table BLANK. 
 
-We may do a similar thing for $V$; see Table BLANK.
+We can use the table to calculate the marginal PMF of $U$, because
+from Example BLANK we know that each entry in the matrix has probability
+$1/36$ associated with it. For instance, there is only one outcome
+in the matrix with $U=1$, namely, the top left corner. This single
+entry has probability $1/36$, therefore, it must be that $f_{U}(1)=\P(U=1)=1/36$.
+Similarly we see that there are three entries in the matrix with $U=2$,
+thus $f_{U}(2)=3/36$. Continuing in this fashion we will find the
+marginal distribution of $U$ may be written\begin{equation}
+f_{U}(u)=\frac{2u-1}{36},\quad u=1,\,2,\ldots,6.\end{equation}
 
-%
+
+We may do a similar thing for $V$; see the right half of Table BLANK.
+Collecting all of the probability we will find that the marginal PMF
+of $V$ is\begin{equation}
+f_{V}(v)=\frac{6-|v-7|}{36},\quad v=2,\,3,\ldots,12.\end{equation}
+ %
 \begin{table}
 \begin{centering}
 \begin{tabular}{c|cccccc}
@@ -8498,6 +8537,9 @@ sum & 1 & 2 & 3 & 4 & 5 & 6\tabularnewline
 \end{table}
 
 
+We may collapse the two matrices from Table BLANK into one, big matrix
+of pairs of values $(u,v)$. The result is shown in Table BLANK. 
+
 %
 \begin{table}
 \begin{centering}
@@ -8517,7 +8559,43 @@ sum & 1 & 2 & 3 & 4 & 5 & 6\tabularnewline
 
 \end{table}
 
+
+Again, each of these pairs has probability $1/36$ associated with
+it, and we are looking at the joint PDF of $(U,V)$, albeit in an
+unusual form. Most pairs are not repeated, but some of them are: $(1,2)$
+appears only once, but $(2,3)$ appears twice. We can make more sense
+out of this by writing a new table with $U$ along one side and $V$
+along the other. See Table BLANK.
+
+%
+\begin{table}
+\begin{centering}
+\begin{tabular}{|c|ccccccccccc|c|}
+\hline 
+ & {\small 2} & {\small 3} & {\small 4} & {\small 5} & {\small 6} & {\small 7} & {\small 8} & {\small 9} & {\small 10} & {\small 11} & {\small 12} & {\small Total}\tabularnewline
+\hline
+{\small 1} & {\small $1/36$} &  &  &  &  &  &  &  &  &  &  & {\small $1/36$}\tabularnewline
+{\small 2} &  & {\small $2/36$} & {\small $1/36$} &  &  &  &  &  &  &  &  & {\small $3/36$}\tabularnewline
+{\small 3} &  &  & {\small $2/36$} & {\small $2/36$} & {\small $1/36$} &  &  &  &  &  &  & {\small $5/36$}\tabularnewline
+{\small 4} &  &  &  & {\small $2/36$} & {\small $2/36$} & {\small $2/36$} & {\small $1/36$} &  &  &  &  & {\small $7/36$}\tabularnewline
+{\small 5} &  &  &  &  & {\small $2/36$} & {\small $2/36$} & {\small $2/36$} & {\small $2/36$} & {\small $1/36$} &  &  & {\small $9/36$}\tabularnewline
+{\small 6} &  &  &  &  &  & {\small $2/36$} & {\small $2/36$} & {\small $2/36$} & {\small $2/36$} & {\small $2/36$} & {\small $1/36$} & {\small $11/36$}\tabularnewline
+\hline 
+{\small Total} & {\small $1/36$} & {\small $2/36$} & {\small $3/36$} & {\small $4/36$} & {\small $5/36$} & {\small $6/36$} & {\small $5/36$} & {\small $4/36$} & {\small $3/36$} & {\small $2/36$} & {\small $1/36$} & {\small 1}\tabularnewline
+\hline
+\end{tabular}
+\par\end{centering}
+
+\caption{The joint PMF of $(U,V)$. }
+{\small The outcomes of $U$ are along the side and the outcomes of
+$V$ are along the top. Empty entries in the table have zero probability.
+The row totals (on the right) and column totals (on the bottom) correspond
+to the marginal distribution of $U$ and $V$, respectively. }
+\end{table}
+
 \end{example}
+jljlk
+
 In the examples above, and in many other ones, the joint support can
 be written as a product set of the support of $X$ {}``times'' the
 support of $Y$, that is, it may be represented as a cartesian product
@@ -8660,7 +8738,9 @@ If $x\in S_{X}$ is such that $f_{X}(x)>0$, then we may define the
 f_{Y|x}(y|x)=\frac{f_{X,Y}(x,y)}{f_{X}(x)},\quad y\in S_{Y}.\end{equation}
 We define $f_{X|y}$ in a similar fashion.
 \begin{example}
-Let the joint PMF of $X$ and $Y$ be given by
+Let the joint PMF of $X$ and $Y$ be given by\[
+f_{X,Y}(x,y)=\]
+
 \end{example}
 
 \begin{example}
@@ -10380,20 +10460,20 @@ ci.examp()
 @
 \par\end{centering}
 
-\caption{Simulation experiment for confidence intervals, using \texttt{ci.examp()}
-from the \texttt{TeachingDemos} package. Fifty (50) samples of size
-twenty five (25) were generated from a $\mathsf{norm}(\mathtt{mean}=100,\,\mathtt{sd}=10)$
-distribution, and each sample was used to find a 95\% confidence interval
-for the population mean using Equation \ref{eq:z-interval}. The 50
-confidence intervals are represented above by horizontal lines, and
-the respective sample means are denoted by vertical slashes. Confidence
-intervals that {}``cover'' the true mean value of 100 are plotted
-in black; those that fail to cover are plotted in a lighter color.
-In the plot we see that two (2) simulated intervals out of the 50
-failed to cover $\mu=100$, which is a success rate of 96\%. As the
-number of generated samples increased from 50 to 500 to 50000, \ldots{},
-we would expect our success rate to approach the exact value of 95\%.\label{fig:ci-examp}}
-
+\caption{Confidence interval simulation}
+The graph was generated by \texttt{ci.examp()} from the \texttt{TeachingDemos}
+package. Fifty (50) samples of size twenty five (25) were generated
+from a $\mathsf{norm}(\mathtt{mean}=100,\,\mathtt{sd}=10)$ distribution,
+and each sample was used to find a 95\% confidence interval for the
+population mean using Equation \ref{eq:z-interval}. The 50 confidence
+intervals are represented above by horizontal lines, and the respective
+sample means are denoted by vertical slashes. Confidence intervals
+that {}``cover'' the true mean value of 100 are plotted in black;
+those that fail to cover are plotted in a lighter color. In the plot
+we see that two (2) simulated intervals out of the 50 failed to cover
+$\mu=100$, which is a success rate of 96\%. As the number of generated
+samples increased from 50 to 500 to 50000, \ldots{}, we would expect
+our success rate to approach the exact value of 95\%.\label{fig:ci-examp}
 \end{figure}
 
 
@@ -11598,7 +11678,7 @@ abline(coef(cars.lm))
 @
 \par\end{centering}
 
-\caption{Scatterplot of the cars data with added regression line\label{fig:Scatter-cars-regline}}
+\caption{Scatterplot with added regression line for the cars data\label{fig:Scatter-cars-regline}}
 
 \end{figure}
 
@@ -12004,8 +12084,7 @@ print(ci.plot(cars.lm))
 @
 \par\end{centering}
 
-\caption{Scatterplot of the cars data with added regression line and confidence/prediction
-bands\label{fig:Scatter-cars-CIPI}}
+\caption{Scatterplot with confidence/prediction bands for cars data\label{fig:Scatter-cars-CIPI}}
 
 \end{figure}
 
@@ -12275,10 +12354,10 @@ plot(cars.lm, which = 2)
 @
 \par\end{centering}
 
-\caption{Normal q-q plot of the residuals, used for checking the normality
-assumption. Look out for any curvature or substantial departures from
-the straight line; hopefully the dots hug the line closely.}
-
+\caption{Normal q-q plot of the residuals for the cars data}
+ {\small Used for checking the normality assumption. Look out for
+any curvature or substantial departures from the straight line; hopefully
+the dots hug the line closely.}
 \end{figure}
 
 
@@ -12362,10 +12441,11 @@ plot(cars.lm, which = 3)
 @
 \par\end{centering}
 
-\caption{Plot of standardized residuals against the fitted values, used for
-checking the constant variance assumption. Watch out for any fanning
-out (or in) of the dots; hopefully they fall in a constant band.}
-
+\caption{Plot of standardized residuals against the fitted values for the cars
+data}
+ {\small Used for checking the constant variance assumption. Watch
+out for any fanning out (or in) of the dots; hopefully they fall in
+a constant band.}
 \end{figure}
 
 
@@ -12429,10 +12509,12 @@ plot(cars.lm, which = 1)
 @
 \par\end{centering}
 
-\caption{Plot of the residuals versus the fitted values, used for checking
-the independence assumption. Watch out for any patterns or structure;
-hopefully the points are randomly scattered in the plot.}
+\caption{Plot of the residuals versus the fitted values for the cars data}
 
+
+{\small Used for checking the independence assumption. Watch out for
+any patterns or structure; hopefully the points are randomly scattered
+on the plot.}
 \end{figure}
 
 
@@ -12746,6 +12828,9 @@ plot(cars.lm, which = 4)
 
 \caption{Cook's distances for the cars data}
 
+
+{\small Used for checking for influential and/our outlying observations.
+Values with large Cook's distance merit further investigation.}
 \end{figure}
 
 
