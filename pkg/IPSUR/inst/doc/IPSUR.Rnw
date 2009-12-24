@@ -677,6 +677,9 @@ click \textsf{Active Dataset}.
 \pagenumbering{arabic} 
 
 
+\paragraph*{What do I want them to know?}
+
+
 \section{Probability}
 
 Probability concerns the study of uncertainty. Games of chance have
@@ -736,7 +739,13 @@ of this book.
 
 \chapter{An Introduction to \textsf{R}}
 
-What would I like them to know?
+This chapter is designed to help a person to begin to get to know
+the \textsf{R} statistical computing environment. It paraphrases and
+summarizes information gleaned from materials listed in the \textbf{References}.
+Please refer to them for a more complete treatment.
+
+
+\paragraph*{What do I want them to know?}
 \begin{itemize}
 \item don't forget to mention rounding issues
 \item basic information about how to install, start up, and interact with\textsf{
@@ -783,11 +792,6 @@ them
 \item basic tricks of the trade like command history and clearing the console,
 case sensitivity
 \end{itemize}
-This chapter is designed to help a person to begin to get to know
-the \textsf{R} statistical computing environment. It paraphrases and
-summarizes information gleaned from materials listed in the \textbf{References}.
-Please refer to them for a more complete treatment.
-
 
 \section{Downloading and Installing \textsf{R}}
 
@@ -1697,21 +1701,6 @@ c(max(commute), min(commute), mean(commute), sd(commute))
 
 \chapter{Data Description \label{cha:Describing-Data-Distributions}}
 
-What would I like them to know?
-\begin{itemize}
-\item what is data
-
-\begin{itemize}
-\item the different types, especially quantitative versus qualitative, and
-discrete versus continuous
-\end{itemize}
-\item how to describe data both visually and numerically, and how the methods
-differ depending on the data type
-\item CUSS
-\item how to do all of the above but in the context of describing data broken
-down by groups
-\item the concept of factor and what it means for subdividing data
-\end{itemize}
 In this chapter we introduce the different types of data that a statistician
 is likely to encounter. In each subsection we describe how to display
 the data of that particular type.
@@ -1738,6 +1727,22 @@ data sets. Once that we have intuitive properties of data sets, we
 next discuss how we may numerically measure and describe those properties
 with descriptive statistics.
 
+
+\paragraph*{What do I want them to know?}
+\begin{itemize}
+\item what are data
+
+\begin{itemize}
+\item the different types, especially quantitative versus qualitative, and
+discrete versus continuous
+\end{itemize}
+\item how to describe data both visually and numerically, and how the methods
+differ depending on the data type
+\item CUSS
+\item how to do all of the above but in the context of describing data broken
+down by groups
+\item the concept of factor and what it means for subdividing data
+\end{itemize}
 
 \section{Types of Data\label{sec:Types-of-Data}}
 
@@ -3490,6 +3495,9 @@ certainty beforehand, even in principle. Examples of random experiments
 include tossing a coin, rolling a die, and throwing a dart on a board,
 how many red lights you encounter on the drive home, how many ants
 traverse a certain patch of sidewalk over a short period, \emph{etc}.
+
+
+\paragraph*{What do I want them to know?}
 
 
 \section{Sample Spaces}
@@ -5863,7 +5871,8 @@ of discrete random variables that can be used to model experiments.
 There are some comments on simulation, and we mention transformations
 of random variables in the discrete case.
 
-What do I want them to know?
+
+\paragraph*{What do I want them to know?}
 \begin{itemize}
 \item a lot of discrete models
 \item the idea of expectation and how to calculate it
@@ -7374,6 +7383,9 @@ along with the Gaussian, or normal, distribution. Some mathematical
 details pave the way for a catalogue of models.
 
 
+\paragraph*{What do I want them to know?}
+
+
 \section{Continuous Random Variables\label{sec:Continuous-Random-Variables}}
 
 
@@ -8426,8 +8438,9 @@ add to our catalogue. Moreover, we will study certain classes of dependence,
 and clarify the special case when there is no dependence, namely,
 independence.
 
-What do I want them to know?
-\begin{enumerate}
+
+\paragraph*{What do I want them to know?}
+\begin{itemize}
 \item joint distributions and marginal distributions (discrete and continuous)
 \item joint expectation and marginal expectation
 \item covariance and correlation
@@ -8435,7 +8448,7 @@ What do I want them to know?
 \item independence and exchangeability
 \item popular discrete joint distribution (multinomial)
 \item popular continuous distribution (multivariate normal)
-\end{enumerate}
+\end{itemize}
 
 \section{Joint and Marginal Probability Distributions\label{sec:Joint-Probability-Distributions}}
 
@@ -9521,14 +9534,13 @@ statistics whose sampling distributions are not quite so tractable,
 and to accomplish this goal we will use simulation methods that are
 grounded in all of our work in the previous four chapters.
 
-Sampling Distributions of one-sample statistics,
 
-sampling distributions of two sample statistics.
-
-simulated sampling distributions
-
-What do I want them to know?
+\paragraph*{What do I want them to know?}
 \begin{itemize}
+\item Sampling Distributions of one-sample statistics,
+\item sampling distributions of two sample statistics.
+\item simulated sampling distributions
+\item What do I want them to know?
 \item what a srs(n) is
 \item the sampling distributions of popular statistics
 
@@ -10109,27 +10121,22 @@ we add sampling distributions to get confidence intervals. Once we
 have confidence intervals we can do inference in the form of hypothesis
 tests in the next chapter.
 
-What would I like them to know?
+
+\paragraph*{What do I want them to know?}
 \begin{itemize}
-\item How to estimate a parameter.
-\item About maximum likelihood. SWBAT
+\item how to look at a problem, identify a reasonable model, and estimate
+a parameter associated with the model
+\item about maximum likelihood, and in particular, how to
 
 \begin{itemize}
-\item eyball a likelihood and get a maximum
-\item use Calculus to find an MLE for one-parameter families
+\item eyball a likelihood to get a maximum
+\item use calculus to find an MLE for one-parameter families
 \end{itemize}
-\item Talk about properties of estimators:
-
-\begin{itemize}
-\item bias
-\item minimum variance
-\item MSE?
-\item asymptotics?
-\end{itemize}
-\item Find confidence intervals for all of the basic experimental designs.
-\item Interpret confidence intervals a la PANIC
-\item Introduce the concept of margin of error and its relationship to sample
-size
+\item about properties of the estimators they find, such as bias, minimum
+variance, MSE?, asymptotics?
+\item point versus interval estimation, and how to find and interpret confidence
+intervals for basic experimental designs
+\item the concept of margin of error and its relationship to sample size
 \end{itemize}
 
 \section{Point Estimation}
@@ -10994,15 +11001,16 @@ Find a two-dimensional MLE for $\theta=(\mu,\sigma)$.\label{xca:norm-mu-sig-MLE}
 
 \chapter{Hypothesis Testing}
 
-What do I want them to know:
+
+\paragraph*{What do I want them to know?}
 \begin{itemize}
 \item basic terminology and philosophy of the Neyman-Pearson paradigm
 \item classical hypothesis tests for the standard one and two sample problems
-with means and variances, and proportions.
-\item introduce one-way anova, and in particular, the notion of between
-versus within group variation.
-\item Introduce the concept of statistical power and its relationship with
-sample size
+with means, variances, and proportions
+\item the notion of between versus within group variation and how it plays
+out with one-way ANOVA
+\item the concept of statistical power and its relationship with sample
+size
 \end{itemize}
 
 \section{Introduction}
@@ -11533,12 +11541,14 @@ I am thinking about replicate() here.
 
 \chapter{Simple Linear Regression}
 
-What do I want them to know?
+
+\paragraph*{What do I want them to know?}
 \begin{itemize}
 \item basic philosophy of SLR and the regression assumptions
 \item point and interval estimation of the parameters of the linear model
 \item point and interval estimation of future observations from the model
 \item regression diagnostics including $R^{2}$ and residual analysis
+\item the concepts of influential versus outlying and how to tell the difference
 \end{itemize}
 
 \section{Basic Philosophy\label{sec:Basic-Philosophy}}
@@ -13077,6 +13087,18 @@ text in linear regression for details, such as Applied Linear Regression
 Models or C. R. Rao.
 
 
+\paragraph*{What do I want them to know?}
+\begin{itemize}
+\item the basic MLR model, and how it relates to the SLR
+\item how to estimate the parameters and use those estimates to make predictions
+\item basic strategies to determine whether or not the model is doing a
+good job
+\item a few thoughts about selected applications of the MLR, such as polynomial,
+interaction, and dummy variable models
+\item some of the uses of residuals to diagnose problems
+\item hints about what will be coming later
+\end{itemize}
+
 \section{The Multiple Linear Regression Model}
 
 The first thing to do is get some better notation. We will write \begin{equation}
@@ -14546,10 +14568,12 @@ SSTO=SSE+SSR.\]
 
 \chapter{Resampling Methods}
 
-What do I want them to know?
+
+\paragraph*{What do I want them to know?}
 \begin{itemize}
 \item basic philosophy of resampling and why it is desired
 \item resampling for standard errors and confidence intervals
+\item resampling for hypothesis tests (permutation tests)
 \end{itemize}
 
 \section{Introduction}
@@ -14993,7 +15017,7 @@ to the observed value. Of course, this is merely an \emph{estimate}
 of the true $p$-value. As it turns out, an adjustment of $+1$ to
 both the numerator and denominator of the proportion improves the
 performance of the estimated $p$-value, and this adjustment is implemented
-in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ts.perm!\inputencoding{utf8}
+in the \inputencoding{latin9}\lstinline[showstringspaces=false]!ts.perm!\inputencoding{utf8}
 function.
 \end{rem}
 <<>>=
@@ -15081,17 +15105,44 @@ accuracy desired.
 
 \chapter{Categorical Data Analysis}
 
-In revision. Coming soon.
+This chapter is still under substantial revision. Look for it in the
+Second Edition. In the meantime, you can preview any released drafts
+with the development version of the \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR!\inputencoding{utf8}
+package whcih is available from \textsf{R}-Forge:
+
+<<eval = FALSE>>=
+install.packages("IPSUR", repos="http://R-Forge.R-project.org")
+library(IPSUR)
+read(IPSUR)
+@
 
 
 \chapter{Nonparametric Statistics}
 
-In revision. Coming soon.
+This chapter is still under substantial revision. Look for it in the
+Second Edition. In the meantime, you can preview any released drafts
+with the development version of the \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR!\inputencoding{utf8}
+package whcih is available from \textsf{R}-Forge:
+
+<<eval = FALSE>>=
+install.packages("IPSUR", repos="http://R-Forge.R-project.org")
+library(IPSUR)
+read(IPSUR)
+@
 
 
 \chapter{Time Series}
 
-In revision. Coming soon.
+This chapter is still under substantial revision. Look for it in the
+Second Edition. In the meantime, you can preview any released drafts
+with the development version of the \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR!\inputencoding{utf8}
+package whcih is available from \textsf{R}-Forge:
+
+<<eval = FALSE>>=
+install.packages("IPSUR", repos="http://R-Forge.R-project.org")
+library(IPSUR)
+read(IPSUR)
+@
 
 \appendix
 
@@ -16168,46 +16219,6 @@ Harrell for more details \url{http://biostat.mc.vanderbilt.edu/twiki/bin/view/Ma
 HTML and prettyR
 
 R2HTML
-
-
-\section{DO's}
-
-
-\subsection{Mathematical Typesetting}
-
-Given that you are a student in the Department of Mathematics \& Statistics,
-the probability is high that you will want to include mathematical
-notation and formulas in your report, and they are entered into \LyX{}
-using a special \LaTeX{} math mode. There are three primary ways to
-do this. 
-
-The first way is called an {}``inline formula'', which means that
-the formula is included in the text with everything else. An example
-would be $f(x)$ or $\int\sin x\ dx$. This way is handy when mentioning
-variables or short expressions.
-
-The second way is called a {}``displayed formula'', which is separated
-from the rest of the text in its own displayed paragraph. An example
-would be\[
-f(x)=\frac{1}{\sqrt{2\pi}}\mathrm{e^{-x^{2}/2},\quad-\infty<x<\infty},\]
-which is useful for longer formulas or equations. 
-
-The last way is a {}``numbered formula'', which displays the formula
-labeled with a number, for instance,\begin{equation}
-\mathrm{e}^{i\pi}-1=0.\end{equation}
-There can be many of these in a the document, and the equation numbers
-will be generated automatically by \LyX{}. 
-
-Please note that there are many, many, many things that can be done
-with \LaTeX{} and mathematics. To get an idea, take a look at {}``\LyX{}'s
-detailed Math Manual'', which can be viewed by clicking \emph{Help}
-$\rightarrow$\emph{ Math}. 
-
-In particular, all variables, functions, and expressions in the document
-should be written in math mode. It is not acceptable to write X or
-Y when discussing variables in your report\ldots{} they should instead
-be $X$ and $Y$ so that the reader can easily distinguish between
-mathematics and text.
 
 
 \chapter{Instructions for Instructors}
