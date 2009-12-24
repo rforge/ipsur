@@ -106,7 +106,7 @@ language=R}
 \usepackage{amsmath}
 \usepackage{latexsym}
 %\usepackage{theorem}
-\usepackage{subfigure}
+\usepackage{subfig}
 \usepackage{graphics}
 \usepackage{epsfig}
 \usepackage{makeidx}
@@ -183,6 +183,9 @@ morestring=[b]"
 %\@addtoreset{myfigure}{chapter}
 %\makeatother
 
+\@ifundefined{showcaptionsetup}{}{%
+ \PassOptionsToPackage{caption=false}{subfig}}
+\usepackage{subfig}
 \AtBeginDocument{
   \def\labelitemii{\(\circ\)}
 }
@@ -385,6 +388,8 @@ Statistics Using \textsf{R}}
 \author{\fontsize{24}{28}\selectfont G.~Jay Kerns}
 
 \maketitle
+\pagenumbering{roman} 
+
 \noindent \IPSUR: Introduction to Probability and Statistics Using
 \textsf{R}
 
@@ -647,15 +652,24 @@ notation to denote functions. The sequence {}``\textsf{Statistics}
 menu item, next click the \textsf{Summaries} submenu item, and finally
 click \textsf{Active Dataset}.
 
-\newpage{}
+\vfill{}
+
+
+\pagebreak{}
 
 \listoffigures
 \addcontentsline{toc}{chapter}{List of Figures} 
 
-\newpage{}
+\vfill{}
+
+
+\pagebreak{}
 
 \listoftables
 \addcontentsline{toc}{chapter}{List of Tables} 
+
+\vfill{}
+
 
 
 \chapter{An Introduction to Probability and Statistics}
@@ -721,8 +735,6 @@ of this book.
 
 
 \chapter{An Introduction to \textsf{R}}
-
-\pagenumbering{arabic} 
 
 What would I like them to know?
 \begin{itemize}
@@ -8476,11 +8488,23 @@ and let $Y$ be the face shown on the second roll. We have already
 seen this example in Chapter BLANK, Example BLANK. For this example,
 it suffices to define\[
 f_{X,Y}(x,y)=\frac{1}{36},\quad x=1,\ldots,6,\ y=1,\ldots,6.\]
-In this example the marginal PMFs are given by $f_{X}(x)=1/6$, $x=1,2,\ldots,6$,
+The marginal PMFs are given by $f_{X}(x)=1/6$, $x=1,2,\ldots,6$,
 and $f_{Y}(y)=1/6$, $y=1,2,\ldots,6$, since\[
 f_{X}(x)=\sum_{y=1}^{6}\frac{1}{36}=\frac{1}{6},\quad x=1,\ldots,6,\]
 and the same computation with the letters switched works for $Y$. 
 \end{example}
+
+
+In the previous example, and in many other ones, the joint support
+can be written as a product set of the support of $X$ {}``times''
+the support of $Y$, that is, it may be represented as a cartesian
+product set, or rectangle, $S_{X,Y}=S_{X}\times S_{Y}$, where $S_{X}\times S_{Y}=\left\{ (x,y):\ x\in S_{X},\, y\in S_{Y}\right\} $.
+As we shall see presently in Section BLANK, this form is a necessary
+condition for $X$ and $Y$ to be \emph{independent} (or alternatively
+\emph{exchangeable} when $S_{X}=S_{Y}$). But please note that in
+general it is not required for $S_{X,Y}$ to be of rectangle form.
+We next investigate just such an example.
+
 
 \begin{example}
 Let the random experiment again be to roll a fair die twice, except
@@ -8508,11 +8532,13 @@ We may do a similar thing for $V$; see the right half of Table BLANK.
 Collecting all of the probability we will find that the marginal PMF
 of $V$ is\begin{equation}
 f_{V}(v)=\frac{6-|v-7|}{36},\quad v=2,\,3,\ldots,12.\end{equation}
- %
+
+
+%
 \begin{table}
-\begin{centering}
+\hfill{}\subfloat[$U=\max(X,Y)$]{\begin{centering}
 \begin{tabular}{c|cccccc}
-max & 1 & 2 & 3 & 4 & 5 & 6\tabularnewline
+$U$ & 1 & 2 & 3 & 4 & 5 & 6\tabularnewline
 \hline
 1 & 1 & 2 & 3 & 4 & 5 & 6\tabularnewline
 2 & 2 & 2 & 3 & 4 & 5 & 6\tabularnewline
@@ -8520,8 +8546,12 @@ max & 1 & 2 & 3 & 4 & 5 & 6\tabularnewline
 4 & 4 & 4 & 4 & 4 & 5 & 6\tabularnewline
 5 & 5 & 5 & 5 & 5 & 5 & 6\tabularnewline
 6 & 6 & 6 & 6 & 6 & 6 & 6\tabularnewline
-\end{tabular}~~~~~~~~~\begin{tabular}{c|cccccc}
-sum & 1 & 2 & 3 & 4 & 5 & 6\tabularnewline
+\end{tabular}
+\par\end{centering}
+
+}\hfill{}\subfloat[$V=X+Y$]{\begin{centering}
+\begin{tabular}{c|cccccc}
+$V$ & 1 & 2 & 3 & 4 & 5 & 6\tabularnewline
 \hline
 1 & 2 & 3 & 4 & 5 & 6 & 7\tabularnewline
 2 & 3 & 4 & 5 & 6 & 7 & 8\tabularnewline
@@ -8532,7 +8562,9 @@ sum & 1 & 2 & 3 & 4 & 5 & 6\tabularnewline
 \end{tabular}
 \par\end{centering}
 
-\caption{Table of }
+}\hfill{}
+
+\caption{Maximum $U$ and sum $V$ of a pair of dice rolls $(X,Y)$}
 
 \end{table}
 
@@ -8544,7 +8576,7 @@ of pairs of values $(u,v)$. The result is shown in Table BLANK.
 \begin{table}
 \begin{centering}
 \begin{tabular}{c|cccccc}
-(max, sum) & 1 & 2 & 3 & 4 & 5 & 6\tabularnewline
+$(U,V)$ & 1 & 2 & 3 & 4 & 5 & 6\tabularnewline
 \hline
 1 & (1,2) & (2,3) & (3,4) & (4,5) & (5,6) & (6,7)\tabularnewline
 2 & (2,3) & (2,4) & (3,5) & (4,6) & (5,7) & (6,8)\tabularnewline
@@ -8555,17 +8587,18 @@ of pairs of values $(u,v)$. The result is shown in Table BLANK.
 \end{tabular}
 \par\end{centering}
 
-\caption{Table of }
+\caption{Joint values of $U=\max(X,Y)$ and $V=X+Y$}
 
 \end{table}
 
 
 Again, each of these pairs has probability $1/36$ associated with
-it, and we are looking at the joint PDF of $(U,V)$, albeit in an
-unusual form. Most pairs are not repeated, but some of them are: $(1,2)$
-appears only once, but $(2,3)$ appears twice. We can make more sense
-out of this by writing a new table with $U$ along one side and $V$
-along the other. See Table BLANK.
+it and we are looking at the joint PDF of $(U,V)$ albeit in an unusual
+form. Many of the pairs are repeated, but some of them are not: $(1,2)$
+appears twice, but $(2,3)$ appears only once. We can make more sense
+out of this by writing a new table with $U$ on one side and $V$
+along the top. We will accumulate the probability just like we did
+in Example BLANK. See Table BLANK.
 
 %
 \begin{table}
@@ -8586,29 +8619,24 @@ along the other. See Table BLANK.
 \end{tabular}
 \par\end{centering}
 
-\caption{The joint PMF of $(U,V)$. }
-{\small The outcomes of $U$ are along the side and the outcomes of
+\caption{The joint PMF of $(U,V)$ }
+{\small The outcomes of $U$ are along the left and the outcomes of
 $V$ are along the top. Empty entries in the table have zero probability.
 The row totals (on the right) and column totals (on the bottom) correspond
 to the marginal distribution of $U$ and $V$, respectively. }
 \end{table}
 
+
+The joint support of $(U,V)$ is concentrated along the main diagonal;
+note that the nonzero entries do not form a rectangle. Also notice
+that if we form row and column totals we are doing exactly the same
+thing as Expression BLANK, so that the marginal distribution of $U$
+is the list of totals in the right {}``margin'' of the Table BLANK,
+and the marginal distribution of $V$ is the list of totals in the
+bottom {}``margin''.
 \end{example}
-jljlk
-
-In the examples above, and in many other ones, the joint support can
-be written as a product set of the support of $X$ {}``times'' the
-support of $Y$, that is, it may be represented as a cartesian product
-set, or rectangle, $S_{X,Y}=S_{X}\times S_{Y}$, where $S_{X}\times S_{Y}=\left\{ (x,y):\ x\in S_{X},\, y\in S_{Y}\right\} $.
-As we shall see presently in Section BLANK, this form is a necessary
-condition for $X$ and $Y$ to be independent (or alternatively exchangeable
-when $S_{X}=S_{Y}$). But please note that in general it is not required
-for $S_{X,Y}$ to be of rectangle form. Any discrete set $S_{X,Y}$
-in the plane which has total mass 1 is the joint support set for some
-pair of random variables $(X,Y)$.
-
-Now continuing the reasoning we used for the discrete case, given
-two continuous random variables $X$ and $Y$ there similarly exists%
+Continuing the reasoning for the discrete case, given two continuous
+random variables $X$ and $Y$ there similarly exists%
 \footnote{Strictly speaking, the joint density function does not necessarily
 exist. But the joint CDF always exists.%
 } a function $f_{X,Y}(x,y)$ associated with $X$ and $Y$ called the
@@ -8619,8 +8647,8 @@ and\begin{equation}
 \iintop_{S_{X,Y}}f_{X,Y}(x,y)\,\diff x\,\diff y=1.\end{equation}
 
 
-In the continuous case we do not have such a simple interpretation
-for the joint PDF; however, we do have one for the joint CDF, namely,\[
+In the continuous case there is not such a simple interpretation for
+the joint PDF; however, we do have one for the joint CDF, namely,\[
 F_{X,Y}(x,y)=\P(X\leq x,\, Y\leq y)=\int_{-\infty}^{x}\int_{-\infty}^{y}f_{X,Y}(u,v)\,\diff v\,\diff u,\]
 for $(x,y)\in\R^{2}$. If $X$ and $Y$ have the joint PDF $f_{X,Y}$,
 then the marginal density of $X$ may be recovered by\begin{equation}
@@ -8628,13 +8656,27 @@ f_{X}(x)=\int_{S_{Y}}f_{X,Y}(x,y)\,\diff y,\quad x\in S_{X}\end{equation}
 and the marginal PDF of $Y$ may be found with \begin{equation}
 f_{Y}(y)=\int_{S_{X}}f_{X,Y}(x,y)\,\diff x,\quad y\in S_{Y}.\end{equation}
 
-
+\begin{example}
+Let the joint PDF of $(X,Y)$ be given by\[
+f_{X,Y}(x,y)=\frac{6}{5}\left(x+y^{2}\right),\quad0<x<1,\ 0<y<1.\]
+The marginal PDF of $X$ is\begin{eqnarray*}
+f_{X}(x) & = & \int_{0}^{1}\frac{6}{5}\left(x+y^{2}\right)\,\diff y,\\
+ & = & \left.\frac{6}{5}\left(xy+\frac{y^{3}}{3}\right)\right|_{y=0}^{1},\\
+ & = & \frac{6}{5}\left(x+\frac{1}{3}\right),\end{eqnarray*}
+for $0<x<1$, and the marginal PDF of $Y$ is\begin{eqnarray*}
+f_{Y}(y) & = & \int_{0}^{1}\frac{6}{5}\left(x+y^{2}\right)\,\diff x,\\
+ & = & \left.\frac{6}{5}\left(\frac{x^{2}}{2}+xy^{2}\right)\right|_{x=0}^{1},\\
+ & = & \frac{6}{5}\left(\frac{1}{2}+y^{2}\right),\end{eqnarray*}
+for $0<y<1$. In this example the joint support set was a rectangle
+$[0,1]\times[0,1]$, but it turns out that $X$ and $Y$ are not independent.
+See Section BLANK.
+\end{example}
 
 \subsection{How to do it with \textsf{R}}
 
 We will show how to do Example BLANK using \textsf{R}; it is much
-simpler to do the example with \textsf{R} than without. First we set
-up the sample space with the \inputencoding{latin9}\lstinline[showstringspaces=false]!rolldie!\inputencoding{utf8}
+simpler to do it with \textsf{R} than without. First we set up the
+sample space with the \inputencoding{latin9}\lstinline[showstringspaces=false]!rolldie!\inputencoding{utf8}
 function. Next, we add random variables $U$ and $V$ with the \inputencoding{latin9}\lstinline[showstringspaces=false]!addrv!\inputencoding{utf8}
 function. We take a look at the very top of the data frame (probability
 space) to make sure that everything is operating according to plan.
@@ -8654,22 +8696,40 @@ the rows of $S$ such that the result has exactly one row for each
 unique pair $(u,v)$ with positive probability. This sort of thing
 is exactly the task for which the \inputencoding{latin9}\lstinline[showstringspaces=false]!marginal!\inputencoding{utf8}
 function was designed. We may take a look at the joint distribution
-of $U$ and $V$.
+of $U$ and $V$ (we only show the first few rows of the data frame,
+but the complete one has 11 rows).
 
 <<>>=
 UV <- marginal(S, vars = c("U", "V"))
 head(UV)
-xtabs(round(probs,3) ~ V + U, data = UV)
 @
 
-(We have only shown the first few rows of the data frame; the complete
-one has 11 rows.) Note that we can continue the process and examine
-the marginal distributions of $U$ and $V$ separately. We need only
-submit the following:
+The data frame is difficult to understand. It would be better to have
+a tabular display like Table BLANK. We can do that with the \inputencoding{latin9}\lstinline[showstringspaces=false]!xtabs!\inputencoding{utf8}
+function. 
+
+<<>>=
+xtabs(round(probs,3) ~ U + V, data = UV)
+@
+
+Compare these values to the ones shown in Table BLANK. We can repeat
+the process with \inputencoding{latin9}\lstinline[showstringspaces=false]!marginal!\inputencoding{utf8}
+to get the univariate marginal distributions of $U$ and $V$ separately.
 
 <<>>=
 marginal(UV, vars = "U")
 head(marginal(UV, vars = "V"))
+@
+
+Another way to do the same thing is with the \inputencoding{latin9}\lstinline[showstringspaces=false]!rowSums!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!colSums!\inputencoding{utf8}
+of the \inputencoding{latin9}\lstinline[showstringspaces=false]!xtabs!\inputencoding{utf8}
+object. Compare
+
+<<>>=
+temp <- xtabs(probs ~ U + V, data = UV)
+rowSums(temp)
+colSums(temp)
 @
 
 You should check that the answers that we have obtained exactly match
@@ -8717,17 +8777,63 @@ facts about the correlation coefficient:
 \begin{enumerate}
 \item The range of correlation is $-1\leq\rho_{X,Y}\leq1$.
 \item Equality holds above ($\rho_{X,Y}=\pm1$) if and only if $Y$ is a
-linear function of $X$ with probability one.
-\end{enumerate}
+linear function of $X$ with probability one.\end{enumerate}
+\begin{example}
+We will compute the covariance for the discrete distribution in Example
+BLANK. The expected value of $U$ is\[
+\E U=\sum_{u=1}^{6}u\, f_{U}(u)=\sum_{u=1}^{6}u\,\frac{2u-1}{36}=1\left(\frac{1}{36}\right)+2\left(\frac{3}{36}\right)+\cdots+6\left(\frac{11}{36}\right)=\frac{161}{36},\]
+and the expected value of $V$ is\[
+\E V=\sum_{v=2}^{12}v\,\frac{6-|7-v|}{36}=2\left(\frac{1}{36}\right)+3\left(\frac{2}{36}\right)+\cdots+12\left(\frac{1}{36}\right)=7,\]
+and the expected value of $UV$ is\[
+\E UV=\sum_{u=1}^{6}\sum_{v=2}^{12}uv\, f_{U,V}(u,v)=1\cdot2\left(\frac{1}{36}\right)+2\cdot3\left(\frac{2}{36}\right)+\cdots+6\cdot12\left(\frac{1}{36}\right)=\frac{308}{9}.\]
+Therefore the covariance of $(U,V)$ is\[
+\mbox{Cov}(U,V)=\E UV-\left(\E U\right)\left(\E V\right)=\frac{308}{9}-\frac{161}{36}\cdot7=\frac{35}{12}.\]
+All we need now are the standard deviations of $U$ and $V$ to calculate
+the correlation coefficient (omitted).
+\end{example}
+
+
+We will do a continuous case example so that you can see how it works.
+\begin{example}
+Let us find the covariance of $(X,Y)$ in Example BLANK.
+
+The expected value of $X$ is\[
+\E X=\int_{0}^{1}x\cdot\frac{6}{5}\left(x+\frac{1}{3}\right)\diff x=\left.\frac{2}{5}x^{3}+\frac{1}{5}x^{2}\right|_{x=0}^{1}=\frac{3}{5},\]
+and the expected value of $Y$ is\[
+\E Y=\int_{0}^{1}y\cdot\frac{6}{5}\left(\frac{1}{2}+y^{2}\right)\diff x=\left.\frac{3}{10}y^{2}+\frac{3}{20}y^{4}\right|_{y=0}^{1}=\frac{9}{20}.\]
+Finally, the expected value of $XY$ is\begin{eqnarray*}
+\E XY & = & \int_{0}^{1}\int_{0}^{1}xy\,\frac{6}{5}\left(x+y^{2}\right)\diff x\,\diff y,\\
+ & = & \int_{0}^{1}\left.\left(\frac{2}{5}x^{3}y+\frac{3}{10}xy^{4}\right)\right|_{x=0}^{1}\diff y,\\
+ & = & \int_{0}^{1}\left(\frac{2}{5}y+\frac{3}{10}y^{4}\right)\diff y,\\
+ & = & \frac{1}{5}+\frac{3}{50},\end{eqnarray*}
+which is 13/50. Therefore the covariance of $(X,Y)$ is\[
+\mbox{Cov}(X,Y)=\frac{13}{50}-\left(\frac{3}{5}\right)\left(\frac{9}{20}\right)=-\frac{1}{100}.\]
+
+\end{example}
 
 \subsection{How to do it with \textsf{R}}
+
+There are not any specific functions in the \inputencoding{latin9}\lstinline[showstringspaces=false]!prob!\inputencoding{utf8}
+package designed for multivariate expectation. This is not a problem,
+though, because it is easy enough to do expectation the long way --
+with column operations. We just need to keep the definition in mind.
+For instance, we may compute the covariance of $(U,V)$ from Example
+BLANK.
 
 <<>>=
 Eu <- sum(S$U*S$probs)
 Ev <- sum(S$V*S$probs)
-sum(S$U*S$V*S$probs)
-sum(S$U*S$V*S$probs)-Eu*Ev
+Euv <- sum(S$U*S$V*S$probs)
+Euv - Eu * Ev
 @
+
+Compare this answer to what we got in Example BLANK.
+
+To do the continuous case we probably would be wise to resort to the
+computer algebra utilities of \inputencoding{latin9}\lstinline[showstringspaces=false]!Yacas!\inputencoding{utf8}
+and the associated \textsf{R} package \inputencoding{latin9}\lstinline[showstringspaces=false]!Ryacas!\inputencoding{utf8}.
+See Section BLANK for another example where the \inputencoding{latin9}\lstinline[showstringspaces=false]!Ryacas!\inputencoding{utf8}
+package appears.
 
 
 \section{Conditional Distributions\label{sec:Conditional-Distributions}}
@@ -9212,14 +9318,12 @@ distribution. For a more general result see Proposition BLANK.
 It is possible to do the computations above in \textsf{R} with the
 \inputencoding{latin9}\lstinline[showstringspaces=false]!Ryacas!\inputencoding{utf8}
 package. The package is an interface to the open-source computer algebra
-system, {}``Yacas''. The user installs Yacas, then uses \inputencoding{latin9}\lstinline[showstringspaces=false]!Ryacas!\inputencoding{utf8}
+system, {}``Yacas''. The user installs Yacas, then employs \inputencoding{latin9}\lstinline[showstringspaces=false]!Ryacas!\inputencoding{utf8}
 to submit commands to Yacas, after which the output is displayed in
 the \textsf{R} console.
 
-We did not want to require users of the \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR!\inputencoding{utf8}
-package to install Yacas, so examples of its use is omitted. But there
-are many online materials to help get the interested reader: see BLANK
-to get started.
+There are not yet any examples of Yacas in this book, but there are
+online materials to help the interested reader: see BLANK to get started.
 
 
 \section{Remarks for the Multivariate Case}
@@ -9230,7 +9334,7 @@ which we can shorten to $\mathbf{X}=(X_{1},X_{2},\ldots,X_{n})^{\mathrm{T}}$
 to make the formulas prettier (now may be a good time to check out
 Appendix BLANK). For $\mathbf{X}$ supported on the set $S_{\mathbf{X}}$,
 the joint PDF $f_{\mathbf{X}}$ (if it exists) satisfies\begin{equation}
-f_{\mathbf{X}}(\mathbf{x})\geq0,\quad\mbox{for }\mathbf{x}\in S_{\mathbf{X}},\end{equation}
+f_{\mathbf{X}}(\mathbf{x})>0,\quad\mbox{for }\mathbf{x}\in S_{\mathbf{X}},\end{equation}
 and\begin{equation}
 \int\!\!\!\int\cdots\int f_{\mathbf{X}}(\mathbf{x})\,\diff x_{1}\diff x_{2}\cdots\diff x_{n}=1,\end{equation}
 or even shorter: $\int f_{\mathbf{X}}(\mathbf{x})\,\diff\mathbf{x}=1$.
@@ -9299,7 +9403,32 @@ for any functions $u$ and $v$.
 \end{fact}
 
 
-Multiple exchangeable random variables; deFinetti's Theorem.
+Bruno deFinetti was a strong proponent of the subjective approach
+to probability. He proved an important theorem in 1931 which illuminates
+the link between exchangeable random variables and independent random
+variables. Here it is in one of its simplest forms.
+\begin{thm}
+De Finetti's Theorem. Let $X_{1}$, $X_{2}$, \ldots{} be a sequence
+of $\mathsf{binom}(\mathtt{size}=1,\,\mathtt{prob}=p)$ random variables
+such that $(X_{1},\ldots,X_{k})$ are exchangeable for every $k$.
+Then there exists a random variable $\Theta$ with support $[0,1]$
+and PDF $f_{\Theta}(\theta)$ such that\[
+\P(X_{1}=x_{1},\ldots X_{k}=x_{k})=\int_{0}^{1}\theta^{\sum x_{i}}(1-\theta)^{k-\sum x_{i}}\, f_{\Theta}(\theta)\diff\theta,\]
+for all $x_{i}=0,\,1$, $i=1,\,2,\ldots,k$.
+\end{thm}
+
+
+The intuitive meaning of de Finetti's theorem
+
+If we flip a coin repeatedly then the sequence of Heads and Tails
+is a set of Bernoulli trials, which are independent. Now imagine that
+we have a bunch of coins in our pocket which have potentially different
+values of $\P(\mbox{Heads})$. We reach into our pocket and select
+a coin at random. We take the randomly selected coin flip it $k$
+times. The sequence of Heads and Tails are not independent anymore
+because the outcome of the experiment depends on the coin chosen. 
+
+
 
 The multivariate normal distribution immediately generalizes from
 the bivariate case. If the matrix $\Sigma$ is nonsingular then the
