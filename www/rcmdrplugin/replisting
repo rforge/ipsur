@@ -1,0 +1,6 @@
+repname: IPSUR Repository
+reptype: package
+repaddrBase: http://www.cc.ysu.edu/~gjkerns/IPSUR/package
+repaddrPath: newRepos
+reprellevel: release
+
