@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>IPSUR Project</title>
+	<title>IPSUR: Introduction to Probability and Statistics Using R</title>
 	<link rel="Shortcut Icon" href="favicon.ico">
 	<style type="text/css">
 	<!--
@@ -47,7 +47,7 @@
       <table width="700" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td width="700" align="center" valign="middle"> 
-             <a href="../plugin/index.php">
+             <a href="../rcmdrplugin/index.php">
                <img src="graphics/IPSURtitlePlugin.png" height="100" width="700" alt="RcmdrPlugin.IPSUR" />
              </a>
           </td>
