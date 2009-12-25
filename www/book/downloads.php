@@ -36,31 +36,52 @@
 </p>
 
 <p>
-This page has the source code for the released version of IPSUR in a variety of formats.
+This page has the source code for the released version of <span class="name">IPSUR</span> in a variety of formats.
 </p>
 
 <p>
-You can get a PDF copy of the published edition of <span class="name">IPSUR</span> from CRAN, and you can get a PDF of the development edition from R-Forge;  see the the <a href="installation.php">Installation</a> page for details.  Note that the Sweave sources of both of those documents are stored alongside their PDF siblings.
+You can get a PDF copy of the published edition of <span class="name">IPSUR</span> from CRAN, and you can get a PDF of the development edition from R-Forge;  see the the <a href="installation.php">Installation</a> page for details.  Note that the <span style="text-decoration: none">Sweave</span> sources of both of those documents are stored alongside their PDF siblings.
 </p>
 
 <p>
-If you would like to print your own copy of the <strong>published</strong> edition of <span class="name">IPSUR</span> then you may want to use the following publication-ready PDF of the book.  It has been typeset in black-and-white to optimize the display of the code and figures. All of the fonts have been embedded, so the printer should not have trouble with any of the symbols. 
+If you would like to print your own copy of the <strong>published</strong> edition of <span class="name">IPSUR</span> then you may want to use the following publication-ready PDF of the book.  It has been typeset in black-and-white to optimize the display of the code and figures. All of the fonts have been embedded so your printer should not have trouble with any of the symbols.
 </p>
 
 <p>
-You can try to print your own copy of the <em>development</em> version of <span class="name">IPSUR</span>, but I do not recommend it for several reasons.  First of all, the electronic copy is in color which does not show up well on black-and-white paper.  Second of all, the electronic copy is optimized for web viewing which means that not all of fonts are embedded - your printer may not render all of the symbols correctly.  Finally, unless you have a very fancy printer you will be printing only on one side of the page - which wastes paper.
+<div align="center">
+	<strong>Publisher Quality PDF</strong><br />
+	<a href="downloads/IPSUR.pdf">IPSUR.pdf</a>
+</div>
 </p>
 
 <p>
-If you insist on printing your own copy of the development version then I recommend you download the LaTeX source (see below), compile your own PDF in black-and-white, and make sure to embed all of the fonts.
+You can try to print your own copy of the <em>development</em> edition of <span class="name">IPSUR</span>, but I do not recommend it for several reasons.  First of all, the electronic copy is in color which does not show up well on black-and-white paper.  Second of all, the electronic copy is optimized for web viewing which means that not all of fonts are embedded - your printer may not render all of the symbols correctly.  Finally, unless you have a very fancy printer you will be printing only on one side of the page - which wastes paper.
 </p>
 
 <p>
-If you would like a transparent copy of the published edition of <span class="name">IPSUR</span>, then download the following .zip file.  It contains all of the LaTeX source code, all of the figures (in .pdf and .eps), and the ancillary materials such as IPSUR.R and IPSUR.RData.  This document can be used (in principle) to generate your own personal copy of the published edition of <span class="name">IPSUR</span>, and you are FREE to modify and distribute your own version of it under the constraints of the GNU-FDL.
+If you are determined to print your own copy of the <span class="name">IPSUR</span> development edition then I recommend you download the <span style="text-decoration: none">Sweave</span> source, compile your own PDF in black-and-white, and make sure to embed all of the fonts.
 </p>
 
 <p>
-Finally, you can download the LyX source file, IPSUR.lyx, which was used by the author to write <span class="name">IPSUR</span>. It is essentially the Sweave source code for the published edition, except that LyX conceals the intermediate step of generating the LaTeX source file and figures.  This one text file will generate a PDF of the entire published edition of <span class="name">IPSUR</span>, with a single click.  Enjoy.  (I certainly have.)
+If you would like a transparent copy of the published edition of <span class="name">IPSUR</span>, then download the following <span style="text-decoration: none">.zip</span> file.  It contains all of the LaTeX source code, all of the figures (in <span style="text-decoration: none">.pdf</span> and <span style="text-decoration: none">.eps</span>), and the ancillary materials such as <span style="text-decoration: none">IPSUR.R</span> and <span style="text-decoration: none">IPSUR.RData</span>.  This document can be used (in principle) to generate your own personal copy of the published edition of <span class="name">IPSUR</span>, and you are FREE to modify and distribute your own version of it under the constraints of the GNU-FDL.
+</p>
+
+<p>
+<div align="center">
+	<strong>LaTeX source, Images, and Ancillaries</strong><br />
+	<a href="downloads/IPSUR.zip">IPSUR.zip</a>
+</div>
+</p>
+
+<p>
+Finally, you can download the LyX source file, <span style="text-decoration: none">IPSUR.lyx</span>, which was used by the author to write <span class="name">IPSUR</span>. It is essentially the Sweave source code for the published edition, except that LyX conceals the intermediate step of generating the LaTeX source file and figures.  This one text file will generate a PDF of the entire published edition of <span class="name">IPSUR</span>, with a single click.  Enjoy.  (I certainly have.)
+</p>
+
+<p>
+<div align="center">
+	<strong>Master LyX File</strong><br />
+	<a href="downloads/IPSUR.lyx">IPSUR.lyx</a>
+</div>
 </p>
 
 <!--END: Page Content-->

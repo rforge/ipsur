@@ -39,8 +39,8 @@
 <div id="list">
 	<ol type="1">
 		<li>
-		  <strong>Download the latest version of <span class="name">R</span></strong>: click the link 
-			below to  download the latest version of R for your operating system from CRAN:
+		  <strong>Download the latest version of <span class="name">R</span></strong>: choose a link 
+			below to download the latest version of R for your operating system from CRAN:
 			  
 		  <div align="center">
 		    <br />
@@ -52,9 +52,10 @@
 		  </div>	
 			<ul><br />  
 				<li>
-		  		<strong>Windows Installation Tip for <span class="name">R</span></strong>:  click the .exe 
+		  		<strong>Windows Installation Tip for <span class="name">R</span></strong>:  click the 
+				<span style="text-decoration: none">.exe</span> 
 				program file to start installation.  When it asks for "Customized startup options", 
-				specify Yes.  In the next window, be sure to select the SDI (single-window) option.
+				specify <em>Yes</em>.  In the next window, be sure to select the SDI (single-window) option.
 				</li>
 			</ul>
 		</li>
@@ -72,7 +73,6 @@
 				the closest you can get to a published copy without buying one.
 				To install directly from CRAN, launch R and type the following at the command prompt "&gt;": 
 				<br />
-				<br />
 			    	<div align="center"><br />
 					<span class="name">install.packages("IPSUR", repos="http://cran.r-project.org")</span>
 			    	</div>
@@ -83,7 +83,6 @@
 				This version will have the latest corrections and additional material, and may differ
 				substantially from one purchased from retailers. To install directly from R-Forge, launch 
 				R and type the following at the command prompt "&gt;": 
-				<br />
 				<br />
 			    	<div align="center"><br />
 					<span class="name">install.packages("IPSUR", repos="http://ipsur.r-forge.r-project.org")</span>
