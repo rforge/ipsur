@@ -72,8 +72,8 @@
 			</ul>
 		</li>
 		<li>
-			<strong>Installing the <span class="name">RcmdrPlugin.IPSUR</span> package</strong>: there 
-			are several methods for installing IPSUR: 
+			<strong>Install the <span class="name">RcmdrPlugin.IPSUR</span> package</strong>: there 
+			are several methods to install <span class="name">RcmdrPlugin.IPSUR</span>: 
          <br />
 			<br />
 			<ul>
@@ -115,7 +115,7 @@
 			</ul>
 		</li>
 		<li>
-			<strong>Loading the <span class="name">RcmdrPlugin.IPSUR</span> package:</strong>
+			<strong>Load the <span class="name">RcmdrPlugin.IPSUR</span> package:</strong>
 			Once <span class="name">RcmdrPlugin.IPSUR</span> is downloaded and installed, it
 			must be loaded into R. To do this type the following at the command prompt &quot;&gt;&quot;: 
 				
@@ -125,7 +125,7 @@
          </div>
 		</li>
 		<li>
-			<strong></strong><strong>Installing the Dependencies:</strong> When <span class="name">Rcmdr</span> loads it will ask 
+			<strong></strong><strong>Install the Dependencies:</strong> When <span class="name">Rcmdr</span> loads it will ask 
 			you to download a bunch of additional packages. Once this procedure is finished, you will be almost 
 			ready to go.  For more detailed instructions on installing and configuring R and 
 			<span class="name">RcmdrPlugin.IPSUR</span> you should 

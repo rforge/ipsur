@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>RcmdrPlugin.IPSUR: a Plugin for the R Commander</title>
+	<title>RcmdrPlugin.IPSUR: an IPSUR Plugin for the R Commander</title>
 	<link rel="Shortcut Icon" href="favicon.ico">
 
 	<style type="text/css">
@@ -56,9 +56,9 @@
       <p class="articleTitle">Also see the <span class="name">IPSUR</span> Textbook:</p>
       <table width="700" border="0" cellspacing="0" cellpadding="0">
         <tr>
-          <td width="200" align="center" valign="middle"> 
+          <td width="700" align="center" valign="middle"> 
              <a href="../book/index.php">
-               <img src="graphics/IPSURlogo.png" height="100" width="200" alt="Introduction to Probability and Statistics Using R" border="0" />
+               <img src="graphics/IPSURtitleBook.png" height="100" width="700" alt="Introduction to Probability and Statistics Using R" border="0" />
              </a>
           </td>
         </tr>
