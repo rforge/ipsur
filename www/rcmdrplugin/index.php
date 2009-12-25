@@ -49,7 +49,7 @@
         <tr>
           <td width="200" align="center" valign="middle"> 
              <a href="../book/index.php">
-               <img src="graphics/IPSURlogo.png" height="100" width="200" alt="Introduction to Probability and Statistics Using R" />
+               <img src="graphics/IPSURlogo.png" height="100" width="200" alt="Introduction to Probability and Statistics Using R" border="0" />
              </a>
           </td>
         </tr>

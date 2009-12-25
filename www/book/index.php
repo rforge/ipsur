@@ -48,7 +48,7 @@
         <tr>
           <td width="700" align="center" valign="middle"> 
              <a href="../rcmdrplugin/index.php">
-               <img src="graphics/IPSURtitlePlugin.png" height="100" width="700" alt="RcmdrPlugin.IPSUR" />
+               <img src="graphics/IPSURtitlePlugin.png" height="100" width="700" alt="RcmdrPlugin.IPSUR" border="0" />
              </a>
           </td>
         </tr>
