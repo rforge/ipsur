@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>IPSUR Project</title>
+	<title>RcmdrPlugin.IPSUR News</title>
 	<link rel="Shortcut Icon" href="favicon.ico">
 
 	<style type="text/css">
@@ -36,10 +36,10 @@
 <!--END: Top Menu-->
 	
 <!--BEGIN: Page Content-->
-<p class="articleTitle">What's New In the IPSUR Package </p>
+<p class="articleTitle">What's New In the <span class="name">RcmdrPlugin.IPSUR</span> Package </p>
 <blockquote>
 <p>
-	This document collects new features that are planned for the development version of IPSUR
+	This document collects new features that are planned for the development version of <span class="name">RcmdrPlugin.IPSUR</span>
 </p>
 <p>
 	Version

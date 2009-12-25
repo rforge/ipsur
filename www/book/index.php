@@ -42,19 +42,8 @@
         <p> Comments and suggestions are welcomed.</p>
         <p>&nbsp;</p>
       </blockquote>
-      
-      <p class="articleTitle">Go here for the IPSUR Plugin for the R Commander</p>
-      <table width="700" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td width="700" align="center" valign="middle"> 
-             <a href="../rcmdrplugin/index.php">
-               <img src="graphics/IPSURtitlePlugin.png" height="100" width="700" alt="RcmdrPlugin.IPSUR" border="0" />
-             </a>
-          </td>
-        </tr>
-      </table>    
 
-      <p>&nbsp;</p>
+
       <p class="articleTitle">Contact Information </p>
       <blockquote>
         <p> 
@@ -64,6 +53,20 @@
         </p>
         <p>&nbsp;</p>
       </blockquote>
+      
+      <p class="articleTitle">Also see the <span class="name">IPSUR</span> Plugin for the <span class="name">R</span> Commander:</p>
+      <table width="700" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="700" align="center" valign="middle"> 
+             <a href="../rcmdrplugin/index.php">
+               <img src="images/IPSURtitlePlugin.png" height="100" width="700" alt="RcmdrPlugin.IPSUR" border="0" />
+             </a>
+          </td>
+        </tr>
+      </table>    
+
+      <p>&nbsp;</p>
+      
 	   <p align="center">
 	  R logo &copy; the R Foundation, <font face="Courier New"><a href="http://www.r-project.org" style="text-decoration: none"><span style="text-decoration: none">http://www.r-project.org</span></a></font>
 	  </p>

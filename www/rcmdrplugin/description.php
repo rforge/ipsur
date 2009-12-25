@@ -2,9 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>IPSUR Project</title>
+	<title>RcmdrPlugin.IPSUR CRAN Description</title>
 	<link rel="Shortcut Icon" href="favicon.ico">
-
 	<style type="text/css">
 	<!--
 		@import url("main.css");

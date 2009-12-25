@@ -44,7 +44,16 @@
         <p> Comments and suggestions are welcomed.</p>
         <p>&nbsp;</p>
       </blockquote>
-      <p class="articleTitle">Go here for the IPSUR Textbook</p>
+
+      <p class="articleTitle">Contact Information </p>
+      <blockquote>
+        <p> <span class="name">RcmdrPlugin.IPSUR</span> comments, suggestions, bugs:   <a href="mailto:ipsur-help@lists.r-forge.org">ipsur-help@list.r-forge.org</a><br />
+            G. Jay Kerns: <a href="mailto:gkerns@ysu.edu">gkerns@ysu.edu</a> (<a href="http://people.ysu.edu/~gkerns">home page</a>)<br />
+            G. Andy Chang: <a href="mailto:gchang@ysu.edu">gchang@ysu.edu</a> (<a href="http://www.cc.ysu.edu/~ghchang/">home page</a>)</p>
+        <p>&nbsp;</p>
+      </blockquote>
+      
+      <p class="articleTitle">Also see the <span class="name">IPSUR</span> Textbook:</p>
       <table width="700" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td width="200" align="center" valign="middle"> 
@@ -56,13 +65,7 @@
       </table>    
 
       <p>&nbsp;</p>
-      <p class="articleTitle">Contact Information </p>
-      <blockquote>
-        <p> <span class="name">RcmdrPlugin.IPSUR</span> comments, suggestions, bugs:   <a href="mailto:ipsur-help@list.r-forge.org">ipsur-help@list.r-forge.org</a><br />
-G. Jay Kerns: <a href="mailto:gkerns@ysu.edu">gkerns@ysu.edu</a> (<a href="http://people.ysu.edu/~gkerns">home page</a>)<br />
-G. Andy Chang: <a href="mailto:gchang@ysu.edu">gchang@ysu.edu</a> (<a href="http://www.cc.ysu.edu/~ghchang/">home page</a>)</p>
-        <p>&nbsp;</p>
-      </blockquote>
+
 	   <p align="center">
 	  R logo &copy; the R Foundation, <font face="Courier New"><a href="http://www.r-project.org" style="text-decoration: none"><span style="text-decoration: none">http://www.r-project.org</span></a></font>
 	  </p>

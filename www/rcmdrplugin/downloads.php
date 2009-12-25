@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>IPSUR Project</title>
+	<title>RcmdrPlugin.IPSUR Downloads</title>
 	<link rel="Shortcut Icon" href="favicon.ico"><style type="text/css">
 	<!--
 		@import url("main.css");
@@ -39,22 +39,28 @@
             </p>
 <blockquote>
 <p>
-                The current released version of the IPSUR package is 0.1-5. There are binary packages available for computers running Windows and MacOS X, and source code for Linux distributions. Downloads for the released version are from CRAN, the Comprehensive R Archive Network. 
+                The current stable version of the <span class="name">RcmdrPlugin.IPSUR</span> package is available on CRAN, 
+                the Comprehensive R Archive Network.  
+                There are binary packages available for computers running Windows and MacOS X, and source code 
+                for Linux distributions.
                 
     
 	<p>
               </p>
     <div align="center">
-		<strong>IPSUR Released Version 0.1-5 </strong>
-		<br /><a href="http://cran.r-project.org/web/packages/RcmdrPlugin.IPSUR/index.html">CRAN IPSUR Package</a>
+		<strong><span class="name">RcmdrPlugin.IPSUR</span> Stable Version</strong>
+		<br /><a href="http://cran.r-project.org/web/packages/RcmdrPlugin.IPSUR/index.html">CRAN RcmdrPlugin.IPSUR Package</a>
 	</div>
     
 	<p>
                 <br />
-                 The current development version of the IPSUR package is 0.1-6. This contains very early code for new features and is not suitable for production environments. The development version should be used for testing purposes only. Development downloads are from the project page hosted at R-Forge. </p>
+                 The current development version of the <span class="name">RcmdrPlugin.IPSUR</span> package is 
+                 available from R-Forge. It contains very early code for new features and is not suitable for 
+                 production environments. The development version should be used for testing purposes only. 
+                 </p>
     <div align="center">
-		<strong>IPSUR Development Version 0.1-6 </strong>
-		<br /><a href="https://r-forge.r-project.org/R/?group_id=58">R-Forge IPSUR Package</a>
+		<strong><span class="name">RcmdrPlugin.IPSUR</span> Development Version</strong>
+		<br /><a href="https://r-forge.r-project.org/R/?group_id=58">R-Forge RcmdrPlugin.IPSUR Package</a>
 	</div>
     
 	<p>
@@ -62,11 +68,12 @@
 
 	</blockquote>
 	<div class="articleTitle">
-              <strong>Installing IPSUR from a Binary Package</strong>
+              <strong>Installing <span class="name">RcmdrPlugin.IPSUR</span> from a Binary Package</strong>
             </div>
 	<blockquote>
 <p>
-		To install the <span class="name">IPSUR</span> binary package, click on the appropriate link above to download the file. Save the package to a convenient location. 
+		To install the <span class="name">RcmdrPlugin.IPSUR</span> binary package, click on the appropriate 
+		link above to download the file. Save the package to a convenient location. 
 	<p>	
 		In Windows:
 		<ol type="1">
@@ -80,7 +87,7 @@
 				Select <span class="name">Install package(s) from local zip files...</span>
 			</li>
 			<li>
-				Browse and select the downloaded <span class="name">IPSUR</span> package
+				Browse and select the downloaded <span class="name">RcmdrPlugin.IPSUR</span> package
 			</li>
 		</ol>
 		In MacOS X:
@@ -101,7 +108,7 @@
 				Click the <span class="name">Install</span> button below
                   </li>
 			<li>
-				Browse and select the downloaded <span class="name">IPSUR</span> package
+				Browse and select the downloaded <span class="name">RcmdrPlugin.IPSUR</span> package
                   </li>
 		</ol>
 	</p>
@@ -109,17 +116,33 @@
 </blockquote>
 	
 <div class="articleTitle">
-              <strong>Installing IPSUR from Source</strong>
+              <strong>Installing <span class="name">RcmdrPlugin.IPSUR</span> from Source</strong>
             </div>
 <blockquote>
 <p>
-	The source code for the <span class="name">RcmdrPlugin.IPSUR</span> package is available under the GNU GPL Version 2.  The source code is recommended for platforms for which package binaries are not made available. It can also be used by developers on all platforms to modify <span class="name">IPSUR</span> and redistribute it under the constraints of the GPL. 
+	The source code for the <span class="name">RcmdrPlugin.IPSUR</span> package is available under 
+	the GNU GPL Version 2.  The source code is recommended for platforms for which package binaries 
+	are not made available. It can also be used by developers on all platforms to 
+	modify <span class="name">RcmdrPlugin.IPSUR</span> and redistribute it under the 
+	constraints of the GPL. 
 </p>
 <p>
-	Note that in order to install from source, you must have the necessary development tools installed.  In Windows, a good way to get started would be to look at the <span class="name">R Tools</span> page maintained by Duncan Murdoch, which you can find <a href="http://www.murdoch-sutherland.com/Rtools/index.html">here</a>.  Under Ubuntu Linux, this means that you should have the <span class="name">r-base-dev</span> package installed, which you can get with the Synaptic Package Manager. For more information, please see the <a href="http://cran.r-project.org/doc/manuals/R-admin.html">R Installation and Administration Manual</a>.
+	Note that in order to install from source, you must have the necessary development tools 
+	installed.  In Windows, a good way to get started would be to look at the 
+	<span class="name">R Tools</span> page maintained by Duncan Murdoch, which you can 
+	find <a href="http://www.murdoch-sutherland.com/Rtools/index.html">here</a>.  
+	Under Debian/Ubuntu GNU-Linux, this means that you should have the 
+	<span class="name">r-base-dev</span> package installed, which you can get with 
+	your favorite package manager. For more information, please see the 
+	<a href="http://cran.r-project.org/doc/manuals/R-admin.html">R Installation and Administration Manual</a>.
 </p>	
 	
-<p>For all OSes, the general idea to install from source is to open a terminal window, then <span class="name">cd</span> to the directory in which the source code is saved, and finally issue the command <span class="name">R CMD INSTALL RcmdrPlugin.IPSUR_x.x-x</span>, where x.x-x is the version that you have downloaded.  Given that you have the correct compilation tools installed and that your system is configured correctly, you should have the package installed in a few moments. 
+<p>For all OSes, the general idea to install from source is to open a terminal window, 
+then <span class="name">cd</span> to the directory in which the source code is saved, 
+and finally issue the command <span class="name">R CMD INSTALL RcmdrPlugin.IPSUR_x.x-x</span>, 
+where x.x-x is the version that you have downloaded.  Given that you have the correct 
+compilation tools installed and that your system is configured correctly, you should have 
+the package installed in a few moments. 
 </p>
 </p>
 <!--END: Page Content-->
