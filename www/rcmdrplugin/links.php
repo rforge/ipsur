@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>RcmdrPlugin.IPSUR Links</title>
+	<title>RcmdrPlugin.IPSUR Contact Information</title>
 	<link rel="Shortcut Icon" href="favicon.ico">
 
 	<style type="text/css">
@@ -33,36 +33,27 @@
 <?php
 	include "topMenu.php";
 ?>
-<!--END: Page Content-->	
-<p class="articleTitle">Some Links </p>
+<!--END: Page Content-->
+
+<p class="articleTitle">Mailing Lists</p>
 <blockquote>
-
-<p>
-	<a href="http://www.r-project.org/">The R Project for Statistical Computing</a>
-	<br />
-   	<a href="http://cran.r-project.org/">CRAN</a>: The Comprehensive R Archive Network 
-	
-	<br />
-	<br />
-	<a href="http://www.sciviews.org/_rgui/">R GUI Projects </a>
-	<br />
-	<a href="http://socserv.mcmaster.ca/jfox/Misc/Rcmdr/">The R Commander</a> - John Fox 
-	<br />
-	<a href="http://www.sciviews.org/SciViews-R/">SciViews-R</a> - Philippe Grosjean 
-	<br />
-	<a href="http://wiener.math.csi.cuny.edu/pmg">PMG</a> - John Verzani 
-	<br />
-
-	<br />
-	<br />
-	<a href="http://www.sciviews.org/_rgui/projects/Editors.html">Script Editors </a>
-	<br />
-	<a href="http://www.sciviews.org/Tinn-R/" class="name">Tinn-R</a> 
-	<br />
-	<a href="http://www.textpad.com/">TextPad</a>
+<p> 
+  If you have a question about how to use, install, download, or otherwise operate <span class="name">RcmdrPlugin.IPSUR</span>, then write to the <span class="name">IPSUR</span>-help list at <a href="mailto:ipsur-help@lists.r-forge.org">ipsur-help@lists.r-forge.org</a>.  It is a moderated list, which means that you need to register to be able to post messages freely.  If you are not registered then every message you send will need to be approved in advance before it will be posted to the list and stored in the archives. Visit <a href="https://lists.r-forge.r-project.org/cgi-bin/mailman/listinfo/ipsur-help">here</a> for registration instructions.
 </p>
- 
+<p>
+If you find a bug or error, then please let us know on the <span class="name">IPSUR</span>-devel list at <a href="mailto:ipsur-devel@lists.r-forge.org">ipsur-devel@lists.r-forge.org</a>.  This is also a moderated list;  go <a href="https://lists.r-forge.r-project.org/cgi-bin/mailman/listinfo/ipsur-devel">here</a> to register.
+</p>
 </blockquote>
+
+<p class="articleTitle">Contact Information </p>
+<blockquote>
+<p> 
+	G. Jay Kerns: <a href="mailto:gkerns@ysu.edu">gkerns@ysu.edu</a> (<a href="http://people.ysu.edu/~gkerns">home page</a>)<br />
+	G. Andy Chang: <a href="mailto:gchang@ysu.edu">gchang@ysu.edu</a> (<a href="http://www.cc.ysu.edu/~ghchang/">home page</a>)
+</p>
+<p>&nbsp;</p>
+</blockquote>
+
 <!--END: Page Content-->
 
 <!--BEGIN: Footer-->      

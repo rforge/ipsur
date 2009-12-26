@@ -35,7 +35,7 @@ include "topMenu.php";
 
 
 <p class="articleTitle">What <span class="name">IPSUR</span> is:</p>
-      <blockquote>
+<blockquote>
 <p> <span class="name">IPSUR</span> stands for <em>Introduction to Probability and Statistics Using R</em>, ISBN: 978-0-557-24979-4. It is a textbook written for an undergraduate course in probability and statistics. The approximate prerequisites are a couple semesters of calculus and some linear algebra in a few places.  Typical students in my course include mathematics, engineering, and computer science majors.  
 </p>
 
@@ -52,8 +52,8 @@ I have been writing <span class="name">IPSUR</span> on and off since 2006, yet t
 </p>
 </blockquote>
 
-      
-<p class="articleTitle">Also see the <span class="name">IPSUR</span> Plugin for the <span class="name">R</span> Commander:</p>
+<br />     
+<p class="articleTitle">Also see the <span class="name">IPSUR</span> Plugin for the <span class="name">R</span> Commander:
       <table width="700" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td width="700" align="center" valign="middle"> 
@@ -63,6 +63,8 @@ I have been writing <span class="name">IPSUR</span> on and off since 2006, yet t
           </td>
         </tr>
       </table>
+</p>
+
 
 <p>&nbsp;</p>
       

@@ -10,7 +10,7 @@
       <td width="175" align="center" valign="middle"><div align="center"><a href="installation.php">Installation</a></div></td>
       <td width="175" align="center" valign="middle"><div align="center"><a href="downloads.php">Downloads</a></div></td>
       <td width="175" align="center" valign="middle"><div align="center"><a href="screens.php">Screen Shots </a></div></td>
-	  <td width="175" align="center" valign="middle"><div align="center"><a href="links.php">Links</a></div></td>
+	  <td width="175" align="center" valign="middle"><div align="center"><a href="links.php">Contact</a></div></td>
     </tr>
   </table>
 </div>
