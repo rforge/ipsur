@@ -8,7 +8,7 @@
 					alt="RcmdrPlugin.IPSUR" 
 					width="700" height="100" border="0" />
 			</a>
-			G. Jay Kerns and G. Andy Chang, Youngstown State University 
+			by G. Jay Kerns and G. Andy Chang, Youngstown State University 
 		</p>
 	</td>
   	</tr>

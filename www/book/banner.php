@@ -8,7 +8,7 @@
 					alt="Introduction to Probability and Statistics Using R" 
 					width="700" height="100" border="0" />
 			</a>
-			G. Jay Kerns, Youngstown State University 
+			by G. Jay Kerns, Youngstown State University 
 		</p>
 	</td>
   	</tr>

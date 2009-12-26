@@ -52,7 +52,6 @@ I have been writing <span class="name">IPSUR</span> on and off since 2006, yet t
 </p>
 </blockquote>
 
-<br />     
 <p class="articleTitle">Also see the <span class="name">IPSUR</span> Plugin for the <span class="name">R</span> Commander:
       <table width="700" border="0" cellspacing="0" cellpadding="0">
         <tr>
