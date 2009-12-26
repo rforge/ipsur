@@ -36,7 +36,7 @@ include "topMenu.php";
 
 <p class="articleTitle">What <span class="name">IPSUR</span> is:</p>
 <blockquote>
-<p> <span class="name">IPSUR</span> stands for <em>Introduction to Probability and Statistics Using R</em>, ISBN: 978-0-557-24979-4. It is a textbook written for an undergraduate course in probability and statistics. The approximate prerequisites are a couple semesters of calculus and some linear algebra in a few places.  Typical students in my course include mathematics, engineering, and computer science majors.  
+<p> <span class="name">IPSUR</span> stands for <em>Introduction to Probability and Statistics Using R</em>, ISBN: 978-0-557-24979-4, which is a textbook written for an undergraduate course in probability and statistics. The approximate prerequisites are two or three semesters of calculus and some linear algebra in a few places.  Attendees of the class include mathematics, engineering, and computer science majors.  
 </p>
 
 <p>
