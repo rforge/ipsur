@@ -199,7 +199,7 @@ morestring=[b]"
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%                                                                  %%%
 %%%  IPSUR.Rnw - Introduction to Probability and Statistics Using R  %%%
-%%%  Copyright (C) 2009  G. Jay Kerns, <gkerns@ysu.edu>              %%%
+%%%  Copyright (C) 2010  G. Jay Kerns, <gkerns@ysu.edu>              %%%
 %%%  This program is free software: you can redistribute it and/or   %%%
 %%%  modify it under the terms of the GNU General Public License as  %%%
 %%%  published by the Free Software Foundation, either version 3     %%%
@@ -217,7 +217,7 @@ morestring=[b]"
 
 <<echo = FALSE>>=
 ###  IPSUR.R - Introduction to Probability and Statistics Using R
-###  Copyright (C) 2009  G. Jay Kerns, <gkerns@ysu.edu>
+###  Copyright (C) 2010  G. Jay Kerns, <gkerns@ysu.edu>
 ###  This program is free software: you can redistribute it and/or modify
 ###  it under the terms of the GNU General Public License as published by
 ###  the Free Software Foundation, either version 3 of the License, or
@@ -395,6 +395,8 @@ Statistics Using \textsf{R}}
 
 \noindent Copyright \textcopyright~2010 G.~Jay Kerns
 
+\noindent ISBN: 978-0-557-24979-4
+
 \medskip{}
 
 
@@ -423,86 +425,89 @@ in turn, are based on notes that I transcribed as a graduate student
 at Bowling Green State University. The course for which the materials
 were written is 50-50 Probability and Statistics, and the attendees
 include mathematics, engineering, and computer science majors (among
-others). The prerequisites for the course are a full year of Calculus.
+others). The catalog prerequisites for the course are a full year
+of calculus.
+
+The book can be subdivided into three basic parts. The first part
+includes the introductions and elementary \emph{descriptive statistics};
+I want the students to be knee-deep in data right out of the gate.
+The second part is the study of \emph{probability}, which begins at
+the basics of sets and the equally likely model, journeys past discrete
+and continuous random variables, and continues through to multivariate
+distributions. The chapter on Sampling Distributions paves the way
+to the third part, which is \emph{inferential statistics}. This last
+part includes point and interval estimation, hypothesis testing, and
+finishes with introductions to selected topics in applied statistics.
+
+I normally only have time in one semester to cover a small subset
+of this book. I typically cover the material in Chapter 2 in one class
+period that is supplemented by a take-home assignment for the students.
+I spend a lot of time on Data Description, Probability, Discrete,
+and Continuous Distributions. I mention selected facts from Multivariate
+Distributions in passing, and discuss the meaty parts of Sampling
+Distributions before moving right along to Estimation (which is another
+one I dwell on considerably). Hypothesis Testing goes faster after
+all of the previous work, and by that time the end of the semester
+is in sight. I normally choose one or two final chapters (sometimes
+three) from the remaining to survey, and regret at the end that I
+did not have the chance to cover more.
 
 In an attempt to be correct I have included material in this book
 which I would normally not mention during the course of a standard
 lecture. For instance, I normally do not highlight the intricacies
 of measure theory or absolute integrability when speaking to the class.
-Moreover, I typically stray from the matrix approach to multiple linear
+Moreover, I often stray from the matrix approach to multiple linear
 regression bacause many of my students have not yet been formally
-trained in linear algebra. It is important, however, in my mind for
-the students to hold something in their hands which acknowledges the
-world of mathematics and statistics beyond, and which may be useful
-to them for many semesters to come.
+trained in linear algebra. That being said, it is important to me
+for the students to hold something in their hands which acknowledges
+the world of mathematics and statistics beyond the classroom, and
+which may be useful to them for many semesters to come.
 
-I normally only have time in one semester to cover a small subset
-of this book. I typically cover the material in Chapter 2 in one class
-period with a take-home assignment for the students. I spend a lot
-of time on Data Description, Probability, Discrete and Continuous
-Distributions. I mention selected facts from Multivariate Distributions
-in passing, and discuss the meaty parts of Sampling Distributions
-before moving right along to Estimation (which is another one I dwell
-on considerably). Hypothesis Testing goes faster after all of the
-previous work, and by that time the end of the semester is in sight.
-I normally choose one or two final chapters (sometimes three) from
-the remaining to survey, and regret in retrospect that I did not have
-the chance to cover more.
+This document's future goal is to be a more or less self contained,
+essentially complete, correct, textbook. There should be plenty of
+exercises for the student, and the problems should have full solutions
+for some, and no solutions for others (so that the instructor may
+assign them for grading). By \inputencoding{latin9}\lstinline[showstringspaces=false]!Sweave!\inputencoding{utf8}'s
+dynamic nature it is possible to write randomly generated exercises
+and I had planned to implement this idea already throughout the book.
+Alas, there are only 24 hours in a day. Look for more in the Second
+Edition.
 
-This document's goal is to be a more or less self contained, essentially
-complete, correct, textbook. There should be plenty of exercises for
-the student, and the problems should have full solutions for some,
-and no solutions for others (so that the instructor may assign them
-for grading). I have constructed this book to have many randomly generated
-exercises. The numbers change, but the concept of the problem remains
-the same.
+Seasoned readers will be able to detect my statistical origins: \emph{Probability
+and Statistical Inference} by Hogg and Tanis, \emph{Statistical Inference}
+by Casella and Berger, and \emph{Theory of Point Estimation/Testing
+Statistical Hypotheses} by Lehmann. I highly recommend each of those
+books to every reader of this one.
 
-This book was inspired by 
-\begin{itemize}
-\item Categorical Data Analysis, Agresti ()
-\item Forecasting, Time Series, and Regression, 4th Ed., Bowerman, O'Connell,
-and Koehler (Duxbury)
-\item Mathematical Statistics, Vol. I, 2nd Ed., Bickel and Doksum (Prentice
-Hall)
-\item Probability and Statistical Inference, 5th Ed., Hogg and Tanis, (Prentice
-Hall)
-\item Applied Linear Regression Models, 3rd Ed., Neter, Kutner, Nachtsheim,
-and Wasserman (Irwin)
-\item Statistical Inference, 1st Ed, Casella and Berger (Duxbury)
-\item Monte Carlo Statistical Methods, 1st Ed., Robert and Casella (Springer)
-\item Introduction to Statistical Thought
-\item Using \textsf{R} for Introductory Statistics
-\item Introductory Statistics with \textsf{R}
-\item Data Analysis and Graphics using \textsf{R}
-\end{itemize}
 Please bear in mind that the title of this book is {}``Introduction
 to Probability and Statistics Using \textsf{R}'', and not {}``Introduction
 to \textsf{R} Using Probability and Statistics'', nor even {}``Introduction
-to Probability and Statistics and \textsf{R} Using Words''. The goal
-is probability and statistics; the tool is \textsf{R}. There are consequently
+to Probability and Statistics and \textsf{R} Using Words''. The goals
+are probability and statistics; the tool is \textsf{R}. There are
 several important topics about \textsf{R} which some individuals will
-feel are underdeveloped, glossed over, or omitted unnecessarily. Some
-will feel the same way about the probabilistic and/or statistical
-content. Still others will just want to learn \textsf{R} and skip
-all of the mathematics.
+feel are underdeveloped, glossed over, or wantonly omitted. Some will
+feel the same way about the probabilistic and/or statistical content.
+Still others will just want to learn \textsf{R} and skip all of the
+mathematics.
 
 Despite any misgivings: here it is. I humbly invite said individuals
 to take this book, with the GNU-FDL in hand, and make it better. In
-that spirit there are many ways in which this book could be improved:
+that spirit there are at least a few ways in which this book could
+be improved in my view.
 \begin{description}
 \item [{Better~data:}] the data analyzed in this book are almost entirely
 from the \inputencoding{latin9}\lstinline[showstringspaces=false]!datasets!\inputencoding{utf8}
-package in base \textsf{R}. There are at least three reasons for this: 
+package in base \textsf{R}. Here is why: 
 
 \begin{enumerate}
 \item I made a conscious effort to minimize dependence on contributed packages,
-\item The data are instantly available, already in the correct format, and
-we do not need to waste time managing them, and
+\item The data are instantly available, already in the correct format, so
+we do not need time to manage them, and
 \item The data are \emph{real}.
 \end{enumerate}
 I made no attempt to choose data sets that would be interesting to
 the students; rather, data were chosen for their potential to convey
-a statistical point. Many of the datasets are decades old, or more
+a statistical point. Many of the datasets are decades old or more
 (for instance, the data used to introduce simple linear regression
 are the speeds and stopping distances of cars in the 1920's).
 
@@ -511,17 +516,18 @@ recent, \emph{real} data in a context crafted to engage the students
 in \emph{every} example. One day I hope to stumble over that time.
 In the meantime, I will add new data sets incrementally as time permits.
 
-\item [{More~proofs:}] for the sake of completeness. Many proofs have
-been skipped. There is no rhyme or reason to the current omissions.
-I will add more proofs as time permits. 
+\item [{More~proofs:}] for the sake of completeness (and I understand
+that some people would not consider more proofs to be \emph{improvement}).
+Many proofs have been skipped entirely, and there is no rhyme or reason
+to the current omissions. I will add more when I get a chance. 
 \item [{More~and~better~graphics:}] I have not used the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,language=R]!ggplot2!\inputencoding{utf8}
 package because I do not know how to use it yet. It is on my to-do
 list.
-\item [{More~and~better~exercises:}] There are not nearly enough exercises
+\item [{More~and~better~exercises:}] There are only a few exercises
 in the first edition. I have not used the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,language=R]!exams!\inputencoding{utf8}
-package, but I believe that it is a right way to move forward with
-this book. As I learn more about what the package can do I would like
-to incorporate it into later editions of this book.
+package, but I believe that it is a right way to move forward. As
+I learn more about what the package can do I would like to incorporate
+it into later editions of this book.
 \end{description}
 
 \section*{About This Document}
@@ -533,7 +539,7 @@ you are reading right now. The \emph{Program} provides an efficient
 means to modify the Document. The \emph{Package} is an \textsf{R}
 package that houses the Program and the Document. Finally, the \emph{Ancillaries}
 are extra materials produced by the Program to supplement use of the
-Document. We briefly describe each of them below.
+Document. We briefly describe each of them in turn.
 
 
 \subsection*{The Document}
@@ -557,47 +563,45 @@ file is unable to generate any of the ancillary materials.
 files for every graph in the Document. These are needed when typesetting
 with \LaTeX{}.
 \item [{\texttt{IPSUR.pdf}}] is an opaque copy of the Document. This is
-the file that instructors will likely want to distribute to students.
+the file that instructors would likely want to distribute to students.
 \item [{\texttt{IPSUR.dvi}}] is another opaque copy of the Document in
 a different file format.
 \end{description}
 
 \subsection*{The Program}
 
-The \emph{Program} includes \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!IPSUR.lyx!\inputencoding{utf8}
-and its nephew \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!IPSUR.Rnw!\inputencoding{utf8};
-the purpose of each is to give instructors a way to quickly customize
-the Document for their particular class of students by means of randomly
-regenerating the Document with brand new data, exercises, student
-and instructor solution manuals, and other ancillaries. 
+The \emph{Program} includes \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR.lyx!\inputencoding{utf8}
+and its nephew \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR.Rnw!\inputencoding{utf8};
+the purpose of each is to give individuals a way to quickly customize
+the Document for their particular purpose(s). 
 \begin{description}
 \item [{\texttt{IPSUR.lyx}}] is the source \LyX{} file for the Program,
 released under the GNU General Public License (GNU GPL) Version 3.
 This file is opened, modified, and compiled with \LyX{}, a sophisticated
-open-source document processor, and may be used (together with Sweave)
+open-source document processor, and may be used (together with \inputencoding{latin9}\lstinline[showstringspaces=false]!Sweave!\inputencoding{utf8})
 to generate a randomized, modified copy of the Document with brand
-new data sets for some of the exercises, and the solution manuals.
-Additionally, \LyX{} can easily activate/deactivate entire blocks
-of the document, \emph{e.g.~}the \textsf{proofs} of the theorems,
-the student \textsf{solutions} to the exercises, or the instructor
-\textsf{answers} to the problems, so that the new author may choose
-which sections (s)he would like to include in the final Document.
-The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!IPSUR.lyx!\inputencoding{utf8}
+new data sets for some of the exercises, and the solution manuals
+(for the Second Edition). Additionally, \LyX{} can easily activate/deactivate
+entire blocks of the document, \emph{e.g.~}the \textsf{proofs} of
+the theorems, the student \textsf{solutions} to the exercises, or
+the instructor \textsf{answers} to the problems, so that the new author
+may choose which sections (s)he would like to include in the final
+Document (again, Second Edition). The \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR.lyx!\inputencoding{utf8}
 file is all that a person needs (in addition to a properly configured
 system -- see Appendix BLANK) to generate/compile/export to all of
 the other formats described above and below, which includes the ancillary
-materials \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!IPSUR.Rdata!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!IPSUR.R!\inputencoding{utf8}.
+materials \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR.Rdata!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR.R!\inputencoding{utf8}.
 \item [{\texttt{IPSUR.Rnw}}] is another form of the source code for the
 Program, also released under the GNU GPL Version 3. It was produced
-by exporting \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!IPSUR.lyx!\inputencoding{utf8}
-into\textsf{ R}/Sweave format (\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!.Rnw!\inputencoding{utf8}).
+by exporting \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR.lyx!\inputencoding{utf8}
+into\textsf{ R}/Sweave format (\inputencoding{latin9}\lstinline[showstringspaces=false]!.Rnw!\inputencoding{utf8}).
 This file may be processed with Sweave to generate a randomized copy
-of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!IPSUR.tex!\inputencoding{utf8}
+of \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR.tex!\inputencoding{utf8}
 -- a transparent copy of the Document -- together with the ancillary
-materials \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!IPSUR.Rdata!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!IPSUR.R!\inputencoding{utf8}.
-Please note, however, that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!IPSUR.Rnw!\inputencoding{utf8}
+materials \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR.Rdata!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR.R!\inputencoding{utf8}.
+Please note, however, that \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR.Rnw!\inputencoding{utf8}
 is just a simple text file which does not support many of the extra
 features that \LyX{} offers such as WYSIWYM editing, instantly (de)activating
 branches of the manuscript, and more. 
@@ -605,22 +609,33 @@ branches of the manuscript, and more.
 
 \subsection*{The Package}
 
-There is a contributed package on \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!CRAN!\inputencoding{utf8},
-called \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!IPSUR!\inputencoding{utf8}.
-The package has two purposes. The first is to house the Document in
-an easy-to-access medium. Indeed, a student can have the Document
-at his/her fingertips with only three commands:
+There is a contributed package on \inputencoding{latin9}\lstinline[showstringspaces=false]!CRAN!\inputencoding{utf8},
+called \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR!\inputencoding{utf8}.
+The package affords many advantages, one being that it houses the
+Document in an easy-to-access medium. Indeed, a student can have the
+Document at his/her fingertips with only three commands:
 
 <<eval = FALSE>>=
-install.packages(IPSUR)
+install.packages("IPSUR")
 library(IPSUR)
 read(IPSUR)
 @
 
-The second purpose goes hand in hand with the Document's license;
-since \IPSUR\ is free, the source code must be freely available to
-anyone that wants it. Hosting the package on \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!CRAN!\inputencoding{utf8}
-satisfies this requirement nicely.
+Another advantage goes hand in hand with the Document's license; since
+\IPSUR\ is free, the source code must be freely available to anyone
+that wants it. A package hosted on \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!CRAN!\inputencoding{utf8}
+allows me to obey the license by default.
+
+Yet another advantage is that the excellent facilities at \textsf{R}-Forge
+are building and checking the package daily against patched and development
+versions of the absolute latest pre-release of \textsf{R}. If any
+problems surface then I will know about it within 24 hours.
+
+And finally, suppose there is some sort of problem. The package structure
+makes it \emph{incredibly} easy for me to distribute bug-fixes and
+corrected typographical errors. As an author I can make my corrections,
+upload them to the repository, and they will be reflected \emph{worldwide}
+within hours. We aren't in Kansas anymore, Dorothy.
 
 
 \subsection*{Ancillary Materials}
@@ -679,16 +694,28 @@ click \textsf{Active Dataset}.
 
 \paragraph*{What do I want them to know?}
 
+The trouble with this chapter is that there is so much to say -- and
+so many people have already said it so much better than I could. When
+I get something I can be happy with I will put it here.
+
+In the meantime, there is a lot of information already available to
+a person with an Internet connection. I recommend to start at Wikipedia
+(which is not flawless but has the main ideas with links to reputable
+sources).
+
+In my lectures I usually tell stories about Fisher, Galton, Gauss,
+Laplace, Quetelet, the Chevalier de Mere, and others.
+
 
 \section{Probability}
 
-Probability concerns the study of uncertainty. Games of chance have
-been played for millenia. 
+Probability is the study of uncertainty. Games of chance have been
+played for millenia. 
 
 The common folklore is that probability has been around for years
 but did not gain the attention of mathematicians until approximately
 1654 when Chevalier de Mere had a problem dividing the payoff to two
-players in a game that must end prematurely.
+players in a game had to end prematurely.
 
 
 \section{Statistics}
@@ -8848,8 +8875,8 @@ Euv - Eu * Ev
 
 Compare this answer to what we got in Example BLANK.
 
-To do the continuous case we probably would be wise to resort to the
-computer algebra utilities of \inputencoding{latin9}\lstinline[showstringspaces=false]!Yacas!\inputencoding{utf8}
+To do the continuous case we could use the computer algebra utilities
+of \inputencoding{latin9}\lstinline[showstringspaces=false]!Yacas!\inputencoding{utf8}
 and the associated \textsf{R} package \inputencoding{latin9}\lstinline[showstringspaces=false]!Ryacas!\inputencoding{utf8}.
 See Section BLANK for another example where the \inputencoding{latin9}\lstinline[showstringspaces=false]!Ryacas!\inputencoding{utf8}
 package appears.
@@ -8932,10 +8959,9 @@ $\theta$ (which itself is often multidimensional). Do not be frightened,
 however, because the intuition is the same. There is a prior distribution
 $\pi(\theta)$, a likelihood $f(x_{1},x_{2},\ldots,x_{n}|\theta)$,
 and a posterior distribution $\pi(\theta|x_{1},x_{2},\ldots,x_{n})$.
-Bayes' Rule states that the relationship between the three may be
-conveniently written as\[
+Bayes' Rule states that the relationship between the three is\[
 \pi(\theta|x_{1},x_{2},\ldots,x_{n})\propto\pi(\theta)\, f(x_{1},x_{2},\ldots,x_{n}|\theta),\]
-where, of course, the constant of proportionality is $\int\pi(u)\, f(x_{1},x_{2},\ldots,x_{n}|u)\,\diff u$.
+where the constant of proportionality is $\int\pi(u)\, f(x_{1},x_{2},\ldots,x_{n}|u)\,\diff u$.
 Any good textbook on Bayesian Statistics will explain these notions
 in detail; to the interested reader I recommend Gelman and this other
 Bayesian book BLANK. 
@@ -8947,7 +8973,7 @@ Bayesian book BLANK.
 \subsection{Independent Random Variables\label{sub:Independent-Random-Variables}}
 
 We recall from Chapter BLANK that the events $A$ and $B$ are said
-to be independent if\begin{equation}
+to be independent when\begin{equation}
 \P(A\cap B)=\P(A)\P(B).\end{equation}
 If it happens that\begin{equation}
 \P(X=x,Y=y)=\P(X=x)\P(Y=y),\quad\mbox{for every }x\in S_{X},\ y\in S_{Y},\end{equation}
@@ -8956,10 +8982,10 @@ Otherwise, we say that $X$ and $Y$ are \emph{dependent}. Using the
 PMF notation from above, we see that independent discrete random variables
 satisfy \begin{equation}
 f_{X,Y}(x,y)=f_{X}(x)f_{Y}(y)\quad\mbox{for every }x\in S_{X},\ y\in S_{Y}.\end{equation}
-Now continuing the reasoning, given two continuous random variables
-$X$ and $Y$ with joint PDF $f_{X,Y}$ and respective marginal PDFs
-$f_{X}$ and $f_{Y}$ that are supported on the sets $S_{X}$ and
-$S_{Y}$, if it happens that \begin{equation}
+Continuing the reasoning, given two continuous random variables $X$
+and $Y$ with joint PDF $f_{X,Y}$ and respective marginal PDFs $f_{X}$
+and $f_{Y}$ that are supported on the sets $S_{X}$ and $S_{Y}$,
+if it happens that \begin{equation}
 f_{X,Y}(x,y)=f_{X}(x)f_{Y}(y)\quad\mbox{for every }x\in S_{X},\ y\in S_{Y},\end{equation}
 then we say that $X$ and $Y$ are independent.
 \begin{example}
@@ -8987,8 +9013,8 @@ They have many, many, tractable properties. We mention some of the
 more important ones.
 \begin{prop}
 If $X$ and $Y$ are independent, then for any functions $u$ and
-$v$, \[
-\E\left(u(X)v(Y)\right)=\left(\E u(X)\right)\left(\E v(Y)\right).\]
+$v$, \begin{equation}
+\E\left(u(X)v(Y)\right)=\left(\E u(X)\right)\left(\E v(Y)\right).\end{equation}
 
 \end{prop}
 \begin{proof}
@@ -9060,9 +9086,8 @@ $\E X_{1}X_{2}=\E X_{1}\E X_{2}=\mu_{1}\mu_{2}$ because of independence.
 Thus\begin{eqnarray*}
 \E Y^{2} & = & a_{1}^{2}(\sigma_{1}^{2}+\mu_{1}^{2})+a_{2}^{2}(\sigma_{2}^{2}+\mu_{2}^{2})+2a_{1}a_{2}\mu_{1}\mu_{2},\\
  & = & a_{1}^{2}\sigma_{1}^{2}+a_{2}^{2}\sigma_{2}^{2}+\left(a_{1}^{2}\mu_{1}^{2}+a_{2}^{2}\mu_{2}^{2}+2a_{1}a_{2}\mu_{1}\mu_{2}\right).\end{eqnarray*}
-But notice that the expression in the parentheses is exactly \[
-\left(a_{1}\mu_{1}+a_{2}\mu_{2}\right)^{2}=\left(\E Y\right)^{2},\]
-and the proof is complete. 
+But notice that the expression in the parentheses is exactly $\left(a_{1}\mu_{1}+a_{2}\mu_{2}\right)^{2}=\left(\E Y\right)^{2}$,
+so the proof is complete.. 
 \end{proof}
 
 
@@ -9085,7 +9110,7 @@ BLANK.
 \end{example}
 
 \begin{example}
-Here is another one, somewhat more complicated than the one above.\begin{multline}
+Here is another one, more complicated than the one above.\begin{multline}
 f_{X,Y}(x,y)=(1+\alpha)\lambda^{2}\me^{-\lambda(x+y)}+\alpha(2\lambda)^{2}\me^{-2\lambda(x+y)}-2\alpha\lambda^{2}\left(\me^{-\lambda(2x+y)}+\me^{-\lambda(x+2y)}\right).\end{multline}
 It is straightforward and tedious to check that $\iint f=1$. We may
 see immediately that $f_{X,Y}(x,y)=f_{X,Y}(y,x)$ for all $(x,y)$,
@@ -9093,12 +9118,14 @@ which confirms that $X$ and $Y$ are exchangeable. Here, $\alpha$
 is said to be an association parameter. This particular example is
 one from the Farlie-Gumbel-Morgenstern family of distributions; see
 BLANK.
-
-There seems to be a common misconception that exchangeability is somehow
-a weaker condition than independence, but in fact, the two notions
-are incommensurable. One direct connection between the two is made
-clear by DeFinetti's Thereom. See Section BLANK for details.
 \end{example}
+
+\begin{rem}
+If $X$ and $Y$ are i.i.d.~(with common marginal distribution $F$)
+then $X$ and $Y$ are exchangeable because\[
+F_{X,Y}(x,y)=F(x)F(y)=F(y)F(x)=F_{X,Y}(y,x).\]
+ 
+\end{rem}
 
 \section{The Bivariate Normal Distribution\label{sec:The-Bivariate-Normal}}
 
@@ -9155,8 +9182,8 @@ where\begin{equation}
 
 Use package \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mvtnorm!\inputencoding{utf8}
 or \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mnormt!\inputencoding{utf8}%
-\footnote{Another way to do this is with the function curve3d in the emdbook
-package. It looks like this:
+\footnote{Another way to do this is with the \texttt{curve3d} function in the
+\texttt{emdbook} package. It looks like this:
 \begin{lyxcode}
 library(emdbook);~library(mvtnorm)~~~\#~note:~the~order~matters
 
@@ -9166,13 +9193,14 @@ f~<-~function(x,y)~dmvnorm(c(x,y),~mean~=~mu,~sigma~=~sigma)
 
 curve3d(f(x,y),~from~=~c(-3,-3),~to~=~c(3,3),~theta~=~-30,~phi~=~30)
 \end{lyxcode}
-The code above is slightly shorter than that using persp and is easier
-to understand. One must be careful, however. If the library calls
-are swapped then the code will not work because both packages emdbook
-and mvtnorm have a function called {}``dmvnorm''; one must load
-them to the search path in the correct order or \textsf{R} will use
-the wrong one (the arguments are named differently and the underlying
-algorithms are different). %
+The code above is slightly shorter than that using \texttt{persp}
+and is easier to understand. One must be careful, however. If the
+\texttt{library} calls are swapped then the code will not work because
+both packages \texttt{emdbook} and \texttt{mvtnorm} have a function
+called {}``\texttt{dmvnorm}''; one must load them to the search
+path in the correct order or \textsf{R} will use the wrong one (the
+arguments are named differently and the underlying algorithms are
+different). %
 } 
 
 %
@@ -9187,7 +9215,7 @@ persp(x, y, z, theta = -30, phi = 30, ticktype = "detailed")
 @
 \par\end{centering}
 
-\caption{Capture-recapture experiment\label{fig:mvnorm-pdf}}
+\caption{Graph of a bivariate normal PDF\label{fig:mvnorm-pdf}}
 
 \end{figure}
 
@@ -9275,8 +9303,8 @@ print(cloud(probs ~ X1 + X2, data = S, type = c("p","h"), lwd = 2, pch = 16, cex
 We studied in Section BLANK how to find the PDF of $Y=g(X)$ given
 the PDF of $X$. But now we have two random variables $X$ and Y,
 with joint PDF $f_{X,Y}$, and we would like to consider the joint
-PDF of two new random variables\[
-U=g(X,Y)\quad\mbox{and}\quad V=h(X,Y),\]
+PDF of two new random variables\begin{equation}
+U=g(X,Y)\quad\mbox{and}\quad V=h(X,Y),\end{equation}
 where $g$ and $h$ are two given functions, typically {}``nice''
 in the sense of Appendix BLANK. 
 
@@ -9385,7 +9413,7 @@ that is, if \begin{equation}
 f_{\mathbf{X}}(\mathbf{x^{\ast}})=f_{\mathbf{X}}(\mathbf{x}),\end{equation}
 for any reordering $\mathbf{x^{\ast}}$ of the elements of $\mathbf{x}=(x_{1},x_{2},\ldots,x_{n})$
 in the joint support.
-\begin{thm}
+\begin{prop}
 Let $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$ be independent with respective
 population means $\mu_{1}$, $\mu_{2}$, \ldots{}, $\mu_{n}$ and
 standard deviations $\sigma_{1}$, $\sigma_{2}$, \ldots{}, $\sigma_{n}$.
@@ -9394,7 +9422,7 @@ $Y=\sum_{i=1}^{n}a_{i}X_{i}$. Then the mean and standard deviation
 of $Y$ are given by the formulas\begin{equation}
 \mu_{Y}=\sum_{i=1}^{n}a_{i}\mu_{i},\quad\sigma_{Y}=\left(\sum_{i=1}^{n}a_{i}^{2}\sigma_{i}^{2}\right)^{1/2}.\end{equation}
 
-\end{thm}
+\end{prop}
 \begin{proof}
 The mean is easy:\[
 \E Y=\E\left(\sum_{i=1}^{n}a_{i}X_{i}\right)=\sum_{i=1}^{n}a_{i}\E X_{i}=\sum_{i=1}^{n}a_{i}\mu_{i}.\]
@@ -9431,21 +9459,40 @@ De Finetti's Theorem. Let $X_{1}$, $X_{2}$, \ldots{} be a sequence
 of $\mathsf{binom}(\mathtt{size}=1,\,\mathtt{prob}=p)$ random variables
 such that $(X_{1},\ldots,X_{k})$ are exchangeable for every $k$.
 Then there exists a random variable $\Theta$ with support $[0,1]$
-and PDF $f_{\Theta}(\theta)$ such that\[
-\P(X_{1}=x_{1},\ldots X_{k}=x_{k})=\int_{0}^{1}\theta^{\sum x_{i}}(1-\theta)^{k-\sum x_{i}}\, f_{\Theta}(\theta)\diff\theta,\]
+and PDF $f_{\Theta}(\theta)$ such that\begin{equation}
+\P(X_{1}=x_{1},\ldots,\, X_{k}=x_{k})=\int_{0}^{1}\theta^{\sum x_{i}}(1-\theta)^{k-\sum x_{i}}\, f_{\Theta}(\theta)\,\diff\theta,\end{equation}
 for all $x_{i}=0,\,1$, $i=1,\,2,\ldots,k$.
 \end{thm}
 
 
-The intuitive meaning of de Finetti's theorem
+To get a handle on the intuitive content de Finetti's theorem, imagine
+that we have a \emph{bunch} of coins in our pocket with each having
+its own unique value of $\theta=\P(\mbox{Heads})$. We reach into
+our pocket and select a coin at random according to some probability
+-- say, $f_{\Theta}(\theta)$. We take the randomly selected coin
+and flip it $k$ times. 
 
-If we flip a coin repeatedly then the sequence of Heads and Tails
-is a set of Bernoulli trials, which are independent. Now imagine that
-we have a bunch of coins in our pocket which have potentially different
-values of $\P(\mbox{Heads})$. We reach into our pocket and select
-a coin at random. We take the randomly selected coin flip it $k$
-times. The sequence of Heads and Tails are not independent anymore
-because the outcome of the experiment depends on the coin chosen. 
+Think carefully: the conditional probability of observing a sequence
+$X_{1}=x_{1},\ldots,\, X_{k}=x_{k}$, given a specific coin $\theta$
+would just be $\theta^{\sum x_{i}}(1-\theta)^{k-\sum x_{i}}$, because
+the coin flips are an independent sequence of Bernoulli trials. But
+the coin is random, so the Theorem of Total Probability says we can
+get the \emph{unconditional} probability $\P(X_{1}=x_{1},\ldots,\, X_{k}=x_{k})$
+by adding up terms that look like\begin{equation}
+\theta^{\sum x_{i}}(1-\theta)^{k-\sum x_{i}}\, f_{\Theta}(\theta),\end{equation}
+where we sum over all possible coins. The right-hand side of Equation
+BLANK is a sophisticated way to denote this process.
+
+Of course, the integral's value does not change if we jumble the $x_{i}$'s,
+so $(X_{1},\ldots,X_{k})$ are clearly exchangeable. The power of
+de Finetti's Theorem is that \emph{every} infinite binary exchangeable
+sequence can be written in the above form.
+
+The connection to subjective probability is: our prior information
+about $\theta$ corresponds to $f_{\Theta}(\theta)$ and the likelihood
+of the sequence $X_{1}=x_{1},\ldots,\, X_{k}=x_{k}$ (conditional
+on $\theta$) corresponds to $\theta^{\sum x_{i}}(1-\theta)^{k-\sum x_{i}}$.
+Compare Equation BLANK to Section BLANK and Section BLANK.
 
 
 
@@ -9483,9 +9530,7 @@ distribution.
 
 
 \begin{xca}
-Prove that $\mbox{Cov}(X,Y)=\E(XY)-(\E X)(\E Y).$ 
-
-type here
+Prove that $\mbox{Cov}(X,Y)=\E(XY)-(\E X)(\E Y).$
 \end{xca}
 
 
@@ -9593,7 +9638,7 @@ M_{\Xbar}(t) & = & \E\,\me^{t\Xbar},\\
 And because $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$ are independent,
 Proposition BLANK allows us to distribute the expectation among each
 term in the product, which is\[
-\E\,\me^{tX_{1}/n}\,\E\me^{tX_{2}/n}\cdots\E\me^{tX_{n}/n}.\]
+\E\me^{tX_{1}/n}\,\E\me^{tX_{2}/n}\cdots\E\me^{tX_{n}/n}.\]
 The last step is to recognize that each term in last product above
 is exactly $M(t/n)$.
 \end{proof}
@@ -9751,12 +9796,12 @@ Z=\frac{\Xbar-\mu}{\sigma/\sqrt{n}}\end{equation}
 approaches a $\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$ distribution
 as $n\to\infty$. \end{thm}
 \begin{rem}
-Since we suppose that $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$ are
-iid, we already know from Section \ref{sub:Simple-Random-Samples}
-that $\Xbar$ has mean $\mu$ and standard deviation $\sigma/\sqrt{n}$,
-so that $Z$ has mean 0 and standard deviation 1. The beauty of the
-CLT is that it addresses the \emph{shape} of $Z$'s distribution when
-the sample size is large.
+We suppose that $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$ are i.i.d.,
+and we learned in Section \ref{sub:Simple-Random-Samples} that $\Xbar$
+has mean $\mu$ and standard deviation $\sigma/\sqrt{n}$, so we already
+knew that $Z$ has mean 0 and standard deviation 1. The beauty of
+the CLT is that it addresses the \emph{shape} of $Z$'s distribution
+when the sample size is large.
 \end{rem}
 
 \begin{rem}
@@ -9765,24 +9810,41 @@ is not mentioned in Theorem BLANK; indeed, the result is true for
 any population that is well-behaved enough to have a finite standard
 deviation. In particular, if the population is normally distributed
 then we know from Section BLANK that the distribution of $\Xbar$
-(and $Z$ by extension) is \emph{exactly} normal, for every $n$.
+(and $Z$ by extension) is \emph{exactly} normal, for \emph{every}
+$n$.
 \end{rem}
 
 \begin{rem}
-How large is {}``sufficiently large''? It is at this point that
-the shape of the underlying population distribution plays a role.
-For populations with distributions that are approximately symmetric
-and mound-shaped, the samples may need to be only of size four or
-five, while for highly skewed or heavy-tailed populations the samples
-may need to be much larger for the distribution of the sample means
-to begin to show a bell-shape. Regardless, for a given population
-the approximation tends to be better for larger sample sizes. 
+How large is {}``sufficiently large''? It is here that the shape
+of the underlying population distribution plays a role. For populations
+with distributions that are approximately symmetric and mound-shaped,
+the samples may need to be only of size four or five, while for highly
+skewed or heavy-tailed populations the samples may need to be much
+larger for the distribution of the sample means to begin to show a
+bell-shape. Regardless, for a given population distribution (with
+finite standard deviation) the approximation tends to be better for
+larger sample sizes. 
 \end{rem}
 
 \subsection{How to do it with \textsf{R}}
 
-I am thinking about some demonstrations, such as in TeachingDemos
-or distr
+The \inputencoding{latin9}\lstinline[showstringspaces=false]!TeachingDemos!\inputencoding{utf8}
+package has \inputencoding{latin9}\lstinline[showstringspaces=false]!clt.examp!\inputencoding{utf8}
+and the \inputencoding{latin9}\lstinline[showstringspaces=false]!distrTeach!\inputencoding{utf8}
+package has \inputencoding{latin9}\lstinline[showstringspaces=false]!illustrateCLT!\inputencoding{utf8}.
+Try the following at the command line (output omitted):
+
+<<eval = FALSE>>=
+library(TeachingDemos)
+example(clt.examp)
+@
+
+and
+
+<<eval = FALSE>>=
+library(distrTeach)
+example(illustrateCLT)
+@
 
 
 \section{Sampling Distributions of Two-Sample Statistics\label{sec:Samp-Dist-Two-Samp}}
@@ -9817,17 +9879,19 @@ too are $\Xbar$ and $\Ybar$. The distribution of their difference
 is thus normal as well, and the mean and standard deviation are given
 by Proposition BLANK.\end{proof}
 \begin{rem}
-Even if the distribution of the samples is not
+Even if the distribution of one or both of the samples is not normal,
+the quantity in Equation BLANK will be approximately normal provided
+both sample sizes are large. 
 \end{rem}
 
-
-In the special case that $\mu_{X}=\mu_{Y}$, we have shown that \begin{equation}
+\begin{rem}
+For the special case of $\mu_{X}=\mu_{Y}$ we have shown that \begin{equation}
 \frac{\Xbar-\Ybar}{\sqrt{\sigma_{X}^{2}/n_{1}+\sigma_{Y}^{2}/n_{2}}}\end{equation}
 has a $\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$ sampling distribution,
 or in other words, $\Xbar-\Ybar$ has a $\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=\sqrt{\sigma_{X}^{2}/n_{1}+\sigma_{Y}^{2}/n_{2}})$
-sampling distribution. This will play a role when it comes time to
+sampling distribution. This will be important when it comes time to
 do hypothesis tests; see Section BLANK.
-
+\end{rem}
 
 \subsection{Difference of Independent Sample Proportions}
 \begin{prop}
@@ -9849,12 +9913,11 @@ provided both $n_{1}$ and $n_{2}$ are sufficiently large.
 \end{prop}
 \begin{proof}
 We know that $\hat{p}_{1}$ is approximately normal for $n_{1}$ sufficiently
-large, by the Central Limit Theorem. And we know that $\hat{p}_{2}$
-is approximately normal for $n_{2}$ sufficiently large, also by the
-Central Limit Theorem. Further, $\hat{p}_{1}$ and $\hat{p}_{2}$
-are independent since they are derived from independent samples. But
-a difference of independent (approximately) normal distributions is
-(approximately) normal, by Proposition BLANK%
+large by the CLT, and we know that $\hat{p}_{2}$ is approximately
+normal for $n_{2}$ sufficiently large, also by the CLT. Further,
+$\hat{p}_{1}$ and $\hat{p}_{2}$ are independent since they are derived
+from independent samples. And a difference of independent (approximately)
+normal distributions is (approximately) normal, by Proposition BLANK%
 \footnote{\begin{rem}
 This does not explicitly follow, because of our cavalier use of {}``approximately''
 in too many places. To be more thorough, however, would require more
@@ -9892,14 +9955,14 @@ by multiplying and dividing the numerator with $n_{1}-1$ and doing
 likewise for the denominator with $n_{2}-1$. Now we may regroup the
 terms into \[
 F=\frac{\left.\frac{(n_{1}-1)S_{X}^{2}}{\sigma_{X}^{2}}\right\slash (n_{1}-1)}{\left.\frac{(n_{2}-1)S_{Y}^{2}}{\sigma_{Y}^{2}}\right\slash (n_{2}-1)},\]
-and we recognize $F$ to be the ratio of independent $\mathsf{chisq}()$
+and we recognize $F$ to be the ratio of independent $\mathsf{chisq}$
 distributions, each divided by its respective numerator $\mathtt{df}=n_{1}-1$
-and denominator $\mathtt{df}=n_{1}-1$. degrees of freedom. This is,
+and denominator $\mathtt{df}=n_{1}-1$ degrees of freedom. This is,
 indeed, the definition of Snedecor's $F$ distribution. 
 \end{proof}
 
 \begin{rem}
-In the special case that $\sigma_{X}=\sigma_{Y}$, we have shown that
+For the special case of $\sigma_{X}=\sigma_{Y}$ we have shown that
 \begin{equation}
 F=\frac{S_{X}^{2}}{S_{Y}^{2}}\end{equation}
 has an $\mathsf{f}(\mathtt{df1}=n_{1}-1,\,\mathtt{df2}=n_{2}-1)$
@@ -9913,9 +9976,9 @@ not quite so tidy to describe analytically. What do we do then?
 
 As it turns out, we do not need to know the exact analytical form
 of the sampling distribution; sometimes it is enough to approximate
-it with a simulated distribution. In this section, we will show you
+it with a simulated distribution. In this section we will show you
 how. Note that \textsf{R} is particularly well suited to compute simulated
-sampling distributions, much more so than SPSS or SAS, say.
+sampling distributions, much more so than, say, SPSS or SAS.
 
 
 \subsection{The Interquartile Range}
@@ -9973,7 +10036,7 @@ sd(mads)
 Now let's take a look at a plot of the simulated values
 
 %
-\begin{figure}
+\begin{figure}[H]
 \begin{centering}
 <<echo = FALSE, fig=TRUE, height = 4, width = 6>>=
 hist(mads, breaks = 20)
@@ -10139,7 +10202,6 @@ intervals for basic experimental designs
 \section{Point Estimation}
 
 The following example was how I was introduced to maximum likelihood.
-It is a 
 \begin{example}
 Suppose we have a small pond in our backyard, and in the pond there
 live some fish. We would like to know how many fish live in the pond.
@@ -10151,22 +10213,22 @@ On each caught fish we attach an unobtrusive tag to the fish's tail,
 and release it back into the water. 
 
 Next, we wait a few days for the fish to remix and become accustomed
-to their new tag. Then we go fishing again. On the second trip suppose
-that we catch $K=4$ fish and we find that 3 of them are tagged. Some
+to their new tag. Then we go fishing again. On the second trip some
 of the fish we catch may be tagged; some may not be. Let $X$ denote
 the number of caught fish which are tagged%
 \footnote{It is theoretically possible that we could catch the same tagged fish
 more than once, which would inflate our count of tagged fish. To avoid
 this difficulty, suppose that on the second trip we use a tank on
 the boat to hold the caught fish until data collection is completed.%
-}. 
+}, and suppose for the sake of argument that we catch $K=4$ fish and
+we find that 3 of them are tagged.
 
 Now let $F$ denote the (unknown) total number of fish in the pond.
 We know that $F\geq7$, because we tagged that many on the first trip.
 In fact, if we let $N$ denote the number of untagged fish in the
 pond, then $F=M+N$. We have sampled $K=4$ times, without replacement,
 from an urn which has $M=7$ white balls and $N=F-M$ black balls,
-and we have observed $x=3$ of them which are white. What is the probability
+and we have observed $x=3$ of them to be white. What is the probability
 of this?
 
 Looking back to Section BLANK, we see that the random variable $X$
@@ -10177,9 +10239,9 @@ would be\[
 
 
 First we notice that $F$ must be at least 7. Could $F$ be equal
-to seven? If $F=7$ then all of the fish would have been tagged tagged
-on the first run, and there would be no untagged fish in the pond,
-thus, $\P(\mbox{3 successes in 4 trials})=0$.
+to seven? If $F=7$ then all of the fish would have been tagged on
+the first run, and there would be no untagged fish in the pond, thus,
+$\P(\mbox{3 successes in 4 trials})=0$.
 
 What about $F=8$; what would be the probabillity of observing $X=3$
 tagged fish?\[
@@ -10256,40 +10318,62 @@ That is, \[
 This last quantity is a function of $p$, called the likelihood function
 $L(p)$:\[
 L(p)=p^{\sum x_{i}}(1-p)^{n-\sum x_{i}}.\]
-A graph of $L$ for selected values of $\sum x_{i}$ when $n=7$ is
-shown in Figure BLANK. 
+A graph of $L$ for values of $\sum x_{i}=3,\ 4$, and 5 when $n=7$
+is shown in Figure BLANK. 
 
-curve(x\textasciicircum{}2{*}(1-x)\textasciicircum{}4, 0, 1) 
+<<eval = FALSE>>=
+curve(x^5*(1-x)^2, from = 0, to = 1, xlab = "p", ylab = "L(p)")
+curve(x^4*(1-x)^3, from = 0, to = 1, add = TRUE)
+curve(x^3*(1-x)^4, 0, 1, add = TRUE)
+@
 
-curve(x\textasciicircum{}4{*}(1-x)\textasciicircum{}3, 0, 1, add =
-TRUE) 
+%
+\begin{figure}
+\begin{centering}
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
+curve(x^5*(1-x)^2, 0, 1, xlab = "p", ylab = "L(p)")
+curve(x^4*(1-x)^3, 0, 1, add = TRUE)
+curve(x^3*(1-x)^4, 0, 1, add = TRUE)
+@
+\par\end{centering}
 
-curve(x\textasciicircum{}5{*}(1-x)\textasciicircum{}2, 0, 1, add =
-TRUE) 
+\caption{Assorted likelihood functions for fishing, part two}
 
-What we want is to find the value of $p$ which has the highest likelihood,
-that is, we again wish to maximize the likelihood. From Calculus (see
-Appendix BLANK), we may differentiate $L$ and set $L'=0$ to find
-a maximum.\[
+
+{\small Three graphs are shown of $L$ when $\sum x_{i}$ equals 3,
+4, and 5, respectively, from left to right. We pick an $L$ that matches
+the observed data and then maximize $L$ as a function of $p$. If
+$\sum x_{i}=4$, then the maximum appears to occur somewhere around
+$p\approx0.6$.}
+\end{figure}
+
+
+We want the value of $p$ which has the highest likelihood, that is,
+we again wish to maximize the likelihood. From Calculus (see Appendix
+BLANK), we may differentiate $L$ and set $L'=0$ to find a maximum.\[
 L'(p)=\left(\sum x_{i}\right)p^{\sum x_{i}-1}(1-p)^{n-\sum x_{i}}+p^{\sum x_{i}}\left(n-\sum x_{i}\right)(1-p)^{n-\sum x_{i}-1}(-1).\]
- The derivative vanishes $L'=0$ when\begin{eqnarray*}
+ The derivative vanishes ($L'=0$) when\begin{eqnarray*}
 \left(\sum x_{i}\right)p^{\sum x_{i}-1}(1-p)^{n-\sum x_{i}} & = & p^{\sum x_{i}}\left(n-\sum x_{i}\right)(1-p)^{n-\sum x_{i}-1},\\
 \sum x_{i}(1-p) & = & \left(n-\sum x_{i}\right)p,\\
 \sum x_{i}-p\sum x_{i} & = & np-p\sum x_{i},\\
 \frac{1}{n}\sum_{i=1}^{n}x_{i} & = & p.\end{eqnarray*}
-The {}``best'' $p$, the one which maximizes the likelihood, is
-called the maximum likelihood estimator (MLE) of $p$, and is denoted
-$\hat{p}$. That is, \[
-\hat{p}=\frac{\sum_{i=1}^{n}x_{i}}{n}=\xbar.\]
+This {}``best'' $p$, the one which maximizes the likelihood, is
+called the maximum likelihood estimator (MLE) of $p$ and is denoted
+$\hat{p}$. That is, \begin{equation}
+\hat{p}=\frac{\sum_{i=1}^{n}x_{i}}{n}=\xbar.\end{equation}
 
 \begin{rem}
 Properly speaking we have only shown that the derivative equals zero
-at $\hat{p}$, and thus it is theoretically possible that the critical
-value $\hat{p}=\xbar$ is located at a minimum instead of a maximum!
-We should be thorough and check that $L'>0$ when $p<\xbar$ and $L'<0$
-when $p>\xbar$. Then by the First Derivative Test (see BLANK) we
-could be certain that $\hat{p}=\xbar$ is indeed a maximum likelihood
-estimator, and not a minimum likelihood estimator.
+at $\hat{p}$, so it is theoretically possible that the critical value
+$\hat{p}=\xbar$ is located at a minimum%
+\footnote{We can tell from the graph that our value of $\hat{p}$ is a maximum
+instead of a minimum so we do not really need to worry for this example.
+Other examples are not so easy, however, and we should be careful
+to be cognizant of this extra step.%
+} instead of a maximum! We should be thorough and check that $L'>0$
+when $p<\xbar$ and $L'<0$ when $p>\xbar$. Then by the First Derivative
+Test (see BLANK) we could be certain that $\hat{p}=\xbar$ is indeed
+a maximum likelihood estimator, and not a minimum likelihood estimator.
 \end{rem}
 The result is shown in Figure BLANK.
 \end{example}
@@ -10320,8 +10404,8 @@ text(mle, mleobj/6, substitute(hat(theta)==a, list(a=round(mle, 4))), cex = 2, p
 
 In general, we have a family of PDFs $f(x|\theta)$ indexed by a parameter
 $\theta$ in some parameter space $\Theta$. We want to learn about
-$\theta$. We take a $SRS(n)$:\[
-X_{1},\, X_{2},\,\ldots,X_{n}\mbox{ which are i.i.d.\,\mbox{f(x|\ensuremath{\theta})}.}\]
+$\theta$. We take a $SRS(n)$:\begin{equation}
+X_{1},\, X_{2},\,\ldots,X_{n}\mbox{ which are i.i.d.\,\mbox{f(x|\ensuremath{\theta})}.}\end{equation}
 
 \begin{defn}
 Given the observed data $x_{1}$, $x_{2}$, \ldots{}, $x_{n}$, the
@@ -10337,7 +10421,7 @@ the Second Derivative Test $\left(L''(\hat{\theta})<0\right)$.\end{itemize}
 A value $\theta$ that maximizes $L$ is called a \emph{maximum likelihood
 estimator} (MLE) and is denoted $\hat{\theta}$. Note that $\hat{\theta}$
 is a function of the sample, $\hat{\theta}=\hat{\theta}\left(X_{1},\, X_{2},\,\ldots,X_{n}\right)$,
-and is an example of a \emph{point estimator} of $\theta$.\end{defn}
+and is called a \emph{point estimator} of $\theta$.\end{defn}
 \begin{rem}
 Some comments about maximum likelihood estimators:
 \begin{itemize}
@@ -10352,8 +10436,8 @@ For any given problem, there could be zero, one, or any number of
 values of $\theta$ for which $L(\theta)$ is a maximum.
 \item The problems we will encounter are all very nice with likelihood functions
 that have closed form representations and which are optimized by some
-Calculus acrobatics. In practice, however, likelihood functions can
-be quite nasty in which case we are obliged to use numerical methods
+calculus acrobatics. In practice, however, likelihood functions are
+sometimes nasty in which case we are obliged to use numerical methods
 to find maxima (if there are any).
 \item MLEs are just one of \underbar{many} possible estimators. One of the
 more popular alternatives are the Method of Moments estimators; see
@@ -10362,9 +10446,9 @@ BLANK.
 \end{rem}
 Notice, in Example BLANK we had $X_{i}$ i.i.d.~$\mathsf{binom}(\mathtt{size}=1,\,\mathtt{prob}=p)$,
 and we saw that the MLE was $\hat{p}=\Xbar$. But further\begin{eqnarray*}
-\E\Xbar & = & \E\frac{X_{1}+X_{2}+\cdots+X_{n}}{n}\\
- & = & \frac{1}{n}\left(\E X_{1}+\E X_{2}+\cdots+\E X_{n}\right)\\
- & = & \frac{1}{n}\left(np\right)\\
+\E\Xbar & = & \E\frac{X_{1}+X_{2}+\cdots+X_{n}}{n},\\
+ & = & \frac{1}{n}\left(\E X_{1}+\E X_{2}+\cdots+\E X_{n}\right),\\
+ & = & \frac{1}{n}\left(np\right),\\
  & = & p,\end{eqnarray*}
 which is exactly the same as the parameter which we estimated. More
 concisely, $\E\hat{p}=p$, that is, on the average, the estimator
@@ -10378,12 +10462,11 @@ then the statistic $s(X_{1},X_{2},\ldots,X_{n})$ is said to be an
 \begin{example}
 Let $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$ be an $SRS(n)$ from a
 $\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$ distribution.
-It can be shown (see Exercise \ref{xca:norm-mu-sig-MLE}) that if
-we let $\mbox{\ensuremath{\theta}}=(\mu,\sigma^{2})$, then the MLE
-of $\theta$ is\[
-\hat{\theta}=(\hat{\mu},\hat{\sigma}^{2}),\]
- where $\hat{\mu}=\Xbar$ and \[
-\hat{\sigma^{2}}=\frac{1}{n}\sum_{i=1}^{n}\left(X_{i}-\Xbar\right)^{2}=\frac{n-1}{n}S^{2}.\]
+It can be shown (in Exercise \ref{xca:norm-mu-sig-MLE}) that if $\mbox{\ensuremath{\theta}}=(\mu,\sigma^{2})$
+then the MLE of $\theta$ is\begin{equation}
+\hat{\theta}=(\hat{\mu},\hat{\sigma}^{2}),\end{equation}
+ where $\hat{\mu}=\Xbar$ and \begin{equation}
+\hat{\sigma^{2}}=\frac{1}{n}\sum_{i=1}^{n}\left(X_{i}-\Xbar\right)^{2}=\frac{n-1}{n}S^{2}.\end{equation}
 We of course know from BLANK that $\hat{\mu}$ is unbiased. What about
 $\hat{\sigma^{2}}$? Let us check: \begin{eqnarray*}
 \E\,\hat{\sigma^{2}} & = & \E\,\frac{n-1}{n}S^{2}\\
@@ -10398,19 +10481,18 @@ from which we may conclude two things:
 \end{example}
 One of the most common questions in an introductory statistics class
 is, {}``Why do we divide by $n-1$ when we compute the sample variance?
-Why do we not divide by $n$?'' One answer is that division by $n$
-amounts to the use of $\hat{\sigma^{2}}$ as an estimator for $\sigma^{2}$,
-which we have just shown to be biased. That is, if we divided by $n$
-then on the average we would \emph{underestimate} the true value of
-$\sigma^{2}$. We use $n-1$ so that, on the average, our estimator
-of $\sigma^{2}$ will be exactly right. 
+Why do we not divide by $n$?'' We see now that division by $n$
+amounts to the use of a \emph{biased} estimator for $\sigma^{2}$,
+that is, if we divided by $n$ then on the average we would \emph{underestimate}
+the true value of $\sigma^{2}$. We use $n-1$ so that, on the average,
+our estimator of $\sigma^{2}$ will be exactly right. 
 
 
 \subsection{How to do it with \textsf{R}}
 
-R can be used to find maximum likelihood estimators in a lot of diverse
-settings. We will discuss only the most basic here and will leave
-the rest to more sophisticated texts.
+\textsf{R} can be used to find maximum likelihood estimators in a
+lot of diverse settings. We will discuss only the most basic here
+and will leave the rest to more sophisticated texts.
 
 For one parameter estimation problems we may use the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!optimize!\inputencoding{utf8}
 function to find MLEs. The arguments are the function to be maximized
@@ -10419,8 +10501,8 @@ to take place, and optionally any other arguments to be passed to
 the likelihood if needed.
 
 Let us see how to do Example BLANK. Recall that our likelihood function
-was given by\[
-L(p)=p^{\sum x_{i}}(1-p)^{n-\sum x_{i}}.\]
+was given by\begin{equation}
+L(p)=p^{\sum x_{i}}(1-p)^{n-\sum x_{i}}.\end{equation}
 Notice that the likelihood is just a product of $\mathsf{binom}(\mathtt{size}=1,\,\mathtt{prob}=p)$
 PMFs. We first give some sample data (in the vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!datavals!\inputencoding{utf8}),
 next we define the likelihood function \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!L!\inputencoding{utf8},
@@ -10640,8 +10722,8 @@ conditions of the interval?
 \end{enumerate}
 Draw a picture here.
 
-What if $\sigma$ is unknown? We will instead use the interval\[
-\Xbar\pm z_{\alpha/2}\frac{S}{\sqrt{n}},\]
+What if $\sigma$ is unknown? We instead use the interval\begin{equation}
+\Xbar\pm z_{\alpha/2}\frac{S}{\sqrt{n}},\end{equation}
 where $S$ is the sample standard deviation.
 \begin{itemize}
 \item If $n$ is large, then $\Xbar$ will have an approximately normal
@@ -10691,10 +10773,10 @@ of the problem. Include the appropriate interpretation of the interval,
 making reference to the confidence coefficient.\end{description}
 \begin{rem}
 The intervals above are two-sided, but there are also one-sided intervals
-for $\mu$. They look like \[
-\left[\Xbar-z_{\alpha}\frac{\sigma}{\sqrt{n}},\ \infty\right)\quad\mbox{or}\quad\left(-\infty,\ \Xbar+z_{\alpha}\frac{\sigma}{\sqrt{n}}\right]\]
-and satisfy\[
-\P\left(\Xbar-z_{\alpha}\frac{\sigma}{\sqrt{n}}\leq\mu\right)=1-\alpha\quad\mbox{and}\quad\P\left(\Xbar+z_{\alpha}\frac{\sigma}{\sqrt{n}}\geq\mu\right)=1-\alpha.\]
+for $\mu$. They look like \begin{equation}
+\left[\Xbar-z_{\alpha}\frac{\sigma}{\sqrt{n}},\ \infty\right)\quad\mbox{or}\quad\left(-\infty,\ \Xbar+z_{\alpha}\frac{\sigma}{\sqrt{n}}\right]\end{equation}
+and satisfy\begin{equation}
+\P\left(\Xbar-z_{\alpha}\frac{\sigma}{\sqrt{n}}\leq\mu\right)=1-\alpha\quad\mbox{and}\quad\P\left(\Xbar+z_{\alpha}\frac{\sigma}{\sqrt{n}}\geq\mu\right)=1-\alpha.\end{equation}
 \end{rem}
 \begin{example}
 Small sample, some data with $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$
@@ -10762,10 +10844,10 @@ T & =\frac{\frac{\Xbar-\Ybar-(\mu_{X}-\mu_{Y})}{\sigma\sqrt{\frac{1}{n}+\frac{1}
  & =\frac{\Xbar-\Ybar-(\mu_{X}-\mu_{Y})}{\sqrt{\left(\frac{1}{n}+\frac{1}{m}\right)\left(\frac{(n-1)S_{X}^{2}+(m-1)S_{Y}^{2}}{n+m-2}\right)}},\\
  & \sim\mathsf{t}(\mathtt{df}=n+m-2).\end{align*}
 Therefore a $100(1-\alpha)\%$ confidence interval for $\mu_{X}-\mu_{Y}$
-is given by\[
-\left(\Xbar-\Ybar\right)\pm t_{\alpha/2}(\mathtt{df}=n+m-2)\, S_{p}\sqrt{\frac{1}{n}+\frac{1}{m}},\]
-where \[
-S_{p}=\sqrt{\frac{(n-1)S_{X}^{2}+(m-1)S_{Y}^{2}}{n+m-2}}\]
+is given by\begin{equation}
+\left(\Xbar-\Ybar\right)\pm t_{\alpha/2}(\mathtt{df}=n+m-2)\, S_{p}\sqrt{\frac{1}{n}+\frac{1}{m}},\end{equation}
+where \begin{equation}
+S_{p}=\sqrt{\frac{(n-1)S_{X}^{2}+(m-1)S_{Y}^{2}}{n+m-2}}\end{equation}
 is called the {}``pooled'' estimator of $\sigma$.
 \item if one of the samples is small, and both underlying populations are
 normal, but $\sigma_{X}\neq\sigma_{Y}$, then we may use a procedure
@@ -10774,8 +10856,8 @@ of the form\begin{equation}
 \left(\Xbar-\Ybar\right)\pm t_{\alpha/2}(\mathtt{df}=r)\,\sqrt{\frac{S_{X}^{2}}{n}+\frac{S_{Y}^{2}}{m}},\end{equation}
 where the degrees of freedom $r$ is chosen so that the interval has
 nice statistical properties. It turns out that a good choice for $r$
-is given by\[
-r=\frac{\left(S_{X}^{2}/n+S_{Y}^{2}/m\right)^{2}}{\frac{1}{n-1}\left(S_{X}^{2}/n\right)^{2}+\frac{1}{m-1}\left(S_{Y}^{2}/m\right)^{2}},\]
+is given by\begin{equation}
+r=\frac{\left(S_{X}^{2}/n+S_{Y}^{2}/m\right)^{2}}{\frac{1}{n-1}\left(S_{X}^{2}/n\right)^{2}+\frac{1}{m-1}\left(S_{Y}^{2}/m\right)^{2}},\end{equation}
 where we understand that $r$ is rounded down to the nearest integer.
 The resulting interval has approximately $100(1-\alpha)\%$ confidence.
 \end{itemize}
@@ -10795,7 +10877,7 @@ For instance, $p$ could be:
 \end{itemize}
 We are given an $SRS(n)$ $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$
 distributed $\mathsf{binom}(\mathtt{size}=1,\,\mathtt{prob}=p)$.
-Recall from Section BLANK that the mean of these random variables
+Recall from Section BLANK that the common mean of these variables
 is $\E X=p$ and the variance is $\E(X-p)^{2}=p(1-p)$. If we let
 $Y=\sum X_{i}$, then from Section BLANK we know that $Y\sim\mathsf{binom}(\mathtt{size}=n,\,\mathtt{prob}=p)$
 and that \[
@@ -10838,15 +10920,15 @@ We know that \[
 and\[
 \frac{Y_{2}}{n_{2}}\approx\mathsf{norm}\left(\mathtt{mean}=p_{2},\,\mathtt{sd}=\sqrt{\frac{p_{2}(1-p_{2})}{n_{2}}}\right)\]
 so it stands to reason that an approximate $100(1-\alpha)\%$ confidence
-interval for $p_{1}-p_{2}$ is given by\[
-\left(\hat{p}_{1}-\hat{p}_{2}\right)\pm z_{\alpha/2}\sqrt{\frac{\hat{p}_{1}(1-\hat{p}_{1})}{n_{1}}+\frac{\hat{p}_{2}(1-\hat{p}_{2})}{n_{2}}},\]
+interval for $p_{1}-p_{2}$ is given by\begin{equation}
+\left(\hat{p}_{1}-\hat{p}_{2}\right)\pm z_{\alpha/2}\sqrt{\frac{\hat{p}_{1}(1-\hat{p}_{1})}{n_{1}}+\frac{\hat{p}_{2}(1-\hat{p}_{2})}{n_{2}}},\end{equation}
 where $\hat{p}_{1}=Y_{1}/n_{1}$ and $\hat{p}_{2}=Y_{2}/n_{2}$.
 \begin{rem}
 When estimating a single proportion, one-sided intervals are sometimes
-needed. They take the form\[
-\left[0,\ \hat{p}+z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}\right]\]
-or \[
-\left[\hat{p}-z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}},\ 1\right]\]
+needed. They take the form\begin{equation}
+\left[0,\ \hat{p}+z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}\right]\end{equation}
+or \begin{equation}
+\left[\hat{p}-z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}},\ 1\right]\end{equation}
 or in other words, we know in advance that the true proportion is
 restricted to the interval $[0,1]$, so we can truncate our confidence
 interval to those values on either side.
@@ -17249,7 +17331,24 @@ Journal of Statistical Software, 28(8), 1–23. http://www.jstatsoft.org/v28/i08
 43-45. In short,
 \item \url{http://www.rsscse.org.uk/ts/gtb/johnson3.pdf}
 \item \url{http://en.wikipedia.org/wiki/Mark_and_recapture}
+\item Categorical Data Analysis, Agresti ()
+\item Forecasting, Time Series, and Regression, 4th Ed., Bowerman, O'Connell,
+and Koehler (Duxbury)
+\item Mathematical Statistics, Vol. I, 2nd Ed., Bickel and Doksum (Prentice
+Hall)
+\item Probability and Statistical Inference, 5th Ed., Hogg and Tanis, (Prentice
+Hall)
+\item Applied Linear Regression Models, 3rd Ed., Neter, Kutner, Nachtsheim,
+and Wasserman (Irwin)
+\item Statistical Inference, 1st Ed, Casella and Berger (Duxbury)
+\item Monte Carlo Statistical Methods, 1st Ed., Robert and Casella (Springer)
+\item Introduction to Statistical Thought
+\item Using \textsf{R} for Introductory Statistics
+\item Introductory Statistics with \textsf{R}
+\item Data Analysis and Graphics using \textsf{R}
 \end{itemize}
+
+
 <<>>=
 rm(.Random.seed)
 save.image(file = "IPSUR.RData")
