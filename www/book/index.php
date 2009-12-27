@@ -40,7 +40,7 @@ include "topMenu.php";
 </p>
 
 <p>
-<span class="name">IPSUR</span> is FREE, in the GNU sense of the word.  Hard copies are (will be) available for purchase (coming soon) from the standard online retailers in the USA and EU.  In efforts to keep the price at a bare minimum I have waived all royalties; the price of the book is exactly the manufacturing cost plus the retail markup (which still weighs in at around $50 due to the book's size).   You can get it even cheaper by downloading an electronic copy and printing it yourself, but if you elect this route then be sure to get the publisher-quality PDF from the <a href="downloads.php">Downloads</a> page.
+<span class="name">IPSUR</span> is <a href="http://www.gnu.org/copyleft/fdl.html">FREE</a>, in the <a href="http://www.gnu.org/">GNU</a> sense of the word.  Hard copies are (will be) available for purchase (coming soon) from the standard online retailers in the USA and EU.  In efforts to keep the price at a bare minimum I have waived all royalties; the price of the book is exactly the manufacturing cost plus the retail markup (which still weighs in at around $50 due to the book's size).   You can get it even cheaper by downloading an electronic copy and printing it yourself, but if you elect this route then be sure to get the publisher-quality PDF from the <a href="downloads.php">Downloads</a> page.
 </p>
 
 <p>
@@ -48,7 +48,7 @@ Refer to the <a href="installation.php">Installation</a> page for instructions t
 </p>
 
 <p>
-I have been writing <span class="name">IPSUR</span> on and off since 2006, yet there are many important topics, examples, and exercises still missing from the book.  I will add them as time permits. In the meantime, you can get the latest, greatest version (built daily) from <a href="help.php">R-Forge</a>.  See the <a href="installation.php">Installation</a> page for details.
+I have been writing <span class="name">IPSUR</span> on and off since 2006, yet there are many important topics, examples, and exercises still missing from the book.  I will add them as time permits. In the meantime, you can get the latest, greatest version (built daily) from <a href="http://r-forge.r-project.org/">R-Forge</a>.  See the <a href="installation.php">Installation</a> page for details.
 </p>
 </blockquote>
 
