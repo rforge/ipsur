@@ -23,6 +23,7 @@ language=R}
 \usepackage{url}
 \usepackage{amsthm}
 \usepackage{amsmath}
+\makeindex
 \usepackage{setspace}
 \usepackage{amssymb}
 \setstretch{1.2}
@@ -477,7 +478,13 @@ Seasoned readers will be able to detect my statistical origins: \emph{Probabilit
 and Statistical Inference} by Hogg and Tanis, \emph{Statistical Inference}
 by Casella and Berger, and \emph{Theory of Point Estimation/Testing
 Statistical Hypotheses} by Lehmann. I highly recommend each of those
-books to every reader of this one.
+books to every reader of this one. Some \textsf{R} books with {}``introductory''
+in the title that I recommend are \emph{Introductory Statistics with
+}\textsf{\emph{R}} by Dalgaard and \emph{Using }\textsf{\emph{R}}\emph{
+for Introductory Statistics} by Verzani. Surely there are many, many
+other good introductory books about \textsf{R}, but frankly, I have
+tried to steer clear of them for the past year or so to avoid any
+undue influence on my own writing.
 
 Please bear in mind that the title of this book is {}``Introduction
 to Probability and Statistics Using \textsf{R}'', and not {}``Introduction
@@ -497,7 +504,7 @@ be improved in my view.
 \begin{description}
 \item [{Better~data:}] the data analyzed in this book are almost entirely
 from the \inputencoding{latin9}\lstinline[showstringspaces=false]!datasets!\inputencoding{utf8}
-package in base \textsf{R}. Here is why: 
+package in base \textsf{R}, and here is why: 
 
 \begin{enumerate}
 \item I made a conscious effort to minimize dependence on contributed packages,
@@ -643,25 +650,23 @@ within hours. We aren't in Kansas anymore, Dorothy.
 These are extra materials that accompany \IPSUR.
 \begin{description}
 \item [{\texttt{IPSUR.RData}}] is a saved image of the \textsf{R} workspace
-at the completion of the Sweave processing of \IPSUR. This can be
-loaded into memory with \textsf{File} $\triangleright$ \textsf{Load
-Workspace} or with the command \inputencoding{latin9}\lstinline[showstringspaces=false]!load("/path/to/IPSUR.Rdata")!\inputencoding{utf8}.
-Loading it into \textsf{R} will make every single object in the \textsf{R}
-workspace immediately available and in memory. In particular, the
-data BLANK from Exercise BLANK in Chapter BLANK on page BLANK will
-be loaded. Type BLANK at the command line to see for yourself. 
+at the completion of the Sweave processing of \IPSUR. It can be loaded
+into memory with \textsf{File} $\triangleright$ \textsf{Load Workspace}
+or with the command \inputencoding{latin9}\lstinline[showstringspaces=false]!load("/path/to/IPSUR.Rdata")!\inputencoding{utf8}.
+Either method will make every single object in the file immediately
+available and in memory. In particular, the data BLANK from Exercise
+BLANK in Chapter BLANK on page BLANK will be loaded. Type BLANK at
+the command line to see for yourself. 
 \item [{\texttt{IPSUR.R}}] is the exported \textsf{R} code from \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR.Rnw!\inputencoding{utf8}.
 With this script, literally every \textsf{R} command from the entirety
-of \IPSUR\ can be resubmitted at the command line. Note that the
-\inputencoding{latin9}\lstinline[showstringspaces=false]!set.seed!\inputencoding{utf8}
-line at the top should be deleted before distributing to students.
+of \IPSUR\ can be resubmitted at the command line.
 \end{description}
 
 \section*{Notation}
 
 We use the notation \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
-for simple objects, and use \inputencoding{latin9}\lstinline[showstringspaces=false]!stem.leaf!\inputencoding{utf8}
-notation to denote functions. The sequence {}``\textsf{Statistics}
+or \inputencoding{latin9}\lstinline[showstringspaces=false]!stem.leaf!\inputencoding{utf8}
+notation to denote objects, functions, \emph{etc}. The sequence {}``\textsf{Statistics}
 \textsf{$\triangleright$} \textsf{Summaries} \textsf{$\triangleright$}
 \textsf{Active Dataset}'' means to click the \textsf{Statistics}
 menu item, next click the \textsf{Summaries} submenu item, and finally
@@ -767,9 +772,7 @@ of this book.
 \chapter{An Introduction to \textsf{R}}
 
 This chapter is designed to help a person to begin to get to know
-the \textsf{R} statistical computing environment. It paraphrases and
-summarizes information gleaned from materials listed in the \textbf{References}.
-Please refer to them for a more complete treatment.
+the \textsf{R} statistical computing environment. 
 
 
 \paragraph*{What do I want them to know?}
@@ -777,18 +780,8 @@ Please refer to them for a more complete treatment.
 \item don't forget to mention rounding issues
 \item basic information about how to install, start up, and interact with\textsf{
 R}
-
-\begin{itemize}
-\item different platforms, the console, the terminal
-\item external programs such as Tinn-R, Emacs, or Eclipse
-\end{itemize}
 \item how to use \textsf{R} like a calculator (essentially arithmetic with
 \textsf{R})
-
-\begin{itemize}
-\item basic mathematical functions
-\item would like to mention complex arithmetic
-\end{itemize}
 \item what variables are and how to name them
 \item about vectors
 
@@ -798,7 +791,7 @@ R}
 \end{itemize}
 \item how to type in data, with c() and scan() enter data, 
 \item how to import data frames from packages, and how to import data from
-elsewhere ? (this last one)
+elsewhere?
 \item need to know about vectors and (data frames) the different types of
 vectors (numeric, character, logical)
 \item how to get help
@@ -839,11 +832,11 @@ for your operating system:
 \item [{MacOS:}] \url{http://cran.r-project/bin/macosx}
 \item [{Linux:}] \url{http://cran.r-project/bin/linux}
 \end{description}
-On MS-Windows, click the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!.exe!\inputencoding{utf8}
+On MS-Windows, click the \inputencoding{latin9}\lstinline[showstringspaces=false]!.exe!\inputencoding{utf8}
 program file to start installation. When it asks for \textquotedbl{}Customized
 startup options\textquotedbl{}, specify \textsf{Yes}. In the next
 window, be sure to select the SDI (single-window) option; this is
-useful later when we discuss three dimensional plots with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rgl!\inputencoding{utf8}
+useful later when we discuss three dimensional plots with the \inputencoding{latin9}\lstinline[showstringspaces=false]!rgl!\inputencoding{utf8}
 package.
 
 
@@ -862,7 +855,7 @@ The base packages are maintained by a select group of volunteers,
 called {}``\textsf{R} Core''. In addition to the base packages,
 there are literally thousands of additional contributed packages written
 by individuals all over the world. These are stored worldwide on mirrors
-of the Comprehensive \textsf{R} Archive Network, or \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!CRAN!\inputencoding{utf8}
+of the Comprehensive \textsf{R} Archive Network, or \inputencoding{latin9}\lstinline[showstringspaces=false]!CRAN!\inputencoding{utf8}
 for short. Given an active Internet connection, anybody is free to
 download and install these packages and even inspect the source code.
 
@@ -885,7 +878,7 @@ as SPSS, SAS, \emph{etc}. But none of those functions will be available
 until the command \inputencoding{latin9}\lstinline[showstringspaces=false]!library(foreign)!\inputencoding{utf8}
 is issued. 
 
-Simply type \inputencoding{latin9}\lstinline[showstringspaces=false]!library()!\inputencoding{utf8}
+Type \inputencoding{latin9}\lstinline[showstringspaces=false]!library()!\inputencoding{utf8}
 at the command prompt (described below) to see a list of all available
 packages in your library.
 
@@ -896,112 +889,13 @@ manual, \url{http://cran.r-project.org/manuals.html}.
 
 \section{Communicating with \textsf{R}}
 
-There are three basic methods for communicating with \textsf{R}.
-\begin{enumerate}
-\item At the command prompt (\texttt{>}).
-
-
-This is the most basic way to complete simple, one-line commands.
-\textsf{R} will evaluate what is typed there and output the results
-in the Console Window.
-
-\item Copy \& Paste from a text file.
-
-
-Another way is to open a text file with a text editor (say, NotePad
-or Microsoft$\circledR$ Word). The user writes code in the text file,
-then when satisfied, (s)he copy-pastes it at the command prompt in
-\textsf{R}. Then \textsf{R} will run all of the code at once and give
-output in the Console Window.
-
-A disadvantage to this method is that all of the code is written in
-the same way with the same font. It can become confusing with longer
-scripts, and it is more difficult to efficiently identify mistakes
-in the code. To address this problem, software developers have designed
-powerful \emph{script editors}.
-
-\item Graphical User Interfaces (GUIs): These are actually much more general
-than discussed here.
-
-\begin{enumerate}
-\item \textsf{R} Gui
-\item The \textsf{R} Commander
-\item PMG: Poor Man's GUI
-\item Rattle
-\item JGR (sounds like {}``jaguar'')
-\end{enumerate}
-\item IDE / Script Editors.
-
-
-These are programs specially designed to aid the communication and
-code writing process. The advantage to using Script Editors is that
-they have additional functions and options to help the user write
-code more efficiently, including \textsf{R} syntax highlighting, automatic
-code completion, delimiter matching, and dynamic help on the \textsf{R}
-functions as they are written. In addition, they typically have all
-of the text editing features of programs like Microsoft$\circledR$
-Word. Lastly, most script editors are fully customizable in the sense
-that the user can customize the appearance of the interface to choose
-what colors to display, when to display them, and how to display them.
-
-Some of the more popular script editors can be downloaded from the\textsf{
-R}-Project website at \url{http://www.sciviews.org/_rgui/}. On the
-left side of the screen (under \textbf{Projects}) there are several
-choices available.
-\begin{itemize}
-\item \textsf{\textbf{R}}\textbf{WinEdt}: This option is coordinated with
-WinEdt for \LaTeX{} and has features such as code highlighting, remote
-sourcing, and many other goodies. However, one first needs to download
-and install WinEdt, and even then it is only free for a while. Annoying
-windows will eventually pop-up asking for a registration code. This
-is nevertheless a fine choice if you are familiar with \LaTeX{} and
-own WinEdt already, or are planning to purchase WinEdt in the near
-future.
-\item \textbf{Tinn-}\textsf{\textbf{R}}: This one has the advantage of being
-completely free. It has all of the above mentioned options and lots
-more. It is simple enough to use that the user can virtually begin
-working with it immediately after installation. But this particular
-choice is only available for Microsoft$\circledR$ Windows operating
-systems. If you are on MacOS or Linux, a comparable alternative is
-Sci-Views - Komodo Edit.
-\item \textbf{Bluefish}: This open-source script editor is for Mac OSX users.
-Other alternatives for Mac users are SubEthaEdit, AlphaTk, and Eclipse.
-I have tried Eclipse only, and only briefly, so I cannot comment on
-their strengths and weaknesses. Try them out, and let me know!
-\item \textbf{Emacs} / \textbf{ESS}: Click Emacs (ESS) or Emacs (ESS/Windows).
-This will take you to download sites with sophisticated programs for
-editing, compiling, and coordinating software such as \texttt{S-Plus},
-\textsf{R}, and \texttt{SAS} simultaneously. Emacs is short for \emph{E}diting
-\emph{MAC}ro\emph{S} and ESS means \emph{E}macs \emph{S}peaks \emph{S}tatistics.
-An alternate branch of Emacs is called XEmacs. This editor is -- \emph{by
-far} -- the most powerful of the text editors, but all of the flexibility
-comes at a price. Emacs requires a level of computer-savvy that the
-others do not, and the learning curve is much more steep.
-
-\begin{itemize}
-\item Emacs is an all purpose text editor. It can do absolutely anything
-with respect to modifying, searching, editing, and manipulating, text.
-And if Emacs can't do it, then you extend Emacs by writing a program
-in the Lisp language.
-\item In particular, a team of volunteers have written an Emacs extension
-called ESS, which stands for Emacs Speaks Statistics. Using ESS, one
-can speak to \textsf{R} and do all of the tricks that the other script
-editors offer, and much, much, more.
-\item If you want to learn Emacs, and if you grew up with Microsoft$\circledR$
-Windows or Macintosh, then you are going to need to relearn everything
-you thought you knew about computers your whole life. (Or, since Emacs
-is completely customizable, you can reconfigure Emacs to behave like
-you want.)
-\end{itemize}
-\end{itemize}
-\end{enumerate}
-Communicating with\textsf{ R}
-
 
 \paragraph*{One line at a time}
+
+This is the most basic method and is the first one that beginners
+will use.
 \begin{enumerate}
 \item Rgui (Windows)
-\item RalphaTkGUI
 \item Terminal
 \item Emacs/ESS, XEmacs
 \end{enumerate}
@@ -1011,11 +905,20 @@ Communicating with\textsf{ R}
 For longer programs (called \emph{scripts}) there is too much code
 to write all at once at the command prompt. Furthermore, for longer
 scripts it is convenient to be able to only modify a certain piece
-of the script and run it again in \textsf{R}. 
-\begin{enumerate}
-\item \textsf{R} Editor (Windows): In Microsoft$\circledR$ Windows, \textsf{R}
-provides its own built-in script editor, called \textsf{R} Editor.
-From the console window, select \textsf{File}\emph{ }\textsf{$\triangleright$}\emph{
+of the script and run it again in \textsf{R}. Programs called \emph{script
+editors} are specially designed to aid the communication and code
+writing process. They have all sorts of helpful features including
+\textsf{R} syntax highlighting, automatic code completion, delimiter
+matching, and dynamic help on the \textsf{R} functions as they are
+being written. Even more, they often have all of the text editing
+features of programs like Microsoft$\circledR$ Word. Lastly, most
+script editors are fully customizable in the sense that the user can
+customize the appearance of the interface to choose what colors to
+display, when to display them, and how to display them.
+\begin{description}
+\item [{\textsf{R~}Editor~(Windows):}] In Microsoft$\circledR$ Windows,
+\textsf{R}Gui has its own built-in script editor, called \textsf{R}
+Editor. From the console window, select \textsf{File}\emph{ }\textsf{$\triangleright$}\emph{
 }\textsf{New}\textsf{\emph{ }}\textsf{Script}\emph{.} A script window
 opens, and the lines of code can be written in the window. When satisfied
 with the code, the user highlights all of the commands and presses
@@ -1024,51 +927,98 @@ and the output is shown. To save the script for later, click \textsf{File}\emph{
 }\textsf{$\triangleright$}\emph{ }\textsf{Save as...} in \textsf{R}
 Editor. The script can be reopened later with \textsf{File}\emph{
 }\textsf{$\triangleright$}\emph{ }\textsf{Open Script...} in \textsf{RGui}.
-\item Tinn-\textsf{R}/Sciviews-K
-\item Emacs/ESS:
-\item JGR (read {}``Jaguar''): based on Java, so it is cross-platform.
-\item Kate, etc.
-\end{enumerate}
+Note that \textsf{R} Editor does not have the fancy syntax highlighting
+that the others do.
+\item [{\textsf{R}WinEdt:}] This option is coordinated with WinEdt for
+\LaTeX{} and has additional features such as code highlighting, remote
+sourcing, and a ton of other things. However, one first needs to download
+and install a shareware version of another program, WinEdt, which
+is only free for a while -- pop-up windows will eventually appear
+that ask for a registration code. \textsf{R}WinEdt is nevetheless
+a very fine choice if you already own WinEdt or are planning to purchase
+it in the near future.
+\item [{Tinn-\textsf{R}/Sciviews-K:}] This one is completely free and has
+all of the above mentioned options and more. It is simple enough to
+use that the user can virtually begin working with it immediately
+after installation. But Tinn-\textsf{R} proper is only available for
+Microsoft$\circledR$ Windows operating systems. If you are on MacOS
+or Linux, a comparable alternative is Sci-Views - Komodo Edit.
+\item [{Emacs/ESS:}] Emacs is an all purpose text editor. It can do absolutely
+anything with respect to modifying, searching, editing, and manipulating,
+text. And if Emacs can't do it, then you can write a program that
+extends Emacs to do it. Once such extension is called \emph{ESS},
+which stands for \emph{E}macs \emph{S}peaks \emph{S}tatistics. With
+ESS a person can speak to \textsf{R,} do all of the tricks that the
+other script editors offer, and much, much, more.
+
+
+\emph{Fair warning}: if you want to try Emacs and if you grew up with
+Microsoft$\circledR$ Windows or Macintosh, then you are going to
+need to relearn everything you thought you knew about computers your
+whole life. (Or, since Emacs is completely customizable, you can reconfigure
+Emacs to behave the way you want.) I have personally experienced this
+transformation and I will never go back.
+
+\item [{JGR~(read~{}``Jaguar''):}] This one has the bells and whistles
+of \textsf{RGui} plus it is based on Java, so it works on multiple
+operating systems. It has its own script editor like \textsf{R} Editor
+but with additional features such as syntax highlighting and code-completion.
+If you do not use Microsoft$\circledR$ Windows (or even if you do)
+you definitely want to check out this one.
+\item [{Kate,~Bluefish,~\emph{etc}.}] There are literally dozens of other
+text editors available, many of them free, and each has its own (dis)advantages.
+I only have mentioned the ones with which I have had substantial personal
+experience and have enjoyed at some point. Play around, and let me
+know what you find.
+\end{description}
 
 \paragraph*{Graphical User Interfaces (GUIs)}
 
-The usual way to interact with \textsf{R} in Microsoft$\circledR$
-Windows is with \textsf{Rgui}, mentioned above.
-\begin{enumerate}
-\item The \textsf{R} Commander (\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}):
-this one provides a point-and-click interface to many basic statistical
-tasks. It is called the {}``Commander'' because every time one makes
-a selection from the menus, the code corresponding to the task is
-listed in the output window. One can take this code, copy-and-paste
-it to a text file, then re-run it again at a later time without the
-\textsf{R} Commander's assistance. It is well suited for the introductory
-level.\\
-In addition, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
-allows for user-contributed {}``Plugins'' which are separate packages
-on \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!CRAN!\inputencoding{utf8}
+By the word {}``GUI'' I mean an interface in which the user communicates
+with \textsf{R} by way of points-and-clicks in a menu of some sort.
+Again, there are many, many options and I only mention ones that I
+have used and enjoyed. Some of the other more popular script editors
+can be downloaded from the\textsf{ R}-Project website at \url{http://www.sciviews.org/_rgui/}.
+On the left side of the screen (under \textbf{Projects}) there are
+several choices available.
+\begin{description}
+\item [{The~\textsf{R~}Commander~(\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8})}] provides
+a point-and-click interface to many basic statistical tasks. It is
+called the {}``Commander'' because every time one makes a selection
+from the menus, the code corresponding to the task is listed in the
+output window. One can take this code, copy-and-paste it to a text
+file, then re-run it again at a later time without the \textsf{R}
+Commander's assistance. It is well suited for the introductory level.\\
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
+also allows for user-contributed {}``Plugins'' which are separate
+packages on \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!CRAN!\inputencoding{utf8}
 that add extra functionality to the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
 package. The plugins are typically named with the prefix \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!RcmdrPlugin!\inputencoding{utf8}
 to make them easy to identify in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!CRAN!\inputencoding{utf8}
-package list.
-\item Poor Man's GUI (\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!pmg!\inputencoding{utf8}):
-this is an alternative to the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
-which is based on GTk instead of Tcl/Tk. Benefits include drag-and-drop
-datasets for plots.
-\item Rattle (\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rattle!\inputencoding{utf8}):
-this GUI was specifically designed for data mining applications but
-it provides enough other general functionality to merit mention here.
-\item Others: there are many more GUIs which exist but which the author
-has tried only in passing: \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!RKward!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!RPad!\inputencoding{utf8}.
-\end{enumerate}
+package list. One such plugin is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!RcmdrPlugin.IPSUR!\inputencoding{utf8},
+which accompanies this text.
+\item [{Poor~Man's~GUI~(\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!pmg!\inputencoding{utf8})}] is
+an alternative to the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
+which is based on GTk instead of Tcl/Tk. It has been a while since
+I used this it but I remember liking it very much when I did. One
+thing that stood out was that the user could drag-and-drop datasets
+for plots. See here for more information \url{http://wiener.math.csi.cuny.edu/pmg/}
+\item [{Rattle~(\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rattle!\inputencoding{utf8})}] is
+a data mining toolkit which is designed to manage/analyze very large
+data sets, but it provides enough other general functionality to merit
+mention here.
+\item [{Deducer}] is relatively new and shows promise from what I have
+seen, but I have not actually used it in the classroom yet.
+\end{description}
 
 \section{Basic \textsf{R} Operations and Concepts}
 
-The \textsf{R} developers have written an introductory document entitled,
-{}``Introduction to \textsf{R}''. There is a sample session included
+The \textsf{R} developers have written an introductory document entitled
+{}``An Introduction to \textsf{R}''. There is a sample session included
 which shows what basic interaction with \textsf{R} looks like. I recommend
-that all new users of \textsf{R} read this document, but there are
-concepts mentioned there which will be unfamiliar to the beginner.
+that all new users of \textsf{R} read that document, but bear in mind
+that there are concepts mentioned which will be unfamiliar to the
+beginner.
 
 Below are some of the most basic operations that can be done with
 \textsf{R}. Almost every book about \textsf{R} begins with a section
@@ -1158,9 +1108,10 @@ function. In addition to the above, there is the \inputencoding{latin9}\lstinlin
 data type:
 
 <<five, keep.source = TRUE>>=
-sqrt(-1)            # isn't defined
-sqrt(-1+0i)         # is defined
-(0 + 1i)^2          # should be -1
+sqrt(-1)              # isn't defined
+sqrt(-1+0i)           # is defined
+sqrt(as.complex(-1))  # same thing
+(0 + 1i)^2            # should be -1
 typeof((0 + 1i)^2)
 @
 
@@ -3539,11 +3490,11 @@ probability functions, \emph{etc}.
 \section{Sample Spaces}
 
 For a random experiment $E$, the set of all possible outcomes of
-$E$ is called the \emph{sample space} and is denoted by the letter
-$S$. For the coin-toss experiment, $S$ would be the results {}``Head''
-and {}``Tail'', which we may represent by $S=\left\{ H,T\right\} $.
-Formally, the performance of a random experiment is the unpredictable
-selection of an outcome in $S$.
+$E$ is called the \emph{sample space\index{sample space}} and is
+denoted by the letter $S$. For the coin-toss experiment, $S$ would
+be the results {}``Head'' and {}``Tail'', which we may represent
+by $S=\left\{ H,T\right\} $. Formally, the performance of a random
+experiment is the unpredictable selection of an outcome in $S$.
 
 
 \subsection{How to do it with \textsf{R}}
@@ -3788,8 +3739,8 @@ argument. We investigate this issue further in Section BLANK.
 
 \section{Events}
 
-An \emph{event} $A$ is merely a collection of outcomes, or in other
-words, a subset of the sample space%
+An \emph{event\index{event@\emph{event}}} $A$ is merely a collection
+of outcomes, or in other words, a subset of the sample space%
 \footnote{This naive definition works for finite or countably infinite sample
 spaces, but is inadequate for sample spaces in general. In this book,
 we will not address the subtleties that arise, but will refer the
@@ -6066,8 +6017,9 @@ as an object, then compute things from the object such as mean, variance,
 and standard deviation with the functions \inputencoding{latin9}\lstinline[showstringspaces=false]!E!\inputencoding{utf8},
 \inputencoding{latin9}\lstinline[showstringspaces=false]!var!\inputencoding{utf8},
 and \inputencoding{latin9}\lstinline[showstringspaces=false]!sd!\inputencoding{utf8}:
+FLAG
 
-<<keep.source = TRUE>>=
+<<eval = FALSE, keep.source = TRUE>>=
 library(distrEx)
 X <- DiscreteDistribution(supp = 0:3, prob = c(1,3,3,1)/8)
 E(X); var(X); sd(X)
@@ -6333,8 +6285,9 @@ and then questions about the random variable translate to functions
 on and involving \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!X!\inputencoding{utf8}.
 Random variables with distributions from the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!base!\inputencoding{utf8}
 package are specified by capitalizing the name of the distribution:
+FLAG
 
-<<keep.source = TRUE>>=
+<<eval = FALSE, keep.source = TRUE>>=
 library(distr)
 X <- Binom(size = 3, prob = 1/2)
 X
@@ -6347,7 +6300,7 @@ function, and the analogue of the \inputencoding{latin9}\lstinline[showstringspa
 function is the \inputencoding{latin9}\lstinline[showstringspaces=false]!p(X)!\inputencoding{utf8}
 function. Compare the following:
 
-<<keep.source = TRUE>>=
+<<eval = FALSE, keep.source = TRUE>>=
 d(X)(1)   # pmf of X evaluated at x = 1
 p(X)(2)   # cdf of X evaluated at x = 2
 @
@@ -6361,7 +6314,7 @@ BLANK for an example.
 %
 \begin{figure}[H]
 \begin{centering}
-<<echo = FALSE, fig=true, height = 4, width = 6>>=
+<<eval = FALSE, echo = FALSE, fig=true, height = 4, width = 6>>=
 plot(X, cex = 0.2)
 @
 \par\end{centering}
@@ -6565,9 +6518,9 @@ The \inputencoding{latin9}\lstinline[showstringspaces=false]!distrEx!\inputencod
 package provides an expectation operator \inputencoding{latin9}\lstinline[showstringspaces=false]!E!\inputencoding{utf8}
 which can be used on random variables that have been defined in the
 ordinary \inputencoding{latin9}\lstinline[showstringspaces=false]!distr!\inputencoding{utf8}
-sense:
+sense: FLAG
 
-<<>>=
+<<eval = FALSE >>=
 X <- Binom(size = 3, prob = 0.45)
 library(distrEx)
 E(X)
@@ -6581,9 +6534,9 @@ expectation is not computed directly, rather, it is estimated by first
 generating a random sample from the underlying model and next computing
 a sample mean of the function of interest. 
 
-There are methods for other population parameters:
+There are methods for other population parameters: FLAG
 
-<<>>=
+<<eval = FALSE >>=
 var(X)
 sd(X)
 @
@@ -7305,10 +7258,10 @@ sum(dbinom(16:19, size = 31, prob = 0.447))
 diff(pbinom(c(19,15), size = 31, prob = 0.447, lower.tail = FALSE))
 @
 
-\item Give the mean of $X$, denoted $\E X$.
+\item Give the mean of $X$, denoted $\E X$. FLAG
 
 
-<<>>=
+<< eval = FALSE >>=
 library(distrEx)
 X = Binom(size = 31, prob = 0.447)
 E(X)
@@ -7317,21 +7270,21 @@ E(X)
 \item Give the variance of $X$.
 
 
-<<>>=
+<<eval = FALSE >>=
 var(X)
 @
 
 \item Give the standard deviation of $X$.
 
 
-<<>>=
+<<eval = FALSE>>=
 sd(X)
 @
 
 \item Find $\E(4X+51.324)$
 
 
-<<>>=
+<<eval = FALSE>>=
 E(4*X + 51.324)
 @
 
@@ -7613,7 +7566,7 @@ Let us redo Example BLANK with the \inputencoding{latin9}\lstinline[basicstyle={
 package. The method is similar to Example BLANK in Chapter BLANK.
 We define an absolutely continuous random variable:
 
-<<>>=
+<<eval = FALSE>>=
 library(distr)
 f <- function(x) 3*x^2
 X <- AbscontDistribution(d = f, low1 = 0, up1 = 1)
@@ -7624,7 +7577,7 @@ Compare this answer to what we found in Example BLANK. Now let us
 try expectation with the \inputencoding{latin9}\lstinline[showstringspaces=false]!distrEx!\inputencoding{utf8}
 package:
 
-<<>>=
+<<eval = FALSE>>=
 library(distrEx)
 E(X)
 var(X)
@@ -7967,8 +7920,9 @@ distributions. There are exact results for ordinary transformations
 of the standard distributions, and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!distr!\inputencoding{utf8}
 takes advantage of these in many cases. For instance, the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!distr!\inputencoding{utf8}
 package can handle the transformation in Example BLANK quite nicely:
+FLAG
 
-<<>>=
+<<eval = FALSE >>=
 library(distr)
 X <- Norm(mean = 0, sd = 1)
 Y <- 4 - 3*X
@@ -7984,7 +7938,7 @@ to know everything, and it is not long before we venture outside of
 the transformations that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!distr!\inputencoding{utf8}
 recognizes. Let us try Example BLANK:
 
-<<>>=
+<<eval = FALSE>>=
 Z <- exp(X)
 Z
 @
@@ -8010,7 +7964,7 @@ d-p-q functions are calculated analytically based on the d-p-q functions
 associated with $X$. But if we try a crazy transformation then we
 are greeted by a warning:
 
-<<>>=
+<<eval = FALSE>>=
 W <- sin(exp(X) + 27)
 W
 @
@@ -8023,7 +7977,7 @@ what happens when we compute $\P(W\leq0.5)$ using the $W$ above,
 then define $W$ again, and compute the (supposedly) same $\P(W\leq0.5)$
 a few moments later.
 
-<<>>=
+<<eval = FALSE>>=
 p(W)(0.5)
 W <- sin(exp(X) + 27)
 p(W)(0.5)
@@ -11753,21 +11707,21 @@ segments(4,4.5, 4+dnorm(0,0,0.5),4.5, lty = 2, col = "gray")
 \begin{example}
 \label{exa:Speed-and-Stopping}Speed and Stopping Distance of Cars 
 
-We will use the data frame \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cars!\inputencoding{utf8}
-from the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!datasets!\inputencoding{utf8}
-package. It has two variables: \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!speed!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!dist!\inputencoding{utf8}.
+We will use the data frame \inputencoding{latin9}\lstinline[showstringspaces=false]!cars!\inputencoding{utf8}
+from the \inputencoding{latin9}\lstinline[showstringspaces=false]!datasets!\inputencoding{utf8}
+package. It has two variables: \inputencoding{latin9}\lstinline[showstringspaces=false]!speed!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!dist!\inputencoding{utf8}.
 We can take a look at some of the values in the data frame: 
 
 <<>>=
 head(cars)
 @
 
-The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!speed!\inputencoding{utf8}
+The \inputencoding{latin9}\lstinline[showstringspaces=false]!speed!\inputencoding{utf8}
 represents how fast the car was going ($x$) in miles per hour and
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!dist!\inputencoding{utf8}
+\inputencoding{latin9}\lstinline[showstringspaces=false]!dist!\inputencoding{utf8}
 ($Y$) measures how far it took the car to stop, in feet. We can make
-a simple scatterplot of the data with the command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=2]!plot(dist ~ speed, data = cars)!\inputencoding{utf8}. 
+a simple scatterplot of the data with the command \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=2]!plot(dist ~ speed, data = cars)!\inputencoding{utf8}. 
 \begin{quotation}
 %
 \begin{figure}
@@ -11850,27 +11804,27 @@ and Equation BLANK.
 \subsection*{How to do it with \textsf{R}}
 
 Here we go. \textsf{R} will calculate the linear regression line with
-the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!lm!\inputencoding{utf8}
+the \inputencoding{latin9}\lstinline[showstringspaces=false]!lm!\inputencoding{utf8}
 function. We will store the result in an object which we will call
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cars.lm!\inputencoding{utf8}.
+\inputencoding{latin9}\lstinline[showstringspaces=false]!cars.lm!\inputencoding{utf8}.
 Here is how it works:
 
 <<>>=
 cars.lm <- lm(dist ~ speed, data = cars)
 @
 
-The first part of the input to the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!lm!\inputencoding{utf8}
-function, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!dist~speed!\inputencoding{utf8},
-is a \emph{model formula}, read as {}``\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!dist!\inputencoding{utf8}
-is described by \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!speed!\inputencoding{utf8}''.
-The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!data = cars!\inputencoding{utf8}
+The first part of the input to the \inputencoding{latin9}\lstinline[showstringspaces=false]!lm!\inputencoding{utf8}
+function, \inputencoding{latin9}\lstinline[showstringspaces=false]!dist~speed!\inputencoding{utf8},
+is a \emph{model formula}, read as {}``\inputencoding{latin9}\lstinline[showstringspaces=false]!dist!\inputencoding{utf8}
+is described by \inputencoding{latin9}\lstinline[showstringspaces=false]!speed!\inputencoding{utf8}''.
+The \inputencoding{latin9}\lstinline[showstringspaces=false]!data = cars!\inputencoding{utf8}
 argument tells \textsf{R} where to look for the variables quoted in
-the model formula. The output object \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cars.lm!\inputencoding{utf8}
+the model formula. The output object \inputencoding{latin9}\lstinline[showstringspaces=false]!cars.lm!\inputencoding{utf8}
 contains a multitude of information. Let's first take a look at the
 coefficients of the fitted regression line, which are extracted by
-the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!coef!\inputencoding{utf8}
+the \inputencoding{latin9}\lstinline[showstringspaces=false]!coef!\inputencoding{utf8}
 function%
-\footnote{Alternatively, we could just type \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cars.lm!\inputencoding{utf8}
+\footnote{Alternatively, we could just type \inputencoding{latin9}\lstinline[showstringspaces=false]!cars.lm!\inputencoding{utf8}
 to see the same thing.%
 }:
 
@@ -11885,9 +11839,9 @@ $+$ \Sexpr{round(coef(cars.lm)[2],2)}$\mathtt{speed}$.
 
 It is good practice to visually inspect the data with the regression
 line added to the plot. To do this we first scatterplot the original
-data and then follow with a call to the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!abline!\inputencoding{utf8}
-function. The inputs to \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!abline!\inputencoding{utf8}
-are the coefficients of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cars.lm!\inputencoding{utf8}
+data and then follow with a call to the \inputencoding{latin9}\lstinline[showstringspaces=false]!abline!\inputencoding{utf8}
+function. The inputs to \inputencoding{latin9}\lstinline[showstringspaces=false]!abline!\inputencoding{utf8}
+are the coefficients of \inputencoding{latin9}\lstinline[showstringspaces=false]!cars.lm!\inputencoding{utf8}
 (see Figure \ref{fig:Scatter-cars-regline}): %
 \begin{figure}
 \begin{centering}
@@ -11909,13 +11863,13 @@ abline(coef(cars))
 
 To calculate points on the regression line we may simply plug the
 desired $x$ value(s) into $\hat{\mu}$, either by hand, or with the
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!predict!\inputencoding{utf8}
-function. The inputs to \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!predict!\inputencoding{utf8}
-are the fitted linear model object, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cars.lm!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!predict!\inputencoding{utf8}
+function. The inputs to \inputencoding{latin9}\lstinline[showstringspaces=false]!predict!\inputencoding{utf8}
+are the fitted linear model object, \inputencoding{latin9}\lstinline[showstringspaces=false]!cars.lm!\inputencoding{utf8},
 and the desired $x$ value(s) represented by a data frame. See the
 example below.
 \begin{example}
-Using the regression line for the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cars!\inputencoding{utf8}
+Using the regression line for the \inputencoding{latin9}\lstinline[showstringspaces=false]!cars!\inputencoding{utf8}
 data:
 \begin{enumerate}
 \item What is the meaning of $\mu(60)=\beta_{0}+\beta_{1}(8$)? 
@@ -11971,7 +11925,7 @@ of a future car traveling 8\,mph.
 \end{example}
 Note that we actually have observed data for a car traveling 8\,mph;
 its stopping distance was 16\,ft as listed in the fifth row of the
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!cars!\inputencoding{utf8}
+\inputencoding{latin9}\lstinline[showstringspaces=false]!cars!\inputencoding{utf8}
 data:
 
 <<>>=
@@ -12002,8 +11956,8 @@ external reasons, and even then, temper it with a good deal of caution.
 
 The fitted values are automatically computed as a byproduct of the
 model fitting procedure and are already stored as a component of the
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!cars.lm!\inputencoding{utf8}
-object. We may access them with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!fitted!\inputencoding{utf8}
+\inputencoding{latin9}\lstinline[showstringspaces=false]!cars.lm!\inputencoding{utf8}
+object. We may access them with the \inputencoding{latin9}\lstinline[showstringspaces=false]!fitted!\inputencoding{utf8}
 function (we only show the first five entries):
 
 <<>>=
@@ -12011,10 +11965,10 @@ fitted(cars.lm)[1:5]
 @
 
 Predictions at $x$ values that are not necessarily part of the original
-data are done with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!predict!\inputencoding{utf8}
-function. The first argument is the original \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!cars.lm!\inputencoding{utf8}
-object and the second argument \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!newdata!\inputencoding{utf8}
-accepts a dataframe (in the same form that was used to fit \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!cars.lm!\inputencoding{utf8})
+data are done with the \inputencoding{latin9}\lstinline[showstringspaces=false]!predict!\inputencoding{utf8}
+function. The first argument is the original \inputencoding{latin9}\lstinline[showstringspaces=false]!cars.lm!\inputencoding{utf8}
+object and the second argument \inputencoding{latin9}\lstinline[showstringspaces=false]!newdata!\inputencoding{utf8}
+accepts a dataframe (in the same form that was used to fit \inputencoding{latin9}\lstinline[showstringspaces=false]!cars.lm!\inputencoding{utf8})
 that contains the locations at which we are seeking predictions.
 
 Let us predict the average stopping distances of cars traveling 6\,mph,
@@ -12052,7 +12006,7 @@ may encounter is the lowercase $s^{2}$ or the bulky $MSE$.%
 
 \subsection*{How to do it with \textsf{R}}
 
-The residuals for the model may be obtained with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!residuals!\inputencoding{utf8}
+The residuals for the model may be obtained with the \inputencoding{latin9}\lstinline[showstringspaces=false]!residuals!\inputencoding{utf8}
 function; we only show the first few entries in the interest of space:
 
 <<>>=
@@ -12062,19 +12016,19 @@ residuals(cars.lm)[1:5]
 In the last section, we calculated the fitted value for $x=8$ and
 found it to be approximately $\hat{\mu}(8)\approx$\Sexpr{round(predict(cars.lm, newdata = data.frame(speed = 8)), 2)}.
 Now, it turns out that there was only one recorded observation at
-$x=8$, and we have seen this value in the output of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!head(cars)!\inputencoding{utf8}
+$x=8$, and we have seen this value in the output of \inputencoding{latin9}\lstinline[showstringspaces=false]!head(cars)!\inputencoding{utf8}
 in Example \ref{exa:Speed-and-Stopping}; it was $\mathtt{dist}=16$~ft
 for a car with $\mathtt{speed}=8$~mph. Therefore, the residual should
 be $E=Y-\hat{Y}$ which is $E\approx16-$\Sexpr{round(predict(cars.lm, newdata = data.frame(speed = 8)), 2)}.
-Now take a look at the last entry of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!residuals(cars.lm)!\inputencoding{utf8},
+Now take a look at the last entry of \inputencoding{latin9}\lstinline[showstringspaces=false]!residuals(cars.lm)!\inputencoding{utf8},
 above. It is not a coincidence.
 
-The estimate $S$ for $\sigma$ is called the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Residual standard error!\inputencoding{utf8}
-and for the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cars!\inputencoding{utf8}
-data is shown a few lines up on the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!summary(cars.lm)!\inputencoding{utf8}
+The estimate $S$ for $\sigma$ is called the \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!Residual standard error!\inputencoding{utf8}
+and for the \inputencoding{latin9}\lstinline[showstringspaces=false]!cars!\inputencoding{utf8}
+data is shown a few lines up on the \inputencoding{latin9}\lstinline[showstringspaces=false]!summary(cars.lm)!\inputencoding{utf8}
 output (see How to do it with \textsf{R} in Section BLANK). We may
 read it from there to be $S\approx$\Sexpr{round(summary(cars.lm)$sigma, 2)},
-or we can access it directly from the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!summary!\inputencoding{utf8}
+or we can access it directly from the \inputencoding{latin9}\lstinline[showstringspaces=false]!summary!\inputencoding{utf8}
 object.
 
 <<>>=
@@ -12131,7 +12085,7 @@ b_{0}\pm\mathsf{t}_{\alpha/2}(\mathtt{df}=n-1)\, S_{b_{0}}\end{equation}
 
 \subsection*{How to do it with \textsf{R}}
 
-Let us take a look at the output from \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!summary(cars.lm)!\inputencoding{utf8}:
+Let us take a look at the output from \inputencoding{latin9}\lstinline[showstringspaces=false]!summary(cars.lm)!\inputencoding{utf8}:
 
 <<>>=
 summary(cars.lm)
@@ -12141,7 +12095,7 @@ A <- round(summary(cars.lm)$coef, 3)
 B <- round(confint(cars.lm), 3)
 @
 
-In the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Coefficients!\inputencoding{utf8}
+In the \inputencoding{latin9}\lstinline[showstringspaces=false]!Coefficients!\inputencoding{utf8}
 section we find the parameter estimates and their respective standard
 errors in the second and third columns; the other columns are discussed
 in Section BLANK. If we wanted, say, a 95\% confidence interval for
@@ -12149,7 +12103,7 @@ $\beta_{1}$ we could use $b_{1}=\ $\Sexpr{A[2,1]} and $S_{b_{1}}=\ $\Sexpr{A[2,2
 together with a $\mathsf{t}_{0.025}(\mathtt{df}=23)$ critical value
 to calculate $b_{1}\pm\mathsf{t}_{0.025}(\mathtt{df}=23)S_{b_{1}}$.
 
-Or, we could use the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!confint!\inputencoding{utf8}
+Or, we could use the \inputencoding{latin9}\lstinline[showstringspaces=false]!confint!\inputencoding{utf8}
 function.
 
 <<>>=
@@ -12208,16 +12162,16 @@ BLANK, just as we expected at the beginning of the section.
 \subsection*{How to do it with \textsf{R}}
 
 Confidence and prediction intervals are calculated in \textsf{R} with
-the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!predict!\inputencoding{utf8}
+the \inputencoding{latin9}\lstinline[showstringspaces=false]!predict!\inputencoding{utf8}
 function, which we encountered in Section BLANK. There we neglected
-to take advantage of its additional \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!interval!\inputencoding{utf8}
+to take advantage of its additional \inputencoding{latin9}\lstinline[showstringspaces=false]!interval!\inputencoding{utf8}
 argument. The general syntax follows.
 \begin{example}
 We will find confidence and prediction intervals for the stopping
 distance of a car travelling 5, 6, and 21\,mph (note from the graph
 that there are no collected data for these speeds). We have computed
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cars.lm!\inputencoding{utf8}
-earlier, and we will use this for input to the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!predict!\inputencoding{utf8}
+\inputencoding{latin9}\lstinline[showstringspaces=false]!cars.lm!\inputencoding{utf8}
+earlier, and we will use this for input to the \inputencoding{latin9}\lstinline[showstringspaces=false]!predict!\inputencoding{utf8}
 function. Also, we need to tell \textsf{R} the values of $x_{0}$
 at which we want the predictions made, and store the $x_{0}$ values
 in a data frame whose variable is labeled with the correct name. \emph{This
@@ -12249,13 +12203,13 @@ carsPI <- round(predict(cars.lm, newdata = new, interval = "prediction"), 2)
 @
 
 \end{example}
-The type of interval is dictated by the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!interval!\inputencoding{utf8}
-argument (which is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!none!\inputencoding{utf8}
+The type of interval is dictated by the \inputencoding{latin9}\lstinline[showstringspaces=false]!interval!\inputencoding{utf8}
+argument (which is \inputencoding{latin9}\lstinline[showstringspaces=false]!none!\inputencoding{utf8}
 by default), and the default confidence level is 95\% (which can be
-changed with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!level!\inputencoding{utf8}
+changed with the \inputencoding{latin9}\lstinline[showstringspaces=false]!level!\inputencoding{utf8}
 argument). 
 \begin{example}
-Using the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cars!\inputencoding{utf8}
+Using the \inputencoding{latin9}\lstinline[showstringspaces=false]!cars!\inputencoding{utf8}
 data,
 \begin{enumerate}
 \item Report a point estimate of and a 95\% confidence interval for the
@@ -12291,8 +12245,8 @@ in Equations BLANK and BLANK confirms our guess, but we would like
 to see a picture to drive the point home.
 
 We may plot the confidence and prediction intervals with one fell
-swoop using the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ci.plot!\inputencoding{utf8}
-function from the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!HH!\inputencoding{utf8}
+swoop using the \inputencoding{latin9}\lstinline[showstringspaces=false]!ci.plot!\inputencoding{utf8}
+function from the \inputencoding{latin9}\lstinline[showstringspaces=false]!HH!\inputencoding{utf8}
 package. The graph is displayed in Figure \ref{fig:Scatter-cars-CIPI}.
 %
 \begin{figure}
@@ -12351,7 +12305,7 @@ the same way as for $\beta_{1}$.
 
 \subsection*{How to do it with \textsf{R}}
 
-Let us take another look at the output from \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!summary(cars.lm)!\inputencoding{utf8}:
+Let us take another look at the output from \inputencoding{latin9}\lstinline[showstringspaces=false]!summary(cars.lm)!\inputencoding{utf8}:
 
 <<>>=
 summary(cars.lm)
@@ -12361,14 +12315,14 @@ A <- round(summary(cars.lm)$coef, 3)
 B <- round(confint(cars.lm), 3)
 @
 
-In the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Coefficients!\inputencoding{utf8}
+In the \inputencoding{latin9}\lstinline[showstringspaces=false]!Coefficients!\inputencoding{utf8}
 section we find the $t$ statistics and the $p$-values associated
 with the tests that the respective parameters are zero in the fourth
 and fifth columns. Since the $p$-values are (much) less than 0.05,
 we conclude that there is strong evidence that the parameters $\beta_{1}\neq0$
 and $\beta_{0}\neq0$, and as such, we say that there is a statistically
-significant linear relationship between \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!dist!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!speed!\inputencoding{utf8}. 
+significant linear relationship between \inputencoding{latin9}\lstinline[showstringspaces=false]!dist!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!speed!\inputencoding{utf8}. 
 
 
 \subsection{Simple Coefficient of Determination}
@@ -12437,11 +12391,11 @@ if the slope of $\hat{\mu}(x)$ is negative, then $r=-\sqrt{r^{2}}$.
 
 The primary method to display partitioned sums of squared errors is
 with an \emph{ANOVA table}. The command in \textsf{R} to produce such
-a table is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!anova!\inputencoding{utf8}.
-The input to \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!anova!\inputencoding{utf8}
-is the result of an \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!lm!\inputencoding{utf8}
-call which for the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cars!\inputencoding{utf8}
-data is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cars.lm!\inputencoding{utf8}.
+a table is \inputencoding{latin9}\lstinline[showstringspaces=false]!anova!\inputencoding{utf8}.
+The input to \inputencoding{latin9}\lstinline[showstringspaces=false]!anova!\inputencoding{utf8}
+is the result of an \inputencoding{latin9}\lstinline[showstringspaces=false]!lm!\inputencoding{utf8}
+call which for the \inputencoding{latin9}\lstinline[showstringspaces=false]!cars!\inputencoding{utf8}
+data is \inputencoding{latin9}\lstinline[showstringspaces=false]!cars.lm!\inputencoding{utf8}.
 
 <<>>=
 anova(cars.lm)
@@ -12450,24 +12404,24 @@ anova(cars.lm)
 The output gives\[
 r^{2}=1-\frac{SSE}{SSR+SSE}=1-\frac{11353.5}{21185.5+11353.5}\approx0.65.\]
  The interpretation should be: {}``The linear regression line accounts
-for approximately 65\% of the variation of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!dist!\inputencoding{utf8}
-as explained by \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!speed!\inputencoding{utf8}''.
+for approximately 65\% of the variation of \inputencoding{latin9}\lstinline[showstringspaces=false]!dist!\inputencoding{utf8}
+as explained by \inputencoding{latin9}\lstinline[showstringspaces=false]!speed!\inputencoding{utf8}''.
 
-The value of $r^{2}$ is stored in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!r.squared!\inputencoding{utf8}
-component of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!summary(cars.lm)!\inputencoding{utf8},
-which we called \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!carsumry!\inputencoding{utf8}.
+The value of $r^{2}$ is stored in the \inputencoding{latin9}\lstinline[showstringspaces=false]!r.squared!\inputencoding{utf8}
+component of \inputencoding{latin9}\lstinline[showstringspaces=false]!summary(cars.lm)!\inputencoding{utf8},
+which we called \inputencoding{latin9}\lstinline[showstringspaces=false]!carsumry!\inputencoding{utf8}.
 
 <<>>=
 carsumry$r.squared
 @
 
 We already knew this. We saw it in the next to the last line of the
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!summary(cars.lm)!\inputencoding{utf8}
-output where it was called {}``\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Multiple R-squared!\inputencoding{utf8}''.
-Listed right beside it is the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Adjusted R-squared!\inputencoding{utf8}
+\inputencoding{latin9}\lstinline[showstringspaces=false]!summary(cars.lm)!\inputencoding{utf8}
+output where it was called {}``\inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!Multiple R-squared!\inputencoding{utf8}''.
+Listed right beside it is the \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!Adjusted R-squared!\inputencoding{utf8}
 which we will discuss in Chapter BLANK.
 
-For the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cars!\inputencoding{utf8}
+For the \inputencoding{latin9}\lstinline[showstringspaces=false]!cars!\inputencoding{utf8}
 data, we find $r$ to be
 
 <<>>=
@@ -12508,8 +12462,8 @@ BLANK. See Section BLANK for details.
 \subsection{How to do it with \textsf{R}}
 
 The overall $F$ statistic and $p$-value are displayed in the bottom
-line of the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!summary(cars.lm)!\inputencoding{utf8}
-output. It is also shown in the final columns of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!anova(cars.lm)!\inputencoding{utf8}:
+line of the \inputencoding{latin9}\lstinline[showstringspaces=false]!summary(cars.lm)!\inputencoding{utf8}
+output. It is also shown in the final columns of \inputencoding{latin9}\lstinline[showstringspaces=false]!anova(cars.lm)!\inputencoding{utf8}:
 
 <<>>=
 anova(cars.lm)
@@ -12519,12 +12473,12 @@ Here we see that the $F$ statistisic is \Sexpr{round(carsumry$fstatistic, 2)}
 with a $p$-value very close to zero. The conclusion: there is very
 strong evidence that $H_{0}:\beta_{1}=0$ is false, that is, there
 is strong evidence that $\beta_{1}\neq0$. Moreover, we conclude that
-the regression relationship between \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!dist!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!speed!\inputencoding{utf8}
+the regression relationship between \inputencoding{latin9}\lstinline[showstringspaces=false]!dist!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!speed!\inputencoding{utf8}
 is significant.
 
 Note that the value of the $F$ statistic is the same as the Student's
-$t$ statistic for \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!speed!\inputencoding{utf8}
+$t$ statistic for \inputencoding{latin9}\lstinline[showstringspaces=false]!speed!\inputencoding{utf8}
 squared.
 
 
@@ -12555,7 +12509,7 @@ plots. We first examine a histogram in Figure BLANK. There we see
 that the distribution of the residuals appears to be mound shaped,
 for the most part. We can plot the order statistics of the sample
 versus quantiles from a $\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$
-distribution with the command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!plot(cars.lm, which = 2)!\inputencoding{utf8},
+distribution with the command \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!plot(cars.lm, which = 2)!\inputencoding{utf8},
 and the results are in Figure BLANK. If the assumption of normality
 were true, then we would expect points randomly scattered about the
 dotted straight line displayed in the figure. In this case, we see
@@ -12597,8 +12551,8 @@ where the $E_{(i)}$ are the ordered residuals and the $a_{i}$ are
 constants derived from the order statistics of a sample of size $n$
 from a normal distribution. See Section BLANK.
 
-We perform the Shapiro-Wilk test below, using the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!shapiro.test!\inputencoding{utf8}
-function from the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!stats!\inputencoding{utf8}
+We perform the Shapiro-Wilk test below, using the \inputencoding{latin9}\lstinline[showstringspaces=false]!shapiro.test!\inputencoding{utf8}
+function from the \inputencoding{latin9}\lstinline[showstringspaces=false]!stats!\inputencoding{utf8}
 package. The hypotheses are\[
 H_{0}:\mbox{ the residuals are normally distributed }\]
 versus\[
@@ -12686,8 +12640,8 @@ We reject the null hypothesis if $BP$ is too large, which happens
 when the explained variation in the new model is large relative to
 the unexplained variation in the original model.
 
-We do it in \textsf{R} with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!bptest!\inputencoding{utf8}
-function from the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!lmtest!\inputencoding{utf8}
+We do it in \textsf{R} with the \inputencoding{latin9}\lstinline[showstringspaces=false]!bptest!\inputencoding{utf8}
+function from the \inputencoding{latin9}\lstinline[showstringspaces=false]!lmtest!\inputencoding{utf8}
 package. 
 
 <<>>=
@@ -12889,9 +12843,9 @@ at the data and use his/her best judgement, in every case.
 
 \subsection{How to do it with \textsf{R}}
 
-We can calculate the standardized residuals with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rstandard!\inputencoding{utf8}
-function. The input is the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!lm!\inputencoding{utf8}
-object, which is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cars.lm!\inputencoding{utf8}.
+We can calculate the standardized residuals with the \inputencoding{latin9}\lstinline[showstringspaces=false]!rstandard!\inputencoding{utf8}
+function. The input is the \inputencoding{latin9}\lstinline[showstringspaces=false]!lm!\inputencoding{utf8}
+object, which is \inputencoding{latin9}\lstinline[showstringspaces=false]!cars.lm!\inputencoding{utf8}.
 
 <<>>=
 sres <- rstandard(cars.lm)
@@ -12908,7 +12862,7 @@ sres[which(abs(sres) > 2)]
 In this case, we see that observations 23, 35, and 49 are potential
 outliers with respect to their $y$-value.
 
-We can compute the studentized deleted residuals with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rstudent!\inputencoding{utf8}:
+We can compute the studentized deleted residuals with \inputencoding{latin9}\lstinline[showstringspaces=false]!rstudent!\inputencoding{utf8}:
 
 <<>>=
 sdelres <- rstudent(cars.lm)
@@ -12925,7 +12879,7 @@ sdelres[which(abs(sdelres) > t0.005)]
 @
 
 This means that observations 23 and 49 have a large studentized deleted
-residual. The leverages can be found with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!hatvalues!\inputencoding{utf8}
+residual. The leverages can be found with the \inputencoding{latin9}\lstinline[showstringspaces=false]!hatvalues!\inputencoding{utf8}
 function:
 
 <<>>=
@@ -12968,7 +12922,7 @@ then the observation has a large impact on those regression coefficients.
 We label observations as suspicious if their $DFBETAS$ have magnitude
 greater 1 for small data or $2/\sqrt{n}$ for large data sets.
 
-We can calculate the $DFBETAS$ with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!dfbetas!\inputencoding{utf8}
+We can calculate the $DFBETAS$ with the \inputencoding{latin9}\lstinline[showstringspaces=false]!dfbetas!\inputencoding{utf8}
 function (some output has been omitted):
 
 <<>>=
@@ -12977,8 +12931,8 @@ head(dfb)
 @
 
 We see that the inclusion of the first observation slightly increases
-the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Intercept!\inputencoding{utf8}
-and slightly decreases the coefficient on \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!speed!\inputencoding{utf8}.
+the \inputencoding{latin9}\lstinline[showstringspaces=false]!Intercept!\inputencoding{utf8}
+and slightly decreases the coefficient on \inputencoding{latin9}\lstinline[showstringspaces=false]!speed!\inputencoding{utf8}.
 
 We can measure the influence that an observation has on its fitted
 value with $DFFITS$. These are calculated by deleting an observation,
@@ -12990,7 +12944,7 @@ formula is
 The value represents the number of standard deviations of $\hat{Y_{i}}$
 that the fitted value $\hat{Y_{i}}$ increases or decreases with the
 inclusion of the $i$$^{\textrm{th}}$ observation. We can compute
-them with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!dffits!\inputencoding{utf8}
+them with the \inputencoding{latin9}\lstinline[showstringspaces=false]!dffits!\inputencoding{utf8}
 function.
 
 <<>>=
@@ -13027,7 +12981,7 @@ percentile as being extreme.
 
 \subsection{How to do it with \textsf{R}}
 
-We can calculate the Cook's Distances with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cooks.distance!\inputencoding{utf8}
+We can calculate the Cook's Distances with the \inputencoding{latin9}\lstinline[showstringspaces=false]!cooks.distance!\inputencoding{utf8}
 function.
 
 <<>>=
@@ -13035,7 +12989,7 @@ cooksD <- cooks.distance(cars.lm)
 cooksD[1:5]
 @
 
-We can look at a plot of the Cook's distances with the command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!plot(cars.lm, which = 4)!\inputencoding{utf8}.
+We can look at a plot of the Cook's distances with the command \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!plot(cars.lm, which = 4)!\inputencoding{utf8}.
 
 %
 \begin{figure}
@@ -13071,7 +13025,7 @@ Cook's distance, after all.
 
 We can display the result of diagnostic checking all at once in one
 table, with potentially influential points displayed. We do it with
-the command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!influence.measures(cars.lm)!\inputencoding{utf8}:
+the command \inputencoding{latin9}\lstinline[showstringspaces=false]!influence.measures(cars.lm)!\inputencoding{utf8}:
 
 <<eval = FALSE>>=
 influence.measures(cars.lm)
@@ -13090,9 +13044,9 @@ plot(cars.lm)
 par(mfrow = c(1,1))
 @
 
-The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!par!\inputencoding{utf8}
+The \inputencoding{latin9}\lstinline[showstringspaces=false]!par!\inputencoding{utf8}
 command is used so that $2\times2=4$ plots will be shown on the same
-display. The diagnostic plots for the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cars!\inputencoding{utf8}
+display. The diagnostic plots for the \inputencoding{latin9}\lstinline[showstringspaces=false]!cars!\inputencoding{utf8}
 data are shown in Figure BLANK:
 
 %
@@ -13119,9 +13073,9 @@ but low/moderate leverage (they are on the right side of the plot,
 just above the horizontal line). Observation 49 has a large residual
 with a comparatively large leverage. 
 
-We can identify the observations with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!identify!\inputencoding{utf8}
+We can identify the observations with the \inputencoding{latin9}\lstinline[showstringspaces=false]!identify!\inputencoding{utf8}
 command; it allows us to display the observation number of dots on
-the plot. First, we plot the graph, then we call \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!identify!\inputencoding{utf8}:
+the plot. First, we plot the graph, then we call \inputencoding{latin9}\lstinline[showstringspaces=false]!identify!\inputencoding{utf8}:
 
 <<eval = FALSE, keep.source = TRUE>>=
 plot(cars.lm, which = 5)   # std'd resids vs lev plot
@@ -13219,14 +13173,14 @@ black cherry trees. Note that girth is the diameter of the tree (in
 inches) measured at 4\,ft 6\,in above the ground. The variables
 are
 \begin{enumerate}
-\item \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth!\inputencoding{utf8}:
+\item \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}:
 tree diameter in inches (denoted $x_{1}$)
-\item \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Height!\inputencoding{utf8}:
+\item \inputencoding{latin9}\lstinline[showstringspaces=false]!Height!\inputencoding{utf8}:
 tree height in feet ($x_{2}$).
-\item \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Volume!\inputencoding{utf8}:
+\item \inputencoding{latin9}\lstinline[showstringspaces=false]!Volume!\inputencoding{utf8}:
 volume of the tree in cubic feet. ($y$)
 \end{enumerate}
-The data are in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!datasets!\inputencoding{utf8}
+The data are in the \inputencoding{latin9}\lstinline[showstringspaces=false]!datasets!\inputencoding{utf8}
 package and are already on the search path; they can be viewed with
 
 <<>>=
@@ -13235,8 +13189,8 @@ head(trees)
 
 Let us take a look at a visual display of the data. For multiple variables,
 instead of a simple scatterplot we use a scatterplot matrix which
-is made with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!splom!\inputencoding{utf8}
-function in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!lattice!\inputencoding{utf8}
+is made with the \inputencoding{latin9}\lstinline[showstringspaces=false]!splom!\inputencoding{utf8}
+function in the \inputencoding{latin9}\lstinline[showstringspaces=false]!lattice!\inputencoding{utf8}
 package as shown below. The plot is shown in Figure BLANK.
 
 %
@@ -13258,12 +13212,12 @@ library(lattice)
 splom(trees)
 @
 
-The dependent (response) variable \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Volume!\inputencoding{utf8}
+The dependent (response) variable \inputencoding{latin9}\lstinline[showstringspaces=false]!Volume!\inputencoding{utf8}
 is listed in the first row of the scatterplot matrix. Moving from
 left to right, we see an approximately linear relationship between
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Volume!\inputencoding{utf8}
-and the independent (explanatory) variables \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Height!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth!\inputencoding{utf8}.
+\inputencoding{latin9}\lstinline[showstringspaces=false]!Volume!\inputencoding{utf8}
+and the independent (explanatory) variables \inputencoding{latin9}\lstinline[showstringspaces=false]!Height!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}.
 A first guess at a model for these data might be\begin{equation}
 Y=\beta_{0}+\beta_{1}x_{1}+\beta_{2}x_{2}+\epsilon,\end{equation}
 in which case the quantity $\mu(x_{1},x_{2})=\beta_{0}+\beta_{1}x_{1}+\beta_{2}x_{2}$
@@ -13274,18 +13228,18 @@ would represent the mean value of $Y$ at the point $(x_{1},x_{2})$.
 \subsection*{What does it mean?}
 
 The interpretation is simple. The intercept $\beta_{0}$ represents
-the mean \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Volume!\inputencoding{utf8}
+the mean \inputencoding{latin9}\lstinline[showstringspaces=false]!Volume!\inputencoding{utf8}
 when all other independent variables are zero. The parameter $\beta_{i}$
-represents the change in mean \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Volume!\inputencoding{utf8}
+represents the change in mean \inputencoding{latin9}\lstinline[showstringspaces=false]!Volume!\inputencoding{utf8}
 when there is a unit increase in $x_{i}$, while the other independent
-variable is held constant. For the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!trees!\inputencoding{utf8}
-data, $\beta_{1}$ represents the change in average \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Volume!\inputencoding{utf8}
-as \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth!\inputencoding{utf8}
-increases by one unit when the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Height!\inputencoding{utf8}
+variable is held constant. For the \inputencoding{latin9}\lstinline[showstringspaces=false]!trees!\inputencoding{utf8}
+data, $\beta_{1}$ represents the change in average \inputencoding{latin9}\lstinline[showstringspaces=false]!Volume!\inputencoding{utf8}
+as \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}
+increases by one unit when the \inputencoding{latin9}\lstinline[showstringspaces=false]!Height!\inputencoding{utf8}
 is held constant, and $\beta_{2}$ represents the change in average
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Volume!\inputencoding{utf8}
-as \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Height!\inputencoding{utf8}
-increases by one unit when the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth!\inputencoding{utf8}
+\inputencoding{latin9}\lstinline[showstringspaces=false]!Volume!\inputencoding{utf8}
+as \inputencoding{latin9}\lstinline[showstringspaces=false]!Height!\inputencoding{utf8}
+increases by one unit when the \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}
 is held constant.
 
 In simple linear regression, we had one independent variable and our
@@ -13295,14 +13249,14 @@ surface will be many-D\ldots{} in general, a hyperplane. But when
 there are only two explanatory variables the hyperplane is just an
 ordinary plane and we can look at it with a 3D scatterplot. 
 
-One way to do this is with the \textsf{R} Commander in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
+One way to do this is with the \textsf{R} Commander in the \inputencoding{latin9}\lstinline[showstringspaces=false]!Rcmdr!\inputencoding{utf8}
 package. It has a 3D scatterplot option under the \textsf{Graphs}
 menu. It is especially great because the resulting graph is dynamic;
 it can be moved around with the mouse, zoomed, \emph{etc}. But that
 particular display does not translate well to a printed book.
 
-Another way to do it is with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!scatterplot3d!\inputencoding{utf8}
-function in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!scatterplot3d!\inputencoding{utf8}
+Another way to do it is with the \inputencoding{latin9}\lstinline[showstringspaces=false]!scatterplot3d!\inputencoding{utf8}
+function in the \inputencoding{latin9}\lstinline[showstringspaces=false]!scatterplot3d!\inputencoding{utf8}
 package. The syntax follows, and the result is shown in Figure BLANK.
 
 <<eval = FALSE>>=
@@ -13385,7 +13339,7 @@ interested reader to BLANK.
 \subsection{How to do it with \textsf{R}}
 
 We do all of the above just as we would in simple linear regression.
-The powerhouse is the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!lm!\inputencoding{utf8}
+The powerhouse is the \inputencoding{latin9}\lstinline[showstringspaces=false]!lm!\inputencoding{utf8}
 function. Everything else is based on it. We separate explanatory
 variables in the model formula by a plus sign.
 
@@ -13394,13 +13348,13 @@ trees.lm <- lm(Volume ~ Girth + Height, data = trees)
 trees.lm
 @
 
-We see from the output that for the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!trees!\inputencoding{utf8}
+We see from the output that for the \inputencoding{latin9}\lstinline[showstringspaces=false]!trees!\inputencoding{utf8}
 data our parameter estimates are $\mathbf{b}=\begin{bmatrix}-58.0 & 4.7 & 0.3\end{bmatrix}$,
 and consequently our estimate of the mean response is $\hat{\mu}$
 given by \begin{alignat}{1}
 \hat{\mu}(x_{1},x_{2})= & \ b_{0}+b_{1}x_{1}+b_{2}x_{2},\\
 \approx & -58.0+4.7x_{1}+0.3x_{2}.\end{alignat}
-We could see the entire model matrix $\mathbf{X}$ with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!model.matrix!\inputencoding{utf8}
+We could see the entire model matrix $\mathbf{X}$ with the \inputencoding{latin9}\lstinline[showstringspaces=false]!model.matrix!\inputencoding{utf8}
 function, but in the interest of brevity we only show the first few
 rows.
 
@@ -13436,8 +13390,8 @@ matrix}) which means that $\mathbf{H}^{2}=\mathbf{H}$. The same is
 true of $\mathbf{I}-\mathbf{H}$.
 \end{itemize}
 Now let us write a column vector $\mathbf{x}_{0}=(x_{10},x_{20})^{\mathrm{T}}$
-to denote given values of the explanatory variables \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Girth =!\inputencoding{utf8}
-$x_{10}$ and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Height =!\inputencoding{utf8}
+to denote given values of the explanatory variables \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth =!\inputencoding{utf8}
+$x_{10}$ and \inputencoding{latin9}\lstinline[showstringspaces=false]!Height =!\inputencoding{utf8}
 $x_{20}$. These values may match those of the collected data, or
 they may be completely new values not observed in the original data
 set. We may use the parameter estimates to find $\hat{Y}(\mathbf{x}_{0})$,
@@ -13455,22 +13409,22 @@ which is just a fancy way to write\begin{equation}
  
 \begin{example}
 If we wanted to predict the average volume of black cherry trees that
-have \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Girth = 15!\inputencoding{utf8}\,in
-and are \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Height = 77!\inputencoding{utf8}\,ft
+have \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth = 15!\inputencoding{utf8}\,in
+and are \inputencoding{latin9}\lstinline[showstringspaces=false]!Height = 77!\inputencoding{utf8}\,ft
 tall then we would use the estimate \begin{alignat*}{1}
 \hat{\mu}(15,\,77)= & -58+4.7(15)+0.3(77),\\
 \approx & 35.6\mbox{\,\ ft}^{3}.\end{alignat*}
 We would use the same estimate $\hat{Y}=35.6$ to predict the measured
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Volume!\inputencoding{utf8}
-of another black cherry tree -- yet to be observed -- that has \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Girth = 15!\inputencoding{utf8}\,in
-and is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Height = 77!\inputencoding{utf8}\,ft
+\inputencoding{latin9}\lstinline[showstringspaces=false]!Volume!\inputencoding{utf8}
+of another black cherry tree -- yet to be observed -- that has \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth = 15!\inputencoding{utf8}\,in
+and is \inputencoding{latin9}\lstinline[showstringspaces=false]!Height = 77!\inputencoding{utf8}\,ft
 tall.
 \end{example}
 
 \subsection{How to do it with \textsf{R}}
 
-The fitted values are stored inside \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!trees.lm!\inputencoding{utf8}
-and may be accessed with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!fitted!\inputencoding{utf8}
+The fitted values are stored inside \inputencoding{latin9}\lstinline[showstringspaces=false]!trees.lm!\inputencoding{utf8}
+and may be accessed with the \inputencoding{latin9}\lstinline[showstringspaces=false]!fitted!\inputencoding{utf8}
 function. We only show the first five fitted values.
 
 <<>>=
@@ -13478,15 +13432,15 @@ fitted(trees.lm)[1:5]
 @
 
 The syntax for general prediction does not change much from simple
-linear regression. The computations are done with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!predict!\inputencoding{utf8}
+linear regression. The computations are done with the \inputencoding{latin9}\lstinline[showstringspaces=false]!predict!\inputencoding{utf8}
 function as described below.
 
 The only difference from SLR is in the way we tell \textsf{R} the
 values of the explanatory variables for which we want predictions.
 In SLR we had only one independent variable but in MLR we have many
-(for the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!trees!\inputencoding{utf8}
+(for the \inputencoding{latin9}\lstinline[showstringspaces=false]!trees!\inputencoding{utf8}
 data we have two). We will store values for the independent variables
-in the data frame \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!new!\inputencoding{utf8},
+in the data frame \inputencoding{latin9}\lstinline[showstringspaces=false]!new!\inputencoding{utf8},
 which has two columns (one for each independent variable) and three
 rows (we shall make predictions at three different locations).
 
@@ -13510,12 +13464,12 @@ predict(trees.lm, newdata = new)
 treesFIT <- round(predict(trees.lm, newdata = new), 1)
 @
 \begin{example}
-Using the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!trees!\inputencoding{utf8}
+Using the \inputencoding{latin9}\lstinline[showstringspaces=false]!trees!\inputencoding{utf8}
 data,
 \begin{enumerate}
-\item Report a point estimate of the mean \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Volume!\inputencoding{utf8}
-of a tree of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth!\inputencoding{utf8}
-9.1\,in and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Height!\inputencoding{utf8}
+\item Report a point estimate of the mean \inputencoding{latin9}\lstinline[showstringspaces=false]!Volume!\inputencoding{utf8}
+of a tree of \inputencoding{latin9}\lstinline!Girth!\inputencoding{utf8}
+9.1\,in and \inputencoding{latin9}\lstinline[showstringspaces=false]!Height!\inputencoding{utf8}
 69\,ft.
 
 
@@ -13523,14 +13477,14 @@ The fitted value for $x_{1}=9.1$ and $x_{2}=69$ is \Sexpr{treesFIT[1]},
 so a point estimate would be \Sexpr{treesFIT[1]} cubic feet. 
 
 \item Report a point prediction for and a 95\% prediction interval for the
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Volume!\inputencoding{utf8}
-of a hypothetical tree of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth!\inputencoding{utf8}
-12.5\,in and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Height!\inputencoding{utf8}
+\inputencoding{latin9}\lstinline[showstringspaces=false]!Volume!\inputencoding{utf8}
+of a hypothetical tree of \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}
+12.5\,in and \inputencoding{latin9}\lstinline[showstringspaces=false]!Height!\inputencoding{utf8}
 87\,ft.
 
 
 The fitted value for $x_{1}=12.5$ and $x_{2}=87$ is \Sexpr{treesFIT[3]},
-so a point prediction for the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Volume!\inputencoding{utf8}
+so a point prediction for the \inputencoding{latin9}\lstinline[showstringspaces=false]!Volume!\inputencoding{utf8}
 is \Sexpr{treesFIT[3]} cubic feet. 
 
 \end{enumerate}
@@ -13558,18 +13512,18 @@ $S=\sqrt{S^{2}}$.
 
 \subsection{How to do it with \textsf{R}}
 
-The residuals are also stored with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!trees.lm!\inputencoding{utf8}
-and may be accessed with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!residuals!\inputencoding{utf8}
+The residuals are also stored with \inputencoding{latin9}\lstinline[showstringspaces=false]!trees.lm!\inputencoding{utf8}
+and may be accessed with the \inputencoding{latin9}\lstinline[showstringspaces=false]!residuals!\inputencoding{utf8}
 function. We only show the first five residuals.
 
 <<>>=
 residuals(trees.lm)[1:5]
 @
 
-The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!summary!\inputencoding{utf8}
-function output (shown later) lists the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Residual Standard Error!\inputencoding{utf8}
-which is just $S=\sqrt{S^{2}}$. It is stored in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!sigma!\inputencoding{utf8}
-component of the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!summary!\inputencoding{utf8}
+The \inputencoding{latin9}\lstinline[showstringspaces=false]!summary!\inputencoding{utf8}
+function output (shown later) lists the \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!Residual Standard Error!\inputencoding{utf8}
+which is just $S=\sqrt{S^{2}}$. It is stored in the \inputencoding{latin9}\lstinline[showstringspaces=false]!sigma!\inputencoding{utf8}
+component of the \inputencoding{latin9}\lstinline[showstringspaces=false]!summary!\inputencoding{utf8}
 object.
 
 <<>>=
@@ -13577,7 +13531,7 @@ treesumry <- summary(trees.lm)
 treesumry$sigma
 @
 
-For the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!trees!\inputencoding{utf8}
+For the \inputencoding{latin9}\lstinline[showstringspaces=false]!trees!\inputencoding{utf8}
 data we find $s\approx$ \Sexpr{round(treesumry$sigma, 3)}.
 
 
@@ -13626,7 +13580,7 @@ classes. See C.R. Rao for more.%
 
 \subsection{How to do it with \textsf{R}}
 
-To get confidence intervals for the parameters we need only use \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!confint!\inputencoding{utf8}:
+To get confidence intervals for the parameters we need only use \inputencoding{latin9}\lstinline[showstringspaces=false]!confint!\inputencoding{utf8}:
 
 <<>>=
 confint(trees.lm)
@@ -13637,7 +13591,7 @@ treesPAR <- round(confint(trees.lm), 1)
 @
 
 For example, using the calculations above we say that for the regression
-model \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Volume ~ Girth + Height!\inputencoding{utf8}
+model \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!Volume ~ Girth + Height!\inputencoding{utf8}
 we are 95\% confident that the parameter $\beta_{1}$ lies somewhere
 in the interval {[}\Sexpr{treesPAR[2, 1]}, \Sexpr{treesPAR[2, 2]}{]}.
 
@@ -13675,7 +13629,7 @@ just as in Section BLANK.
 
 The syntax is identical to that used in SLR, with the proviso that
 we need to specify values of the independent variables in the data
-frame \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!new!\inputencoding{utf8}
+frame \inputencoding{latin9}\lstinline[showstringspaces=false]!new!\inputencoding{utf8}
 as we did in Section BLANK (which we repeat here for illustration).
 
 <<>>=
@@ -13702,36 +13656,36 @@ predict(trees.lm, newdata = new, interval = "prediction")
 treesPI <- round(predict(trees.lm, newdata = new, interval = "prediction"), 1)
 @
 
-As before, the interval type is decided by the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!interval!\inputencoding{utf8}
+As before, the interval type is decided by the \inputencoding{latin9}\lstinline[showstringspaces=false]!interval!\inputencoding{utf8}
 argument and the default confidence level is 95\% (which can be changed
-with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!level!\inputencoding{utf8}
+with the \inputencoding{latin9}\lstinline[showstringspaces=false]!level!\inputencoding{utf8}
 argument). 
 \begin{example}
-Using the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!trees!\inputencoding{utf8}
+Using the \inputencoding{latin9}\lstinline[showstringspaces=false]!trees!\inputencoding{utf8}
 data,
 \begin{enumerate}
-\item Report a 95\% confidence interval for the mean \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Volume!\inputencoding{utf8}
-of a tree of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth!\inputencoding{utf8}
-9.1\,in and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Height!\inputencoding{utf8}
+\item Report a 95\% confidence interval for the mean \inputencoding{latin9}\lstinline[showstringspaces=false]!Volume!\inputencoding{utf8}
+of a tree of \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}
+9.1\,in and \inputencoding{latin9}\lstinline[showstringspaces=false]!Height!\inputencoding{utf8}
 69\,ft.
 
 
 The 95\% CI is given by {[}\Sexpr{treesCI[1, 2]}, \Sexpr{treesCI[1, 3]}{]},
-so with 95\% confidence the mean \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Volume!\inputencoding{utf8}
+so with 95\% confidence the mean \inputencoding{latin9}\lstinline[showstringspaces=false]!Volume!\inputencoding{utf8}
 lies somewhere between \Sexpr{treesCI[1, 2]} cubic feet and \Sexpr{treesCI[1, 3]}
 cubic feet.
 
-\item Report a 95\% prediction interval for the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Volume!\inputencoding{utf8}
-of a hypothetical tree of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth!\inputencoding{utf8}
-12.5\,in and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Height!\inputencoding{utf8}
+\item Report a 95\% prediction interval for the \inputencoding{latin9}\lstinline[showstringspaces=false]!Volume!\inputencoding{utf8}
+of a hypothetical tree of \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}
+12.5\,in and \inputencoding{latin9}\lstinline[showstringspaces=false]!Height!\inputencoding{utf8}
 87\,ft.
 
 
 The 95\% prediction interval is given by {[}\Sexpr{treesCI[3, 2]},
 \Sexpr{treesCI[3, 3]}{]}, so with 95\% confidence we may assert that
-the hypothetical \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Volume!\inputencoding{utf8}
-of a tree of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth!\inputencoding{utf8}
-12.5\,in and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Height!\inputencoding{utf8}
+the hypothetical \inputencoding{latin9}\lstinline[showstringspaces=false]!Volume!\inputencoding{utf8}
+of a tree of \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}
+12.5\,in and \inputencoding{latin9}\lstinline[showstringspaces=false]!Height!\inputencoding{utf8}
 87\,ft would lie somewhere between \Sexpr{treesCI[3, 2]} cubic feet
 and \Sexpr{treesCI[3, 3]} feet.
 
@@ -13787,11 +13741,11 @@ variables in the model.
 
 \subsection{How to do it with \textsf{R}}
 
-For the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!trees!\inputencoding{utf8}
-data, we can get $R^{2}$ and $\overline{R}^{2}$ from the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!summary!\inputencoding{utf8}
+For the \inputencoding{latin9}\lstinline[showstringspaces=false]!trees!\inputencoding{utf8}
+data, we can get $R^{2}$ and $\overline{R}^{2}$ from the \inputencoding{latin9}\lstinline[showstringspaces=false]!summary!\inputencoding{utf8}
 output or access the values directly by name as shown (recall that
-we stored the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!summary!\inputencoding{utf8}
-object in \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!treesumry!\inputencoding{utf8}).
+we stored the \inputencoding{latin9}\lstinline[showstringspaces=false]!summary!\inputencoding{utf8}
+object in \inputencoding{latin9}\lstinline[showstringspaces=false]!treesumry!\inputencoding{utf8}).
 
 <<>>=
 treesumry$r.squared
@@ -13821,19 +13775,19 @@ variation is large relative to the unexplained variation.$ $
 \subsection{How to do it with \textsf{R}}
 
 The overall $F$ statistic and its associated \emph{p}-value is listed
-at the bottom of the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!summary!\inputencoding{utf8}
+at the bottom of the \inputencoding{latin9}\lstinline[showstringspaces=false]!summary!\inputencoding{utf8}
 output, or we can access it directly by name; it is stored in the
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!fstatistic!\inputencoding{utf8}
-component of the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!summary!\inputencoding{utf8}
+\inputencoding{latin9}\lstinline[showstringspaces=false]!fstatistic!\inputencoding{utf8}
+component of the \inputencoding{latin9}\lstinline[showstringspaces=false]!summary!\inputencoding{utf8}
 object. 
 
 <<>>=
 treesumry$fstatistic
 @
 
-For the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!trees!\inputencoding{utf8}
+For the \inputencoding{latin9}\lstinline[showstringspaces=false]!trees!\inputencoding{utf8}
 data, we see that $F=$ \Sexpr{treesumry$fstatistic[1]} with a \emph{p}-value
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!< 2.2e-16!\inputencoding{utf8}.
+\inputencoding{latin9}\lstinline[showstringspaces=false]!< 2.2e-16!\inputencoding{utf8}.
 Consequently we reject $H_{0}$, that is, the data provide strong
 evidence that not all $\beta_{i}$'s are zero.
 
@@ -13874,7 +13828,7 @@ has a $\mathsf{t}(\mathtt{df}=n-p-1)$ distribution.
 \subsection{How to do it with \textsf{R}}
 
 The Student's $t$ tests for significance of the individual explanatory
-variables are shown in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!summary!\inputencoding{utf8}
+variables are shown in the \inputencoding{latin9}\lstinline[showstringspaces=false]!summary!\inputencoding{utf8}
 output.
 
 <<>>=
@@ -13882,12 +13836,12 @@ treesumry
 @
 
 We see from the \emph{p}-values that there is a significant linear
-relationship between \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Volume!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth!\inputencoding{utf8}
-and between \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Volume!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Height!\inputencoding{utf8}
-in the regression model \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Volume ~ Girth + Height!\inputencoding{utf8}.
-Further, it appears that the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Intercept!\inputencoding{utf8}
+relationship between \inputencoding{latin9}\lstinline[showstringspaces=false]!Volume!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}
+and between \inputencoding{latin9}\lstinline[showstringspaces=false]!Volume!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!Height!\inputencoding{utf8}
+in the regression model \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!Volume ~ Girth + Height!\inputencoding{utf8}.
+Further, it appears that the \inputencoding{latin9}\lstinline[showstringspaces=false]!Intercept!\inputencoding{utf8}
 is significant in the aforementioned model.
 
 
@@ -13904,8 +13858,8 @@ In every case the scatterplots indicated that our assumption was reasonable.
 Sometimes, however, plots of the data suggest that the linear model
 is incomplete and should be modified. 
 
-For example, let us examine a scatterplot of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Volume!\inputencoding{utf8}
-versus \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth!\inputencoding{utf8}
+For example, let us examine a scatterplot of \inputencoding{latin9}\lstinline[showstringspaces=false]!Volume!\inputencoding{utf8}
+versus \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}
 a little more closely. See Figure BLANK.
 
 %
@@ -13946,19 +13900,19 @@ fitting the model. That is, we replace the $x_{i}$'s with $x_{i}-\xbar$
 \subsection*{How to do it with \textsf{R}}
 
 There are at least two ways to fit a quadratic model to the variables
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Volume!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth!\inputencoding{utf8}
+\inputencoding{latin9}\lstinline[showstringspaces=false]!Volume!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}
 using \textsf{R}.
 \begin{enumerate}
-\item One way would be to square the values for \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth!\inputencoding{utf8}
-and save them in a vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girthsq!\inputencoding{utf8}.
-Next, fit the linear model \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Volume ~ Girth + Girthsq!\inputencoding{utf8}.
+\item One way would be to square the values for \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}
+and save them in a vector \inputencoding{latin9}\lstinline[showstringspaces=false]!Girthsq!\inputencoding{utf8}.
+Next, fit the linear model \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!Volume ~ Girth + Girthsq!\inputencoding{utf8}.
 \item Another way would be to use the \emph{insulate} function in \textsf{R},
 denoted by \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!I!\inputencoding{utf8}:
 
 
 \inputencoding{latin9}
-\begin{lstlisting}[basicstyle={\ttfamily}]
+\begin{lstlisting}[showstringspaces=false]
 Volume ~ Girth + I(Girth^2)
 \end{lstlisting}
 \inputencoding{utf8}
@@ -13966,13 +13920,13 @@ Volume ~ Girth + I(Girth^2)
 \end{enumerate}
 The second method is shorter and does not use as much of \textsf{R}'s
 memory but the end result is the same. And once we calculate and store
-the fitted model (in, say, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!treesquad.lm!\inputencoding{utf8})
+the fitted model (in, say, \inputencoding{latin9}\lstinline[showstringspaces=false]!treesquad.lm!\inputencoding{utf8})
 all of the previous comments regarding \textsf{R} apply.
 \begin{example}
-We will fit the quadratic model to the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!trees!\inputencoding{utf8}
-data and display the results with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!summary!\inputencoding{utf8}.
-Note that we may rescale the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth!\inputencoding{utf8}
-variable to have zero mean and unit variance on-the-fly with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!scale!\inputencoding{utf8}
+We will fit the quadratic model to the \inputencoding{latin9}\lstinline[showstringspaces=false]!trees!\inputencoding{utf8}
+data and display the results with \inputencoding{latin9}\lstinline[showstringspaces=false]!summary!\inputencoding{utf8}.
+Note that we may rescale the \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}
+variable to have zero mean and unit variance on-the-fly with the \inputencoding{latin9}\lstinline[showstringspaces=false]!scale!\inputencoding{utf8}
 function.
 \end{example}
 <<>>=
@@ -13981,13 +13935,13 @@ summary(treesquad.lm)
 @
 
 We see that the $F$ statistic indicates the overall model including
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth^2!\inputencoding{utf8}
-is significant. Further, there is strong evidence that both \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth^2!\inputencoding{utf8}
-are significantly related to \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Volume!\inputencoding{utf8}.
+\inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth^2!\inputencoding{utf8}
+is significant. Further, there is strong evidence that both \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth^2!\inputencoding{utf8}
+are significantly related to \inputencoding{latin9}\lstinline[showstringspaces=false]!Volume!\inputencoding{utf8}.
 We may examine a scatterplot together with the fitted quadratic function
-using the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!lines!\inputencoding{utf8}
+using the \inputencoding{latin9}\lstinline[showstringspaces=false]!lines!\inputencoding{utf8}
 function, which adds a line to the plot tracing the estimated mean
 response.
 
@@ -13998,7 +13952,7 @@ lines(fitted(treesquad.lm) ~ scale(Girth), data = trees)
 
 The plot is shown in Figure \ref{cap:Fitting-the-Quadratic}. Pay
 attention to the scale on the $x$-axis: it is on the scale of the
-transformed $ $\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth!\inputencoding{utf8}
+transformed \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}
 data and not on the original scale.
 
 %
@@ -14023,8 +13977,8 @@ also include all lower order terms $x$, $x^{2}$, \ldots{},$x^{m-1}$
 in the model. 
 \end{rem}
 We do estimation/prediction the same way that we did in Section BLANK,
-except we do not need a \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Height!\inputencoding{utf8}
-column in the dataframe \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!new!\inputencoding{utf8}
+except we do not need a \inputencoding{latin9}\lstinline[showstringspaces=false]!Height!\inputencoding{utf8}
+column in the dataframe \inputencoding{latin9}\lstinline[showstringspaces=false]!new!\inputencoding{utf8}
 since the variable is not included in the quadratic model.
 
 <<>>=
@@ -14033,8 +13987,8 @@ predict(treesquad.lm, newdata = new, interval = "prediction")
 @
 
 The predictions and intervals are slightly different from what they
-were previously. Notice that it was not necessary to rescale the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth!\inputencoding{utf8}
-prediction data before input to the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!predict!\inputencoding{utf8}
+were previously. Notice that it was not necessary to rescale the \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}
+prediction data before input to the \inputencoding{latin9}\lstinline[showstringspaces=false]!predict!\inputencoding{utf8}
 function; the model did the rescaling for us automatically.
 \begin{rem}
 We have mentioned on several occasions that it is important to rescale
@@ -14045,15 +13999,15 @@ if we ignore this advice:
 summary(lm(Volume ~ Girth + I(Girth^2), data = trees))
 @
 
-Now nothing is significant in the model except \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth^2!\inputencoding{utf8}.
-We could delete the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Intercept!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth!\inputencoding{utf8}
+Now nothing is significant in the model except \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth^2!\inputencoding{utf8}.
+We could delete the \inputencoding{latin9}\lstinline[showstringspaces=false]!Intercept!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}
 from the model, but the model would no longer be \emph{parsimonious}.
 A novice may see the output and be confused about how to proceed,
-while the seasoned statistician recognizes immediately that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth^2!\inputencoding{utf8}
+while the seasoned statistician recognizes immediately that \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth^2!\inputencoding{utf8}
 are highly correlated (see Section BLANK). The only remedy to this
-ailment is to rescale \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth!\inputencoding{utf8},
+ailment is to rescale \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8},
 which we should have done in the first place.
 
 In Example BLANK of Section BLANK we investigate this issue further.
@@ -14062,8 +14016,8 @@ In Example BLANK of Section BLANK we investigate this issue further.
 \section{Interaction}
 
 In our model for tree volume there have been two independent variables:
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Height!\inputencoding{utf8}.
+\inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!Height!\inputencoding{utf8}.
 We may suspect that the independent variables are related, that is,
 values of one variable may tend to influence values of the other.
 It may be desirable to include an additional term in our model to
@@ -14071,11 +14025,11 @@ try and capture the dependence between the variables. Interaction
 terms are formed by multiplying one (or more) explanatory variable(s)
 by another. 
 \begin{example}
-Perhaps the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Height!\inputencoding{utf8}
-of the tree interact to influence the its \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Volume!\inputencoding{utf8};
-we would like to investigate whether the model (\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth!\inputencoding{utf8}
-= $x_{1}$ and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Height!\inputencoding{utf8}
+Perhaps the \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!Height!\inputencoding{utf8}
+of the tree interact to influence the its \inputencoding{latin9}\lstinline[showstringspaces=false]!Volume!\inputencoding{utf8};
+we would like to investigate whether the model (\inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}
+= $x_{1}$ and \inputencoding{latin9}\lstinline[showstringspaces=false]!Height!\inputencoding{utf8}
 = $x_{2}$) \begin{equation}
 Y=\beta_{0}+\beta_{1}x_{1}+\beta_{2}x_{2}+\epsilon\end{equation}
 would be significantly improved by the model
@@ -14109,16 +14063,16 @@ to increase and decrease as $x_{1}$ varies.
 
 There are several ways to introduce an interaction term into the model.
 \begin{enumerate}
-\item Make a new variable \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prod <- Girth * Height!\inputencoding{utf8},
-then include \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!prod!\inputencoding{utf8}
-in the model formula \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Volume ~ Girth + Height + prod!\inputencoding{utf8}.
+\item Make a new variable \inputencoding{latin9}\lstinline[showstringspaces=false]!prod <- Girth * Height!\inputencoding{utf8},
+then include \inputencoding{latin9}\lstinline[showstringspaces=false]!prod!\inputencoding{utf8}
+in the model formula \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!Volume ~ Girth + Height + prod!\inputencoding{utf8}.
 This method is perhaps the most transparent, but it also reserves
 memory space unnecessarily.
 \item Once can construct an interaction term directly in \textsf{R} with
-a colon {}``\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!:!\inputencoding{utf8}''.
-For this example, the model formula would look like \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Volume ~ Girth + Height + Girth:Height!\inputencoding{utf8}.
+a colon {}``\inputencoding{latin9}\lstinline[showstringspaces=false]!:!\inputencoding{utf8}''.
+For this example, the model formula would look like \inputencoding{latin9}\lstinline[showstringspaces=false]!Volume ~ Girth + Height + Girth:Height!\inputencoding{utf8}.
 \end{enumerate}
-For the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!trees!\inputencoding{utf8}
+For the \inputencoding{latin9}\lstinline[showstringspaces=false]!trees!\inputencoding{utf8}
 data, we fit the model with the interaction using method two and see
 if it is significant:
 
@@ -14129,9 +14083,9 @@ summary(treesint.lm)
 
 We can see from the output that the interaction term is highly significant.
 Further, the estimate $b_{1:2}$ is positive. This means that the
-slope of $\mu(x_{2})$ is steeper for bigger values of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth!\inputencoding{utf8}.
+slope of $\mu(x_{2})$ is steeper for bigger values of \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}.
 Keep in mind: the same interpretation holds for $\mu(x_{1})$; that
-is, the slope of $\mu(x_{1})$ is steeper for bigger values of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Height!\inputencoding{utf8}.
+is, the slope of $\mu(x_{1})$ is steeper for bigger values of \inputencoding{latin9}\lstinline[showstringspaces=false]!Height!\inputencoding{utf8}.
 
 For the sake of completeness we calculate confidence intervals for
 the parameters and do prediction as before.
@@ -14143,14 +14097,14 @@ predict(treesint.lm, newdata = new, interval = "prediction")
 @
 \begin{rem}
 There are two other ways to include interaction terms in model formulas.
-For example, we could have written \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth * Height!\inputencoding{utf8}
-or even \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!(Girth + Height)^2!\inputencoding{utf8}
-and both would be the same as \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth + Height + Girth:Height!\inputencoding{utf8}.
+For example, we could have written \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth * Height!\inputencoding{utf8}
+or even \inputencoding{latin9}\lstinline[showstringspaces=false]!(Girth + Height)^2!\inputencoding{utf8}
+and both would be the same as \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth + Height + Girth:Height!\inputencoding{utf8}.
 \end{rem}
 These examples can be generalized to more than two independent variables,
 say three, four, or even more. We may be interested in seeing whether
 any pairwise interactions are significant. We do this with a model
-formula that looks something like\texttt{ }\inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!y ~ (x1 + x2 + x3 + x4)^2!\inputencoding{utf8}. 
+formula that looks something like\texttt{ }\inputencoding{latin9}\lstinline[showstringspaces=false]!y ~ (x1 + x2 + x3 + x4)^2!\inputencoding{utf8}. 
 
 
 \section{Qualitative Explanatory Variables}
@@ -14162,20 +14116,20 @@ variables is qualitative, that is, a \emph{factor}. Qualitative variables
 take values in a set of \emph{levels}, which may or may not be ordered.
 See Section BLANK.
 \begin{note*}
-The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!trees!\inputencoding{utf8}
+The \inputencoding{latin9}\lstinline[showstringspaces=false]!trees!\inputencoding{utf8}
 data do not have any qualitative explanatory variables, so we will
-construct one for illustrative purposes. We will leave the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Girth!\inputencoding{utf8}
-variable alone, but we will replace the variable \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Height!\inputencoding{utf8}
-by a new variable \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Tall!\inputencoding{utf8}
+construct one for illustrative purposes. We will leave the \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}
+variable alone, but we will replace the variable \inputencoding{latin9}\lstinline[showstringspaces=false]!Height!\inputencoding{utf8}
+by a new variable \inputencoding{latin9}\lstinline[showstringspaces=false]!Tall!\inputencoding{utf8}
 which indicates whether or not the cherry tree is taller than a certain
 threshold (which for the sake of argument will be the sample median
-height of 76\,ft). That is, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Tall!\inputencoding{utf8}
+height of 76\,ft). That is, \inputencoding{latin9}\lstinline[showstringspaces=false]!Tall!\inputencoding{utf8}
 will be defined by\begin{equation}
 \mathtt{Tall}=\begin{cases}
 \mathtt{yes}, & \mbox{if }\mathtt{Height}>76,\\
 \mathtt{no}, & \mbox{if }\mathtt{Height}\leq76.\end{cases}\end{equation}
-We can construct \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Tall!\inputencoding{utf8}
-very quickly in \textsf{R} with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!cut!\inputencoding{utf8}
+We can construct \inputencoding{latin9}\lstinline[showstringspaces=false]!Tall!\inputencoding{utf8}
+very quickly in \textsf{R} with the \inputencoding{latin9}\lstinline[showstringspaces=false]!cut!\inputencoding{utf8}
 function:
 
 <<>>=
@@ -14183,29 +14137,29 @@ trees$Tall <- cut(trees$Height, breaks = c(-Inf, 76, Inf), labels = c("no","yes"
 trees$Tall[1:5]
 @
 
-Note that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Tall!\inputencoding{utf8}
+Note that \inputencoding{latin9}\lstinline[showstringspaces=false]!Tall!\inputencoding{utf8}
 is automatically generated to be a factor with the labels in the correct
-order. See \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!?cut!\inputencoding{utf8}
+order. See \inputencoding{latin9}\lstinline[showstringspaces=false]!?cut!\inputencoding{utf8}
 for more. 
 
 \end{note*}
-Once we have \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Tall!\inputencoding{utf8}
+Once we have \inputencoding{latin9}\lstinline[showstringspaces=false]!Tall!\inputencoding{utf8}
 we include it in the regression model just like we would any other
 variable. It is handled internally in a special way. Define a {}``dummy
-variable'' \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Tallyes!\inputencoding{utf8}
+variable'' \inputencoding{latin9}\lstinline[showstringspaces=false]!Tallyes!\inputencoding{utf8}
 that takes values\begin{equation}
 \mathtt{Tallyes}=\begin{cases}
 1, & \mbox{if }\mathtt{Tall}=\mathtt{yes},\\
 0, & \mbox{otherwise.}\end{cases}\end{equation}
-That is, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Tallyes!\inputencoding{utf8}
+That is, \inputencoding{latin9}\lstinline[showstringspaces=false]!Tallyes!\inputencoding{utf8}
 is an \emph{indicator} \emph{variable} which indicates when a respective
 tree is tall. The model may now be written as \begin{equation}
 \mathtt{Volume}=\beta_{0}+\beta_{1}\mathtt{Girth}+\beta_{2}\mathtt{Tallyes}+\epsilon.\end{equation}
 Let us take a look at what this definition does to the mean response.
-Trees with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Tall = yes!\inputencoding{utf8}
+Trees with \inputencoding{latin9}\lstinline[showstringspaces=false]!Tall = yes!\inputencoding{utf8}
 will have the mean response\begin{equation}
 \mu(\mathtt{Girth})=(\beta_{0}+\beta_{2})+\beta_{1}\mathtt{Girth},\end{equation}
-while trees with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Tall = no!\inputencoding{utf8}
+while trees with \inputencoding{latin9}\lstinline[showstringspaces=false]!Tall = no!\inputencoding{utf8}
 will have the mean response\begin{equation}
 \mu(\mathtt{Girth})=\beta_{0}+\beta_{1}\mathtt{Girth}.\end{equation}
 In essence, we are fitting two regression lines: one for tall trees,
@@ -14217,7 +14171,7 @@ far apart).
 \subsection*{How to do it with \textsf{R}}
 
 The important thing is to double check that the qualitative variable
-in question is stored as a factor. The way to check is with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!class!\inputencoding{utf8}
+in question is stored as a factor. The way to check is with the \inputencoding{latin9}\lstinline[showstringspaces=false]!class!\inputencoding{utf8}
 command. For example,
 
 <<>>=
@@ -14225,7 +14179,7 @@ class(trees$Tall)
 @
 
 If the qualitative variable is not yet stored as a factor then we
-may convert it to one with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!factor!\inputencoding{utf8}
+may convert it to one with the \inputencoding{latin9}\lstinline[showstringspaces=false]!factor!\inputencoding{utf8}
 command. See Appendix BLANK. Other than this we perform MLR as we
 normally would.
 
@@ -14236,11 +14190,11 @@ summary(treesdummy.lm)
 
 From the output we see that all parameter estimates are statistically
 significant and we conclude that the mean response differs for trees
-with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Tall = yes!\inputencoding{utf8}
-and trees with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Tall = no!\inputencoding{utf8}. 
+with \inputencoding{latin9}\lstinline[showstringspaces=false]!Tall = yes!\inputencoding{utf8}
+and trees with \inputencoding{latin9}\lstinline[showstringspaces=false]!Tall = no!\inputencoding{utf8}. 
 \begin{rem}
-We were somewhat disingenuous when we defined the dummy variable \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Tallyes!\inputencoding{utf8}
-because, in truth, \textsf{R} defines \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Tallyes!\inputencoding{utf8}
+We were somewhat disingenuous when we defined the dummy variable \inputencoding{latin9}\lstinline[showstringspaces=false]!Tallyes!\inputencoding{utf8}
+because, in truth, \textsf{R} defines \inputencoding{latin9}\lstinline[showstringspaces=false]!Tallyes!\inputencoding{utf8}
 automatically without input from the user%
 \footnote{That is, \textsf{R} by default handles contrasts according to its
 internal settings which may be customized by the user for fine control.
@@ -14257,10 +14211,10 @@ for more.
 \end{rem}
 
 \begin{rem}
-In general, if an explanatory variable \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!foo!\inputencoding{utf8}
-is qualitative with $n$ levels \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!bar1!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!bar2!\inputencoding{utf8},
-\ldots{}, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!barn!\inputencoding{utf8}
+In general, if an explanatory variable \inputencoding{latin9}\lstinline[showstringspaces=false]!foo!\inputencoding{utf8}
+is qualitative with $n$ levels \inputencoding{latin9}\lstinline[showstringspaces=false]!bar1!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!bar2!\inputencoding{utf8},
+\ldots{}, \inputencoding{latin9}\lstinline[showstringspaces=false]!barn!\inputencoding{utf8}
 then \textsf{R} will by default automatically define $n-1$ indicator
 variables in the following way:\begin{eqnarray*}
 \mathtt{foobar2} & = & \begin{cases}
@@ -14268,9 +14222,9 @@ variables in the following way:\begin{eqnarray*}
 0, & \mbox{otherwise.}\end{cases},\,\ldots,\,\mathtt{foobarn}=\begin{cases}
 1, & \mbox{if }\mathtt{foo}=\mathtt{"barn"},\\
 0, & \mbox{otherwise.}\end{cases}\end{eqnarray*}
-The level \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!bar1!\inputencoding{utf8}
+The level \inputencoding{latin9}\lstinline[showstringspaces=false]!bar1!\inputencoding{utf8}
 is represented by $\mathtt{foobar2}=\cdots=\mathtt{foobarn}=0$. We
-just need to make sure that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!foo!\inputencoding{utf8}
+just need to make sure that \inputencoding{latin9}\lstinline[showstringspaces=false]!foo!\inputencoding{utf8}
 is stored as a factor and \textsf{R} will take care of the rest.
 \end{rem}
 
@@ -14311,30 +14265,30 @@ lines(Fit ~ Girth, data = treesTall[["no"]])
 
 
 It may look intimidating but there is reason to the madness. First
-we \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!split!\inputencoding{utf8}
-the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!trees!\inputencoding{utf8}
-data into two pieces, with groups determined by the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Tall!\inputencoding{utf8}
-variable. Next we add the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Fit!\inputencoding{utf8}ted
-values to each piece via \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!predict!\inputencoding{utf8}.
-Then we set up a \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!plot!\inputencoding{utf8}
-for the variables \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Volume!\inputencoding{utf8}
-versus \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Girth!\inputencoding{utf8},
-but we do not plot anything yet (\inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!type = n!\inputencoding{utf8})
+we \inputencoding{latin9}\lstinline[showstringspaces=false]!split!\inputencoding{utf8}
+the \inputencoding{latin9}\lstinline[showstringspaces=false]!trees!\inputencoding{utf8}
+data into two pieces, with groups determined by the \inputencoding{latin9}\lstinline[showstringspaces=false]!Tall!\inputencoding{utf8}
+variable. Next we add the \inputencoding{latin9}\lstinline[showstringspaces=false]!Fit!\inputencoding{utf8}ted
+values to each piece via \inputencoding{latin9}\lstinline[showstringspaces=false]!predict!\inputencoding{utf8}.
+Then we set up a \inputencoding{latin9}\lstinline[showstringspaces=false]!plot!\inputencoding{utf8}
+for the variables \inputencoding{latin9}\lstinline[showstringspaces=false]!Volume!\inputencoding{utf8}
+versus \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8},
+but we do not plot anything yet (\inputencoding{latin9}\lstinline[showstringspaces=false]!type = n!\inputencoding{utf8})
 because we want to use different symbols for the two groups. Next
-we add \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!points!\inputencoding{utf8}
-to the plot for the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Tall = yes!\inputencoding{utf8}
-trees and use an open circle for a plot character (\inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!pch = 1!\inputencoding{utf8}),
-followed by \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!points!\inputencoding{utf8}
-for the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Tall = no!\inputencoding{utf8}
-trees with a triangle character (\inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!pch = 2!\inputencoding{utf8}).
-Finally, we add regression \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!lines!\inputencoding{utf8}
+we add \inputencoding{latin9}\lstinline[showstringspaces=false]!points!\inputencoding{utf8}
+to the plot for the \inputencoding{latin9}\lstinline[showstringspaces=false]!Tall = yes!\inputencoding{utf8}
+trees and use an open circle for a plot character (\inputencoding{latin9}\lstinline[showstringspaces=false]!pch = 1!\inputencoding{utf8}),
+followed by \inputencoding{latin9}\lstinline[showstringspaces=false]!points!\inputencoding{utf8}
+for the \inputencoding{latin9}\lstinline[showstringspaces=false]!Tall = no!\inputencoding{utf8}
+trees with a triangle character (\inputencoding{latin9}\lstinline[showstringspaces=false]!pch = 2!\inputencoding{utf8}).
+Finally, we add regression \inputencoding{latin9}\lstinline[showstringspaces=false]!lines!\inputencoding{utf8}
 to the plot, one for each group.
 
 There are other -- shorter -- ways to plot regression lines by groups,
-namely the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!scatterplot!\inputencoding{utf8}
-function in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!car!\inputencoding{utf8}
-package and the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!xyplot!\inputencoding{utf8}
-function in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!lattice!\inputencoding{utf8}
+namely the \inputencoding{latin9}\lstinline[showstringspaces=false]!scatterplot!\inputencoding{utf8}
+function in the \inputencoding{latin9}\lstinline[showstringspaces=false]!car!\inputencoding{utf8}
+package and the \inputencoding{latin9}\lstinline[showstringspaces=false]!xyplot!\inputencoding{utf8}
+function in the \inputencoding{latin9}\lstinline[showstringspaces=false]!lattice!\inputencoding{utf8}
 package. We elected to introduce the reader to the above approach
 since many advanced plots in \textsf{R} are done in a similar, consecutive
 fashion.
@@ -14384,12 +14338,12 @@ $F$ statistic and reject $H_{0}$ if the $p$-value is small.
 The key ingredient above is that the two competing models are \emph{nested}
 in the sense that the reduced model is entirely contained within the
 complete model. The way to test whether the improvement is significant
-is to compute \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!lm!\inputencoding{utf8}
+is to compute \inputencoding{latin9}\lstinline[showstringspaces=false]!lm!\inputencoding{utf8}
 objects both for the complete model and the reduced model then compare
-the answers with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!anova!\inputencoding{utf8}
+the answers with the \inputencoding{latin9}\lstinline[showstringspaces=false]!anova!\inputencoding{utf8}
 function.
 \begin{example}
-For the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!trees!\inputencoding{utf8}
+For the \inputencoding{latin9}\lstinline[showstringspaces=false]!trees!\inputencoding{utf8}
 data, let us fit a polynomial regression model and for the sake of
 argument we will ignore our own good advice and fail to rescale the
 explanatory variables. 
@@ -14399,24 +14353,24 @@ treesfull.lm <- lm(Volume ~ Girth + I(Girth^2) + Height + I(Height^2), data = tr
 summary(treesfull.lm)
 @
 
-In this ill-formed model nothing is significant except \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth^2!\inputencoding{utf8}.
+In this ill-formed model nothing is significant except \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth^2!\inputencoding{utf8}.
 Let us continue down this path and suppose that we would like to try
-a reduced model which contains nothing but \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Girth^2!\inputencoding{utf8}
-(not even an \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Intercept!\inputencoding{utf8}).
+a reduced model which contains nothing but \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth^2!\inputencoding{utf8}
+(not even an \inputencoding{latin9}\lstinline[showstringspaces=false]!Intercept!\inputencoding{utf8}).
 Our two models are now\begin{align*}
 \mbox{the full model:} & \quad Y=\beta_{0}+\beta_{1}x_{1}+\beta_{2}x_{1}^{2}+\beta_{3}x_{2}+\beta_{4}x_{2}^{2}+\epsilon,\\
 \mbox{the reduced model:} & \quad Y=\beta_{1}x_{1}+\beta_{2}x_{1}^{2}+\epsilon,\end{align*}
-We fit the reduced model with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!lm!\inputencoding{utf8}
+We fit the reduced model with \inputencoding{latin9}\lstinline[showstringspaces=false]!lm!\inputencoding{utf8}
 and store the results:
 
 <<>>=
 treesreduced.lm <- lm(Volume ~ -1 + Girth + I(Girth^2), data = trees)
 @
 
-To delete the intercept from the model we used \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!-1!\inputencoding{utf8}
-in the model formula. Next we compare the two models with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!anova!\inputencoding{utf8}
+To delete the intercept from the model we used \inputencoding{latin9}\lstinline[showstringspaces=false]!-1!\inputencoding{utf8}
+in the model formula. Next we compare the two models with the \inputencoding{latin9}\lstinline[showstringspaces=false]!anova!\inputencoding{utf8}
 function. The convention is to list the models from smallest to largest.
 
 <<>>=
@@ -14424,11 +14378,11 @@ anova(treesreduced.lm, treesfull.lm)
 @
 
 We see from the output that the complete model is highly significant
-compared to the model that does not incorporate \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Height!\inputencoding{utf8}
-or the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Intercept!\inputencoding{utf8}.
-We wonder (with our tongue in our cheek) if the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Height^2!\inputencoding{utf8}
+compared to the model that does not incorporate \inputencoding{latin9}\lstinline[showstringspaces=false]!Height!\inputencoding{utf8}
+or the \inputencoding{latin9}\lstinline[showstringspaces=false]!Intercept!\inputencoding{utf8}.
+We wonder (with our tongue in our cheek) if the \inputencoding{latin9}\lstinline[showstringspaces=false]!Height^2!\inputencoding{utf8}
 term in the full model is causing all of the trouble. We will fit
-an alternative reduced model that only deletes \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Height^2!\inputencoding{utf8}.
+an alternative reduced model that only deletes \inputencoding{latin9}\lstinline[showstringspaces=false]!Height^2!\inputencoding{utf8}.
 
 <<>>=
 treesreduced2.lm <- lm(Volume ~ Girth + I(Girth^2) + Height, data = trees)
@@ -14436,12 +14390,12 @@ anova(treesreduced2.lm, treesfull.lm)
 @
 
 In this case, the improvement to the reduced model that is attributable
-to \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Height^2!\inputencoding{utf8}
-is not significant, so we can delete \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Height^2!\inputencoding{utf8}
+to \inputencoding{latin9}\lstinline[showstringspaces=false]!Height^2!\inputencoding{utf8}
+is not significant, so we can delete \inputencoding{latin9}\lstinline[showstringspaces=false]!Height^2!\inputencoding{utf8}
 from the model with a clear conscience. We notice that the \emph{p}-value
 for this latest partial $F$ test is 0.8865, which seems to be remarkably
 close to the \emph{p}-value we saw for the univariate \emph{t} test
-of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Height^2!\inputencoding{utf8}
+of \inputencoding{latin9}\lstinline[showstringspaces=false]!Height^2!\inputencoding{utf8}
 at the beginning of this example. In fact, the \emph{p}-values are
 \emph{exactly} the same. Perhaps now we gain some insight into the
 true meaning of the univariate tests.
@@ -14496,8 +14450,8 @@ all of the ones we saw in Chapter BLANK.
 
 \subsection{Nonlinear Regression}
 
-We spent the entire chapter talking about the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!trees!\inputencoding{utf8}
-data, and all of our models looked like \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Volume ~ Girth + Height!\inputencoding{utf8}
+We spent the entire chapter talking about the \inputencoding{latin9}\lstinline[showstringspaces=false]!trees!\inputencoding{utf8}
+data, and all of our models looked like \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!Volume ~ Girth + Height!\inputencoding{utf8}
 or a variant of this model. But let us think again: we know from elementary
 school that the volume of a rectangle is $V=lwh$ and the volume of
 a cylinder (which is closer to what a black cherry tree looks like)
@@ -14505,25 +14459,25 @@ is\begin{equation}
 V=\pi r^{2}h\quad\mbox{or}\quad V=4\pi dh,\end{equation}
 where $r$ and $d$ represent the radius and diameter of the tree,
 respectively. With this in mind, it would seem that a more appropriate
-model for $\mu$ might be $ $\begin{equation}
+model for $\mu$ might be\begin{equation}
 \mu(x_{1},x_{2})=\beta_{0}x_{1}^{\beta_{1}}x_{2}^{\beta_{2}},\end{equation}
 where $\beta_{1}$ and $\beta_{2}$ are parameters to adjust for the
 fact that a black cherry tree is not a perfect cylinder.
 
 How can we fit this model? The model is not linear in the parameters
 any more, so our linear regression methods will not work\ldots{}or
-will they? In the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!trees!\inputencoding{utf8}
+will they? In the \inputencoding{latin9}\lstinline[showstringspaces=false]!trees!\inputencoding{utf8}
 example we may take the logarithm of both sides of Equation BLANK
 to get\begin{equation}
 \mu^{\ast}(x_{1},x_{2})=\ln\left[\mu(x_{1},x_{2})\right]=\ln\beta_{0}+\beta_{1}\ln x_{1}+\beta_{2}\ln x_{2},\end{equation}
 and this new model $\mu^{\ast}$ is linear in the parameters $\beta_{0}^{\ast}=\ln\beta_{0}$,
 $\beta_{1}^{\ast}=\beta_{1}$ and $\beta_{2}^{\ast}=\beta_{2}$. We
-can use what we have learned to fit a linear model \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!log(Volume) ~ log(Girth) + log(Height)!\inputencoding{utf8},
+can use what we have learned to fit a linear model \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!log(Volume) ~ log(Girth) + log(Height)!\inputencoding{utf8},
 and everything will proceed as before, with one exception: we will
 need to be mindful when it comes time to make predictions because
 the model will have been fit on the log scale, and we will need to
 transform our predictions back to the original scale (by exponentiating
-with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!exp!\inputencoding{utf8})
+with \inputencoding{latin9}\lstinline[showstringspaces=false]!exp!\inputencoding{utf8})
 to make sense.
 
 <<>>=
@@ -14556,15 +14510,15 @@ exp(predict(treesNonlin.lm, newdata = new, interval = "confidence"))
 
 The predictions and intervals are slightly different from those calculated
 earlier, but they are close. Note that we did not need to transform
-the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Girth!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!Height!\inputencoding{utf8}
-arguments in the dataframe \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!new!\inputencoding{utf8}.
+the \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!Height!\inputencoding{utf8}
+arguments in the dataframe \inputencoding{latin9}\lstinline[showstringspaces=false]!new!\inputencoding{utf8}.
 All transformations are done for us automatically.
 
 
 \subsection{Real Nonlinear Regression}
 
-We saw with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!trees!\inputencoding{utf8}
+We saw with the \inputencoding{latin9}\lstinline[showstringspaces=false]!trees!\inputencoding{utf8}
 data that a nonlinear model might be more appropriate for the data
 based on theoretical considerations, and we were lucky because the
 functional form of $\mu$ allowed us to take logarithms to transform
@@ -14794,7 +14748,7 @@ curve(dnorm(x, 2, 0.2), add = TRUE)  # overlay true normal density
 \textbf{Bootstrapping the Standard Error of the Median.} In this example
 we extend our study to include more complicated statistics and distributions
 such that we do not know the answer ahead of time. This example uses
-the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rivers!\inputencoding{utf8}
+the \inputencoding{latin9}\lstinline[showstringspaces=false]!rivers!\inputencoding{utf8}
 dataset which gives the lengths (in miles) of 141 \textquotedbl{}major\textquotedbl{}
 rivers in North America, as compiled by the US Geological Survey. 
 
@@ -14802,7 +14756,7 @@ rivers in North America, as compiled by the US Geological Survey.
 stem(rivers)
 @
 
-We see from the stemplot that the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rivers!\inputencoding{utf8}
+We see from the stemplot that the \inputencoding{latin9}\lstinline[showstringspaces=false]!rivers!\inputencoding{utf8}
 data are clearly right-skewed, so a natural estimate of center would
 be the sample median. Unfortunately, its sampling distribution falls
 out of our reach. We use the bootstrap to help us with this problem,
@@ -14835,21 +14789,21 @@ hist(medstar, breaks = 40, prob = TRUE)
 @
 \begin{example}
 The boot package in \texttt{R}. It turns out that there are many bootstrap
-procedures and commands already built into \texttt{R}, in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!boot!\inputencoding{utf8}
-package. Further, inside the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!boot!\inputencoding{utf8}
-package there is even a function called \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!boot!\inputencoding{utf8}.
+procedures and commands already built into \texttt{R}, in the \inputencoding{latin9}\lstinline[showstringspaces=false]!boot!\inputencoding{utf8}
+package. Further, inside the \inputencoding{latin9}\lstinline[showstringspaces=false]!boot!\inputencoding{utf8}
+package there is even a function called \inputencoding{latin9}\lstinline[showstringspaces=false]!boot!\inputencoding{utf8}.
 The basic syntax is of the form:
 
 \inputencoding{latin9}
-\begin{lstlisting}[basicstyle={\ttfamily}]
+\begin{lstlisting}[showstringspaces=false]
 boot(data, statistic, R)
 \end{lstlisting}
 \inputencoding{utf8}
 \end{example}
-Here, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!data!\inputencoding{utf8}
-is a vector (or matrix) containing the data to be resampled, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!statistic!\inputencoding{utf8}
+Here, \inputencoding{latin9}\lstinline[showstringspaces=false]!data!\inputencoding{utf8}
+is a vector (or matrix) containing the data to be resampled, \inputencoding{latin9}\lstinline[showstringspaces=false]!statistic!\inputencoding{utf8}
 is a defined function, \emph{of two arguments}, that tells which statistic
-to be computed, and the parameter \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!R!\inputencoding{utf8}
+to be computed, and the parameter \inputencoding{latin9}\lstinline[showstringspaces=false]!R!\inputencoding{utf8}
 specifies how many resamples should be taken.
 
 For the standard error of the mean (Example BLANK):
@@ -14868,7 +14822,7 @@ boot(data = rivers, statistic = median_fun, R = 1000)
 @
 
 We notice that the output from both methods of estimating the standard
-errors produced similar results. In fact, the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!boot!\inputencoding{utf8}
+errors produced similar results. In fact, the \inputencoding{latin9}\lstinline[showstringspaces=false]!boot!\inputencoding{utf8}
 procedure is to be preferred since it invisibly returns much more
 information (which we will use later) than our naive script and it
 is much quicker in its computations.
@@ -14880,7 +14834,7 @@ the sampling distribution with respect to spread and shape. However,
 the distributions will differ in their centers. While the sampling
 distribution is centered at the population mean (plus any bias), the
 bootstrap distribution is centered at the original value of the statistic
-(plus any bias). We saw that the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!boot!\inputencoding{utf8}
+(plus any bias). We saw that the \inputencoding{latin9}\lstinline[showstringspaces=false]!boot!\inputencoding{utf8}
 function gives an empirical estimate of the bias in the statistic. 
 \item We tried to estimate the standard error, but we could have (in principle)
 tried to estimate something else. Note from the previous remark, however,
@@ -14920,13 +14874,13 @@ with 2.5\% in each tail.)
 This is incredibly easy to accomplish with the bootstrap. We need
 only to take a bunch of bootstrap resamples, order them, and choose
 the $\alpha/2$th and $(1-\alpha)$th percentiles. There is a function
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!boot.ci!\inputencoding{utf8}
+\inputencoding{latin9}\lstinline[showstringspaces=false]!boot.ci!\inputencoding{utf8}
 in \textsf{R} already created to do just this. Note that in order
-to use the function \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!boot.ci!\inputencoding{utf8}
-you must first run the program \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!boot!\inputencoding{utf8}
-and save the output in a variable, for example, \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!data.boot!\inputencoding{utf8}.
-You then plug \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!data.boot!\inputencoding{utf8}
-into the function \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!boot.ci!\inputencoding{utf8}.
+to use the function \inputencoding{latin9}\lstinline[showstringspaces=false]!boot.ci!\inputencoding{utf8}
+you must first run the program \inputencoding{latin9}\lstinline[showstringspaces=false]!boot!\inputencoding{utf8}
+and save the output in a variable, for example, \inputencoding{latin9}\lstinline[showstringspaces=false]!data.boot!\inputencoding{utf8}.
+You then plug \inputencoding{latin9}\lstinline[showstringspaces=false]!data.boot!\inputencoding{utf8}
+into the function \inputencoding{latin9}\lstinline[showstringspaces=false]!boot.ci!\inputencoding{utf8}.
 \begin{example}
 Please see the handout, {}``Bootstrapping Confidence Intervals for
 the Median''.
@@ -15224,13 +15178,15 @@ library(IPSUR)
 read(IPSUR)
 @
 
+\printindex{}
+
 \appendix
 
 \chapter{Data\label{cha:Data}}
 
-In this chapter we introduce the different data structures that a
-statistician is likely to encounter. In each subsection we describe
-how to display the data of that particular type. 
+In this chapter we introduce some of the data structures a statistician
+is likely to encounter. In each subsection we describe how to display
+the data of that particular type. 
 
 
 \section{Data Structures}
@@ -15242,11 +15198,71 @@ Simply speaking, a vector is an ordered sequence of numbers, characters,
 or both.
 
 
-\subsection{Matrices}
+\subsection{Matrices and Arrays}
 
-Basic function is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!matrix!\inputencoding{utf8}.
-You can test with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!is.matrix!\inputencoding{utf8}
-and you can coerce with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!as.matrix!\inputencoding{utf8}. 
+See the {}``Arrays and Matrices'' section of \emph{An Introduction
+to }\textsf{\emph{R}}. Loosely speaking, a matrix is a vector that
+has been reshaped into rectangular form, and an array is a multidimensional
+matrix. Strictly speaking, it is the other way around: an array is
+a data vector with a dimension attribute (\inputencoding{latin9}\lstinline[showstringspaces=false]!dim!\inputencoding{utf8}),
+and a matrix is the special case of an array with only two dimensions.
+We can construct a matrix with the \inputencoding{latin9}\lstinline[showstringspaces=false]!matrix!\inputencoding{utf8}
+function. 
+
+<<>>=
+matrix(letters[1:6], nrow = 2, ncol = 3)
+@
+
+Notice the order of the matrix entries, which shows how the matrix
+is populated by default. We can change this with the \inputencoding{latin9}\lstinline[showstringspaces=false]!byrow!\inputencoding{utf8}
+argument:
+
+<<>>=
+matrix(letters[1:6], nrow = 2, ncol = 3, byrow = TRUE)
+@
+
+We can test whether a given object is a matrix with \inputencoding{latin9}\lstinline[showstringspaces=false]!is.matrix!\inputencoding{utf8}
+and can coerce an object (if possible) with \inputencoding{latin9}\lstinline[showstringspaces=false]!as.matrix!\inputencoding{utf8}.
+As a final example watch what happens when we mix and match types
+in the first argument:
+
+<<>>=
+matrix(c(1,"2",NA, FALSE), nrow = 2, ncol = 3)
+@
+
+Notice how all of the entries were coerced to character for the final
+result (except \inputencoding{latin9}\lstinline[showstringspaces=false]!NA!\inputencoding{utf8}).
+Also notice how the four values were \emph{recycled} to fill up the
+six entries of the matrix.
+
+The standard arithmetic operations work element-wise with matrices.
+
+<<>>=
+A <- matrix(1:6, 2, 3)
+B <- matrix(2:7, 2, 3)
+A + B
+A * B
+@
+
+If you want the standard definition of matrix multiplication then
+use the \inputencoding{latin9}\lstinline[showstringspaces=false]!%*%!\inputencoding{utf8}
+function. If we were to try \inputencoding{latin9}\lstinline[showstringspaces=false]!A %*% B!\inputencoding{utf8}
+we would get an error because the dimensions do not match correctly,
+but for fun, we could transpose \inputencoding{latin9}\lstinline[showstringspaces=false]!B!\inputencoding{utf8}
+to get conformable matrices. The transpose function \inputencoding{latin9}\lstinline[showstringspaces=false]!t!\inputencoding{utf8}
+only works for matrices (and data frames).
+
+<<keep.source = TRUE>>=
+try(A * B)     # an error
+A %*% t(B)     # this is alright
+@
+
+To get the ordinary matrix inverse use the \inputencoding{latin9}\lstinline[showstringspaces=false]!solve!\inputencoding{utf8}
+function:
+
+<<keep.source = TRUE>>=
+solve(A %*% t(B))     # input matrix must be square
+@
 
 
 \subsection{Data Frames}
@@ -15256,9 +15272,9 @@ status in \textsf{R}. It is used as the fundamental data structure
 by most of the modeling functions in \textsf{R}. The biggest difference
 between
 
-Basic command is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!data.frame!\inputencoding{utf8}.
-You can test with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!is.data.frame!\inputencoding{utf8}
-and you can coerce with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!as.data.frame!\inputencoding{utf8}.
+Basic command is \inputencoding{latin9}\lstinline[showstringspaces=false]!data.frame!\inputencoding{utf8}.
+You can test with \inputencoding{latin9}\lstinline[showstringspaces=false]!is.data.frame!\inputencoding{utf8}
+and you can coerce with \inputencoding{latin9}\lstinline[showstringspaces=false]!as.data.frame!\inputencoding{utf8}.
 
 
 \subsection{Lists}
@@ -15266,32 +15282,36 @@ and you can coerce with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]
 
 \subsection{Tables}
 
+The word {}``table'' has a special meaning in \textsf{R}. More precisely,
+a contingency table is an object of class {}``\inputencoding{latin9}\lstinline[showstringspaces=false]!table!\inputencoding{utf8}''
+which is an array
+
 Suppose you have a contingency table and would like to do descriptive
 or inferential statistics on it. The default form of the table is
 usually inconvenient to use unless we are working with a function
 specially tailored for tables. Here is how to transform your data
 to a more manageable form, namely, the raw data used to make the table.
 
-First, we coerce the table to a data frame: 
+First, we coerce the table to a data frame with : 
 
 <<>>=
 A <- as.data.frame(Titanic)
 head(A)
 @
 
-Note that there are as many preliminary columns of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!A!\inputencoding{utf8}
-as there are dimensions to the table. The rows of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!A!\inputencoding{utf8}
+Note that there are as many preliminary columns of \inputencoding{latin9}\lstinline[showstringspaces=false]!A!\inputencoding{utf8}
+as there are dimensions to the table. The rows of \inputencoding{latin9}\lstinline[showstringspaces=false]!A!\inputencoding{utf8}
 contain every possible combination of levels from each of the dimensions.
-There is also a \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Freq!\inputencoding{utf8}
+There is also a \inputencoding{latin9}\lstinline[showstringspaces=false]!Freq!\inputencoding{utf8}
 column, which shows how many observations there were at that particular
 combination of levels.
 
-The form of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!A!\inputencoding{utf8}
+The form of \inputencoding{latin9}\lstinline[showstringspaces=false]!A!\inputencoding{utf8}
 is often sufficient for our purposes, but more often we need to do
-more work: we would usually like to repeat each row of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!A!\inputencoding{utf8}
-exactly the number of times shown in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Freq!\inputencoding{utf8}
-column. The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!reshape!\inputencoding{utf8}
-package has the function \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!untable!\inputencoding{utf8}
+more work: we would usually like to repeat each row of \inputencoding{latin9}\lstinline[showstringspaces=false]!A!\inputencoding{utf8}
+exactly the number of times shown in the \inputencoding{latin9}\lstinline[showstringspaces=false]!Freq!\inputencoding{utf8}
+column. The \inputencoding{latin9}\lstinline[showstringspaces=false]!reshape!\inputencoding{utf8}
+package has the function \inputencoding{latin9}\lstinline[showstringspaces=false]!untable!\inputencoding{utf8}
 designed for that very purpose: 
 
 <<>>=
@@ -15300,9 +15320,9 @@ B <- with(A, untable(A, Freq))
 head(B)
 @
 
-Now, this is more like it. Note that we slipped in a call to the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!with!\inputencoding{utf8}
-function, which was done to make the call to \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!untable!\inputencoding{utf8}
-more pretty; we could just as easily have done \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!untable(A, A$Freq)!\inputencoding{utf8}. 
+Now, this is more like it. Note that we slipped in a call to the \inputencoding{latin9}\lstinline[showstringspaces=false]!with!\inputencoding{utf8}
+function, which was done to make the call to \inputencoding{latin9}\lstinline[showstringspaces=false]!untable!\inputencoding{utf8}
+more pretty; we could just as easily have done \inputencoding{latin9}\lstinline[showstringspaces=false]!untable(A, A$Freq)!\inputencoding{utf8}. 
 
 
 \subsection{More about Tables}
@@ -15352,13 +15372,13 @@ poured + guessed, data = D)
 
 If you would like to see the data sets available in the packages that
 are currently loaded into memory, you may do so with the simple command
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!data()!\inputencoding{utf8}.
+\inputencoding{latin9}\lstinline[showstringspaces=false]!data()!\inputencoding{utf8}.
 If you would like to see all of the data sets that are available in
 all packages that are installed on your computer (but not necessarily
-loaded), you may see them with the command \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=2]!data(package = .packages(all.available = TRUE))!\inputencoding{utf8}
+loaded), you may see them with the command \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=2]!data(package = .packages(all.available = TRUE))!\inputencoding{utf8}
 
 If the name of the data set in a particular package is known, it can
-be called with the package argument \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=2]!data(RcmdrTestDrive, package = RcmdrPlugin.IPSUR)!\inputencoding{utf8}
+be called with the package argument \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=2]!data(RcmdrTestDrive, package = RcmdrPlugin.IPSUR)!\inputencoding{utf8}
 
 
 \subsection{Text Files}
@@ -15377,16 +15397,16 @@ stored in a format from third-party software.
 
 \subsection{Importing a Data Frame}
 
-The basic command is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=2]!read.table!\inputencoding{utf8}.
+The basic command is \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!read.table!\inputencoding{utf8}.
 
 There are three methods to get data
 
 
 \section{Creating New Data Sets}
 
-Using \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=2]!c!\inputencoding{utf8}
+Using \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!c!\inputencoding{utf8}
 
-Using \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=2]!scan!\inputencoding{utf8}
+Using \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!scan!\inputencoding{utf8}
 
 Using R Commander 
 
@@ -15405,10 +15425,10 @@ Using R Commander
 
 \section{Exporting a Data Set}
 
-The basic function is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=2]!write.table!\inputencoding{utf8}
-in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=2]!base!\inputencoding{utf8}
-package. The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=2]!MASS!\inputencoding{utf8}
-package also has a \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=2]!write.matrix!\inputencoding{utf8}
+The basic function is \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!write.table!\inputencoding{utf8}
+in the \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!base!\inputencoding{utf8}
+package. The \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!MASS!\inputencoding{utf8}
+package also has a \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!write.matrix!\inputencoding{utf8}
 function.
 
 
@@ -15477,10 +15497,10 @@ the pertinent information about these operations.%
 \hline 
 Name  & Denoted  & Defined by elements  & \textsf{R} syntax\tabularnewline
 \hline 
-Union  & $A\cup B$  & in $A$ or $B$ or both  & \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=2]!union(A, B)!\inputencoding{utf8}\tabularnewline
-Intersection  & $A\cap B$  & in both $A$ and $B$  & \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=2]!intersect(A, B)!\inputencoding{utf8} \tabularnewline
-Difference & $A\textbackslash B$  & in $A$ but not in $B$  & \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=2]!setdiff(A, B)!\inputencoding{utf8} \tabularnewline
-Complement & $A^{c}$ & in $S$ but not in $A$ & \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,extendedchars=true,showstringspaces=false,tabsize=2]!setdiff(S, A)!\inputencoding{utf8}\tabularnewline
+Union  & $A\cup B$  & in $A$ or $B$ or both  & \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!union(A, B)!\inputencoding{utf8}\tabularnewline
+Intersection  & $A\cap B$  & in both $A$ and $B$  & \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!intersect(A, B)!\inputencoding{utf8} \tabularnewline
+Difference & $A\textbackslash B$  & in $A$ but not in $B$  & \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!setdiff(A, B)!\inputencoding{utf8} \tabularnewline
+Complement & $A^{c}$ & in $S$ but not in $A$ & \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!setdiff(S, A)!\inputencoding{utf8}\tabularnewline
 \hline
 \end{tabular}
 \par\end{centering}
@@ -16158,7 +16178,7 @@ font size of \texttt{12pt} is usually too big and should be reduced
 to, for example, \texttt{10pt}.
 \end{enumerate}
 It is also possible to communicate with \textsf{R} through OpenOffice.org,
-which can export to the proprietary (\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!.doc!\inputencoding{utf8})
+which can export to the proprietary (\inputencoding{latin9}\lstinline[showstringspaces=false]!.doc!\inputencoding{utf8})
 format.
 
 
@@ -16167,21 +16187,21 @@ format.
 OpenOffice.org (OO.o) is an open source desktop productivity suite
 which mirrors Microsoft$\circledR$ Office. It is especially nice
 because it works on all operating systems. OO.o can read most document
-formats, and in particular, it will read \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!.doc!\inputencoding{utf8}
-files. The standard OO.o file extension for documents is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!.odt!\inputencoding{utf8},
+formats, and in particular, it will read \inputencoding{latin9}\lstinline[showstringspaces=false]!.doc!\inputencoding{utf8}
+files. The standard OO.o file extension for documents is \inputencoding{latin9}\lstinline[showstringspaces=false]!.odt!\inputencoding{utf8},
 which stands for {}``open document text''.
 
-The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!odfWeave!\inputencoding{utf8}
-package provides a way to generate an \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!.odt!\inputencoding{utf8}
+The \inputencoding{latin9}\lstinline[showstringspaces=false]!odfWeave!\inputencoding{utf8}
+package provides a way to generate an \inputencoding{latin9}\lstinline[showstringspaces=false]!.odt!\inputencoding{utf8}
 file with \textsf{R} input and output code automatically formatted
 correctly and inserted in the correct places. In this way, one does
 not need to worry about all of the trouble of typesetting \textsf{R}
-output. Another advantage of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!odfWeave!\inputencoding{utf8}
+output. Another advantage of \inputencoding{latin9}\lstinline[showstringspaces=false]!odfWeave!\inputencoding{utf8}
 is that it allows you to generate the report dynamically; if the data
 underlying the report change or are updated, then a few clicks (or
 commands) will generate a brand new report.
 
-One disadvantage is that the source \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!.odt!\inputencoding{utf8}
+One disadvantage is that the source \inputencoding{latin9}\lstinline[showstringspaces=false]!.odt!\inputencoding{utf8}
 file is not easy to read, because it is difficult to visually distinguish
 the noweb parts (where the \textsf{R} code is) from the non-noweb
 parts. This can be fixed by manually changing the font of the noweb
@@ -16191,15 +16211,15 @@ the two different sections and automatically typeset the respective
 parts in their correct fonts. This one of the advantages to \LyX{}.
 
 Another advantage of OO.o is that even after you have generated the
-outfile, it is fully editable just like any other \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!.odt!\inputencoding{utf8}
+outfile, it is fully editable just like any other \inputencoding{latin9}\lstinline[showstringspaces=false]!.odt!\inputencoding{utf8}
 document. If there are errors or formatting problems, they can be
 fixed at any time.
 
 Here are the basic steps to typeset a statistical report with OO.o.
 \begin{enumerate}
-\item Write your report as an \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!.odt!\inputencoding{utf8}
+\item Write your report as an \inputencoding{latin9}\lstinline[showstringspaces=false]!.odt!\inputencoding{utf8}
 document in OO.o just as you would any other document. Call this document
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!infile.odt!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!infile.odt!\inputencoding{utf8},
 and make sure that it is saved in your working directory (see Section
 BLANK).
 \item At the places you would like to insert \textsf{R} code in the document,
@@ -16222,17 +16242,17 @@ library(odfWeave)
 odfWeave(file = "infile.odt", dest = "outfile.odt")
 @ 
 
-\item The compiled (\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!.odt!\inputencoding{utf8})
+\item The compiled (\inputencoding{latin9}\lstinline[showstringspaces=false]!.odt!\inputencoding{utf8})
 file, complete with all of the \textsf{R} output automatically inserted
-in the correct places, will now be the file \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!outfile.odt!\inputencoding{utf8}
-located in the working directory. Open \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!outfile.odt!\inputencoding{utf8},
+in the correct places, will now be the file \inputencoding{latin9}\lstinline[showstringspaces=false]!outfile.odt!\inputencoding{utf8}
+located in the working directory. Open \inputencoding{latin9}\lstinline[showstringspaces=false]!outfile.odt!\inputencoding{utf8},
 examine it, modify it, and repeat if desired.
 \end{enumerate}
 There are all sorts of extra things that can be done. For example,
 the \textsf{R} commands can be suppressed with the tag \texttt{<\textcompwordmark{}<echo
 = FALSE>\textcompwordmark{}>=}, and the \textsf{R} output may be hidden
 with \texttt{<\textcompwordmark{}<results = hide>\textcompwordmark{}>=}.
-See the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!odfWeave!\inputencoding{utf8}
+See the \inputencoding{latin9}\lstinline[showstringspaces=false]!odfWeave!\inputencoding{utf8}
 package documentation for details.
 
 
@@ -16386,7 +16406,7 @@ for Microsoft Windows.
 \item [{Sweave:}] If you have \textsf{R} installed, then the required Sweave
 files are already on your system\ldots{} somewhere. The only problems
 that you may have are likely associated with making sure that your
-\LaTeX{} distribution knows where to find the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Sweave.sty!\inputencoding{utf8}
+\LaTeX{} distribution knows where to find the \inputencoding{latin9}\lstinline[showstringspaces=false]!Sweave.sty!\inputencoding{utf8}
 file. See the Sweave Homepage (\url{http://www.statistik.lmu.de/~leisch/Sweave/})
 for guidance on how to get it working on your particular operating
 system.
@@ -16402,20 +16422,20 @@ to help you do exactly that. See the \LyX{}-Sweave Homepage (\url{http://gregor.
 for details.
 \end{description}
 An attempt was made to not be extravagant with fonts or packages so
-that a person would not need the entire \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!CTAN!\inputencoding{utf8}
-(or \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!CRAN!\inputencoding{utf8})
+that a person would not need the entire \inputencoding{latin9}\lstinline[showstringspaces=false]!CTAN!\inputencoding{utf8}
+(or \inputencoding{latin9}\lstinline[showstringspaces=false]!CRAN!\inputencoding{utf8})
 installed on their personal computer to generate the book. Nevertheless,
 there are a few extra packages required. These packages are listed
-in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!preamble!\inputencoding{utf8}
-of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!IPSUR.Rnw!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!IPSUR.tex!\inputencoding{utf8},
-and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!IPSUR.lyx!\inputencoding{utf8}.
+in the \inputencoding{latin9}\lstinline[showstringspaces=false]!preamble!\inputencoding{utf8}
+of \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR.Rnw!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR.tex!\inputencoding{utf8},
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR.lyx!\inputencoding{utf8}.
 
 
 \section{How to Use This Document}
 
-The easiest way to use this document is to install the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!IPSUR!\inputencoding{utf8}
-package from \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!CRAN!\inputencoding{utf8}
+The easiest way to use this document is to install the \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR!\inputencoding{utf8}
+package from \inputencoding{latin9}\lstinline[showstringspaces=false]!CRAN!\inputencoding{utf8}
 and be all done. This way would be acceptable if there is another,
 primary, text being used for the course and \IPSUR\ is only meant
 to play a supplementary role.
@@ -16423,7 +16443,7 @@ to play a supplementary role.
 If you plan for \IPSUR\ to serve as the primary text for your course,
 then it would be wise to generate your own version of the document.
 You will need the source code for the Program which can be downloaded
-from \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!CRAN!\inputencoding{utf8}
+from \inputencoding{latin9}\lstinline[showstringspaces=false]!CRAN!\inputencoding{utf8}
 or the \IPSUR\ website. Once the source is obtained there are four
 (4) basic steps to generating your own copy.
 \begin{enumerate}
@@ -16508,13 +16528,13 @@ is: {}``Please refer to the preceding paragraph.''
 
 \chapter{\texttt{RcmdrTestDrive} Story}
 
-The goal of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!RcmdrTestDrive!\inputencoding{utf8}
+The goal of \inputencoding{latin9}\lstinline[showstringspaces=false]!RcmdrTestDrive!\inputencoding{utf8}
 was to have a data set sufficiently rich in the types of data represented
 such that a person could load it into the \textsf{R} Commander and
-be able to explore all of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}'s
+be able to explore all of \inputencoding{latin9}\lstinline[showstringspaces=false]!Rcmdr!\inputencoding{utf8}'s
 menu options at once. I decided early-on that an efficient way to
 do this would be to generate the data set randomly, and later add
-to the list of variables as more \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
+to the list of variables as more \inputencoding{latin9}\lstinline[showstringspaces=false]!Rcmdr!\inputencoding{utf8}
 menu options became available. Generating the data was easy, but generating
 a \emph{story} that related all of the respective variables proved
 to be less so.
@@ -16527,7 +16547,7 @@ in a coherent narrative. No further direction was given.
 The most colorful of those I received was written by Jeffery Cornfield,
 submitted July 12, 2006, and is included below with his permission.
 It was edited slightly by the present author and updated to respond
-dynamically to the random generation of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!RcmdrTestDrive!\inputencoding{utf8};
+dynamically to the random generation of \inputencoding{latin9}\lstinline[showstringspaces=false]!RcmdrTestDrive!\inputencoding{utf8};
 otherwise, the story has been unchanged. 
 
 
@@ -17360,6 +17380,4 @@ save.image(file = "IPSUR.RData")
 <<echo=FALSE, results=hide, split=FALSE>>= 
 Stangle(file="IPSUR.Rnw", output="IPSUR.R", annotate=TRUE)
 @
-
-\texttt{\lstinputlisting[emptylines=1]{IPSUR.R}}
 \end{document}
