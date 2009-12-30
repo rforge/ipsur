@@ -528,13 +528,13 @@ that some people would not consider more proofs to be \emph{improvement}).
 Many proofs have been skipped entirely, and there is no rhyme or reason
 to the current omissions. I will add more when I get a chance. 
 \item [{More~and~better~graphics:}] I have not used the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,language=R]!ggplot2!\inputencoding{utf8}
-package because I do not know how to use it yet. It is on my to-do
-list.
+package \cite{Wickam2009} because I do not know how to use it yet.
+It is on my to-do list.
 \item [{More~and~better~exercises:}] There are only a few exercises
 in the first edition. I have not used the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,language=R]!exams!\inputencoding{utf8}
-package, but I believe that it is a right way to move forward. As
-I learn more about what the package can do I would like to incorporate
-it into later editions of this book.
+package \cite{exams}, but I believe that it is a right way to move
+forward. As I learn more about what the package can do I would like
+to incorporate it into later editions of this book.
 \end{description}
 
 \section*{About This Document}
@@ -837,7 +837,7 @@ program file to start installation. When it asks for \textquotedbl{}Customized
 startup options\textquotedbl{}, specify \textsf{Yes}. In the next
 window, be sure to select the SDI (single-window) option; this is
 useful later when we discuss three dimensional plots with the \inputencoding{latin9}\lstinline[showstringspaces=false]!rgl!\inputencoding{utf8}
-package.
+package \cite{rgl}.
 
 
 \subsection{Installing and Loading Add-on Packages}
@@ -1003,10 +1003,9 @@ which is based on GTk instead of Tcl/Tk. It has been a while since
 I used this it but I remember liking it very much when I did. One
 thing that stood out was that the user could drag-and-drop datasets
 for plots. See here for more information \url{http://wiener.math.csi.cuny.edu/pmg/}
-\item [{Rattle~(\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rattle!\inputencoding{utf8})}] is
-a data mining toolkit which is designed to manage/analyze very large
-data sets, but it provides enough other general functionality to merit
-mention here.
+\item [{Rattle}] is a data mining toolkit which is designed to manage/analyze
+very large data sets, but it provides enough other general functionality
+to merit mention here. See \cite{rattle} for more information.
 \item [{Deducer}] is relatively new and shows promise from what I have
 seen, but I have not actually used it in the classroom yet.
 \end{description}
@@ -1838,7 +1837,7 @@ Consider the \inputencoding{latin9}\lstinline[showstringspaces=false]!UKDriverDe
 data. We construct a stem and leaf diagram in \textsf{R} with the
 \inputencoding{latin9}\lstinline[showstringspaces=false]!stem.leaf!\inputencoding{utf8}
 function from the \inputencoding{latin9}\lstinline[showstringspaces=false]!aplpack!\inputencoding{utf8}
-package.
+package \cite{aplpack}.
 \end{example}
 <<>>=
 library(aplpack)
@@ -1958,7 +1957,8 @@ par(mfrow = c(1,1)) # back to normal
 \paragraph*{Pareto Diagrams }
 
 These can be done with the \textsf{R} Commander, or with the \inputencoding{latin9}\lstinline[showstringspaces=false]!pareto.chart!\inputencoding{utf8}
-function at the console (from the package \inputencoding{latin9}\lstinline[showstringspaces=false]!qcc!\inputencoding{utf8}).
+function from the \inputencoding{latin9}\lstinline[showstringspaces=false]!qcc!\inputencoding{utf8}package
+\cite{qcc}.
 
 %
 \begin{figure}
@@ -2517,7 +2517,7 @@ and $g_{2}$ do not depend on the measurement units of the data.
 \subsection{How to do it with \textsf{R}}
 
 The \inputencoding{latin9}\lstinline[showstringspaces=false]!e1071!\inputencoding{utf8}
-package has the \inputencoding{latin9}\lstinline[showstringspaces=false]!skewness!\inputencoding{utf8}
+package \cite{Dimitriadoue1071} has the \inputencoding{latin9}\lstinline[showstringspaces=false]!skewness!\inputencoding{utf8}
 function for the sample skewness and the \inputencoding{latin9}\lstinline[showstringspaces=false]!kurtosis!\inputencoding{utf8}
 function for the sample excess kurtosis. Both functions have a \inputencoding{latin9}\lstinline[showstringspaces=false]!na.rm!\inputencoding{utf8}
 argument which is \inputencoding{latin9}\lstinline[showstringspaces=false]!FALSE!\inputencoding{utf8}
@@ -3483,7 +3483,7 @@ experiment is the unpredictable selection of an outcome in $S$.
 \subsection{How to do it with \textsf{R}}
 
 Most of the probability work in this book is done with the \inputencoding{latin9}\lstinline[showstringspaces=false]!prob!\inputencoding{utf8}
-package \cite{Kernsprob2009}. A sample space is (usually) represented
+package \cite{Kernsprob}. A sample space is (usually) represented
 by a \emph{data frame}, that is, a rectangular collection of variables
 (see Section BLANK). Each row of the data frame corresponds to an
 outcome of the experiment. The data frame choice is convenient both
@@ -3517,7 +3517,7 @@ does the work includes the \inputencoding{latin9}\lstinline[showstringspaces=fal
 function in the \inputencoding{latin9}\lstinline[showstringspaces=false]!base!\inputencoding{utf8}
 package, \inputencoding{latin9}\lstinline[showstringspaces=false]!combn!\inputencoding{utf8}
 in the \inputencoding{latin9}\lstinline[showstringspaces=false]!combinat!\inputencoding{utf8}
-package, and \inputencoding{latin9}\lstinline[showstringspaces=false]!permsn!\inputencoding{utf8}
+package \cite{combinat}, and \inputencoding{latin9}\lstinline[showstringspaces=false]!permsn!\inputencoding{utf8}
 in the \inputencoding{latin9}\lstinline[showstringspaces=false]!prob!\inputencoding{utf8}
 package%
 \footnote{The seasoned \textsf{R} user can get the job done without the convenience
@@ -5996,7 +5996,7 @@ F
 @
 
 As easy as this is, it is even easier to do with the \inputencoding{latin9}\lstinline[showstringspaces=false]!distrEx!\inputencoding{utf8}
-package \cite{Ruckdeschel2006}. We define a random variable \inputencoding{latin9}\lstinline[showstringspaces=false]!X!\inputencoding{utf8}
+package \cite{Ruckdescheldistr}. We define a random variable \inputencoding{latin9}\lstinline[showstringspaces=false]!X!\inputencoding{utf8}
 as an object, then compute things from the object such as mean, variance,
 and standard deviation with the functions \inputencoding{latin9}\lstinline[showstringspaces=false]!E!\inputencoding{utf8},
 \inputencoding{latin9}\lstinline[showstringspaces=false]!var!\inputencoding{utf8},
@@ -6262,8 +6262,9 @@ CDF}
 
 \begin{example}
 Another way to do Example BLANK is with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!distr!\inputencoding{utf8}
-family of packages. They use an object oriented approach to random
-variables, that is, a random variable is stored in an object \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!X!\inputencoding{utf8},
+family of packages \cite{Ruckdescheldistr}. They use an object oriented
+approach to random variables, that is, a random variable is stored
+in an object \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!X!\inputencoding{utf8},
 and then questions about the random variable translate to functions
 on and involving \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!X!\inputencoding{utf8}.
 Random variables with distributions from the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!base!\inputencoding{utf8}
@@ -7558,7 +7559,7 @@ p(X)(0.71) - p(X)(0.14)
 
 Compare this answer to what we found in Example BLANK. Now let us
 try expectation with the \inputencoding{latin9}\lstinline[showstringspaces=false]!distrEx!\inputencoding{utf8}
-package:
+package \cite{Ruckdescheldistr}:
 
 <<>>=
 library(distrEx)
@@ -8265,7 +8266,7 @@ The associated \textsf{R} function is \inputencoding{latin9}\lstinline[breakline
 
 There is some support of moments and moment generating functions for
 some continuous probability distributions included in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!actuar!\inputencoding{utf8}
-package \cite{Dutang2008}. The convention is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!m!\inputencoding{utf8}
+package \cite{Dutangactuar}. The convention is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!m!\inputencoding{utf8}
 in front of the distribution name for raw moments, and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mgf!\inputencoding{utf8}
 in front of the distribution name for the moment generating function.
 At the time of this writing, the following distributions are supported:
@@ -8815,7 +8816,7 @@ Compare this answer to what we got in Example BLANK.
 To do the continuous case we could use the computer algebra utilities
 of \inputencoding{latin9}\lstinline[showstringspaces=false]!Yacas!\inputencoding{utf8}
 and the associated \textsf{R} package \inputencoding{latin9}\lstinline[showstringspaces=false]!Ryacas!\inputencoding{utf8}
-. See Section BLANK for another example where the \inputencoding{latin9}\lstinline[showstringspaces=false]!Ryacas!\inputencoding{utf8}
+\cite{ryacas}. See Section BLANK for another example where the \inputencoding{latin9}\lstinline[showstringspaces=false]!Ryacas!\inputencoding{utf8}
 package appears.
 
 
@@ -9118,9 +9119,10 @@ where\begin{equation}
 \subsection{How to do it with \textsf{R}}
 
 Use package \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mvtnorm!\inputencoding{utf8}
-\cite{Genz2009} or \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mnormt!\inputencoding{utf8}%
+\cite{Genzmvtnorm} or \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mnormt!\inputencoding{utf8}
+\cite{mnormt}%
 \footnote{Another way to do this is with the \texttt{curve3d} function in the
-\texttt{emdbook} package. It looks like this:
+\texttt{emdbook} package \cite{emdbook}. It looks like this:
 \begin{lyxcode}
 library(emdbook);~library(mvtnorm)~~~\#~note:~the~order~matters
 
@@ -9198,7 +9200,7 @@ Do some examples of \inputencoding{latin9}\lstinline[showstringspaces=false]!rmu
 Here is another way to do it%
 \footnote{Another way to do the plot is with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!scatterplot3d!\inputencoding{utf8}
 function in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!scatterplot3d!\inputencoding{utf8}
-package \cite{Ligges2003}. It looks like this:
+package \cite{Liggesscatterplot3d}. It looks like this:
 \begin{lyxcode}
 library(scatterplot3d)
 
@@ -9766,9 +9768,9 @@ larger sample sizes.
 \subsection{How to do it with \textsf{R}}
 
 The \inputencoding{latin9}\lstinline[showstringspaces=false]!TeachingDemos!\inputencoding{utf8}
-package \cite{Snow2009} has \inputencoding{latin9}\lstinline[showstringspaces=false]!clt.examp!\inputencoding{utf8}
+package \cite{Snowteachingdemos} has \inputencoding{latin9}\lstinline[showstringspaces=false]!clt.examp!\inputencoding{utf8}
 and the \inputencoding{latin9}\lstinline[showstringspaces=false]!distrTeach!\inputencoding{utf8}
-\cite{Ruckdeschel2006} package has \inputencoding{latin9}\lstinline[showstringspaces=false]!illustrateCLT!\inputencoding{utf8}.
+\cite{Ruckdescheldistr} package has \inputencoding{latin9}\lstinline[showstringspaces=false]!illustrateCLT!\inputencoding{utf8}.
 Try the following at the command line (output omitted):
 
 <<eval = FALSE>>=
@@ -10537,7 +10539,7 @@ and the numerical estimate of this was very close too.
 
 \end{example}
 There is functionality in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!distrTest!\inputencoding{utf8}
-package \cite{Ruckdeschel2006} to calculate theoretical MLEs; we
+package \cite{Ruckdescheldistr} to calculate theoretical MLEs; we
 will skip examples of these for the time being.
 
 
@@ -11001,7 +11003,7 @@ also thinking about replicate
 
 \section{Other Topics}
 
-I am thinking about fitdistr from the MASS package.
+I am thinking about fitdistr from the MASS package \cite{Venables2002}.
 
 Mention mle from the stats4 package
 
@@ -12231,7 +12233,7 @@ to see a picture to drive the point home.
 We may plot the confidence and prediction intervals with one fell
 swoop using the \inputencoding{latin9}\lstinline[showstringspaces=false]!ci.plot!\inputencoding{utf8}
 function from the \inputencoding{latin9}\lstinline[showstringspaces=false]!HH!\inputencoding{utf8}
-package \cite{Heiberger2009}. The graph is displayed in Figure \ref{fig:Scatter-cars-CIPI}.
+package \cite{Heibergerhh}. The graph is displayed in Figure \ref{fig:Scatter-cars-CIPI}.
 %
 \begin{figure}
 \begin{centering}
@@ -12626,7 +12628,7 @@ the unexplained variation in the original model.
 
 We do it in \textsf{R} with the \inputencoding{latin9}\lstinline[showstringspaces=false]!bptest!\inputencoding{utf8}
 function from the \inputencoding{latin9}\lstinline[showstringspaces=false]!lmtest!\inputencoding{utf8}
-package \cite{Zeileis2002}. 
+package \cite{Zeileislmtest}. 
 
 <<>>=
 library(lmtest)
@@ -13175,8 +13177,8 @@ Let us take a look at a visual display of the data. For multiple variables,
 instead of a simple scatterplot we use a scatterplot matrix which
 is made with the \inputencoding{latin9}\lstinline[showstringspaces=false]!splom!\inputencoding{utf8}
 function in the \inputencoding{latin9}\lstinline[showstringspaces=false]!lattice!\inputencoding{utf8}
-package \cite{Sarkar2009} as shown below. The plot is shown in Figure
-BLANK.
+package \cite{Sarkarlattice} as shown below. The plot is shown in
+Figure BLANK.
 
 %
 \begin{figure}
@@ -13235,10 +13237,10 @@ there are only two explanatory variables the hyperplane is just an
 ordinary plane and we can look at it with a 3D scatterplot. 
 
 One way to do this is with the \textsf{R} Commander in the \inputencoding{latin9}\lstinline[showstringspaces=false]!Rcmdr!\inputencoding{utf8}
-package. It has a 3D scatterplot option under the \textsf{Graphs}
-menu. It is especially great because the resulting graph is dynamic;
-it can be moved around with the mouse, zoomed, \emph{etc}. But that
-particular display does not translate well to a printed book.
+package \cite{Foxrcmdr}. It has a 3D scatterplot option under the
+\textsf{Graphs} menu. It is especially great because the resulting
+graph is dynamic; it can be moved around with the mouse, zoomed, \emph{etc}.
+But that particular display does not translate well to a printed book.
 
 Another way to do it is with the \inputencoding{latin9}\lstinline[showstringspaces=false]!scatterplot3d!\inputencoding{utf8}
 function in the \inputencoding{latin9}\lstinline[showstringspaces=false]!scatterplot3d!\inputencoding{utf8}
@@ -14272,7 +14274,7 @@ to the plot, one for each group.
 There are other -- shorter -- ways to plot regression lines by groups,
 namely the \inputencoding{latin9}\lstinline[showstringspaces=false]!scatterplot!\inputencoding{utf8}
 function in the \inputencoding{latin9}\lstinline[showstringspaces=false]!car!\inputencoding{utf8}
-package and the \inputencoding{latin9}\lstinline[showstringspaces=false]!xyplot!\inputencoding{utf8}
+\cite{car} package and the \inputencoding{latin9}\lstinline[showstringspaces=false]!xyplot!\inputencoding{utf8}
 function in the \inputencoding{latin9}\lstinline[showstringspaces=false]!lattice!\inputencoding{utf8}
 package. We elected to introduce the reader to the above approach
 since many advanced plots in \textsf{R} are done in a similar, consecutive
@@ -15127,7 +15129,7 @@ accuracy desired.
 This chapter is still under substantial revision. Look for it in the
 Second Edition. In the meantime, you can preview any released drafts
 with the development version of the \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR!\inputencoding{utf8}
-package whcih is available from \textsf{R}-Forge:
+package which is available from \textsf{R}-Forge:
 
 <<eval = FALSE>>=
 install.packages("IPSUR", repos="http://R-Forge.R-project.org")
@@ -15141,7 +15143,7 @@ read(IPSUR)
 This chapter is still under substantial revision. Look for it in the
 Second Edition. In the meantime, you can preview any released drafts
 with the development version of the \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR!\inputencoding{utf8}
-package whcih is available from \textsf{R}-Forge:
+package which is available from \textsf{R}-Forge:
 
 <<eval = FALSE>>=
 install.packages("IPSUR", repos="http://R-Forge.R-project.org")
@@ -15155,7 +15157,7 @@ read(IPSUR)
 This chapter is still under substantial revision. Look for it in the
 Second Edition. In the meantime, you can preview any released drafts
 with the development version of the \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR!\inputencoding{utf8}
-package whcih is available from \textsf{R}-Forge:
+package which is available from \textsf{R}-Forge:
 
 <<eval = FALSE>>=
 install.packages("IPSUR", repos="http://R-Forge.R-project.org")
@@ -15344,7 +15346,7 @@ is often sufficient for our purposes, but more often we need to do
 more work: we would usually like to repeat each row of \inputencoding{latin9}\lstinline[showstringspaces=false]!A!\inputencoding{utf8}
 exactly the number of times shown in the \inputencoding{latin9}\lstinline[showstringspaces=false]!Freq!\inputencoding{utf8}
 column. The \inputencoding{latin9}\lstinline[showstringspaces=false]!reshape!\inputencoding{utf8}
-package has the function \inputencoding{latin9}\lstinline[showstringspaces=false]!untable!\inputencoding{utf8}
+package \cite{Wickhamreshape} has the function \inputencoding{latin9}\lstinline[showstringspaces=false]!untable!\inputencoding{utf8}
 designed for that very purpose: 
 
 <<>>=
@@ -16237,7 +16239,7 @@ files. The standard OO.o file extension for documents is \inputencoding{latin9}\
 which stands for {}``open document text''.
 
 The \inputencoding{latin9}\lstinline[showstringspaces=false]!odfWeave!\inputencoding{utf8}
-package provides a way to generate an \inputencoding{latin9}\lstinline[showstringspaces=false]!.odt!\inputencoding{utf8}
+package \cite{odfweave} provides a way to generate an \inputencoding{latin9}\lstinline[showstringspaces=false]!.odt!\inputencoding{utf8}
 file with \textsf{R} input and output code automatically formatted
 correctly and inserted in the correct places. In this way, one does
 not need to worry about all of the trouble of typesetting \textsf{R}
@@ -17350,56 +17352,16 @@ permit their use in free software.
 \textbf{Publisher:} & G.~Jay Kerns\tabularnewline
 \end{tabular}
 
-\bibliographystyle{plain}
-\cleardoublepage\addcontentsline{toc}{chapter}{\bibname}\bibliography{IPSUR}
-
-
-
-\chapter{Some References}
-\begin{itemize}
-\item Billingsley, Resnick, or Ash Dooleans-Dade.
-\item Calculus (say, Stewart or Apostol), Real Analysis (say, Rudin, Folland,
-or Carothers), or Measure Theory (Billingsley, Halmos, Dudley) fo
-\item A. Agresti and B.A. Coull, Approximate is better than \textquotedbl{}exact\textquotedbl{}
-for interval estimation of binomial proportions, \_American Statistician,\_
-{*}52{*}:119-126, 1998. For the score interval.
-\item Reference to Tabachnick \& Fidell.
-\item Venables, W. and Smith, D. (2005). An Introduction to \textsf{R}.
-\url{http://www.r-project.org/Manuals}.
-\item Bootstrap Confidence Intervals, Thomas J. DiCiccio and Bradley Efron,
-Statistical Science 1996, Vol. 11, No. 3, 189–228
-\item Torsten Hothorn, Kurt Hornik, Mark A. van de Wiel \& Achim Zeileis
-(2008). Implementing a class of permutation tests: The coin package,
-Journal of Statistical Software, 28(8), 1–23. http://www.jstatsoft.org/v28/i08/
-\item \url{http://www.rsscse.org.uk/ts/gtb/johnson3.pdf}
-\item \url{http://en.wikipedia.org/wiki/Mark_and_recapture}
-\item Forecasting, Time Series, and Regression, 4th Ed., Bowerman, O'Connell,
-and Koehler (Duxbury)
-\item Mathematical Statistics, Vol. I, 2nd Ed., Bickel and Doksum (Prentice
-Hall)
-\item Applied Linear Regression Models, 3rd Ed., Neter, Kutner, Nachtsheim,
-and Wasserman (Irwin)
-\item Introduction to Statistical Thought
-\item \textquotedbl{}Bootstrap Methods and Their Applications\textquotedbl{}
-by A. C. Davison and D. V. Hinkley (1997, CUP).
-\item emdbook
-\item mnormt
-\item Ryacas
-\item car
-\end{itemize}
-
-
-<<>>=
+<<echo=FALSE, results=hide, split=FALSE>>= 
 rm(.Random.seed)
 save.image(file = "IPSUR.RData")
-@
-
-
-\chapter{\textsf{R} Transcript}
-
-<<echo=FALSE, results=hide, split=FALSE>>= 
 Stangle(file="IPSUR.Rnw", output="IPSUR.R", annotate=TRUE)
 @
+
+\bibliographystyle{plain}
+\cleardoublepage\addcontentsline{toc}{chapter}{\bibname}\nocite{*}
+\bibliography{IPSUR}
+
 
 \printindex{}
 \end{document}
