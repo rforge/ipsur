@@ -111,7 +111,7 @@ language=R}
 \usepackage{graphics}
 \usepackage{epsfig}
 \usepackage{makeidx}
-\usepackage{showidx}
+%\usepackage{showidx}
 \usepackage{multicol}
 %\usepackage{floatflt}
 \usepackage{url}
@@ -3444,24 +3444,7 @@ In this chapter, we define the basic terminology associated with probability
 and derive some of its properties. We discuss three interpretations
 of probability. We discuss conditional probability and independent
 events, along with Bayes' Theorem. We finish the chapter with an introduction
-to random variables.
-
-First we introduce the building blocks of probability, and we discuss
-the interpretations of probability which define one of many paths
-that we could take forward.
-
-Next we discuss the basic mathematical properties of probability and
-probability functions, with proofs, and develop some skill with the
-machinery. The Equally Likely Model (ELM) is introduced.
-
-Counting techniques are developed in the next section, which is particularly
-pertinent given the ELM.
-
-Conditional probability and examples are next, followed by independent
-events, then Bayes Theorem.
-
-We end with random variables and their connection to probability measures,
-which paves the way for the next two chapters.
+to random variables, which paves the way for the next two chapters.
 
 In this book we distinguish between two types of experiments: \emph{deterministic}
 and \emph{random}. A \emph{deterministic} experiment is one whose
@@ -3477,7 +3460,7 @@ traverse a certain patch of sidewalk over a short period, \emph{etc}.
 
 \paragraph*{What do I want them to know?}
 \begin{itemize}
-\item there are multiple interpretations of probability, and the methods
+\item that there are multiple interpretations of probability, and the methods
 used depend somewhat on the philosophy chosen
 \item nuts and bolts of basic probability jargon: sample spaces, events,
 probability functions, \emph{etc}.
@@ -3625,7 +3608,7 @@ to selecting a ball from an urn with six elements, labeled 1 through
 \subsection{How to do it with \textsf{R} }
 
 The \inputencoding{latin9}\lstinline[showstringspaces=false]!prob!\inputencoding{utf8}
-package accomplishes sampling from urns with the \inputencoding{latin9}\lstinline[showstringspaces=false]!urnsamples!\inputencoding{utf8}
+package accomplishes sampling from urns with the \inputencoding{latin9}\lstinline[showstringspaces=false]!urnsamples!\inputencoding{utf8}\index{urnsamples@\texttt{urnsamples}}
 function, which has arguments \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8},
 \inputencoding{latin9}\lstinline[showstringspaces=false]!size!\inputencoding{utf8},
 \inputencoding{latin9}\lstinline[showstringspaces=false]!replace!\inputencoding{utf8},
@@ -3739,8 +3722,8 @@ argument. We investigate this issue further in Section BLANK.
 
 \section{Events}
 
-An \emph{event\index{event@\emph{event}}} $A$ is merely a collection
-of outcomes, or in other words, a subset of the sample space%
+An \emph{event\index{event}} $A$ is merely a collection of outcomes,
+or in other words, a subset of the sample space%
 \footnote{This naive definition works for finite or countably infinite sample
 spaces, but is inadequate for sample spaces in general. In this book,
 we will not address the subtleties that arise, but will refer the
@@ -3748,9 +3731,10 @@ interested reader to any text on advanced probability or measure theory.%
 }. After the performance of a random experiment $E$ we say that the
 event $A$ \emph{occurred} if the experiment's outcome belongs to
 $A$. We say that a bunch of events $A_{1}$, $A_{2}$, $A_{3}$,
-\ldots{} are \emph{mutually exclusive} or \emph{disjoint} if $A_{i}\cap A_{j}=\emptyset$
-for any distinct pair $A_{i}\neq A_{j}$. For instance, in the coin-toss
-experiment the events $A=\left\{ \mbox{Heads}\right\} $ and $B=\left\{ \mbox{Tails}\right\} $
+\ldots{} are \emph{mutually exclusive\index{mutually exclusive}}
+or \emph{disjoint} if $A_{i}\cap A_{j}=\emptyset$ for any distinct
+pair $A_{i}\neq A_{j}$. For instance, in the coin-toss experiment
+the events $A=\left\{ \mbox{Heads}\right\} $ and $B=\left\{ \mbox{Tails}\right\} $
 would be mutually exclusive. Now would be a good time to review the
 algebra of sets in Appendix BLANK.
 
@@ -6016,10 +6000,9 @@ package. We define a random variable \inputencoding{latin9}\lstinline[showstring
 as an object, then compute things from the object such as mean, variance,
 and standard deviation with the functions \inputencoding{latin9}\lstinline[showstringspaces=false]!E!\inputencoding{utf8},
 \inputencoding{latin9}\lstinline[showstringspaces=false]!var!\inputencoding{utf8},
-and \inputencoding{latin9}\lstinline[showstringspaces=false]!sd!\inputencoding{utf8}:
-FLAG
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!sd!\inputencoding{utf8}: 
 
-<<eval = FALSE, keep.source = TRUE>>=
+<<keep.source = TRUE>>=
 library(distrEx)
 X <- DiscreteDistribution(supp = 0:3, prob = c(1,3,3,1)/8)
 E(X); var(X); sd(X)
@@ -6287,7 +6270,7 @@ Random variables with distributions from the \inputencoding{latin9}\lstinline[ba
 package are specified by capitalizing the name of the distribution:
 FLAG
 
-<<eval = FALSE, keep.source = TRUE>>=
+<<keep.source = TRUE>>=
 library(distr)
 X <- Binom(size = 3, prob = 1/2)
 X
@@ -6300,7 +6283,7 @@ function, and the analogue of the \inputencoding{latin9}\lstinline[showstringspa
 function is the \inputencoding{latin9}\lstinline[showstringspaces=false]!p(X)!\inputencoding{utf8}
 function. Compare the following:
 
-<<eval = FALSE, keep.source = TRUE>>=
+<<keep.source = TRUE>>=
 d(X)(1)   # pmf of X evaluated at x = 1
 p(X)(2)   # cdf of X evaluated at x = 2
 @
@@ -6314,7 +6297,7 @@ BLANK for an example.
 %
 \begin{figure}[H]
 \begin{centering}
-<<eval = FALSE, echo = FALSE, fig=true, height = 4, width = 6>>=
+<<echo = FALSE, fig=true, height = 4, width = 6>>=
 plot(X, cex = 0.2)
 @
 \par\end{centering}
@@ -6520,7 +6503,7 @@ which can be used on random variables that have been defined in the
 ordinary \inputencoding{latin9}\lstinline[showstringspaces=false]!distr!\inputencoding{utf8}
 sense: FLAG
 
-<<eval = FALSE >>=
+<<>>=
 X <- Binom(size = 3, prob = 0.45)
 library(distrEx)
 E(X)
@@ -6536,7 +6519,7 @@ a sample mean of the function of interest.
 
 There are methods for other population parameters: FLAG
 
-<<eval = FALSE >>=
+<<>>=
 var(X)
 sd(X)
 @
@@ -7261,7 +7244,7 @@ diff(pbinom(c(19,15), size = 31, prob = 0.447, lower.tail = FALSE))
 \item Give the mean of $X$, denoted $\E X$. FLAG
 
 
-<< eval = FALSE >>=
+<<>>=
 library(distrEx)
 X = Binom(size = 31, prob = 0.447)
 E(X)
@@ -7270,21 +7253,21 @@ E(X)
 \item Give the variance of $X$.
 
 
-<<eval = FALSE >>=
+<<>>=
 var(X)
 @
 
 \item Give the standard deviation of $X$.
 
 
-<<eval = FALSE>>=
+<<>>=
 sd(X)
 @
 
 \item Find $\E(4X+51.324)$
 
 
-<<eval = FALSE>>=
+<<>>=
 E(4*X + 51.324)
 @
 
@@ -7566,7 +7549,7 @@ Let us redo Example BLANK with the \inputencoding{latin9}\lstinline[basicstyle={
 package. The method is similar to Example BLANK in Chapter BLANK.
 We define an absolutely continuous random variable:
 
-<<eval = FALSE>>=
+<<>>=
 library(distr)
 f <- function(x) 3*x^2
 X <- AbscontDistribution(d = f, low1 = 0, up1 = 1)
@@ -7577,7 +7560,7 @@ Compare this answer to what we found in Example BLANK. Now let us
 try expectation with the \inputencoding{latin9}\lstinline[showstringspaces=false]!distrEx!\inputencoding{utf8}
 package:
 
-<<eval = FALSE>>=
+<<>>=
 library(distrEx)
 E(X)
 var(X)
@@ -7922,7 +7905,7 @@ takes advantage of these in many cases. For instance, the \inputencoding{latin9}
 package can handle the transformation in Example BLANK quite nicely:
 FLAG
 
-<<eval = FALSE >>=
+<<>>=
 library(distr)
 X <- Norm(mean = 0, sd = 1)
 Y <- 4 - 3*X
@@ -7938,7 +7921,7 @@ to know everything, and it is not long before we venture outside of
 the transformations that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!distr!\inputencoding{utf8}
 recognizes. Let us try Example BLANK:
 
-<<eval = FALSE>>=
+<<>>=
 Z <- exp(X)
 Z
 @
@@ -7964,7 +7947,7 @@ d-p-q functions are calculated analytically based on the d-p-q functions
 associated with $X$. But if we try a crazy transformation then we
 are greeted by a warning:
 
-<<eval = FALSE>>=
+<<>>=
 W <- sin(exp(X) + 27)
 W
 @
@@ -7977,7 +7960,7 @@ what happens when we compute $\P(W\leq0.5)$ using the $W$ above,
 then define $W$ again, and compute the (supposedly) same $\P(W\leq0.5)$
 a few moments later.
 
-<<eval = FALSE>>=
+<<>>=
 p(W)(0.5)
 W <- sin(exp(X) + 27)
 p(W)(0.5)
@@ -11066,71 +11049,72 @@ If
 helps.
 \item $Y=17$, then throw away the torque converter.
 \end{itemize}
-We use statistics to decide. Let \[
-p=\mbox{proportion of defectives produced by the machine.}\]
-Before the torque converter, $p=0.10$. We installed the torque converter.
-Did $p$ change? Did it go up or down? How do we decide?
-
-One method is to observe data and construct a 95\% CI for $p$,\[
-\hat{p}\pm z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}.\]
+Let $p$ denote the proportion of defectives produced by the machine.
+Before the installation of the torque converter, $p$ was $0.10$.
+Then we installed the torque converter. Did $p$ change? Did it go
+up or down? We use statistics to decide. Our method is to observe
+data and construct a 95\% confidence interval for $p$,\begin{equation}
+\hat{p}\pm z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}.\end{equation}
 If the confidence interval is
 \begin{itemize}
 \item $[0.01,\,0.05]$, then we are 95\% confident that $0.01\leq p\leq0.05$,
-and there is evidence that the torque converter is helping.
+so there is evidence that the torque converter is helping.
 \item $[0.15,\,0.19]$, then we are 95\% confident that $0.15\leq p\leq0.19$,
-and there is evidence that the torque converter is hurting.
+so there is evidence that the torque converter is hurting.
 \item $[0.07,\,0.11]$, then there is not enough evidence to conclude that
 the torque converter is doing anything at all, positive or negative.
 \end{itemize}
 
 \subsection{Terminology}
 
-The \emph{null hypothesis} $H_{0}$ is the hypothesis that nothing
-has changed. For this example, the null hypothesis would be \[
-H_{0}:p=0.10\]
-The \emph{alternative hypothesis} $H_{1}$ is the hypothesis that
-something has changed, in this case, $H_{1}:p\neq0.10$.
-
-We wish to test the hypothesis $H_{0}:p=0.10$ versus the alternative
-$H_{1}:p\neq0.10$.
-
-How to do it:
+The \emph{null hypothesis} $H_{0}$ is a {}``nothing'' hypothesis,
+whose interpretation can be that nothing has changed, there is no
+difference, there is nothing special taking place, \emph{etc}. For
+Example BLANK, the null hypothesis would be $H_{0}:\ p=0.10.$ The
+\emph{alternative hypothesis} $H_{1}$ is the hypothesis that something
+has changed, in this case, $H_{1}:\ p\neq0.10$. Our goal is to statistically
+\emph{test} the hypothesis $H_{0}:\ p=0.10$ versus the alternative
+$H_{1}:\ p\neq0.10$. Our procedure will be:
 \begin{enumerate}
 \item Go out and collect some data, in particular, a simple random sample
 of observations from the machine.
-\item We assume that $H_{0}$ is true and construct a $100(1-\alpha)\%$
-confidence interval for $p$.
-\item If the confidence interval does not cover $p=0.10$, then we REJECT
-$H_{0}$. Otherwise, we FAIL TO REJECT $H_{0}$.
-\end{enumerate}
-Remarks
-\begin{itemize}
-\item It is possible to be wrong. There are two types of mistakes:
-
-\begin{itemize}
-\item Type I Error: Reject $H_{0}$ when in fact, $H_{0}$ is true. This
-would be akin to convicting an innocent person for a crime (s)he did
-not convict.
-\item Type II Error: Fail to reject $H_{0}$ when in fact, $H_{1}$ is true.
-This is analogous to a guilty person going free.
-\end{itemize}
-\item Type I Errors are usually considered to be worse%
+\item Suppose that $H_{0}$ is true and construct a $100(1-\alpha)\%$ confidence
+interval for $p$.
+\item If the confidence interval does not cover $p=0.10$, then we \emph{reject}$H_{0}$.
+Otherwise, we \emph{fail to reject}$H_{0}$.\end{enumerate}
+\begin{rem}
+Every time we make a decision, it is possible to be wrong. There are
+two types of mistakes: a
+\begin{description}
+\item [{Type~I~Error}] happens if we reject $H_{0}$ when in fact $H_{0}$
+is true. This would be akin to convicting an innocent person for a
+crime (s)he did not convict.
+\item [{Type~II~Error}] happens if we fail to reject $H_{0}$ when in
+fact $H_{1}$ is true. This is analogous to a guilty person going
+free.
+\end{description}
+\end{rem}
+Type I Errors are usually considered worse%
 \footnote{There is no mathematical difference between the errors, however. The
 bottom line is that we choose one type of error to control with an
 iron fist, and we try to minimize the probability of making the other
-type. This being said, null hypotheses are often by design to correspond
-to the {}``simpler'' model, and it is easier to analyze (and thereby
-control) the probabilities associated with Type I Errors.%
+type. That being said, null hypotheses are often by design to correspond
+to the {}``simpler'' model, so it is often easier to analyze (and
+thereby control) the probabilities associated with Type I Errors.%
 }, and we design our statistical procedures to control the probability
-of making such a mistake. We define\[
-\mbox{significance level of the test}=\P(\mbox{Type I Error})=\alpha.\]
-We want $\alpha$ to be small.
-\item The \emph{rejection region} for the test is the set of sample values
-which would result in the rejection of $H_{0}$. This is also known
-as the \emph{critical region} for the test.
+of making such a mistake. We define\begin{equation}
+\mbox{significance level of the test}=\P(\mbox{Type I Error})=\alpha.\end{equation}
+We want $\alpha$ to be small, which conventionally means, say, $\alpha=0.05$,
+$\alpha=0.01$, or $\alpha=0.005$ (but could mean anything, in principle). 
+\begin{itemize}
+\item The \emph{rejection region} (also known as the \emph{critical region})
+for the test is the set of sample values which would result in the
+rejection of $H_{0}$. For Example BLANK, the rejection region would
+be all possible samples that result in a 95\% confidence interval
+that does not cover $p=0.10$.
 \item The above example with $H_{1}:p\neq0.10$ is called a \emph{two-sided}
 test. Many times we are interested in a \emph{one-sided} test, which
-could look like $H_{1}:p<0.29$ or $H_{1}:p>0.34$.
+could look like $H_{1}:p<0.10$ or $H_{1}:p>0.10$.
 \end{itemize}
 We are ready for tests of hypotheses for one proportion
 
@@ -15178,8 +15162,6 @@ library(IPSUR)
 read(IPSUR)
 @
 
-\printindex{}
-
 \appendix
 
 \chapter{Data\label{cha:Data}}
@@ -15194,8 +15176,26 @@ the data of that particular type.
 
 \subsection{Vectors}
 
-Simply speaking, a vector is an ordered sequence of numbers, characters,
-or both.
+See the {}``Vectors and Assignment'' section of \emph{An Introduction
+to }\textsf{\emph{R}}. A vector is an ordered sequence of elements,
+such as numbers, characters, or logical values, and there may be \inputencoding{latin9}\lstinline[showstringspaces=false]!NA!\inputencoding{utf8}'s
+present. We usually make vectors with the assignment operator \inputencoding{latin9}\lstinline[showstringspaces=false]!<-!\inputencoding{utf8}.
+
+<<>>=
+x <- c(3, 5, 9)
+@
+
+Vectors are atomic in the sense that if you try to mix and match elements
+of different modes then all elements will be coerced to the most convenient
+common mode.
+
+<<>>=
+y <- c(3, "5", TRUE)
+@
+
+In the example all elements were coerced to \emph{character} mode.
+We can test whether a given object is a vector with \inputencoding{latin9}\lstinline[showstringspaces=false]!is.vector!\inputencoding{utf8}
+and can coerce an object (if possible) to a vector with \inputencoding{latin9}\lstinline[showstringspaces=false]!as.vector!\inputencoding{utf8}.
 
 
 \subsection{Matrices and Arrays}
@@ -15222,7 +15222,7 @@ matrix(letters[1:6], nrow = 2, ncol = 3, byrow = TRUE)
 @
 
 We can test whether a given object is a matrix with \inputencoding{latin9}\lstinline[showstringspaces=false]!is.matrix!\inputencoding{utf8}
-and can coerce an object (if possible) with \inputencoding{latin9}\lstinline[showstringspaces=false]!as.matrix!\inputencoding{utf8}.
+and can coerce an object (if possible) to a matrix with \inputencoding{latin9}\lstinline[showstringspaces=false]!as.matrix!\inputencoding{utf8}.
 As a final example watch what happens when we mix and match types
 in the first argument:
 
@@ -15264,13 +15264,43 @@ function:
 solve(A %*% t(B))     # input matrix must be square
 @
 
+Arrays more general than matrices, and some functions (like transpose)
+do not work for the more general array. Here is what an array looks
+like: 
+
+<<keep.source = TRUE>>=
+array(LETTERS[1:24], dim = c(3,4,2))
+@
+
+We can test with \inputencoding{latin9}\lstinline[showstringspaces=false]!is.array!\inputencoding{utf8}
+and may coerce with \inputencoding{latin9}\lstinline[showstringspaces=false]!as.array!\inputencoding{utf8}.
+
 
 \subsection{Data Frames}
 
-A data frame is a recrangular array of information with a special
+A data frame is a rectangular array of information with a special
 status in \textsf{R}. It is used as the fundamental data structure
-by most of the modeling functions in \textsf{R}. The biggest difference
-between
+by many of the modeling functions. It is like a matrix in that all
+of the columns must be the same length, but it is more general than
+a matrix in that columns are allowed to have different modes.
+
+<<>>=
+x <- c(1.3, 5.2, 6)
+y <- letters[1:3]
+z <- c(TRUE, FALSE, TRUE)
+A <- data.frame(x, y, z)
+A
+@
+
+Notice the \inputencoding{latin9}\lstinline[showstringspaces=false]!names!\inputencoding{utf8}
+on the columns of \inputencoding{latin9}\lstinline[showstringspaces=false]!A!\inputencoding{utf8}.
+We can change those with the \inputencoding{latin9}\lstinline[showstringspaces=false]!names!\inputencoding{utf8}
+function.
+
+<<>>=
+names(A) <- c("Fred","Mary","Sue")
+A
+@
 
 Basic command is \inputencoding{latin9}\lstinline[showstringspaces=false]!data.frame!\inputencoding{utf8}.
 You can test with \inputencoding{latin9}\lstinline[showstringspaces=false]!is.data.frame!\inputencoding{utf8}
@@ -15278,6 +15308,8 @@ and you can coerce with \inputencoding{latin9}\lstinline[showstringspaces=false]
 
 
 \subsection{Lists}
+
+A list is more general than a data frame.
 
 
 \subsection{Tables}
@@ -15375,10 +15407,19 @@ are currently loaded into memory, you may do so with the simple command
 \inputencoding{latin9}\lstinline[showstringspaces=false]!data()!\inputencoding{utf8}.
 If you would like to see all of the data sets that are available in
 all packages that are installed on your computer (but not necessarily
-loaded), you may see them with the command \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=2]!data(package = .packages(all.available = TRUE))!\inputencoding{utf8}
+loaded), you may see them with the command:
 
-If the name of the data set in a particular package is known, it can
-be called with the package argument \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=2]!data(RcmdrTestDrive, package = RcmdrPlugin.IPSUR)!\inputencoding{utf8}
+\inputencoding{latin9}
+\begin{lstlisting}[breaklines=true,showstringspaces=false,tabsize=2]
+data(package = .packages(all.available = TRUE))
+\end{lstlisting}
+\inputencoding{utf8}If the name of a data set in a particular package is known, it can
+be called with the \inputencoding{latin9}\lstinline[showstringspaces=false]!package!\inputencoding{utf8}
+argument: \inputencoding{latin9}
+\begin{lstlisting}[breaklines=true,showstringspaces=false,tabsize=2]
+data(RcmdrTestDrive, package = RcmdrPlugin.IPSUR)
+\end{lstlisting}
+\inputencoding{utf8}
 
 
 \subsection{Text Files}
@@ -15389,7 +15430,10 @@ These are files that are saved in delimited format.
 \subsection{Other Software Files}
 
 There are many occasions on which the data for the study are already
-stored in a format from third-party software.
+stored in a format from third-party software, and the \inputencoding{latin9}\lstinline[showstringspaces=false]!foreign!\inputencoding{utf8}
+package supports a large number of additional data formats.
+
+.
 
 
 \section{Importing A Data Set}
@@ -17366,6 +17410,8 @@ and Wasserman (Irwin)
 \item Using \textsf{R} for Introductory Statistics
 \item Introductory Statistics with \textsf{R}
 \item Data Analysis and Graphics using \textsf{R}
+\item \textquotedbl{}Bootstrap Methods and Their Applications\textquotedbl{}
+by A. C. Davison and D. V. Hinkley (1997, CUP).
 \end{itemize}
 
 
@@ -17380,4 +17426,6 @@ save.image(file = "IPSUR.RData")
 <<echo=FALSE, results=hide, split=FALSE>>= 
 Stangle(file="IPSUR.Rnw", output="IPSUR.R", annotate=TRUE)
 @
+
+\printindex{}
 \end{document}
