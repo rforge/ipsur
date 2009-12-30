@@ -480,11 +480,11 @@ by Casella and Berger, and \emph{Theory of Point Estimation/Testing
 Statistical Hypotheses} by Lehmann. I highly recommend each of those
 books to every reader of this one. Some \textsf{R} books with {}``introductory''
 in the title that I recommend are \emph{Introductory Statistics with
-}\textsf{\emph{R}} by Dalgaard and \emph{Using }\textsf{\emph{R}}\emph{
-for Introductory Statistics} by Verzani. Surely there are many, many
-other good introductory books about \textsf{R}, but frankly, I have
-tried to steer clear of them for the past year or so to avoid any
-undue influence on my own writing.
+}\textsf{\emph{R}} by Dalgaard \cite{Dalgaard2008} and \emph{Using
+}\textsf{\emph{R}}\emph{ for Introductory Statistics} by Verzani.
+Surely there are many, many other good introductory books about \textsf{R},
+but frankly, I have tried to steer clear of them for the past year
+or so to avoid any undue influence on my own writing.
 
 Please bear in mind that the title of this book is {}``Introduction
 to Probability and Statistics Using \textsf{R}'', and not {}``Introduction
@@ -3483,15 +3483,15 @@ experiment is the unpredictable selection of an outcome in $S$.
 \subsection{How to do it with \textsf{R}}
 
 Most of the probability work in this book is done with the \inputencoding{latin9}\lstinline[showstringspaces=false]!prob!\inputencoding{utf8}
-package. A sample space is (usually) represented by a \emph{data frame},
-that is, a rectangular collection of variables (see Section BLANK).
-Each row of the data frame corresponds to an outcome of the experiment.
-The data frame choice is convenient both for its simplicity and its
-compatibility with the \textsf{R} Commander. Data frames alone are,
-however, not sufficient to describe some of the more interesting probabilistic
-applications we will study later; to handle those we will need to
-consider a more general \emph{list} data structure. See Section BLANK
-for details.
+package \cite{Kernsprob2009}. A sample space is (usually) represented
+by a \emph{data frame}, that is, a rectangular collection of variables
+(see Section BLANK). Each row of the data frame corresponds to an
+outcome of the experiment. The data frame choice is convenient both
+for its simplicity and its compatibility with the \textsf{R} Commander.
+Data frames alone are, however, not sufficient to describe some of
+the more interesting probabilistic applications we will study later;
+to handle those we will need to consider a more general \emph{list}
+data structure. See Section BLANK for details.
 \begin{example}
 Consider the random experiment of dropping a styrofoam cup onto the
 floor from a height of four feet. The cup hits the ground and eventually
@@ -5996,7 +5996,7 @@ F
 @
 
 As easy as this is, it is even easier to do with the \inputencoding{latin9}\lstinline[showstringspaces=false]!distrEx!\inputencoding{utf8}
-package. We define a random variable \inputencoding{latin9}\lstinline[showstringspaces=false]!X!\inputencoding{utf8}
+package \cite{Ruckdeschel2006}. We define a random variable \inputencoding{latin9}\lstinline[showstringspaces=false]!X!\inputencoding{utf8}
 as an object, then compute things from the object such as mean, variance,
 and standard deviation with the functions \inputencoding{latin9}\lstinline[showstringspaces=false]!E!\inputencoding{utf8},
 \inputencoding{latin9}\lstinline[showstringspaces=false]!var!\inputencoding{utf8},
@@ -8265,7 +8265,7 @@ The associated \textsf{R} function is \inputencoding{latin9}\lstinline[breakline
 
 There is some support of moments and moment generating functions for
 some continuous probability distributions included in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!actuar!\inputencoding{utf8}
-package. The convention is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!m!\inputencoding{utf8}
+package \cite{Dutang2008}. The convention is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!m!\inputencoding{utf8}
 in front of the distribution name for raw moments, and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mgf!\inputencoding{utf8}
 in front of the distribution name for the moment generating function.
 At the time of this writing, the following distributions are supported:
@@ -8814,8 +8814,8 @@ Compare this answer to what we got in Example BLANK.
 
 To do the continuous case we could use the computer algebra utilities
 of \inputencoding{latin9}\lstinline[showstringspaces=false]!Yacas!\inputencoding{utf8}
-and the associated \textsf{R} package \inputencoding{latin9}\lstinline[showstringspaces=false]!Ryacas!\inputencoding{utf8}.
-See Section BLANK for another example where the \inputencoding{latin9}\lstinline[showstringspaces=false]!Ryacas!\inputencoding{utf8}
+and the associated \textsf{R} package \inputencoding{latin9}\lstinline[showstringspaces=false]!Ryacas!\inputencoding{utf8}
+. See Section BLANK for another example where the \inputencoding{latin9}\lstinline[showstringspaces=false]!Ryacas!\inputencoding{utf8}
 package appears.
 
 
@@ -9118,7 +9118,7 @@ where\begin{equation}
 \subsection{How to do it with \textsf{R}}
 
 Use package \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mvtnorm!\inputencoding{utf8}
-or \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mnormt!\inputencoding{utf8}%
+\cite{Genz2009} or \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mnormt!\inputencoding{utf8}%
 \footnote{Another way to do this is with the \texttt{curve3d} function in the
 \texttt{emdbook} package. It looks like this:
 \begin{lyxcode}
@@ -9198,7 +9198,7 @@ Do some examples of \inputencoding{latin9}\lstinline[showstringspaces=false]!rmu
 Here is another way to do it%
 \footnote{Another way to do the plot is with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!scatterplot3d!\inputencoding{utf8}
 function in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!scatterplot3d!\inputencoding{utf8}
-package. It looks like this:
+package \cite{Ligges2003}. It looks like this:
 \begin{lyxcode}
 library(scatterplot3d)
 
@@ -9766,9 +9766,9 @@ larger sample sizes.
 \subsection{How to do it with \textsf{R}}
 
 The \inputencoding{latin9}\lstinline[showstringspaces=false]!TeachingDemos!\inputencoding{utf8}
-package has \inputencoding{latin9}\lstinline[showstringspaces=false]!clt.examp!\inputencoding{utf8}
+package \cite{Snow2009} has \inputencoding{latin9}\lstinline[showstringspaces=false]!clt.examp!\inputencoding{utf8}
 and the \inputencoding{latin9}\lstinline[showstringspaces=false]!distrTeach!\inputencoding{utf8}
-package has \inputencoding{latin9}\lstinline[showstringspaces=false]!illustrateCLT!\inputencoding{utf8}.
+\cite{Ruckdeschel2006} package has \inputencoding{latin9}\lstinline[showstringspaces=false]!illustrateCLT!\inputencoding{utf8}.
 Try the following at the command line (output omitted):
 
 <<eval = FALSE>>=
@@ -10537,8 +10537,8 @@ and the numerical estimate of this was very close too.
 
 \end{example}
 There is functionality in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!distrTest!\inputencoding{utf8}
-package to calculate theoretical MLEs; we will skip examples of these
-for the time being.
+package \cite{Ruckdeschel2006} to calculate theoretical MLEs; we
+will skip examples of these for the time being.
 
 
 \section{Confidence Intervals for Means}
@@ -12231,7 +12231,7 @@ to see a picture to drive the point home.
 We may plot the confidence and prediction intervals with one fell
 swoop using the \inputencoding{latin9}\lstinline[showstringspaces=false]!ci.plot!\inputencoding{utf8}
 function from the \inputencoding{latin9}\lstinline[showstringspaces=false]!HH!\inputencoding{utf8}
-package. The graph is displayed in Figure \ref{fig:Scatter-cars-CIPI}.
+package \cite{Heiberger2009}. The graph is displayed in Figure \ref{fig:Scatter-cars-CIPI}.
 %
 \begin{figure}
 \begin{centering}
@@ -12626,7 +12626,7 @@ the unexplained variation in the original model.
 
 We do it in \textsf{R} with the \inputencoding{latin9}\lstinline[showstringspaces=false]!bptest!\inputencoding{utf8}
 function from the \inputencoding{latin9}\lstinline[showstringspaces=false]!lmtest!\inputencoding{utf8}
-package. 
+package \cite{Zeileis2002}. 
 
 <<>>=
 library(lmtest)
@@ -13175,7 +13175,8 @@ Let us take a look at a visual display of the data. For multiple variables,
 instead of a simple scatterplot we use a scatterplot matrix which
 is made with the \inputencoding{latin9}\lstinline[showstringspaces=false]!splom!\inputencoding{utf8}
 function in the \inputencoding{latin9}\lstinline[showstringspaces=false]!lattice!\inputencoding{utf8}
-package as shown below. The plot is shown in Figure BLANK.
+package \cite{Sarkar2009} as shown below. The plot is shown in Figure
+BLANK.
 
 %
 \begin{figure}
@@ -17349,69 +17350,42 @@ permit their use in free software.
 \textbf{Publisher:} & G.~Jay Kerns\tabularnewline
 \end{tabular}
 
+\bibliographystyle{plain}
+\cleardoublepage\addcontentsline{toc}{chapter}{\bibname}\bibliography{IPSUR}
+
+
 
 \chapter{Some References}
 \begin{itemize}
 \item Billingsley, Resnick, or Ash Dooleans-Dade.
-\item Michael Friendly (2000), Visualizing Categorical Data, pages 82–83,
-319–322. 
-\item \textsf{R} Help Desk: Accessing the Sources. \textsf{R} News 6 (4),
-43-45. 
-\item Gelman and this other Bayesian book BLANK
 \item Calculus (say, Stewart or Apostol), Real Analysis (say, Rudin, Folland,
 or Carothers), or Measure Theory (Billingsley, Halmos, Dudley) fo
 \item A. Agresti and B.A. Coull, Approximate is better than \textquotedbl{}exact\textquotedbl{}
 for interval estimation of binomial proportions, \_American Statistician,\_
 {*}52{*}:119-126, 1998. For the score interval.
 \item Reference to Tabachnick \& Fidell.
-\item Dalgaard, P. (2002). Introductory Statistics with \textsf{R}. Springer.
-\item Everitt, B. (2005). An \textsf{R} and \texttt{S-Plus} Companion to
-Multivariate Analysis. Springer.
-\item Heiberger, R. and Holland, B. (2004). Statistical Analysis and Data
-Display. An Intermediate Course with Examples in \texttt{S-Plus},
-\textsf{R}, and \texttt{SAS}. Springer.
-\item Maindonald, J. and Braun, J. (2003). Data Analysis and Graphics Using
-\textsf{R}: an Example Based Approach. Cambridge University Press.
 \item Venables, W. and Smith, D. (2005). An Introduction to \textsf{R}.
 \url{http://www.r-project.org/Manuals}.
-\item Verzani, J. (2005). Using \textsf{R} for Introductory Statistics.
-Chapman and Hall.
-\item Billingsley,
-\item Resnick,
-\item Ash Dooleans-Dade
-\item odfWeave package
-\item distrEx package
-\item distrXXX family
-\item Rcmdr
-\item e1071
-\item RcmdrPlugin.IPSUR
-\item Gelman Bayesian book, and some more, too.
 \item Bootstrap Confidence Intervals, Thomas J. DiCiccio and Bradley Efron,
 Statistical Science 1996, Vol. 11, No. 3, 189–228
 \item Torsten Hothorn, Kurt Hornik, Mark A. van de Wiel \& Achim Zeileis
 (2008). Implementing a class of permutation tests: The coin package,
 Journal of Statistical Software, 28(8), 1–23. http://www.jstatsoft.org/v28/i08/
-\item \textsf{R} Help Desk: Accessing the Sources. \textsf{R} News 6 (4),
-43-45. In short,
 \item \url{http://www.rsscse.org.uk/ts/gtb/johnson3.pdf}
 \item \url{http://en.wikipedia.org/wiki/Mark_and_recapture}
-\item Categorical Data Analysis, Agresti ()
 \item Forecasting, Time Series, and Regression, 4th Ed., Bowerman, O'Connell,
 and Koehler (Duxbury)
 \item Mathematical Statistics, Vol. I, 2nd Ed., Bickel and Doksum (Prentice
 Hall)
-\item Probability and Statistical Inference, 5th Ed., Hogg and Tanis, (Prentice
-Hall)
 \item Applied Linear Regression Models, 3rd Ed., Neter, Kutner, Nachtsheim,
 and Wasserman (Irwin)
-\item Statistical Inference, 1st Ed, Casella and Berger (Duxbury)
-\item Monte Carlo Statistical Methods, 1st Ed., Robert and Casella (Springer)
 \item Introduction to Statistical Thought
-\item Using \textsf{R} for Introductory Statistics
-\item Introductory Statistics with \textsf{R}
-\item Data Analysis and Graphics using \textsf{R}
 \item \textquotedbl{}Bootstrap Methods and Their Applications\textquotedbl{}
 by A. C. Davison and D. V. Hinkley (1997, CUP).
+\item emdbook
+\item mnormt
+\item Ryacas
+\item car
 \end{itemize}
 
 
