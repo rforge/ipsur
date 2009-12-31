@@ -23,7 +23,6 @@ language=R}
 \usepackage{url}
 \usepackage{amsthm}
 \usepackage{amsmath}
-\makeindex
 \usepackage{setspace}
 \usepackage{amssymb}
 \setstretch{1.2}
@@ -256,7 +255,7 @@ race <- factor(race)
 tmp <- sample(4, size=n, prob=c(12,38,9,41), replace = TRUE) 
 gender <- factor(ifelse(tmp < 3,"Male", "Female")) 
 smoke <- factor(ifelse(tmp %in% c(1,3), "Yes", "No"))
-# generate parking 
+# generate parking
 parking <- rgeom(n, prob = 0.4) + 1
 # generate salary 
 m <- 17 + (as.numeric(gender)-1) 
@@ -410,14 +409,18 @@ Free Documentation License''.
 
 \newpage{}
 
+\cleardoublepage
+\phantomsection
+\pdfbookmark[1]{Contents}{table}
+
 \tableofcontents{}
 
-
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Preface}
 
 
 \chapter*{Preface}
-
-\addcontentsline{toc}{chapter}{Preface}
 
 This book was expanded from lecture materials I use in a one semester
 upper-division undergraduate course entitled \emph{Probability and
@@ -675,21 +678,18 @@ click \textsf{Active Dataset}.
 \vfill{}
 
 
-\pagebreak{}
-
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Figures}
 \listoffigures
-\addcontentsline{toc}{chapter}{List of Figures} 
 
 \vfill{}
 
 
-\pagebreak{}
-
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Tables}
 \listoftables
-\addcontentsline{toc}{chapter}{List of Tables} 
-
-\vfill{}
-
 
 
 \chapter{An Introduction to Probability and Statistics}
@@ -1742,38 +1742,66 @@ include: height, weight, length, time, \emph{etc}.
 
 \subsection*{Displaying Quantitative Data\label{sub:Displaying-Quantitative-Data}}
 
-There are many graphs available for displaying quantitative data. 
-
 
 \paragraph*{Strip charts (also known as Dot plots)}
 
-These are done with a call to the \inputencoding{latin9}\lstinline[showstringspaces=false]!stripchart!\inputencoding{utf8}
-function, and are often used when the data set is not too large. Along
-the horizontal axis is a numerical scale above which the data values
-are plotted. There are three methods for strip charts.
+These are best when the data set is not too large. Along the horizontal
+axis is a numerical scale above which the data values are plotted.
+We can do it in \textsf{R} with a call to the \inputencoding{latin9}\lstinline[showstringspaces=false]!stripchart!\inputencoding{utf8}
+function. There are three available methods.
 \begin{description}
 \item [{Overplot}] plots ties covering each other. This method is good
 to display only the distinct values assumed by the dataset.
-\item [{Jitter}] adds some noise to the data in the $y$ direction so that
-data values are not covered up by ties.
+\item [{Jitter}] adds some noise to the data in the $y$ direction in which
+case the data values are not covered up by ties.
 \item [{Stack}] plots repeated values stacked on top of one another. This
 method is best used for discrete data with a lot of ties; if there
 are no repeats then this method is identical to overplot.
 \end{description}
+See Figure \ref{fig:Various-stripchart-methods,}, which is produced
+by the following code.
+
+<<eval = FALSE>>=
+stripchart(uspop, xlab="population")
+stripchart(rivers, method="jitter", xlab="length")
+stripchart(discoveries, method="stack", xlab="number")
+@
+
+The leftmost graph is of the U.S.~population data from the \inputencoding{latin9}\lstinline[showstringspaces=false]!uspop!\inputencoding{utf8}
+data in the \inputencoding{latin9}\lstinline[showstringspaces=false]!datasets!\inputencoding{utf8}
+package. The vector is only length 19, and the values are continuous
+quantitative data. The graph shows tightly spaced values on the left
+that stretch out as they increase. Later we will call this a right-skewed
+distribution, see Section \ref{sub:Shape}. The middle graph is of
+the \inputencoding{latin9}\lstinline[showstringspaces=false]!rivers!\inputencoding{utf8}
+data, a vector of length 141 of discrete quantitative data. There
+are several repeated values in the rivers data, so if we were to use
+the overplot method we would lose some data values in the display.
+This graph also shows a right-skewed shape with perhaps some extreme
+values on the far right of the display. The third graph of of the
+\inputencoding{latin9}\lstinline[showstringspaces=false]!discoveries!\inputencoding{utf8}
+data, a vector%
+\footnote{Actually, \inputencoding{latin9}\lstinline[showstringspaces=false]!discoveries!\inputencoding{utf8}
+is a \emph{time series object} which is coerced to a numeric vector
+for the purposes of the stripchart function. See Chapter .%
+} of length 100 of discrete quantitative data. .
+
 %
 \begin{figure}
 \begin{centering}
 <<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 par(mfrow = c(1,3)) # 3 plots: 1 row, 3 columns
-stripchart(uspop, xlab="length", ylim=c(0, 2))
+stripchart(uspop, xlab="population")
 stripchart(rivers, method="jitter", xlab="length")
-stripchart(discoveries, method="stack", xlab="number of discoveries")
+stripchart(discoveries, method="stack", xlab="number")
 par(mfrow = c(1,1)) # back to normal
 @
 \par\end{centering}
 
-\caption{Strip charts of the parking variable\label{fig:Stripcharts-of-parking}}
-
+\caption{Various \texttt{stripchart} methods, overplot, jitter, and stack\label{fig:Various-stripchart-methods,}}
+{\small The first graph is of the U.S.~population data, }\texttt{\small uspop}{\small ,
+the second is of the }\texttt{\small rivers}{\small{} data, and the
+third is of the }\texttt{\small discoveries}{\small{} data.}
 \end{figure}
 
 
@@ -1805,6 +1833,8 @@ College in the academic year 1891-2. The lectures are described by
 S. M. Stigler History of Statistics pp. 326-7 and T. M. Porter Karl
 Pearson: The Scientific Life in a Statistical Age, p. 236. 
 
+
+
 %
 \begin{figure}
 \begin{centering}
@@ -1816,7 +1846,7 @@ par(mfrow = c(1,1)) # back to normal
 @
 \par\end{centering}
 
-\caption{Histograms of the volcano data.\label{fig:hist-volcano}}
+\caption{(Relative) frequency histograms of the \texttt{volcano} data.\label{fig:hist-volcano}}
 
 \end{figure}
 
@@ -1875,7 +1905,7 @@ par(mfrow = c(1,1)) # back to normal
 @
 \par\end{centering}
 
-\caption{Index plots of salary\label{fig:indpl-lakehuron}}
+\caption{Index plots of LakeHuron\label{fig:indpl-lakehuron}}
 
 \end{figure}
 
@@ -1889,17 +1919,22 @@ variables include a subject's name, gender, race/ethnicity, political
 party, socio-economic status, driver's license number, and social
 security number (SSN).
 
-Some qualitative data serve merely to \emph{identify} the observation
-(such a subject's name, driver's license number, or SSN), but other
-qualitiative data serve to \emph{subdivide} a data set into categories.
-The identification types do not play much of a role in statistics,
-but the latter subdivision types show up all the time, and we call
-them \emph{factors}. In the above examples, gender, race, political
-party, and socio-economic status would be considered factors. 
+Please bear in mind that some data \emph{look} to be quantitative
+but are \emph{not,} because they do not represent numerical quantities
+and do not obey mathematical rules. For example, a person's shoe size
+is typically written with numbers: 8, or 9, or 12, or $12\,\frac{1}{2}$.
+Shoe size is not quantitative, however, because if we take a size
+8 and combine with a size 9 we do not get a size 17. 
 
-The possible values of a factor are called its \emph{levels}. For
-instance, the factor \emph{gender} would have two levels, namely,
-male and female.
+Some qualitative data serve merely to \emph{identify} the observation
+(such a subject's name, driver's license number, or SSN). This type
+of data does not usually play much of a role in statistics. But other
+qualitiative variables serve to \emph{subdivide} the data set into
+categories; we call these \emph{factors}. In the above examples, gender,
+race, political party, and socio-economic status would be considered
+factors (shoe size would be another one). The possible values of a
+factor are called its \emph{levels}. For instance, the factor \emph{gender}
+would have two levels, namely, male and female.
 
 Factors have special status in \textsf{R}. They are represented internally
 by numbers, but even when they are written numerically their values
@@ -1912,53 +1947,81 @@ is, Stage III cancer is not Stage I cancer + Stage II cancer).
 
 \paragraph*{Tables}
 
-Here we choose a variable and count frequencies and list proportions.
-We can do this at the console with the \inputencoding{latin9}\lstinline[showstringspaces=false]!table!\inputencoding{utf8}
-function. In \textsf{R} Commander you can do it with \textsf{Statistics}
-\textsf{$\triangleright$} \textsf{Frequency Distribution\ldots{}.}
-Alternatively, to look at tables for all factors in the \inputencoding{latin9}\lstinline[showstringspaces=false]!Active data set!\inputencoding{utf8}
+One of the best ways to summarize qualitative data is with a table
+of the data values. We may count frequencies with the \inputencoding{latin9}\lstinline[showstringspaces=false]!table!\inputencoding{utf8}
+function or list proportions with the \inputencoding{latin9}\lstinline[showstringspaces=false]!prop.table!\inputencoding{utf8}
+function (whose input is a frequency table). In the \textsf{R} Commander
+you can do it with \textsf{Statistics} \textsf{$\triangleright$}
+\textsf{Frequency Distribution\ldots{}.} Alternatively, to look at
+tables for all factors in the \inputencoding{latin9}\lstinline[showstringspaces=false]!Active data set!\inputencoding{utf8}
 you can do \textsf{Statistics} \textsf{$\triangleright$} \textsf{Summaries}
 \textsf{$\triangleright$} \textsf{Active Dataset}.
 
 <<keep.source = TRUE>>=
 Tbl <- table(state.division)
-Tbl            # frequencies
-Tbl/sum(Tbl)   # relative frequencies
+Tbl               # frequencies
+Tbl/sum(Tbl)      # relative frequencies
+prop.table(Tbl)   # same thing
 @
+
+
+\paragraph*{Dotcharts}
 
 
 \paragraph*{Bar Graphs}
 
-A bar graph is the categorical analogue of a histogram which is used
-for categorical data. A bar is displayed for each level of a factor,
-with the height of the bars proportional to the frequencies of observations
-falling in the respective categories. A disadvantage of bar graphs
-is that the levels are ordered alphabetically (by default), which
-may sometimes obscure patterns in the display. For an example, see
-Figure \ref{fig:bar-gr-stateregion}.
+A bar graph is the analogue of a histogram, but for categorical data.
+A bar is displayed for each level of a factor, with the height of
+the bars proportional to the frequencies of observations falling in
+the respective categories. A disadvantage of bar graphs is that the
+levels are ordered alphabetically (by default), which may sometimes
+obscure patterns in the display. For an example, see Figure \ref{fig:bar-gr-stateregion}.
+
+<<eval = FALSE>>=
+barplot(table(state.region), cex.names = 0.50)
+barplot(prop.table(table(state.region)), cex.names = 0.50)
+@
+
+Notice the \inputencoding{latin9}\lstinline[showstringspaces=false]!cex.names!\inputencoding{utf8}
+argument that we used, above. It shrinks the names on the $x$ axis
+by 50\%, which makes them easier to read.
 
 %
 \begin{figure}
 \begin{centering}
 <<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 par(mfrow = c(1,2)) # 2 plots: 1 row, 2 columns
-barplot(table(state.region), cex.names=0.60)
-barplot(prop.table(table(state.region)), cex.names=0.60)
-par(mfrow = c(1,1)) # back to normal
+barplot(table(state.region), cex.names = 0.50)
+barplot(prop.table(table(state.region)), cex.names = 0.50)
+par(mfrow = c(1,1))
 @
 \par\end{centering}
 
-\caption{Bar Graphs of the factor state.region \label{fig:bar-gr-stateregion}}
+\caption{Bar graphs of the \texttt{state.region} data\label{fig:bar-gr-stateregion}}
 
+
+{\small The left graph is a frequency barplot made with }\texttt{\small table}{\small{}
+and the right is a relative frequency barplot made with }\texttt{\small prop.table}{\small .}
 \end{figure}
 
 
 
 \paragraph*{Pareto Diagrams }
 
-These can be done with the \textsf{R} Commander, or with the \inputencoding{latin9}\lstinline[showstringspaces=false]!pareto.chart!\inputencoding{utf8}
-function from the \inputencoding{latin9}\lstinline[showstringspaces=false]!qcc!\inputencoding{utf8}package
-\cite{qcc}.
+A pareto diagram is a lot like a bar graph, except the bars are rearranged
+such that they decrease in height going from left to right. The rearrangement
+is handy because it can visually reveal any structure (if any) in
+how fast the bars decrease -- this is much more difficult when the
+bars are jumbled. These can be done with the \inputencoding{latin9}\lstinline[showstringspaces=false]!RcmdrPlugin.IPSUR!\inputencoding{utf8}
+package or with the \inputencoding{latin9}\lstinline[showstringspaces=false]!pareto.chart!\inputencoding{utf8}
+function from the \inputencoding{latin9}\lstinline[showstringspaces=false]!qcc!\inputencoding{utf8}
+package \cite{qcc}. See Figure \ref{fig:Pareto-chart}. The code
+follows.
+
+<<eval = FALSE>>=
+library(qcc)
+pareto.chart(table(state.division), ylab="Frequency")
+@
 
 %
 \begin{figure}
@@ -1969,7 +2032,7 @@ pareto.chart(table(state.division), ylab="Frequency")
 @
 \par\end{centering}
 
-\caption{Pareto chart of the state.division\label{fig:Pareto-chart}}
+\caption{Pareto chart of the \texttt{state.division} data\label{fig:Pareto-chart}}
 
 \end{figure}
 
@@ -1983,20 +2046,19 @@ judge angles very well. Use it to display 2 to 6 fractions of one
 unit. Can only show marked differences in values. Pie charts are a
 very bad way of displaying information. The eye is good at judging
 linear measures and bad at judging relative areas. A bar chart or
-dot chart is a preferable way of displaying this type of data. 
+dot chart is a preferable way of displaying this type of data. The
+Elements of Graphing Data \cite{Cleveland1994}: 
+\begin{quote}
+Data that can be shown by pie charts always can be shown by a dot
+chart. This means that judgements of position along a common scale
+can be made instead of the less accurate angle judgements.
+\end{quote}
+This statement is based on the empirical investigations of Cleveland
+and McGill as well as investigations by perceptual psychologists. 
 
-Cleveland (1985), page 264: {}``Data that can be shown by pie charts
-always can be shown by a dot chart. This means that judgements of
-position along a common scale can be made instead of the less accurate
-angle judgements.''This statement is based on the empirical investigations
-of Cleveland and McGill as well as investigations by perceptual psychologists. 
-
-Prior to \textsf{R} 1.5.0 this was known as piechart, which is the
-name of a Trellis function, so the name was changed to be compatible
-with \textsf{S}. 
-
-
-\paragraph*{Mosaic Plots}
+Prior to \textsf{R} 1.5.0 this was known as \inputencoding{latin9}\lstinline[showstringspaces=false]!piechart!\inputencoding{utf8}\index{piechart@\texttt{piechart}},
+which is the name of a Trellis function, so the name was changed to
+be compatible with \textsf{S}. 
 
 
 \subsection{Logical Data\label{sub:Logical-Data}}
@@ -3438,7 +3500,7 @@ to our statements above.\end{enumerate}
 
 
 
-\chapter{Probability}
+\chapter{Probability\label{cha:Probability}}
 
 In this chapter, we define the basic terminology associated with probability
 and derive some of its properties. We discuss three interpretations
@@ -10107,7 +10169,7 @@ pnorm(43.1, mean = 37, sd = 9, lower.tail = FALSE)
 
 
 
-\chapter{Estimation}
+\chapter{Estimation\label{cha:Estimation}}
 
 There are two branches of estimation procedures: point estimation
 and interval estimation. We briefly discuss point estimation first
@@ -10770,14 +10832,14 @@ unless
 
 \begin{itemize}
 \item the underlying populations are both normal and $\sigma_{X}=\sigma_{Y}$.
-In this case (setting $\sigma=\sigma_{X}=\sigma_{Y}$), \[
-\Xbar-\Ybar\sim\mathsf{norm}\left(\mathtt{mean}=\mu_{X}-\mu_{Y},\,\mathtt{sd}=\sigma\sqrt{\frac{1}{n}+\frac{1}{m}}\right).\]
-Now let \[
-U=\frac{n-1}{\sigma^{2}}S_{X}^{2}+\frac{m-1}{\sigma^{2}}S_{Y}^{2}.\]
+In this case (setting $\sigma=\sigma_{X}=\sigma_{Y}$), \begin{equation}
+\Xbar-\Ybar\sim\mathsf{norm}\left(\mathtt{mean}=\mu_{X}-\mu_{Y},\,\mathtt{sd}=\sigma\sqrt{\frac{1}{n}+\frac{1}{m}}\right).\end{equation}
+Now let \begin{equation}
+U=\frac{n-1}{\sigma^{2}}S_{X}^{2}+\frac{m-1}{\sigma^{2}}S_{Y}^{2}.\end{equation}
 Then by BLANK we know that $U\sim\mathsf{chisq}(\mathtt{df}=n+m-2)$
 and is not a large leap to believe that $U$ is independent of $\Xbar-\Ybar$;
-thus \[
-T=\frac{Z}{\sqrt{\left.U\right\slash (n+m-2)}}\sim\mathsf{t}(\mathtt{df}=n+m-2).\]
+thus \begin{equation}
+T=\frac{Z}{\sqrt{\left.U\right\slash (n+m-2)}}\sim\mathsf{t}(\mathtt{df}=n+m-2).\end{equation}
 But\begin{align*}
 T & =\frac{\frac{\Xbar-\Ybar-(\mu_{X}-\mu_{Y})}{\sigma\sqrt{\frac{1}{n}+\frac{1}{m}}}}{\sqrt{\left.\frac{n-1}{\sigma^{2}}S_{X}^{2}+\frac{m-1}{\sigma^{2}}S_{Y}^{2}\right\slash (n+m-2)}},\\
  & =\frac{\Xbar-\Ybar-(\mu_{X}-\mu_{Y})}{\sqrt{\left(\frac{1}{n}+\frac{1}{m}\right)\left(\frac{(n-1)S_{X}^{2}+(m-1)S_{Y}^{2}}{n+m-2}\right)}},\\
@@ -10924,7 +10986,7 @@ Sections BLANK through BLANK all began the same way: we were given
 the sample size $n$ and the confidence coefficient $1-\alpha$, and
 our task was to find a margin of error $E$ so that \[
 \hat{\theta}\pm E\mbox{ is a }100(1-\alpha)\%\mbox{ confidence interval for }\theta.\]
-Some examples we have seen are:
+Some examples we saw were:
 \begin{itemize}
 \item $E=z_{\alpha/2}\sigma/\sqrt{n}$, in the one-sample $z$-interval,
 \item $E=t_{\alpha/2}(\mathtt{df}=n+m-2)S_{p}\sqrt{n^{-1}+m^{-1}}$, in
@@ -10936,8 +10998,8 @@ that we have a fixed margin of error $E,$ say $E=3$, and we want
 a $100(1-\alpha)\%$ confidence interval for $\mu$. The question
 is: how big does $n$ have to be?
 
-For the case of a population mean, the answer is easily obtained.
-We simply set up an equation and solve for $n$.
+For the case of a population mean the answer is easy: we set up an
+equation and solve for $n$.
 \begin{example}
 Given a situation, given $\sigma$, given $E$, we would like to know
 how big $n$ has to be to ensure that $\Xbar\pm5$ is a 95\% confidence
@@ -10956,20 +11018,20 @@ was\[
 Reasoning as above we would want\begin{align}
 E & =z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}},\mbox{ or}\\
 n & =z_{\alpha/2}^{2}\frac{\hat{p}(1-\hat{p})}{E^{2}}.\end{align}
-OOPS! (again.) Recall that $\hat{p}=Y/n$, which would put the variable
-$n$ on both sides of Equation BLANK. Again, there are two solutions
-to the problem.
+OOPS! Recall that $\hat{p}=Y/n$, which would put the variable $n$
+on both sides of Equation BLANK. Again, there are two solutions to
+the problem.
 \begin{enumerate}
 \item If we have a good idea of what $p$ is, say $p^{\ast}$ then we can
-plug it in to get\[
-n=z_{\alpha/2}^{2}\frac{p^{\ast}(1-p^{\ast})}{E^{2}}.\]
+plug it in to get\begin{equation}
+n=z_{\alpha/2}^{2}\frac{p^{\ast}(1-p^{\ast})}{E^{2}}.\end{equation}
 
 \item Even if we have no idea what $p$ is, we do know from calculus that
 $p(1-p)\leq1/4$ because the function $f(x)=x(1-x)$ is quadratic
 (so its graph is a parabola which opens downward) with maximum value
 attained at $x=1/2$. Therefore, regardless of our choice for $p^{\ast}$
-the sample size must satisfy\[
-n=z_{\alpha/2}^{2}\frac{p^{\ast}(1-p^{\ast})}{E^{2}}\leq\frac{z_{\alpha/2}^{2}}{4E^{2}}.\]
+the sample size must satisfy\begin{equation}
+n=z_{\alpha/2}^{2}\frac{p^{\ast}(1-p^{\ast})}{E^{2}}\leq\frac{z_{\alpha/2}^{2}}{4E^{2}}.\end{equation}
 The quantity $z_{\alpha/2}^{2}/4E^{2}$ is large enough to guarantee
 $100(1-\alpha)\%$ confidence.\end{enumerate}
 \begin{example}
@@ -10979,11 +11041,11 @@ For very small populations sometimes the value of $n$ obtained from
 the formula is too big. In this case we should use the hypergeometric
 distribution for a sampling model rather than the binomial model.
 With this modification the formulas change to the following: if $N$
-denotes the population size then let\[
-m=z_{\alpha/2}^{2}\frac{p^{\ast}(1-p^{\ast})}{E^{2}}\]
+denotes the population size then let\begin{equation}
+m=z_{\alpha/2}^{2}\frac{p^{\ast}(1-p^{\ast})}{E^{2}}\end{equation}
  and the sample size needed to ensure $100(1-\alpha)\%$ confidence
-is achieved is\[
-n=\frac{m}{1+\frac{m-1}{N}}.\]
+is achieved is\begin{equation}
+n=\frac{m}{1+\frac{m-1}{N}}.\end{equation}
 If we do not have a good value for the estimate $p^{\ast}$ then we
 may use $p^{\ast}=1/2$. 
 \end{rem}
@@ -11017,7 +11079,7 @@ $\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$ distribution.
 Find a two-dimensional MLE for $\theta=(\mu,\sigma)$.\label{xca:norm-mu-sig-MLE}
 \end{xca}
 
-\chapter{Hypothesis Testing}
+\chapter{\label{cha:Hypothesis-Testing}Hypothesis Testing}
 
 
 \paragraph*{What do I want them to know?}
@@ -11557,7 +11619,7 @@ I am thinking about replicate() here.
 \section{Chapter Exercises}
 
 
-\chapter{Simple Linear Regression}
+\chapter{\label{cha:Simple-Linear-Regression}Simple Linear Regression}
 
 
 \paragraph*{What do I want them to know?}
@@ -13089,7 +13151,7 @@ show that\[
 
 
 
-\chapter{Multiple Linear Regression}
+\chapter{\label{cha:Multiple-Linear-Regression}Multiple Linear Regression}
 
 We know a lot about simple linear regression models, and a next step
 is to study multiple regression models that have more than one independent
@@ -14587,7 +14649,7 @@ SSTO=SSE+SSR.\]
 
 \end{enumerate}
 
-\chapter{Resampling Methods}
+\chapter{\label{cha:Resampling-Methods}Resampling Methods}
 
 
 \paragraph*{What do I want them to know?}
@@ -15124,7 +15186,7 @@ accuracy desired.
 \section{Chapter Exercises}
 
 
-\chapter{Categorical Data Analysis}
+\chapter{Categorical Data Analysis\label{cha:Categorical-Data-Analysis}}
 
 This chapter is still under substantial revision. Look for it in the
 Second Edition. In the meantime, you can preview any released drafts
@@ -15138,7 +15200,7 @@ read(IPSUR)
 @
 
 
-\chapter{Nonparametric Statistics}
+\chapter{Nonparametric Statistics\label{cha:Nonparametric-Statistics}}
 
 This chapter is still under substantial revision. Look for it in the
 Second Edition. In the meantime, you can preview any released drafts
@@ -15152,7 +15214,7 @@ read(IPSUR)
 @
 
 
-\chapter{Time Series}
+\chapter{Time Series\label{cha:Time-Series}}
 
 This chapter is still under substantial revision. Look for it in the
 Second Edition. In the meantime, you can preview any released drafts
@@ -15511,7 +15573,7 @@ stack
 \item Make table
 \end{enumerate}
 
-\chapter{Mathematical Machinery}
+\chapter{Mathematical Machinery\label{cha:Mathematical-Machinery}}
 
 This appendix houses many of the standard definitions and theorems
 that are used at some point during the narrative. It is targeted for
@@ -16093,7 +16155,7 @@ of a double integral we have a multiple integral over multidimensional
 sets $A$ and $B$.
 
 
-\chapter{Writing Reports with \textsf{R}}
+\chapter{Writing Reports with \textsf{R\label{cha:Writing-Reports-with}}}
 
 Perhaps the most important part of a statistician's job once the analysis
 is complete is to communicate the results to others. This is usually
@@ -16368,7 +16430,8 @@ HTML and prettyR
 R2HTML
 
 
-\chapter{Instructions for Instructors}
+\chapter{\textsf{\label{cha:Instructions-for-Instructors}}Instructions for
+Instructors}
 
 <<echo = FALSE>>=
 set.seed(095259)
@@ -16573,7 +16636,8 @@ Frankly, and most humbly, the only response I have for those individuals
 is: {}``Please refer to the preceding paragraph.''
 
 
-\chapter{\texttt{RcmdrTestDrive} Story}
+\chapter{\textsf{\label{cha:RcmdrTestDrive-Story}}\texttt{RcmdrTestDrive}
+Story}
 
 The goal of \inputencoding{latin9}\lstinline[showstringspaces=false]!RcmdrTestDrive!\inputencoding{utf8}
 was to have a data set sufficiently rich in the types of data represented
@@ -16847,7 +16911,7 @@ Detective Pyork E.~Pig
 {*}{*}{*}End File{*}{*}{*}
 
 
-\chapter{\textsf{R} Session Information}
+\chapter{\textsf{R} Session Information\label{cha:R-Session-Information}}
 
 If you ever write the \textsf{R} help mailing list with a question,
 then you should include your session information in the email; it
@@ -16862,7 +16926,7 @@ sessionInfo()
 
 
 
-\chapter{GNU Free Documentation License}
+\chapter{GNU Free Documentation License\label{cha:GNU-Free-Documentation}}
 
 \begin{center}
 \textbf{\large Version 1.3, 3 November 2008}\bigskip{}
@@ -17343,7 +17407,7 @@ free software license, such as the GNU General Public License, to
 permit their use in free software. 
 
 
-\chapter{History}
+\chapter{History\label{cha:History}}
 
 \begin{tabular}{ll}
 \textbf{Title:} & Introduction to Probability and Statistics Using \textsf{R}\tabularnewline
@@ -17352,16 +17416,31 @@ permit their use in free software.
 \textbf{Publisher:} & G.~Jay Kerns\tabularnewline
 \end{tabular}
 
+\vfill{}
+
+
+%\bibliographystyle{plainurl}
+\cleardoublepage
+\phantomsection
+%\addcontentsline{toc}{chapter}{\bibname}
+%\nocite{*} 
+%\bibliography{IPSUR}
+
+\bibliographystyle{plain}
+\bibliography{IPSUR}
+
+
+\vfill{}
+
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\indexname} 
+\printindex
+
 <<echo=FALSE, results=hide, split=FALSE>>= 
 rm(.Random.seed)
 save.image(file = "IPSUR.RData")
 Stangle(file="IPSUR.Rnw", output="IPSUR.R", annotate=TRUE)
 @
-
-\bibliographystyle{plain}
-\cleardoublepage\addcontentsline{toc}{chapter}{\bibname}\nocite{*}
-\bibliography{IPSUR}
-
-
-\printindex{}
 \end{document}
