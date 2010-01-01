@@ -1725,36 +1725,124 @@ the concept of a factor
 
 Loosely speaking, a datum is any piece of collected information, and
 a data set is a collection of data related to each other in some way.
+We will categorize data into five types and describe each in turn:
+\begin{enumerate}
+\item Quantitative, data associated with a measurement of some quantity
+on an observational unit,
+\item Qualitative, data associated with some quality or property of the
+observational unit,
+\item Logical, data to represent true or false which play an important role
+later,
+\item Missing, data that should be there but is not, and
+\item Other types, everything else under the sun.
+\end{enumerate}
+In each subsection we look at some examples of the type in question
+and introduce methods to display them.
 
 
-\subsection{Quantitative Data\label{sub:Quantitative-Data}}
+\subsection{Quantitative data\label{sub:Quantitative-Data}}
 
-Quantitative data are any data that take numerical values. Quantitative
-data can be further subdivided into two categories. 
+Quantitative data are any data that measure or are associated with
+a measurement of the quantity of something. They invariably take numerical
+values. Quantitative data can be further subdivided into two categories. 
 \begin{itemize}
 \item Discrete data take values in a finite or countably infinite set of
 numbers. Examples include: counts, number of arrivals, number of successes,
-attendance.
+attendance. They are often represented by integers, say 0, 1, 2, \emph{etc}.
 \item Continuous data take values in an interval of numbers. These are also
 known as scale data, interval data, or measurement data. Examples
-include: height, weight, length, time, \emph{etc}.
+include: height, weight, length, time, \emph{etc}. Continuous data
+are often characterized by fractions or decimals: 3.82, 7.0001, 4~$\frac{5}{8}$,
+\emph{etc}.
 \end{itemize}
+Note that the distinction between discrete and continuous data is
+not always clear-cut. Sometimes it is better to treat data as if they
+were continuous, even though strictly speaking they are discrete. 
+\begin{example}
+Populations Recorded by the US Census. The data record the population
+of the United States (in millions) as reported by the census from
+1790--1970. The data are in the vector \inputencoding{latin9}\lstinline[showstringspaces=false]!uspop!\inputencoding{utf8}
+in the \inputencoding{latin9}\lstinline[showstringspaces=false]!datasets!\inputencoding{utf8}
+package. Let us take a look at the data.
+\end{example}
+
+\begin{example}
+\textbf{Lengths of Major North American Rivers.} The U.S.~Geological
+Survey recorded the lengths (in miles) of several rivers in North
+America. They are stored in the vector \inputencoding{latin9}\lstinline[showstringspaces=false]!rivers!\inputencoding{utf8}
+in the \inputencoding{latin9}\lstinline[showstringspaces=false]!datasets!\inputencoding{utf8}
+package (which ships with base \textsf{R}). See \inputencoding{latin9}\lstinline[showstringspaces=false]!?rivers!\inputencoding{utf8}.
+Let us take a look at the data with the \inputencoding{latin9}\lstinline[showstringspaces=false]!str!\inputencoding{utf8}
+function.
+
+<<>>=
+str(rivers)
+@
+
+The output says that \inputencoding{latin9}\lstinline[showstringspaces=false]!rivers!\inputencoding{utf8}
+is a numeric vector of length 141, and the first few values are 735,
+320, 325, \emph{etc}. These data are definitely quantitative, and
+though it appears that the measurements have been rounded to the nearest
+mile, it would probably be best to take these data to be continuous. 
+\end{example}
+
+\begin{example}
+\textbf{Annual Precipitation in US Cities.} The vector \inputencoding{latin9}\lstinline[showstringspaces=false]!precip!\inputencoding{utf8}
+contains average amount of rainfall (in inches) for each of 70 cities
+in the United States and Puerto Rico. Let us take a look at the data:
+
+<<>>=
+str(precip)
+precip[1:4]
+@
+
+The output shows that \inputencoding{latin9}\lstinline[showstringspaces=false]!precip!\inputencoding{utf8}
+is a numeric vector which has been \emph{named}, that is, each value
+has a name associated with it (which can be set with the \inputencoding{latin9}\lstinline[showstringspaces=false]!names!\inputencoding{utf8}
+function). These are quantitative continuous data.
+
+\end{example}
+
+\begin{example}
+Yearly Numbers of Important Discoveries. The vector \inputencoding{latin9}\lstinline[showstringspaces=false]!discoveries!\inputencoding{utf8}
+contains numbers of “great” inventions/discoveries in each year from
+1860 to 1959, as reported by the 1975 World Almanac. Let us take a
+look at the data:
+\end{example}
+<<>>=
+str(discoveries)
+discoveries[1:4]
+@
+
+The output is telling us that \inputencoding{latin9}\lstinline[showstringspaces=false]!discoveries!\inputencoding{utf8}
+is a \emph{time series} (see Section \ref{sub:Other-data-types} for
+more) of length 100. The entries are integers, and since they represent
+counts this is a good example of discrete quantitative data. We will
+take a closer look in the following sections.
+
 
 \subsection*{Displaying Quantitative Data\label{sub:Displaying-Quantitative-Data}}
 
+One of the first things to do when confronted by quantitative data
+(or any data, for that matter) is to make some sort of visual display
+to gain some insight into the data's structure. There are almost as
+many display types from which to choose as there are data sets to
+plot. We describe some of the more popular alternatives. 
 
-\paragraph*{Strip charts (also known as Dot plots)}
 
-These are best when the data set is not too large. Along the horizontal
-axis is a numerical scale above which the data values are plotted.
-We can do it in \textsf{R} with a call to the \inputencoding{latin9}\lstinline[showstringspaces=false]!stripchart!\inputencoding{utf8}
+\paragraph*{Strip charts (also known as Dot plots)\label{par:Strip-charts}}
+
+These can be used for discrete or continuous data, and usually look
+best when the data set is not too large. Along the horizontal axis
+is a numerical scale above which the data values are plotted. We can
+do it in \textsf{R} with a call to the \inputencoding{latin9}\lstinline[showstringspaces=false]!stripchart!\inputencoding{utf8}
 function. There are three available methods.
 \begin{description}
-\item [{Overplot}] plots ties covering each other. This method is good
+\item [{overplot}] plots ties covering each other. This method is good
 to display only the distinct values assumed by the dataset.
-\item [{Jitter}] adds some noise to the data in the $y$ direction in which
+\item [{jitter}] adds some noise to the data in the $y$ direction in which
 case the data values are not covered up by ties.
-\item [{Stack}] plots repeated values stacked on top of one another. This
+\item [{stack}] plots repeated values stacked on top of one another. This
 method is best used for discrete data with a lot of ties; if there
 are no repeats then this method is identical to overplot.
 \end{description}
@@ -1762,29 +1850,27 @@ See Figure \ref{fig:Various-stripchart-methods,}, which is produced
 by the following code.
 
 <<eval = FALSE>>=
-stripchart(uspop, xlab="population")
+stripchart(precip, xlab="rainfall")
 stripchart(rivers, method="jitter", xlab="length")
 stripchart(discoveries, method="stack", xlab="number")
 @
 
-The leftmost graph is of the U.S.~population data from the \inputencoding{latin9}\lstinline[showstringspaces=false]!uspop!\inputencoding{utf8}
+The leftmost graph is of the U.S.~population data from the \inputencoding{latin9}\lstinline[showstringspaces=false]!precip!\inputencoding{utf8}
 data in the \inputencoding{latin9}\lstinline[showstringspaces=false]!datasets!\inputencoding{utf8}
-package. The vector is only length 19, and the values are continuous
-quantitative data. The graph shows tightly spaced values on the left
-that stretch out as they increase. Later we will call this a right-skewed
-distribution, see Section \ref{sub:Shape}. The middle graph is of
-the \inputencoding{latin9}\lstinline[showstringspaces=false]!rivers!\inputencoding{utf8}
-data, a vector of length 141 of discrete quantitative data. There
-are several repeated values in the rivers data, so if we were to use
-the overplot method we would lose some data values in the display.
-This graph also shows a right-skewed shape with perhaps some extreme
-values on the far right of the display. The third graph of of the
-\inputencoding{latin9}\lstinline[showstringspaces=false]!discoveries!\inputencoding{utf8}
+package. The graph shows tightly clustered values in the middle with
+some others falling balanced on either side, with perhaps slightly
+more falling to the left. Later we will call this a symmetric distribution,
+see Section \ref{sub:Shape}. The middle graph is of the \inputencoding{latin9}\lstinline[showstringspaces=false]!rivers!\inputencoding{utf8}
+data, a vector of length 141. There are several repeated values in
+the rivers data, so if we were to use the overplot method we would
+lose some pf them in the display. This plot shows a what we will later
+call a right-skewed shape with perhaps some extreme values on the
+far right of the display. The third graph of of the \inputencoding{latin9}\lstinline[showstringspaces=false]!discoveries!\inputencoding{utf8}
 data, a vector%
 \footnote{Actually, \inputencoding{latin9}\lstinline[showstringspaces=false]!discoveries!\inputencoding{utf8}
-is a \emph{time series object} which is coerced to a numeric vector
-for the purposes of the stripchart function. See Chapter .%
-} of length 100 of discrete quantitative data. .
+being a \emph{time series object} is coerced to a numeric vector for
+the purposes of the \texttt{stripchart} function. See Chapter \ref{cha:Time-Series}.%
+} of length 100 of discrete quantitative data.
 
 %
 \begin{figure}
@@ -1808,64 +1894,88 @@ third is of the }\texttt{\small discoveries}{\small{} data.}
 
 \paragraph*{Histogram}
 
-Used for continuous data. There are many ways to plot histograms,
-one of the easiest is done with the \inputencoding{latin9}\lstinline[showstringspaces=false]!hist!\inputencoding{utf8}
-function. These plots are some of the most common summary displays,
-and they are often misidentified as {}``Bar Graphs'' (see below.)
-The scale on the $y$ axis can be frequency, percentage, or density
-(relative frequency).
+These are typically used for continuous data. A histogram is constructed
+by first deciding on a set of classes, or bins. The bins partition
+the real line into a set of classes into which the data values fall.
+Then vertical bars are drawn over the bins with height proportional
+to the number of observations that fell into the bin. 
 
-A histogram is constructed by first deciding on a set of classes,
-or bins. The bins partition the real line into a set of classes into
-which the data values fall. 
-\begin{quotation}
-HISTOGRAM. The term histogram was coined by Karl Pearson. In his Contributions
-to the Mathematical Theory of Evolution. II. Skew Variation in Homogeneous
-Material, Philosophical Transactions of the Royal Society A, 186,
-(1895) Pearson explained in a footnote (p. 399) that the term was
-“introduced by the writer in his lectures on statistics as a term
-for a common form of graphical representation, i.e., by columns marking
-as areas the frequency corresponding to the range of their base.”
+These are one of the most common summary displays, and they are often
+misidentified as {}``Bar Graphs'' (see below.) The scale on the
+$y$ axis can be frequency, percentage, or density (relative frequency).
+The term histogram was coined by Karl Pearson in 1891, see \cite{Miller}.
+\begin{example}
+Annual Precipitation in US Cities. We are going to take another look
+at the \inputencoding{latin9}\lstinline[showstringspaces=false]!precip!\inputencoding{utf8}
+data that we investigated earlier. The strip chart in Figure \ref{fig:Various-stripchart-methods,}
+suggested a loosely balanced distribution; let us now look to see
+what a histogram says. 
 
-The term histogram appears in a lecture of November 1891 in the series
-of lectures on the “Geometry of Statistics” that Pearson gave at Gresham
-College in the academic year 1891-2. The lectures are described by
-S. M. Stigler History of Statistics pp. 326-7 and T. M. Porter Karl
-Pearson: The Scientific Life in a Statistical Age, p. 236. 
+There are many ways to plot histograms in \textsf{R}, and one of the
+easiest is with the \inputencoding{latin9}\lstinline[showstringspaces=false]!hist!\inputencoding{utf8}
+function. The following code produces the plots in Figure \ref{fig:histograms}.
 
+<<eval = FALSE>>=
+hist(volcano, main = "")
+hist(volcano, freq = FALSE, main = "")
+@
 
+Notice the argument \inputencoding{latin9}\lstinline[showstringspaces=false]!main = ""!\inputencoding{utf8},
+which suppresses the main title from being displayed -- it would have
+said {}``Histogram of \texttt{precip}'' otherwise. The plot on the
+left is a frequency histogram (the default), and the plot on the right
+is a relative frequency histogram (\inputencoding{latin9}\lstinline[showstringspaces=false]!freq = FALSE!\inputencoding{utf8}). 
 
+\end{example}
 %
 \begin{figure}
 \begin{centering}
 <<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 par(mfrow = c(1,2)) # 2 plots: 1 row, 2 columns
-hist(volcano, freq = TRUE, main = "", cex.lab = 0.8)
+hist(volcano, main = "")
 hist(volcano, freq = FALSE, main = "")
 par(mfrow = c(1,1)) # back to normal
 @
 \par\end{centering}
 
-\caption{(Relative) frequency histograms of the \texttt{volcano} data.\label{fig:hist-volcano}}
+\caption{(Relative) frequency histograms of the \texttt{precip} data.\label{fig:histograms}}
 
 \end{figure}
 
-\end{quotation}
+
+Please bear the biggest weakness of histograms in mind: the graph
+obtained strongly depends on the bins chosen. Choose another set of
+bins, and you will get a different histogram. Moreover, there are
+not any definitive criteria by which bins should be defined; the best
+choice for a given data set is the one which illuminates the data
+set's underlying structure (if any). Luckily for us there are algorithms
+to automatically choose bins that are likely to display well, and
+more often than not the default bins do a good job. 
+
+This is not always the case, however, and a responsible statistician
+will investigate many bin choices to test the stability of the display.
+Case in point: recall that the stripchart suggested a relatively balanced
+shape to the data distribution. Watch what happens when we change
+the bins slightly (with the \inputencoding{latin9}\lstinline[showstringspaces=false]!breaks!\inputencoding{utf8}
+argument to \inputencoding{latin9}\lstinline[showstringspaces=false]!hist!\inputencoding{utf8}) 
+
 
 \paragraph*{Stemplots (more to be said in Section \ref{sec:Exploratory-Data-Analysis})}
 
 Stemplots have two basic parts: \emph{stems} and \emph{leaves}. The
 final digit of the data values is taken to be a \emph{leaf}, and the
-leading digit(s) is (are) taken to be \emph{stems}. A vertical line
-is drawn, and to the left of the line are listed the stems. To the
-right of the line, the leaves are listed beside their corresponding
-stem. There will typically be several leaves for each stem, in which
-case the leaves accumulate to the right. It is sometimes necessary
-to round the data values, especially for larger data sets.
+leading digit(s) is (are) taken to be \emph{stems}. We draw a vertical
+line, and to the left of the line we list the stems. To the right
+of the line, we list the leaves beside their corresponding stem. There
+will typically be several leaves for each stem, in which case the
+leaves accumulate to the right. It is sometimes necessary to round
+the data values, especially for larger data sets.
 \begin{example}
-Consider the \inputencoding{latin9}\lstinline[showstringspaces=false]!UKDriverDeaths!\inputencoding{utf8}
-data. We construct a stem and leaf diagram in \textsf{R} with the
-\inputencoding{latin9}\lstinline[showstringspaces=false]!stem.leaf!\inputencoding{utf8}
+\inputencoding{latin9}\lstinline[showstringspaces=false]!UKDriverDeaths!\inputencoding{utf8}
+is a time series that contains the total car drivers killed or seriously
+injured in Great Britain monthly from Jan 1969 to Dec 1984. See \inputencoding{latin9}\lstinline[showstringspaces=false]!?UKDriverDeaths!\inputencoding{utf8}.
+Compulsory seat belt use was introduced on January 31, 1983. We construct
+a stem and leaf diagram in \textsf{R} with the \inputencoding{latin9}\lstinline[showstringspaces=false]!stem.leaf!\inputencoding{utf8}
 function from the \inputencoding{latin9}\lstinline[showstringspaces=false]!aplpack!\inputencoding{utf8}
 package \cite{aplpack}.
 \end{example}
@@ -1874,33 +1984,51 @@ library(aplpack)
 stem.leaf(UKDriverDeaths, depth = FALSE)
 @
 
-Notice that in the arguments we are not showing {}``depths''. To
-learn more about this option and many others, see Section \ref{sec:Exploratory-Data-Analysis}.
-An advantage of using the stemplot is that the original data values
-are not lost in the display, in contrast to a histogram.
+The display shows a more or less balanced mound-shaped distribution,
+with one or maybe two humps, a big one and a smaller one just to its
+right. Note that the data have been rounded to the tens place so that
+each datum gets only one leaf to the right of the dividing line.
+
+Notice that the \inputencoding{latin9}\lstinline[showstringspaces=false]!depth!\inputencoding{utf8}s
+have been suppressed. To learn more about this option and many others,
+see Section \ref{sec:Exploratory-Data-Analysis}. Unlike a histogram,
+the original data values may be recovered from the stemplot display,
+modulo the rounding -- that is, starting from the top and working
+down we can read off the data values 1050, 1070, 1110, 1130, \emph{etc}. 
 
 
-\paragraph*{Index Plot}
+\paragraph*{Index plot}
 
 Done with the \inputencoding{latin9}\lstinline[showstringspaces=false]!plot!\inputencoding{utf8}
 function. These are good for plotting data which are ordered in the
 dataset, for example, when the data are measured over time. That is,
 the first observation was measured at time 1, the second at time 2,
-\emph{etc}. It is a two dimensional plot, in which the index is the
-$x$ variable and the observation is the $y$ variable. There are
-two plotting methods for index plots:
-\begin{itemize}
-\item Spikes: draws a vertical line from the $x$-axis to the observation
-height.
-\item Points: plots a simple point at the observation height.
-\end{itemize}
+\emph{etc}. It is a two dimensional plot, in which the index (or time)
+is the $x$ variable and the measured value is the $y$ variable.
+There are two plotting methods for index plots:
+\begin{description}
+\item [{spikes:}] draws a vertical line from the $x$-axis to the observation
+height (\inputencoding{latin9}\lstinline[showstringspaces=false]!type = "h"!\inputencoding{utf8}).
+\item [{points:}] plots a simple point at the observation height (\inputencoding{latin9}\lstinline[showstringspaces=false]!type = "p"!\inputencoding{utf8}).
+\end{description}
+See Figure \ref{fig:indpl-lakehuron}, which was produced with the
+following code:
+
+<<>>=
+plot(LakeHuron, type = "h")
+plot(LakeHuron, type = "p")
+@
+
+The plots show an overall decreasing trend to the observations, and
+there appears to be some seasonal variation that increases over time.
+
 %
 \begin{figure}
 \begin{centering}
 <<echo = FALSE, fig=true, height = 8, width = 6>>=
 par(mfrow = c(2,1)) # 2 plots: 1 row, 2 columns
-plot(LakeHuron, type = "p")
 plot(LakeHuron, type = "h")
+plot(LakeHuron, type = "p")
 par(mfrow = c(1,1)) # back to normal
 @
 \par\end{centering}
@@ -1942,10 +2070,10 @@ do not convey any numeric meaning or obey any mathematical rules (that
 is, Stage III cancer is not Stage I cancer + Stage II cancer).
 
 
-\subsection*{Displaying Qualitative Data}
+\subsection*{Displaying Qualitative Data\label{sub:Displaying-Qualitative-Data}}
 
 
-\paragraph*{Tables}
+\paragraph*{Tables\label{par:Tables}}
 
 One of the best ways to summarize qualitative data is with a table
 of the data values. We may count frequencies with the \inputencoding{latin9}\lstinline[showstringspaces=false]!table!\inputencoding{utf8}
@@ -1965,26 +2093,41 @@ prop.table(Tbl)   # same thing
 @
 
 
-\paragraph*{Dotcharts}
-
-
-\paragraph*{Bar Graphs}
+\paragraph*{Bar Graphs\label{par:Bar-Graphs}}
 
 A bar graph is the analogue of a histogram, but for categorical data.
 A bar is displayed for each level of a factor, with the height of
 the bars proportional to the frequencies of observations falling in
 the respective categories. A disadvantage of bar graphs is that the
 levels are ordered alphabetically (by default), which may sometimes
-obscure patterns in the display. For an example, see Figure \ref{fig:bar-gr-stateregion}.
+obscure patterns in the display. 
+\begin{example}
+U.S.~State Facts and Features. The U.S.~Department of Commerce U.S.~Census
+Bureau, releases all sorts of information in the \emph{Statistical
+Abstract of the United States}, and the \inputencoding{latin9}\lstinline[showstringspaces=false]!state.region!\inputencoding{utf8}
+data lists each of the 50 states and the region to which it belongs,
+be it Northeast, South, North Central, or West. See \inputencoding{latin9}\lstinline[showstringspaces=false]!?state.region!\inputencoding{utf8}.
+It is already stored internally as a factor. We make a bar graph with
+the \inputencoding{latin9}\lstinline[showstringspaces=false]!barplot!\inputencoding{utf8}
+function: 
 
 <<eval = FALSE>>=
 barplot(table(state.region), cex.names = 0.50)
 barplot(prop.table(table(state.region)), cex.names = 0.50)
 @
 
+See Figure \ref{fig:bar-gr-stateregion}. The display on the left
+is a frequency bar graph because the $y$ axis shows counts, while
+the display on the left is a relative frequency bar graph. The only
+difference between the two is the scale. Looking at the graph we see
+that the majority of the fifty states are in the South, followed by
+West, North Central, and finally Northeast. Over 30\% of the states
+are in the South.
+
 Notice the \inputencoding{latin9}\lstinline[showstringspaces=false]!cex.names!\inputencoding{utf8}
 argument that we used, above. It shrinks the names on the $x$ axis
-by 50\%, which makes them easier to read.
+by 50\% which makes them easier to read. See \inputencoding{latin9}\lstinline[showstringspaces=false]!?par!\inputencoding{utf8}
+for a detailed list of additional plot parameters.
 
 %
 \begin{figure}
@@ -2005,14 +2148,21 @@ and the right is a relative frequency barplot made with }\texttt{\small prop.tab
 \end{figure}
 
 
+\end{example}
 
-\paragraph*{Pareto Diagrams }
+\paragraph*{Pareto Diagrams\label{par:Pareto-Diagrams}}
 
-A pareto diagram is a lot like a bar graph, except the bars are rearranged
+A pareto diagram is a lot like a bar graph except the bars are rearranged
 such that they decrease in height going from left to right. The rearrangement
-is handy because it can visually reveal any structure (if any) in
-how fast the bars decrease -- this is much more difficult when the
-bars are jumbled. These can be done with the \inputencoding{latin9}\lstinline[showstringspaces=false]!RcmdrPlugin.IPSUR!\inputencoding{utf8}
+is handy because it can visually reveal structure (if any) in how
+fast the bars decrease -- this is much more difficult when the bars
+are jumbled. 
+\begin{example}
+U.S.~State Facts and Features. The \inputencoding{latin9}\lstinline[showstringspaces=false]!state.division!\inputencoding{utf8}
+data record the division (New England, Middle Atlantic, South Atlantic,
+East South Central, West South Central, East North Central, West North
+Central, Mountain, and Pacific) of the fifty states. We can make a
+pareto diagram with either the \inputencoding{latin9}\lstinline[showstringspaces=false]!RcmdrPlugin.IPSUR!\inputencoding{utf8}
 package or with the \inputencoding{latin9}\lstinline[showstringspaces=false]!pareto.chart!\inputencoding{utf8}
 function from the \inputencoding{latin9}\lstinline[showstringspaces=false]!qcc!\inputencoding{utf8}
 package \cite{qcc}. See Figure \ref{fig:Pareto-chart}. The code
@@ -2037,8 +2187,12 @@ pareto.chart(table(state.division), ylab="Frequency")
 \end{figure}
 
 
+\end{example}
 
-\paragraph*{Pie Graphs }
+\paragraph*{Dotcharts\label{par:Dotcharts}}
+
+
+\paragraph*{Pie Graphs\label{par:Pie-Graphs}}
 
 These can be done with the \textsf{R} Commander, but they have lost
 popularity in recent years. The reason is that the human eye cannot
@@ -2143,6 +2297,9 @@ sum(z)
 The analogue of \inputencoding{latin9}\lstinline[showstringspaces=false]!is.na!\inputencoding{utf8}
 for rectangular data sets (or data frames) is the \inputencoding{latin9}\lstinline[showstringspaces=false]!complete.cases!\inputencoding{utf8}
 function. See Section BLANK.
+
+
+\subsection{Other Data Types\label{sub:Other-data-types}}
 
 
 \section{Features of Data Distributions\label{sec:Features-of-Data}}
@@ -3498,7 +3655,17 @@ hist(after, xlab="after", data=RcmdrTestDrive)
 Answers will vary. We are looking for visual consistency in the histograms
 to our statements above.\end{enumerate}
 
-
+\begin{xca}
+Describe the following data sets just as if you were communicating
+with an alien, but one who has had a statistics class. Mention the
+salient features (data type, important properties, anything special).
+Support your answers with the appropriate visual displays and descriptive
+statistics.
+\begin{enumerate}
+\item Conversion rates of Euro currencies stored in \inputencoding{latin9}\lstinline[showstringspaces=false]!euro!\inputencoding{utf8}.
+\item State abbreviations stored in \inputencoding{latin9}\lstinline[showstringspaces=false]!state.abb!\inputencoding{utf8}.
+\end{enumerate}
+\end{xca}
 
 \chapter{Probability\label{cha:Probability}}
 
@@ -17411,7 +17578,7 @@ permit their use in free software.
 
 \begin{tabular}{ll}
 \textbf{Title:} & Introduction to Probability and Statistics Using \textsf{R}\tabularnewline
-\textbf{Year:} & 2009\tabularnewline
+\textbf{Year:} & 2010\tabularnewline
 \textbf{Authors:} & G.~Jay Kerns\tabularnewline
 \textbf{Publisher:} & G.~Jay Kerns\tabularnewline
 \end{tabular}
@@ -17422,11 +17589,12 @@ permit their use in free software.
 %\bibliographystyle{plainurl}
 \cleardoublepage
 \phantomsection
-%\addcontentsline{toc}{chapter}{\bibname}
+\addcontentsline{toc}{chapter}{\bibname}
 %\nocite{*} 
 %\bibliography{IPSUR}
 
-\bibliographystyle{plain}
+\bibliographystyle{plainurl}
+\nocite{*}
 \bibliography{IPSUR}
 
 
