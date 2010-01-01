@@ -443,31 +443,32 @@ to the third part, which is \emph{inferential statistics}. This last
 part includes point and interval estimation, hypothesis testing, and
 finishes with introductions to selected topics in applied statistics.
 
-I normally only have time in one semester to cover a small subset
-of this book. I typically cover the material in Chapter 2 in one class
-period that is supplemented by a take-home assignment for the students.
-I spend a lot of time on Data Description, Probability, Discrete,
-and Continuous Distributions. I mention selected facts from Multivariate
-Distributions in passing, and discuss the meaty parts of Sampling
-Distributions before moving right along to Estimation (which is another
-one I dwell on considerably). Hypothesis Testing goes faster after
-all of the previous work, and by that time the end of the semester
-is in sight. I normally choose one or two final chapters (sometimes
-three) from the remaining to survey, and regret at the end that I
-did not have the chance to cover more.
+I usually only have time in one semester to cover a small subset of
+this book. I cover the material in Chapter 2 in a class period that
+is supplemented by a take-home assignment for the students. I spend
+a lot of time on Data Description, Probability, Discrete, and Continuous
+Distributions. I mention selected facts from Multivariate Distributions
+in passing, and discuss the meaty parts of Sampling Distributions
+before moving right along to Estimation (which is another one I dwell
+on considerably). Hypothesis Testing goes faster after all of the
+previous work, and by that time the end of the semester is in sight.
+I normally choose one or two final chapters (sometimes three) from
+the remaining to survey, and regret at the end that I did not have
+the chance to cover more.
 
 In an attempt to be correct I have included material in this book
 which I would normally not mention during the course of a standard
 lecture. For instance, I normally do not highlight the intricacies
-of measure theory or absolute integrability when speaking to the class.
-Moreover, I often stray from the matrix approach to multiple linear
-regression bacause many of my students have not yet been formally
+of measure theory or integrability conditions when speaking to the
+class. Moreover, I often stray from the matrix approach to multiple
+linear regression bacause many of my students have not yet been formally
 trained in linear algebra. That being said, it is important to me
 for the students to hold something in their hands which acknowledges
 the world of mathematics and statistics beyond the classroom, and
-which may be useful to them for many semesters to come.
+which may be useful to them for many semesters to come. It also mirrors
+my own experience learning statistics.
 
-This document's future goal is to be a more or less self contained,
+This document's ultimate goal is to be a more or less self contained,
 essentially complete, correct, textbook. There should be plenty of
 exercises for the student, and the problems should have full solutions
 for some, and no solutions for others (so that the instructor may
@@ -478,14 +479,15 @@ Alas, there are only 24 hours in a day. Look for more in the Second
 Edition.
 
 Seasoned readers will be able to detect my statistical origins: \emph{Probability
-and Statistical Inference} by Hogg and Tanis, \emph{Statistical Inference}
-by Casella and Berger, and \emph{Theory of Point Estimation/Testing
-Statistical Hypotheses} by Lehmann. I highly recommend each of those
-books to every reader of this one. Some \textsf{R} books with {}``introductory''
-in the title that I recommend are \emph{Introductory Statistics with
-}\textsf{\emph{R}} by Dalgaard \cite{Dalgaard2008} and \emph{Using
-}\textsf{\emph{R}}\emph{ for Introductory Statistics} by Verzani.
-Surely there are many, many other good introductory books about \textsf{R},
+and Statistical Inference} by Hogg and Tanis \cite{Hogg2006}, \emph{Statistical
+Inference} by Casella and Berger \cite{Casella2002}, and \emph{Theory
+of Point Estimation/Testing Statistical Hypotheses} by Lehmann \cite{Lehmann1998,Lehmann1986}.
+I highly recommend each of those books to every reader of this one.
+Some \textsf{R} books with {}``introductory'' in the title that
+I recommend are \emph{Introductory Statistics with }\textsf{\emph{R}}
+by Dalgaard \cite{Dalgaard2008} and \emph{Using }\textsf{\emph{R}}\emph{
+for Introductory Statistics} by Verzani \cite{Verzani2005}. Surely
+there are many, many other good introductory books about \textsf{R},
 but frankly, I have tried to steer clear of them for the past year
 or so to avoid any undue influence on my own writing.
 
@@ -523,19 +525,20 @@ are the speeds and stopping distances of cars in the 1920's).
 
 In a perfect world with infinite time I would research and contribute
 recent, \emph{real} data in a context crafted to engage the students
-in \emph{every} example. One day I hope to stumble over that time.
+in \emph{every} example. One day I hope to stumble across that time.
 In the meantime, I will add new data sets incrementally as time permits.
 
-\item [{More~proofs:}] for the sake of completeness (and I understand
-that some people would not consider more proofs to be \emph{improvement}).
-Many proofs have been skipped entirely, and there is no rhyme or reason
-to the current omissions. I will add more when I get a chance. 
+\item [{More~proofs:}] for the sake of completeness (I understand that
+some people would not consider more proofs to be improvement). Many
+proofs have been skipped entirely, and I cannot discern any rhyme
+or reason to the current omissions. I will add more when I get a chance. 
 \item [{More~and~better~graphics:}] I have not used the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,language=R]!ggplot2!\inputencoding{utf8}
 package \cite{Wickam2009} because I do not know how to use it yet.
 It is on my to-do list.
 \item [{More~and~better~exercises:}] There are only a few exercises
-in the first edition. I have not used the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,language=R]!exams!\inputencoding{utf8}
-package \cite{exams}, but I believe that it is a right way to move
+in the first edition simply because I have not had time to write them.
+I have toyed with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,language=R]!exams!\inputencoding{utf8}
+package \cite{exams}, and I believe that it is a right way to move
 forward. As I learn more about what the package can do I would like
 to incorporate it into later editions of this book.
 \end{description}
@@ -548,8 +551,9 @@ the \textbf{\emph{Program}}, the \textbf{\emph{Package}}, and the
 you are reading right now. The \emph{Program} provides an efficient
 means to modify the Document. The \emph{Package} is an \textsf{R}
 package that houses the Program and the Document. Finally, the \emph{Ancillaries}
-are extra materials produced by the Program to supplement use of the
-Document. We briefly describe each of them in turn.
+are extra materials that reside in the Package and were produced by
+the Program to supplement use of the Document. We briefly describe
+each of them in turn.
 
 
 \subsection*{The Document}
@@ -557,8 +561,8 @@ Document. We briefly describe each of them in turn.
 The \emph{Document} is that which you are reading right now -- \IPSUR's
 \emph{raison d'\^etre}. There are transparent copies (nonproprietary
 text files) and opaque copies (everything else). See the GNU Free
-Documentation License (GNU-FDL) in Appendix BLANK for more precise
-language and details.
+Documentation License (GNU-FDL) in Appendix \ref{cha:GNU-Free-Documentation}
+for more precise language and details.
 \begin{description}
 \item [{\texttt{IPSUR.tex}}] is a transparent copy of the Document to be
 typeset with a \LaTeX{} distribution such as Mik\TeX{} or \TeX{} Live.
@@ -583,24 +587,24 @@ a different file format.
 The \emph{Program} includes \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR.lyx!\inputencoding{utf8}
 and its nephew \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR.Rnw!\inputencoding{utf8};
 the purpose of each is to give individuals a way to quickly customize
-the Document for their particular purpose(s). 
+the Document for their particular purpose(s).
 \begin{description}
 \item [{\texttt{IPSUR.lyx}}] is the source \LyX{} file for the Program,
 released under the GNU General Public License (GNU GPL) Version 3.
 This file is opened, modified, and compiled with \LyX{}, a sophisticated
 open-source document processor, and may be used (together with \inputencoding{latin9}\lstinline[showstringspaces=false]!Sweave!\inputencoding{utf8})
 to generate a randomized, modified copy of the Document with brand
-new data sets for some of the exercises, and the solution manuals
-(for the Second Edition). Additionally, \LyX{} can easily activate/deactivate
+new data sets for some of the exercises and the solution manuals (in
+the Second Edition). Additionally, \LyX{} can easily activate/deactivate
 entire blocks of the document, \emph{e.g.~}the \textsf{proofs} of
 the theorems, the student \textsf{solutions} to the exercises, or
 the instructor \textsf{answers} to the problems, so that the new author
 may choose which sections (s)he would like to include in the final
 Document (again, Second Edition). The \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR.lyx!\inputencoding{utf8}
 file is all that a person needs (in addition to a properly configured
-system -- see Appendix BLANK) to generate/compile/export to all of
-the other formats described above and below, which includes the ancillary
-materials \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR.Rdata!\inputencoding{utf8}
+system -- see Appendix \ref{cha:Instructions-for-Instructors}) to
+generate/compile/export to all of the other formats described above
+and below, which includes the ancillary materials \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR.Rdata!\inputencoding{utf8}
 and \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR.R!\inputencoding{utf8}.
 \item [{\texttt{IPSUR.Rnw}}] is another form of the source code for the
 Program, also released under the GNU GPL Version 3. It was produced
@@ -631,7 +635,7 @@ library(IPSUR)
 read(IPSUR)
 @
 
-Another advantage goes hand in hand with the Document's license; since
+Another advantage goes hand in hand with the Program's license; since
 \IPSUR\ is free, the source code must be freely available to anyone
 that wants it. A package hosted on \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!CRAN!\inputencoding{utf8}
 allows me to obey the license by default.
@@ -644,8 +648,9 @@ problems surface then I will know about it within 24 hours.
 And finally, suppose there is some sort of problem. The package structure
 makes it \emph{incredibly} easy for me to distribute bug-fixes and
 corrected typographical errors. As an author I can make my corrections,
-upload them to the repository, and they will be reflected \emph{worldwide}
-within hours. We aren't in Kansas anymore, Dorothy.
+upload them to the repository at \textsf{R}-Forge, and they will be
+reflected \emph{worldwide} within hours. We aren't in Kansas anymore,
+Dorothy.
 
 
 \subsection*{Ancillary Materials}
@@ -696,12 +701,10 @@ click \textsf{Active Dataset}.
 
 \pagenumbering{arabic} 
 
-
-\paragraph*{What do I want them to know?}
-
-The trouble with this chapter is that there is so much to say -- and
-so many people have already said it so much better than I could. When
-I get something I can be happy with I will put it here.
+This has proved to be the hardest chapter to write, by far. The trouble
+is that there is so much to say -- and so many people have already
+said it so much better than I could. When I get something I can be
+happy with I will put it here.
 
 In the meantime, there is a lot of information already available to
 a person with an Internet connection. I recommend to start at Wikipedia
@@ -714,13 +717,11 @@ Laplace, Quetelet, the Chevalier de Mere, and others.
 
 \section{Probability}
 
-Probability is the study of uncertainty. Games of chance have been
-played for millenia. 
-
-The common folklore is that probability has been around for years
+The common folklore is that probability has been around for millenia
 but did not gain the attention of mathematicians until approximately
-1654 when Chevalier de Mere had a problem dividing the payoff to two
-players in a game had to end prematurely.
+1654 when the Chevalier de Mere had a question regarding the fair
+division of a game's payoff to the two players, if the game had to
+end prematurely.
 
 
 \section{Statistics}
@@ -738,26 +739,10 @@ percentages, and so forth.
 Inferential statistics does more. There is an inference associated
 with the data set.
 
-The word statistics seems to have come from the Latin root \emph{status},
-or state, and the word \emph{Statistik} was the German word for political
-science. It was important to describe the electorate, so information
-collection and data keeping became important.
-
-Sir Francis Galton
-
-It was important for Legendre who studied how to collect astronomical
-measurements effectively. He was a pioneer in least squares.
-
-Some point later Adolphe Quetelet
-
-Cousin of Charles Darwin
-
-Sir Ronald Aylmer Fisher and Pearson
-
 I would like to mention that there are two schools of thought of statistics:
 Frequentist and Bayesian. The difference between the schools is related
 to how the two groups interpret the underlying probability (see Section
-BLANK). The frequentist school gained a lot of ground among statisticians
+). The frequentist school gained a lot of ground among statisticians
 due in large part to the work of Fisher, Neyman, and Pearson in the
 early twentieth century. That dominance lasted until inexpensive computing
 power became widely available; nowadays the Bayesian school is garnering
@@ -769,7 +754,7 @@ BLANK, and BLANK. I plan to add more Bayesian material in later editions
 of this book. 
 
 
-\chapter{An Introduction to \textsf{R}}
+\chapter{An Introduction to \textsf{R\label{cha:An-Introduction-to-R}}}
 
 This chapter is designed to help a person to begin to get to know
 the \textsf{R} statistical computing environment. 
@@ -813,7 +798,7 @@ them
 case sensitivity
 \end{itemize}
 
-\section{Downloading and Installing \textsf{R}}
+\section{Downloading and Installing \textsf{R\label{sec:Downloading-and-Installing-R}}}
 
 The instructions for obtaining \textsf{R} largely depend on the user's
 hardware and operating system. The \textsf{R} Project has written
@@ -840,7 +825,7 @@ useful later when we discuss three dimensional plots with the \inputencoding{lat
 package \cite{rgl}.
 
 
-\subsection{Installing and Loading Add-on Packages}
+\subsection{Installing and Loading Add-on Packages\label{sub:Installing-and-Loading-packages}}
 
 There are \emph{base} packages (which come with \textsf{R} automatically),
 and \emph{contributed} packages (which must be downloaded for installation).
@@ -887,7 +872,7 @@ and add-on packages, see the \textsf{R} Installation and Administration
 manual, \url{http://cran.r-project.org/manuals.html}.
 
 
-\section{Communicating with \textsf{R}}
+\section{Communicating with \textsf{R\label{sec:Communicating-with-R}}}
 
 
 \paragraph*{One line at a time}
@@ -1010,7 +995,7 @@ to merit mention here. See \cite{rattle} for more information.
 seen, but I have not actually used it in the classroom yet.
 \end{description}
 
-\section{Basic \textsf{R} Operations and Concepts}
+\section{Basic \textsf{R} Operations and Concepts\label{sec:Basic-R-Operations}}
 
 The \textsf{R} developers have written an introductory document entitled
 {}``An Introduction to \textsf{R}''. There is a sample session included
@@ -1138,6 +1123,10 @@ x <- c(74, 31, 95, 61, 76, 34, 23, 54, 96)
 x
 @
 
+The elements of a vector are usually coerced by \textsf{R} to the
+the most general type of any of the elements, so if you do \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!c(1, "2")!\inputencoding{utf8}
+then the result will be \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!c("1", "2")!\inputencoding{utf8}.
+
 \item \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!scan!\inputencoding{utf8}:
 This method is useful when the data are stored somewhere else. For
 instance, you may type \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x <- scan()!\inputencoding{utf8}
@@ -1150,23 +1139,63 @@ stored in a text file or spreadsheet. You may copy and paste them
 all at the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!1:!\inputencoding{utf8}
 prompt, and \textsf{R} will store all of the values instantly in the
 vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}.
-\item repeated data; regular patterns: \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!LETTERS!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!letters!\inputencoding{utf8}
-\end{enumerate}
-The type of a vector is usually taken by \textsf{R} to be the most
-general type of any of its elements.
+\item repeated data; regular patterns: the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!seq!\inputencoding{utf8}
+function will generate all sorts of sequences of numbers. It has the
+arguments \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!from!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!to!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!by!\inputencoding{utf8},
+and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!length.out!\inputencoding{utf8}
+which can be set in concert with one another. We will do a couple
+of examples to show you how it works.
 
+
+<<>>=
+seq(from = 1, to = 5)
+seq(from = 2, by = -0.1, length.out = 4)
+@
+
+Note that we can get the first line much quicker with the colon operator
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!:!\inputencoding{utf8}
+
+<<>>=
+1:5
+@
+
+The vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!LETTERS!\inputencoding{utf8}
+has the 26 letters of the English alphabet in uppercase and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!letters!\inputencoding{utf8}
+has all of them in lowercase.
+
+\end{enumerate}
 
 \paragraph*{Indexing data vectors}
-\begin{enumerate}
-\item workspace: \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!objects()!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!ls()!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rm()!\inputencoding{utf8}
-\end{enumerate}
+
+Sometimes we do not want the whole vector, but just a piece of it.
+We can access the intermediate parts with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]![]!\inputencoding{utf8}
+operator. Observe (with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
+defined above)
+
+<<>>=
+x[1]
+x[2:4]
+x[c(1,3,4,8)]
+x[-c(1,3,4,8)]
+@
+
+Notice that we used the minus sign to specify those elements that
+we do \emph{not} want. 
+
+<<>>=
+LETTERS[1:5]
+letters[-(6:24)]
+
+@
+
 
 \subsection{Functions and Expressions}
 
 A function takes arguments as input and returns an object as output.
+There are functions to all sorts of things. We show some examples
+below.
 
 <<keep.source = TRUE>>=
 x <- 1:5
@@ -1177,10 +1206,12 @@ mean(x)      # sample mean
 sd(x)        # sample standard deviation
 @
 
-The great thing about \textsf{R} is that it is open-source, which
-means that anybody is free to look under the hood of a function and
-see how things are calculated. For accessing the sources see this
-article BLANK. In short:
+It will not be long before the user starts to wonder how a particular
+function is doing its job, and the great thing about \textsf{R} is
+that it is open-source, which means that anybody is free to look under
+the hood of a function and see how things are calculated. For detailed
+instructions see the article {}``Accessing the Sources'' by Uwe
+Ligges \cite{Ligges2006}. In short:
 \begin{enumerate}
 \item Type the name of the function without any parentheses or arguments.
 If you are lucky then the code for the entire function will be printed,
@@ -1213,7 +1244,8 @@ methods(rev)
 @
 
 Now we learn that there are two different \inputencoding{latin9}\lstinline[showstringspaces=false]!rev(x)!\inputencoding{utf8}
-functions, which are chosen depending on what \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
+functions, only one of which being chosen at each call depending on
+what \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
 is. There is one for \inputencoding{latin9}\lstinline[showstringspaces=false]!dendrogram!\inputencoding{utf8}
 objects and a \inputencoding{latin9}\lstinline[showstringspaces=false]!default!\inputencoding{utf8}
 method for everything else. Simply type the name to see what each
@@ -1224,10 +1256,10 @@ method can be viewed with
 rev.default
 @
 
-\item Some functions are hidden by a \emph{namespace} (see the \textsf{R}
-Manual BLANK), and are not visible on the first try. For example,
-if we try to look at the code for \inputencoding{latin9}\lstinline[showstringspaces=false]!wilcox.test!\inputencoding{utf8}
-(see Chapter BLANK) we get the following:
+\item Some functions are hidden by a \emph{namespace} (see An Introduction
+to \textsf{R} \cite{Venables2010}), and are not visible on the first
+try. For example, if we try to look at the code for \inputencoding{latin9}\lstinline[showstringspaces=false]!wilcox.test!\inputencoding{utf8}
+(see Chapter \ref{cha:Nonparametric-Statistics}) we get the following:
 
 
 <<>>=
@@ -1247,8 +1279,8 @@ will show the source code, omitted here for brevity.
 or \inputencoding{latin9}\lstinline[showstringspaces=false]!.Primitive("!\inputencoding{utf8}\emph{something}\inputencoding{latin9}\lstinline[showstringspaces=false]!")!\inputencoding{utf8},
 then it will be necessary to download the source code of \textsf{R}
 (which is \emph{not} a binary version with an \inputencoding{latin9}\lstinline[showstringspaces=false]!.exe!\inputencoding{utf8}
-extension) and search inside the code there. See Ligges for more discussion
-on this. An example is \inputencoding{latin9}\lstinline[showstringspaces=false]!exp!\inputencoding{utf8}:
+extension) and search inside the code there. See Ligges \cite{Ligges2006}
+for more discussion on this. An example is \inputencoding{latin9}\lstinline[showstringspaces=false]!exp!\inputencoding{utf8}:
 
 
 <<>>=
@@ -1261,7 +1293,7 @@ may not understand, at least initially.
 
 \end{enumerate}
 
-\section{Getting Help}
+\section{Getting Help\label{sec:Getting-Help}}
 
 When you are using \textsf{R}, it will not take long before you find
 yourself needing help. Fortunately, \textsf{R} has extensive help
@@ -1352,7 +1384,7 @@ to search the mailing list archives (and the online help) for it.
 If your question is not a FAQ, has not been asked on \textsf{R}-help
 before, and does not yield to a Google (or alternative) search, then,
 and only then, should you even consider asking \textsf{R}-help. Below
-are a few considerations that the author would like to highlight. 
+are a few additional considerations. 
 \begin{enumerate}
 \item \textbf{Read the posting guide (\url{http://www.r-project.org/posting-guide.html})
 before posting.} This will save you a lot of trouble and pain.
@@ -1373,53 +1405,33 @@ will be available to him/her.
 used, the attached packages, or the exact version of \textsf{R} being
 used. The \inputencoding{latin9}\lstinline[showstringspaces=false]!sessionInfo()!\inputencoding{utf8}
 command collects all of this information to be copy-pasted into an
-email. See Appendix BLANK.
+email. See Appendix \ref{cha:R-Session-Information} for an example.
 \end{enumerate}
 
-\section*{Some References}
-\begin{itemize}
-\item communicating with\textsf{ R}
-
-\begin{itemize}
-\item at the command line
-\item text editor
-\item the \textsf{R} Commander
-\end{itemize}
-\item Data
-
-\begin{itemize}
-\item types of data
-\item entering data
-\item reading in data
-\item built in data
-\end{itemize}
-\item working with data
-
-\begin{itemize}
-\item assignment
-\item continuation prompt
-\item regular sequences
-\item Normally all alphanumeric symbols are allowed1 (and in some countries
-this includes accented letters) plus ‘.’ and ‘\_’, with the restriction
-that a name must start with ‘.’ or a letter, and if it starts with
-‘.’ the second character must not be a digit. 
-\item vectorizing functions
-\end{itemize}
-\item quitting\textsf{ R}
-
-\begin{itemize}
-\item workspaces
-\end{itemize}
-\end{itemize}
-
 \section{External resources}
-\begin{itemize}
-\item R project
-\item CRAN
-\item R Wiki
-\item R Graph Gallery
-\item Other
-\end{itemize}
+
+There is a mountain of information on the Internet about \textsf{R}.
+Below are a few of the important ones.
+\begin{description}
+\item [{The~\textsf{R~}Project~for~Statistical~Computing:}] (\url{http://www.r-project.org/})
+Go here first.
+\item [{The~Comprehensive~\textsf{R~}Archive~Network:}] (\url{http://cran.r-project.org/})
+This is where \textsf{R} is stored along with thousands of contributed
+packages. There are also loads of contributed information (books,
+tutorials, \emph{etc}.). There are mirrors all over the world with
+duplicate information.
+\item [{\textsf{R}-Forge:}] (\url{http://r-forge.r-project.org/}) This
+is another location where \textsf{R} packages are stored. Here you
+can find development code which has not yet been released to \textsf{CRAN}.
+\item [{\textsf{R~}Wiki:}] (\url{http://wiki.r-project.org/rwiki/doku.php})
+There are many tips and tricks listed here. If you find a trick of
+your own, login and share it with the world.
+\item [{Other:}] the \textsf{R} Graph Gallery (\url{http://addictedtor.free.fr/graphiques/})
+and \textsf{R} Graphical Manual (\url{http://bm2.genes.nig.ac.jp/RGM2/index.php})
+have literally thousands of graphs to peruse. \textsf{R}Seek(\url{http://www.rseek.org})
+is a search engine based on Google specifically tailored for \textsf{R}
+queries. 
+\end{description}
 
 \section{Other tips}
 
@@ -1427,7 +1439,7 @@ It is unnecessary to retype commands repeatedly, since \textsf{R}
 remembers what you have recently entered on the command line. On the
 Microsoft$\circledR$ Windows \textsf{R}Gui, to cycle through the
 previous commands just push the $\uparrow$ (up arrow) key. On Emacs/ESS
-the command is \inputencoding{latin9}\lstinline[showstringspaces=false]!Alt-p!\inputencoding{utf8}
+the command is \inputencoding{latin9}\lstinline[showstringspaces=false]!M-p!\inputencoding{utf8}
 (which means hold down the \textsf{Alt} button and press {}``\inputencoding{latin9}\lstinline[showstringspaces=false]!p!\inputencoding{utf8}'').
 More generally, the command \inputencoding{latin9}\lstinline[showstringspaces=false]!history()!\inputencoding{utf8}
 will show a whole list of recently entered commands.
@@ -1521,7 +1533,7 @@ Let our small data set of size \Sexpr{length(x)} be
 x
 @
 
-\noindent Enter this data into a vector \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}.
+\noindent Enter these data into a vector \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}.
 \begin{enumerate}
 \item Raise all of the numbers in \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
 to the power \Sexpr{k[1]}. 
@@ -1529,7 +1541,7 @@ to the power \Sexpr{k[1]}.
 \item Add \Sexpr{k[3]} to all of the numbers in \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8},
 then take the (natural) logarithm of the answers.
 \end{enumerate}
-Use vectorization of functions to do all of the above, using a single
+Use vectorization of functions to do all of the above, with a single
 line of code for each.
 
 \end{xca}
@@ -1572,7 +1584,7 @@ c(max(x), min(x)) - mean(x)
 
 
 
-<<twenty, echo = FALSE, results = hide>>=
+<<echo = FALSE, results = hide>>=
 x <- round(rnorm(12, mean = 3, sd = 0.3), 3) * 1000
 names(x) <- c("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")
 @
@@ -1748,7 +1760,8 @@ values. Quantitative data can be further subdivided into two categories.
 \begin{itemize}
 \item Discrete data take values in a finite or countably infinite set of
 numbers. Examples include: counts, number of arrivals, number of successes,
-attendance. They are often represented by integers, say 0, 1, 2, \emph{etc}.
+attendance. They are often represented by integers, say, 0, 1, 2,
+\emph{etc}.
 \item Continuous data take values in an interval of numbers. These are also
 known as scale data, interval data, or measurement data. Examples
 include: height, weight, length, time, \emph{etc}. Continuous data
@@ -1757,14 +1770,23 @@ are often characterized by fractions or decimals: 3.82, 7.0001, 4~$\frac{5}{8}$,
 \end{itemize}
 Note that the distinction between discrete and continuous data is
 not always clear-cut. Sometimes it is better to treat data as if they
-were continuous, even though strictly speaking they are discrete. 
+were continuous, even though they are not, strictly speaking. See
+the examples.
 \begin{example}
-Populations Recorded by the US Census. The data record the population
-of the United States (in millions) as reported by the census from
-1790--1970. The data are in the vector \inputencoding{latin9}\lstinline[showstringspaces=false]!uspop!\inputencoding{utf8}
-in the \inputencoding{latin9}\lstinline[showstringspaces=false]!datasets!\inputencoding{utf8}
-package. Let us take a look at the data.
+\textbf{Annual Precipitation in US Cities.} The vector \inputencoding{latin9}\lstinline[showstringspaces=false]!precip!\inputencoding{utf8}
+contains average amount of rainfall (in inches) for each of 70 cities
+in the United States and Puerto Rico. Let us take a look at the data:
 \end{example}
+<<>>=
+str(precip)
+precip[1:4]
+@
+
+The output shows that \inputencoding{latin9}\lstinline[showstringspaces=false]!precip!\inputencoding{utf8}
+is a numeric vector which has been \emph{named}, that is, each value
+has a name associated with it (which can be set with the \inputencoding{latin9}\lstinline[showstringspaces=false]!names!\inputencoding{utf8}
+function). These are quantitative continuous data.
+
 
 \begin{example}
 \textbf{Lengths of Major North American Rivers.} The U.S.~Geological
@@ -1781,39 +1803,25 @@ str(rivers)
 
 The output says that \inputencoding{latin9}\lstinline[showstringspaces=false]!rivers!\inputencoding{utf8}
 is a numeric vector of length 141, and the first few values are 735,
-320, 325, \emph{etc}. These data are definitely quantitative, and
-though it appears that the measurements have been rounded to the nearest
-mile, it would probably be best to take these data to be continuous. 
+320, 325, \emph{etc}. These data are definitely quantitative and it
+appears that the measurements have been rounded to the nearest mile.
+Thus, strictly speaking, these are discrete data. But we will find
+it convenient later to take data like these to be continuous for some
+of our statistical procedures. 
 \end{example}
 
 \begin{example}
-\textbf{Annual Precipitation in US Cities.} The vector \inputencoding{latin9}\lstinline[showstringspaces=false]!precip!\inputencoding{utf8}
-contains average amount of rainfall (in inches) for each of 70 cities
-in the United States and Puerto Rico. Let us take a look at the data:
-
-<<>>=
-str(precip)
-precip[1:4]
-@
-
-The output shows that \inputencoding{latin9}\lstinline[showstringspaces=false]!precip!\inputencoding{utf8}
-is a numeric vector which has been \emph{named}, that is, each value
-has a name associated with it (which can be set with the \inputencoding{latin9}\lstinline[showstringspaces=false]!names!\inputencoding{utf8}
-function). These are quantitative continuous data.
-
-\end{example}
-
-\begin{example}
-Yearly Numbers of Important Discoveries. The vector \inputencoding{latin9}\lstinline[showstringspaces=false]!discoveries!\inputencoding{utf8}
+\textbf{Yearly Numbers of Important Discoveries.} The vector \inputencoding{latin9}\lstinline[showstringspaces=false]!discoveries!\inputencoding{utf8}
 contains numbers of “great” inventions/discoveries in each year from
 1860 to 1959, as reported by the 1975 World Almanac. Let us take a
 look at the data:
-\end{example}
+
 <<>>=
 str(discoveries)
 discoveries[1:4]
 @
 
+\end{example}
 The output is telling us that \inputencoding{latin9}\lstinline[showstringspaces=false]!discoveries!\inputencoding{utf8}
 is a \emph{time series} (see Section \ref{sub:Other-data-types} for
 more) of length 100. The entries are integers, and since they represent
@@ -1855,29 +1863,24 @@ stripchart(rivers, method="jitter", xlab="length")
 stripchart(discoveries, method="stack", xlab="number")
 @
 
-The leftmost graph is of the U.S.~population data from the \inputencoding{latin9}\lstinline[showstringspaces=false]!precip!\inputencoding{utf8}
-data in the \inputencoding{latin9}\lstinline[showstringspaces=false]!datasets!\inputencoding{utf8}
-package. The graph shows tightly clustered values in the middle with
+The leftmost graph is a strip chart of the \inputencoding{latin9}\lstinline[showstringspaces=false]!precip!\inputencoding{utf8}
+data. The graph shows tightly clustered values in the middle with
 some others falling balanced on either side, with perhaps slightly
 more falling to the left. Later we will call this a symmetric distribution,
 see Section \ref{sub:Shape}. The middle graph is of the \inputencoding{latin9}\lstinline[showstringspaces=false]!rivers!\inputencoding{utf8}
 data, a vector of length 141. There are several repeated values in
-the rivers data, so if we were to use the overplot method we would
-lose some pf them in the display. This plot shows a what we will later
+the rivers data, and if we were to use the overplot method we would
+lose some of them in the display. This plot shows a what we will later
 call a right-skewed shape with perhaps some extreme values on the
-far right of the display. The third graph of of the \inputencoding{latin9}\lstinline[showstringspaces=false]!discoveries!\inputencoding{utf8}
-data, a vector%
-\footnote{Actually, \inputencoding{latin9}\lstinline[showstringspaces=false]!discoveries!\inputencoding{utf8}
-being a \emph{time series object} is coerced to a numeric vector for
-the purposes of the \texttt{stripchart} function. See Chapter \ref{cha:Time-Series}.%
-} of length 100 of discrete quantitative data.
+far right of the display. The third graph strip charts \inputencoding{latin9}\lstinline[showstringspaces=false]!discoveries!\inputencoding{utf8}
+data which are literally a textbook example of a right skewed distribution.
 
 %
 \begin{figure}
 \begin{centering}
 <<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 par(mfrow = c(1,3)) # 3 plots: 1 row, 3 columns
-stripchart(uspop, xlab="population")
+stripchart(precip, xlab="rainfall")
 stripchart(rivers, method="jitter", xlab="length")
 stripchart(discoveries, method="stack", xlab="number")
 par(mfrow = c(1,1)) # back to normal
@@ -1885,28 +1888,32 @@ par(mfrow = c(1,1)) # back to normal
 \par\end{centering}
 
 \caption{Various \texttt{stripchart} methods, overplot, jitter, and stack\label{fig:Various-stripchart-methods,}}
-{\small The first graph is of the U.S.~population data, }\texttt{\small uspop}{\small ,
-the second is of the }\texttt{\small rivers}{\small{} data, and the
-third is of the }\texttt{\small discoveries}{\small{} data.}
+{\small The first graph is of the }\texttt{\small precip}{\small{}
+data, the second is of the }\texttt{\small rivers}{\small{} data, and
+the third is of the }\texttt{\small discoveries}{\small{} data.}
 \end{figure}
 
+
+The \inputencoding{latin9}\lstinline[showstringspaces=false]!DOTplot!\inputencoding{utf8}
+function in the \inputencoding{latin9}\lstinline[showstringspaces=false]!UsingR!\inputencoding{utf8}
+package \cite{usingr}.
 
 
 \paragraph*{Histogram}
 
 These are typically used for continuous data. A histogram is constructed
-by first deciding on a set of classes, or bins. The bins partition
-the real line into a set of classes into which the data values fall.
-Then vertical bars are drawn over the bins with height proportional
-to the number of observations that fell into the bin. 
+by first deciding on a set of classes, or bins, which partition the
+real line into a set of boxes into which the data values fall. Then
+vertical bars are drawn over the bins with height proportional to
+the number of observations that fell into the bin. 
 
 These are one of the most common summary displays, and they are often
 misidentified as {}``Bar Graphs'' (see below.) The scale on the
 $y$ axis can be frequency, percentage, or density (relative frequency).
 The term histogram was coined by Karl Pearson in 1891, see \cite{Miller}.
 \begin{example}
-Annual Precipitation in US Cities. We are going to take another look
-at the \inputencoding{latin9}\lstinline[showstringspaces=false]!precip!\inputencoding{utf8}
+\textbf{Annual Precipitation in US Cities.} We are going to take another
+look at the \inputencoding{latin9}\lstinline[showstringspaces=false]!precip!\inputencoding{utf8}
 data that we investigated earlier. The strip chart in Figure \ref{fig:Various-stripchart-methods,}
 suggested a loosely balanced distribution; let us now look to see
 what a histogram says. 
@@ -1916,8 +1923,8 @@ easiest is with the \inputencoding{latin9}\lstinline[showstringspaces=false]!his
 function. The following code produces the plots in Figure \ref{fig:histograms}.
 
 <<eval = FALSE>>=
-hist(volcano, main = "")
-hist(volcano, freq = FALSE, main = "")
+hist(precip, main = "")
+hist(precip, freq = FALSE, main = "")
 @
 
 Notice the argument \inputencoding{latin9}\lstinline[showstringspaces=false]!main = ""!\inputencoding{utf8},
@@ -1926,23 +1933,23 @@ said {}``Histogram of \texttt{precip}'' otherwise. The plot on the
 left is a frequency histogram (the default), and the plot on the right
 is a relative frequency histogram (\inputencoding{latin9}\lstinline[showstringspaces=false]!freq = FALSE!\inputencoding{utf8}). 
 
-\end{example}
 %
 \begin{figure}
 \begin{centering}
 <<echo = FALSE, fig=true, height = 4.5, width = 6>>=
 par(mfrow = c(1,2)) # 2 plots: 1 row, 2 columns
-hist(volcano, main = "")
-hist(volcano, freq = FALSE, main = "")
+hist(precip, main = "")
+hist(precip, freq = FALSE, main = "")
 par(mfrow = c(1,1)) # back to normal
 @
 \par\end{centering}
 
-\caption{(Relative) frequency histograms of the \texttt{precip} data.\label{fig:histograms}}
+\caption{(Relative) frequency histograms of the \texttt{precip} data\label{fig:histograms}}
 
 \end{figure}
 
 
+\end{example}
 Please bear the biggest weakness of histograms in mind: the graph
 obtained strongly depends on the bins chosen. Choose another set of
 bins, and you will get a different histogram. Moreover, there are
@@ -1950,15 +1957,53 @@ not any definitive criteria by which bins should be defined; the best
 choice for a given data set is the one which illuminates the data
 set's underlying structure (if any). Luckily for us there are algorithms
 to automatically choose bins that are likely to display well, and
-more often than not the default bins do a good job. 
+more often than not the default bins do a good job. This is not always
+the case, however, and a responsible statistician will investigate
+many bin choices to test the stability of the display. 
+\begin{example}
+Recall that the stripchart in Figure \ref{fig:Various-stripchart-methods,}
+suggested a relatively balanced shape to the \inputencoding{latin9}\lstinline[showstringspaces=false]!precip!\inputencoding{utf8}
+data distribution. Watch what happens when we change the bins slightly
+(with the \inputencoding{latin9}\lstinline[showstringspaces=false]!breaks!\inputencoding{utf8}
+argument to \inputencoding{latin9}\lstinline[showstringspaces=false]!hist!\inputencoding{utf8}).
+See Figure \ref{fig:histograms-bins} which was produced by the following
+code.
 
-This is not always the case, however, and a responsible statistician
-will investigate many bin choices to test the stability of the display.
-Case in point: recall that the stripchart suggested a relatively balanced
-shape to the data distribution. Watch what happens when we change
-the bins slightly (with the \inputencoding{latin9}\lstinline[showstringspaces=false]!breaks!\inputencoding{utf8}
-argument to \inputencoding{latin9}\lstinline[showstringspaces=false]!hist!\inputencoding{utf8}) 
+<<eval = FALSE>>=
+hist(precip, breaks = 10, main = "")
+hist(precip, breaks = 200, main = "")
+@
 
+%
+\begin{figure}
+\begin{centering}
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
+par(mfrow = c(1,2)) # 2 plots: 1 row, 2 columns
+hist(precip, breaks = 10, main = "")
+hist(precip, breaks = 200, main = "")
+par(mfrow = c(1,1)) # back to normal
+@
+\par\end{centering}
+
+\caption{More histograms of the \texttt{precip} data\label{fig:histograms-bins}}
+
+\end{figure}
+The leftmost graph (with \inputencoding{latin9}\lstinline[showstringspaces=false]!breaks = 10!\inputencoding{utf8})
+shows that the distribution is not balanced at all. There are two
+humps: a big one in the middle and a smaller one to the left. Graphs
+like this often indicate some underlying group structure to the data;
+we culd now investigate whether the cities for which rainfall was
+measured were similar in some way, with respect to geographic region,
+for example.
+
+Therightmost graph in Figure \ref{fig:histograms-bins} shows what
+happens when the number of bins is too large: the histogram is too
+grainy and hides the rounded appearance of the earlier histograms.
+If we were to continue increasing the number of bins we would eventually
+get all observed bins to have exactly one element, which is nothing
+more than a glorified strip chart.
+
+\end{example}
 
 \paragraph*{Stemplots (more to be said in Section \ref{sec:Exploratory-Data-Analysis})}
 
@@ -2000,17 +2045,19 @@ down we can read off the data values 1050, 1070, 1110, 1130, \emph{etc}.
 \paragraph*{Index plot}
 
 Done with the \inputencoding{latin9}\lstinline[showstringspaces=false]!plot!\inputencoding{utf8}
-function. These are good for plotting data which are ordered in the
-dataset, for example, when the data are measured over time. That is,
-the first observation was measured at time 1, the second at time 2,
-\emph{etc}. It is a two dimensional plot, in which the index (or time)
-is the $x$ variable and the measured value is the $y$ variable.
-There are two plotting methods for index plots:
+function. These are good for plotting data which are ordered, for
+example, when the data are measured over time. That is, the first
+observation was measured at time 1, the second at time 2, \emph{etc}.
+It is a two dimensional plot, in which the index (or time) is the
+$x$ variable and the measured value is the $y$ variable. There are
+several plotting methods for index plots, and we discuss two of them:
 \begin{description}
 \item [{spikes:}] draws a vertical line from the $x$-axis to the observation
 height (\inputencoding{latin9}\lstinline[showstringspaces=false]!type = "h"!\inputencoding{utf8}).
-\item [{points:}] plots a simple point at the observation height (\inputencoding{latin9}\lstinline[showstringspaces=false]!type = "p"!\inputencoding{utf8}).
-\end{description}
+\item [{points:}] plots a simple point at the observation height (\inputencoding{latin9}\lstinline[showstringspaces=false]!type = "p"!\inputencoding{utf8}).\end{description}
+\begin{example}
+Level of Lake Huron 1875-1972. 
+\end{example}
 See Figure \ref{fig:indpl-lakehuron}, which was produced with the
 following code:
 
@@ -3699,7 +3746,7 @@ probability functions, \emph{etc}.
 \item what we mean by 'random variables', and where they come from
 \end{itemize}
 
-\section{Sample Spaces}
+\section{Sample Spaces\label{sec:Sample-Spaces}}
 
 For a random experiment $E$, the set of all possible outcomes of
 $E$ is called the \emph{sample space\index{sample space}} and is
@@ -3949,7 +3996,7 @@ Similar remarks apply for the \inputencoding{latin9}\lstinline[showstringspaces=
 argument. We investigate this issue further in Section BLANK.
 
 
-\section{Events}
+\section{Events\label{sec:Events}}
 
 An \emph{event\index{event}} $A$ is merely a collection of outcomes,
 or in other words, a subset of the sample space%
@@ -7297,7 +7344,7 @@ diff(ppois(c(47, 50), lambda = 50))
 
 \end{example}
 
-\section{Functions of Discrete Random Variables}
+\section{Functions of Discrete Random Variables\label{sec:Functions-of-Discrete}}
 
 We have built a large catalogue of discrete distributions, but the
 tools of this section will give us the ability to consider infinitely
@@ -7977,7 +8024,7 @@ It can be calculated in one of two equivalent ways: \inputencoding{latin9}\lstin
 and \inputencoding{latin9}\lstinline[showstringspaces=false]!qnorm(!\inputencoding{utf8}$\alpha$\inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!, lower.tail = FALSE)!\inputencoding{utf8}.
 \end{defn}
 
-\section{Functions of Continuous Random Variables}
+\section{Functions of Continuous Random Variables\label{sec:Functions-of-Continuous}}
 
 The goal of this section is to determine the distribution of $U=g(X)$
 based on the distribution of $X$. In the discrete case all we needed
@@ -8951,7 +8998,7 @@ the same (somewhat laborious) calculations that we completed in Example
 BLANK.
 
 
-\section{Joint and Marginal Expectation}
+\section{Joint and Marginal Expectation\label{sec:Joint-and-Marginal-Expectation}}
 
 Given a function $g$ with arguments $(x,y)$ we would like to know
 the long-run average behavior of $g(X,Y)$ and how to mathematically
@@ -9134,7 +9181,7 @@ in detail; to the interested reader I recommend Gelman and this other
 Bayesian book BLANK. 
 \end{rem}
 
-\section{Independent Random Variables}
+\section{Independent Random Variables\label{sec:Independent-Random-Variables}}
 
 
 \subsection{Independent Random Variables\label{sub:Independent-Random-Variables}}
@@ -9541,7 +9588,7 @@ There are not yet any examples of Yacas in this book, but there are
 online materials to help the interested reader: see BLANK to get started.
 
 
-\section{Remarks for the Multivariate Case}
+\section{Remarks for the Multivariate Case\label{sec:Remarks-for-the-Multivariate}}
 
 There is nothing spooky about $n\geq3$ random variables. We just
 have a whole bunch of them: $X_{1}$, $X_{2}$,\ldots{}, $X_{n}$,
@@ -10367,7 +10414,7 @@ intervals for basic experimental designs
 \item the concept of margin of error and its relationship to sample size
 \end{itemize}
 
-\section{Point Estimation}
+\section{Point Estimation\label{sec:Point-Estimation-1}}
 
 The following example was how I was introduced to maximum likelihood.
 \begin{example}
@@ -10772,7 +10819,7 @@ package \cite{Ruckdescheldistr} to calculate theoretical MLEs; we
 will skip examples of these for the time being.
 
 
-\section{Confidence Intervals for Means}
+\section{Confidence Intervals for Means\label{sec:Confidence-Intervals-for-Means}}
 
 We are given $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$ that are an $SRS(n)$
 from a $\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$ distribution,
@@ -10969,7 +11016,7 @@ normal.and.t.dist(obs.mean = mean(c(37.4, 48.8, 46.9, 55, 44)), std.dev
 = 10 ) 
 
 
-\section{Confidence Intervals for Differences of Means}
+\section{Confidence Intervals for Differences of Means\label{sec:Conf-Interv-for-Diff-Means}}
 
 Let $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$ be a $SRS(n)$ from a
 $\mathsf{norm}(\mathtt{mean}=\mu_{X},\,\mathtt{sd}=\sigma_{X})$ distribution
@@ -11034,7 +11081,7 @@ The resulting interval has approximately $100(1-\alpha)\%$ confidence.
 \subsection{How to do it with \textsf{R}}
 
 
-\section{Confidence Intervals for Proportions}
+\section{Confidence Intervals for Proportions\label{sec:Confidence-Intervals-Proportions}}
 
 We would like to know $p$ which is the {}``proportion of successes''.
 For instance, $p$ could be:
@@ -11129,7 +11176,7 @@ B <- with(A, untable(A, Freq))
 @
 
 
-\section{Confidence Intervals for Variances}
+\section{Confidence Intervals for Variances\label{sec:Confidence-Intervals-for-Variances}}
 
 I am thinking one and two sample problems here.
 
@@ -11139,7 +11186,7 @@ I am thinking one and two sample problems here.
 I am thinking about sigma.test() and var.test() here.
 
 
-\section{Fitting Distributions}
+\section{Fitting Distributions\label{sec:Fitting-Distributions}}
 
 
 \subsection{How to do it with \textsf{R}}
@@ -11147,7 +11194,7 @@ I am thinking about sigma.test() and var.test() here.
 I am thinking about fitdistr() here.
 
 
-\section{Sample Size and Margin of Error}
+\section{Sample Size and Margin of Error\label{sec:Sample-Size-and-MOE}}
 
 Sections BLANK through BLANK all began the same way: we were given
 the sample size $n$ and the confidence coefficient $1-\alpha$, and
@@ -11230,7 +11277,7 @@ power.anova.test
 also thinking about replicate
 
 
-\section{Other Topics}
+\section{Other Topics\label{sec:Other-Topics}}
 
 I am thinking about fitdistr from the MASS package \cite{Venables2002}.
 
@@ -11246,7 +11293,7 @@ $\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$ distribution.
 Find a two-dimensional MLE for $\theta=(\mu,\sigma)$.\label{xca:norm-mu-sig-MLE}
 \end{xca}
 
-\chapter{\label{cha:Hypothesis-Testing}Hypothesis Testing}
+\chapter{Hypothesis Testing\label{cha:Hypothesis-Testing}}
 
 
 \paragraph*{What do I want them to know?}
@@ -11259,10 +11306,10 @@ out with one-way ANOVA
 \item the concept of statistical power and its relation to sample size
 \end{itemize}
 
-\section{Introduction}
+\section{Introduction\label{sec:Introduction-Hypothesis}}
 
 
-\section{Tests for Proportions}
+\section{Tests for Proportions\label{sec:Tests-for-Proportions}}
 \begin{example}
 We have a machine that makes widgets. \end{example}
 \begin{itemize}
@@ -11462,7 +11509,7 @@ Once your unsummarized data is a column, then you can use the menu
 Single-sample proportion test\ldots{}}
 
 
-\section{One Sample Tests for Means and Variances}
+\section{One Sample Tests for Means and Variances\label{sec:One-Sample-Tests}}
 
 
 \subsection{For Means}
@@ -11590,7 +11637,7 @@ Active Data Set. Use the menu \textsf{Statistics $\triangleright$
 Means $\triangleright$ Single-sample t-test\ldots{}}
 
 
-\section{Two-Sample Tests for Means and Variances}
+\section{Two-Sample Tests for Means and Variances\label{sec:Two-Sample-Tests-for-Means}}
 
 The basic idea for this section is the following. We have $X\sim\mathsf{norm}(\mathtt{mean}=\mu_{X},\,\mathtt{sd}=\sigma_{X})$
 and $Y\sim\mathsf{norm}(\mathtt{mean}=\mu_{Y},\,\mathtt{sd}=\sigma_{Y})$.
@@ -11663,7 +11710,7 @@ t.test(extra \textasciitilde{} group, data = sleep, paired = TRUE)
 \subsection{How to do it with \textsf{R}}
 
 
-\section{Analysis of Variance}
+\section{Analysis of Variance\label{sec:Analysis-of-Variance}}
 
 For example do lm(weight \textasciitilde{} feed, data = chickwts) 
 
@@ -11752,7 +11799,7 @@ par(old.omd)
 
 
 
-\section{Sample Size and Power}
+\section{Sample Size and Power\label{sec:Sample-Size-and-Power}}
 
 We have seen and discussed a
 
@@ -11955,7 +12002,7 @@ You can see the output in Figure \ref{fig:Scatter-cars}.
 
 \end{example}
 
-\section{Estimation\label{sec:Point-Estimation}}
+\section{Estimation\label{sec:SLR-Estimation}}
 
 
 \subsection{Point Estimates of the Parameters}
@@ -12488,7 +12535,7 @@ we notice the $(x_{0}-\xbar)^{2}$ term in the standard deviation
 formulas in Equations BLANK and BLANK.
 
 
-\section{Model Utility and Inference}
+\section{Model Utility and Inference\label{sec:Model-Utility-SLR}}
 
 
 \subsection{Hypothesis Tests for the Parameters}
@@ -12697,7 +12744,7 @@ $t$ statistic for \inputencoding{latin9}\lstinline[showstringspaces=false]!speed
 squared.
 
 
-\section{Residual Analysis}
+\section{Residual Analysis\label{sec:Residual-Analysis-SLR}}
 
 We know from our model that $Y=\mu(x)+\epsilon$, or in other words,
 $\epsilon=Y-\mu(x)$. Further, we know that $\epsilon\sim\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=\sigma)$.
@@ -12970,7 +13017,7 @@ models to be used in this situation which occupy the latter part of
 Chapter BLANK.
 \end{description}
 
-\section{Other Diagnostic Tools}
+\section{Other Diagnostic Tools\label{sec:Other-Diagnostic-Tools-SLR}}
 
 There are two types of observations with which we must be especially
 careful:
@@ -13348,7 +13395,7 @@ interaction, and dummy variable models
 \item hints about what will be coming later
 \end{itemize}
 
-\section{The Multiple Linear Regression Model}
+\section{The Multiple Linear Regression Model\label{sec:The-MLR-Model}}
 
 The first thing to do is get some better notation. We will write \begin{equation}
 \mathbf{Y}_{\mathrm{n}\times1}=\begin{bmatrix}y_{1}\\
@@ -13504,7 +13551,7 @@ author's experience it is rare to see points fit so well to the plane
 without some additional work.)
 
 
-\section{Estimation and Prediction}
+\section{Estimation and Prediction\label{sec:Estimation-and-Prediction-MLR}}
 
 
 \subsection{Parameter estimates}
@@ -13908,7 +13955,7 @@ and \Sexpr{treesCI[3, 3]} feet.
 \end{enumerate}
 \end{example}
 
-\section{Model Utility and Inference}
+\section{Model Utility and Inference\label{sec:Model-Utility-and-MLR}}
 
 
 \subsection{Multiple Coefficient of Determination}
@@ -14061,7 +14108,7 @@ Further, it appears that the \inputencoding{latin9}\lstinline[showstringspaces=f
 is significant in the aforementioned model.
 
 
-\section{Polynomial Regression}
+\section{Polynomial Regression\label{sec:Polynomial-Regression}}
 
 
 \subsection{Quadratic Regression Model}
@@ -14229,7 +14276,7 @@ which we should have done in the first place.
 In Example BLANK of Section BLANK we investigate this issue further.
 \end{rem}
 
-\section{Interaction}
+\section{Interaction\label{sec:Interaction}}
 
 In our model for tree volume there have been two independent variables:
 \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}
@@ -14323,7 +14370,7 @@ any pairwise interactions are significant. We do this with a model
 formula that looks something like\texttt{ }\inputencoding{latin9}\lstinline[showstringspaces=false]!y ~ (x1 + x2 + x3 + x4)^2!\inputencoding{utf8}. 
 
 
-\section{Qualitative Explanatory Variables}
+\section{Qualitative Explanatory Variables\label{sec:Qualitative-Explanatory-Variables}}
 
 We have so far been concerned with numerical independent variables
 taking values in a subset of real numbers. In this section, we extend
@@ -14510,7 +14557,7 @@ since many advanced plots in \textsf{R} are done in a similar, consecutive
 fashion.
 
 
-\section{Partial \emph{F} Statistic}
+\section{Partial \emph{F} Statistic\label{sec:Partial-F-Statistic}}
 
 We saw in Section BLANK how to test $H_{0}:\beta_{0}=\beta_{1}=\cdots=\beta_{p}=0$
 with the overall $F$ statistic and we saw in Section BLANK how to
@@ -14617,7 +14664,7 @@ at the beginning of this example. In fact, the \emph{p}-values are
 true meaning of the univariate tests.
 \end{example}
 
-\section{Residual Analysis and Diagnostic Tools }
+\section{Residual Analysis and Diagnostic Tools\label{sec:Residual-Analysis-MLR}}
 
 We encountered many, many diagnostic measures for simple linear regression
 in Section BLANK. All of these are valid in multiple linear regression,
@@ -14661,7 +14708,7 @@ Note that plugging the value $p=1$ into the formulas will recover
 all of the ones we saw in Chapter BLANK.
 
 
-\section{Additional Topics}
+\section{Additional Topics\label{sec:Additional-Topics-MLR}}
 
 
 \subsection{Nonlinear Regression}
@@ -14826,7 +14873,7 @@ SSTO=SSE+SSR.\]
 \item resampling for hypothesis tests (permutation tests)
 \end{itemize}
 
-\section{Introduction}
+\section{Introduction\label{sec:Introduction-Resampling}}
 
 Computers have changed the face of Statistics. Their quick computational
 speed and flawless accuracy, coupled with large datasets acquired
@@ -14910,7 +14957,7 @@ apply to a large class of seemingly unrelated procedures. One no longer
 needs to memorize long complicated formulas and algorithms. 
 \end{itemize}
 
-\section{Bootstrapping Standard Errors}
+\section{Bootstrap Standard Errors\label{sec:Bootstrap-Standard-Errors}}
 
 \textbf{Procedure for Bootstrapping:} To approximate the sampling
 distribution of a statistic $S(x)$ based on a $SRS$ of size $n$.
@@ -15070,7 +15117,7 @@ interest.
 \end{itemize}
 \end{rem}
 
-\section{Bootstrap Confidence Intervals}
+\section{Bootstrap Confidence Intervals\label{sec:Bootstrap-Confidence-Intervals}}
 
 
 \subsection{Percentile Confidence Intervals}
@@ -15185,7 +15232,7 @@ and then transform back.
 version of is the rth order statistic of the simulation
 \end{itemize}
 
-\section{Resampling in Hypothesis Tests}
+\section{Resampling in Hypothesis Tests\label{sec:Resampling-in-Hypothesis}}
 
 The classical two-sample problem can be stated as follows: given two
 groups of interest, we would like to know whether these two groups
@@ -15403,7 +15450,7 @@ is likely to encounter. In each subsection we describe how to display
 the data of that particular type. 
 
 
-\section{Data Structures}
+\section{Data Structures\label{sec:Data-Structures}}
 
 
 \subsection{Vectors}
@@ -15629,7 +15676,7 @@ poured + guessed, data = D)
 \end{itemize}
 \end{itemize}
 
-\section{Sources of Data}
+\section{Sources of Data\label{sec:Sources-of-Data}}
 
 
 \subsection{Data in Packages}
@@ -15668,7 +15715,7 @@ package supports a large number of additional data formats.
 .
 
 
-\section{Importing A Data Set}
+\section{Importing A Data Set\label{sec:Importing-A-Data}}
 
 
 \subsection{Importing a Data Frame}
@@ -15678,7 +15725,7 @@ The basic command is \inputencoding{latin9}\lstinline[showstringspaces=false,tab
 There are three methods to get data
 
 
-\section{Creating New Data Sets}
+\section{Creating New Data Sets\label{sec:Creating-New-Data}}
 
 Using \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!c!\inputencoding{utf8}
 
@@ -15687,7 +15734,7 @@ Using \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!scan!\i
 Using R Commander 
 
 
-\section{Editing Data Sets}
+\section{Editing Data Sets\label{sec:Editing-Data-Sets}}
 
 
 \subsection{Editing Data Values}
@@ -15699,7 +15746,7 @@ Using R Commander
 \subsection{Deleting Rows and Columns}
 
 
-\section{Exporting a Data Set}
+\section{Exporting a Data Set\label{sec:Exporting-a-Data}}
 
 The basic function is \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!write.table!\inputencoding{utf8}
 in the \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!base!\inputencoding{utf8}
@@ -15708,7 +15755,7 @@ package also has a \inputencoding{latin9}\lstinline[showstringspaces=false,tabsi
 function.
 
 
-\section{Reshaping a Data Set}
+\section{Reshaping a Data Set\label{sec:Reshaping-a-Data}}
 
 Aggregation
 
@@ -16138,7 +16185,7 @@ and so $\Gamma(n)=(n-1)!$ for any positive integer $n$.
 \end{itemize}
 \end{fact}
 
-\section{Linear Algebra}
+\section{Linear Algebra\label{sec:Linear-Algebra}}
 
 
 \subsection*{Matrices}
@@ -16225,7 +16272,7 @@ definite}. The connection to statistics is that covariance matrices
 them are even positive definite.
 
 
-\section{Multivariate Calculus}
+\section{Multivariable Calculus\label{sec:Multivariable-Calculus}}
 
 
 \subsection*{Partial Derivatives}
@@ -16333,7 +16380,7 @@ to pass along some tips about writing reports once the work is completed
 with \textsf{R}.
 
 
-\section{What to Write}
+\section{What to Write\label{sec:What-to-Write}}
 
 It is possible to summarize this entire appendix with only one sentence:
 \emph{the statistician's goal is to communicate with others}. To this
@@ -16400,7 +16447,7 @@ the report as needed.
 \end{enumerate}
 \end{enumerate}
 
-\section{How to Write It with \textsf{R}}
+\section{How to Write It with \textsf{R\label{sec:How-to-Write}}}
 
 Once the decision has been made what to write, the next task is to
 typeset the information to be shared. To do this the author will need
@@ -16575,7 +16622,7 @@ You can see the
 \url{http://gregor.gorjanc.googlepages.com/lyx-sweave}
 
 
-\section{Formatting Tables}
+\section{Formatting Tables\label{sec:Formatting-Tables}}
 
 prettyR the Hmisc library
 
@@ -16590,15 +16637,14 @@ and cross. See ?summary.formula or the following document from Frank
 Harrell for more details \url{http://biostat.mc.vanderbilt.edu/twiki/bin/view/Main/StatReport}.
 
 
-\section{Other Formats}
+\section{Other Formats\label{sec:Other-Formats}}
 
 HTML and prettyR
 
 R2HTML
 
 
-\chapter{\textsf{\label{cha:Instructions-for-Instructors}}Instructions for
-Instructors}
+\chapter{Instructions for Instructors\textsf{\label{cha:Instructions-for-Instructors}}}
 
 <<echo = FALSE>>=
 set.seed(095259)
@@ -16663,7 +16709,7 @@ and Instructor Solution Manuals. Guidance regarding this is given
 below in the How to Use This Document section.
 
 
-\section{Generating This Document}
+\section{Generating This Document\label{sec:Generating-This-Document}}
 
 You will need three (3) things to generate this document for yourself,
 in addition to a current \textsf{R} distribution which at the time
@@ -16709,7 +16755,7 @@ of \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR.Rnw!\inputenco
 and \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR.lyx!\inputencoding{utf8}.
 
 
-\section{How to Use This Document}
+\section{How to Use This Document\label{sec:How-to-Use-Document}}
 
 The easiest way to use this document is to install the \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR!\inputencoding{utf8}
 package from \inputencoding{latin9}\lstinline[showstringspaces=false]!CRAN!\inputencoding{utf8}
@@ -16767,13 +16813,13 @@ do not need to worry about different semesters. And you will have
 answer keys already for all of your QUIZZES and EXAMS, too.
 \end{itemize}
 
-\section{Ancillary Materials}
+\section{Ancillary Materials\label{sec:Ancillary-Materials}}
 
 In addition to the main text, student manual, and instructor manual,
 there are two oth IPSUR.R
 
 
-\section{Modifying This Document}
+\section{Modifying This Document\label{sec:Modifying-This-Document}}
 
 Since this document is released under the GNU-FDL, you are free to
 modify this document however you wish (in accordance with the license
@@ -16803,8 +16849,7 @@ Frankly, and most humbly, the only response I have for those individuals
 is: {}``Please refer to the preceding paragraph.''
 
 
-\chapter{\textsf{\label{cha:RcmdrTestDrive-Story}}\texttt{RcmdrTestDrive}
-Story}
+\chapter{\texttt{RcmdrTestDrive} Story\textsf{\label{cha:RcmdrTestDrive-Story}}}
 
 The goal of \inputencoding{latin9}\lstinline[showstringspaces=false]!RcmdrTestDrive!\inputencoding{utf8}
 was to have a data set sufficiently rich in the types of data represented
@@ -17608,7 +17653,7 @@ permit their use in free software.
 
 <<echo=FALSE, results=hide, split=FALSE>>= 
 rm(.Random.seed)
-save.image(file = "IPSUR.RData")
-Stangle(file="IPSUR.Rnw", output="IPSUR.R", annotate=TRUE)
+save.image(file = "../IPSUR.RData")
+Stangle(file="IPSUR.Rnw", output="../IPSUR.R", annotate=TRUE)
 @
 \end{document}
