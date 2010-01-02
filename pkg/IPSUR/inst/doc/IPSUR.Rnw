@@ -2037,8 +2037,8 @@ each datum gets only one leaf to the right of the dividing line.
 Notice that the \inputencoding{latin9}\lstinline[showstringspaces=false]!depth!\inputencoding{utf8}s
 have been suppressed. To learn more about this option and many others,
 see Section \ref{sec:Exploratory-Data-Analysis}. Unlike a histogram,
-the original data values may be recovered from the stemplot display,
-modulo the rounding -- that is, starting from the top and working
+the original data values may be recovered from the stemplot display
+-- modulo the rounding -- that is, starting from the top and working
 down we can read off the data values 1050, 1070, 1110, 1130, \emph{etc}. 
 
 
@@ -2056,10 +2056,12 @@ several plotting methods for index plots, and we discuss two of them:
 height (\inputencoding{latin9}\lstinline[showstringspaces=false]!type = "h"!\inputencoding{utf8}).
 \item [{points:}] plots a simple point at the observation height (\inputencoding{latin9}\lstinline[showstringspaces=false]!type = "p"!\inputencoding{utf8}).\end{description}
 \begin{example}
-Level of Lake Huron 1875-1972. 
-\end{example}
-See Figure \ref{fig:indpl-lakehuron}, which was produced with the
-following code:
+Level of Lake Huron 1875-1972. Brockwell and Davis \cite{Brockwell1991}
+give the annual measurements of the level (in feet) of Lake Huron
+from 1875--1972. The data are stored in the time series \inputencoding{latin9}\lstinline[showstringspaces=false]!LakeHuron!\inputencoding{utf8}.
+See \inputencoding{latin9}\lstinline[showstringspaces=false]!?LakeHuron!\inputencoding{utf8}.
+Figure \ref{fig:indpl-lakehuron} was produced with the following
+code:
 
 <<>>=
 plot(LakeHuron, type = "h")
@@ -2085,36 +2087,85 @@ par(mfrow = c(1,1)) # back to normal
 \end{figure}
 
 
+\end{example}
 
 \subsection{Qualitative Data, Categorical Data, and Factors\label{sub:Qualitative-Data}}
 
 Qualitative data are simply any type of data that are not numerical,
 or do not represent numerical quantities. Examples of qualitative
 variables include a subject's name, gender, race/ethnicity, political
-party, socio-economic status, driver's license number, and social
-security number (SSN).
+party, socioeconomic status, class rank, driver's license number,
+and social security number (SSN).
 
 Please bear in mind that some data \emph{look} to be quantitative
 but are \emph{not,} because they do not represent numerical quantities
 and do not obey mathematical rules. For example, a person's shoe size
 is typically written with numbers: 8, or 9, or 12, or $12\,\frac{1}{2}$.
 Shoe size is not quantitative, however, because if we take a size
-8 and combine with a size 9 we do not get a size 17. 
+8 and combine with a size 9 we do not get a size 17.
 
 Some qualitative data serve merely to \emph{identify} the observation
 (such a subject's name, driver's license number, or SSN). This type
 of data does not usually play much of a role in statistics. But other
 qualitiative variables serve to \emph{subdivide} the data set into
 categories; we call these \emph{factors}. In the above examples, gender,
-race, political party, and socio-economic status would be considered
+race, political party, and socioeconomic status would be considered
 factors (shoe size would be another one). The possible values of a
 factor are called its \emph{levels}. For instance, the factor \emph{gender}
-would have two levels, namely, male and female.
+would have two levels, namely, male and female. Socioeconomic status
+typically has three levels: high, middle, and low.
+
+Factors may be of two types: \emph{nominal} and \emph{ordinal}. Nominal
+factors have levels that correspond to names of the categories, with
+no implied ordering. Examples of nominal factors would be hair color,
+gender, race, or political party. There is no natural ordering to
+{}``Democrat'' and {}``Republican''; the categories are just names
+associated with different groups of people. 
+
+In contrast, ordinal factors have some sort of ordered structure to
+the underlying factor levels. For instance, socioeconomic status would
+be an ordinal categorical variable because the levels correspond to
+ranks associated with income, education, and occupation. Another example
+of ordinal categorical data would be class rank.
 
 Factors have special status in \textsf{R}. They are represented internally
 by numbers, but even when they are written numerically their values
 do not convey any numeric meaning or obey any mathematical rules (that
 is, Stage III cancer is not Stage I cancer + Stage II cancer).
+\begin{example}
+The \inputencoding{latin9}\lstinline[showstringspaces=false]!state.abb!\inputencoding{utf8}
+vector gives the two letter postal abbreviations for all 50 states.
+
+<<>>=
+str(state.abb)
+@
+
+These would be ID data. The \inputencoding{latin9}\lstinline[showstringspaces=false]!state.name!\inputencoding{utf8}
+vector lists all of the complete names and those data would also be
+ID.
+
+\end{example}
+
+\begin{example}
+\textbf{U.S.~State Facts and Features.} The U.S.~Department of Commerce
+of the U.S.~Census Bureau releases all sorts of information in the
+\emph{Statistical Abstract of the United States}, and the \inputencoding{latin9}\lstinline[showstringspaces=false]!state.region!\inputencoding{utf8}
+data lists each of the 50 states and the region to which it belongs,
+be it Northeast, South, North Central, or West. See \inputencoding{latin9}\lstinline[showstringspaces=false]!?state.region!\inputencoding{utf8}.
+
+<<>>=
+str(state.region)
+state.region[1:5]
+@
+
+The \inputencoding{latin9}\lstinline[showstringspaces=false]!str!\inputencoding{utf8}
+output shows that \inputencoding{latin9}\lstinline[showstringspaces=false]!state.region!\inputencoding{utf8}
+is already stored internally as a factor and it lists a couple of
+the factor levels. To see all of the levels we printed the first five
+entries of the vector in the second line.need to print a piece of
+the from 
+\end{example}
+
 
 
 \subsection*{Displaying Qualitative Data\label{sub:Displaying-Qualitative-Data}}
@@ -2149,8 +2200,8 @@ the respective categories. A disadvantage of bar graphs is that the
 levels are ordered alphabetically (by default), which may sometimes
 obscure patterns in the display. 
 \begin{example}
-U.S.~State Facts and Features. The U.S.~Department of Commerce U.S.~Census
-Bureau, releases all sorts of information in the \emph{Statistical
+\textbf{U.S.~State Facts and Features.} The U.S.~Department of Commerce
+U.S.~Census Bureau, releases all sorts of information in the \emph{Statistical
 Abstract of the United States}, and the \inputencoding{latin9}\lstinline[showstringspaces=false]!state.region!\inputencoding{utf8}
 data lists each of the 50 states and the region to which it belongs,
 be it Northeast, South, North Central, or West. See \inputencoding{latin9}\lstinline[showstringspaces=false]!?state.region!\inputencoding{utf8}.
@@ -2516,7 +2567,7 @@ We will denote it by $\xbar_{t=0.05}$.
 \subsection{How to do it with \textsf{R}}
 \begin{itemize}
 \item You can calculate frequencies or relative frequencies with the \inputencoding{latin9}\lstinline[showstringspaces=false]!table!\inputencoding{utf8}
-function.
+function, and relative frequencies with \inputencoding{latin9}\lstinline[showstringspaces=false]!prop.table(table())!\inputencoding{utf8}.
 \item You can calculate the sample mean of a data vector \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
 with the command \inputencoding{latin9}\lstinline[showstringspaces=false]!mean(x)!\inputencoding{utf8}. 
 \item You can calculate the sample median of \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
@@ -11308,6 +11359,82 @@ out with one-way ANOVA
 
 \section{Introduction\label{sec:Introduction-Hypothesis}}
 
+I spent a week during the summer of 2006 at the University of Nebraska
+at Lincoln grading Advanced Placement Statistics exams, and while
+I was there I attended a presentation by Dr.~Roxy Peck. At the end
+of her talk she described an activity she had used with students to
+introduce the basic concepts of hypothesis testing. I was impressed
+by the activity and have used it in my own classes several times since.
+
+The instructor (with a box of cookies in hand) enters a class of fifteen
+or more students and produces a brand-new, sealed deck of ordinary
+playing cards. The instructor asks for a student volunteer to break
+the seal, and then the instructor prominently shuffles the deck%
+\footnote{The jokers are removed before shuffling.%
+} several times in front of the class, after which time the students
+are asked to line up in a row. They are going to play a game. Each
+student will draw a card from the top of the deck, in turn. If the
+card is black, then the lucky student will get a cookie. If the card
+is red, then the unlucky student will sit down empty-handed. Let the
+game begin.
+
+The first student draws a card: red. There are jeers and outbursts,
+and the student slinks off to his/her chair. (S)he is disappointed,
+of course, but not really. After all, (s)he had a 50-50 chance of
+getting black, and it did not happen. Oh well.
+
+The second student draws a card: red, again. There are more jeers,
+and the second student slips away. This student is also disappointed,
+but again, not so much, because it is probably his/her unlucky day.
+On to the next student.
+
+The student draws: red again! There are a few wiseguys who yell (happy
+to make noise, more than anything else), but there are a few other
+students who are not yelling any more -- they are thinking. This is
+the third red in a row, which is possible, of course, but what is
+going on, here? They are not quite sure. They are now concentrating
+on the next card\ldots{} it is bound to be black, right?
+
+The fourth student draws: red. Hmmm\ldots{} now there are groans
+instead of outbursts. A few of the students at the end of the line
+shrug their shoulders and start to make their way back to their desk,
+complaining that the teacher does not want to give away any cookies.
+There are still some students in line though, salivating, waiting
+for the inevitable black to appear.
+
+The fifth student draws red. Now it isn't funny any more. As the remaining
+students make their way back to their seats an uproar ensues, from
+an entire classroom demanding cookies.
+
+\bigskip{}
+
+
+Keep the preceding experiment in the back of your mind as you read
+the following sections. When you have finished the entire chapter,
+come back and read this introduction again. All of the mathematical
+jargon that follows is connected to the above paragraphs. In the meantime,
+I will get you started:
+\begin{description}
+\item [{Null~hypothesis:}] it is an ordinary deck of playing cards, shuffled
+thoroughly.
+\item [{Alternative~hypothesis:}] either it is a trick deck of cards,
+or the instructor did some fancy shufflework.
+\item [{Observed~data:}] a sequence of draws from the deck, five reds
+in a row.
+\end{description}
+If it were truly an ordinary, well-shuffled deck of cards, the probability
+of observing zero blacks out of a sample of size five (without replacement)
+from a deck with 26 black cards and 26 red cards would be
+
+<<>>=
+dhyper(0, m = 26, n = 26, k = 5)
+@
+
+There are two very important final thoughts. First, everybody gets
+a cookie in the end. Second, the students invariably (and aggressively)
+attempt to get me to open up the deck and reveal the true nature of
+the cards. I never do.
+
 
 \section{Tests for Proportions\label{sec:Tests-for-Proportions}}
 \begin{example}
@@ -11322,7 +11449,7 @@ machine.
 If
 \begin{itemize}
 \item $Y=0$, then the torque converter is great!
-\item $Y=4$, then the torque converter seems to be helping.
+\item $Y=4$, then the torque converter seems to be helping. 
 \item $Y=9$, then there is not much evidence that the torque converter
 helps.
 \item $Y=17$, then throw away the torque converter.
