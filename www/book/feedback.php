@@ -36,7 +36,7 @@
 <blockquote>
 
 <p>
-I would be happy to hear any (most?) comments, suggestions, problems, questions, or requests that you may have about <span class="name">IPSUR</span>. But if you would like to ask/say something, then it would be better to ask/say it on the <span class="name">IPSUR</span> mailing lists (or my personal address) rather than bog down an already busy R-help mailing list.  I have made two <span class="name">IPSUR</span> specific mailing lists for this purpose.
+I would be happy to hear any (most?) comments, suggestions, problems, questions, or requests that you may have about <span class="name">IPSUR</span>. And if you would like to ask/say something, then it would be better to ask/say it on the <span class="name">IPSUR</span> mailing lists (or my personal address) rather than bog down an already busy R-help mailing list.  There are two <span class="name">IPSUR</span> specific mailing lists for this purpose.
 </p>
 </blockquote>
 

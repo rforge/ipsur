@@ -491,6 +491,12 @@ there are many, many other good introductory books about \textsf{R},
 but frankly, I have tried to steer clear of them for the past year
 or so to avoid any undue influence on my own writing.
 
+I would like to make special mention of two other books: \emph{Introduction
+to Statistical Thought} by Michael Lavine \cite{Lavine2009} and \emph{Introduction
+to Probability} by Grinstead and Snell \cite{Grinstead1997}. Both
+of these books are \emph{free} and are what ultimately convinced me
+to release \IPSUR\ under a free license, too.
+
 Please bear in mind that the title of this book is {}``Introduction
 to Probability and Statistics Using \textsf{R}'', and not {}``Introduction
 to \textsf{R} Using Probability and Statistics'', nor even {}``Introduction
@@ -502,10 +508,10 @@ feel the same way about the probabilistic and/or statistical content.
 Still others will just want to learn \textsf{R} and skip all of the
 mathematics.
 
-Despite any misgivings: here it is. I humbly invite said individuals
-to take this book, with the GNU-FDL in hand, and make it better. In
-that spirit there are at least a few ways in which this book could
-be improved in my view.
+Despite any misgivings: here it is, warts and all. I humbly invite
+said individuals to take this book, with the GNU-FDL in hand, and
+make it better. In that spirit there are at least a few ways in which
+this book could be improved in my view.
 \begin{description}
 \item [{Better~data:}] the data analyzed in this book are almost entirely
 from the \inputencoding{latin9}\lstinline[showstringspaces=false]!datasets!\inputencoding{utf8}
@@ -525,7 +531,7 @@ are the speeds and stopping distances of cars in the 1920's).
 
 In a perfect world with infinite time I would research and contribute
 recent, \emph{real} data in a context crafted to engage the students
-in \emph{every} example. One day I hope to stumble across that time.
+in \emph{every} example. One day I hope to stumble over said time.
 In the meantime, I will add new data sets incrementally as time permits.
 
 \item [{More~proofs:}] for the sake of completeness (I understand that
@@ -749,9 +755,9 @@ power became widely available; nowadays the Bayesian school is garnering
 more attention, at an increasing rate.
 
 This book is devoted mostly to the frequentist viewpoint because that
-is how I was trained, with the conspicuous exception of Sections BLANK,
-BLANK, and BLANK. I plan to add more Bayesian material in later editions
-of this book. 
+is how I was trained, with the conspicuous exception of Sections \ref{sec:Bayes'-Rule}
+and \ref{sec:Conditional-Distributions}. I plan to add more Bayesian
+material in later editions of this book. 
 
 
 \chapter{An Introduction to \textsf{R\label{cha:An-Introduction-to-R}}}
@@ -4931,7 +4937,7 @@ is
 \end{itemize}
 The quantity $n!/[k!(n-k)!]$ is called a \emph{binomial coefficient}
 and plays a special role in mathematics; it is denoted\begin{equation}
-{n \choose k}=\frac{n!}{k!(n-k)!}\end{equation}
+{n \choose k}=\frac{n!}{k!(n-k)!}\label{eq:binomial-coefficient}\end{equation}
 and is read {}``$n$ choose $k$''.
 \begin{example}
 You rent five movies to watch over the span of two nights, but only
@@ -5714,7 +5720,7 @@ when new information becomes available.
 \textbf{\emph{(Bayes' Rule).}} Let $B_{1}$, $B_{2}$, \ldots{},
 $B_{n}$ be mutually exclusive and exhaustive and let $A$ be an event
 with $\P(A)>0$. Then \begin{equation}
-\P(B_{k}|A)=\frac{\P(B_{k})\P(A|B_{k})}{\sum_{i=1}^{n}\P(B_{i})\P(A|B_{i})},\quad k=1,2,\ldots,n.\end{equation}
+\P(B_{k}|A)=\frac{\P(B_{k})\P(A|B_{k})}{\sum_{i=1}^{n}\P(B_{i})\P(A|B_{i})},\quad k=1,2,\ldots,n.\label{eq:bayes-rule}\end{equation}
 \end{thm}
 \begin{proof}
 The proof follows from looking at $\P(B_{k}\cap A)$ in two different
@@ -9081,7 +9087,7 @@ The \emph{covariance} of $X$ and $Y$ is \begin{equation}
 By the way, there is a shortcut formula for covariance which is almost
 as handy as the shortcut for the variance:\begin{equation}
 \mbox{Cov}(X,Y)=\E(XY)-(\E X)(\E Y).\end{equation}
-The proof is left to Exercise BLANK.
+The proof is left to Exercise \ref{xca:Prove-cov-shortcut}.
 
 The Pearson product moment correlation between $X$ and $Y$ is the
 covariance between $X$ and $Y$ rescaled to fall in the interval
@@ -9147,7 +9153,8 @@ Compare this answer to what we got in Example BLANK.
 To do the continuous case we could use the computer algebra utilities
 of \inputencoding{latin9}\lstinline[showstringspaces=false]!Yacas!\inputencoding{utf8}
 and the associated \textsf{R} package \inputencoding{latin9}\lstinline[showstringspaces=false]!Ryacas!\inputencoding{utf8}
-\cite{ryacas}. See Section BLANK for another example where the \inputencoding{latin9}\lstinline[showstringspaces=false]!Ryacas!\inputencoding{utf8}
+\cite{ryacas}. See Section \ref{sub:bivariate-transf-R} for another
+example where the \inputencoding{latin9}\lstinline[showstringspaces=false]!Ryacas!\inputencoding{utf8}
 package appears.
 
 
@@ -9186,10 +9193,10 @@ to a new distribution, called the \emph{posterior distribution of}
 $\theta$ \emph{given the observation} $X=x$, denoted $\pi_{\theta|x}$.
 It may seem a mystery how to obtain $\pi_{\theta|x}$ based only on
 the information provided by $\pi$ and $f_{X|\theta}$, but it should
-not be. We have already studied this in Chapter BLANK where it was
-called Bayes' Rule:\begin{equation}
+not be. We have already studied this in Section \ref{sec:Bayes'-Rule}
+where it was called Bayes' Rule:\begin{equation}
 \pi(\theta|x)=\frac{\pi(\theta)\, f(x|\theta)}{\int\pi(u)\, f(x|u)\diff u}.\end{equation}
-Compare the above expression to Equation BLANK.
+Compare the above expression to Equation \ref{eq:bayes-rule}.
 \begin{example}
 Suppose the parameter $\theta$ is the $\P(\mbox{Heads})$ for a biased
 coin. It could be any value from 0 to 1. Perhaps we have some prior
@@ -9241,8 +9248,8 @@ Bayesian book BLANK.
 
 \subsection{Independent Random Variables\label{sub:Independent-Random-Variables}}
 
-We recall from Chapter BLANK that the events $A$ and $B$ are said
-to be independent when\begin{equation}
+We recall from Chapter \ref{cha:Probability} that the events $A$
+and $B$ are said to be independent when\begin{equation}
 \P(A\cap B)=\P(A)\P(B).\end{equation}
 If it happens that\begin{equation}
 \P(X=x,Y=y)=\P(X=x)\P(Y=y),\quad\mbox{for every }x\in S_{X},\ y\in S_{Y},\end{equation}
@@ -9281,8 +9288,8 @@ Independent random variables are very useful to the mathematician.
 They have many, many, tractable properties. We mention some of the
 more important ones.
 \begin{prop}
-If $X$ and $Y$ are independent, then for any functions $u$ and
-$v$, \begin{equation}
+\label{pro:indep-implies-prodexpect}If $X$ and $Y$ are independent,
+then for any functions $u$ and $v$, \begin{equation}
 \E\left(u(X)v(Y)\right)=\left(\E u(X)\right)\left(\E v(Y)\right).\end{equation}
 
 \end{prop}
@@ -9296,7 +9303,7 @@ and this last quantity is exactly $\left(\E u(X)\right)\left(\E v(Y)\right)$.
 
 \begin{cor}
 If $X$ and $Y$ are independent, then $\mbox{Cov}(X,Y)=0$, and consequently,
-$\mbox{Corr}(X,Y)=0$.
+$\mbox{Corr}(X,Y)=0$.\label{cor:indep-implies-uncorr}
 \end{cor}
 \begin{proof}
 When $X$ and $Y$ are independent then $\E XY=\E X\,\E Y$. And when
@@ -9306,9 +9313,10 @@ the covariance is zero the numerator of the correlation is 0.
 
 
 \begin{rem}
-Unfortunately, the converse of Corollary BLANK is not true. That is,
-there are many random variables which are dependent yet their covariance
-and correlation is zero. For more details, see Casella BLANK. \end{rem}
+Unfortunately, the converse of Corollary \ref{cor:indep-implies-uncorr}
+is not true. That is, there are many random variables which are dependent
+yet their covariance and correlation is zero. For more details, see
+Casella and Berger \cite{Casella2002}. \end{rem}
 \begin{cor}
 If $X$ and $Y$ are independent, then the moment generating function
 of $X+Y$ is \begin{equation}
@@ -9316,15 +9324,16 @@ M_{X+Y}(t)=M_{X}(t)\cdot M_{Y}(t).\end{equation}
 
 \end{cor}
 \begin{proof}
-Choose $u(x)=\me^{x}$ and $v(y)=\me^{y}$ in Proposition BLANK, and
-remember the identity $\me^{t(x+y)}=\me^{tx}\,\me^{ty}$.
+Choose $u(x)=\me^{x}$ and $v(y)=\me^{y}$ in Proposition \ref{pro:indep-implies-prodexpect},
+and remember the identity $\me^{t(x+y)}=\me^{tx}\,\me^{ty}$.
 \end{proof}
 
 
-Proposition BLANK is useful to us and we will receive mileage out
-of it, but there is another fact which will play an even more important
-role. Unfortunately, the proof is beyond the techniques presented
-here. The inquisitive reader should consult Casella and Berger, Resnick,
+Proposition \ref{pro:indep-implies-prodexpect} is useful to us and
+we will receive mileage out of it, but there is another fact which
+will play an even more important role. Unfortunately, the proof is
+beyond the techniques presented here. The inquisitive reader should
+consult Casella and Berger \cite{Casella2002}, Resnick \cite{Resnick1999},
 \emph{etc}.
 \begin{fact}
 If $X$ and $Y$ are independent, then $u(X)$ and $v(Y)$ are independent
@@ -9386,7 +9395,7 @@ see immediately that $f_{X,Y}(x,y)=f_{X,Y}(y,x)$ for all $(x,y)$,
 which confirms that $X$ and $Y$ are exchangeable. Here, $\alpha$
 is said to be an association parameter. This particular example is
 one from the Farlie-Gumbel-Morgenstern family of distributions; see
-BLANK.
+\cite{Kotz2000}.
 \end{example}
 
 \begin{rem}
@@ -9502,19 +9511,43 @@ What do I want them to know about the multinomial distribution.
 \item marginal distributions
 \item how to generate randomly
 \end{itemize}
-When $p_{1}=$
-
-We write $(X_{1},\ldots,X_{k})\sim\mathsf{multinom}(\mathtt{size}=n,\,\mathtt{prob}=\mathbf{p}_{\mathrm{k}\times1})$. 
+We sample $n$ times, with replacement, from an urn that contains
+balls of $k$ different types. Let $X_{1}$ denote the number of balls
+in our sample of type 1, $X_{2}$ denote the number of balls of type
+2, \ldots{} , and $X_{k}$ denote the number of balls of type $k$.
+The the urn has proportion $p_{1}$ of balls of type 1, \ldots{},
+$p_{k}$ of type $p_{k}$, then the joint PMF of $(X_{1},\ldots,X_{k})$
+is\begin{eqnarray}
+f_{X_{1},\ldots,X_{k}}(x_{1},\ldots,x_{k}) & = & {n \choose x_{1}\, x_{2}\,\cdots\, x_{k}}\, p_{1}^{x_{1}}p_{2}^{x_{2}}\cdots p_{k}^{x_{k}},\quad\mbox{for }(x_{1},\ldots,x_{k})\in S_{X_{1},\ldots X_{K}},\end{eqnarray}
+which, as usual, represents $\P(X_{1}=x_{1},\, X_{2}=x_{2},\, X_{k}=x_{k})$.
+We write $(X_{1},\ldots,X_{k})\sim\mathsf{multinom}(\mathtt{size}=n,\,\mathtt{prob}=\mathbf{p}_{\mathrm{k}\times1})$.
+Several comments are in order. First, the support set $S_{X_{1},\ldots X_{K}}$
+contains all nonnegative integer $k$-tuples $(x_{1},\ldots,x_{k})$
+that satisfy $x_{1}+x_{2}+\cdots+x_{k}=n$. A support set like this
+is called a \emph{simplex}. Second, the proportions $p_{1}$, $p_{2}$,
+\ldots{}, $p_{k}$ satisfy $p_{i}\geq0$ for all $i$ and $p_{1}+p_{2}+\cdots+p_{k}=1$.
+Finally, the symbol\begin{equation}
+{n \choose x_{1}\, x_{2}\,\cdots\, x_{k}}=\frac{n!}{x_{1}!\, x_{2}!\,\cdots x_{k}!}\end{equation}
+is called a \emph{multinomial coefficient} which generalizes the notion
+of a binomial coefficient we saw in Equation \ref{eq:binomial-coefficient}.
+When $k=2$, we have $x_{1}=x$ and $x_{2}=n-x$, we have $p_{1}=p$
+and $p_{2}=1-p$, and the multinomial coefficient is literally a binomial
+coefficient. In this notation we have just shown, therefore, that
+the $\mathsf{multinom}(\mathtt{size}=n,\,\mathtt{prob}=\mathbf{p}_{2\times1})$
+distribution is the same as a $\mathsf{binom}(\mathtt{size}=n,\,\mathtt{prob}=p)$
+distribution.
 \begin{example}
-Suppose Barack Obama wants to have dinner \url{http://pewresearch.org/pubs/773/fewer-voters-identify-as-republicans}
+Suppose Barack Obama wants to have dinner \url{http://pewresearch.org/pubs/773/fewer-voters-identify-as-republicans}36
+democrat, 27 republican , 37 independent.
 \end{example}
 
 \subsection{How to do it with \textsf{R}}
 
 There is support for the multinomial distribution in base \textsf{R},
 namely in the \inputencoding{latin9}\lstinline[showstringspaces=false]!stats!\inputencoding{utf8}
-package. The relevant functions are \inputencoding{latin9}\lstinline[showstringspaces=false]!dmultinom!\inputencoding{utf8}
-and \inputencoding{latin9}\lstinline[showstringspaces=false]!rmultinom!\inputencoding{utf8}.
+package. The \inputencoding{latin9}\lstinline[showstringspaces=false]!dmultinom!\inputencoding{utf8}
+function represents the PMF and the \inputencoding{latin9}\lstinline[showstringspaces=false]!rmultinom!\inputencoding{utf8}
+function generates random variates.
 
 <<>>=
 library(combinat)
@@ -9630,7 +9663,7 @@ It may not be obvious, but Equation BLANK is the PDF of a $\mathsf{mvnorm}$
 distribution. For a more general result see Proposition BLANK.
 \end{rem}
 
-\subsection{How to do it with \textsf{R}}
+\subsection{How to do it with \textsf{R\label{sub:bivariate-transf-R}}}
 
 It is possible to do the computations above in \textsf{R} with the
 \inputencoding{latin9}\lstinline[showstringspaces=false]!Ryacas!\inputencoding{utf8}
@@ -9800,7 +9833,7 @@ distribution.
 
 
 \begin{xca}
-Prove that $\mbox{Cov}(X,Y)=\E(XY)-(\E X)(\E Y).$
+Prove that $\mbox{Cov}(X,Y)=\E(XY)-(\E X)(\E Y).$\label{xca:Prove-cov-shortcut}
 \end{xca}
 
 
@@ -10150,8 +10183,8 @@ The three separate \inputencoding{latin9}\lstinline[showstringspaces=false]!clt1
 and \inputencoding{latin9}\lstinline[showstringspaces=false]!clt3!\inputencoding{utf8}
 functions were written so that students could compare what happens
 overall when the shape of the population distribution changes. It
-would be possible to combine all three into one big function \inputencoding{latin9}\lstinline[showstringspaces=false]!clt!\inputencoding{utf8}
-which covers all three cases. 
+would be possible to combine all three into one big function, \inputencoding{latin9}\lstinline[showstringspaces=false]!clt!\inputencoding{utf8}
+which covers all three cases (and more). 
 
 
 \section{Sampling Distributions of Two-Sample Statistics\label{sec:Samp-Dist-Two-Samp}}
