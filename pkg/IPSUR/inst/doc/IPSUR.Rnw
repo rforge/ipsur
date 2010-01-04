@@ -1691,40 +1691,21 @@ c(max(commute), min(commute), mean(commute), sd(commute))
 \chapter{Data Description \label{cha:Describing-Data-Distributions}}
 
 In this chapter we introduce the different types of data that a statistician
-is likely to encounter. In each subsection we describe how to display
-the data of that particular type.
-\begin{itemize}
-\item First we classify data into one of many types that the statistician
-is likely to encounter.
-\item Next, we discuss how to go display the data of the respective types
-in graphical or tabular format.
-\item Once data are displayed, we talk about properties of data sets that
-can be observed from the displays. This is done in an entirely qualitative
-fashion.
-\item Next, we talk about ways of quantifying the properties discussed previously.
-We introduce common measures used to quantify the considerations.
-\item This is followed by EDA in which we examine in more detail some visual
-and tabular devices; outliers are discussed here.
-\item Next we move to introducing dependence with multivariate data, and
-the technical \textsf{R} concept of data frames.
-\item We end with graphical/numerical ways to compare data sets or subpopulations
-using the devices studied previously.
-\end{itemize}
-Once we see how to display data distributions, we next introduce the
-basic properties of data distributions. We qualitatively explore several
-data sets. Once that we have intuitive properties of data sets, we
-next discuss how we may numerically measure and describe those properties
-with descriptive statistics.
+is likely to encounter, and in each subsection we give some examples
+of how to display the data of that particular type. Once we see how
+to display data distributions, we next introduce the basic properties
+of data distributions. We qualitatively explore several data sets.
+Once that we have intuitive properties of data sets, we next discuss
+how we may numerically measure and describe those properties with
+descriptive statistics.
 
 
 \paragraph*{What do I want them to know?}
 \begin{itemize}
-\item what are data
-
-\begin{itemize}
-\item different types, especially quantitative versus qualitative, and discrete
-versus continuous
-\end{itemize}
+\item different data types, such as quantitative versus qualitative, nominal
+versus ordinal, and discrete versus continuous
+\item basic graphical displays for assorted data types, and some of their
+(dis)advantages 
 \item fundamental properties of data distributions, including center, spread,
 shape, and crazy observations
 \item methods to describe data (visually/numerically) with respect to the
@@ -1738,16 +1719,16 @@ the concept of a factor
 Loosely speaking, a datum is any piece of collected information, and
 a data set is a collection of data related to each other in some way.
 We will categorize data into five types and describe each in turn:
-\begin{enumerate}
-\item Quantitative, data associated with a measurement of some quantity
+\begin{description}
+\item [{Quantitative}] data associated with a measurement of some quantity
 on an observational unit,
-\item Qualitative, data associated with some quality or property of the
-observational unit,
-\item Logical, data to represent true or false which play an important role
-later,
-\item Missing, data that should be there but is not, and
-\item Other types, everything else under the sun.
-\end{enumerate}
+\item [{Qualitative}] data associated with some quality or property of
+the observational unit,
+\item [{Logical}] data to represent true or false and which play an important
+role later,
+\item [{Missing}] data that should be there but are not, and
+\item [{Other~types}] everything else under the sun.
+\end{description}
 In each subsection we look at some examples of the type in question
 and introduce methods to display them.
 
@@ -1755,28 +1736,30 @@ and introduce methods to display them.
 \subsection{Quantitative data\label{sub:Quantitative-Data}}
 
 Quantitative data are any data that measure or are associated with
-a measurement of the quantity of something. They invariably take numerical
-values. Quantitative data can be further subdivided into two categories. 
+a measurement of the quantity of something. They invariably assume
+numerical values. Quantitative data can be further subdivided into
+two categories. 
 \begin{itemize}
-\item Discrete data take values in a finite or countably infinite set of
-numbers. Examples include: counts, number of arrivals, number of successes,
-attendance. They are often represented by integers, say, 0, 1, 2,
-\emph{etc}.
-\item Continuous data take values in an interval of numbers. These are also
-known as scale data, interval data, or measurement data. Examples
-include: height, weight, length, time, \emph{etc}. Continuous data
-are often characterized by fractions or decimals: 3.82, 7.0001, 4~$\frac{5}{8}$,
-\emph{etc}.
+\item \emph{Discrete data} take values in a finite or countably infinite
+set of numbers, that is, all possible values could (at least in principle)
+be written down in an ordered list. Examples include: counts, number
+of arrivals, or number of successes. They are often represented by
+integers, say, 0, 1, 2, \emph{etc}..
+\item \emph{Continuous data} take values in an interval of numbers. These
+are also known as scale data, interval data, or measurement data.
+Examples include: height, weight, length, time, \emph{etc}. Continuous
+data are often characterized by fractions or decimals: 3.82, 7.0001,
+4~$\frac{5}{8}$, \emph{etc}..
 \end{itemize}
 Note that the distinction between discrete and continuous data is
-not always clear-cut. Sometimes it is better to treat data as if they
-were continuous, even though they are not, strictly speaking. See
-the examples.
+not always clear-cut. Sometimes it is convenient to treat data as
+if they were continuous, even though strictly speaking they are not
+continuous. See the examples.
 \begin{example}
 \textbf{Annual Precipitation in US Cities.} The vector \inputencoding{latin9}\lstinline[showstringspaces=false]!precip!\inputencoding{utf8}
 contains average amount of rainfall (in inches) for each of 70 cities
 in the United States and Puerto Rico. Let us take a look at the data:
-\end{example}
+
 <<>>=
 str(precip)
 precip[1:4]
@@ -1787,6 +1770,7 @@ is a numeric vector which has been \emph{named}, that is, each value
 has a name associated with it (which can be set with the \inputencoding{latin9}\lstinline[showstringspaces=false]!names!\inputencoding{utf8}
 function). These are quantitative continuous data.
 
+\end{example}
 
 \begin{example}
 \textbf{Lengths of Major North American Rivers.} The U.S.~Geological
@@ -1950,16 +1934,16 @@ par(mfrow = c(1,1)) # back to normal
 
 
 \end{example}
-Please bear the biggest weakness of histograms in mind: the graph
-obtained strongly depends on the bins chosen. Choose another set of
-bins, and you will get a different histogram. Moreover, there are
-not any definitive criteria by which bins should be defined; the best
-choice for a given data set is the one which illuminates the data
-set's underlying structure (if any). Luckily for us there are algorithms
-to automatically choose bins that are likely to display well, and
-more often than not the default bins do a good job. This is not always
-the case, however, and a responsible statistician will investigate
-many bin choices to test the stability of the display. 
+Please be careful regarding the biggest weakness of histograms: the
+graph obtained strongly depends on the bins chosen. Choose another
+set of bins, and you will get a different histogram. Moreover, there
+are not any definitive criteria by which bins should be defined; the
+best choice for a given data set is the one which illuminates the
+data set's underlying structure (if any). Luckily for us there are
+algorithms to automatically choose bins that are likely to display
+well, and more often than not the default bins do a good job. This
+is not always the case, however, and a responsible statistician will
+investigate many bin choices to test the stability of the display.
 \begin{example}
 Recall that the stripchart in Figure \ref{fig:Various-stripchart-methods,}
 suggested a relatively balanced shape to the \inputencoding{latin9}\lstinline[showstringspaces=false]!precip!\inputencoding{utf8}
@@ -1992,11 +1976,11 @@ The leftmost graph (with \inputencoding{latin9}\lstinline[showstringspaces=false
 shows that the distribution is not balanced at all. There are two
 humps: a big one in the middle and a smaller one to the left. Graphs
 like this often indicate some underlying group structure to the data;
-we culd now investigate whether the cities for which rainfall was
+we could now investigate whether the cities for which rainfall was
 measured were similar in some way, with respect to geographic region,
 for example.
 
-Therightmost graph in Figure \ref{fig:histograms-bins} shows what
+The rightmost graph in Figure \ref{fig:histograms-bins} shows what
 happens when the number of bins is too large: the histogram is too
 grainy and hides the rounded appearance of the earlier histograms.
 If we were to continue increasing the number of bins we would eventually
@@ -2287,30 +2271,50 @@ pareto.chart(table(state.division), ylab="Frequency")
 
 \end{example}
 
-\paragraph*{Dotcharts\label{par:Dotcharts}}
+\paragraph*{Dot Charts\label{par:Dotcharts}}
+
+These are a lot like a bar graph that has been turned on its side
+with the bars replaced by dots on horizontal lines. They do not convey
+any more (or less) information than the associated bar graph, but
+the strength lies in the economy of the display. Dot charts are so
+compact that it is easy to graph very complicated multi-variable interactions
+together in one graph. See Section BLANK. We will give an example
+here using the same data as above for comparison. The graph was produced
+by the following code.
+
+<<eval = FALSE>>=
+dotchart(table(state.region))
+@
+
+%
+\begin{figure}
+\begin{centering}
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
+dotchart(table(state.region))
+@
+\par\end{centering}
+
+\caption{Dot chart of the \texttt{state.region} data\label{fig:dot-charts}}
+
+\end{figure}
+
+
+See Figure \ref{fig:dot-charts}. Compare it to Figure \ref{fig:bar-gr-stateregion}.
 
 
 \paragraph*{Pie Graphs\label{par:Pie-Graphs}}
 
-These can be done with the \textsf{R} Commander, but they have lost
-popularity in recent years. The reason is that the human eye cannot
-judge angles very well. Use it to display 2 to 6 fractions of one
-unit. Can only show marked differences in values. Pie charts are a
-very bad way of displaying information. The eye is good at judging
-linear measures and bad at judging relative areas. A bar chart or
-dot chart is a preferable way of displaying this type of data. The
-Elements of Graphing Data \cite{Cleveland1994}: 
-\begin{quote}
-Data that can be shown by pie charts always can be shown by a dot
-chart. This means that judgements of position along a common scale
-can be made instead of the less accurate angle judgements.
-\end{quote}
-This statement is based on the empirical investigations of Cleveland
-and McGill as well as investigations by perceptual psychologists. 
+These can be done with \textsf{R} and the \textsf{R} Commander, but
+they fallen out of favor in recent years because researchers have
+determined that while the human eye is good at judging linear measures,
+it is notoriously bad at judging relative areas (such as those displayed
+by a pie graph). Pie charts are consequently a very bad way of displaying
+information. A bar chart or dot chart is a preferable way of displaying
+qualitative data. See \inputencoding{latin9}\lstinline[showstringspaces=false]!?pie!\inputencoding{utf8}\index{pie@\texttt{pie}}
+for more information.
 
-Prior to \textsf{R} 1.5.0 this was known as \inputencoding{latin9}\lstinline[showstringspaces=false]!piechart!\inputencoding{utf8}\index{piechart@\texttt{piechart}},
-which is the name of a Trellis function, so the name was changed to
-be compatible with \textsf{S}. 
+We are not going to do any examples of a pie graph and discourage
+their use elsewhere. 
 
 
 \subsection{Logical Data\label{sub:Logical-Data}}
@@ -2394,7 +2398,7 @@ sum(z)
 
 The analogue of \inputencoding{latin9}\lstinline[showstringspaces=false]!is.na!\inputencoding{utf8}
 for rectangular data sets (or data frames) is the \inputencoding{latin9}\lstinline[showstringspaces=false]!complete.cases!\inputencoding{utf8}
-function. See Section BLANK.
+function. See Appendix \ref{sec:Editing-Data-Sets}.
 
 
 \subsection{Other Data Types\label{sub:Other-data-types}}
@@ -2412,7 +2416,7 @@ and \emph{S}hape. (CUSS).
 
 One of the most basic features of a dataset is its center. Loosely
 speaking, the center of a dataset is associated with a number that
-represents a middle or general tendency to the data. Of course, there
+represents a middle or general tendency of the data. Of course, there
 are usually several values that would serve as a center, and our later
 tasks will be focused on choosing an appropriate one for the data
 at hand. Judging from the histogram that we saw before, a measure
@@ -10112,6 +10116,43 @@ library(distrTeach)
 example(illustrateCLT)
 @
 
+The \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR!\inputencoding{utf8}
+package has the functions \inputencoding{latin9}\lstinline[showstringspaces=false]!clt1!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!clt2!\inputencoding{utf8},
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!clt3!\inputencoding{utf8}
+(see Exercises BLANK, BLANK, and BLANK at the end of this chapter).
+The purpose of each is to investigate what happens to the sampling
+distribution of $\Xbar$ when the population distribution is mound
+shaped, finite support, and skewed, namely $\mathsf{dt}(\mathtt{df}=3)$,
+$\mathsf{unif}(\mathtt{a}=0,\,\mathtt{b}=10)$ and $\mathsf{gamma}(\mathtt{shape}=,\,\mathtt{scale}=)$,
+respectively. 
+
+For example, when the command \inputencoding{latin9}\lstinline[showstringspaces=false]!clt1()!\inputencoding{utf8}
+is issued a plot window opens to show a graph of the PDF of a $\mathsf{dt}(\mathtt{df}=3)$
+distribution. On the display are shown numerical values of the population
+mean and variance. While the students examine the graph the computer
+is simulating random samples of size \inputencoding{latin9}\lstinline[showstringspaces=false]!sample.size = 2!\inputencoding{utf8}
+from the \inputencoding{latin9}\lstinline[showstringspaces=false]!population = "rt"!\inputencoding{utf8}
+distribution a total of \inputencoding{latin9}\lstinline[showstringspaces=false]!N.iter = 100000!\inputencoding{utf8}
+times, and sample means are calculated of each sample. Next follows
+a histogram of the simulated sample means, which closely approximates
+the sampling distribution of $\Xbar$, see Section \ref{sec:Simulated-Sampling-Distributions}.
+Also show are the sample mean and sample variance of all of the simulated
+$\Xbar$s. As a final step, when the student clicks the second plot,
+a normal curve with the same mean and variance as the simulated $\Xbar$s
+is superimposed over the histogram. Students should compare the population
+theoretical mean and variance to the simulated mean and variance of
+the sampling distribution. They should also compare the shape of the
+simulated sampling distribution to the shape of the normal distribution.
+
+The three separate \inputencoding{latin9}\lstinline[showstringspaces=false]!clt1!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!clt2!\inputencoding{utf8},
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!clt3!\inputencoding{utf8}
+functions were written so that students could compare what happens
+overall when the shape of the population distribution changes. It
+would be possible to combine all three into one big function \inputencoding{latin9}\lstinline[showstringspaces=false]!clt!\inputencoding{utf8}
+which covers all three cases. 
+
 
 \section{Sampling Distributions of Two-Sample Statistics\label{sec:Samp-Dist-Two-Samp}}
 
@@ -10337,14 +10378,14 @@ distribution. \end{xca}
 \item Find $\P(a<\Xbar\leq b)$
 \item Find $\P(\Xbar>c)$.\end{enumerate}
 \begin{xca}
-In this exercise we would like to investigate how the shape of the
-population distribution affects the time until the distribution of
-$\Xbar$ is acceptably normal.
+In this exercise we will investigate how the shape of the population
+distribution affects the time until the distribution of $\Xbar$ is
+acceptably normal.
 \end{xca}
-Using the programs and the commands you have learned in class, answer
-the following questions. You will need to make plots and histograms
-in the assignment. See Appendix BLANK for instructions about writing
-reports with \textsf{R}. For these problems, the discussion/interpretation
+Answer the questions and write a report about what you have learned.
+Use plots and histograms to support your conclusions. See Appendix
+\ref{cha:Writing-Reports-with} for instructions about writing reports
+with \textsf{R}. For these problems, the discussion/interpretation
 parts are the most important, so be sure to ANSWER THE WHOLE QUESTION.
 \vspace{0.02in}
 
@@ -10359,21 +10400,30 @@ the distribution of $\Xbar$ as the sample size $n$ increases.
 \begin{enumerate}
 \item The population of interest in this problem has a Student's $t$ distribution
 with $r=3$ degrees of freedom. We begin our investigation with a
-sample size of $n=2$. Download \texttt{CLT 1.R} from the website
-and open it with \texttt{Tinn-R}. Copy and paste the entire program
-into \textsf{R}. 
+sample size of $n=2$. Open an \textsf{R} session, make sure to type
+\inputencoding{latin9}\lstinline[showstringspaces=false]!library(IPSUR)!\inputencoding{utf8}
+and then follow that with \inputencoding{latin9}\lstinline[showstringspaces=false]!clt1()!\inputencoding{utf8}. 
 
 \begin{enumerate}
+\item Look closely and thoughtfully at the first graph. How would you describe
+the population distribution? Think back to the different properties
+of distributions in Chapter \ref{cha:Describing-Data-Distributions}.
+Is the graph symmetric? Skewed? Does it have heavy tails or thin tails?
+What else can you say?
 \item What is the population mean $\mu$ and the population variance $\sigma^{2}$?
 (Read these from the first graph.)
 \item The second graph shows (after a few seconds) a relative frequency
 histogram which closely approximates the distribution of $\Xbar$.
-Record the values of \texttt{mean(xbar)} and \texttt{var(xbar)}. Use
-the answers from part (a) to calculate what these estimates \emph{should}
-be. How well do your answers to parts (a) and (b) agree?
-\item Click on the histogram to superimpose a red Normal curve, which is
+Record the values of \inputencoding{latin9}\lstinline[showstringspaces=false]!mean(xbar)!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!var(xbar)!\inputencoding{utf8},
+where \inputencoding{latin9}\lstinline[showstringspaces=false]!xbar!\inputencoding{utf8}
+denotes the vector that contains the simulated sample means. Use the
+answers from part (b) to calculate what these estimates \emph{should}
+be, based on what you know about the theoretical mean and variance
+of $\Xbar$. How well do your answers to parts (b) and (c) agree?
+\item Click on the histogram to superimpose a red normal curve, which is
 the theoretical limit of the distribution of $\Xbar$ as $n\to\infty$.
-How well do the histogram and the Normal curve match? Describe the
+How well do the histogram and the normal curve match? Describe the
 differences between the two distributions. When judging between the
 two, do not worry so much about the scale (the graphs are being rescaled
 automatically, anyway). Rather, look at the peak: does the histogram
@@ -10383,39 +10433,40 @@ either side (or both)? How do the curvature of the histogram and the
 line compare? Check down by the tails: does the red line drop off
 visibly below the level of the histogram, or do they taper off at
 the same height? 
-\item Go back to \texttt{CLT 1.R} and increase the \texttt{sample.size}
-from 2 to 11. Next, copy-and-paste the modified program and answer
-parts (a) and (b) for this new sample size.
-\item Go back to \texttt{CLT 1.R} and increase the \texttt{sample.size}
-from 11 to 31. Next, copy-and-paste the modified program and answer
-parts (a) and (b) for this new sample size.
+\item We can increase our sample size from 2 to 11 with the command \inputencoding{latin9}\lstinline[showstringspaces=false]!clt1(sample.size = 11)!\inputencoding{utf8}.
+Return to the command prompt to do this. Answer parts (b) and (c)
+for this new sample size.
+\item Go back to \inputencoding{latin9}\lstinline[showstringspaces=false]!clt1!\inputencoding{utf8}
+and increase the \inputencoding{latin9}\lstinline[showstringspaces=false]!sample.size!\inputencoding{utf8}
+from 11 to 31. Answer parts (b) and (c) for this new sample size.
 \item Comment on whether it appears that the histogram and the red curve
 are {}``noticeably different'' or whether they are {}``essentially
-the same''. If they are still {}``noticeably different'', how large
-does $n$ need to be until they are {}``essentially the same''?
-(Experiment with different values of $n$).
+the same'' for the largest sample size $n=31$. If they are still
+{}``noticeably different'' at $n=31$, how large does $n$ need
+to be until they are {}``essentially the same''? (Experiment with
+different values of $n$).
 \end{enumerate}
-\item Repeat Question 1 for the program \texttt{CLT 2.R}. In this problem,
-the population of interest has a $\mathsf{unif}(\mathtt{min}=0,\,\mathtt{max}=10)$
+\item Repeat Question 1 for the function \inputencoding{latin9}\lstinline[showstringspaces=false]!clt2!\inputencoding{utf8}.
+In this problem, the population of interest has a $\mathsf{unif}(\mathtt{min}=0,\,\mathtt{max}=10)$
 distribution.
-\item Repeat Question 1 for the program \texttt{CLT 3.R}. In this problem,
-the population of interest has a $\mathsf{gamma}(\mathtt{shape}=1.21,\,\mathtt{rate}=1/2.37)$
+\item Repeat Question 1 for the function \inputencoding{latin9}\lstinline[showstringspaces=false]!clt3!\inputencoding{utf8}.
+In this problem, the population of interest has a $\mathsf{gamma}(\mathtt{shape}=1.21,\,\mathtt{rate}=1/2.37)$
 distribution.
 \item Summarize what you have learned. In your own words, what is the general
 trend that is being displayed in these histograms, as the sample size
-$n$ increases from 2 to 11, on to 31 and onward?
+$n$ increases from 2 to 11, on to 31, and onward?
 \item How would you describe the relationship between the \textbf{\emph{shape}}
 of the population distribution and the \textbf{\emph{speed}} at which
 $\Xbar$'s distribution converges to normal? In particular, consider
 a population which is highly \textbf{skewed}. Will we need a relatively
-LARGER sample size or a relatively SMALLER sample size in order for
-$\Xbar$'s distribution to be approximately bell shaped?
+\emph{large} sample size or a relatively \emph{small} sample size
+in order for $\Xbar$'s distribution to be approximately bell shaped?
 \end{enumerate}
 
 \begin{xca}
 Let $X_{1}$,\ldots{}, $X_{25}$ be a random sample from a $\mathsf{norm}(\mathtt{mean}=37,\,\mathtt{sd}=45)$
-distribution. Find the following probabilities. Let $\Xbar$ be the
-sample mean of these $n=25$ observations.
+distribution, and let $\Xbar$ be the sample mean of these $n=25$
+observations. Find the following probabilities.
 \begin{enumerate}
 \item How is $\Xbar$ distributed? 
 
@@ -10436,7 +10487,7 @@ pnorm(43.1, mean = 37, sd = 9, lower.tail = FALSE)
 
 \chapter{Estimation\label{cha:Estimation}}
 
-There are two branches of estimation procedures: point estimation
+We wil discuss two branches of estimation procedures: point estimation
 and interval estimation. We briefly discuss point estimation first
 and then spend the rest of the chapter on interval estimation.
 
@@ -10455,11 +10506,11 @@ a parameter associated with the model
 \item about maximum likelihood, and in particular, how to
 
 \begin{itemize}
-\item eyball a likelihood to get a maximum
+\item eyeball a likelihood to get a maximum
 \item use calculus to find an MLE for one-parameter families
 \end{itemize}
 \item about properties of the estimators they find, such as bias, minimum
-variance, MSE?
+variance, MSE
 \item point versus interval estimation, and how to find and interpret confidence
 intervals for basic experimental designs
 \item the concept of margin of error and its relationship to sample size
@@ -11359,7 +11410,7 @@ out with one-way ANOVA
 
 \section{Introduction\label{sec:Introduction-Hypothesis}}
 
-I spent a week during the summer of 2006 at the University of Nebraska
+I spent a week during the summer of 2005 at the University of Nebraska
 at Lincoln grading Advanced Placement Statistics exams, and while
 I was there I attended a presentation by Dr.~Roxy Peck. At the end
 of her talk she described an activity she had used with students to
@@ -15529,9 +15580,9 @@ accuracy desired.
 
 \chapter{Categorical Data Analysis\label{cha:Categorical-Data-Analysis}}
 
-This chapter is still under substantial revision. Look for it in the
-Second Edition. In the meantime, you can preview any released drafts
-with the development version of the \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR!\inputencoding{utf8}
+This chapter is still under substantial revision. At any time you
+can preview any released drafts with the development version of the
+\inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR!\inputencoding{utf8}
 package which is available from \textsf{R}-Forge:
 
 <<eval = FALSE>>=
@@ -15543,9 +15594,9 @@ read(IPSUR)
 
 \chapter{Nonparametric Statistics\label{cha:Nonparametric-Statistics}}
 
-This chapter is still under substantial revision. Look for it in the
-Second Edition. In the meantime, you can preview any released drafts
-with the development version of the \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR!\inputencoding{utf8}
+This chapter is still under substantial revision. At any time you
+can preview any released drafts with the development version of the
+\inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR!\inputencoding{utf8}
 package which is available from \textsf{R}-Forge:
 
 <<eval = FALSE>>=
@@ -15557,9 +15608,9 @@ read(IPSUR)
 
 \chapter{Time Series\label{cha:Time-Series}}
 
-This chapter is still under substantial revision. Look for it in the
-Second Edition. In the meantime, you can preview any released drafts
-with the development version of the \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR!\inputencoding{utf8}
+This chapter is still under substantial revision. At any time you
+can preview any released drafts with the development version of the
+\inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR!\inputencoding{utf8}
 package which is available from \textsf{R}-Forge:
 
 <<eval = FALSE>>=
@@ -15572,9 +15623,9 @@ read(IPSUR)
 
 \chapter{Data\label{cha:Data}}
 
-In this chapter we introduce some of the data structures a statistician
-is likely to encounter. In each subsection we describe how to display
-the data of that particular type. 
+This appendix is a reference of sorts regarding some of the data structures
+a statistician is likely to encounter. We discuss their salient features
+and idiosyncracies.
 
 
 \section{Data Structures\label{sec:Data-Structures}}
@@ -15803,53 +15854,93 @@ poured + guessed, data = D)
 \end{itemize}
 \end{itemize}
 
-\section{Sources of Data\label{sec:Sources-of-Data}}
+\section{Importing Data\label{sec:Importing-A-Data}}
+
+Statistics is the study of data, so the statistician's first step
+is usually to obtain data from somewhere or another and read them
+into \textsf{R}. In this section we describe some of the most common
+sources of data and how to get data from those sources into a running
+\textsf{R} session.
+
+For more information please refer to the \textsf{R} \emph{Data Import/Export
+Manual}, \cite{rstatenv} and \emph{An Introduction to }\textsf{\emph{R}},
+\cite{Venables2010}.
 
 
 \subsection{Data in Packages}
 
-If you would like to see the data sets available in the packages that
-are currently loaded into memory, you may do so with the simple command
-\inputencoding{latin9}\lstinline[showstringspaces=false]!data()!\inputencoding{utf8}.
+There are many data sets stored in the \inputencoding{latin9}\lstinline[showstringspaces=false]!datasets!\inputencoding{utf8}
+package of base \textsf{R}. To see a list of them all issue the command
+\inputencoding{latin9}\lstinline[showstringspaces=false]!data(package = "datasets")!\inputencoding{utf8}.
+The output is omitted here because the list is so long. The names
+of the data sets are listed in the left column. Any data set in that
+list is already on the search path by default, which means that a
+user can use it immediately without any additional work.
+
+There are many other data sets available in the thousands of contributed
+packages. To see the data sets available in those packages that are
+currently loaded into memory issue the single command \inputencoding{latin9}\lstinline[showstringspaces=false]!data()!\inputencoding{utf8}.
 If you would like to see all of the data sets that are available in
 all packages that are installed on your computer (but not necessarily
-loaded), you may see them with the command:
+loaded), issue the command 
 
 \inputencoding{latin9}
 \begin{lstlisting}[breaklines=true,showstringspaces=false,tabsize=2]
 data(package = .packages(all.available = TRUE))
 \end{lstlisting}
-\inputencoding{utf8}If the name of a data set in a particular package is known, it can
-be called with the \inputencoding{latin9}\lstinline[showstringspaces=false]!package!\inputencoding{utf8}
-argument: \inputencoding{latin9}
+\inputencoding{utf8}
+
+To load the data set \inputencoding{latin9}\lstinline[showstringspaces=false]!foo!\inputencoding{utf8}
+in the contributed package \inputencoding{latin9}\lstinline[showstringspaces=false]!bar!\inputencoding{utf8}
+issue the commands \inputencoding{latin9}\lstinline[showstringspaces=false]!library(bar)!\inputencoding{utf8}
+followed by \inputencoding{latin9}\lstinline[showstringspaces=false]!data(foo)!\inputencoding{utf8},
+or just the single command \inputencoding{latin9}
 \begin{lstlisting}[breaklines=true,showstringspaces=false,tabsize=2]
-data(RcmdrTestDrive, package = RcmdrPlugin.IPSUR)
+data(foo, package = "bar")
 \end{lstlisting}
 \inputencoding{utf8}
 
 
 \subsection{Text Files}
 
-These are files that are saved in delimited format.
+Many sources of data are simple text files. The entries in the file
+are separated by delimeters such as TABS (tab-delimeted), commas (comma
+separated values, or \inputencoding{latin9}\lstinline[showstringspaces=false]!.csv!\inputencoding{utf8},
+for short) or even just white space (no special name). A lot of data
+on the Internet are stored with text files, and even if they are not,
+a person can copy-paste information from a web page to a text file,
+save it on the computer, and read it into \textsf{R}. 
 
 
 \subsection{Other Software Files}
 
-There are many occasions on which the data for the study are already
-stored in a format from third-party software, and the \inputencoding{latin9}\lstinline[showstringspaces=false]!foreign!\inputencoding{utf8}
-package supports a large number of additional data formats.
+Often the data set of interest is stored in some other, proprietary,
+format by third-party software such as Minitab, SAS, or SPSS. The
+\inputencoding{latin9}\lstinline[showstringspaces=false]!foreign!\inputencoding{utf8}
+package supports import/conversion from many of these formats. Please
+note, however, that data sets from other software sometimes have properties
+with no direct analogue in \textsf{R}. In those cases the conversion
+process may lose some information which will need to be reentered
+manually from within \textsf{R}. See the \emph{Data Import/Export
+Manual}.
 
-.
+As an example, suppose the data are stored in the SPSS file \inputencoding{latin9}\lstinline[showstringspaces=false]!foo.sav!\inputencoding{utf8}
+which the user has copied to the working directory; it can be imported
+with the commands
 
+<<eval = FALSE>>=
+library(foreign)
+read.spss("foo.sav")
+@
 
-\section{Importing A Data Set\label{sec:Importing-A-Data}}
+See \inputencoding{latin9}\lstinline[showstringspaces=false]!?read.spss!\inputencoding{utf8}
+for the available options to customize the file import. Note that
+the R Commander
 
 
 \subsection{Importing a Data Frame}
 
 The basic command is \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!read.table!\inputencoding{utf8}.
-
-There are three methods to get data
 
 
 \section{Creating New Data Sets\label{sec:Creating-New-Data}}
@@ -15858,10 +15949,10 @@ Using \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!c!\inpu
 
 Using \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!scan!\inputencoding{utf8}
 
-Using R Commander 
+Using R Commander.
 
 
-\section{Editing Data Sets\label{sec:Editing-Data-Sets}}
+\section{Editing Data\label{sec:Editing-Data-Sets}}
 
 
 \subsection{Editing Data Values}
@@ -15873,7 +15964,10 @@ Using R Commander
 \subsection{Deleting Rows and Columns}
 
 
-\section{Exporting a Data Set\label{sec:Exporting-a-Data}}
+\subsection{Sorting Data}
+
+
+\section{Exporting Data\label{sec:Exporting-a-Data}}
 
 The basic function is \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!write.table!\inputencoding{utf8}
 in the \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!base!\inputencoding{utf8}
@@ -15882,21 +15976,22 @@ package also has a \inputencoding{latin9}\lstinline[showstringspaces=false,tabsi
 function.
 
 
-\section{Reshaping a Data Set\label{sec:Reshaping-a-Data}}
+\section{Reshaping Data\label{sec:Reshaping-a-Data}}
 
 Aggregation
 
 Convert Tables to Data Frames and back
 
-rbind, cbind
+\inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!rbind!\inputencoding{utf8}
+\inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!cbind!\inputencoding{utf8}
 
 ab{[}order(ab{[},1{]}),{]}
 
-complete.cases()
+\inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!complete.cases!\inputencoding{utf8}
 
-aggregate
+\inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!aggregate!\inputencoding{utf8}
 
-stack
+\inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!stack!\inputencoding{utf8}
 
 \# sorting examples using built-in mtcars dataset
 
@@ -15909,10 +16004,7 @@ stack
 
 
 \section{Chapter Exercises}
-\begin{enumerate}
-\item Make graphs
-\item Make table
-\end{enumerate}
+
 
 \chapter{Mathematical Machinery\label{cha:Mathematical-Machinery}}
 
@@ -15921,8 +16013,11 @@ that are used at some point during the narrative. It is targeted for
 someone reading the book who forgets the precise definition of something
 and would like a quick reminder of an exact statement. No proofs are
 given, and the interested reader should consult a good text on Calculus
-(say, Stewart or Apostol), Real Analysis (say, Rudin, Folland, or
-Carothers), or Measure Theory (Billingsley, Halmos, Dudley) for details. 
+(say, Stewart \cite{Stewart2008} or Apostol \cite{Apostol1967,ApostolI1967}),
+Linear Algebra (say, Strang \cite{Strang1988} and Magnus \cite{Magnus1999}),
+Real Analysis (say, Folland \cite{Folland1999}, or Carothers \cite{Carothers2000}),
+or Measure Theory (Billingsley \cite{Billingsley1995}, Ash \cite{Ash2000},
+Resnick \cite{Resnick1999}) for details. 
 
 
 \section{Set Algebra\label{sec:The-Algebra-of}}
@@ -16395,8 +16490,8 @@ for all vectors $\mathbf{x}\neq\mathbf{0}$, then we say that $\mathbf{A}$
 is \emph{positive semidefinite}. If strict inequality holds for all
 $\mathbf{x}\neq\mathbf{0}$, then $\mathbf{A}$ is \emph{positive
 definite}. The connection to statistics is that covariance matrices
-(see Chapter BLANK) are always positive semidefinite, and many of
-them are even positive definite.
+(see Chapter \ref{cha:Multivariable-Distributions}) are always positive
+semidefinite, and many of them are even positive definite.
 
 
 \section{Multivariable Calculus\label{sec:Multivariable-Calculus}}
@@ -16432,7 +16527,7 @@ is, suppose $(a,b)$ satisfies \begin{equation}
 Further suppose $\frac{\partial^{2}f}{\partial x^{2}}$ and $\frac{\partial^{2}f}{\partial y^{2}}$
 are continuous near $(a,b)$. Let the \emph{Hessian matrix} $H$ (not
 to be confused with the \emph{hat matrix} $\mathbf{H}$ of Chapter
-BLANK) be defined by\begin{equation}
+\ref{cha:Multiple-Linear-Regression}) be defined by\begin{equation}
 H=\begin{bmatrix}\frac{\partial^{2}f}{\partial x^{2}} & \frac{\partial^{2}f}{\partial x\partial y}\\
 \frac{\partial^{2}f}{\partial y\partial x} & \frac{\partial^{2}f}{\partial y^{2}}\end{bmatrix}.\end{equation}
 We use the following rules to decide whether $(a,b)$ is an \emph{extremum}
@@ -16950,14 +17045,14 @@ there are two oth IPSUR.R
 
 Since this document is released under the GNU-FDL, you are free to
 modify this document however you wish (in accordance with the license
--- see Appendix BLANK). The immediate benefit of this is that you
-can generate the book, with brand new problem sets, and distribute
-it to your students simply as a PDF (in an email, for instance). As
-long as you distribute less than 100 such \emph{Opaque} copies, you
-are not even required by the GNU-FDL to share your \emph{Transparent}
-copy (the source code with the secret key) that you used to generate
-them. Next semester, choose a new key and generate a new copy to be
-distributed to the new class.
+-- see Appendix \ref{cha:GNU-Free-Documentation}). The immediate
+benefit of this is that you can generate the book, with brand new
+problem sets, and distribute it to your students simply as a PDF (in
+an email, for instance). As long as you distribute less than 100 such
+\emph{Opaque} copies, you are not even required by the GNU-FDL to
+share your \emph{Transparent} copy (the source code with the secret
+key) that you used to generate them. Next semester, choose a new key
+and generate a new copy to be distributed to the new class.
 \begin{quotation}
 But more generally, if you are not keen on the way I explained (or
 failed to explain) something, then you are \underbar{free} to rewrite
