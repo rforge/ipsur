@@ -1872,10 +1872,11 @@ par(mfrow = c(1,1)) # back to normal
 @
 \par\end{centering}
 
-\caption{Various \texttt{stripchart} methods, overplot, jitter, and stack\label{fig:Various-stripchart-methods,}}
-{\small The first graph is of the }\texttt{\small precip}{\small{}
-data, the second is of the }\texttt{\small rivers}{\small{} data, and
-the third is of the }\texttt{\small discoveries}{\small{} data.}
+\caption{Strip charts of the \texttt{precip}, \texttt{rivers}, and \texttt{discoveries}
+data\label{fig:Various-stripchart-methods,}}
+{\small The first graph uses the }\texttt{\small overplot}{\small{}
+method, the second the }\texttt{\small jitter}{\small{} method, and
+the third the }\texttt{\small stack}{\small{} method.}
 \end{figure}
 
 
@@ -3281,7 +3282,8 @@ print(bwplot(~ weight | feed, data = chickwts))
 @
 \par\end{centering}
 
-\caption{boxplots of weight by feed type}
+\caption{Boxplots of \texttt{weight} by \texttt{feed} type in the \texttt{chickwts}
+data}
 
 \end{figure}
 
@@ -3302,7 +3304,8 @@ print(histogram(~age | education, data = infert))
 @
 \par\end{centering}
 
-\caption{histograms of age by education level}
+\caption{Histograms of \texttt{age} by \texttt{education} level from the \texttt{infert}
+data}
 
 \end{figure}
 
@@ -3321,7 +3324,8 @@ print(xyplot(Petal.Length ~ Petal.Width | Species, data = iris))
 @
 \par\end{centering}
 
-\caption{xyplot of petal length versus petal width by species}
+\caption{An \texttt{xyplot} of \texttt{Petal.Length} versus \texttt{Petal.Width}
+by \texttt{Species} in the \texttt{iris} data}
 
 \end{figure}
 
@@ -3340,7 +3344,8 @@ print(coplot(conc ~ uptake | Type * Treatment, data = CO2))
 @
 \par\end{centering}
 
-\caption{coplot of reduction versus order by gender and smoke}
+\caption{A \texttt{coplot} of \texttt{conc} versus \texttt{uptake} by \texttt{Type}
+and \texttt{Treatment} in the \texttt{CO2} data}
 
 \end{figure}
 
@@ -5155,7 +5160,7 @@ remove(g)
 @
 \par\end{centering}
 
-\caption{The Birthday Problem\label{fig:The-Birthday-Problem}}
+\caption{The birthday problem\label{fig:The-Birthday-Problem}}
 {\small The horizontal line is at $p=0.50$ and the vertical line
 is at $n=23$.}
 \end{figure}
@@ -6638,7 +6643,8 @@ plot(X, cex = 0.2)
 @
 \par\end{centering}
 
-\caption{The \textsf{binom}(\texttt{size} = 3, \texttt{prob} = 0.5) CDF}
+\caption{The \textsf{binom}(\texttt{size} = 3, \texttt{prob} = 0.5) distribution
+from the \texttt{distr} package}
 
 \end{figure}
 
@@ -9345,8 +9351,9 @@ beyond the techniques presented here. The inquisitive reader should
 consult Casella and Berger \cite{Casella2002}, Resnick \cite{Resnick1999},
 \emph{etc}.
 \begin{fact}
-If $X$ and $Y$ are independent, then $u(X)$ and $v(Y)$ are independent
-for any functions $u$ and $v$.
+\label{fac:indep-then-function-indep}If $X$ and $Y$ are independent,
+then $u(X)$ and $v(Y)$ are independent for any functions $u$ and
+$v$.
 \end{fact}
 
 \subsection{Combining Independent Random Variables\label{sub:Combining-Independent-Random}}
@@ -9530,136 +9537,6 @@ persp(x, y, z, theta = -30, phi = 30, ticktype = "detailed")
 
 
 
-\section{The Multinomial Distribution\label{sec:Multinomial}}
-
-We sample $n$ times, with replacement, from an urn that contains
-balls of $k$ different types. Let $X_{1}$ denote the number of balls
-in our sample of type 1, let $X_{2}$ denote the number of balls of
-type 2, \ldots{} , and let $X_{k}$ denote the number of balls of
-type $k$. Suppose the urn has proportion $p_{1}$ of balls of type
-1, proportion $p_{2}$ of balls of type 2, \ldots{}, and proportion
-$p_{k}$ of balls of type $k$. Then the joint PMF of $(X_{1},\ldots,X_{k})$
-is\begin{eqnarray}
-f_{X_{1},\ldots,X_{k}}(x_{1},\ldots,x_{k}) & = & {n \choose x_{1}\, x_{2}\,\cdots\, x_{k}}\, p_{1}^{x_{1}}p_{2}^{x_{2}}\cdots p_{k}^{x_{k}},\end{eqnarray}
-for $(x_{1},\ldots,x_{k})$ in the joint support $S_{X_{1},\ldots X_{K}}$.
-We write\begin{equation}
-(X_{1},\ldots,X_{k})\sim\mathsf{multinom}(\mathtt{size}=n,\,\mathtt{prob}=\mathbf{p}_{\mathrm{k}\times1}).\end{equation}
-
-
-Several comments are in order. First, the joint support set $S_{X_{1},\ldots X_{K}}$
-contains all nonnegative integer $k$-tuples $(x_{1},\ldots,x_{k})$
-such that $x_{1}+x_{2}+\cdots+x_{k}=n$. A support set like this is
-called a \emph{simplex}. Second, the proportions $p_{1}$, $p_{2}$,
-\ldots{}, $p_{k}$ satisfy $p_{i}\geq0$ for all $i$ and $p_{1}+p_{2}+\cdots+p_{k}=1$.
-Finally, the symbol\begin{equation}
-{n \choose x_{1}\, x_{2}\,\cdots\, x_{k}}=\frac{n!}{x_{1}!\, x_{2}!\,\cdots x_{k}!}\end{equation}
-is called a \emph{multinomial coefficient} which generalizes the notion
-of a binomial coefficient we saw in Equation \ref{eq:binomial-coefficient}. 
-
-The form and notation we have just described matches the R documentation,
-but is not standard among other texts. Most other books use the above
-for a $k-1$ dimension multinomial distribution, because the linear
-constraint $x_{1}+x_{2}+\cdots+x_{k}=n$ means that once the values
-of $X_{1}$, $X_{2}$, \ldots{}, $X_{k-1}$ are known the final value
-$X_{k}$ is determined, and not random. Another term used for this
-is a \emph{singular} distribution.
-
-For the most part we will ignore these difficulties, but the careful
-reader should keep them in mind. There is not much of a difference
-in practice, except that below we will use a two-dimensional support
-set for a three-dimension multinomial distribution. See Figure BLANK. 
-
-When $k=2$, we have $x_{1}=x$ and $x_{2}=n-x$, we have $p_{1}=p$
-and $p_{2}=1-p$, and the multinomial coefficient is literally a binomial
-coefficient. In the previous notation we have thus shown that the
-$\mathsf{multinom}(\mathtt{size}=n,\,\mathtt{prob}=\mathbf{p}_{2\times1})$
-distribution is the same as a $\mathsf{binom}(\mathtt{size}=n,\,\mathtt{prob}=p)$
-distribution.
-\begin{example}
-Dinner with Barack Obama. During the 2008 U.S.~presidential primary,
-Barack Obama offered to have dinner with three randomly selected monetary
-contributors to his campaign. Imagine the thousands of people in the
-contributor database. For the sake of argument, Suppose that the database
-was approximately representative of the U.S.~population as a whole,
-Suppose Barack Obama wants to have dinner \url{http://pewresearch.org/pubs/773/fewer-voters-identify-as-republicans}
-36 democrat, 27 republican , 37 independent.\end{example}
-\begin{rem}
-Here are some facts about the multinomial distribution.
-\begin{enumerate}
-\item The expected value of $(X_{1},\, X_{2},\,\ldots,\, X_{k})$ is $n\mathbf{p}_{k\times1}$.
-\item The variance-covariance matrix $\Sigma$ is symmetric with diagonal
-entries $\sigma_{i}^{2}=np_{i}(1-p_{i})$, $i=1,\,2,\,\ldots,\, k$
-and off-diagonal entries $\mbox{Cov}(X_{i},\, X_{j})=-np_{i}p_{j}$,
-for $i\neq j$. The correlation between $X_{i}$ and $X_{j}$ is therefore
-$\mbox{Corr}(X_{i},\, X_{j})=-\sqrt{p_{i}p_{j}/(1-p_{i})(1-p_{j})}$.
-\item The marginal distribution of $(X_{1},\, X_{2},\,\ldots,\, X_{k-1})$
-is $\mathsf{multinom}(\mathtt{size}=n,\,\mathtt{prob}=\mathbf{p}_{(k-1)\times1})$
-with\begin{equation}
-\mathbf{p}_{(k-1)\times1}=\left(p_{1},\, p_{2},\,\ldots,\, p_{k-2},\, p_{k-1}+p_{k}\right),\end{equation}
- and in particular, $X_{i}\sim\mathsf{binom}(\mathtt{size}=n,\,\mathtt{prob}=p_{i})$.
-\end{enumerate}
-\end{rem}
-
-\subsection{How to do it with \textsf{R}}
-
-There is support for the multinomial distribution in base \textsf{R},
-namely in the \inputencoding{latin9}\lstinline[showstringspaces=false]!stats!\inputencoding{utf8}
-package. The \inputencoding{latin9}\lstinline[showstringspaces=false]!dmultinom!\inputencoding{utf8}
-function represents the PMF and the \inputencoding{latin9}\lstinline[showstringspaces=false]!rmultinom!\inputencoding{utf8}
-function generates random variates.
-
-<<>>=
-library(combinat)
-tmp <- t(xsimplex(3, 6))
-p <- apply(tmp, MARGIN = 1, FUN = dmultinom, prob = c(36,27,37))
-library(prob)
-S <- probspace(tmp, probs = p)
-ProbTable <- xtabs(probs ~ X1 + X2, data = S)
-round(ProbTable, 3)
-@
-
-Do some examples of \inputencoding{latin9}\lstinline[showstringspaces=false]!rmultinom!\inputencoding{utf8}
-
-Here is another way to do it%
-\footnote{Another way to do the plot is with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!scatterplot3d!\inputencoding{utf8}
-function in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!scatterplot3d!\inputencoding{utf8}
-package \cite{Liggesscatterplot3d}. It looks like this:
-\begin{lyxcode}
-library(scatterplot3d)
-
-X~<-~t(as.matrix(expand.grid(0:6,~0:6)))
-
-X~<-~X{[}~,~colSums(X)~<=~6{]};~X~<-~rbind(X,~6~-~colSums(X))
-
-Z~<-~round(apply(X,~2,~function(x)~dmultinom(x,~prob~=~1:3)),~3)
-
-A~<-~data.frame(x~=~X{[}1,~{]},~y~=~X{[}2,~{]},~probability~=~Z)
-
-scatterplot3d(A,~type~=~{}``h'',~lwd~=~3,~box~=~FALSE)
-\end{lyxcode}
-The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!scatterplot3d!\inputencoding{utf8}
-graph looks better in this example, but the code is clearly more difficult
-to understand. And with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cloud!\inputencoding{utf8}
-one can easily do conditional plots of the form \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cloud(z ~ x + y|f)!\inputencoding{utf8},
-where \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!f!\inputencoding{utf8}
-is a factor.%
-}
-
-%
-\begin{figure}
-\begin{centering}
-<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
-library(lattice)
-print(cloud(probs ~ X1 + X2, data = S, type = c("p","h"), lwd = 2, pch = 16, cex = 1.5), screen = list(z = 15, x = -70))
-@
-\par\end{centering}
-
-\caption{Plot of a multinomial PMF\label{fig:multinom-pmf2}}
-
-\end{figure}
-
-
-
 \section{Bivariate Transformations of Random Variables\label{sec:Transformations-Multivariate}}
 
 We studied in Section BLANK how to find the PDF of $Y=g(X)$ given
@@ -9803,8 +9680,8 @@ is exactly $\left(\E Y\right)^{2}$, and recall the identity $\sigma_{Y}^{2}=\E Y
 
 
 
-There is a corresponding statement of Fact BLANK for the multivariate
-case. The proof is also omitted here.
+There is a corresponding statement of Fact \ref{fac:indep-then-function-indep}
+for the multivariate case. The proof is also omitted here.
 \begin{fact}
 If $\mathbf{X}$ and $\mathbf{Y}$ are mutually independent random
 vectors, then $u(\mathbf{X})$ and $v(\mathbf{Y})$ are independent
@@ -9850,8 +9727,8 @@ so $(X_{1},\ldots,X_{k})$ are clearly exchangeable. The power of
 de Finetti's Theorem is that \emph{every} infinite binary exchangeable
 sequence can be written in the above form.
 
-The connection to subjective probability is: our prior information
-about $\theta$ corresponds to $f_{\Theta}(\theta)$ and the likelihood
+The connection to subjective probability: our prior information about
+$\theta$ corresponds to $f_{\Theta}(\theta)$ and the likelihood
 of the sequence $X_{1}=x_{1},\ldots,\, X_{k}=x_{k}$ (conditional
 on $\theta$) corresponds to $\theta^{\sum x_{i}}(1-\theta)^{k-\sum x_{i}}$.
 Compare Equation BLANK to Section BLANK and Section BLANK.
@@ -9865,7 +9742,7 @@ is\begin{equation}
 f_{\mathbf{X}}(\mathbf{x})=\frac{1}{(2\pi)^{n/2}\left|\Sigma\right|^{1/2}}\exp\left\{ -\frac{1}{2}\left(\mathbf{x}-\upmu\right)^{\top}\Sigma^{-1}\left(\mathbf{x}-\upmu\right)\right\} ,\end{equation}
 and the MGF is\begin{equation}
 M_{\mathbf{X}}(\mathbf{t})=\exp\left\{ \upmu^{\top}\mathbf{t}+\frac{1}{2}\mathbf{t}^{\top}\Sigma\mathbf{t}\right\} .\end{equation}
-We will need the following in Chapter BLANK.
+We will need the following in Chapter \ref{cha:Multiple-Linear-Regression}.
 \begin{thm}
 If $\mathbf{X}\sim\mathsf{mvnorm}(\mathtt{mean}=\upmu,\,\mathtt{sigma}=\Sigma)$
 and $\mathbf{A}$ is any matrix, then the random vector $\mathbf{Y}=\mathbf{AX}$
@@ -9881,6 +9758,136 @@ M_{\mathbf{Y}}(\mathbf{t}) & = & \E\,\exp\left\{ \mathbf{t}^{\mathrm{T}}(\mathbf
 and the last expression is the MGF of an $\mathsf{mvnorm}(\mathtt{mean}=\mathbf{A}\upmu,\,\mathtt{sigma}=\mathbf{A}\Sigma\mathbf{A}^{\mathrm{T}})$
 distribution.
 \end{proof}
+
+
+
+\section{The Multinomial Distribution\label{sec:Multinomial}}
+
+We sample $n$ times, with replacement, from an urn that contains
+balls of $k$ different types. Let $X_{1}$ denote the number of balls
+in our sample of type 1, let $X_{2}$ denote the number of balls of
+type 2, \ldots{} , and let $X_{k}$ denote the number of balls of
+type $k$. Suppose the urn has proportion $p_{1}$ of balls of type
+1, proportion $p_{2}$ of balls of type 2, \ldots{}, and proportion
+$p_{k}$ of balls of type $k$. Then the joint PMF of $(X_{1},\ldots,X_{k})$
+is\begin{eqnarray}
+f_{X_{1},\ldots,X_{k}}(x_{1},\ldots,x_{k}) & = & {n \choose x_{1}\, x_{2}\,\cdots\, x_{k}}\, p_{1}^{x_{1}}p_{2}^{x_{2}}\cdots p_{k}^{x_{k}},\end{eqnarray}
+for $(x_{1},\ldots,x_{k})$ in the joint support $S_{X_{1},\ldots X_{K}}$.
+We write\begin{equation}
+(X_{1},\ldots,X_{k})\sim\mathsf{multinom}(\mathtt{size}=n,\,\mathtt{prob}=\mathbf{p}_{\mathrm{k}\times1}).\end{equation}
+
+
+Several comments are in order. First, the joint support set $S_{X_{1},\ldots X_{K}}$
+contains all nonnegative integer $k$-tuples $(x_{1},\ldots,x_{k})$
+such that $x_{1}+x_{2}+\cdots+x_{k}=n$. A support set like this is
+called a \emph{simplex}. Second, the proportions $p_{1}$, $p_{2}$,
+\ldots{}, $p_{k}$ satisfy $p_{i}\geq0$ for all $i$ and $p_{1}+p_{2}+\cdots+p_{k}=1$.
+Finally, the symbol\begin{equation}
+{n \choose x_{1}\, x_{2}\,\cdots\, x_{k}}=\frac{n!}{x_{1}!\, x_{2}!\,\cdots x_{k}!}\end{equation}
+is called a \emph{multinomial coefficient} which generalizes the notion
+of a binomial coefficient we saw in Equation \ref{eq:binomial-coefficient}. 
+
+The form and notation we have just described matches the \textsf{R}
+usage but is not standard among other texts. Most other books use
+the above for a $k-1$ dimension multinomial distribution, because
+the linear constraint $x_{1}+x_{2}+\cdots+x_{k}=n$ means that once
+the values of $X_{1}$, $X_{2}$, \ldots{}, $X_{k-1}$ are known
+the final value $X_{k}$ is determined, not random. Another term used
+for this is a \emph{singular} distribution.
+
+For the most part we will ignore these difficulties, but the careful
+reader should keep them in mind. There is not much of a difference
+in practice, except that below we will use a two-dimensional support
+set for a three-dimension multinomial distribution. See Figure \ref{fig:multinom-pmf2}. 
+
+When $k=2$, we have $x_{1}=x$ and $x_{2}=n-x$, we have $p_{1}=p$
+and $p_{2}=1-p$, and the multinomial coefficient is literally a binomial
+coefficient. In the previous notation we have thus shown that the
+$\mathsf{multinom}(\mathtt{size}=n,\,\mathtt{prob}=\mathbf{p}_{2\times1})$
+distribution is the same as a $\mathsf{binom}(\mathtt{size}=n,\,\mathtt{prob}=p)$
+distribution.
+\begin{example}
+Dinner with Barack Obama. During the 2008 U.S.~presidential primary,
+Barack Obama offered to have dinner with three randomly selected monetary
+contributors to his campaign. Imagine the thousands of people in the
+contributor database. For the sake of argument, Suppose that the database
+was approximately representative of the U.S.~population as a whole,
+Suppose Barack Obama wants to have dinner \url{http://pewresearch.org/pubs/773/fewer-voters-identify-as-republicans}
+36 democrat, 27 republican , 37 independent.\end{example}
+\begin{rem}
+Here are some facts about the multinomial distribution.
+\begin{enumerate}
+\item The expected value of $(X_{1},\, X_{2},\,\ldots,\, X_{k})$ is $n\mathbf{p}_{k\times1}$.
+\item The variance-covariance matrix $\Sigma$ is symmetric with diagonal
+entries $\sigma_{i}^{2}=np_{i}(1-p_{i})$, $i=1,\,2,\,\ldots,\, k$
+and off-diagonal entries $\mbox{Cov}(X_{i},\, X_{j})=-np_{i}p_{j}$,
+for $i\neq j$. The correlation between $X_{i}$ and $X_{j}$ is therefore
+$\mbox{Corr}(X_{i},\, X_{j})=-\sqrt{p_{i}p_{j}/(1-p_{i})(1-p_{j})}$.
+\item The marginal distribution of $(X_{1},\, X_{2},\,\ldots,\, X_{k-1})$
+is $\mathsf{multinom}(\mathtt{size}=n,\,\mathtt{prob}=\mathbf{p}_{(k-1)\times1})$
+with\begin{equation}
+\mathbf{p}_{(k-1)\times1}=\left(p_{1},\, p_{2},\,\ldots,\, p_{k-2},\, p_{k-1}+p_{k}\right),\end{equation}
+ and in particular, $X_{i}\sim\mathsf{binom}(\mathtt{size}=n,\,\mathtt{prob}=p_{i})$.
+\end{enumerate}
+\end{rem}
+
+\subsection{How to do it with \textsf{R}}
+
+There is support for the multinomial distribution in base \textsf{R},
+namely in the \inputencoding{latin9}\lstinline[showstringspaces=false]!stats!\inputencoding{utf8}
+package. The \inputencoding{latin9}\lstinline[showstringspaces=false]!dmultinom!\inputencoding{utf8}
+function represents the PMF and the \inputencoding{latin9}\lstinline[showstringspaces=false]!rmultinom!\inputencoding{utf8}
+function generates random variates.
+
+<<>>=
+library(combinat)
+tmp <- t(xsimplex(3, 6))
+p <- apply(tmp, MARGIN = 1, FUN = dmultinom, prob = c(36,27,37))
+library(prob)
+S <- probspace(tmp, probs = p)
+ProbTable <- xtabs(probs ~ X1 + X2, data = S)
+round(ProbTable, 3)
+@
+
+Do some examples of \inputencoding{latin9}\lstinline[showstringspaces=false]!rmultinom!\inputencoding{utf8}
+
+Here is another way to do it%
+\footnote{Another way to do the plot is with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!scatterplot3d!\inputencoding{utf8}
+function in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!scatterplot3d!\inputencoding{utf8}
+package \cite{Liggesscatterplot3d}. It looks like this:
+\begin{lyxcode}
+library(scatterplot3d)
+
+X~<-~t(as.matrix(expand.grid(0:6,~0:6)))
+
+X~<-~X{[}~,~colSums(X)~<=~6{]};~X~<-~rbind(X,~6~-~colSums(X))
+
+Z~<-~round(apply(X,~2,~function(x)~dmultinom(x,~prob~=~1:3)),~3)
+
+A~<-~data.frame(x~=~X{[}1,~{]},~y~=~X{[}2,~{]},~probability~=~Z)
+
+scatterplot3d(A,~type~=~{}``h'',~lwd~=~3,~box~=~FALSE)
+\end{lyxcode}
+The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!scatterplot3d!\inputencoding{utf8}
+graph looks better in this example, but the code is clearly more difficult
+to understand. And with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cloud!\inputencoding{utf8}
+one can easily do conditional plots of the form \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!cloud(z ~ x + y|f)!\inputencoding{utf8},
+where \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!f!\inputencoding{utf8}
+is a factor.%
+}.
+
+%
+\begin{figure}
+\begin{centering}
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
+library(lattice)
+print(cloud(probs ~ X1 + X2, data = S, type = c("p","h"), lwd = 2, pch = 16, cex = 1.5), screen = list(z = 15, x = -70))
+@
+\par\end{centering}
+
+\caption{Plot of a multinomial PMF\label{fig:multinom-pmf2}}
+
+\end{figure}
 
 
 \newpage{}
@@ -10408,7 +10415,7 @@ hist(iqrs, breaks = 20)
 @
 \par\end{centering}
 
-\caption{Plot of simulated IQRs}
+\caption{Plot of simulated IQRs\label{fig:simulated-IQR}}
 
 \end{figure}
 
@@ -10442,7 +10449,7 @@ hist(mads, breaks = 20)
 @
 \par\end{centering}
 
-\caption{Plot of simulated MADs}
+\caption{Plot of simulated MADs\label{fig:simulated-MAD}}
 
 \end{figure}
 
@@ -11749,7 +11756,7 @@ plot(prop.test(x = nheads, n = 100, p = 0.50, alternative = "two.sided", conf.le
 @
 \par\end{centering}
 
-\caption{Hypothesis test}
+\caption{Hypothesis test plot from the \texttt{HH} package}
 
 \end{figure}
 
@@ -12004,7 +12011,7 @@ rug(y1)
 @
 \par\end{centering}
 
-\caption{Between versus within}
+\caption{Between group versus within group variation\label{fig:Between-versus-within}}
 
 \end{figure}
 
@@ -12026,7 +12033,7 @@ curve(f, add = TRUE, lwd = 2)
 @
 \par\end{centering}
 
-\caption{Between versus within}
+\caption{Between group versus within group variation\label{fig:Between-versus-within-2}}
 
 \end{figure}
 lkjljdflsjdljsdlsdfljsldsd%
@@ -12042,7 +12049,7 @@ par(old.omd)
 @
 \par\end{centering}
 
-\caption{djdfd}
+\caption{Some \emph{F} plots from the \texttt{HH} package\label{fig:Some-F-plots-HH}}
 
 
 
@@ -12063,7 +12070,7 @@ par(old.omd)
 @
 \par\end{centering}
 
-\caption{Graph of a single sample test for variance}
+\caption{Graph of a single sample test for variance\label{fig:single-sample-variance}}
 
 \end{figure}
 
@@ -12232,7 +12239,7 @@ segments(4,4.5, 4+dnorm(0,0,0.5),4.5, lty = 2, col = "gray")
 @
 \par\end{centering}
 
-\caption{Philosophical foundations\label{fig:philosophy}}
+\caption{Philosophical foundations of SLR\label{fig:philosophy}}
 
 \end{figure}
 \end{quotation}
@@ -12263,7 +12270,8 @@ plot(dist ~ speed, data = cars)
 @
 \par\end{centering}
 
-\caption{Scatterplot of the cars data\label{fig:Scatter-cars}}
+\caption{Scatterplot of \texttt{dist} versus \texttt{speed} for the \texttt{cars}
+data\label{fig:Scatter-cars}}
 
 \end{figure}
 
@@ -12383,7 +12391,7 @@ abline(coef(cars.lm))
 @
 \par\end{centering}
 
-\caption{Scatterplot with added regression line for the cars data\label{fig:Scatter-cars-regline}}
+\caption{Scatterplot with added regression line for the \texttt{cars} data\label{fig:Scatter-cars-regline}}
 
 \end{figure}
 
@@ -12789,7 +12797,8 @@ print(ci.plot(cars.lm))
 @
 \par\end{centering}
 
-\caption{Scatterplot with confidence/prediction bands for cars data\label{fig:Scatter-cars-CIPI}}
+\caption{Scatterplot with confidence/prediction bands for the \texttt{cars}
+data\label{fig:Scatter-cars-CIPI}}
 
 \end{figure}
 
@@ -13059,7 +13068,7 @@ plot(cars.lm, which = 2)
 @
 \par\end{centering}
 
-\caption{Normal q-q plot of the residuals for the cars data}
+\caption{Normal q-q plot of the residuals for the \texttt{cars} data\label{fig:Normal-q-q-plot-cars}}
  {\small Used for checking the normality assumption. Look out for
 any curvature or substantial departures from the straight line; hopefully
 the dots hug the line closely.}
@@ -13146,8 +13155,8 @@ plot(cars.lm, which = 3)
 @
 \par\end{centering}
 
-\caption{Plot of standardized residuals against the fitted values for the cars
-data}
+\caption{Plot of standardized residuals against the fitted values for the \texttt{cars}
+data\label{fig:std-resids-fitted-cars}}
  {\small Used for checking the constant variance assumption. Watch
 out for any fanning out (or in) of the dots; hopefully they fall in
 a constant band.}
@@ -13214,7 +13223,8 @@ plot(cars.lm, which = 1)
 @
 \par\end{centering}
 
-\caption{Plot of the residuals versus the fitted values for the cars data}
+\caption{Plot of the residuals versus the fitted values for the \texttt{cars}
+data\label{fig:resids-fitted-cars}}
 
 
 {\small Used for checking the independence assumption. Watch out for
@@ -13531,7 +13541,7 @@ plot(cars.lm, which = 4)
 @
 \par\end{centering}
 
-\caption{Cook's distances for the cars data}
+\caption{Cook's distances for the \texttt{cars} data\label{fig:Cooks-distance-cars}}
 
 
 {\small Used for checking for influential and/our outlying observations.
@@ -13591,7 +13601,7 @@ par(mfrow = c(1,1))
 @
 \par\end{centering}
 
-\caption{Diagnostic Plots for the cars data}
+\caption{Diagnostic plots for the \texttt{cars} data\label{fig:Diagnostic-plots-cars}}
 
 \end{figure}
 
@@ -13735,7 +13745,7 @@ print(splom(trees))
 @
 \par\end{centering}
 
-\caption{Scatterplot matrix of trees data}
+\caption{Scatterplot matrix of \texttt{trees} data\label{fig:splom-trees}}
 
 \end{figure}
 
@@ -13810,7 +13820,7 @@ s3d$plane3d(fit)
 @
 \par\end{centering}
 
-\caption{3D Scatterplot with Regression Plane}
+\caption{3D scatterplot with regression plane for the \texttt{trees} data\label{fig:3D-scatterplot-trees}}
 
 \end{figure}
 
@@ -14403,7 +14413,8 @@ plot(Volume ~ Girth, data = trees)
 @
 \par\end{centering}
 
-\caption{Scatterplot of Volume versus Girth}
+\caption{Scatterplot of \texttt{Volume} versus \texttt{Girth} for the \texttt{trees}
+data\label{fig:Scatterplot-Volume-Girth-trees}}
 
 \end{figure}
 
@@ -14497,7 +14508,7 @@ lines(fitted(treesquad.lm) ~ scale(Girth), data = trees)
 @
 \par\end{centering}
 
-\caption{A quadratic model for the trees data\label{cap:Fitting-the-Quadratic}}
+\caption{A quadratic model for the \texttt{trees} data\label{cap:Fitting-the-Quadratic}}
 
 \end{figure}
 
@@ -14792,7 +14803,7 @@ lines(Fit ~ Girth, data = treesTall[["no"]])
 @
 \par\end{centering}
 
-\caption{A dummy variable model for the trees data}
+\caption{A dummy variable model for the \texttt{trees} data\label{fig:dummy-variable-trees}}
 
 \end{figure}
 
@@ -15266,7 +15277,7 @@ curve(dnorm(x, 2, 0.2), add = TRUE)
 @
 \par\end{centering}
 
-\caption{Bootstrapping the standard error of the mean}
+\caption{Bootstrapping the standard error of the mean\label{fig:Bootstrap-se-mean}}
 
 \end{figure}
 
@@ -15310,7 +15321,7 @@ hist(medstar, breaks = 40, prob = TRUE)
 @
 \par\end{centering}
 
-\caption{Bootstrapping the standard error of the median}
+\caption{Bootstrapping the standard error of the median\label{fig:Bootstrapping-se-median}}
 
 \end{figure}
 
@@ -16142,7 +16153,7 @@ Complement & $A^{c}$ & in $S$ but not in $A$ & \inputencoding{latin9}\lstinline[
 \end{tabular}
 \par\end{centering}
 
-\caption{Set Operations\label{tab:Set-Operations}}
+\caption{Set operations\label{tab:Set-Operations}}
 
 \end{table}
 
@@ -16224,7 +16235,7 @@ $(f\pm g)'=f'\pm g'$ & $(fg)'=f'g+fg'$ & $\left(\frac{f}{g}\right)'=\frac{f'g-fg
 \end{tabular}
 \par\end{centering}
 
-\caption{Differentiation Rules\textbf{\label{tab:Differentiation-Rules}}}
+\caption{Differentiation rules\textbf{\label{tab:Differentiation-Rules}}}
 
 \end{table}
 
@@ -16250,7 +16261,7 @@ $\frac{\diff}{\diff x}\cos x=-\sin x$ & $\frac{\diff}{\diff x}\tan x=\sec^{2}x$ 
 \end{tabular}
 \par\end{centering}
 
-\caption{Some Derivatives\textbf{\label{tab:Useful-Derivatives}}}
+\caption{Some derivatives\textbf{\label{tab:Useful-Derivatives}}}
 
 \end{table}
 
@@ -16331,7 +16342,7 @@ $\int\tan x\:\diff x=\ln|\sec x|$ & $\int a^{x}\,\diff x=a^{x}/\ln a$ & $\int(x^
 \end{tabular}
 \par\end{centering}
 
-\caption{Some Integrals (constants of integration omitted)\textbf{\label{tab:Useful-Integrals}}}
+\caption{Some integrals (constants of integration omitted)\textbf{\label{tab:Useful-Integrals}}}
 
 \end{table}
 
