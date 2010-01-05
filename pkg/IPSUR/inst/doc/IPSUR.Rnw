@@ -23,6 +23,7 @@ language=R}
 \usepackage{url}
 \usepackage{amsthm}
 \usepackage{amsmath}
+\makeindex
 \usepackage{setspace}
 \usepackage{amssymb}
 \setstretch{1.2}
@@ -689,6 +690,24 @@ notation to denote objects, functions, \emph{etc}.. The sequence {}``\textsf{Sta
 menu item, next click the \textsf{Summaries} submenu item, and finally
 click \textsf{Active Dataset}.
 
+
+\section*{Acknowledgements}
+
+This book would not have been possible without the firm mathematical
+and statistical foundation provided by the professors at Bowling Green
+State University, including Drs.~G\'{a}bor Sz\'{e}kely, Craig Zirbel,
+Arjun K.~Gupta, Hanfeng Chen, Truc Nguyen, and James Albert. I would
+also like to thank Drs.~Neal Carothers and Kit Chan.
+
+I would also like to thank my colleagues at Youngstown State University
+for their support. In particular, I would like to thank Dr.~G.~Andy
+Chang for showing me what it means to be a statistician.
+
+Finally, and most importantly, I would like to thank my wife for her
+patience and understanding while I worked hours, days, months, and
+years on a \emph{free book}. In retrospect, I can't believe I ever
+got away with it.
+
 \vfill{}
 
 
@@ -771,42 +790,7 @@ statistical computing environment.
 
 
 \paragraph*{What do I want them to know?}
-\begin{itemize}
-\item don't forget to mention rounding issues
-\item basic information about how to install, start up, and interact with\textsf{
-R}
-\item how to use \textsf{R} like a calculator (essentially arithmetic with
-\textsf{R})
-\item what variables are and how to name them
-\item about vectors
 
-\begin{itemize}
-\item the different types (numeric, character, logical, missing)
-\item how to access different parts of a vector
-\end{itemize}
-\item how to type in data, with c() and scan() enter data, 
-\item how to import data frames from packages, and how to import data from
-elsewhere?
-\item need to know about vectors and (data frames) the different types of
-vectors (numeric, character, logical)
-\item how to get help
-
-\begin{itemize}
-\item mailing lists
-\item manuals
-\item see the source code
-\item ? and ??
-\end{itemize}
-\item the concept of add on packages, how to download, and how to \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!library()!\inputencoding{utf8}
-them
-\item some frequently asked questions
-
-\begin{itemize}
-\item they need to know about finite precision arithmetic
-\end{itemize}
-\item basic tricks of the trade like command history and clearing the console,
-case sensitivity
-\end{itemize}
 
 \section{Downloading and Installing \textsf{R\label{sec:Downloading-and-Installing-R}}}
 
@@ -855,7 +839,7 @@ for short. Given an active Internet connection, anybody is free to
 download and install these packages and even inspect the source code.
 
 To install a package named \inputencoding{latin9}\lstinline[showstringspaces=false]!foo!\inputencoding{utf8},
-open up \textsf{R} and type \inputencoding{latin9}\lstinline[showstringspaces=false]!install.packages("foo")!\inputencoding{utf8}.
+open up \textsf{R} and type \inputencoding{latin9}\lstinline[showstringspaces=false]!install.packages("foo")!\inputencoding{utf8}\index{install.packages@\texttt{install.packages}}.
 To install \inputencoding{latin9}\lstinline[showstringspaces=false]!foo!\inputencoding{utf8}
 and additionally install all of the other packages on which \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!foo!\inputencoding{utf8}
 depends, instead type \inputencoding{latin9}\lstinline[showstringspaces=false]!install.packages("foo", depends = TRUE)!\inputencoding{utf8}.
@@ -865,12 +849,12 @@ will (on most operating systems) open a window contaning a huge list
 of available packages; simply choose one or more to install.
 
 No matter how many packages are installed onto the system, each one
-must first be loaded for use with the \inputencoding{latin9}\lstinline[showstringspaces=false]!library!\inputencoding{utf8}
+must first be loaded for use with the \inputencoding{latin9}\lstinline[showstringspaces=false]!library!\inputencoding{utf8}\index{library@\texttt{library}}
 function. For instance, the \inputencoding{latin9}\lstinline[showstringspaces=false]!foreign!\inputencoding{utf8}
-package (in the base distribution) contains all sorts of functions
-needed to import data sets into \textsf{R} from other software such
-as SPSS, SAS, \emph{etc}.. But none of those functions will be available
-until the command \inputencoding{latin9}\lstinline[showstringspaces=false]!library(foreign)!\inputencoding{utf8}
+package \cite{foreign} contains all sorts of functions needed to
+import data sets into \textsf{R} from other software such as SPSS,
+SAS, \emph{etc}.. But none of those functions will be available until
+the command \inputencoding{latin9}\lstinline[showstringspaces=false]!library(foreign)!\inputencoding{utf8}
 is issued. 
 
 Type \inputencoding{latin9}\lstinline[showstringspaces=false]!library()!\inputencoding{utf8}
@@ -912,40 +896,43 @@ script editors are fully customizable in the sense that the user can
 customize the appearance of the interface to choose what colors to
 display, when to display them, and how to display them.
 \begin{description}
-\item [{\textsf{R~}Editor~(Windows):}] In Microsoft$\circledR$ Windows,
-\textsf{R}Gui has its own built-in script editor, called \textsf{R}
-Editor. From the console window, select \textsf{File}\emph{ }\textsf{$\triangleright$}\emph{
-}\textsf{New}\textsf{\emph{ }}\textsf{Script}\emph{.} A script window
-opens, and the lines of code can be written in the window. When satisfied
-with the code, the user highlights all of the commands and presses
-\textsf{Ctrl+R}. The commands are automatically run at once in \textsf{R}
-and the output is shown. To save the script for later, click \textsf{File}\emph{
+\item [{\textsf{R~}Editor~(Windows):\index{R Editor@\textsf{R} Editor}}] In
+Microsoft$\circledR$ Windows, \textsf{R}Gui has its own built-in
+script editor, called \textsf{R} Editor. From the console window,
+select \textsf{File}\emph{ }\textsf{$\triangleright$}\emph{ }\textsf{New}\textsf{\emph{
+}}\textsf{Script}\emph{.} A script window opens, and the lines of
+code can be written in the window. When satisfied with the code, the
+user highlights all of the commands and presses \textsf{Ctrl+R}. The
+commands are automatically run at once in \textsf{R} and the output
+is shown. To save the script for later, click \textsf{File}\emph{
 }\textsf{$\triangleright$}\emph{ }\textsf{Save as...} in \textsf{R}
 Editor. The script can be reopened later with \textsf{File}\emph{
 }\textsf{$\triangleright$}\emph{ }\textsf{Open Script...} in \textsf{RGui}.
 Note that \textsf{R} Editor does not have the fancy syntax highlighting
 that the others do.
-\item [{\textsf{R}WinEdt:}] This option is coordinated with WinEdt for
-\LaTeX{} and has additional features such as code highlighting, remote
-sourcing, and a ton of other things. However, one first needs to download
-and install a shareware version of another program, WinEdt, which
-is only free for a while -- pop-up windows will eventually appear
-that ask for a registration code. \textsf{R}WinEdt is nevetheless
-a very fine choice if you already own WinEdt or are planning to purchase
-it in the near future.
-\item [{Tinn-\textsf{R}/Sciviews-K:}] This one is completely free and has
-all of the above mentioned options and more. It is simple enough to
-use that the user can virtually begin working with it immediately
-after installation. But Tinn-\textsf{R} proper is only available for
-Microsoft$\circledR$ Windows operating systems. If you are on MacOS
-or Linux, a comparable alternative is Sci-Views - Komodo Edit.
-\item [{Emacs/ESS:}] Emacs is an all purpose text editor. It can do absolutely
-anything with respect to modifying, searching, editing, and manipulating,
-text. And if Emacs can't do it, then you can write a program that
-extends Emacs to do it. Once such extension is called \emph{ESS},
-which stands for \emph{E}macs \emph{S}peaks \emph{S}tatistics. With
-ESS a person can speak to \textsf{R,} do all of the tricks that the
-other script editors offer, and much, much, more.
+\item [{\textsf{R}WinEdt:\index{RWinEdt@\textsf{R}WinEdt}}] This option
+is coordinated with WinEdt for \LaTeX{} and has additional features
+such as code highlighting, remote sourcing, and a ton of other things.
+However, one first needs to download and install a shareware version
+of another program, WinEdt, which is only free for a while -- pop-up
+windows will eventually appear that ask for a registration code. \textsf{R}WinEdt
+is nevetheless a very fine choice if you already own WinEdt or are
+planning to purchase it in the near future.
+\item [{Tinn-\textsf{R}/Sciviews-K:\index{Tinn-R@Tinn-\textsf{R}}\index{Sciviews-K}}] This
+one is completely free and has all of the above mentioned options
+and more. It is simple enough to use that the user can virtually begin
+working with it immediately after installation. But Tinn-\textsf{R}
+proper is only available for Microsoft$\circledR$ Windows operating
+systems. If you are on MacOS or Linux, a comparable alternative is
+Sci-Views - Komodo Edit.
+\item [{Emacs/ESS:\index{Emacs}\index{ESS}}] Emacs is an all purpose
+text editor. It can do absolutely anything with respect to modifying,
+searching, editing, and manipulating, text. And if Emacs can't do
+it, then you can write a program that extends Emacs to do it. Once
+such extension is called \emph{ESS}, which stands for \emph{E}macs
+\emph{S}peaks \emph{S}tatistics. With ESS a person can speak to \textsf{R,}
+do all of the tricks that the other script editors offer, and much,
+much, more.
 
 
 \emph{Fair warning}: if you want to try Emacs and if you grew up with
@@ -955,12 +942,12 @@ whole life. (Or, since Emacs is completely customizable, you can reconfigure
 Emacs to behave the way you want.) I have personally experienced this
 transformation and I will never go back.
 
-\item [{JGR~(read~{}``Jaguar''):}] This one has the bells and whistles
-of \textsf{RGui} plus it is based on Java, so it works on multiple
-operating systems. It has its own script editor like \textsf{R} Editor
-but with additional features such as syntax highlighting and code-completion.
-If you do not use Microsoft$\circledR$ Windows (or even if you do)
-you definitely want to check out this one.
+\item [{JGR~(read~{}``Jaguar''):\index{JGR}}] This one has the bells
+and whistles of \textsf{RGui} plus it is based on Java, so it works
+on multiple operating systems. It has its own script editor like \textsf{R}
+Editor but with additional features such as syntax highlighting and
+code-completion. If you do not use Microsoft$\circledR$ Windows (or
+even if you do) you definitely want to check out this one.
 \item [{Kate,~Bluefish,~\emph{etc}.}] There are literally dozens of other
 text editors available, many of them free, and each has its own (dis)advantages.
 I only have mentioned the ones with which I have had substantial personal
@@ -978,7 +965,7 @@ can be downloaded from the\textsf{ R}-Project website at \url{http://www.sciview
 On the left side of the screen (under \textbf{Projects}) there are
 several choices available.
 \begin{description}
-\item [{The~\textsf{R~}Commander~(\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8})}] provides
+\item [{The~\textsf{R~}Commander~(\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8})\index{The R Commander@The \textsf{R} Commander}}] provides
 a point-and-click interface to many basic statistical tasks. It is
 called the {}``Commander'' because every time one makes a selection
 from the menus, the code corresponding to the task is listed in the
@@ -993,17 +980,19 @@ package. The plugins are typically named with the prefix \inputencoding{latin9}\
 to make them easy to identify in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!CRAN!\inputencoding{utf8}
 package list. One such plugin is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!RcmdrPlugin.IPSUR!\inputencoding{utf8},
 which accompanies this text.
-\item [{Poor~Man's~GUI~(\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!pmg!\inputencoding{utf8})}] is
+\item [{Poor~Man's~GUI~(\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!pmg!\inputencoding{utf8})\index{Poor Man's GUI}}] is
 an alternative to the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
 which is based on GTk instead of Tcl/Tk. It has been a while since
 I used this it but I remember liking it very much when I did. One
 thing that stood out was that the user could drag-and-drop datasets
 for plots. See here for more information \url{http://wiener.math.csi.cuny.edu/pmg/}
-\item [{Rattle}] is a data mining toolkit which is designed to manage/analyze
-very large data sets, but it provides enough other general functionality
-to merit mention here. See \cite{rattle} for more information.
-\item [{Deducer}] is relatively new and shows promise from what I have
-seen, but I have not actually used it in the classroom yet.
+\item [{Rattle\index{Rattle}}] is a data mining toolkit which is designed
+to manage/analyze very large data sets, but it provides enough other
+general functionality to merit mention here. See \cite{rattle} for
+more information.
+\item [{Deducer\index{Deducer}}] is relatively new and shows promise from
+what I have seen, but I have not actually used it in the classroom
+yet.
 \end{description}
 
 \section{Basic \textsf{R} Operations and Concepts\label{sec:Basic-R-Operations}}
@@ -1029,11 +1018,11 @@ be done at this most basic level.
 7^8         # 7 to the 8th power
 @
 
-Notice the comment character \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!#!\inputencoding{utf8}.
+Notice the comment character \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!#!\inputencoding{utf8}\index{#@\texttt{\#}}.
 Anything typed after a \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!#!\inputencoding{utf8}
 symbol is ignored by \textsf{R}. We know that $20/6$ is a repeating
 decimal, but the above example shows only 7 digits. We can change
-the number of digits displayed with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!options!\inputencoding{utf8}:
+the number of digits displayed with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!options!\inputencoding{utf8}\index{options@\texttt{options}}:
 
 <<keep.source = TRUE>>=
 options(digits = 16)
@@ -1044,10 +1033,10 @@ pi
 options(digits = 7)  # back to default
 @
 
-Note that it is possible to set \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!digits!\inputencoding{utf8}
+Note that it is possible to set \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!digits!\inputencoding{utf8}\index{digits@\texttt{digits}}
 up to 22, but setting them over 16 is not recommended (the extra significant
-digits are not necessarily reliable). Above notice the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!sqrt!\inputencoding{utf8}
-function for square roots and the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!exp!\inputencoding{utf8}
+digits are not necessarily reliable). Above notice the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!sqrt!\inputencoding{utf8}\index{sqrt@\texttt{sqrt}}
+function for square roots and the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!exp!\inputencoding{utf8}\index{exp@\texttt{exp}}
 function for powers of $\me$, Euler's constant.
 
 
@@ -1089,17 +1078,17 @@ become familiar:
 are represented exactly by \textsf{R}.
 \item [{double:}] real numbers (rational and irrational); these numbers
 are not represented exactly (save integers or fractions with a denominator
-that is a multiple of 2, see An Introduction to \textsf{R}).
+that is a multiple of 2, see \cite{Venables2010}).
 \item [{character:}] elements that are wrapped with pairs of \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!"!\inputencoding{utf8}
 or \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!'!\inputencoding{utf8};
 \item [{logical:}] includes \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!TRUE!\inputencoding{utf8},
 \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!FALSE!\inputencoding{utf8},
 and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!NA!\inputencoding{utf8}
-(which are reserved words); the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!NA!\inputencoding{utf8}
+(which are reserved words); the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!NA!\inputencoding{utf8}\index{NA@\texttt{NA}}
 stands for {}``not available'', \emph{i.e.}, a missing value.
 \end{description}
-You can determine an object's type with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!typeof!\inputencoding{utf8}
-function. In addition to the above, there is the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!complex!\inputencoding{utf8}
+You can determine an object's type with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!typeof!\inputencoding{utf8}\index{typeof@\texttt{typeof}}
+function. In addition to the above, there is the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!complex!\inputencoding{utf8}\index{complex@\texttt{complex}}\index{as.complex@\texttt{as.complex}}
 data type:
 
 <<five, keep.source = TRUE>>=
@@ -1111,8 +1100,8 @@ typeof((0 + 1i)^2)
 @
 
 Note that you can just type \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!(1i)^2!\inputencoding{utf8}
-to get the same answer. The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!NaN!\inputencoding{utf8}
-stands for {}``not a number''; it is represented internally as \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!double!\inputencoding{utf8}. 
+to get the same answer. The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!NaN!\inputencoding{utf8}\index{NaN@\texttt{NaN}}
+stands for {}``not a number''; it is represented internally as \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!double!\inputencoding{utf8}\index{double}. 
 
 
 \subsection{Vectors}
@@ -1123,7 +1112,7 @@ let us move to vectors with multiple entries.
 
 \paragraph*{Entering data vectors}
 \begin{enumerate}
-\item \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!c!\inputencoding{utf8}:
+\item \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!c!\inputencoding{utf8}\index{c@\texttt{c}}:
 If you would like to enter the data \texttt{74,31,95,61,76,34,23,54,96}
 into \textsf{R}, you may create a data vector with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!c!\inputencoding{utf8}
 function (which is short for \emph{concatenate}).
@@ -1138,7 +1127,7 @@ The elements of a vector are usually coerced by \textsf{R} to the
 the most general type of any of the elements, so if you do \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!c(1, "2")!\inputencoding{utf8}
 then the result will be \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!c("1", "2")!\inputencoding{utf8}.
 
-\item \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!scan!\inputencoding{utf8}:
+\item \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!scan!\inputencoding{utf8}\index{scan@\texttt{scan}}:
 This method is useful when the data are stored somewhere else. For
 instance, you may type \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x <- scan()!\inputencoding{utf8}
 at the command prompt and \textsf{R} will display \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!1:!\inputencoding{utf8}
@@ -1150,7 +1139,7 @@ stored in a text file or spreadsheet. You may copy and paste them
 all at the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!1:!\inputencoding{utf8}
 prompt, and \textsf{R} will store all of the values instantly in the
 vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}.
-\item repeated data; regular patterns: the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!seq!\inputencoding{utf8}
+\item repeated data; regular patterns: the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!seq!\inputencoding{utf8}\index{seq@\texttt{seq}}
 function will generate all sorts of sequences of numbers. It has the
 arguments \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!from!\inputencoding{utf8},
 \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!to!\inputencoding{utf8},
@@ -1172,8 +1161,8 @@ Note that we can get the first line much quicker with the colon operator
 1:5
 @
 
-The vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!LETTERS!\inputencoding{utf8}
-has the 26 letters of the English alphabet in uppercase and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!letters!\inputencoding{utf8}
+The vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!LETTERS!\inputencoding{utf8}\index{LETTERS@\texttt{LETTERS}}
+has the 26 letters of the English alphabet in uppercase and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!letters!\inputencoding{utf8}\index{letters@\texttt{letters}}
 has all of them in lowercase.
 
 \end{enumerate}
@@ -1181,7 +1170,7 @@ has all of them in lowercase.
 \paragraph*{Indexing data vectors}
 
 Sometimes we do not want the whole vector, but just a piece of it.
-We can access the intermediate parts with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]![]!\inputencoding{utf8}
+We can access the intermediate parts with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]![]!\inputencoding{utf8}\index{[]@\texttt{{[}{]}}}
 operator. Observe (with \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!x!\inputencoding{utf8}
 defined above)
 
@@ -1226,7 +1215,7 @@ the Sources'' by Uwe Ligges \cite{Ligges2006}. In short:
 \item Type the name of the function without any parentheses or arguments.
 If you are lucky then the code for the entire function will be printed,
 right there looking at you. For instance, suppose that we would like
-to see how the \inputencoding{latin9}\lstinline[showstringspaces=false]!intersect!\inputencoding{utf8}
+to see how the \inputencoding{latin9}\lstinline[showstringspaces=false]!intersect!\inputencoding{utf8}\index{intersect@\texttt{intersect}}
 function works:
 
 
@@ -1234,10 +1223,10 @@ function works:
 intersect
 @
 
-\item If instead it shows \inputencoding{latin9}\lstinline[showstringspaces=false]!UseMethod("!\inputencoding{utf8}\emph{something}\inputencoding{latin9}\lstinline[showstringspaces=false]!")!\inputencoding{utf8}
+\item If instead it shows \inputencoding{latin9}\lstinline[showstringspaces=false]!UseMethod("!\inputencoding{utf8}\emph{something}\inputencoding{latin9}\lstinline[showstringspaces=false]!")!\inputencoding{utf8}\index{UseMethod@\texttt{UseMethod}}
 then you will need to choose the \emph{class} of the object to be
 inputted and next look at the \emph{method} that will be \emph{dispatched}
-to the object. For instance, typing \inputencoding{latin9}\lstinline[showstringspaces=false]!rev!\inputencoding{utf8}
+to the object. For instance, typing \inputencoding{latin9}\lstinline[showstringspaces=false]!rev!\inputencoding{utf8}\index{rev@\texttt{rev}}
 says 
 
 
@@ -1268,7 +1257,7 @@ rev.default
 
 \item Some functions are hidden by a \emph{namespace} (see An Introduction
 to \textsf{R} \cite{Venables2010}), and are not visible on the first
-try. For example, if we try to look at the code for \inputencoding{latin9}\lstinline[showstringspaces=false]!wilcox.test!\inputencoding{utf8}
+try. For example, if we try to look at the code for \inputencoding{latin9}\lstinline[showstringspaces=false]!wilcox.test!\inputencoding{utf8}\index{wilcox.test@\texttt{wilcox.test}}
 (see Chapter \ref{cha:Nonparametric-Statistics}) we get the following:
 
 
@@ -1285,8 +1274,8 @@ In cases like these we prefix the package name to the front of the
 function name with three colons; the command \inputencoding{latin9}\lstinline[showstringspaces=false]!stats:::wilcox.test.default!\inputencoding{utf8}
 will show the source code, omitted here for brevity.
 
-\item If it shows \inputencoding{latin9}\lstinline[showstringspaces=false]!.Internal(!\inputencoding{utf8}\emph{something}\inputencoding{latin9}\lstinline[showstringspaces=false]!)!\inputencoding{utf8}
-or \inputencoding{latin9}\lstinline[showstringspaces=false]!.Primitive("!\inputencoding{utf8}\emph{something}\inputencoding{latin9}\lstinline[showstringspaces=false]!")!\inputencoding{utf8},
+\item If it shows \inputencoding{latin9}\lstinline[showstringspaces=false]!.Internal(!\inputencoding{utf8}\emph{something}\inputencoding{latin9}\lstinline[showstringspaces=false]!)!\inputencoding{utf8}\index{.Internal@\texttt{.Internal}}
+or \inputencoding{latin9}\lstinline[showstringspaces=false]!.Primitive("!\inputencoding{utf8}\emph{something}\inputencoding{latin9}\lstinline[showstringspaces=false]!")!\inputencoding{utf8}\index{.Primitive@\texttt{.Primitive}},
 then it will be necessary to download the source code of \textsf{R}
 (which is \emph{not} a binary version with an \inputencoding{latin9}\lstinline[showstringspaces=false]!.exe!\inputencoding{utf8}
 extension) and search inside the code there. See Ligges \cite{Ligges2006}
@@ -1326,36 +1315,36 @@ you know the \emph{exact} name of the function you want to know more
 about, for example, \inputencoding{latin9}\lstinline[showstringspaces=false]!mean!\inputencoding{utf8}
 or \inputencoding{latin9}\lstinline[showstringspaces=false]!plot!\inputencoding{utf8}.
 Typing \inputencoding{latin9}\lstinline[showstringspaces=false]!mean!\inputencoding{utf8}
-in the window is equivalent to typing \inputencoding{latin9}\lstinline[showstringspaces=false]!help("mean")!\inputencoding{utf8}
-at the command line, or more simply, \inputencoding{latin9}\lstinline[showstringspaces=false]!?mean!\inputencoding{utf8}.
+in the window is equivalent to typing \inputencoding{latin9}\lstinline[showstringspaces=false]!help("mean")!\inputencoding{utf8}\index{help@\texttt{help}}
+at the command line, or more simply, \inputencoding{latin9}\lstinline[showstringspaces=false]!?mean!\inputencoding{utf8}\index{?@\texttt{?}}.
 Note that this method only works if the function of interest is contained
 in a package that is already loaded into the search path with \inputencoding{latin9}\lstinline[showstringspaces=false]!library!\inputencoding{utf8}.
 \item \textbf{HTML Help}: use this to browse the manuals with point-and-click
 links. It also has a Search Engine \& Keywords for searching the help
 page titles, with point-and-click links for the search results. This
 is possibly the best help method for beginners. It can be started
-from the command line with the command \inputencoding{latin9}\lstinline[showstringspaces=false]!help.start()!\inputencoding{utf8}.
+from the command line with the command \inputencoding{latin9}\lstinline[showstringspaces=false]!help.start()!\inputencoding{utf8}\index{help.start@\texttt{help.start}}.
 \item \textbf{Search help\ldots{}}: use this if you do not know the exact
 name of the function of interest, or if the function is in a package
 that has not been loaded yet. For example, you may enter \inputencoding{latin9}\lstinline[showstringspaces=false]!plo!\inputencoding{utf8}
 and a text window will return listing all the help files with an alias,
 concept, or title matching `\inputencoding{latin9}\lstinline[showstringspaces=false]!plo!\inputencoding{utf8}'
-using regular expression matching; it is equivalent to typing \inputencoding{latin9}\lstinline[showstringspaces=false]!help.search("plo")!\inputencoding{utf8}
+using regular expression matching; it is equivalent to typing \inputencoding{latin9}\lstinline[showstringspaces=false]!help.search("plo")!\inputencoding{utf8}\index{help.search@\texttt{help.search}}
 at the command line. The advantage is that you do not need to know
 the exact name of the function; the disadvantage is that you cannot
 point-and-click the results. Therefore, one may wish to use the HTML
-Help search engine instead. An equivalent way is \inputencoding{latin9}\lstinline[showstringspaces=false]!??plo!\inputencoding{utf8}
+Help search engine instead. An equivalent way is \inputencoding{latin9}\lstinline[showstringspaces=false]!??plo!\inputencoding{utf8}\index{??@\texttt{??}}
 at the command line.
 \item \textbf{search.r-project.org\ldots{}}: this will search for words
 in help lists and email archives of the \textsf{R} Project. It can
 be very useful for finding other questions that other users have asked.
 \item \textbf{Apropos\ldots{}}: use this for more sophisticated partial
-name matching of functions. See \inputencoding{latin9}\lstinline[showstringspaces=false]!?apropos!\inputencoding{utf8}
+name matching of functions. See \inputencoding{latin9}\lstinline[showstringspaces=false]!?apropos!\inputencoding{utf8}\index{apropos@\texttt{apropos}}
 for details.
 \end{itemize}
 On the help pages for a function there are sometimes {}``Examples''
 listed at the bottom of the page, which will work if copy-pasted at
-the command line ( unless marked otherwise). The \inputencoding{latin9}\lstinline[showstringspaces=false]!example!\inputencoding{utf8}
+the command line (unless marked otherwise). The \inputencoding{latin9}\lstinline[showstringspaces=false]!example!\inputencoding{utf8}\index{example@\texttt{example}}
 function will run the code automatically, skipping the intermediate
 step. For instance, we may try \inputencoding{latin9}\lstinline[showstringspaces=false]!example(mean)!\inputencoding{utf8}
 to see a few examples of how the \inputencoding{latin9}\lstinline[showstringspaces=false]!mean!\inputencoding{utf8}
@@ -1386,9 +1375,9 @@ lot about the idiosyncracies of \textsf{R}.
 \item Search the archives. Even if your question is not a FAQ, there is
 a very high likelihood that your question has been asked before on
 the mailing list. If you want to know about topic \inputencoding{latin9}\lstinline[showstringspaces=false]!foo!\inputencoding{utf8},
-then you can do \inputencoding{latin9}\lstinline[showstringspaces=false]!RSiteSearch("foo")!\inputencoding{utf8}
+then you can do \inputencoding{latin9}\lstinline[showstringspaces=false]!RSiteSearch("foo")!\inputencoding{utf8}\index{RSiteSearch@\texttt{RSiteSearch}}
 to search the mailing list archives (and the online help) for it. 
-\item Do a Google search and an RSeek.org search.
+\item Do a Google search and an \texttt{RSeek.org} search.
 \end{enumerate}
 If your question is not a FAQ, has not been asked on \textsf{R}-help
 before, and does not yield to a Google (or alternative) search, then,
@@ -1402,7 +1391,7 @@ from output. Readers of your message will take the text from your
 mail and copy-paste into an \textsf{R} session. If you make the readers'
 job easier then it will increase the likelihood of a response.
 \item Questions are often related to a specific data set, and the best way
-to communicate the data is with a \inputencoding{latin9}\lstinline[showstringspaces=false]!dump!\inputencoding{utf8}
+to communicate the data is with a \inputencoding{latin9}\lstinline[showstringspaces=false]!dump!\inputencoding{utf8}\index{dump@\texttt{dump}}
 command. For instance, if your question involves data stored in a
 vector \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8},
 you can type \inputencoding{latin9}\lstinline[showstringspaces=false]!dump("x","")!\inputencoding{utf8}
@@ -1412,7 +1401,7 @@ your email into \textsf{R} and \inputencoding{latin9}\lstinline[showstringspaces
 will be available to him/her.
 \item Sometimes the answer the question is related to the operating system
 used, the attached packages, or the exact version of \textsf{R} being
-used. The \inputencoding{latin9}\lstinline[showstringspaces=false]!sessionInfo()!\inputencoding{utf8}
+used. The \inputencoding{latin9}\lstinline[showstringspaces=false]!sessionInfo()!\inputencoding{utf8}\index{sessionInfo@\texttt{sessionInfo}}
 command collects all of this information to be copy-pasted into an
 email (and the Posting Guide requests this information). See Appendix
 \ref{cha:R-Session-Information} for an example.
@@ -1423,21 +1412,22 @@ email (and the Posting Guide requests this information). See Appendix
 There is a mountain of information on the Internet about \textsf{R}.
 Below are a few of the important ones.
 \begin{description}
-\item [{The~\textsf{R~}Project~for~Statistical~Computing:}] (\url{http://www.r-project.org/})
+\item [{The~\textsf{R~}Project~for~Statistical~Computing:\index{The R-Project@The \textsf{R}-Project}}] (\url{http://www.r-project.org/})
 Go here first.
-\item [{The~Comprehensive~\textsf{R~}Archive~Network:}] (\url{http://cran.r-project.org/})
+\item [{The~Comprehensive~\textsf{R~}Archive~Network:\index{CRAN}}] (\url{http://cran.r-project.org/})
 This is where \textsf{R} is stored along with thousands of contributed
 packages. There are also loads of contributed information (books,
 tutorials, \emph{etc}.). There are mirrors all over the world with
 duplicate information.
-\item [{\textsf{R}-Forge:}] (\url{http://r-forge.r-project.org/}) This
-is another location where \textsf{R} packages are stored. Here you
-can find development code which has not yet been released to \textsf{CRAN}.
-\item [{\textsf{R~}Wiki:}] (\url{http://wiki.r-project.org/rwiki/doku.php})
+\item [{\textsf{R}-Forge:\index{R-Forge@\textsf{R}-Forge}}] (\url{http://r-forge.r-project.org/})
+This is another location where \textsf{R} packages are stored. Here
+you can find development code which has not yet been released to \textsf{CRAN}.
+\item [{\textsf{R~}Wiki:\index{R-Wiki@\textsf{R}-Wiki}}] (\url{http://wiki.r-project.org/rwiki/doku.php})
 There are many tips and tricks listed here. If you find a trick of
 your own, login and share it with the world.
-\item [{Other:}] the \textsf{R} Graph Gallery (\url{http://addictedtor.free.fr/graphiques/})
-and \textsf{R} Graphical Manual (\url{http://bm2.genes.nig.ac.jp/RGM2/index.php})
+\item [{Other:}] the \textsf{R} Graph Gallery\index{R Graph Gallery@\textsf{R} Graph Gallery}
+(\url{http://addictedtor.free.fr/graphiques/}) and \textsf{R} Graphical
+Manual\index{R Graphical Manual@\textsf{R} Graphical Manual} (\url{http://bm2.genes.nig.ac.jp/RGM2/index.php})
 have literally thousands of graphs to peruse. \textsf{R}Seek (\url{http://www.rseek.org})
 is a search engine based on Google specifically tailored for \textsf{R}
 queries. 
@@ -1451,14 +1441,14 @@ Microsoft$\circledR$ Windows \textsf{R}Gui, to cycle through the
 previous commands just push the $\uparrow$ (up arrow) key. On Emacs/ESS
 the command is \inputencoding{latin9}\lstinline[showstringspaces=false]!M-p!\inputencoding{utf8}
 (which means hold down the \textsf{Alt} button and press {}``\inputencoding{latin9}\lstinline[showstringspaces=false]!p!\inputencoding{utf8}'').
-More generally, the command \inputencoding{latin9}\lstinline[showstringspaces=false]!history()!\inputencoding{utf8}
+More generally, the command \inputencoding{latin9}\lstinline[showstringspaces=false]!history()!\inputencoding{utf8}\index{history@\texttt{history}}
 will show a whole list of recently entered commands.
 \begin{itemize}
 \item To find out what all variables are in the current work environment,
-use the commands \inputencoding{latin9}\lstinline[showstringspaces=false]!objects()!\inputencoding{utf8}
-or \inputencoding{latin9}\lstinline[showstringspaces=false]!ls()!\inputencoding{utf8}.
+use the commands \inputencoding{latin9}\lstinline[showstringspaces=false]!objects()!\inputencoding{utf8}\index{objects@\texttt{objects}}
+or \inputencoding{latin9}\lstinline[showstringspaces=false]!ls()!\inputencoding{utf8}\index{ls@\texttt{ls}}.
 These list all available objects in the workspace. If you wish to
-remove one or more variables, use \inputencoding{latin9}\lstinline[showstringspaces=false]!remove(var1, var2, var3)!\inputencoding{utf8},
+remove one or more variables, use \inputencoding{latin9}\lstinline[showstringspaces=false]!remove(var1, var2, var3)!\inputencoding{utf8}\index{remove@\texttt{remove}},
 or more simply use \inputencoding{latin9}\lstinline[showstringspaces=false]!rm(var1, var2, var3)!\inputencoding{utf8},
 and to remove all objects use \inputencoding{latin9}\lstinline[showstringspaces=false]!rm(list = ls())!\inputencoding{utf8}.
 \item Another use of \inputencoding{latin9}\lstinline[showstringspaces=false]!scan!\inputencoding{utf8}
@@ -1477,11 +1467,11 @@ clears the screen in the Microsoft$\circledR$ Windows \textsf{R}Gui.
 The comparable command for Emacs/ESS is 
 \item Once you use \textsf{R} for awhile there may be some commands that
 you wish to run automatically whenever \textsf{R} starts. These commands
-may be saved in a file called \inputencoding{latin9}\lstinline[showstringspaces=false]!Rprofile.site!\inputencoding{utf8}
+may be saved in a file called \inputencoding{latin9}\lstinline[showstringspaces=false]!Rprofile.site!\inputencoding{utf8}\index{Rprofile.site@\texttt{Rprofile.site}}
 which is usually in the \inputencoding{latin9}\lstinline[showstringspaces=false]!etc!\inputencoding{utf8}
 folder, which lives in the \textsf{R} home directory (which on Microsoft$\circledR$
 Windows usually is \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!C:\Program Files\R!\inputencoding{utf8}).
-Alternatively, you can make a file \inputencoding{latin9}\lstinline[showstringspaces=false]!.Rprofile!\inputencoding{utf8}
+Alternatively, you can make a file \inputencoding{latin9}\lstinline[showstringspaces=false]!.Rprofile!\inputencoding{utf8}\index{.Rprofile@\texttt{.Rprofile}}
 to be stored in the user's home directory, or anywhere \textsf{R}
 is invoked. This allows for multiple configurations for different
 projects or users. See {}``Customizing the Environment'' of \emph{An
@@ -1490,7 +1480,7 @@ Introduction to }\textsf{\emph{R}} for more details.
 the workspace''. I recommend that beginners DO NOT save the workspace
 when quitting. If \textsf{Yes} is selected, then all of the objects
 and data currently in \textsf{R}'s memory is saved in a file located
-in the working directory called \inputencoding{latin9}\lstinline[showstringspaces=false]!.RData!\inputencoding{utf8}.
+in the working directory called \inputencoding{latin9}\lstinline[showstringspaces=false]!.RData!\inputencoding{utf8}\index{.RData@\texttt{.RData}}.
 This file is then automatically loaded the next time \textsf{R} starts
 (in which case \textsf{R} will say \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]![previously saved workspace restored]!\inputencoding{utf8}).
 This is a valuable feature for experienced users of \textsf{R}, but
@@ -1629,7 +1619,7 @@ Now let's check out \inputencoding{latin9}\lstinline[showstringspaces=false]!cum
 
 <<>>=
 cumsum(x)
-@
+@\textsf{R}
 
 This shows that the total amount sold was \Sexpr{max(cumsum(x))}.
 We next check out what \inputencoding{latin9}\lstinline[showstringspaces=false]!diff!\inputencoding{utf8}
@@ -1734,7 +1724,7 @@ In each subsection we look at some examples of the type in question
 and introduce methods to display them.
 
 
-\subsection{Quantitative data\label{sub:Quantitative-Data}}
+\subsection{Quantitative data\label{sub:Quantitative-Data}\textsf{R}}
 
 Quantitative data are any data that measure or are associated with
 a measurement of the quantity of something. They invariably assume
@@ -1757,7 +1747,7 @@ not always clear-cut. Sometimes it is convenient to treat data as
 if they were continuous, even though strictly speaking they are not
 continuous. See the examples.
 \begin{example}
-\textbf{Annual Precipitation in US Cities.} The vector \inputencoding{latin9}\lstinline[showstringspaces=false]!precip!\inputencoding{utf8}
+\textbf{Annual Precipitation in US Cities.} The vector \inputencoding{latin9}\lstinline[showstringspaces=false]!precip!\inputencoding{utf8}\index{Data sets!precip@\texttt{precip}}
 contains average amount of rainfall (in inches) for each of 70 cities
 in the United States and Puerto Rico. Let us take a look at the data:
 
@@ -1768,7 +1758,7 @@ precip[1:4]
 
 The output shows that \inputencoding{latin9}\lstinline[showstringspaces=false]!precip!\inputencoding{utf8}
 is a numeric vector which has been \emph{named}, that is, each value
-has a name associated with it (which can be set with the \inputencoding{latin9}\lstinline[showstringspaces=false]!names!\inputencoding{utf8}
+has a name associated with it (which can be set with the \inputencoding{latin9}\lstinline[showstringspaces=false]!names!\inputencoding{utf8}\index{names@\texttt{names}}
 function). These are quantitative continuous data.
 
 \end{example}
@@ -1776,10 +1766,10 @@ function). These are quantitative continuous data.
 \begin{example}
 \textbf{Lengths of Major North American Rivers.} The U.S.~Geological
 Survey recorded the lengths (in miles) of several rivers in North
-America. They are stored in the vector \inputencoding{latin9}\lstinline[showstringspaces=false]!rivers!\inputencoding{utf8}
+America. They are stored in the vector \inputencoding{latin9}\lstinline[showstringspaces=false]!rivers!\inputencoding{utf8}\index{Data sets!rivers@\texttt{rivers}}
 in the \inputencoding{latin9}\lstinline[showstringspaces=false]!datasets!\inputencoding{utf8}
 package (which ships with base \textsf{R}). See \inputencoding{latin9}\lstinline[showstringspaces=false]!?rivers!\inputencoding{utf8}.
-Let us take a look at the data with the \inputencoding{latin9}\lstinline[showstringspaces=false]!str!\inputencoding{utf8}
+Let us take a look at the data with the \inputencoding{latin9}\lstinline[showstringspaces=false]!str!\inputencoding{utf8}\index{str@\texttt{str}}
 function.
 
 <<>>=
@@ -1796,7 +1786,7 @@ of our statistical procedures.
 \end{example}
 
 \begin{example}
-\textbf{Yearly Numbers of Important Discoveries.} The vector \inputencoding{latin9}\lstinline[showstringspaces=false]!discoveries!\inputencoding{utf8}
+\textbf{Yearly Numbers of Important Discoveries.} The vector \inputencoding{latin9}\lstinline[showstringspaces=false]!discoveries!\inputencoding{utf8}\index{Data sets!discoveries@\texttt{discoveries}}
 contains numbers of “great” inventions/discoveries in each year from
 1860 to 1959, as reported by the 1975 World Almanac. Let us take a
 look at the data:
@@ -1823,12 +1813,12 @@ many display types from which to choose as there are data sets to
 plot. We describe some of the more popular alternatives. 
 
 
-\paragraph*{Strip charts (also known as Dot plots)\label{par:Strip-charts}}
+\paragraph*{Strip~charts\index{Strip chart} (also known as Dot plots)\index{Dot plot| see\{Strip chart\}}\label{par:Strip-charts}}
 
 These can be used for discrete or continuous data, and usually look
 best when the data set is not too large. Along the horizontal axis
 is a numerical scale above which the data values are plotted. We can
-do it in \textsf{R} with a call to the \inputencoding{latin9}\lstinline[showstringspaces=false]!stripchart!\inputencoding{utf8}
+do it in \textsf{R} with a call to the \inputencoding{latin9}\lstinline[showstringspaces=false]!stripchart!\inputencoding{utf8}\index{stripchart@\texttt{stripchart}}
 function. There are three available methods.
 \begin{description}
 \item [{overplot}] plots ties covering each other. This method is good
@@ -1880,12 +1870,12 @@ the third the }\texttt{\small stack}{\small{} method.}
 \end{figure}
 
 
-The \inputencoding{latin9}\lstinline[showstringspaces=false]!DOTplot!\inputencoding{utf8}
-function in the \inputencoding{latin9}\lstinline[showstringspaces=false]!UsingR!\inputencoding{utf8}
-package \cite{usingr}.
+The \inputencoding{latin9}\lstinline[showstringspaces=false]!DOTplot!\inputencoding{utf8}\index{DOTplot@\texttt{DOTplot}}
+function in the \inputencoding{latin9}\lstinline[showstringspaces=false]!UsingR!\inputencoding{utf8}\index{R packages!UsingR@\texttt{UsingR}}
+package \cite{usingr} is another alternative.
 
 
-\paragraph*{Histogram}
+\paragraph*{Histogram\index{Histogram}}
 
 These are typically used for continuous data. A histogram is constructed
 by first deciding on a set of classes, or bins, which partition the
@@ -1899,13 +1889,13 @@ $y$ axis can be frequency, percentage, or density (relative frequency).
 The term histogram was coined by Karl Pearson in 1891, see \cite{Miller}.
 \begin{example}
 \textbf{Annual Precipitation in US Cities.} We are going to take another
-look at the \inputencoding{latin9}\lstinline[showstringspaces=false]!precip!\inputencoding{utf8}
+look at the \inputencoding{latin9}\lstinline[showstringspaces=false]!precip!\inputencoding{utf8}\index{Data sets!precip@\texttt{precip}}
 data that we investigated earlier. The strip chart in Figure \ref{fig:Various-stripchart-methods,}
 suggested a loosely balanced distribution; let us now look to see
 what a histogram says. 
 
 There are many ways to plot histograms in \textsf{R}, and one of the
-easiest is with the \inputencoding{latin9}\lstinline[showstringspaces=false]!hist!\inputencoding{utf8}
+easiest is with the \inputencoding{latin9}\lstinline[showstringspaces=false]!hist!\inputencoding{utf8}\index{hist@\texttt{hist}}
 function. The following code produces the plots in Figure \ref{fig:histograms}.
 
 <<eval = FALSE>>=
@@ -1947,7 +1937,7 @@ well, and more often than not the default bins do a good job. This
 is not always the case, however, and a responsible statistician will
 investigate many bin choices to test the stability of the display.
 \begin{example}
-Recall that the stripchart in Figure \ref{fig:Various-stripchart-methods,}
+Recall that the strip chart in Figure \ref{fig:Various-stripchart-methods,}
 suggested a relatively balanced shape to the \inputencoding{latin9}\lstinline[showstringspaces=false]!precip!\inputencoding{utf8}
 data distribution. Watch what happens when we change the bins slightly
 (with the \inputencoding{latin9}\lstinline[showstringspaces=false]!breaks!\inputencoding{utf8}
@@ -2002,12 +1992,12 @@ will typically be several leaves for each stem, in which case the
 leaves accumulate to the right. It is sometimes necessary to round
 the data values, especially for larger data sets.
 \begin{example}
-\inputencoding{latin9}\lstinline[showstringspaces=false]!UKDriverDeaths!\inputencoding{utf8}
+\inputencoding{latin9}\lstinline[showstringspaces=false]!UKDriverDeaths!\inputencoding{utf8}\index{Data sets!UKDriverDeaths@\texttt{UKDriverDeaths}}
 is a time series that contains the total car drivers killed or seriously
 injured in Great Britain monthly from Jan 1969 to Dec 1984. See \inputencoding{latin9}\lstinline[showstringspaces=false]!?UKDriverDeaths!\inputencoding{utf8}.
 Compulsory seat belt use was introduced on January 31, 1983. We construct
-a stem and leaf diagram in \textsf{R} with the \inputencoding{latin9}\lstinline[showstringspaces=false]!stem.leaf!\inputencoding{utf8}
-function from the \inputencoding{latin9}\lstinline[showstringspaces=false]!aplpack!\inputencoding{utf8}
+a stem and leaf diagram in \textsf{R} with the \inputencoding{latin9}\lstinline[showstringspaces=false]!stem.leaf!\inputencoding{utf8}\index{stem.leaf@\texttt{stem.leaf}}
+function from the \inputencoding{latin9}\lstinline[showstringspaces=false]!aplpack!\inputencoding{utf8}\index{R packages@\textsf{R} packages!aplpack@\texttt{aplpack}}
 package \cite{aplpack}.
 \end{example}
 <<>>=
@@ -2020,7 +2010,7 @@ with one or maybe two humps, a big one and a smaller one just to its
 right. Note that the data have been rounded to the tens place so that
 each datum gets only one leaf to the right of the dividing line.
 
-Notice that the \inputencoding{latin9}\lstinline[showstringspaces=false]!depth!\inputencoding{utf8}s
+Notice that the \inputencoding{latin9}\lstinline[showstringspaces=false]!depth!\inputencoding{utf8}s\index{depths}
 have been suppressed. To learn more about this option and many others,
 see Section \ref{sec:Exploratory-Data-Analysis}. Unlike a histogram,
 the original data values may be recovered from the stemplot display
@@ -2030,7 +2020,7 @@ down we can read off the data values 1050, 1070, 1110, 1130, \emph{etc}.
 
 \paragraph*{Index plot}
 
-Done with the \inputencoding{latin9}\lstinline[showstringspaces=false]!plot!\inputencoding{utf8}
+Done with the \inputencoding{latin9}\lstinline[showstringspaces=false]!plot!\inputencoding{utf8}\index{plot@\texttt{plot}}
 function. These are good for plotting data which are ordered, for
 example, when the data are measured over time. That is, the first
 observation was measured at time 1, the second at time 2, \emph{etc}.
@@ -2044,7 +2034,7 @@ height (\inputencoding{latin9}\lstinline[showstringspaces=false]!type = "h"!\inp
 \begin{example}
 Level of Lake Huron 1875-1972. Brockwell and Davis \cite{Brockwell1991}
 give the annual measurements of the level (in feet) of Lake Huron
-from 1875--1972. The data are stored in the time series \inputencoding{latin9}\lstinline[showstringspaces=false]!LakeHuron!\inputencoding{utf8}.
+from 1875--1972. The data are stored in the time series \inputencoding{latin9}\lstinline[showstringspaces=false]!LakeHuron!\inputencoding{utf8}\index{Data sets| \texttt{LakeHuron}}.
 See \inputencoding{latin9}\lstinline[showstringspaces=false]!?LakeHuron!\inputencoding{utf8}.
 Figure \ref{fig:indpl-lakehuron} was produced with the following
 code:
@@ -2068,7 +2058,7 @@ par(mfrow = c(1,1)) # back to normal
 @
 \par\end{centering}
 
-\caption{Index plots of LakeHuron\label{fig:indpl-lakehuron}}
+\caption{Index plots of the \texttt{LakeHuron} data\label{fig:indpl-lakehuron}}
 
 \end{figure}
 
@@ -2101,12 +2091,13 @@ factor are called its \emph{levels}. For instance, the factor \emph{gender}
 would have two levels, namely, male and female. Socioeconomic status
 typically has three levels: high, middle, and low.
 
-Factors may be of two types: \emph{nominal} and \emph{ordinal}. Nominal
-factors have levels that correspond to names of the categories, with
-no implied ordering. Examples of nominal factors would be hair color,
-gender, race, or political party. There is no natural ordering to
-{}``Democrat'' and {}``Republican''; the categories are just names
-associated with different groups of people. 
+Factors may be of two types: \emph{nominal}\index{nominal data} and
+\emph{ordinal}\index{ordinal data}. Nominal factors have levels that
+correspond to names of the categories, with no implied ordering. Examples
+of nominal factors would be hair color, gender, race, or political
+party. There is no natural ordering to {}``Democrat'' and {}``Republican'';
+the categories are just names associated with different groups of
+people. 
 
 In contrast, ordinal factors have some sort of ordered structure to
 the underlying factor levels. For instance, socioeconomic status would
@@ -2119,14 +2110,14 @@ by numbers, but even when they are written numerically their values
 do not convey any numeric meaning or obey any mathematical rules (that
 is, Stage III cancer is not Stage I cancer + Stage II cancer).
 \begin{example}
-The \inputencoding{latin9}\lstinline[showstringspaces=false]!state.abb!\inputencoding{utf8}
+The \inputencoding{latin9}\lstinline[showstringspaces=false]!state.abb!\inputencoding{utf8}\index{Data sets| \texttt{state.abb}}
 vector gives the two letter postal abbreviations for all 50 states.
 
 <<>>=
 str(state.abb)
 @
 
-These would be ID data. The \inputencoding{latin9}\lstinline[showstringspaces=false]!state.name!\inputencoding{utf8}
+These would be ID data. The \inputencoding{latin9}\lstinline[showstringspaces=false]!state.name!\inputencoding{utf8}\index{Data sets| \texttt{state.name}}
 vector lists all of the complete names and those data would also be
 ID.
 
@@ -2135,7 +2126,7 @@ ID.
 \begin{example}
 \textbf{U.S.~State Facts and Features.} The U.S.~Department of Commerce
 of the U.S.~Census Bureau releases all sorts of information in the
-\emph{Statistical Abstract of the United States}, and the \inputencoding{latin9}\lstinline[showstringspaces=false]!state.region!\inputencoding{utf8}
+\emph{Statistical Abstract of the United States}, and the \inputencoding{latin9}\lstinline[showstringspaces=false]!state.region!\inputencoding{utf8}\index{Data sets| \texttt{state.region}}
 data lists each of the 50 states and the region to which it belongs,
 be it Northeast, South, North Central, or West. See \inputencoding{latin9}\lstinline[showstringspaces=false]!?state.region!\inputencoding{utf8}.
 
@@ -2144,7 +2135,7 @@ str(state.region)
 state.region[1:5]
 @
 
-The \inputencoding{latin9}\lstinline[showstringspaces=false]!str!\inputencoding{utf8}
+The \inputencoding{latin9}\lstinline[showstringspaces=false]!str!\inputencoding{utf8}\index{str@\texttt{str}}
 output shows that \inputencoding{latin9}\lstinline[showstringspaces=false]!state.region!\inputencoding{utf8}
 is already stored internally as a factor and it lists a couple of
 the factor levels. To see all of the levels we printed the first five
@@ -2161,11 +2152,11 @@ the from
 
 One of the best ways to summarize qualitative data is with a table
 of the data values. We may count frequencies with the \inputencoding{latin9}\lstinline[showstringspaces=false]!table!\inputencoding{utf8}
-function or list proportions with the \inputencoding{latin9}\lstinline[showstringspaces=false]!prop.table!\inputencoding{utf8}
+function or list proportions with the \inputencoding{latin9}\lstinline[showstringspaces=false]!prop.table!\inputencoding{utf8}\index{prop.table@\texttt{prop.table}}
 function (whose input is a frequency table). In the \textsf{R} Commander
 you can do it with \textsf{Statistics} \textsf{$\triangleright$}
 \textsf{Frequency Distribution\ldots{}.} Alternatively, to look at
-tables for all factors in the \inputencoding{latin9}\lstinline[showstringspaces=false]!Active data set!\inputencoding{utf8}
+tables for all factors in the \inputencoding{latin9}\lstinline[showstringspaces=false]!Active data set!\inputencoding{utf8}\index{Active data set@\texttt{Active data set}}
 you can do \textsf{Statistics} \textsf{$\triangleright$} \textsf{Summaries}
 \textsf{$\triangleright$} \textsf{Active Dataset}.
 
@@ -2192,7 +2183,7 @@ Abstract of the United States}, and the \inputencoding{latin9}\lstinline[showstr
 data lists each of the 50 states and the region to which it belongs,
 be it Northeast, South, North Central, or West. See \inputencoding{latin9}\lstinline[showstringspaces=false]!?state.region!\inputencoding{utf8}.
 It is already stored internally as a factor. We make a bar graph with
-the \inputencoding{latin9}\lstinline[showstringspaces=false]!barplot!\inputencoding{utf8}
+the \inputencoding{latin9}\lstinline[showstringspaces=false]!barplot!\inputencoding{utf8}\index{barplot@\texttt{barplot}}
 function: 
 
 <<eval = FALSE>>=
@@ -2208,9 +2199,9 @@ that the majority of the fifty states are in the South, followed by
 West, North Central, and finally Northeast. Over 30\% of the states
 are in the South.
 
-Notice the \inputencoding{latin9}\lstinline[showstringspaces=false]!cex.names!\inputencoding{utf8}
+Notice the \inputencoding{latin9}\lstinline[showstringspaces=false]!cex.names!\inputencoding{utf8}\index{cex.names@\texttt{cex.names}}
 argument that we used, above. It shrinks the names on the $x$ axis
-by 50\% which makes them easier to read. See \inputencoding{latin9}\lstinline[showstringspaces=false]!?par!\inputencoding{utf8}
+by 50\% which makes them easier to read. See \inputencoding{latin9}\lstinline[showstringspaces=false]!?par!\inputencoding{utf8}\index{par@\texttt{par}}
 for a detailed list of additional plot parameters.
 
 %
@@ -2242,13 +2233,13 @@ is handy because it can visually reveal structure (if any) in how
 fast the bars decrease -- this is much more difficult when the bars
 are jumbled. 
 \begin{example}
-U.S.~State Facts and Features. The \inputencoding{latin9}\lstinline[showstringspaces=false]!state.division!\inputencoding{utf8}
+U.S.~State Facts and Features. The \inputencoding{latin9}\lstinline[showstringspaces=false]!state.division!\inputencoding{utf8}\index{Data sets| \texttt{state.division}}
 data record the division (New England, Middle Atlantic, South Atlantic,
 East South Central, West South Central, East North Central, West North
 Central, Mountain, and Pacific) of the fifty states. We can make a
-pareto diagram with either the \inputencoding{latin9}\lstinline[showstringspaces=false]!RcmdrPlugin.IPSUR!\inputencoding{utf8}
-package or with the \inputencoding{latin9}\lstinline[showstringspaces=false]!pareto.chart!\inputencoding{utf8}
-function from the \inputencoding{latin9}\lstinline[showstringspaces=false]!qcc!\inputencoding{utf8}
+pareto diagram with either the \inputencoding{latin9}\lstinline[showstringspaces=false]!RcmdrPlugin.IPSUR!\inputencoding{utf8}\index{R packages@\textsf{R} packages!RcmdrPlugin.IPSUR@\texttt{RcmdrPlugin.IPSUR}}
+package or with the \inputencoding{latin9}\lstinline[showstringspaces=false]!pareto.chart!\inputencoding{utf8}\index{pareto.chart@\texttt{pareto.chart}}
+function from the \inputencoding{latin9}\lstinline[showstringspaces=false]!qcc!\inputencoding{utf8}\index{R packages@\textsf{R} packages!qcc@\texttt{qcc}}
 package \cite{qcc}. See Figure \ref{fig:Pareto-chart}. The code
 follows.
 
@@ -15165,50 +15156,41 @@ us look at a classical problem to get some insight why.
 
 \textbf{A Classical Question:} Given a population of interest, how
 may we effectively learn some of its salient features, \emph{e.g.},
-the population's mean? Answer: one way is through representative random
-sampling. Given a random sample, how do we summarize the information
-contained therein? Answer: by calculating a reasonable statistic,
-\emph{e.g.}, the sample mean. Given a value of a statistic, how do
-we know whether that value is significantly different from that which
-was expected?
-
-\begin{center}
-Answer: we don't. 
-\par\end{center}
-
-Instead, we look at the \emph{sampling distribution} of the statistic,
-and we try to make probabilistic assertions based on a confidence
-level or other consideration. For example, we may find ourselves saying
-things like, \textquotedbl{}With 95\% confidence, the true population
-mean is greater than zero.\textquotedbl{}
+the population's mean? One way is through representative random sampling.
+Given a random sample, we summarize the information contained therein
+by calculating a reasonable statistic, \emph{e.g.}, the sample mean.
+Given a value of a statistic, how do we know whether that value is
+significantly different from that which was expected? We don't; we
+look at the \emph{sampling distribution} of the statistic, and we
+try to make probabilistic assertions based on a confidence level or
+other consideration. For example, we may find ourselves saying things
+like, \textquotedbl{}With 95\% confidence, the true population mean
+is greater than zero.\textquotedbl{}
 
 \textbf{Problem:} Unfortunately, in most cases the sampling distribution
-is \emph{unknown}. Thus in the past, in efforts to say something useful,
-statisticians have been obligated to place some restrictive assumptions
-on the underlying population. For example, if we suppose that the
-population has a normally distribution, then we can say that the distribution
-of $\Xbar$ is normal, too, with the same mean (and a smaller standard
-deviation). It is then easy to draw conclusions, make inferences,
-and go on about our business.
+is \emph{unknown}. Thus, in the past, in efforts to say something
+useful, statisticians have been obligated to place some restrictive
+assumptions on the underlying population. For example, if we suppose
+that the population has a normal distribution, then we can say that
+the distribution of $\Xbar$ is normal, too, with the same mean (and
+a smaller standard deviation). It is then easy to draw conclusions,
+make inferences, and go on about our business.
 
 \textbf{An Alternative:} We don't know what the underlying population
 distributions is, so let us \emph{estimate} it, just like we would
 with any other parameter. The statistic we use is the \emph{empirical
 CDF}, that is, the function that places mass $1/n$ at each of the
-observed data points $x_{1},\ldots,x_{n}$ (see Section BLANK). As
-the sample size increases, we would expect the approximation to get
-better and better (with i.i.d.~observations, it does, and there is
-a wonderful theorem by Glivenko and Cantelli that proves it). And
+observed data points $x_{1},\ldots,x_{n}$ (see Section \ref{sec:The-Empirical-Distribution}).
+As the sample size increases, we would expect the approximation to
+get better and better (with i.i.d.~observations, it does, and there
+is a wonderful theorem by Glivenko and Cantelli that proves it). And
 now that we have an (estimated) population distribution, it is easy
 to find the sampling distribution of any statistic we like: just \textbf{sample}
 from the empirical CDF many, many times, calculate the statistic each
 time, and make a histogram. Done! Of course, the number of samples
 needed to get a representative histogram is prohibitively large\ldots{}human
 beings are simply too slow (and clumsy) to do this tedious procedure.
-
-\begin{center}
-Enter the computer. 
-\par\end{center}
+Enter the computer.
 
 Fortunately, computers are very skilled at doing simple, repetitive
 tasks very quickly and accurately. So we employ them to give us a
@@ -15235,13 +15217,13 @@ iterated long enough to give results accurate to several decimal places,
 often beating classical approximations. 
 \item \textbf{Generality.} Resampling methods are easy to understand and
 apply to a large class of seemingly unrelated procedures. One no longer
-needs to memorize long complicated formulas and algorithms. 
+needs to memorize long complicated formulas and algorithms.
 \end{itemize}
 
 \section{Bootstrap Standard Errors\label{sec:Bootstrap-Standard-Errors}}
 
 \textbf{Procedure for Bootstrapping:} To approximate the sampling
-distribution of a statistic $S(x)$ based on a $SRS$ of size $n$.
+distribution of a statistic $S(x)$ based on a $SRS$ of size $n$:
 \begin{enumerate}
 \item Create many many samples $x_{1}^{\ast},\ldots,x_{M}^{\ast}$, called
 \emph{resamples}, by sampling with replacement from the data. 
@@ -15250,14 +15232,15 @@ for each resample. The distribution of the resample statistics is
 called a \emph{bootstrap distribution}. 
 \item The bootstrap distribution gives information about the sampling distribution
 of the statistic. In particular, it gives us some idea about the center,
-spread, and shape of the sampling distribution of $S$. \end{enumerate}
+spread, and shape of the sampling distribution of $S$.\end{enumerate}
 \begin{example}
-\textbf{Bootstrapping the standard error of the mean.} In this example
-we illustrate the bootstrap by trying to estimate the standard error
-of the sample mean. We do this in the special case when the underlying
-population is $\mathsf{norm}(\mathtt{mean}=2,\,\mathtt{sd}=1)$. Of
-course, we don't need a bootstrap distribution; we know from Section
-Blank that $\Xbar\sim\mathsf{norm}(\mathtt{mean}=2,\,\mathtt{sd}=1/\sqrt{n})$.
+\textbf{Bootstrapping the standard error of the mean.\label{exa:Bootstrap-se-mean}}
+In this example we illustrate the bootstrap by trying to estimate
+the standard error of the sample mean. We do this in the special case
+when the underlying population is $\mathsf{norm}(\mathtt{mean}=2,\,\mathtt{sd}=1)$.
+Of course, for this example we do not need a bootstrap distribution
+because from Section \ref{sec:Sampling-from-Normal} we know that
+$\Xbar\sim\mathsf{norm}(\mathtt{mean}=2,\,\mathtt{sd}=1/\sqrt{n})$.
 We will use what we already know to see how the bootstrap method performs.
 \end{example}
 <<>>=
@@ -15282,19 +15265,19 @@ curve(dnorm(x, 2, 0.2), add = TRUE)
 \end{figure}
 
 
-The graph is shown in Figure BLANK.
+The graph is shown in Figure \ref{fig:Bootstrap-se-mean}, and was
+produced by the following code.
 
 <<eval = FALSE, keep.source = TRUE>>=
 hist(xbarstar, breaks = 40, prob = TRUE)
 curve(dnorm(x, 2, 0.2), add = TRUE)  # overlay true normal density
 @
 \begin{example}
-\textbf{Bootstrapping the Standard Error of the Median.} In this example
-we extend our study to include more complicated statistics and distributions
-such that we do not know the answer ahead of time. This example uses
-the \inputencoding{latin9}\lstinline[showstringspaces=false]!rivers!\inputencoding{utf8}
-dataset which gives the lengths (in miles) of 141 \textquotedbl{}major\textquotedbl{}
-rivers in North America, as compiled by the US Geological Survey. 
+\textbf{Bootstrapping the Standard Error of the Median.\label{exa:Bootstrap-se-median}}
+In this example we extend our study to include more complicated statistics
+and data where we do not know the answer ahead of time. This example
+uses the \inputencoding{latin9}\lstinline[showstringspaces=false]!rivers!\inputencoding{utf8}\index{Data sets!rivers@\texttt{rivers}}
+dataset. 
 
 <<>>=
 stem(rivers)
@@ -15304,7 +15287,7 @@ We see from the stemplot that the \inputencoding{latin9}\lstinline[showstringspa
 data are clearly right-skewed, so a natural estimate of center would
 be the sample median. Unfortunately, its sampling distribution falls
 out of our reach. We use the bootstrap to help us with this problem,
-and the modifications to the last example are scarcely more than trivial.
+and the modifications to the last example are trivial.
 \end{example}
 <<>>=
 resamps <- replicate(1000, sample(rivers, 141, TRUE), simplify = FALSE)
@@ -15326,7 +15309,8 @@ hist(medstar, breaks = 40, prob = TRUE)
 \end{figure}
 
 
-The graph is shown in Figure BLANK.
+The graph is shown in Figure \ref{fig:Bootstrapping-se-median}, and
+was produced by the following code.
 
 <<eval = FALSE, keep.source = TRUE>>=
 hist(medstar, breaks = 40, prob = TRUE)
@@ -15335,7 +15319,7 @@ hist(medstar, breaks = 40, prob = TRUE)
 The boot package in \texttt{R}. It turns out that there are many bootstrap
 procedures and commands already built into \texttt{R}, in the \inputencoding{latin9}\lstinline[showstringspaces=false]!boot!\inputencoding{utf8}
 package. Further, inside the \inputencoding{latin9}\lstinline[showstringspaces=false]!boot!\inputencoding{utf8}
-package there is even a function called \inputencoding{latin9}\lstinline[showstringspaces=false]!boot!\inputencoding{utf8}.
+package there is even a function called \inputencoding{latin9}\lstinline[showstringspaces=false]!boot!\inputencoding{utf8}\index{boot@\texttt{boot}}.
 The basic syntax is of the form:
 
 \inputencoding{latin9}
@@ -15350,7 +15334,7 @@ is a defined function, \emph{of two arguments}, that tells which statistic
 to be computed, and the parameter \inputencoding{latin9}\lstinline[showstringspaces=false]!R!\inputencoding{utf8}
 specifies how many resamples should be taken.
 
-For the standard error of the mean (Example BLANK):
+For the standard error of the mean (Example \ref{exa:Bootstrap-se-mean}):
 
 <<>>=
 library(boot)
@@ -15358,7 +15342,7 @@ mean_fun <- function(x, indices) mean(x[indices])
 boot(data = rnorm(25, mean = 2), statistic = mean_fun, R = 1000)
 @
 
-For the standard error of the median (Example BLANK):
+For the standard error of the median (Example \ref{exa:Bootstrap-se-median}):
 
 <<>>=
 median_fun <- function(x, indices) median(x[indices])
@@ -15371,30 +15355,31 @@ procedure is to be preferred since it invisibly returns much more
 information (which we will use later) than our naive script and it
 is much quicker in its computations.
 \begin{rem}
-jldsfj
+Some things to keep in mind about the bootstrap:
 \begin{itemize}
 \item For many statistics, the bootstrap distribution closely resembles
 the sampling distribution with respect to spread and shape. However,
-the distributions will differ in their centers. While the sampling
-distribution is centered at the population mean (plus any bias), the
-bootstrap distribution is centered at the original value of the statistic
-(plus any bias). We saw that the \inputencoding{latin9}\lstinline[showstringspaces=false]!boot!\inputencoding{utf8}
-function gives an empirical estimate of the bias in the statistic. 
+the bootstrap will not have the same center as the true sampling distribution.
+While the sampling distribution is centered at the population mean
+(plus any bias), the bootstrap distribution is centered at the original
+value of the statistic (plus any bias). The \inputencoding{latin9}\lstinline[showstringspaces=false]!boot!\inputencoding{utf8}
+function gives an empirical estimate of the bias in the statistic
+as part of its output. 
 \item We tried to estimate the standard error, but we could have (in principle)
 tried to estimate something else. Note from the previous remark, however,
 that it would be useless to try to estimate the population mean $\mu$
-using the bootstrap, since the mean of the bootstrap distribution
-is the observed $\xbar$. 
+using the bootstrap since the mean of the bootstrap distribution is
+the observed $\xbar$. 
 \item You don't get something from nothing. We have seen that we can take
 a random sample from a population and use bootstrap methods to get
 a very good idea about standard errors, bias, and the like. However,
 one must not get lured into believing that by doing some random resampling
 somehow one gets more information about the parameters than that which
 was contained in the original sample. Indeed, there is some uncertainty
-about the parameter due just to the original random sampling, and
-there is more uncertainty introduced by resampling. One should think
-of the bootstrap as just another method of estimating parameters of
-interest. 
+about the parameter due to the randomness of the original sample,
+and there is even more uncertainty introduced by resampling. One should
+think of the bootstrap as just another estimation method, nothing
+more, nothing less. 
 \end{itemize}
 \end{rem}
 
@@ -15403,32 +15388,29 @@ interest.
 
 \subsection{Percentile Confidence Intervals}
 
-percentile confidence intervals based on assuming that there is a
-(unknown) transformation such that the distribution of 
-
 As a first try, we want to obtain a 95\% confidence interval for a
-parameter. Usually the statistic is centered (or at least close by)
-the parameter; in such cases a 95\% confidence interval for the parameter
-is nothing more than a 95\% confidence interval for the statistic.
-And to find a 95\% confidence interval for the statistic we need only
-go to its sampling distribution to find an interval that contains
-95\% of the area. (The most popular choice is the equal-tailed interval
-with 2.5\% in each tail.)
+parameter. Typically the statistic we use to estimate the parameter
+is centered at (or at least close by) the parameter; in such cases
+a 95\% confidence interval for the parameter is nothing more than
+a 95\% confidence interval for the statistic. And to find a 95\% confidence
+interval for the statistic we need only go to its sampling distribution
+to find an interval that contains 95\% of the area. (The most popular
+choice is the equal-tailed interval with 2.5\% in each tail.)
 
 This is incredibly easy to accomplish with the bootstrap. We need
 only to take a bunch of bootstrap resamples, order them, and choose
 the $\alpha/2$th and $(1-\alpha)$th percentiles. There is a function
-\inputencoding{latin9}\lstinline[showstringspaces=false]!boot.ci!\inputencoding{utf8}
+\inputencoding{latin9}\lstinline[showstringspaces=false]!boot.ci!\inputencoding{utf8}\index{boot.ci@\texttt{boot.ci}}
 in \textsf{R} already created to do just this. Note that in order
 to use the function \inputencoding{latin9}\lstinline[showstringspaces=false]!boot.ci!\inputencoding{utf8}
-you must first run the program \inputencoding{latin9}\lstinline[showstringspaces=false]!boot!\inputencoding{utf8}
-and save the output in a variable, for example, \inputencoding{latin9}\lstinline[showstringspaces=false]!data.boot!\inputencoding{utf8}.
+you must first run the \inputencoding{latin9}\lstinline[showstringspaces=false]!boot!\inputencoding{utf8}
+function and save the output in a variable, for example, \inputencoding{latin9}\lstinline[showstringspaces=false]!data.boot!\inputencoding{utf8}.
 You then plug \inputencoding{latin9}\lstinline[showstringspaces=false]!data.boot!\inputencoding{utf8}
 into the function \inputencoding{latin9}\lstinline[showstringspaces=false]!boot.ci!\inputencoding{utf8}.
 \begin{example}
 Please see the handout, {}``Bootstrapping Confidence Intervals for
 the Median''.
-\end{example}
+
 <<>>=
 btsamps <- replicate(2000, sample(stack.loss, 21, TRUE), simplify = FALSE)
 thetast <- sapply(btsamps, median, simplify = TRUE)
@@ -15437,12 +15419,11 @@ median(stack.loss)
 quantile(thetast, c(0.025, 0.975))
 @
 
+\end{example}
 
 \begin{example}
 Please see the handout, {}``Bootstrapping Confidence Intervals for
 the Median, $2^{\mathrm{nd}}$ try.''
-\end{example}
-stack.loss because it is small and right skewed
 
 <<>>=
 library(boot)
@@ -15451,6 +15432,7 @@ med_boot <- boot(stack.loss, med_fun, R = 2000)
 boot.ci(med_boot, type = c("perc", "norm", "bca"))
 @
 
+\end{example}
 
 \subsection{Student's $t$ intervals ({}``normal intervals'')}
 
@@ -15460,25 +15442,25 @@ confidence interval for the mean of a $SRS(n)$ from a normal distribution
 is given by \begin{equation}
 \Xbar\pm\mathsf{t}_{\alpha/2}(\mathtt{df}=n-1)\frac{S}{\sqrt{n}}\end{equation}
 where $\mathsf{t}_{\alpha/2}(\mathtt{df}=n-1)$ is the appropriate
-critical value from Student's $t$ distribution and we remember from
-our classes that $\mathrm{SE}(\Xbar)=S/\sqrt{n}$. Of course, the
-estimate for the standard error will change when the underlying population
-distribution is not normal, or when we use a statistic more complicated
-than $\Xbar$. In those situations the bootstrap will give us quite
-reasonable estimates for the standard error. And as long as the sampling
-distribution of our statistic is approximately bell-shaped with small
-bias, the interval \begin{equation}
+critical value from Student's $t$ distribution, and we remember that
+an estimate for the standard error of $\Xbar$ is $S/\sqrt{n}$. Of
+course, the estimate for the standard error will change when the underlying
+population distribution is not normal, or when we use a statistic
+more complicated than $\Xbar$. In those situations the bootstrap
+will give us quite reasonable estimates for the standard error. And
+as long as the sampling distribution of our statistic is approximately
+bell-shaped with small bias, the interval \begin{equation}
 \mbox{statistic}\pm\mathsf{t}_{\alpha/2}(\mathtt{df}=n-1)*\mathrm{SE}(\mbox{statistic})\end{equation}
  will have approximately $100(1-\alpha)\%$ confidence of containing
 $\E(\mathrm{statistic})$.
 \begin{example}
-Lawsuit data revisited We will use the t-interval method to find the
-bootstrap CI for the Median. We have looked at the bootstrap distribution;
-it appears to be symmetric and approximately mound shaped. Further,
-we may check that the bias is approximately 40, which on the scale
-of these data is practically negligible. Thus, we may consider looking
-at the $t$-intervals. Note that, since our sample is so large, instead
-of $t$-intervals we will actually be using $z$-intervals.
+We will use the t-interval method to find the bootstrap CI for the
+Median. We have looked at the bootstrap distribution; it appears to
+be symmetric and approximately mound shaped. Further, we may check
+that the bias is approximately 40, which on the scale of these data
+is practically negligible. Thus, we may consider looking at the $t$-intervals.
+Note that, since our sample is so large, instead of $t$-intervals
+we will essentially be using $z$-intervals.
 \end{example}
 Please see the handout, {}``Bootstrapping Confidence Intervals for
 the Median, $3^{\mathrm{rd}}$ try.''
@@ -15528,12 +15510,10 @@ of the statistic in 1.
 found in 2. A value in the main body of the distribution is not spectacular,
 it could reasonably have occurred by chance. A value in the tail of
 the distribution is unlikely, and hence provides evidence \emph{against}
-the null hypothesis. 
+the null hypothesis that the population distributions are the same. 
 \end{enumerate}
-PICTURE 
-
 Of course, we usually compute a $p$-value, defined to be the probability
-of the observed value of the statistic or more extreme, when the null
+of the observed value of the statistic or more extreme when the null
 hypothesis is true. Small $p$-values are evidence against the null
 hypothesis. It is not immediately obvious how to use resampling methods
 here, so we discuss an example.
@@ -15574,7 +15554,8 @@ case, the observed difference in the sample means just reflects the
 random assignment into the arbitrary \texttt{x1} and \texttt{x2} categories.
 It is now clear how we may resample, consistent with the null hypothesis.
 
-\textbf{Procedure:}
+
+\paragraph*{Procedure:}
 \begin{enumerate}
 \item Randomly resample 10 scores from the combined scores of \texttt{x1}
 and \texttt{x2}, and assign then to the {}``\texttt{x1}'' group.
@@ -15587,7 +15568,6 @@ If the $p$-value is small, then we consider that evidence against
 the hypothesis that the groups are the same. 
 \end{enumerate}
 \end{example}
-Please see the handout, {}``Two Sample Permutation Tests in \texttt{R}.''
 \begin{rem}
 In calculating the permutation test $p$-value, the formula is essentially
 the proportion of resample statistics that are greater than or equal
@@ -15600,50 +15580,50 @@ function.
 \end{rem}
 <<>>=
 library(coin)
-oneway_test(len~supp, data = ToothGrowth)
-oneway_test(breaks~wool, data = warpbreaks)
-oneway_test(conc~state, data = Puromycin)
-oneway_test(rate~state, data = Puromycin)
+oneway_test(len ~ supp, data = ToothGrowth)
 @
 
 
 \subsection{Comparison with the Two Sample \emph{t} test}
 
-We know from Chapter BLANK that to tell whether there is an improvement
-as a result of taking the intervention class the procedure to use
-is the two-sample $t$-test. We use the $t$-test because we assume
-a normal underlying population, with unknown variance, and we have
-a small sample $n=10$. \textbf{Question:} what does the $t$-test
-say? It is easy to do in \textsf{R}; below is the output.
+We know from Chapter \ref{cha:Hypothesis-Testing} to use the two-sample
+$t$-test to tell whether there is an improvement as a result of taking
+the intervention class. Note that the $t$-test assumes normal underlying
+populations, with unknown variance, and small sample $n=10$. What
+does the $t$-test say? Below is the output.
 
 <<>>=
 t.test(len ~ supp, data = ToothGrowth, alt = "greater", var.equal = TRUE)
 @
 
-The $p$-value for the $t$-test was 0.02848, while for the permutation
-test it was 0.02948526. These are actually really close! But they
-are not necessarily close, in other situations. Note that there is
-an underlying normality assumption for the $t$-test, which isn't
-present in the permutation test. If the normality assumption may be
-questionable, then the permutation test would be more reasonable.
+<<echo = FALSE, results = hide>>=
+A <- show(oneway_test(len ~ supp, data = ToothGrowth))
+B <- t.test(len ~ supp, data = ToothGrowth, alt = "greater", var.equal = TRUE)
+@
+
+The $p$-value for the $t$-test was \Sexpr{round(B$p.value, 3)},
+while the permutation test $p$-value was \Sexpr{round(A$p.value, 3)}.
+Note that there is an underlying normality assumption for the $t$-test,
+which isn't present in the permutation test. If the normality assumption
+may be questionable, then the permutation test would be more reasonable.
 We see what can happen when using a test in a situation where the
 assumptions are not met: smaller $p$-values. In situations where
 the normality assumptions are not met, for example, small sample scenarios,
 the permutation test is to be preferred. In particular, if accuracy
-is very important, then one should use the permutation test.
+is very important then we should use the permutation test.
 \begin{rem}
-jdslkjds
+Here are some things about permutation tests to keep in mind.
 \begin{itemize}
-\item When are Permutation tests valid? While the permutation test doesn't
-require normality of the populations (as contrasted with the $t$-test),
-nevertheless it still requires that the two groups are exchangeable;
-see Section BLANK. In particular, this means that they must be identically
-distributed under the null hypothesis. They must have not only the
-same means, but they must also have the same spread and shape. This
-assumption may or may not be true in a given example, but rarely will
-that cause the $t$-test to outperform the permutation test. Why?
-Because even if the sample standard deviations are markedly different,
-that doesn't mean that the population standard deviations are different.
+\item While the permutation test does not require normality of the populations
+(as contrasted with the $t$-test), nevertheless it still requires
+that the two groups are exchangeable; see Section \ref{sec:Exchangeable-Random-Variables}.
+In particular, this means that they must be identically distributed
+under the null hypothesis. They must have not only the same means,
+but they must also have the same spread, shape, and everything else.
+This assumption may or may not be true in a given example, but it
+will rarely cause the $t$-test to outperform the permutation test,
+because even if the sample standard deviations are markedly different
+it does not mean that the population standard deviations are different.
 In many situations the permutation test will also carry over to the
 $t$-test. 
 \item If the distribution of the groups is close to normal, then the $t$-test
@@ -15652,7 +15632,7 @@ If they differ markedly, then this should be considered evidence that
 the normality assumptions do not hold. 
 \item The generality of the permutation test is such that one can use all
 kinds of statistics to compare the two groups. One could compare the
-difference in variances, or the difference in (just about anything).
+difference in variances or the difference in (just about anything).
 Alternatively, one could compare the ratio of sample means, $\Xbar_{1}/\Xbar_{2}$.
 Of course, under the null hypothesis this last quantity should be
 near 1. 
@@ -15661,7 +15641,7 @@ due to the inherent randomness of resampling from the data. We can
 make the variability as small as we like by taking sufficiently many
 resamples. How many? If the conclusion is very important (that is,
 if lots of money is at stake), then take thousands. For point estimation
-problems typically, $R=1000$ resamples or so is enough. In general,
+problems typically, $R=1000$ resamples, or so, is enough. In general,
 if the true $p$-value is $p$ then the standard error of the estimated
 $p$-value is $\sqrt{p(1-p)/R}$. You can choose $R$ to get whatever
 accuracy desired. 
@@ -17976,7 +17956,9 @@ permit their use in free software.
 \cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{\indexname} 
-\printindex
+%\printindex
+
+\printindex{}
 
 <<echo=FALSE, results=hide, split=FALSE>>= 
 rm(.Random.seed)
