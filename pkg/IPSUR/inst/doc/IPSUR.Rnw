@@ -425,7 +425,7 @@ Free Documentation License''.
 This book was expanded from lecture materials I use in a one semester
 upper-division undergraduate course entitled \emph{Probability and
 Statistics} at Youngstown State University. Those lecture materials,
-in turn, are based on notes that I transcribed as a graduate student
+in turn, were based on notes that I transcribed as a graduate student
 at Bowling Green State University. The course for which the materials
 were written is 50-50 Probability and Statistics, and the attendees
 include mathematics, engineering, and computer science majors (among
@@ -437,8 +437,8 @@ includes the introductions and elementary \emph{descriptive statistics};
 I want the students to be knee-deep in data right out of the gate.
 The second part is the study of \emph{probability}, which begins at
 the basics of sets and the equally likely model, journeys past discrete
-and continuous random variables, and continues through to multivariate
-distributions. The chapter on Sampling Distributions paves the way
+and continuous random variables, continuing through to multivariate
+distributions. The chapter on sampling distributions paves the way
 to the third part, which is \emph{inferential statistics}. This last
 part includes point and interval estimation, hypothesis testing, and
 finishes with introductions to selected topics in applied statistics.
@@ -466,19 +466,18 @@ trained in linear algebra. That being said, it is important to me
 for the students to hold something in their hands which acknowledges
 the world of mathematics and statistics beyond the classroom, and
 which may be useful to them for many semesters to come. It also mirrors
-my own experience learning statistics.
+my own experience as a student.
 
 This document's ultimate goal is to be a more or less self contained,
 essentially complete, correct, textbook. There should be plenty of
-exercises for the student, and the problems should have full solutions
-for some, and no solutions for others (so that the instructor may
-assign them for grading). By \inputencoding{latin9}\lstinline[showstringspaces=false]!Sweave!\inputencoding{utf8}'s
+exercises for the student, with full solutions for some and no solutions
+for others (so that the instructor may assign them for grading). By
+\inputencoding{latin9}\lstinline[showstringspaces=false]!Sweave!\inputencoding{utf8}'s
 dynamic nature it is possible to write randomly generated exercises
 and I had planned to implement this idea already throughout the book.
-Alas, there are only 24 hours in a day. Look for more in the Second
-Edition.
+Alas, there are only 24 hours in a day. Look for more in future editions.
 
-Seasoned readers will be able to detect my statistical origins: \emph{Probability
+Seasoned readers will be able to detect my origins: \emph{Probability
 and Statistical Inference} by Hogg and Tanis \cite{Hogg2006}, \emph{Statistical
 Inference} by Casella and Berger \cite{Casella2002}, and \emph{Theory
 of Point Estimation/Testing Statistical Hypotheses} by Lehmann \cite{Lehmann1998,Lehmann1986}.
@@ -520,7 +519,7 @@ package in base \textsf{R}, and here is why:
 \begin{enumerate}
 \item I made a conscious effort to minimize dependence on contributed packages,
 \item The data are instantly available, already in the correct format, so
-we do not need time to manage them, and
+we need not take time to manage them, and
 \item The data are \emph{real}.
 \end{enumerate}
 I made no attempt to choose data sets that would be interesting to
@@ -536,15 +535,15 @@ In the meantime, I will add new data sets incrementally as time permits.
 
 \item [{More~proofs:}] for the sake of completeness (I understand that
 some people would not consider more proofs to be improvement). Many
-proofs have been skipped entirely, and I cannot discern any rhyme
-or reason to the current omissions. I will add more when I get a chance. 
+proofs have been skipped entirely, and am not aware of any rhyme or
+reason to the current omissions. I will add more when I get a chance. 
 \item [{More~and~better~graphics:}] I have not used the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,language=R]!ggplot2!\inputencoding{utf8}
 package \cite{Wickam2009} because I do not know how to use it yet.
 It is on my to-do list.
 \item [{More~and~better~exercises:}] There are only a few exercises
-in the first edition simply because I have not had time to write them.
+in the first edition simply because I have not had time to write more.
 I have toyed with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,language=R]!exams!\inputencoding{utf8}
-package \cite{exams}, and I believe that it is a right way to move
+package \cite{exams} and I believe that it is a right way to move
 forward. As I learn more about what the package can do I would like
 to incorporate it into later editions of this book.
 \end{description}
@@ -646,10 +645,11 @@ Another advantage goes hand in hand with the Program's license; since
 that wants it. A package hosted on \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!CRAN!\inputencoding{utf8}
 allows me to obey the license by default.
 
-Yet another advantage is that the excellent facilities at \textsf{R}-Forge
-are building and checking the package daily against patched and development
-versions of the absolute latest pre-release of \textsf{R}. If any
-problems surface then I will know about it within 24 hours.
+A much more important advantage is that the excellent facilities at
+\textsf{R}-Forge are building and checking the package daily against
+patched and development versions of the absolute latest pre-release
+of \textsf{R}. If any problems surface then I will know about it within
+24 hours.
 
 And finally, suppose there is some sort of problem. The package structure
 makes it \emph{incredibly} easy for me to distribute bug-fixes and
@@ -661,7 +661,9 @@ Dorothy.
 
 \subsection*{Ancillary Materials}
 
-These are extra materials that accompany \IPSUR.
+These are extra materials that accompany \IPSUR. They reside in the
+\inputencoding{latin9}\lstinline[showstringspaces=false]!/etc!\inputencoding{utf8}
+subdirectory of the package source.
 \begin{description}
 \item [{\texttt{IPSUR.RData}}] is a saved image of the \textsf{R} workspace
 at the completion of the Sweave processing of \IPSUR. It can be loaded
@@ -670,7 +672,8 @@ or with the command \inputencoding{latin9}\lstinline[showstringspaces=false]!loa
 Either method will make every single object in the file immediately
 available and in memory. In particular, the data BLANK from Exercise
 BLANK in Chapter BLANK on page BLANK will be loaded. Type BLANK at
-the command line to see for yourself. 
+the command line (after loading \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR.RData!\inputencoding{utf8})
+to see for yourself. 
 \item [{\texttt{IPSUR.R}}] is the exported \textsf{R} code from \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR.Rnw!\inputencoding{utf8}.
 With this script, literally every \textsf{R} command from the entirety
 of \IPSUR\ can be resubmitted at the command line.
@@ -680,7 +683,7 @@ of \IPSUR\ can be resubmitted at the command line.
 
 We use the notation \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
 or \inputencoding{latin9}\lstinline[showstringspaces=false]!stem.leaf!\inputencoding{utf8}
-notation to denote objects, functions, \emph{etc}. The sequence {}``\textsf{Statistics}
+notation to denote objects, functions, \emph{etc}.. The sequence {}``\textsf{Statistics}
 \textsf{$\triangleright$} \textsf{Summaries} \textsf{$\triangleright$}
 \textsf{Active Dataset}'' means to click the \textsf{Statistics}
 menu item, next click the \textsf{Summaries} submenu item, and finally
@@ -707,18 +710,18 @@ click \textsf{Active Dataset}.
 
 \pagenumbering{arabic} 
 
-This has proved to be the hardest chapter to write, by far. The trouble
+This chapter has proved to be the hardest to write, by far. The trouble
 is that there is so much to say -- and so many people have already
-said it so much better than I could. When I get something I can be
-happy with I will put it here.
+said it so much better than I could. When I get something I like I
+will release it here.
 
 In the meantime, there is a lot of information already available to
-a person with an Internet connection. I recommend to start at Wikipedia
-(which is not flawless but has the main ideas with links to reputable
-sources).
+a person with an Internet connection. I recommend to start at Wikipedia,
+which is not a flawless resource but it has the main ideas with links
+to reputable sources.
 
 In my lectures I usually tell stories about Fisher, Galton, Gauss,
-Laplace, Quetelet, the Chevalier de Mere, and others.
+Laplace, Quetelet, and the Chevalier de Mere.
 
 
 \section{Probability}
@@ -736,34 +739,35 @@ Statistics concerns data; their collection, analysis, and interpretation.
 In this book we distinguish between two types of statistics: descriptive
 and inferential. 
 
-Loosely speaking, descriptive statistics concerns the summarization
-of data. We have a data set and we would like to describe the data
-set in multiple ways. Usually this entails calculating numbers from
-the data, called descriptive measures. Examples are sum, averages,
-percentages, and so forth.
+Descriptive statistics concerns the summarization of data. We have
+a data set and we would like to describe the data set in multiple
+ways. Usually this entails calculating numbers from the data, called
+descriptive measures, such as percentages, sums, averages, and so
+forth.
 
 Inferential statistics does more. There is an inference associated
-with the data set.
+with the data set, a conclusion drawn about the population from which
+the data originated.
 
 I would like to mention that there are two schools of thought of statistics:
-Frequentist and Bayesian. The difference between the schools is related
+frequentist and bayesian. The difference between the schools is related
 to how the two groups interpret the underlying probability (see Section
 ). The frequentist school gained a lot of ground among statisticians
 due in large part to the work of Fisher, Neyman, and Pearson in the
 early twentieth century. That dominance lasted until inexpensive computing
-power became widely available; nowadays the Bayesian school is garnering
-more attention, at an increasing rate.
+power became widely available; nowadays the bayesian school is garnering
+more attention and at an increasing rate.
 
 This book is devoted mostly to the frequentist viewpoint because that
 is how I was trained, with the conspicuous exception of Sections \ref{sec:Bayes'-Rule}
-and \ref{sec:Conditional-Distributions}. I plan to add more Bayesian
+and \ref{sec:Conditional-Distributions}. I plan to add more bayesian
 material in later editions of this book. 
 
 
 \chapter{An Introduction to \textsf{R\label{cha:An-Introduction-to-R}}}
 
-This chapter is designed to help a person to begin to get to know
-the \textsf{R} statistical computing environment. 
+This chapter is designed to help a person get started with the \textsf{R}
+statistical computing environment. 
 
 
 \paragraph*{What do I want them to know?}
@@ -865,7 +869,7 @@ must first be loaded for use with the \inputencoding{latin9}\lstinline[showstrin
 function. For instance, the \inputencoding{latin9}\lstinline[showstringspaces=false]!foreign!\inputencoding{utf8}
 package (in the base distribution) contains all sorts of functions
 needed to import data sets into \textsf{R} from other software such
-as SPSS, SAS, \emph{etc}. But none of those functions will be available
+as SPSS, SAS, \emph{etc}.. But none of those functions will be available
 until the command \inputencoding{latin9}\lstinline[showstringspaces=false]!library(foreign)!\inputencoding{utf8}
 is issued. 
 
@@ -885,11 +889,12 @@ manual, \url{http://cran.r-project.org/manuals.html}.
 
 This is the most basic method and is the first one that beginners
 will use.
-\begin{enumerate}
-\item Rgui (Windows)
-\item Terminal
-\item Emacs/ESS, XEmacs
-\end{enumerate}
+\begin{description}
+\item [{\textsf{RGui}~(Microsoft$\circledR$~Windows)}]~
+\item [{Terminal}]~
+\item [{Emacs/ESS,~XEmacs}]~
+\item [{JGR}]~
+\end{description}
 
 \paragraph*{Multiple lines at a time}
 
@@ -1200,7 +1205,7 @@ letters[-(6:24)]
 \subsection{Functions and Expressions}
 
 A function takes arguments as input and returns an object as output.
-There are functions to all sorts of things. We show some examples
+There are functions to do all sorts of things. We show some examples
 below.
 
 <<keep.source = TRUE>>=
@@ -1213,11 +1218,10 @@ sd(x)        # sample standard deviation
 @
 
 It will not be long before the user starts to wonder how a particular
-function is doing its job, and the great thing about \textsf{R} is
-that it is open-source, which means that anybody is free to look under
-the hood of a function and see how things are calculated. For detailed
-instructions see the article {}``Accessing the Sources'' by Uwe
-Ligges \cite{Ligges2006}. In short:
+function is doing its job, and since \textsf{R} is open-source, anybody
+is free to look under the hood of a function to see how things are
+calculated. For detailed instructions see the article {}``Accessing
+the Sources'' by Uwe Ligges \cite{Ligges2006}. In short:
 \begin{enumerate}
 \item Type the name of the function without any parentheses or arguments.
 If you are lucky then the code for the entire function will be printed,
@@ -1230,9 +1234,9 @@ function works:
 intersect
 @
 
-\item If instead it shows \inputencoding{latin9}\lstinline[showstringspaces=false]!UseMethod("!\inputencoding{utf8}\emph{something}\inputencoding{latin9}\lstinline[showstringspaces=false]!")!\inputencoding{utf8}then
-you will need to identify the \emph{class} of the object to be inputted
-and next look at the \emph{method} that will be \emph{dispatched}
+\item If instead it shows \inputencoding{latin9}\lstinline[showstringspaces=false]!UseMethod("!\inputencoding{utf8}\emph{something}\inputencoding{latin9}\lstinline[showstringspaces=false]!")!\inputencoding{utf8}
+then you will need to choose the \emph{class} of the object to be
+inputted and next look at the \emph{method} that will be \emph{dispatched}
 to the object. For instance, typing \inputencoding{latin9}\lstinline[showstringspaces=false]!rev!\inputencoding{utf8}
 says 
 
@@ -1373,8 +1377,7 @@ lists are also volunteers who are not paid by customer support fees.
 Consequently, if you want to use the mailing lists for free advice
 then you must adhere to some basic etiquette, or else you may not
 get a reply, or even worse, you may receive a reply which is a bit
-less cordial than you are used to. Below are a few considerations
-which the author would like to highlight.
+less cordial than you are used to. Below are a few considerations:
 \begin{enumerate}
 \item Read the FAQ (\url{http://cran.r-project.org/faqs.html}). Note that
 there are different FAQs for different operating systems. You should
@@ -1385,12 +1388,12 @@ a very high likelihood that your question has been asked before on
 the mailing list. If you want to know about topic \inputencoding{latin9}\lstinline[showstringspaces=false]!foo!\inputencoding{utf8},
 then you can do \inputencoding{latin9}\lstinline[showstringspaces=false]!RSiteSearch("foo")!\inputencoding{utf8}
 to search the mailing list archives (and the online help) for it. 
-\item Do a Google search. 
+\item Do a Google search and an RSeek.org search.
 \end{enumerate}
 If your question is not a FAQ, has not been asked on \textsf{R}-help
 before, and does not yield to a Google (or alternative) search, then,
-and only then, should you even consider asking \textsf{R}-help. Below
-are a few additional considerations. 
+and only then, should you even consider writing to \textsf{R}-help.
+Below are a few additional considerations. 
 \begin{enumerate}
 \item \textbf{Read the posting guide (\url{http://www.r-project.org/posting-guide.html})
 before posting.} This will save you a lot of trouble and pain.
@@ -1411,7 +1414,8 @@ will be available to him/her.
 used, the attached packages, or the exact version of \textsf{R} being
 used. The \inputencoding{latin9}\lstinline[showstringspaces=false]!sessionInfo()!\inputencoding{utf8}
 command collects all of this information to be copy-pasted into an
-email. See Appendix \ref{cha:R-Session-Information} for an example.
+email (and the Posting Guide requests this information). See Appendix
+\ref{cha:R-Session-Information} for an example.
 \end{enumerate}
 
 \section{External resources}
@@ -1434,7 +1438,7 @@ There are many tips and tricks listed here. If you find a trick of
 your own, login and share it with the world.
 \item [{Other:}] the \textsf{R} Graph Gallery (\url{http://addictedtor.free.fr/graphiques/})
 and \textsf{R} Graphical Manual (\url{http://bm2.genes.nig.ac.jp/RGM2/index.php})
-have literally thousands of graphs to peruse. \textsf{R}Seek(\url{http://www.rseek.org})
+have literally thousands of graphs to peruse. \textsf{R}Seek (\url{http://www.rseek.org})
 is a search engine based on Google specifically tailored for \textsf{R}
 queries. 
 \end{description}
@@ -1449,22 +1453,14 @@ the command is \inputencoding{latin9}\lstinline[showstringspaces=false]!M-p!\inp
 (which means hold down the \textsf{Alt} button and press {}``\inputencoding{latin9}\lstinline[showstringspaces=false]!p!\inputencoding{utf8}'').
 More generally, the command \inputencoding{latin9}\lstinline[showstringspaces=false]!history()!\inputencoding{utf8}
 will show a whole list of recently entered commands.
-
-Missing values in \textsf{R} are denoted by \inputencoding{latin9}\lstinline[showstringspaces=false]!NA!\inputencoding{utf8}.
-Operations on data vector \inputencoding{latin9}\lstinline[showstringspaces=false]!NA!\inputencoding{utf8}
-values treat them as if the values can't be found. This means adding
-(as well as subtracting and all of the other mathematical operations)
-a number to \inputencoding{latin9}\lstinline[showstringspaces=false]!NA!\inputencoding{utf8}
-results in \inputencoding{latin9}\lstinline[showstringspaces=false]!NA!\inputencoding{utf8}.
-
-To find out what all variables are in the current work environment,
+\begin{itemize}
+\item To find out what all variables are in the current work environment,
 use the commands \inputencoding{latin9}\lstinline[showstringspaces=false]!objects()!\inputencoding{utf8}
 or \inputencoding{latin9}\lstinline[showstringspaces=false]!ls()!\inputencoding{utf8}.
 These list all available objects in the workspace. If you wish to
 remove one or more variables, use \inputencoding{latin9}\lstinline[showstringspaces=false]!remove(var1, var2, var3)!\inputencoding{utf8},
 or more simply use \inputencoding{latin9}\lstinline[showstringspaces=false]!rm(var1, var2, var3)!\inputencoding{utf8},
 and to remove all objects use \inputencoding{latin9}\lstinline[showstringspaces=false]!rm(list = ls())!\inputencoding{utf8}.
-\begin{enumerate}
 \item Another use of \inputencoding{latin9}\lstinline[showstringspaces=false]!scan!\inputencoding{utf8}
 is when you have a long list of numbers (separated by spaces or on
 different lines) already typed somewhere else, say in a text file.
@@ -1475,8 +1471,7 @@ Next type the \inputencoding{latin9}\lstinline[showstringspaces=false]!x <- scan
 command in the \textsf{R} console, and paste the numbers at the \inputencoding{latin9}\lstinline[showstringspaces=false]!1:!\inputencoding{utf8}
 prompt with \textsf{Edit}\emph{ }\textsf{$\triangleright$}\emph{
 }\textsf{Paste}. All of the numbers will automatically be entered
-into the vector \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}.\end{enumerate}
-\begin{itemize}
+into the vector \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}.
 \item The command \inputencoding{latin9}\lstinline[showstringspaces=false]!Ctrl+l!\inputencoding{utf8}
 clears the screen in the Microsoft$\circledR$ Windows \textsf{R}Gui.
 The comparable command for Emacs/ESS is 
@@ -6171,13 +6166,16 @@ are discussed in detail, and the more general concept of expectation
 is defined, which paves the way for moment generating functions.
 
 We give special attention to the empirical distribution since it plays
-such a fundamental role with respect to resampling and Chapter BLANK;
+such a fundamental role with respect to resampling and Chapter \ref{cha:Resampling-Methods};
 it will also be needed in Section BLANK where we discuss the Kolmogorov-Smirnov
 test. Following this is a section in which we introduce a catalogue
 of discrete random variables that can be used to model experiments.
 
 There are some comments on simulation, and we mention transformations
-of random variables in the discrete case.
+of random variables in the discrete case. The interested reader who
+would like to learn more about any of the assorted discrete distributions
+mentioned here should take a look at \emph{Univariate Discrete Distributions}
+by Johnson \emph{et al }\cite{Johnson1993}.
 
 
 \paragraph*{What do I want them to know?}
@@ -7681,6 +7679,11 @@ PDFs and CDFs The continuous uniform distribution is highlighted,
 along with the Gaussian, or normal, distribution. Some mathematical
 details pave the way for a catalogue of models.
 
+The interested reader who would like to learn more about any of the
+assorted discrete distributions mentioned below should take a look
+at \emph{Continuous Univariate Distributions, Volumes 1} and \emph{2}
+by Johnson \emph{et al }\cite{Johnson1994,Johnson1995}.
+
 
 \paragraph*{What do I want them to know?}
 \begin{itemize}
@@ -8747,6 +8750,12 @@ add to our catalogue. Moreover, we will study certain classes of dependence,
 and clarify the special case when there is no dependence, namely,
 independence.
 
+The interested reader who would like to learn more about any of the
+below mentioned multivariate distributions should take a look at \emph{Discrete
+Multivariate Distributions} by Johnson \emph{et al }\cite{Johnson1997}
+or \emph{Continuous Multivariate Distributions} \cite{Kotz2000} by
+Kotz \emph{et al}.
+
 
 \paragraph*{What do I want them to know?}
 \begin{itemize}
@@ -9313,10 +9322,10 @@ the covariance is zero the numerator of the correlation is 0.
 
 
 \begin{rem}
-Unfortunately, the converse of Corollary \ref{cor:indep-implies-uncorr}
-is not true. That is, there are many random variables which are dependent
-yet their covariance and correlation is zero. For more details, see
-Casella and Berger \cite{Casella2002}. \end{rem}
+\label{rem:cov0-not-imply-indep}Unfortunately, the converse of Corollary
+\ref{cor:indep-implies-uncorr} is not true. That is, there are many
+random variables which are dependent yet their covariance and correlation
+is zero. For more details, see Casella and Berger \cite{Casella2002}. \end{rem}
 \begin{cor}
 If $X$ and $Y$ are independent, then the moment generating function
 of $X+Y$ is \begin{equation}
@@ -9415,16 +9424,16 @@ where\begin{equation}
 \upmu=(\mu_{X},\,\mu_{Y})^{T},\quad\sum=\left(\begin{array}{cc}
 \sigma_{X}^{2} & \rho\sigma_{X}\sigma_{Y}\\
 \rho\sigma_{X}\sigma_{Y} & \sigma_{Y}^{2}\end{array}\right).\end{equation}
-See Appendix BLANK. The vector notation allows for a more compact
-rendering of the joint PDF:\begin{equation}
+See Appendix \ref{cha:Mathematical-Machinery}. The vector notation
+allows for a more compact rendering of the joint PDF:\begin{equation}
 f_{X,Y}(\mathbf{x})=\frac{1}{2\pi\left|\Sigma\right|^{1/2}}\exp\left\{ -\frac{1}{2}\left(\mathbf{x}-\upmu\right)^{\top}\Sigma^{-1}\left(\mathbf{x}-\upmu\right)\right\} ,\end{equation}
 where in an abuse of notation we have written $\mathbf{x}$ for $(x,y)$.
 Note that the formula only holds when $\rho\neq\pm1$.
 \begin{rem}
-In Remark BLANK we noted that just because random variables are uncorrelated,
-it does not necessarily mean that they are independent. However, there
-is an important exception to this rule: the normal distribution. Indeed,
-$(X,Y)\sim\mathsf{mvnorm}(\mathtt{mean}=\upmu,\,\mathtt{sigma}=\Sigma)$
+In Remark \ref{rem:cov0-not-imply-indep} we noted that just because
+random variables are uncorrelated it does not necessarily mean that
+they are independent. However, there is an important exception to
+this rule: the bivariate normal distribution. Indeed, $(X,Y)\sim\mathsf{mvnorm}(\mathtt{mean}=\upmu,\,\mathtt{sigma}=\Sigma)$
 are independent if and only if $\rho=0$. 
 \end{rem}
 
@@ -9458,9 +9467,18 @@ where\begin{equation}
 
 \subsection{How to do it with \textsf{R}}
 
-Use package \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mvtnorm!\inputencoding{utf8}
-\cite{Genzmvtnorm} or \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mnormt!\inputencoding{utf8}
-\cite{mnormt}%
+The multivariate normal distribution is implemented in both the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mvtnorm!\inputencoding{utf8}
+package \cite{Genzmvtnorm} and the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mnormt!\inputencoding{utf8}
+package \cite{mnormt}. We use the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mvtnorm!\inputencoding{utf8}
+package in this book simply because it is a dependency of another
+package used in the book. 
+
+The \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mvtnorm!\inputencoding{utf8}
+package has functions \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!dmvnorm!\inputencoding{utf8}
+and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!rmvnorm!\inputencoding{utf8}
+for the PDF and to generate random vectors, respectively. Let us get
+started with a graph of the bivariate normal PDF. We can make the
+plot with the following code%
 \footnote{Another way to do this is with the \texttt{curve3d} function in the
 \texttt{emdbook} package \cite{emdbook}. It looks like this:
 \begin{lyxcode}
@@ -9480,7 +9498,19 @@ called {}``\texttt{dmvnorm}''; one must load them to the search
 path in the correct order or \textsf{R} will use the wrong one (the
 arguments are named differently and the underlying algorithms are
 different). %
-} 
+}, where the workhorse is the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!persp!\inputencoding{utf8}
+function in base \textsf{R}.
+
+<<eval = FALSE>>=
+library(mvtnorm)
+x <- y <- seq(from = -3, to = 3, length.out = 30)
+f <- function(x,y) dmvnorm(cbind(x,y), mean = c(0,0), sigma = diag(2))
+z <- outer(x, y, FUN = f)
+persp(x, y, z, theta = -30, phi = 30, ticktype = "detailed")
+@
+
+We chose the standard bivariate normal, $\mathsf{mvnorm}(\mathtt{mean}=\mathbf{0},\,\mathtt{sigma}=\mathbf{I})$,
+to display.
 
 %
 \begin{figure}
@@ -9502,44 +9532,73 @@ persp(x, y, z, theta = -30, phi = 30, ticktype = "detailed")
 
 \section{The Multinomial Distribution\label{sec:Multinomial}}
 
-What do I want them to know about the multinomial distribution.
-\begin{itemize}
-\item It is discrete.
-\item the support set is finite, called a simplex.
-\item expected values.
-\item correlation and covariance
-\item marginal distributions
-\item how to generate randomly
-\end{itemize}
 We sample $n$ times, with replacement, from an urn that contains
 balls of $k$ different types. Let $X_{1}$ denote the number of balls
-in our sample of type 1, $X_{2}$ denote the number of balls of type
-2, \ldots{} , and $X_{k}$ denote the number of balls of type $k$.
-The the urn has proportion $p_{1}$ of balls of type 1, \ldots{},
-$p_{k}$ of type $p_{k}$, then the joint PMF of $(X_{1},\ldots,X_{k})$
+in our sample of type 1, let $X_{2}$ denote the number of balls of
+type 2, \ldots{} , and let $X_{k}$ denote the number of balls of
+type $k$. Suppose the urn has proportion $p_{1}$ of balls of type
+1, proportion $p_{2}$ of balls of type 2, \ldots{}, and proportion
+$p_{k}$ of balls of type $k$. Then the joint PMF of $(X_{1},\ldots,X_{k})$
 is\begin{eqnarray}
-f_{X_{1},\ldots,X_{k}}(x_{1},\ldots,x_{k}) & = & {n \choose x_{1}\, x_{2}\,\cdots\, x_{k}}\, p_{1}^{x_{1}}p_{2}^{x_{2}}\cdots p_{k}^{x_{k}},\quad\mbox{for }(x_{1},\ldots,x_{k})\in S_{X_{1},\ldots X_{K}},\end{eqnarray}
-which, as usual, represents $\P(X_{1}=x_{1},\, X_{2}=x_{2},\, X_{k}=x_{k})$.
-We write $(X_{1},\ldots,X_{k})\sim\mathsf{multinom}(\mathtt{size}=n,\,\mathtt{prob}=\mathbf{p}_{\mathrm{k}\times1})$.
-Several comments are in order. First, the support set $S_{X_{1},\ldots X_{K}}$
+f_{X_{1},\ldots,X_{k}}(x_{1},\ldots,x_{k}) & = & {n \choose x_{1}\, x_{2}\,\cdots\, x_{k}}\, p_{1}^{x_{1}}p_{2}^{x_{2}}\cdots p_{k}^{x_{k}},\end{eqnarray}
+for $(x_{1},\ldots,x_{k})$ in the joint support $S_{X_{1},\ldots X_{K}}$.
+We write\begin{equation}
+(X_{1},\ldots,X_{k})\sim\mathsf{multinom}(\mathtt{size}=n,\,\mathtt{prob}=\mathbf{p}_{\mathrm{k}\times1}).\end{equation}
+
+
+Several comments are in order. First, the joint support set $S_{X_{1},\ldots X_{K}}$
 contains all nonnegative integer $k$-tuples $(x_{1},\ldots,x_{k})$
-that satisfy $x_{1}+x_{2}+\cdots+x_{k}=n$. A support set like this
-is called a \emph{simplex}. Second, the proportions $p_{1}$, $p_{2}$,
+such that $x_{1}+x_{2}+\cdots+x_{k}=n$. A support set like this is
+called a \emph{simplex}. Second, the proportions $p_{1}$, $p_{2}$,
 \ldots{}, $p_{k}$ satisfy $p_{i}\geq0$ for all $i$ and $p_{1}+p_{2}+\cdots+p_{k}=1$.
 Finally, the symbol\begin{equation}
 {n \choose x_{1}\, x_{2}\,\cdots\, x_{k}}=\frac{n!}{x_{1}!\, x_{2}!\,\cdots x_{k}!}\end{equation}
 is called a \emph{multinomial coefficient} which generalizes the notion
-of a binomial coefficient we saw in Equation \ref{eq:binomial-coefficient}.
+of a binomial coefficient we saw in Equation \ref{eq:binomial-coefficient}. 
+
+The form and notation we have just described matches the R documentation,
+but is not standard among other texts. Most other books use the above
+for a $k-1$ dimension multinomial distribution, because the linear
+constraint $x_{1}+x_{2}+\cdots+x_{k}=n$ means that once the values
+of $X_{1}$, $X_{2}$, \ldots{}, $X_{k-1}$ are known the final value
+$X_{k}$ is determined, and not random. Another term used for this
+is a \emph{singular} distribution.
+
+For the most part we will ignore these difficulties, but the careful
+reader should keep them in mind. There is not much of a difference
+in practice, except that below we will use a two-dimensional support
+set for a three-dimension multinomial distribution. See Figure BLANK. 
+
 When $k=2$, we have $x_{1}=x$ and $x_{2}=n-x$, we have $p_{1}=p$
 and $p_{2}=1-p$, and the multinomial coefficient is literally a binomial
-coefficient. In this notation we have just shown, therefore, that
-the $\mathsf{multinom}(\mathtt{size}=n,\,\mathtt{prob}=\mathbf{p}_{2\times1})$
+coefficient. In the previous notation we have thus shown that the
+$\mathsf{multinom}(\mathtt{size}=n,\,\mathtt{prob}=\mathbf{p}_{2\times1})$
 distribution is the same as a $\mathsf{binom}(\mathtt{size}=n,\,\mathtt{prob}=p)$
 distribution.
 \begin{example}
-Suppose Barack Obama wants to have dinner \url{http://pewresearch.org/pubs/773/fewer-voters-identify-as-republicans}36
-democrat, 27 republican , 37 independent.
-\end{example}
+Dinner with Barack Obama. During the 2008 U.S.~presidential primary,
+Barack Obama offered to have dinner with three randomly selected monetary
+contributors to his campaign. Imagine the thousands of people in the
+contributor database. For the sake of argument, Suppose that the database
+was approximately representative of the U.S.~population as a whole,
+Suppose Barack Obama wants to have dinner \url{http://pewresearch.org/pubs/773/fewer-voters-identify-as-republicans}
+36 democrat, 27 republican , 37 independent.\end{example}
+\begin{rem}
+Here are some facts about the multinomial distribution.
+\begin{enumerate}
+\item The expected value of $(X_{1},\, X_{2},\,\ldots,\, X_{k})$ is $n\mathbf{p}_{k\times1}$.
+\item The variance-covariance matrix $\Sigma$ is symmetric with diagonal
+entries $\sigma_{i}^{2}=np_{i}(1-p_{i})$, $i=1,\,2,\,\ldots,\, k$
+and off-diagonal entries $\mbox{Cov}(X_{i},\, X_{j})=-np_{i}p_{j}$,
+for $i\neq j$. The correlation between $X_{i}$ and $X_{j}$ is therefore
+$\mbox{Corr}(X_{i},\, X_{j})=-\sqrt{p_{i}p_{j}/(1-p_{i})(1-p_{j})}$.
+\item The marginal distribution of $(X_{1},\, X_{2},\,\ldots,\, X_{k-1})$
+is $\mathsf{multinom}(\mathtt{size}=n,\,\mathtt{prob}=\mathbf{p}_{(k-1)\times1})$
+with\begin{equation}
+\mathbf{p}_{(k-1)\times1}=\left(p_{1},\, p_{2},\,\ldots,\, p_{k-2},\, p_{k-1}+p_{k}\right),\end{equation}
+ and in particular, $X_{i}\sim\mathsf{binom}(\mathtt{size}=n,\,\mathtt{prob}=p_{i})$.
+\end{enumerate}
+\end{rem}
 
 \subsection{How to do it with \textsf{R}}
 
@@ -16719,22 +16778,24 @@ word processors which may be acceptable depending on the circumstances.
 
 \subsection{Microsoft$\circledR$ Word}
 
-It is fact of life that Microsoft$\circledR$ Windows is currently
-the most prevalent desktop operating system in the world. Those who
+It is a fact of life that Microsoft$\circledR$ Windows is currently
+the most prevalent desktop operating system on the planet. Those who
 own Windows also typically own some version of Microsoft Office, thus
 Microsoft Word is the default word processor for many, many people. 
 
 The standard way to write an \textsf{R} report with Microsoft$\circledR$
 Word is to generate material with \textsf{R} and then copy-paste the
-material at selected places in a Word document. The advantage to this
+material at selected places in a Word document. An advantage to this
 approach is that Word is nicely designed to make it easy to copy-and-paste
-from the \textsf{R} console to the Word document.
+from \textsf{RGui} to the Word document.
 
-A disadvantage to this approach is that is does not work on all operating
-systems (not on Linux, in particular). Another disadvantage is that
-Microsoft$\circledR$ Word is proprietary; as a result, \textsf{R}
-does not communicate with Microsoft$\circledR$ Word as well as it
-does with other software.
+A disadvantage to this approach is that the R input/output needs to
+be edited manually by the author to make it readable for others. Another
+disadvantage is that the approach does not work on all operating systems
+(not on Linux, in particular). Yet another disadvantage is that Microsoft$\circledR$
+Word is proprietary, and as a result, \textsf{R} does not communicate
+with Microsoft$\circledR$ Word as well as it does with other software
+as we shall soon see.
 
 Nevertheless, if you are going to write a report with Word there are
 some steps that you can take to make the report more amenable to the
@@ -16747,13 +16808,14 @@ the document where you want the picture, right-click, and select \textsf{Paste}.
 \item Resize (most) pictures so that they take up no more than 1/2 page.
 You may want to put graphs side by side; do this by inserting a table
 and placing the graphs inside the cells.
-\item Copy selected \textsf{R} input and output to the MS-Word document.
-All code should be separated from the rest of the writing, except
-when specifically mentioning a function or object in a sentence.
+\item Copy selected \textsf{R} input and output to the Word document. All
+code should be separated from the rest of the writing, except when
+specifically mentioning a function or object in a sentence.
 \item The font of \textsf{R} input/output should be Courier New, or some
 other monowidth font (not Times New Roman or Calibri); the default
-font size of \texttt{12pt} is usually too big and should be reduced
-to, for example, \texttt{10pt}.
+font size of \inputencoding{latin9}\lstinline[showstringspaces=false]!12!\inputencoding{utf8}
+is usually too big for \textsf{R} code and should be reduced to, for
+example, \inputencoding{latin9}\lstinline[showstringspaces=false]!10pt!\inputencoding{utf8}.
 \end{enumerate}
 It is also possible to communicate with \textsf{R} through OpenOffice.org,
 which can export to the proprietary (\inputencoding{latin9}\lstinline[showstringspaces=false]!.doc!\inputencoding{utf8})
@@ -16771,10 +16833,10 @@ which stands for {}``open document text''.
 
 The \inputencoding{latin9}\lstinline[showstringspaces=false]!odfWeave!\inputencoding{utf8}
 package \cite{odfweave} provides a way to generate an \inputencoding{latin9}\lstinline[showstringspaces=false]!.odt!\inputencoding{utf8}
-file with \textsf{R} input and output code automatically formatted
-correctly and inserted in the correct places. In this way, one does
-not need to worry about all of the trouble of typesetting \textsf{R}
-output. Another advantage of \inputencoding{latin9}\lstinline[showstringspaces=false]!odfWeave!\inputencoding{utf8}
+file with \textsf{R} input and output code formatted correctly and
+inserted in the correct places, without any additional work. In this
+way, one does not need to worry about all of the trouble of typesetting
+\textsf{R} output. Another advantage of \inputencoding{latin9}\lstinline[showstringspaces=false]!odfWeave!\inputencoding{utf8}
 is that it allows you to generate the report dynamically; if the data
 underlying the report change or are updated, then a few clicks (or
 commands) will generate a brand new report.
@@ -16783,10 +16845,10 @@ One disadvantage is that the source \inputencoding{latin9}\lstinline[showstrings
 file is not easy to read, because it is difficult to visually distinguish
 the noweb parts (where the \textsf{R} code is) from the non-noweb
 parts. This can be fixed by manually changing the font of the noweb
-sections to, for instance, Courier font, size \texttt{10pt}. But it
-is extra work. It would be nice if a program would discriminate between
-the two different sections and automatically typeset the respective
-parts in their correct fonts. This one of the advantages to \LyX{}.
+sections to, for instance, Courier font, size \inputencoding{latin9}\lstinline[showstringspaces=false]!10pt!\inputencoding{utf8}.
+But it is extra work. It would be nice if a program would discriminate
+between the two different sections and automatically typeset the respective
+parts in their correct fonts. This is one of the advantages to \LyX{}.
 
 Another advantage of OO.o is that even after you have generated the
 outfile, it is fully editable just like any other \inputencoding{latin9}\lstinline[showstringspaces=false]!.odt!\inputencoding{utf8}
@@ -16837,7 +16899,6 @@ package documentation for details.
 \subsection{Sweave and \protect\LaTeX{}}
 
 This approach is nice because it works for all operating systems.
-
 One can quite literally typeset \emph{anything} with \LaTeX{}. All
 of this power comes at a price, however. The writer must learn the
 \LaTeX{} language which is a nontrivial enterprise. Even given the
@@ -16872,24 +16933,24 @@ Program Listings and the \textsf{R} language
 
 This book was written with \LyX{}.
 
-You can see the 
-
 \url{http://gregor.gorjanc.googlepages.com/lyx-sweave}
 
 
 \section{Formatting Tables\label{sec:Formatting-Tables}}
 
-prettyR the Hmisc library
+The prettyR package 
+
+the Hmisc package
 
 <<>>=
 library(Hmisc)
 summary(cbind(Sepal.Length, Sepal.Width) ~ Species, data = iris)
 @
 
-There is a method argument to summary, which is set to method = {}``response''
+There is a method argument to summary, which is set to \inputencoding{latin9}\lstinline[showstringspaces=false]!method = "response"!\inputencoding{utf8}
 by default. There are two other methods for summarizing data: reverse
-and cross. See ?summary.formula or the following document from Frank
-Harrell for more details \url{http://biostat.mc.vanderbilt.edu/twiki/bin/view/Main/StatReport}.
+and cross. See \inputencoding{latin9}\lstinline[showstringspaces=false]!?summary.formula!\inputencoding{utf8}
+or the following document from Frank Harrell for more details \url{http://biostat.mc.vanderbilt.edu/twiki/bin/view/Main/StatReport}.
 
 
 \section{Other Formats\label{sec:Other-Formats}}
