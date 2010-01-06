@@ -1813,7 +1813,7 @@ many display types from which to choose as there are data sets to
 plot. We describe some of the more popular alternatives. 
 
 
-\paragraph*{Strip~charts\index{Strip chart} (also known as Dot plots)\index{Dot plot| see\{Strip chart\}}\label{par:Strip-charts}}
+\paragraph*{Strip~charts\index{strip chart} (also known as Dot plots)\index{dot plot|see\{strip chart\}}\label{par:Strip-charts}}
 
 These can be used for discrete or continuous data, and usually look
 best when the data set is not too large. Along the horizontal axis
@@ -2034,7 +2034,7 @@ height (\inputencoding{latin9}\lstinline[showstringspaces=false]!type = "h"!\inp
 \begin{example}
 Level of Lake Huron 1875-1972. Brockwell and Davis \cite{Brockwell1991}
 give the annual measurements of the level (in feet) of Lake Huron
-from 1875--1972. The data are stored in the time series \inputencoding{latin9}\lstinline[showstringspaces=false]!LakeHuron!\inputencoding{utf8}\index{Data sets| \texttt{LakeHuron}}.
+from 1875--1972. The data are stored in the time series \inputencoding{latin9}\lstinline[showstringspaces=false]!LakeHuron!\inputencoding{utf8}\index{Data sets!LakeHuron@\texttt{LakeHuron}}.
 See \inputencoding{latin9}\lstinline[showstringspaces=false]!?LakeHuron!\inputencoding{utf8}.
 Figure \ref{fig:indpl-lakehuron} was produced with the following
 code:
@@ -2110,14 +2110,14 @@ by numbers, but even when they are written numerically their values
 do not convey any numeric meaning or obey any mathematical rules (that
 is, Stage III cancer is not Stage I cancer + Stage II cancer).
 \begin{example}
-The \inputencoding{latin9}\lstinline[showstringspaces=false]!state.abb!\inputencoding{utf8}\index{Data sets| \texttt{state.abb}}
+The \inputencoding{latin9}\lstinline[showstringspaces=false]!state.abb!\inputencoding{utf8}\index{Data sets!state.abb@\texttt{state.abb}}
 vector gives the two letter postal abbreviations for all 50 states.
 
 <<>>=
 str(state.abb)
 @
 
-These would be ID data. The \inputencoding{latin9}\lstinline[showstringspaces=false]!state.name!\inputencoding{utf8}\index{Data sets| \texttt{state.name}}
+These would be ID data. The \inputencoding{latin9}\lstinline[showstringspaces=false]!state.name!\inputencoding{utf8}\index{Data sets!state.name@\texttt{state.name}}
 vector lists all of the complete names and those data would also be
 ID.
 
@@ -2126,7 +2126,7 @@ ID.
 \begin{example}
 \textbf{U.S.~State Facts and Features.} The U.S.~Department of Commerce
 of the U.S.~Census Bureau releases all sorts of information in the
-\emph{Statistical Abstract of the United States}, and the \inputencoding{latin9}\lstinline[showstringspaces=false]!state.region!\inputencoding{utf8}\index{Data sets| \texttt{state.region}}
+\emph{Statistical Abstract of the United States}, and the \inputencoding{latin9}\lstinline[showstringspaces=false]!state.region!\inputencoding{utf8}\index{Data sets!state.region@\texttt{state.region}}
 data lists each of the 50 states and the region to which it belongs,
 be it Northeast, South, North Central, or West. See \inputencoding{latin9}\lstinline[showstringspaces=false]!?state.region!\inputencoding{utf8}.
 
@@ -2233,7 +2233,7 @@ is handy because it can visually reveal structure (if any) in how
 fast the bars decrease -- this is much more difficult when the bars
 are jumbled. 
 \begin{example}
-U.S.~State Facts and Features. The \inputencoding{latin9}\lstinline[showstringspaces=false]!state.division!\inputencoding{utf8}\index{Data sets| \texttt{state.division}}
+U.S.~State Facts and Features. The \inputencoding{latin9}\lstinline[showstringspaces=false]!state.division!\inputencoding{utf8}\index{Data sets!state.division@\texttt{state.division}}
 data record the division (New England, Middle Atlantic, South Atlantic,
 East South Central, West South Central, East North Central, West North
 Central, Mountain, and Pacific) of the fifty states. We can make a
@@ -15379,7 +15379,7 @@ was contained in the original sample. Indeed, there is some uncertainty
 about the parameter due to the randomness of the original sample,
 and there is even more uncertainty introduced by resampling. One should
 think of the bootstrap as just another estimation method, nothing
-more, nothing less. 
+more, nothing less.
 \end{itemize}
 \end{rem}
 
@@ -15403,9 +15403,9 @@ the $\alpha/2$th and $(1-\alpha)$th percentiles. There is a function
 \inputencoding{latin9}\lstinline[showstringspaces=false]!boot.ci!\inputencoding{utf8}\index{boot.ci@\texttt{boot.ci}}
 in \textsf{R} already created to do just this. Note that in order
 to use the function \inputencoding{latin9}\lstinline[showstringspaces=false]!boot.ci!\inputencoding{utf8}
-you must first run the \inputencoding{latin9}\lstinline[showstringspaces=false]!boot!\inputencoding{utf8}
+we must first run the \inputencoding{latin9}\lstinline[showstringspaces=false]!boot!\inputencoding{utf8}
 function and save the output in a variable, for example, \inputencoding{latin9}\lstinline[showstringspaces=false]!data.boot!\inputencoding{utf8}.
-You then plug \inputencoding{latin9}\lstinline[showstringspaces=false]!data.boot!\inputencoding{utf8}
+We then plug \inputencoding{latin9}\lstinline[showstringspaces=false]!data.boot!\inputencoding{utf8}
 into the function \inputencoding{latin9}\lstinline[showstringspaces=false]!boot.ci!\inputencoding{utf8}.
 \begin{example}
 Please see the handout, {}``Bootstrapping Confidence Intervals for

@@ -13,7 +13,7 @@ population <- get(population, mode = "function")
 xbar <- rep(0, N.iter)
 graphics.off()
 
-curve( dt(x, df = r ),
+curve( function(x) dt(x, df = r ),
         xlim = c(-5,5),
         xlab = "Support Set",
         ylab = "Density",
@@ -89,10 +89,10 @@ text(   up,
 ######################################
 # Draw limiting Normal curve
 z <- locator( n = 1 )      
-curve(  dnorm(x, mean = xbar.mean, sd = sd(xbar)), 
+curve(  function(x) dnorm(x, mean = xbar.mean, sd = sd(xbar)), 
         lwd = 2,
         col = "red",
-        add = T )
+        add = TRUE )
 }
 
 
@@ -110,7 +110,7 @@ population <- get(population, mode = "function")
 xbar <- rep(0, N.iter)
 graphics.off()
 
-curve( dunif(x, min = a, max = b ),
+curve( function(x) dunif(x, min = a, max = b ),
         xlim = c(a-1,b+1), ylim = c(0, 1.3/(b-a)),
         xlab = "Support Set",
         ylab = "Density",
@@ -185,10 +185,10 @@ text(   up,
 ######################################
 # Draw limiting Normal curve
 z <- locator( n = 1 )      
-curve(  dnorm(x, mean = xbar.mean, sd = sd(xbar)), 
+curve(  function(x) dnorm(x, mean = xbar.mean, sd = sd(xbar)), 
         lwd = 2,
         col = "red",
-        add = T )
+        add = TRUE )
 }
 
 
@@ -205,7 +205,7 @@ xbar <- rep(0, N.iter)
 graphics.off()
 
 
-curve( dgamma(x, shape = alpha, scale = theta ),
+curve( function(x) dgamma(x, shape = alpha, scale = theta ),
         xlim = c(0, alpha*theta*(1 + 3*theta)),
         xlab = "Support Set",
         ylab = "Density",
@@ -213,9 +213,9 @@ curve( dgamma(x, shape = alpha, scale = theta ),
         main = "The Population Distribution \n (while we're waiting)" )
 abline( h = 0 , col = "grey" )
 
-f = function(x){dgamma(x, shape = alpha, scale = theta )} 
+f <- function(x) dgamma(x, shape = alpha, scale = theta ) 
 
-OPT = optimize( f,
+OPT <- optimize( f,
         interval = c(0, alpha*theta*(1 + 3*theta)),
         maximum = TRUE) 
 
@@ -285,9 +285,9 @@ text(   up,
 ######################################
 # Draw limiting Normal curve
 z = locator( n = 1 )      
-curve(  dnorm(x, mean = xbar.mean, sd = sd(xbar)), 
+curve(  function(x) dnorm(x, mean = xbar.mean, sd = sd(xbar)), 
         lwd = 2,
         col = "red",
-        add = T )
+        add = TRUE )
 
 }
