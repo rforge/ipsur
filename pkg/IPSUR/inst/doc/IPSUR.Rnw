@@ -19,6 +19,7 @@ language=R}
 \usepackage{babel}
 
 \usepackage{rotating}
+\usepackage{varioref}
 \usepackage{float}
 \usepackage{url}
 \usepackage{amsthm}
@@ -759,11 +760,12 @@ the data originated.
 I would like to mention that there are two schools of thought of statistics:
 frequentist and bayesian. The difference between the schools is related
 to how the two groups interpret the underlying probability (see Section
-). The frequentist school gained a lot of ground among statisticians
-due in large part to the work of Fisher, Neyman, and Pearson in the
-early twentieth century. That dominance lasted until inexpensive computing
-power became widely available; nowadays the bayesian school is garnering
-more attention and at an increasing rate.
+\ref{sec:Interpreting-Probabilities}). The frequentist school gained
+a lot of ground among statisticians due in large part to the work
+of Fisher, Neyman, and Pearson in the early twentieth century. That
+dominance lasted until inexpensive computing power became widely available;
+nowadays the bayesian school is garnering more attention and at an
+increasing rate.
 
 This book is devoted mostly to the frequentist viewpoint because that
 is how I was trained, with the conspicuous exception of Sections \ref{sec:Bayes'-Rule}
@@ -1712,7 +1714,7 @@ In each subsection we look at some examples of the type in question
 and introduce methods to display them.
 
 
-\subsection{Quantitative data\label{sub:Quantitative-Data}\textsf{R}}
+\subsection{Quantitative data\label{sub:Quantitative-Data}}
 
 Quantitative data are any data that measure or are associated with
 a measurement of the quantity of something. They invariably assume
@@ -1801,7 +1803,7 @@ many display types from which to choose as there are data sets to
 plot. We describe some of the more popular alternatives. 
 
 
-\paragraph*{Strip~charts\index{strip chart} (also known as Dot plots)\index{dot plot|see\{strip chart\}}\label{par:Strip-charts}}
+\paragraph*{Strip~charts\index{strip chart} (also known as Dot plots)\index{dot plot| see\{strip chart\}}\label{par:Strip-charts}}
 
 These can be used for discrete or continuous data, and usually look
 best when the data set is not too large. Along the horizontal axis
@@ -2259,9 +2261,9 @@ with the bars replaced by dots on horizontal lines. They do not convey
 any more (or less) information than the associated bar graph, but
 the strength lies in the economy of the display. Dot charts are so
 compact that it is easy to graph very complicated multi-variable interactions
-together in one graph. See Section BLANK. We will give an example
-here using the same data as above for comparison. The graph was produced
-by the following code.
+together in one graph. See Section \ref{sec:Comparing-Data-Sets}.
+We will give an example here using the same data as above for comparison.
+The graph was produced by the following code.
 
 <<eval = FALSE>>=
 dotchart(table(state.region))
@@ -2317,9 +2319,9 @@ Many functions in \textsf{R} have options that the user may or may
 not want to activate in the function call. For example, the \inputencoding{latin9}\lstinline[showstringspaces=false]!stem.leaf!\inputencoding{utf8}
 function has the \inputencoding{latin9}\lstinline[showstringspaces=false]!depths!\inputencoding{utf8}
 argument which is \inputencoding{latin9}\lstinline[showstringspaces=false]!TRUE!\inputencoding{utf8}
-by default. We saw in Section BLANK how to turn the option off, simply
-enter \inputencoding{latin9}\lstinline[showstringspaces=false]!stem.leaf(x, depths = FALSE)!\inputencoding{utf8}
-and depths will not be shown on the display.
+by default. We saw in Section \ref{sub:Quantitative-Data} how to
+turn the option off, simply enter \inputencoding{latin9}\lstinline[showstringspaces=false]!stem.leaf(x, depths = FALSE)!\inputencoding{utf8}
+and they will not be shown on the display.
 
 We can swap \inputencoding{latin9}\lstinline[showstringspaces=false]!TRUE!\inputencoding{utf8}
 with \inputencoding{latin9}\lstinline[showstringspaces=false]!FALSE!\inputencoding{utf8}
@@ -2444,16 +2446,17 @@ Introduced by Pearson in 1905 \url{http://jeff560.tripod.com/k.html}Another
 component to the shape of a distribution is how {}``peaked'' it
 is. Some distributions tend to have a flat shape with thin tails.
 These are called \emph{platykurtic}, and an example of a platykurtic
-distribution is the uniform distribution; see Section BLANK. On the
-other end of the spectrum are distributions with a steep peak, or
-spike, which is accompanied by heavy tails; these are called \emph{leptokurtic}.
+distribution is the uniform distribution; see Section \ref{sec:The-Continuous-Uniform}.
+On the other end of the spectrum are distributions with a steep peak,
+or spike, accompanied by heavy tails; these are called \emph{leptokurtic}.
 Examples of leptokurtic distributions are the Laplace distribution
-and the logistic distribution. See Section BLANK. In between are distributions
-(called \emph{mesokurtic}) with a rounded peak and moderately sized
-tails. The standard example of a mesokurtic distribution is the famous
-bell-shaped curve, also known as the Gaussian, or normal, distribution,
-and binomial distribution can be mesokurtic for specific choices of
-$p$. See Sections BLANK, BLANK, and BLANK.
+and the logistic distribution. See Section \ref{sec:Other-Continuous-Distributions}.
+In between are distributions (called \emph{mesokurtic}) with a rounded
+peak and moderately sized tails. The standard example of a mesokurtic
+distribution is the famous bell-shaped curve, also known as the Gaussian,
+or normal, distribution, and the binomial distribution can be mesokurtic
+for specific choices of $p$. See Sections \ref{sec:The-Binomial-Distribution}
+and \ref{sec:The-Normal-Distribution}.
 
 
 \subsection{Clusters and Gaps\label{sub:Clusters-and-Gaps}}
@@ -2688,9 +2691,9 @@ tight; if we know more about how the data are shaped then we can say
 more about how much of the data can fall a given distance from the
 mean.
 \begin{fact}
-Empirical Rule: If data follow a bell-shaped curve, then approximately
-68\%, 95\%, and 99.7\% of the data are within 1, 2, and 3 standard
-deviations of the mean, respectively. 
+\label{fac:Empirical-Rule}Empirical Rule: If data follow a bell-shaped
+curve, then approximately 68\%, 95\%, and 99.7\% of the data are within
+1, 2, and 3 standard deviations of the mean, respectively. 
 \end{fact}
 
 \paragraph*{Interquartile Range}
@@ -2720,7 +2723,7 @@ That is, the $MAD=c\cdot\mbox{median}(|x_{1}-\tilde{x}|,\ |x_{2}-\tilde{x}|,\ldo
 where $c$ is a constant chosen so that the $MAD$ has nice properties.
 The value of $c$ in \textsf{R} is by default $c=1.4286$. This value
 is chosen to ensure that the estimator of $\sigma$ is correct, on
-the average, under suitable sampling assumptions (see Section BLANK).
+the average, under suitable sampling assumptions (see Section \ref{sec:Point-Estimation-1}).
 \begin{itemize}
 \item Good: stable, very robust, even more so than the $IQR$.
 \item Bad: not tractable, not well known and less easy to explain.
@@ -2743,8 +2746,8 @@ on the average. In particular, it can be shown that when the data
 follow an approximately bell-shaped distribution, then on the average,
 the sample standard deviation $s$ and the $MAD$ will be the approximately
 the same value, namely, $\sigma$, but the $IQR$ will be on the average
-1.349 times larger than $s$ and the $MAD$. See Chapter BLANK for
-more details.
+1.349 times larger than $s$ and the $MAD$. See \ref{cha:Sampling-Distributions}
+for more details.
 
 
 \subsection{How to do it with \textsf{R}}
@@ -2793,7 +2796,7 @@ whether an observed value of $g_{1}$ is far enough away from zero
 for the data set to be considered skewed to the right or left? A good
 rule of thumb is that data sets with skewness larger than $2\sqrt{6/n}$
 in magnitude are substantially skewed, in the direction of the sign
-of $g_{1}$. See Tabachnick \& Fidell BLANK for details.
+of $g_{1}$. See Tabachnick \& Fidell \cite{Tabachnick2006} for details.
 
 
 \paragraph*{Sample Excess Kurtosis}
@@ -2810,7 +2813,8 @@ are called \emph{leptokurtic}, and samples with $g_{2}<0$ are called
 
 As a rule of thumb, if $|g_{2}|>4\sqrt{6/n}$ then the sample excess
 kurtosis is substantially different from zero in the direction of
-the sign of $g_{2}$. See Tabachnick \& Fidell BLANK for details.
+the sign of $g_{2}$. See Tabachnick \& Fidell \cite{Tabachnick2006}
+for details.
 
 Notice that both the sample skewness and the sample kurtosis are invariant
 with respect to location and scale, that is, the values of $g_{1}$
@@ -2865,8 +2869,9 @@ function can do many of them.
 \begin{description}
 \item [{Trim~Outliers:}] Some data sets have observations that fall far
 from the bulk of the other data (in a sense made more precise in Section
-BLANK). These extreme observations often obscure the underlying structure
-to the data and are best left out of the data display. The \inputencoding{latin9}\lstinline[showstringspaces=false]!trim.outliers!\inputencoding{utf8}
+\ref{sub:Outliers}). These extreme observations often obscure the
+underlying structure to the data and are best left out of the data
+display. The \inputencoding{latin9}\lstinline[showstringspaces=false]!trim.outliers!\inputencoding{utf8}
 argument (which is \inputencoding{latin9}\lstinline[showstringspaces=false]!TRUE!\inputencoding{utf8}
 by default) will separate the extreme observations from the others
 and graph the stemplot without them; they are listed at the bottom
@@ -2919,7 +2924,7 @@ the data well. Depending on the choice of the digit, \inputencoding{latin9}\lsti
 may drop digits from the data or round the values in unexpected ways.
 \end{itemize}
 Let us take a look at the \inputencoding{latin9}\lstinline[showstringspaces=false]!rivers!\inputencoding{utf8}
-data set.
+data set\label{ite:stemplot-rivers}.
 
 <<>>=
 stem.leaf(rivers)
@@ -6233,8 +6238,8 @@ which can be computed (see Exercise BLANK) with the alternate formula
 $\sigma^{2}=\E X^{2}-(\E X)^{2}$. Directly defined from the variance
 is the standard deviation $\sigma=\sqrt{\sigma^{2}}$. 
 \begin{example}
-\label{exa:We-will-calculate}We will calculate the mean of $X$ in
-Example \ref{exa:Toss-a-coin}.\[
+\label{exa:disc-pmf-mean}We will calculate the mean of $X$ in Example
+\ref{exa:Toss-a-coin}.\[
 \mu=\sum_{x=0}^{3}xf_{X}(x)=0\cdot\frac{1}{8}+1\cdot\frac{3}{8}+2\cdot\frac{3}{8}+3\cdot\frac{1}{8}=3.5.\]
 We interpret $\mu=3.5$ by reasoning that if we were to repeat the
 random experiment many times, independently each time, observe many
@@ -6269,7 +6274,7 @@ the named distributions the PMF or CDF will be identified by the family
 name instead of the defining formula.
 
 
-\subsection{How to do it with \textsf{R}}
+\subsection{How to do it with \textsf{R\label{sub:disc-rv-how-r}}}
 
 The mean and variance of a discrete random variable is easy to compute
 at the console. Let's return to Example BLANK. We will start by defining
@@ -7743,9 +7748,9 @@ F_{X}(t)=\P(X\leq t)=\int_{-\infty}^{t}f_{X}(x)\:\diff x,\quad-\infty<t<\infty.\
 For any continuous CDF $F_{X}$ the following are true.
 \begin{itemize}
 \item $F_{X}$ is nondecreasing , that is, $t_{1}\leq t_{2}$ implies $F_{X}(t_{1})\leq F_{X}(t_{2})$.
-\item $F_{X}$ is continuous (see Appendix BLANK). Note the distinction
-from the discrete case: CDFs of discrete random variables are not
-continuous, they are only right continuous.
+\item $F_{X}$ is continuous (see Appendix \ref{sec:Differential-and-Integral}).
+Note the distinction from the discrete case: CDFs of discrete random
+variables are not continuous, they are only right continuous.
 \item $\lim_{t\to-\infty}F_{X}(t)=0$ and $\lim_{t\to\infty}F_{X}(t)=1$.
 \end{itemize}
 \end{rem}
@@ -7753,8 +7758,8 @@ There is a handy relationship between the CDF and PDF in the continuous
 case. Consider the derivative of $F_{X}$:\begin{equation}
 F'_{X}(t)=\frac{\diff}{\diff t}F_{X}(t)=\frac{\diff}{\diff t}\,\int_{-\infty}^{t}f_{X}(x)\,\diff x=f_{X}(t),\end{equation}
 the last equality being true by the Fundamental Theorem of Calculus,
-part (2) (see Appendix BLANK). In short, $(F_{X})'=f_{X}$ in the
-continuous case%
+part (2) (see Appendix \ref{sec:Differential-and-Integral}). In short,
+$(F_{X})'=f_{X}$ in the continuous case%
 \footnote{In the discrete case, $f_{X}(x)=F_{X}(x)-\lim_{t\to x^{-}}F_{X}(t)$.%
 }. 
 
@@ -7777,7 +7782,8 @@ M_{X}(t)=\E\:\me^{tX}=\int_{-\infty}^{\infty}\me^{tx}f_{X}(x)\:\diff x,\end{equa
 provided the integral exists (is finite) for all $t$ in a neighborhood
 of $t=0$.
 \begin{example}
-Let the continuous random variable $X$ have PDF \[
+\label{exa:cont-pdf3x2}Let the continuous random variable $X$ have
+PDF \[
 f_{X}(x)=3x^{2},\quad0\leq x\leq1.\]
 We will see later that $f_{X}$ belongs to the \emph{Beta} family
 of distributions. It is easy to see that $\int_{-\infty}^{\infty}f(x)\diff x=1$.\begin{align*}
@@ -7805,8 +7811,9 @@ which gives $\sigma^{2}=3/5-(3/4)^{2}=3/80$.
 
 
 \begin{example}
-We will try one with unbounded support to brush up on improper integration.
-Let the random variable $X$ have PDF \[
+\label{exa:cont-pdf-3x4}We will try one with unbounded support to
+brush up on improper integration. Let the random variable $X$ have
+PDF \[
 f_{X}(x)=\frac{3}{x^{4}},\quad x>1.\]
 We can show that $\int_{-\infty}^{\infty}f(x)\diff x=1$:\begin{align*}
 \int_{-\infty}^{\infty}f_{X}(x)\diff x & =\int_{1}^{\infty}\frac{3}{x^{4}}\:\diff x\\
@@ -7837,7 +7844,7 @@ which closes the example with $\sigma^{2}=3-(3/2)^{2}=3/4$.
 There exist utilities to calculate probabilities and expectations
 for general continuous random variables, but it is better to find
 a built-in model, if possible. Sometimes it is not possible. We show
-how to do it the long way, and the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,showstringspaces=false]!distr!\inputencoding{utf8}
+how to do it the long way, and the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,showstringspaces=false]!distr!\inputencoding{utf8}\index{R packages@\textsf{R} packages!distr@\texttt{distr}}
 package way.
 \begin{example}
 Let $X$ have PDF $f(x)=3x^{2}$, $0<x<1$ and find $\P(0.14\leq X\leq0.71)$.
@@ -7849,8 +7856,8 @@ f <- function(x) 3*x^2
 integrate(f, lower = 0.14, upper = 0.71)
 @
 
-Compare this to the answer we found in Example BLANK. We could integrate
-the function $xf(x)=$ \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,showstringspaces=false]!3*x^3!\inputencoding{utf8}
+Compare this to the answer we found in Example \ref{exa:cont-pdf3x2}.
+We could integrate the function $xf(x)=$ \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,showstringspaces=false]!3*x^3!\inputencoding{utf8}
 from zero to one to get the mean, and use the shortcut $\sigma^{2}=\E X^{2}-\left(\E X\right)^{2}$
 for the variance. 
 
@@ -7866,15 +7873,17 @@ g <- function(x) 3/x^3
 integrate(g, lower = 1, upper = Inf)
 @
 
-Compare this to the answer we got in Example BLANK. Use \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,showstringspaces=false]!-Inf!\inputencoding{utf8}
+Compare this to the answer we got in Example \ref{exa:cont-pdf-3x4}.
+Use \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,showstringspaces=false]!-Inf!\inputencoding{utf8}
 for $-\infty$.
 
 \end{example}
 
 \begin{example}
-Let us redo Example BLANK with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,showstringspaces=false]!distr!\inputencoding{utf8}
-package. The method is similar to Example BLANK in Chapter BLANK.
-We define an absolutely continuous random variable:
+Let us redo Example \ref{exa:cont-pdf3x2} with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,showstringspaces=false]!distr!\inputencoding{utf8}
+package. The method is similar to that encountered in Section \ref{sub:disc-rv-how-r}
+in Chapter \ref{cha:Discrete-Distributions}. We define an absolutely
+continuous random variable:
 
 <<>>=
 library(distr)
@@ -7883,8 +7892,8 @@ X <- AbscontDistribution(d = f, low1 = 0, up1 = 1)
 p(X)(0.71) - p(X)(0.14)
 @
 
-Compare this answer to what we found in Example BLANK. Now let us
-try expectation with the \inputencoding{latin9}\lstinline[showstringspaces=false]!distrEx!\inputencoding{utf8}
+Compare this answers we found earlier. Now let us try expectation
+with the \inputencoding{latin9}\lstinline[showstringspaces=false]!distrEx!\inputencoding{utf8}
 package \cite{Ruckdescheldistr}:
 
 <<>>=
@@ -7894,8 +7903,8 @@ var(X)
 3/80
 @
 
-Compare these answers to the ones we found in Example BLANK. Why are
-they different? Because the \inputencoding{latin9}\lstinline[showstringspaces=false]!distrEx!\inputencoding{utf8}
+Compare these answers to the ones we found in Example \ref{exa:cont-pdf3x2}.
+Why are they different? Because the \inputencoding{latin9}\lstinline[showstringspaces=false]!distrEx!\inputencoding{utf8}
 package resorts to numerical methods when it encounters a model it
 does not recognize. This means that the answers we get for calculations
 may not exactly match the theoretical values. Be careful.
@@ -7936,7 +7945,7 @@ is relatively simple to calculate:
  & =\frac{1}{b-a}\ \frac{b^{2}-a^{2}}{2},\\
  & =\frac{b+a}{2},\end{align*}
 using the popular formula for the difference of squares. The variance
-is left to Exercise BLANK.
+is left to Exercise \ref{xca:variance-dunif}.
 
 
 \section{The Normal Distribution\label{sec:The-Normal-Distribution}}
@@ -7996,11 +8005,11 @@ M_{Y}(t)=\me^{ta}M_{X}(bt).\end{equation}
 \end{fact}
 
 \begin{example}
-The 68-95-99.7 Rule. We saw in Section BLANK that if an empirical
-distribution is approximately mound shaped, then there are specific
-proportions of the observations which fall at varying distances from
-the (sample) mean. We can see where these come from -- and obtain
-more precise proportions -- with the following:
+The 68-95-99.7 Rule. We saw in Section \ref{sub:Measures-of-Spread}
+that when an empirical distribution is approximately bell shaped there
+are specific proportions of the observations which fall at varying
+distances from the (sample) mean. We can see where these come from
+-- and obtain more precise proportions -- with the following:
 \end{example}
 <<>>=
 pnorm(1:3)-pnorm(-(1:3))
@@ -8008,10 +8017,10 @@ pnorm(1:3)-pnorm(-(1:3))
 
 
 \begin{example}
-Let the random experiment consist of a person taking an IQ test, and
-let $X$ be the score on the test. The scores on such a test are typically
-standardized to have a mean of 100 and a standard deviation of 15.
-What is $\P(85\leq X\leq115)$?
+\label{exa:iq-model}Let the random experiment consist of a person
+taking an IQ test, and let $X$ be the score on the test. The scores
+on such a test are typically standardized to have a mean of 100 and
+a standard deviation of 15. What is $\P(85\leq X\leq115)$?
 
 Solution: this one is easy because the limits 85 and 115 fall exactly
 one standard deviation (below and above, respectively) from the mean
@@ -8025,20 +8034,52 @@ the area under the PDF between those values. In this section, we go
 in reverse: we are given an area, and we would like to find the value(s)
 that correspond to that area. 
 \begin{example}
-Assuming the IQ model of Example BLANK, what is the lowest possible
-IQ score that a person can have and still be in the top 1\% of all
-IQ scores?
+\label{exa:iq-quantile-state-problem}Assuming the IQ model of Example
+\ref{exa:iq-model}, what is the lowest possible IQ score that a person
+can have and still be in the top 1\% of all IQ scores?
 
-Solution: 
+Solution: If a person is in the top 1\%, then that means that 99\%
+of the people have lower IQ scores. So, in other words, we are looking
+for a value $x$ such that $F(x)=\P(X\leq x)$ satisfies $F(x)=0.99$,
+or yet another way to say it is that we would like to solve the equation
+$F(x)-0.99=0$. For the sake of argument, let us see how to do this
+the long way. We define the function $g(x)=F(x)-0.99$, and then look
+for the root of $g$ with the \inputencoding{latin9}\lstinline[showstringspaces=false]!uniroot!\inputencoding{utf8}
+function. It uses numerical procedures to find the root so we need
+to give it an interval of $x$ values in which to search for the root.
+We can get an educated guess from the Empirical Rule \ref{fac:Empirical-Rule};
+the root should be somewhere between two and three standard deviations
+(15 each) above the mean (which is 100).
 \end{example}
+<<>>=
+g <- function(x) pnorm(x, mean = 100, sd = 15) - 0.99
+uniroot(g, interval = c(130, 145))
+@
+<<echo = FALSE, results = hide>>=
+temp <- round(uniroot(g, interval = c(130, 145))$root, 4)
+@
+
+The answer is shown in \inputencoding{latin9}\lstinline[showstringspaces=false]!$root!\inputencoding{utf8}
+which is approximately \Sexpr{temp}, that is, a person with this
+IQ score or higher falls in the top 1\% of all IQ scores.
 
 
-The definition of the quantile function%
+
+The discussion in example \ref{exa:iq-quantile-state-problem} was
+centered on the search for a value $x$ that solved an equation $F(x)=p$,
+for some given probability $p$, or in mathematical parlance, the
+search for $F^{-1}$, the inverse of the CDF of $X$, evaluated at
+$p$. This is so important that it merits a definition all its own.
+\begin{defn}
+The \emph{quantile function}%
 \footnote{The precise definition of the quantile function is $Q_{X}(p)=\inf\left\{ x:\ F_{X}(x)\geq p\right\} $,
 so at least it is well defined (though perhaps infinite) for the values
 $p=0$ and $p=1$.%
-} is related to the inverse of the cumulative distribution function:\begin{equation}
+} of a random variable $X$ is the inverse of its cumulative distribution
+function:\begin{equation}
 Q_{X}(p)=\min\left\{ x:\ F_{X}(x)\geq p\right\} ,\quad0<p<1.\end{equation}
+
+\end{defn}
 
 \begin{rem}
 Here are some properties of quantile functions:
@@ -8060,19 +8101,53 @@ always exist, but may be infinite (that is, sometimes $\lim_{p\to0}Q(p)=-\infty$
 and/or $\lim_{p\to1}Q(p)=\infty$).
 \end{enumerate}
 \end{rem}
-
-\subsection{How to do it with \textsf{R}}
-
-Use the q prefix to the distributions. Note that for the ECDF the
-quantile function is exactly the $Q_{x}(p)=$\inputencoding{latin9}\lstinline[showstringspaces=false]!quantile(x, probs = !\inputencoding{utf8}$p$
-\inputencoding{latin9}\lstinline[showstringspaces=false]!, type = 1)!\inputencoding{utf8}
-function. 
+As the reader might expect, the standard normal distribution is a
+very special case and has its own special notation.
 \begin{defn}
 For $0<\alpha<1$, the symbol $z_{\alpha}$ denotes the unique solution
 of the equation $\P(Z>z_{\alpha})=\alpha$, where $Z\sim\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$.
 It can be calculated in one of two equivalent ways: \inputencoding{latin9}\lstinline[showstringspaces=false]!qnorm(!\inputencoding{utf8}$1-\alpha$\inputencoding{latin9}\lstinline[showstringspaces=false]!)!\inputencoding{utf8}
 and \inputencoding{latin9}\lstinline[showstringspaces=false]!qnorm(!\inputencoding{utf8}$\alpha$\inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!, lower.tail = FALSE)!\inputencoding{utf8}.
 \end{defn}
+There are a few other very important special cases which we will encounter
+in later chapters. 
+
+
+\subsection{How to do it with \textsf{R}}
+
+Quantile functions are defined for all of the base distributions with
+the \inputencoding{latin9}\lstinline[showstringspaces=false]!q!\inputencoding{utf8}
+prefix to the distribution name, except for the ECDF whose quantile
+function is exactly the $Q_{x}(p)=$\inputencoding{latin9}\lstinline[showstringspaces=false]!quantile(x, probs = !\inputencoding{utf8}$p$
+\inputencoding{latin9}\lstinline[showstringspaces=false]!, type = 1)!\inputencoding{utf8}
+function. 
+\begin{example}
+Back to Example \ref{exa:iq-quantile-state-problem}, we are looking
+for $Q_{X}(0.99)$, where $X\sim\mathsf{norm}(\mathtt{mean}=100,\,\mathtt{sd}=15)$.
+It could not be easier to do with \textsf{R}.
+
+<<>>=
+qnorm(0.99, mean = 100, sd = 15)
+@
+
+Compare this answer to the one obtained earlier with \inputencoding{latin9}\lstinline[showstringspaces=false]!uniroot!\inputencoding{utf8}.
+\end{example}
+
+\begin{example}
+Find the values $z_{0.025}$, $z_{0.01}$, and $z_{0.005}$ (these
+will play an important role from Chapter \ref{cha:Estimation} onward).
+\end{example}
+<<>>=
+qnorm(c(0.025, 0.01, 0.005), lower.tail = FALSE)
+@
+
+Note the \inputencoding{latin9}\lstinline[showstringspaces=false]!lower.tail!\inputencoding{utf8}
+argument. We would get the same answer with \inputencoding{latin9}
+\begin{lstlisting}[showstringspaces=false]
+qnorm(c(0.975, 0.99, 0.995))
+\end{lstlisting}
+\inputencoding{utf8}
+
 
 \section{Functions of Continuous Random Variables\label{sec:Functions-of-Continuous}}
 
@@ -8696,7 +8771,7 @@ pnorm(0.87) - 1/2
 \end{xca}
 
 \begin{xca}
-Calculate the variance of $X\sim\mathsf{unif}(\mathtt{min}=a,\,\mathtt{max}=b)$.
+\label{xca:variance-dunif}Calculate the variance of $X\sim\mathsf{unif}(\mathtt{min}=a,\,\mathtt{max}=b)$.
 Hint: First calculate $\E X^{2}$.
 
 type the exercise here
@@ -10571,12 +10646,14 @@ We wil discuss two branches of estimation procedures: point estimation
 and interval estimation. We briefly discuss point estimation first
 and then spend the rest of the chapter on interval estimation.
 
-We find an estimator using the first section. Then we take the estimator
-and combine what we know from Chapter BLANK about sampling distributions
-to study how the estimator will perform. Once we have estimators,
-we add sampling distributions to get confidence intervals. Once we
-have confidence intervals we can do inference in the form of hypothesis
-tests in the next chapter.
+We find an estimator with the methods of Section \ref{sec:Point-Estimation-1}.
+We make some assumptions about the underlying population distribution
+and use what we know from Chapter \ref{cha:Sampling-Distributions}
+about sampling distributions both to study how the estimator will
+perform, and to find intervals of confidence for underlying parameters
+associated with the population distribution. Once we have confidence
+intervals we can do inference in the form of hypothesis tests in the
+next chapter.
 
 
 \paragraph*{What do I want them to know?}
@@ -10598,7 +10675,7 @@ intervals for basic experimental designs
 
 \section{Point Estimation\label{sec:Point-Estimation-1}}
 
-The following example was how I was introduced to maximum likelihood.
+The following example is how I was introduced to maximum likelihood.
 \begin{example}
 Suppose we have a small pond in our backyard, and in the pond there
 live some fish. We would like to know how many fish live in the pond.
@@ -10628,8 +10705,8 @@ from an urn which has $M=7$ white balls and $N=F-M$ black balls,
 and we have observed $x=3$ of them to be white. What is the probability
 of this?
 
-Looking back to Section BLANK, we see that the random variable $X$
-has a $\mathsf{hyper}(\mathtt{m}=M,\,\mathtt{n}=F-M,\,\mathtt{k}=K)$
+Looking back to Section \ref{sec:Other-Discrete-Distributions}, we
+see that the random variable $X$ has a $\mathsf{hyper}(\mathtt{m}=M,\,\mathtt{n}=F-M,\,\mathtt{k}=K)$
 distribution. Therefore, for an observed value $X=x$ the probability
 would be\[
 \P(X=x)=\frac{{M \choose x}{F-M \choose K-x}}{{F \choose K}}.\]
@@ -10649,7 +10726,7 @@ Similarly, if $F=9$ then the probabillity of observing $X=3$ tagged
 fish would be\[
 \P(\mbox{3 successes in 4 trials})=\frac{{7 \choose 3}{2 \choose 1}}{{9 \choose 4}}=\frac{70}{126}\approx0.556.\]
 We can see already that the observed data $X=3$ is more likely when
-$F=9$ than it is when $F=8$. And here is the genius of Sir Ronald
+$F=9$ than it is when $F=8$. And here lies the genius of Sir Ronald
 Aylmer Fisher: he asks, {}``What is the value of $F$ which has the
 highest likelihood?'' In other words, for all of the different possible
 values of $F$, which one makes the above probability the biggest?
@@ -10682,7 +10759,7 @@ In the last example we were only concerned with how many fish were
 in the pond, but now, we will ask a different question. Suppose it
 is known that there are only two species of fish in the pond: smallmouth
 bass (\emph{Micropterus dolomieu}) and bluegill (\emph{Lepomis macrochirus});
-perhaps we built the pond several years ago and stocked it with only
+perhaps we built the pond some years ago and stocked it with only
 these two species. We would like to estimate the proportion of fish
 in the pond which are bass.
 
@@ -10712,8 +10789,8 @@ Under those assumptions we would have \begin{eqnarray*}
  & = & p^{\sum x_{i}}(1-p)^{n-\sum x_{i}}.\end{eqnarray*}
 That is, \[
 \P(X_{1}=x_{1},\, X_{2}=x_{2},\,\ldots,\, X_{n}=x_{n})=p^{\sum x_{i}}(1-p)^{n-\sum x_{i}}.\]
-This last quantity is a function of $p$, called the likelihood function
-$L(p)$:\[
+This last quantity is a function of $p$, called the \emph{likelihood
+function} $L(p)$:\[
 L(p)=p^{\sum x_{i}}(1-p)^{n-\sum x_{i}}.\]
 A graph of $L$ for values of $\sum x_{i}=3,\ 4$, and 5 when $n=7$
 is shown in Figure \ref{fig:fishing-part-two}. 
@@ -10746,8 +10823,9 @@ $p\approx0.6$.}
 
 
 We want the value of $p$ which has the highest likelihood, that is,
-we again wish to maximize the likelihood. From Calculus (see Appendix
-BLANK), we may differentiate $L$ and set $L'=0$ to find a maximum.\[
+we again wish to maximize the likelihood. We know from calculus (see
+Appendix \ref{sec:Differential-and-Integral}) to differentiate $L$
+and set $L'=0$ to find a maximum.\[
 L'(p)=\left(\sum x_{i}\right)p^{\sum x_{i}-1}(1-p)^{n-\sum x_{i}}+p^{\sum x_{i}}\left(n-\sum x_{i}\right)(1-p)^{n-\sum x_{i}-1}(-1).\]
  The derivative vanishes ($L'=0$) when\begin{eqnarray*}
 \left(\sum x_{i}\right)p^{\sum x_{i}-1}(1-p)^{n-\sum x_{i}} & = & p^{\sum x_{i}}\left(n-\sum x_{i}\right)(1-p)^{n-\sum x_{i}-1},\\
@@ -10760,7 +10838,7 @@ $\hat{p}$. That is, \begin{equation}
 \hat{p}=\frac{\sum_{i=1}^{n}x_{i}}{n}=\xbar.\end{equation}
 
 \begin{rem}
-Properly speaking we have only shown that the derivative equals zero
+Strictly speaking we have only shown that the derivative equals zero
 at $\hat{p}$, so it is theoretically possible that the critical value
 $\hat{p}=\xbar$ is located at a minimum%
 \footnote{We can tell from the graph that our value of $\hat{p}$ is a maximum
@@ -10769,8 +10847,9 @@ Other examples are not so easy, however, and we should be careful
 to be cognizant of this extra step.%
 } instead of a maximum! We should be thorough and check that $L'>0$
 when $p<\xbar$ and $L'<0$ when $p>\xbar$. Then by the First Derivative
-Test (see BLANK) we could be certain that $\hat{p}=\xbar$ is indeed
-a maximum likelihood estimator, and not a minimum likelihood estimator.
+Test (Theorem \ref{thm:First-Derivative-Test}) we could be certain
+that $\hat{p}=\xbar$ is indeed a maximum likelihood estimator, and
+not a minimum likelihood estimator.
 \end{rem}
 The result is shown in Figure \ref{fig:species-mle}.
 \end{example}
@@ -10808,16 +10887,19 @@ X_{1},\, X_{2},\,\ldots,X_{n}\mbox{ which are i.i.d.\,\mbox{f(x|\ensuremath{\the
 Given the observed data $x_{1}$, $x_{2}$, \ldots{}, $x_{n}$, the
 \emph{likelihood function} $L$ is defined by \[
 L(\theta)=\prod_{i=1}^{n}f(x_{i}|\theta),\quad\theta\in\Theta.\]
-We next maximize $L$:\end{defn}
-\begin{itemize}
-\item How: for us, we will find the derivative $L'$, and solve the equation
-$L'(\theta)=0$. Call a solution $\hat{\theta}$. We check that $L$
-is maximized at $\hat{\theta}$ using the First Derivative Test or
-the Second Derivative Test $\left(L''(\hat{\theta})<0\right)$.\end{itemize}
+
+\end{defn}
+
+
+The next step is to maximize $L$. The method we will use in this
+book is to find the derivative $L'$ and solve the equation $L'(\theta)=0$.
+Call a solution $\hat{\theta}$. We will check that $L$ is maximized
+at $\hat{\theta}$ using the First Derivative Test or the Second Derivative
+Test $\left(L''(\hat{\theta})<0\right)$.
 \begin{defn}
 A value $\theta$ that maximizes $L$ is called a \emph{maximum likelihood
-estimator} (MLE) and is denoted $\hat{\theta}$. Note that $\hat{\theta}$
-is a function of the sample, $\hat{\theta}=\hat{\theta}\left(X_{1},\, X_{2},\,\ldots,X_{n}\right)$,
+estimator} (MLE) and is denoted $\hat{\theta}$. It is a function
+of the sample, $\hat{\theta}=\hat{\theta}\left(X_{1},\, X_{2},\,\ldots,X_{n}\right)$,
 and is called a \emph{point estimator} of $\theta$.\end{defn}
 \begin{rem}
 Some comments about maximum likelihood estimators:
@@ -10831,14 +10913,14 @@ a vertical asymptote), and even when they do exist, they are not always
 unique (imagine a function with a bunch of humps of equal height).
 For any given problem, there could be zero, one, or any number of
 values of $\theta$ for which $L(\theta)$ is a maximum.
-\item The problems we will encounter are all very nice with likelihood functions
-that have closed form representations and which are optimized by some
-calculus acrobatics. In practice, however, likelihood functions are
-sometimes nasty in which case we are obliged to use numerical methods
-to find maxima (if there are any).
+\item The problems we encounter in this book are all very nice with likelihood
+functions that have closed form representations and which are optimized
+by some calculus acrobatics. In practice, however, likelihood functions
+are sometimes nasty in which case we are obliged to use numerical
+methods to find maxima (if there are any).
 \item MLEs are just one of \underbar{many} possible estimators. One of the
-more popular alternatives are the Method of Moments estimators; see
-BLANK.
+more popular alternatives are the \emph{method of moments estimators};
+see Casella and Berger \cite{Casella2002} for more.
 \end{itemize}
 \end{rem}
 Notice, in Example BLANK we had $X_{i}$ i.i.d.~$\mathsf{binom}(\mathtt{size}=1,\,\mathtt{prob}=p)$,
@@ -15174,27 +15256,25 @@ SSTO=SSE+SSR.\]
 
 \section{Introduction\label{sec:Introduction-Resampling}}
 
-Computers have changed the face of Statistics. Their quick computational
+Computers have changed the face of statistics. Their quick computational
 speed and flawless accuracy, coupled with large datasets acquired
 by the researcher, make them indispensable for any modern analysis.
 In particular, resampling methods (due in large part to Bradley Efron)
 have gained prominence in the modern statistician's repertoire. Let
 us look at a classical problem to get some insight why.
-
-\textbf{A Classical Question:} Given a population of interest, how
-may we effectively learn some of its salient features, \emph{e.g.},
-the population's mean? One way is through representative random sampling.
-Given a random sample, we summarize the information contained therein
-by calculating a reasonable statistic, \emph{e.g.}, the sample mean.
-Given a value of a statistic, how do we know whether that value is
-significantly different from that which was expected? We don't; we
-look at the \emph{sampling distribution} of the statistic, and we
-try to make probabilistic assertions based on a confidence level or
-other consideration. For example, we may find ourselves saying things
-like, \textquotedbl{}With 95\% confidence, the true population mean
-is greater than zero.\textquotedbl{}
-
-\textbf{Problem:} Unfortunately, in most cases the sampling distribution
+\begin{description}
+\item [{Classical~question}] Given a population of interest, how may we
+effectively learn some of its salient features, \emph{e.g.}, the population's
+mean? One way is through representative random sampling. Given a random
+sample, we summarize the information contained therein by calculating
+a reasonable statistic, \emph{e.g.}, the sample mean. Given a value
+of a statistic, how do we know whether that value is significantly
+different from that which was expected? We don't; we look at the \emph{sampling
+distribution} of the statistic, and we try to make probabilistic assertions
+based on a confidence level or other consideration. For example, we
+may find ourselves saying things like, \textquotedbl{}With 95\% confidence,
+the true population mean is greater than zero.\textquotedbl{}
+\item [{Problem}] Unfortunately, in most cases the sampling distribution
 is \emph{unknown}. Thus, in the past, in efforts to say something
 useful, statisticians have been obligated to place some restrictive
 assumptions on the underlying population. For example, if we suppose
@@ -15202,12 +15282,11 @@ that the population has a normal distribution, then we can say that
 the distribution of $\Xbar$ is normal, too, with the same mean (and
 a smaller standard deviation). It is then easy to draw conclusions,
 make inferences, and go on about our business.
-
-\textbf{An Alternative:} We don't know what the underlying population
-distributions is, so let us \emph{estimate} it, just like we would
-with any other parameter. The statistic we use is the \emph{empirical
-CDF}, that is, the function that places mass $1/n$ at each of the
-observed data points $x_{1},\ldots,x_{n}$ (see Section \ref{sec:The-Empirical-Distribution}).
+\item [{Alternative}] We don't know what the underlying population distributions
+is, so let us \emph{estimate} it, just like we would with any other
+parameter. The statistic we use is the \emph{empirical CDF}, that
+is, the function that places mass $1/n$ at each of the observed data
+points $x_{1},\ldots,x_{n}$ (see Section \ref{sec:The-Empirical-Distribution}).
 As the sample size increases, we would expect the approximation to
 get better and better (with i.i.d.~observations, it does, and there
 is a wonderful theorem by Glivenko and Cantelli that proves it). And
@@ -15216,66 +15295,87 @@ to find the sampling distribution of any statistic we like: just \textbf{sample}
 from the empirical CDF many, many times, calculate the statistic each
 time, and make a histogram. Done! Of course, the number of samples
 needed to get a representative histogram is prohibitively large\ldots{}human
-beings are simply too slow (and clumsy) to do this tedious procedure.
-Enter the computer.
-
+beings are simply too slow (and clumsy) to do this tedious procedure.\\
 Fortunately, computers are very skilled at doing simple, repetitive
 tasks very quickly and accurately. So we employ them to give us a
 reasonable idea about the sampling distribution of our statistic,
 and we use the generated sampling distribution to guide our inferences
 and draw our conclusions. If we would like to have a better approximation
-for the sampling distribution, we merely tell the computer to sample
-more. In this sense, we are limited only by our current computational
-speed and pocket book.
+for the sampling distribution (within the confines of the information
+contained in the original sample), we merely tell the computer to
+sample more. In this (restricted) sense, we are limited only by our
+current computational speed and pocket book.
+\end{description}
+In short, here are some of the benefits that the advent of resampling
+methods has given us:
+\begin{description}
+\item [{Fewer~assumptions.}] We are no longer required to assume the population
+is normal or the sample size is large.
+\item [{Greater~accuracy.}] Many classical methods are based on rough
+upper bounds or Taylor expansions. The bootstrap procedures can be
+iterated long enough to give results accurate to several decimal places,
+often beating classical approximations. 
+\item [{Generality.}] Resampling methods are easy to understand and apply
+to a large class of seemingly unrelated procedures. One no longer
+needs to memorize long complicated formulas and algorithms.\end{description}
 \begin{rem}
 Due to the special structure of the empirical CDF, to get an i.i.d.~sample
-one needs only to take a random sample of size $n$, with replacement,
+we just need to take a random sample of size $n$, with replacement,
 from the observed data $x_{1},\ldots,x_{n}$. Repeats are expected
 and acceptable. Since we already sampled to get the original data,
 the term \emph{resampling} is used to describe the procedure.
 \end{rem}
-\textbf{A Summary of the Advantages of Resampling Methods:}
-\begin{itemize}
-\item \textbf{Fewer assumptions.} We are no longer required to assume the
-population is normal or the sample size is large. 
-\item \textbf{Greater accuracy.} Many classical methods are based on rough
-upper bounds or Taylor expansions. The bootstrap procedures can be
-iterated long enough to give results accurate to several decimal places,
-often beating classical approximations. 
-\item \textbf{Generality.} Resampling methods are easy to understand and
-apply to a large class of seemingly unrelated procedures. One no longer
-needs to memorize long complicated formulas and algorithms.
-\end{itemize}
 
-\section{Bootstrap Standard Errors\label{sec:Bootstrap-Standard-Errors}}
+\paragraph*{General bootstrap procedure.}
 
-\textbf{Procedure for Bootstrapping:} To approximate the sampling
-distribution of a statistic $S(x)$ based on a $SRS$ of size $n$:
+The above discussion leads us to the following general procedure to
+approximate the sampling distribution of a statistic $S=S(x_{1},x_{2},\ldots,x_{n})$
+based on an observed simple random sample $\mathbf{x}=(x_{1},x_{2},\ldots,x_{n})$
+of size $n$:
 \begin{enumerate}
-\item Create many many samples $x_{1}^{\ast},\ldots,x_{M}^{\ast}$, called
-\emph{resamples}, by sampling with replacement from the data. 
-\item Calculate the statistic of interest $S(x_{1}^{\ast}),\ldots,S(x_{M}^{\ast})$
+\item Create many many samples $\mathbf{x}_{1}^{\ast},\ldots,\mathbf{x}_{M}^{\ast}$,
+called \emph{resamples}, by sampling with replacement from the data. 
+\item Calculate the statistic of interest $S(\mathbf{x}_{1}^{\ast}),\ldots,S(\mathbf{x}_{M}^{\ast})$
 for each resample. The distribution of the resample statistics is
 called a \emph{bootstrap distribution}. 
 \item The bootstrap distribution gives information about the sampling distribution
-of the statistic. In particular, it gives us some idea about the center,
-spread, and shape of the sampling distribution of $S$.\end{enumerate}
+of the original statistic $S$. In particular, the bootstrap distribution
+gives us some idea about the center, spread, and shape of the sampling
+distribution of $S$.
+\end{enumerate}
+
+\section{Bootstrap Standard Errors\label{sec:Bootstrap-Standard-Errors}}
+
+Since the bootstrap distribution gives us information about a statistic's
+sampling distribution, we can use the bootstrap distribution to estimate
+properties of the statistic. of We have seen a procedure to help us
+gain information about the sampling distribution of a statistic of
+interest, and in this section we bring that information to bear to
+help us with estimation.Once we have a bootstrap distribution the
+next question is, what are we going to do with it?One statistic whose
+sampling distribution is often of interest is the sampling We will
+illustrate the bootstrap procedure in the special case that the statistic
+$S$ is the standard error
 \begin{example}
 \textbf{Bootstrapping the standard error of the mean.\label{exa:Bootstrap-se-mean}}
-In this example we illustrate the bootstrap by trying to estimate
-the standard error of the sample mean. We do this in the special case
-when the underlying population is $\mathsf{norm}(\mathtt{mean}=2,\,\mathtt{sd}=1)$.
+In this example we illustrate the bootstrap by estimating the standard
+error of the sample mean. We do this in the special case when the
+underlying population is $\mathsf{norm}(\mathtt{mean}=3,\,\mathtt{sd}=1)$. 
+
 Of course, for this example we do not need a bootstrap distribution
 because from Section \ref{sec:Sampling-from-Normal} we know that
-$\Xbar\sim\mathsf{norm}(\mathtt{mean}=2,\,\mathtt{sd}=1/\sqrt{n})$.
+$\Xbar\sim\mathsf{norm}(\mathtt{mean}=3,\,\mathtt{sd}=1/\sqrt{n})$.
 We will use what we already know to see how the bootstrap method performs.
-\end{example}
+
+We will take a random sample of size $n=25$ from the population.
+Then we will \emph{resample} the data 1000 times to get 1000 resamples
+of size 25. We will calculate the sample mean of each of the resamples,
+and will study the data distribution of the 1000 values of $\xbar$.
+
 <<>>=
-srs <- rnorm(25, mean = 2)
+srs <- rnorm(25, mean = 3)
 resamps <- replicate(1000, sample(srs, 25, TRUE), simplify = FALSE)
 xbarstar <- sapply(resamps, mean, simplify = TRUE)
-mean(xbarstar)
-sd(xbarstar)
 @
 
 %
@@ -15283,32 +15383,42 @@ sd(xbarstar)
 \begin{centering}
 <<echo = FALSE, fig=true, height = 4, width = 6>>=
 hist(xbarstar, breaks = 40, prob = TRUE)
-curve(dnorm(x, 2, 0.2), add = TRUE)
+curve(dnorm(x, 3, 0.2), add = TRUE)
 @
 \par\end{centering}
 
-\caption{Bootstrapping the standard error of the mean\label{fig:Bootstrap-se-mean}}
+\caption{Bootstrapping the standard error of the mean, simulated data\label{fig:Bootstrap-se-mean}}
 
 \end{figure}
-
-
-The graph is shown in Figure \ref{fig:Bootstrap-se-mean}, and was
-produced by the following code.
+A histogram of the 1000 values of $\xbar$ is shown in Figure \ref{fig:Bootstrap-se-mean},
+and was produced by the following code.
 
 <<eval = FALSE, keep.source = TRUE>>=
 hist(xbarstar, breaks = 40, prob = TRUE)
-curve(dnorm(x, 2, 0.2), add = TRUE)  # overlay true normal density
+curve(dnorm(x, 3, 0.2), add = TRUE)  # overlay true normal density
 @
+
+Take a look at this:
+\end{example}
+<<>>=
+mean(xbarstar)
+mean(srs)
+@
+
+Now what we originally wanted.
+
+<<>>=
+sd(xbarstar)
+@
+
+
 \begin{example}
 \textbf{Bootstrapping the Standard Error of the Median.\label{exa:Bootstrap-se-median}}
 In this example we extend our study to include more complicated statistics
 and data where we do not know the answer ahead of time. This example
 uses the \inputencoding{latin9}\lstinline[showstringspaces=false]!rivers!\inputencoding{utf8}\index{Data sets!rivers@\texttt{rivers}}
-dataset. 
-
-<<>>=
-stem(rivers)
-@
+dataset; recall the stemplot on page \vpageref{ite:stemplot-rivers}
+that we made for these data. 
 
 We see from the stemplot that the \inputencoding{latin9}\lstinline[showstringspaces=false]!rivers!\inputencoding{utf8}
 data are clearly right-skewed, so a natural estimate of center would
@@ -15331,13 +15441,14 @@ hist(medstar, breaks = 40, prob = TRUE)
 @
 \par\end{centering}
 
-\caption{Bootstrapping the standard error of the median\label{fig:Bootstrapping-se-median}}
+\caption{Bootstrapping the standard error of the median for the \texttt{rivers}
+data\label{fig:Bootstrapping-se-median}}
 
 \end{figure}
 
 
 The graph is shown in Figure \ref{fig:Bootstrapping-se-median}, and
-was produced by the following code.
+was produced by the following.
 
 <<eval = FALSE, keep.source = TRUE>>=
 hist(medstar, breaks = 40, prob = TRUE)
@@ -16280,11 +16391,12 @@ A \emph{critical number} of the function $f$ is a value $x^{\ast}$
 for which $f'(x^{\ast})=0$ or for which $f'(x^{\ast})$ does not
 exist.\end{defn}
 \begin{thm}
-First Derivative Test. If $f$ is differentiable and if $x^{\ast}$
-is a critical number of $f$ and if $f'(x)\geq0$ for $x\leq x^{\ast}$
-and $f'(x)\leq0$ for $x\geq x^{\ast}$ , then $x^{\ast}$ is a local
-maximum of $f$. If $f'(x)\leq0$ for $x\leq x^{\ast}$ and $f'(x)\geq0$
-for $x\geq x^{\ast}$ , then $x^{\ast}$ is a local minimum of $f$. 
+\label{thm:First-Derivative-Test}First Derivative Test. If $f$ is
+differentiable and if $x^{\ast}$ is a critical number of $f$ and
+if $f'(x)\geq0$ for $x\leq x^{\ast}$ and $f'(x)\leq0$ for $x\geq x^{\ast}$
+, then $x^{\ast}$ is a local maximum of $f$. If $f'(x)\leq0$ for
+$x\leq x^{\ast}$ and $f'(x)\geq0$ for $x\geq x^{\ast}$ , then $x^{\ast}$
+is a local minimum of $f$. 
 \end{thm}
 
 \begin{thm}
