@@ -11529,8 +11529,6 @@ tab <- xtabs(~gender, data = RcmdrTestDrive)
 prop.test(rbind(tab), conf.level = 0.95, correct = FALSE)
 @
 
-djlsd
-
 <<>>=
 A <- as.data.frame(Titanic)
 library(reshape)
@@ -11545,7 +11543,8 @@ I am thinking one and two sample problems here.
 
 \subsection{How to do it with \textsf{R}}
 
-I am thinking about sigma.test() and var.test() here.
+I am thinking about sigma.test in the TeachingDemos package and var.test
+in base R here.
 
 
 \section{Fitting Distributions\label{sec:Fitting-Distributions}}
@@ -11558,9 +11557,10 @@ I am thinking about fitdistr from the MASS package \cite{Venables2002}.
 
 \section{Sample Size and Margin of Error\label{sec:Sample-Size-and-MOE}}
 
-Sections BLANK through BLANK all began the same way: we were given
-the sample size $n$ and the confidence coefficient $1-\alpha$, and
-our task was to find a margin of error $E$ so that \[
+Sections \ref{sec:Confidence-Intervals-for-Means} through \ref{sec:Confidence-Intervals-for-Variances}
+all began the same way: we were given the sample size $n$ and the
+confidence coefficient $1-\alpha$, and our task was to find a margin
+of error $E$ so that \[
 \hat{\theta}\pm E\mbox{ is a }100(1-\alpha)\%\mbox{ confidence interval for }\theta.\]
 Some examples we saw were:
 \begin{itemize}
@@ -11568,11 +11568,11 @@ Some examples we saw were:
 \item $E=t_{\alpha/2}(\mathtt{df}=n+m-2)S_{p}\sqrt{n^{-1}+m^{-1}}$, in
 the two-sample pooled $t$-interval. 
 \end{itemize}
-We already know (see Equation BLANK) that $E$ decreases as $n$ increases.
-Now we would like to use this information to our advantage: suppose
-that we have a fixed margin of error $E,$ say $E=3$, and we want
-a $100(1-\alpha)\%$ confidence interval for $\mu$. The question
-is: how big does $n$ have to be?
+We already know (we can see in the formulas above) that $E$ decreases
+as $n$ increases. Now we would like to use this information to our
+advantage: suppose that we have a fixed margin of error $E,$ say
+$E=3$, and we want a $100(1-\alpha)\%$ confidence interval for $\mu$.
+The question is: how big does $n$ have to be?
 
 For the case of a population mean the answer is easy: we set up an
 equation and solve for $n$.
@@ -11628,20 +11628,13 @@ may use $p^{\ast}=1/2$.
 
 \subsection{How to do it with \textsf{R}}
 
-I am thinking about 
-
-power.t.test
-
-power.prop.test
-
-power.anova.test
-
-also thinking about replicate
+I am thinking about power.t.test, power.prop.test, power.anova.test,
+and I am also thinking about replicate.
 
 
 \section{Other Topics\label{sec:Other-Topics}}
 
-Mention mle from the stats4 package
+Mention mle from the stats4 package.
 
 \newpage{}
 
