@@ -426,12 +426,12 @@ The book can be subdivided into three basic parts. The first part
 includes the introductions and elementary \emph{descriptive statistics};
 I want the students to be knee-deep in data right out of the gate.
 The second part is the study of \emph{probability}, which begins at
-the basics of sets and the equally likely model, journeys past discrete
-and continuous random variables, continuing through to multivariate
-distributions. The chapter on sampling distributions paves the way
-to the third part, which is \emph{inferential statistics}. This last
-part includes point and interval estimation, hypothesis testing, and
-finishes with introductions to selected topics in applied statistics.
+the basics of sets and the equally likely model, journeys past discrete/continuous
+random variables and continues through to multivariate distributions.
+The chapter on sampling distributions paves the way to the third part,
+which is \emph{inferential statistics}. This last part includes point
+and interval estimation, hypothesis testing, and finishes with introductions
+to selected topics in applied statistics.
 
 I usually only have time in one semester to cover a small subset of
 this book. I cover the material in Chapter 2 in a class period that
@@ -1094,7 +1094,7 @@ to get the same answer. The \inputencoding{latin9}\lstinline[basicstyle={\ttfami
 stands for {}``not a number''; it is represented internally as \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!double!\inputencoding{utf8}\index{double}. 
 
 
-\subsection{Vectors}
+\subsection{Vectors\label{sub:Vectors}}
 
 All of this time we have been manipulating vectors of length 1. Now
 let us move to vectors with multiple entries.
@@ -2980,7 +2980,7 @@ Given the hinges, the \emph{five number summary} ($5NS$) is \begin{equation}
 An advantage of the $5NS$ is that it reduces a potentially large
 dataset to a shorter list of only five numbers, and further, these
 numbers give insight regarding the shape of the data distribution
-similar to the sample quantiles in Section BLANK.
+similar to the sample quantiles in Section \ref{sub:Order-Statistics-and}.
 
 
 \subsection{How to do it with \textsf{R}}
@@ -3068,7 +3068,7 @@ that does not depend on the measurement units.
 We have had experience with vectors of data, which are long lists
 of numbers. Typically, each entry in the vector is a single measurement
 on a subject or experimental unit in the study. We saw in Section
-BLANK how to form vectors with the \inputencoding{latin9}\lstinline[showstringspaces=false]!c!\inputencoding{utf8}
+\ref{sub:Vectors} how to form vectors with the \inputencoding{latin9}\lstinline[showstringspaces=false]!c!\inputencoding{utf8}
 function or the \inputencoding{latin9}\lstinline[showstringspaces=false]!scan!\inputencoding{utf8}
 function. 
 
@@ -3807,13 +3807,13 @@ experiment is the unpredictable selection of an outcome in $S$.
 Most of the probability work in this book is done with the \inputencoding{latin9}\lstinline[showstringspaces=false]!prob!\inputencoding{utf8}
 package \cite{Kernsprob}. A sample space is (usually) represented
 by a \emph{data frame}, that is, a rectangular collection of variables
-(see Section BLANK). Each row of the data frame corresponds to an
-outcome of the experiment. The data frame choice is convenient both
-for its simplicity and its compatibility with the \textsf{R} Commander.
-Data frames alone are, however, not sufficient to describe some of
-the more interesting probabilistic applications we will study later;
-to handle those we will need to consider a more general \emph{list}
-data structure. See Section BLANK for details.
+(see Section \ref{sub:Multivariate-Data}). Each row of the data frame
+corresponds to an outcome of the experiment. The data frame choice
+is convenient both for its simplicity and its compatibility with the
+\textsf{R} Commander. Data frames alone are, however, not sufficient
+to describe some of the more interesting probabilistic applications
+we will study later; to handle those we will need to consider a more
+general \emph{list} data structure. See Section BLANK for details.
 \begin{example}
 Consider the random experiment of dropping a styrofoam cup onto the
 floor from a height of four feet. The cup hits the ground and eventually
@@ -4756,7 +4756,7 @@ What is $\P(\mbox{Royal Flush})$, or in other words, $\P(\mbox{A, K, Q, J, 10 al
 It should be clear that there are only four possible royal flushes.
 Thus, if we could only count the number of outcomes in $S$ then we
 could simply divide four by that number and we would have our answer
-under the equally likely model. This is the subject of Section BLANK.
+under the equally likely model. This is the subject of Section \ref{sec:Methods-of-Counting}.
 \end{example}
 
 \subsection{How to do it with \textsf{R}}
@@ -4800,7 +4800,7 @@ We have as yet glossed over the details. More specifically, \inputencoding{latin
 has three arguments: \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8},
 which is a probability space (or a subset of one), \inputencoding{latin9}\lstinline[showstringspaces=false]!event!\inputencoding{utf8},
 which is a logical expression used to define a subset, and \inputencoding{latin9}\lstinline[showstringspaces=false]!given!\inputencoding{utf8},
-which is described in Section BLANK.
+which is described in Section \ref{sec:Conditional-Probability}.
 
 \emph{WARNING}. The \inputencoding{latin9}\lstinline[showstringspaces=false]!event!\inputencoding{utf8}
 argument is used to define a subset of \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8},
@@ -5466,8 +5466,8 @@ prob(N, isrep(N, "red", 2))
 @
 
 Note that the exact value is $21/40$; we will learn a quick way to
-compute this in Section BLANK. What is the probability of observing
-\inputencoding{latin9}\lstinline[showstringspaces=false]!"red"!\inputencoding{utf8},
+compute this in Section \ref{sec:Other-Discrete-Distributions}. What
+is the probability of observing \inputencoding{latin9}\lstinline[showstringspaces=false]!"red"!\inputencoding{utf8},
 then \inputencoding{latin9}\lstinline[showstringspaces=false]!"green"!\inputencoding{utf8},
 then \inputencoding{latin9}\lstinline[showstringspaces=false]!"red"!\inputencoding{utf8}?
 
@@ -5510,8 +5510,8 @@ and notice that $A\cap B$ and $A^{c}\cap B$ are disjoint. Therefore\begin{align*
 
 \begin{example}
 We saw the \inputencoding{latin9}\lstinline[showstringspaces=false]!RcmdrTestDrive!\inputencoding{utf8}
-data set in Chapter BLANK in which a two-way table of the smoking
-status versus the gender was
+data set in Chapter \ref{cha:An-Introduction-to-R} in which a two-way
+table of the smoking status versus the gender was
 
 <<echo = FALSE>>=
 .Table <- xtabs(~smoke+gender, data=RcmdrTestDrive)
@@ -5559,7 +5559,8 @@ Events $A$ and $B$ are said to be \emph{independent} if \begin{equation}
 Otherwise, the events are said to be \emph{dependent}. 
 \end{defn}
 The connection with the above example stems from the following. We
-know from Section BLANK that when $\P(B)>0$ we may write \begin{equation}
+know from Section \ref{sec:Conditional-Probability} that when $\P(B)>0$
+we may write \begin{equation}
 \P(A|B)=\frac{\P(A\cap B)}{\P(B)}.\end{equation}
 In the case that $A$ and $B$ are independent, the numerator of the
 fraction factors so that $\P(B)$ cancels with the result:\begin{equation}
@@ -5697,7 +5698,7 @@ would give an error.
 
 \section{Bayes' Rule\label{sec:Bayes'-Rule}}
 
-We mentioned the subjective view of probability in Section BLANK.
+We mentioned the subjective view of probability in Section \ref{sec:Interpreting-Probabilities}.
 In this section we introduce a rule that allows us to update our probabilities
 when new information becomes available. 
 \begin{thm}
@@ -5892,7 +5893,7 @@ replace \inputencoding{latin9}\lstinline[showstringspaces=false]!prior!\inputenc
 with \inputencoding{latin9}\lstinline[showstringspaces=false]!post!\inputencoding{utf8}
 in a future calculation. We could raise \inputencoding{latin9}\lstinline[showstringspaces=false]!like!\inputencoding{utf8}
 to a power to see how the posterior is affected by future document
-mistakes. (Do you see why? Think back to Section BLANK.)
+mistakes. (Do you see why? Think back to Section \ref{sec:Independent-Events}.)
 
 
 \begin{example}
@@ -5996,14 +5997,14 @@ can be inspected all at once. And while the support of $Y$ cannot
 be exhaustively written down, its elements can nevertheless be listed
 in a naturally ordered sequence. Random variables with supports similar
 to those of $X$ and $Y$ are called \emph{discrete random variables}.
-We study these in Chapter BLANK.
+We study these in Chapter \ref{cha:Discrete-Distributions}.
 
 In contrast, the support of $Z$ is a continuous interval, containing
 all rational and irrational positive real numbers. For this reason%
 \footnote{This isn't really the reason, but it serves as an effective litmus
 test at the introductory level. See Billingsley or Resnick.%
 }, random variables with supports like $Z$ are called \emph{continuous
-random variables}, to be studied in Chapter BLANK.
+random variables}, to be studied in Chapter \ref{cha:Continuous-Distributions}.
 
 
 \subsection{How to do it with \textsf{R}}
@@ -6193,8 +6194,8 @@ Every discrete random variable $X$ has associated with it a probability
 mass function (PMF) $f_{X}:S_{X}\to[0,1]$ defined by \begin{equation}
 f_{X}(x)=\P(X=x),\quad x\in S_{X}.\end{equation}
 Since values of the PMF represent probabilities, we know from Chapter
-BLANK that PMFs enjoy certain properties. In particular, all PMFs
-satisfy 
+\ref{cha:Probability} that PMFs enjoy certain properties. In particular,
+all PMFs satisfy 
 \begin{enumerate}
 \item $f_{X}(x)>0$ for $x\in S$,
 \item $\sum_{x\in S}f_{X}(x)=1$, and
@@ -6246,8 +6247,9 @@ corresponding outcomes of the random variable $X$, and take the sample
 mean of the observations, then the calculated value would fall close
 to 3.5. The approximation would get better as we observe more and
 more values of $X$ (another form of the Law of Large Numbers; see
-Chapter BLANK). Another way it is commonly stated is that $X$ is
-3.5 {}``on the average'' or {}``in the long run''.\end{example}
+Section \ref{sec:Interpreting-Probabilities}). Another way it is
+commonly stated is that $X$ is 3.5 {}``on the average'' or {}``in
+the long run''.\end{example}
 \begin{rem}
 Note that although we say $X$ is 3.5 on the average, we must keep
 in mind that our $X$ never actually equals 3.5 (in fact, it is impossible
@@ -6616,8 +6618,8 @@ p(X)(2)   # cdf of X evaluated at x = 2
 \end{example}
 Random variables defined via the \inputencoding{latin9}\lstinline[showstringspaces=false]!distr!\inputencoding{utf8}
 package may be \emph{plotted}, which will return graphs of the PMF,
-CDF, and quantile function (introduced in Section BLANK). See Figure
-\ref{fig:binom-plot-distr} for an example.
+CDF, and quantile function (introduced in Section ). See Figure \ref{fig:binom-plot-distr}
+for an example.
 
 %
 \begin{figure}[H]
@@ -6661,8 +6663,8 @@ Simulate $k$ variates &  & $\mathtt{rbinom(k,size=n,prob=p)}$ &  & $\mathtt{r(X)
 
 \subsection{The Expectation Operator\label{sub:The-Expectation-Operator}}
 
-We next generalize some of the concepts from Section BLANK. There
-we saw that every%
+We next generalize some of the concepts from Section \ref{sub:Mean,-Variance,-and}.
+There we saw that every%
 \footnote{Not every, only those PMFs for which the (potentially infinite) series
 converges.%
 } PMF has two important numbers associated with it:\begin{equation}
@@ -6793,8 +6795,9 @@ moments} $\mu_{r}$ defined by\begin{equation}
 \begin{example}
 Let $X\sim\mathsf{binom}(\mathtt{size}=n,\,\mathtt{prob}=p)\mbox{ with \ensuremath{M(t)=(q+p\me^{t})^{n}}}$.
 We calculated the mean and variance of a binomial random variable
-in Section BLANK by means of the binomial series. But look how quickly
-we find the mean and variance with the moment generating function.
+in Section \ref{sec:The-Binomial-Distribution} by means of the binomial
+series. But look how quickly we find the mean and variance with the
+moment generating function.
 
 \begin{alignat*}{1}
 M'(t)= & n(q+p\me^{t})^{n-1}p\me^{t}\left|_{t=0}\right.,\\
@@ -6883,7 +6886,7 @@ and this last quantity looks very close to what we already know to
 be the sample variance.\begin{equation}
 s^{2}=\frac{1}{n-1}\sum_{i=1}^{n}(x_{i}-\xbar)^{2}.\end{equation}
 The \emph{empirical quantile function} is the inverse of the ECDF.
-See Section BLANK.
+See Section \ref{sub:Normal-Quantiles-QF}.
 
 
 \subsection{How to do it with \textsf{R}}
@@ -6905,9 +6908,9 @@ The above shows that the returned value of \inputencoding{latin9}\lstinline[show
 is not a \emph{number} but rather a \emph{function}. The ECDF is not
 usually used by itself in this form, by itself. More commonly it is
 used as an intermediate step in a more complicated calculation, for
-instance, in hypothesis testing (see Section BLANK) or resampling
-(see Chapter BLANK). It is nevertheless instructive to see what the
-\inputencoding{latin9}\lstinline[showstringspaces=false]!ecdf!\inputencoding{utf8}
+instance, in hypothesis testing (see Chapter \ref{cha:Hypothesis-Testing})
+or resampling (see Chapter \ref{cha:Resampling-Methods}). It is nevertheless
+instructive to see what the \inputencoding{latin9}\lstinline[showstringspaces=false]!ecdf!\inputencoding{utf8}
 looks like, and there is a special plot method for \inputencoding{latin9}\lstinline[showstringspaces=false]!ecdf!\inputencoding{utf8}
 objects.
 
@@ -6954,12 +6957,12 @@ sample(x, size = 7, replace = TRUE)
 @
 
 We can get the empirical quantile function in \textsf{R} with \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!quantile(x, probs = p, type = 1)!\inputencoding{utf8};
-see Section BLANK.
+see Section \ref{sub:Normal-Quantiles-QF}.
 
 As we hinted above, the empirical distribution is significant more
 because of how and where it appears in more sophisticated applications.
 We will explore some of these in later chapters -- see, for instance,
-Chapter BLANK.
+Chapter \ref{cha:Resampling-Methods}.
 
 
 \section{Other Discrete Distributions\label{sec:Other-Discrete-Distributions}}
@@ -7007,7 +7010,8 @@ It is shown in Exercise BLANK that \begin{equation}
 The associated \textsf{R} functions for the PMF and CDF are \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=4]!dhyper(x, m, n, k)!\inputencoding{utf8}
 and \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=4]!phyper!\inputencoding{utf8},
 respectively. There are two more functions: \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=4]!qhyper!\inputencoding{utf8},
-which we will discuss in Section BLANK, and \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=4]!rhyper!\inputencoding{utf8},
+which we will discuss in Section \ref{sub:Normal-Quantiles-QF}, and
+\inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=4]!rhyper!\inputencoding{utf8},
 discussed below.
 \begin{example}
 Suppose in a certain shipment of 250 Pentium processors there are
@@ -7405,18 +7409,18 @@ $h$. In the case that $h$ is one-to-one (see Appendix BLANK), the
 solution can be found by simple substitution.
 \begin{example}
 Let $X\sim\mathsf{nbinom}(\mathtt{size}=r,\,\mathtt{prob}=p)$. We
-saw in Section BLANK that $X$ represents the number of failures until
-$r$ successes in a sequence of Bernoulli trials. Suppose now that
-instead we were interested in counting the number of trials (successes
-and failures) until the $r$$^{\text{th}}$ success occurs, which
-we will denote by $Y$. In a given performance of the experiment,
-the number of failures ($X$) and the number of successes ($r$) together
-will comprise the total number of trials ($Y$), or in other words,
-$X+r=Y$. We may let $h$ be defined by $h(x)=x+r$ so that $Y=h(X)$,
-and we notice that $h$ is linear and hence one-to-one. Finally, $X$
-takes values $0,\ 1,\ 2,\ldots$ implying that the support of $Y$
-would be $\left\{ r,\ r+1,\ r+2,\ldots\right\} $. Solving for $X$
-we get $X=Y-r$. Examining the PMF of $X$\begin{equation}
+saw in \ref{sec:Other-Discrete-Distributions} that $X$ represents
+the number of failures until $r$ successes in a sequence of Bernoulli
+trials. Suppose now that instead we were interested in counting the
+number of trials (successes and failures) until the $r$$^{\text{th}}$
+success occurs, which we will denote by $Y$. In a given performance
+of the experiment, the number of failures ($X$) and the number of
+successes ($r$) together will comprise the total number of trials
+($Y$), or in other words, $X+r=Y$. We may let $h$ be defined by
+$h(x)=x+r$ so that $Y=h(X)$, and we notice that $h$ is linear and
+hence one-to-one. Finally, $X$ takes values $0,\ 1,\ 2,\ldots$ implying
+that the support of $Y$ would be $\left\{ r,\ r+1,\ r+2,\ldots\right\} $.
+Solving for $X$ we get $X=Y-r$. Examining the PMF of $X$\begin{equation}
 f_{X}(x)={r+x-1 \choose r-1}\, p^{r}(1-p)^{x},\end{equation}
 we can substitute $x=y-r$ to get\begin{eqnarray*}
 f_{Y}(y) & = & f_{X}(y-r),\\
@@ -7736,9 +7740,9 @@ which is restricted to lie in the interval $[0,1]$.
 \end{itemize}
 \end{rem}
 We met the cumulative distribution function, $F_{X}$, in Chapter
-BLANK. Recall that it is defined by $F_{X}(t)=\P(X\leq t)$, for $-\infty<t<\infty$.
-While in the discrete case the CDF is unwieldly, in the continuous
-case the CDF has a relatively convenient form:\begin{equation}
+\ref{cha:Discrete-Distributions}. Recall that it is defined by $F_{X}(t)=\P(X\leq t)$,
+for $-\infty<t<\infty$. While in the discrete case the CDF is unwieldly,
+in the continuous case the CDF has a relatively convenient form:\begin{equation}
 F_{X}(t)=\P(X\leq t)=\int_{-\infty}^{t}f_{X}(x)\:\diff x,\quad-\infty<t<\infty.\end{equation}
 
 
@@ -8026,7 +8030,7 @@ one standard deviation (below and above, respectively) from the mean
 of 100. The answer is therefore approximately 68\%.
 \end{example}
 
-\subsection{Normal Quantiles and the Quantile Function}
+\subsection{Normal Quantiles and the Quantile Function\label{sub:Normal-Quantiles-QF}}
 
 Until now we have been given two values and our task has been to find
 the area under the PDF between those values. In this section, we go
@@ -8227,11 +8231,12 @@ on each piece, and finish up by adding the results together.
 
 \subsection{The CDF method}
 
-We know from Section BLANK that $f_{X}=F_{X}'$ in the continuous
-case. Starting from the equation $F_{Y}(y)=\P(Y\leq y)$, we may substitute
-$g(X)$ for $Y$, then solve for $X$ to obtain $\P[X\leq g^{-1}(y)]$,
-which is just another way to write $F_{X}[g^{-1}(y)]$. Differentiating
-this last quantity with respect to $y$ will yield the PDF of $Y$.
+We know from Section \ref{sec:Continuous-Random-Variables} that $f_{X}=F_{X}'$
+in the continuous case. Starting from the equation $F_{Y}(y)=\P(Y\leq y)$,
+we may substitute $g(X)$ for $Y$, then solve for $X$ to obtain
+$\P[X\leq g^{-1}(y)]$, which is just another way to write $F_{X}[g^{-1}(y)]$.
+Differentiating this last quantity with respect to $y$ will yield
+the PDF of $Y$.
 \begin{example}
 Suppose $X\sim\mathsf{unif}(\mathtt{min}=0,\,\mathtt{max}=1)$ and
 suppose that we let $Y=-\ln\, X$. What is the PDF of $Y$?
@@ -8295,7 +8300,7 @@ f_{U}(u)=\left(2\Phi(\sqrt{u})-1\right)'=2\phi(\sqrt{u})\cdot\frac{1}{2\sqrt{u}}
 Substituting,\[
 f_{U}(u)=u^{-1/2}\frac{1}{\sqrt{2\pi}}\,\me^{-(\sqrt{u})^{2}/2}=(2\pi u)^{-1/2}\me^{-u},\quad u>0.\]
 This is what we will later call a \emph{chi-square distribution with
-1 degree of freedom}. See Section BLANK. 
+1 degree of freedom}. See Section \ref{sec:Other-Continuous-Distributions}. 
 \end{example}
 
 \subsection{How to do it with \textsf{R}}
@@ -8333,7 +8338,8 @@ The result is an object of class \inputencoding{latin9}\lstinline[basicstyle={\t
 which is one of the classes that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!distr!\inputencoding{utf8}
 uses to denote general distributions that it does not recognize (it
 turns out that $Z$ has a \emph{lognormal} distribution; see Section
-BLANK). A simplified description of the process that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!distr!\inputencoding{utf8}
+\ref{sec:Other-Continuous-Distributions}). A simplified description
+of the process that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!distr!\inputencoding{utf8}
 undergoes when it encounters a transformation $Y=g(X)$ that it does
 not recognize is
 \begin{enumerate}
@@ -8415,10 +8421,11 @@ The mean is $\mu=1/\lambda$ and the variance is $\sigma^{2}=1/\lambda^{2}$.
 The exponential distribution is closely related to the Poisson distribution.
 If customers arrive at a store according to a Poisson process with
 rate $\lambda$ and if $Y$ counts the number of customers that arrive
-in the time interval $[0,t)$, then we saw in Section BLANK that $Y\sim\mathsf{pois}(\mathtt{lambda}=\lambda t).$
-Now consider a different question: let us start our clock at time
-0 and stop the clock when the first customer arrives. Let $X$ be
-the length of this random time interval. Then $X\sim\mathsf{exp}(\mathtt{rate}=\lambda)$.
+in the time interval $[0,t)$, then we saw in Section \ref{sec:Other-Discrete-Distributions}
+that $Y\sim\mathsf{pois}(\mathtt{lambda}=\lambda t).$ Now consider
+a different question: let us start our clock at time 0 and stop the
+clock when the first customer arrives. Let $X$ be the length of this
+random time interval. Then $X\sim\mathsf{exp}(\mathtt{rate}=\lambda)$.
 Observe the following string of equalities:\begin{align*}
 \P(X>t) & =\P(\mbox{first arrival after time \emph{t}}),\\
  & =\P(\mbox{no events in [0,\emph{t})}),\\
@@ -8878,8 +8885,8 @@ The first we have seen before, and the second is based on the first.
 \begin{example}
 Roll a fair die twice. Let $X$ be the face shown on the first roll,
 and let $Y$ be the face shown on the second roll. We have already
-seen this example in Chapter BLANK, Example BLANK. For this example,
-it suffices to define\[
+seen this example in Chapter \ref{cha:Probability}, Example BLANK.
+For this example, it suffices to define\[
 f_{X,Y}(x,y)=\frac{1}{36},\quad x=1,\ldots,6,\ y=1,\ldots,6.\]
 The marginal PMFs are given by $f_{X}(x)=1/6$, $x=1,2,\ldots,6$,
 and $f_{Y}(y)=1/6$, $y=1,2,\ldots,6$, since\[
@@ -8892,11 +8899,11 @@ In the previous example, and in many other ones, the joint support
 can be written as a product set of the support of $X$ {}``times''
 the support of $Y$, that is, it may be represented as a cartesian
 product set, or rectangle, $S_{X,Y}=S_{X}\times S_{Y}$, where $S_{X}\times S_{Y}=\left\{ (x,y):\ x\in S_{X},\, y\in S_{Y}\right\} $.
-As we shall see presently in Section BLANK, this form is a necessary
-condition for $X$ and $Y$ to be \emph{independent} (or alternatively
-\emph{exchangeable} when $S_{X}=S_{Y}$). But please note that in
-general it is not required for $S_{X,Y}$ to be of rectangle form.
-We next investigate just such an example.
+As we shall see presently in Section \ref{sec:Independent-Random-Variables},
+this form is a necessary condition for $X$ and $Y$ to be \emph{independent}
+(or alternatively \emph{exchangeable} when $S_{X}=S_{Y}$). But please
+note that in general it is not required for $S_{X,Y}$ to be of rectangle
+form. We next investigate just such an example.
 
 
 \begin{example}
@@ -9062,7 +9069,7 @@ f_{Y}(y) & = & \int_{0}^{1}\frac{6}{5}\left(x+y^{2}\right)\,\diff x,\\
  & = & \frac{6}{5}\left(\frac{1}{2}+y^{2}\right),\end{eqnarray*}
 for $0<y<1$. In this example the joint support set was a rectangle
 $[0,1]\times[0,1]$, but it turns out that $X$ and $Y$ are not independent.
-See Section BLANK.
+See Section \ref{sec:Independent-Random-Variables}.
 \end{example}
 
 \subsection{How to do it with \textsf{R}}
@@ -9596,10 +9603,10 @@ persp(x, y, z, theta = -30, phi = 30, ticktype = "detailed")
 
 \section{Bivariate Transformations of Random Variables\label{sec:Transformations-Multivariate}}
 
-We studied in Section BLANK how to find the PDF of $Y=g(X)$ given
-the PDF of $X$. But now we have two random variables $X$ and Y,
-with joint PDF $f_{X,Y}$, and we would like to consider the joint
-PDF of two new random variables\begin{equation}
+We studied in Section \ref{sec:Functions-of-Continuous} how to find
+the PDF of $Y=g(X)$ given the PDF of $X$. But now we have two random
+variables $X$ and Y, with joint PDF $f_{X,Y}$, and we would like
+to consider the joint PDF of two new random variables\begin{equation}
 U=g(X,Y)\quad\mbox{and}\quad V=h(X,Y),\end{equation}
 where $g$ and $h$ are two given functions, typically {}``nice''
 in the sense of Appendix \ref{sec:Multivariable-Calculus}. 
@@ -10356,7 +10363,7 @@ For the special case of $\mu_{X}=\mu_{Y}$ we have shown that \begin{equation}
 has a $\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$ sampling distribution,
 or in other words, $\Xbar-\Ybar$ has a $\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=\sqrt{\sigma_{X}^{2}/n_{1}+\sigma_{Y}^{2}/n_{2}})$
 sampling distribution. This will be important when it comes time to
-do hypothesis tests; see Section BLANK.
+do hypothesis tests; see Section \ref{sec:Conf-Interv-for-Diff-Means}.
 \end{rem}
 
 \subsection{Difference of Independent Sample Proportions}
@@ -10394,7 +10401,7 @@ that is, convergence in distribution.
 %
 }. The expressions for the mean and standard deviation follow immediately
 from Proposition BLANK combined with the formulas for the $\mathsf{binom}(\mathtt{size}=1,\,\mathtt{prob}=p)$
-distribution from Chapter BLANK.
+distribution from Chapter \ref{cha:Discrete-Distributions}.
 \end{proof}
 
 
@@ -10432,7 +10439,8 @@ For the special case of $\sigma_{X}=\sigma_{Y}$ we have shown that
 \begin{equation}
 F=\frac{S_{X}^{2}}{S_{Y}^{2}}\end{equation}
 has an $\mathsf{f}(\mathtt{df1}=n_{1}-1,\,\mathtt{df2}=n_{2}-1)$
-sampling distribution. This will be important in Chapter BLANK.
+sampling distribution. This will be important in Chapters \ref{cha:Estimation}
+onward.
 \end{rem}
 
 \section{Simulated Sampling Distributions\label{sec:Simulated-Sampling-Distributions}}
@@ -12045,11 +12053,11 @@ distributions are not highly skewed.
 \item The equal variance assumption can be relaxed as long as both sample
 sizes $n$ and $m$ are large. However, if one (or both) samples is
 small, then the test does not perform well; we should instead use
-the methods of Chapter BLANK. See Section BLANK.
+the methods of Chapter \ref{cha:Resampling-Methods}.
 \end{itemize}
 \end{rem}
-For a nonparametric alternative to the two-sample $F$ test see Section
-BLANK.
+For a nonparametric alternative to the two-sample $F$ test see Chapter
+\ref{cha:Nonparametric-Statistics}.
 
 
 \subsection{Paired Samples}
@@ -12622,8 +12630,9 @@ S^{2}=\frac{SSE}{n-2},\end{equation}
 and we estimate $\sigma$ with the \emph{standard error} $S=\sqrt{S^{2}}$.
 %
 \footnote{Be careful not to confuse the mean square error $S^{2}$ with the
-sample variance $S^{2}$ in Chapter BLANK. Other notation the reader
-may encounter is the lowercase $s^{2}$ or the bulky $MSE$.%
+sample variance $S^{2}$ in Chapter \ref{cha:Describing-Data-Distributions}.
+Other notation the reader may encounter is the lowercase $s^{2}$
+or the bulky $MSE$.%
 }
 
 
@@ -12662,17 +12671,18 @@ carsumry$sigma
 
 \subsection{Interval Estimates of the Parameters}
 
-We discussed general interval estimation in Chapter BLANK. There we
-found that we could use what we know about the sampling distribution
+We discussed general interval estimation in Chapter \ref{cha:Estimation}.
+There we found that we could use what we know about the sampling distribution
 of certain statistics to construct confidence intervals for the parameter
 being estimated. We will continue in that vein, and to get started
 we will determine the sampling distributions of the parameter estimates,
 $b_{1}$ and $b_{0}$.
 
 To that end, we can see from Equation BLANK (and it is made clear
-in Chapter BLANK) that $b_{1}$ is just a linear combination of normally
-distributed random variables, so $b_{1}$ is normally distributed
-too. Further, it can be shown that\begin{equation}
+in Chapter \ref{cha:Multiple-Linear-Regression}) that $b_{1}$ is
+just a linear combination of normally distributed random variables,
+so $b_{1}$ is normally distributed too. Further, it can be shown
+that\begin{equation}
 b_{1}\sim\mathsf{norm}\left(\mathtt{mean}=\beta_{1},\,\mathtt{sd}=\sigma_{b_{1}}\right)\end{equation}
  where \begin{equation}
 \sigma_{b_{1}}=\frac{\sigma}{\sqrt{\sum_{i=1}^{n}(x_{i}-\xbar)^{2}}}\end{equation}
@@ -12692,7 +12702,8 @@ b_{1}\pm\mathsf{t}_{\alpha/2}(\mathtt{df}=n-1)\, S_{b_{1}}\end{equation}
 
 It is also sometimes of interest to construct a confidence interval
 for $\beta_{0}$ in which case we will need the sampling distribution
-of $b_{0}$. It is shown in Chapter BLANK that\begin{equation}
+of $b_{0}$. It is shown in Chapter \ref{cha:Multiple-Linear-Regression}
+that\begin{equation}
 b_{0}\sim\mathsf{norm}\left(\mathtt{mean}=\beta_{0},\,\mathtt{sd}=\sigma_{b_{0}}\right),\end{equation}
 where $\sigma_{b_{0}}$ is given by\begin{equation}
 \sigma_{b_{0}}=\sigma\sqrt{\frac{1}{n}+\frac{\xbar^{2}}{\sum_{i=1}^{n}(x_{i}-\xbar)^{2}}},\end{equation}
@@ -13044,7 +13055,7 @@ We already knew this. We saw it in the next to the last line of the
 \inputencoding{latin9}\lstinline[showstringspaces=false]!summary(cars.lm)!\inputencoding{utf8}
 output where it was called {}``\inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!Multiple R-squared!\inputencoding{utf8}''.
 Listed right beside it is the \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!Adjusted R-squared!\inputencoding{utf8}
-which we will discuss in Chapter BLANK.
+which we will discuss in Chapter \ref{cha:Multiple-Linear-Regression}.
 
 For the \inputencoding{latin9}\lstinline[showstringspaces=false]!cars!\inputencoding{utf8}
 data, we find $r$ to be
@@ -13081,7 +13092,7 @@ So why bother to define the $F$ statistic? Why not just square the
 $t$ statistic and be done with it? The answer is that the $F$ statistic
 has a more complicated interpretation and plays a more important role
 in the multiple linear regression model which we will study in Chapter
-BLANK. See Section BLANK for details.
+. See Section BLANK for details.
 
 
 \subsection{How to do it with \textsf{R}}
@@ -13380,7 +13391,7 @@ the residuals to a more Gaussian form. In fact, often we will kill
 two birds with one stone.
 \item [{Errors~are~not~independent.}] There are a large class of autoregressive
 models to be used in this situation which occupy the latter part of
-Chapter BLANK.
+Chapter \ref{cha:Time-Series}.
 \end{description}
 
 \section{Other Diagnostic Tools\label{sec:Other-Diagnostic-Tools-SLR}}
@@ -15097,7 +15108,7 @@ distribution. Observations falling higher than the 50$^{\textrm{th}}$
 percentile are extreme. 
 \end{description}
 Note that plugging the value $p=1$ into the formulas will recover
-all of the ones we saw in Chapter BLANK.
+all of the ones we saw in Chapter \ref{cha:Simple-Linear-Regression}.
 
 
 \section{Additional Topics\label{sec:Additional-Topics-MLR}}
