@@ -11944,8 +11944,9 @@ or values more extreme -- meaning, in the direction of the alternative
 hypothesis%
 \footnote{Bickel and Doksum \cite{Bickel2001} state the definition particularly
 well: the $p$-value is {}``the smallest level of significance $\alpha$
-at which an experimenter using {[}a test statistic{]} $T$ would reject
-{[}$H_{0}${]} on the basis of the observed {[}sample{]} outcome $x$''.%
+at which an experimenter using {[}the test statistic{]} $T$ would
+reject {[}$H_{0}${]} on the basis of the observed {[}sample{]} outcome
+$x$''.%
 }. \end{defn}
 \begin{example}
 Calculate the $p$-value for the test in Examples \ref{exa:prop-test-pvalue-A}
@@ -12048,19 +12049,15 @@ Single-sample proportion test\ldots{}}
 Here, $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$ are a $SRS(n)$ from
 a $\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$ distribution.
 We would like to test $H_{0}:\mu=\mu_{0}$.
-
-Case A: Suppose $\sigma$ is known. Then under $H_{0}$,\[
+\begin{description}
+\item [{Case~A:}] Suppose $\sigma$ is known. Then under $H_{0}$,\[
 Z=\frac{\Xbar-\mu_{0}}{\sigma/\sqrt{n}}\sim\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1).\]
-
-
-Table Here.
-
-Case B: When $\sigma$ is unknown, under $H_{0}$\[
+Table here.
+\item [{Case~B:}] When $\sigma$ is unknown, under $H_{0}$\[
 T=\frac{\Xbar-\mu_{0}}{S/\sqrt{n}}\sim\mathsf{t}(\mathtt{df}=n-1).\]
-Table Here.
-
-Remark: If $\sigma$ is unknown but $n$ is large then we can use
-the $z$-test.
+Table here. \end{description}
+\begin{rem}
+If $\sigma$ is unknown but $n$ is large then we can use the $z$-test.\end{rem}
 \begin{example}
 Let $X$= BLANK.
 \begin{enumerate}
@@ -12090,8 +12087,6 @@ a $\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$ distribution.
 We would like to test $H_{0}:\sigma^{2}=\sigma_{0}$. We know that
 under $H_{0}$,\[
 X^{2}=\frac{(n-1)S^{2}}{\sigma^{2}}\sim\mathsf{chisq}(\mathtt{df}=n-1).\]
-
-
 Table here.
 \begin{example}
 Give some data and a hypothesis.
@@ -12103,9 +12098,7 @@ Give some data and a hypothesis.
 
 \subsection{How to do it with \textsf{R}}
 
-z.test() in TeachingDemos
-
-t.test()
+I am thinking z.test in TeachingDemos, t.test in base R.
 
 For the Mean when the Variance is Known
 
@@ -12122,30 +12115,6 @@ x <- rnorm(37, mean = 2, sd = 3)
 library(TeachingDemos)
 z.test(x, mu = 1, sd = 3, conf.level = 0.90)
 @
-
-library(HH)
-
-normal.and.t.dist(mu.H0 = 3.4, obs.mean = 3.556, std.dev = 0.167,
-n = 9, alpha.right = 0.05, deg.freedom = 8, Use.obs.mean = TRUE, polygon.density
-= 10 )
-
-old.omd <- par(omd=c(.05,.88, .05,1)) 
-
-chisq.setup(df=12) 
-
-chisq.curve(df=12, col='blue') 
-
-chisq.observed(22, df=12) 
-
-par(old.omd)
-
-old.omd <- par(omd=c(.05,.88, .05,1)) 
-
-chisq.setup(df=12) 
-
-chisq.curve(df=12, col='blue', alpha=c(.05, .05)) 
-
-par(old.omd) 
 
 
 \paragraph*{How to do it with the \textsf{R} Commander }
@@ -12206,8 +12175,8 @@ distribution when $H_{0}:\mu_{X}=\mu_{Y}$ is true.
 Even if the values of $\sigma_{X}$ and $\sigma_{Y}$ are not known,
 if both $n$ and $m$ are large then we can plug in the sample estimates
 and the result will have approximately a $\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$
-distribution when $H_{0}:\mu_{X}=\mu_{Y}$ is true.\[
-Z=\frac{\Xbar-\Ybar}{\sqrt{S_{X}^{2}/n+S_{Y}^{2}/m}}.\]
+distribution when $H_{0}:\mu_{X}=\mu_{Y}$ is true.\begin{equation}
+Z=\frac{\Xbar-\Ybar}{\sqrt{S_{X}^{2}/n+S_{Y}^{2}/m}}.\end{equation}
 
 \end{rem}
 
@@ -12272,7 +12241,9 @@ rug(y1)
 
 
 
-Plots for the hypothesis tests:%
+Plots for the hypothesis tests:
+
+%
 \begin{figure}
 \begin{centering}
 <<echo = FALSE, fig = true, height = 4.5, width = 6>>=
@@ -12290,7 +12261,7 @@ curve(f, add = TRUE, lwd = 2)
 \caption{Between group versus within group variation\label{fig:Between-versus-within-2}}
 
 \end{figure}
-lkjljdflsjdljsdlsdfljsldsd%
+%
 \begin{figure}
 \begin{centering}
 <<echo = FALSE, fig = true, height = 4.5, width = 6>>=
@@ -12305,12 +12276,8 @@ par(old.omd)
 
 \caption{Some \emph{F} plots from the \texttt{HH} package\label{fig:Some-F-plots-HH}}
 
-
-
 \end{figure}
 
-
-hdskfs
 
 %
 \begin{figure}
