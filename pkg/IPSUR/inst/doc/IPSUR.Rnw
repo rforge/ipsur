@@ -459,10 +459,10 @@ which may be useful to them for many semesters to come. It also mirrors
 my own experience as a student.
 
 This document's ultimate goal is to be a more or less self contained,
-essentially complete, correct, textbook. There should be plenty of
-exercises for the student, with full solutions for some and no solutions
-for others (so that the instructor may assign them for grading). By
-\inputencoding{latin9}\lstinline[showstringspaces=false]!Sweave!\inputencoding{utf8}'s
+essentially complete, correct, introductory textbook. There should
+be plenty of exercises for the student, with full solutions for some
+and no solutions for others (so that the instructor may assign them
+for grading). By \inputencoding{latin9}\lstinline[showstringspaces=false]!Sweave!\inputencoding{utf8}'s
 dynamic nature it is possible to write randomly generated exercises
 and I had planned to implement this idea already throughout the book.
 Alas, there are only 24 hours in a day. Look for more in future editions.
@@ -499,8 +499,8 @@ all of the mathematics.
 
 Despite any misgivings: here it is, warts and all. I humbly invite
 said individuals to take this book, with the GNU-FDL in hand, and
-make it better. In that spirit there are at least a few ways in which
-this book could be improved in my view.
+make it better. In that spirit there are at least a few ways in my
+view in which this book could be improved.
 \begin{description}
 \item [{Better~data:}] the data analyzed in this book are almost entirely
 from the \inputencoding{latin9}\lstinline[showstringspaces=false]!datasets!\inputencoding{utf8}
@@ -3059,8 +3059,8 @@ structure to the data.
 
 \subsection{Standardizing variables}
 
-It is sometimes useful to compare datasets with each other, on a scale
-that does not depend on the measurement units.
+It is sometimes useful to compare datasets with each other on a scale
+that is independent of the measurement units.
 
 
 \section{Multivariate Data and Data Frames\label{sec:Multivariate-Data}}
@@ -11669,7 +11669,7 @@ the cards. I never do.
 
 \section{Tests for Proportions\label{sec:Tests-for-Proportions}}
 \begin{example}
-We have a machine that makes widgets. \end{example}
+\label{exa:widget-machine}We have a machine that makes widgets. 
 \begin{itemize}
 \item Under normal operation, about 0.10 of the widgets produced are defective.
 \item Go out and purchase a torque converter.
@@ -11700,17 +11700,18 @@ so there is evidence that the torque converter is hurting.
 \item $[0.07,\,0.11]$, then there is not enough evidence to conclude that
 the torque converter is doing anything at all, positive or negative.
 \end{itemize}
+\end{example}
 
 \subsection{Terminology}
 
 The \emph{null hypothesis} $H_{0}$ is a {}``nothing'' hypothesis,
-whose interpretation can be that nothing has changed, there is no
-difference, there is nothing special taking place, \emph{etc}. For
-Example BLANK, the null hypothesis would be $H_{0}:\ p=0.10.$ The
-\emph{alternative hypothesis} $H_{1}$ is the hypothesis that something
-has changed, in this case, $H_{1}:\ p\neq0.10$. Our goal is to statistically
-\emph{test} the hypothesis $H_{0}:\ p=0.10$ versus the alternative
-$H_{1}:\ p\neq0.10$. Our procedure will be:
+whose interpretation could be that nothing has changed, there is no
+difference, there is nothing special taking place, \emph{etc}. In
+Example \ref{exa:widget-machine} the null hypothesis would be $H_{0}:\ p=0.10.$
+The \emph{alternative hypothesis} $H_{1}$ is the hypothesis that
+something has changed, in this case, $H_{1}:\ p\neq0.10$. Our goal
+is to statistically \emph{test} the hypothesis $H_{0}:\ p=0.10$ versus
+the alternative $H_{1}:\ p\neq0.10$. Our procedure will be:
 \begin{enumerate}
 \item Go out and collect some data, in particular, a simple random sample
 of observations from the machine.
@@ -11745,12 +11746,12 @@ $\alpha=0.01$, or $\alpha=0.005$ (but could mean anything, in principle).
 \begin{itemize}
 \item The \emph{rejection region} (also known as the \emph{critical region})
 for the test is the set of sample values which would result in the
-rejection of $H_{0}$. For Example BLANK, the rejection region would
-be all possible samples that result in a 95\% confidence interval
-that does not cover $p=0.10$.
+rejection of $H_{0}$. For Example \ref{exa:widget-machine}, the
+rejection region would be all possible samples that result in a 95\%
+confidence interval that does not cover $p=0.10$.
 \item The above example with $H_{1}:p\neq0.10$ is called a \emph{two-sided}
 test. Many times we are interested in a \emph{one-sided} test, which
-could look like $H_{1}:p<0.10$ or $H_{1}:p>0.10$.
+would look like $H_{1}:p<0.10$ or $H_{1}:p>0.10$.
 \end{itemize}
 We are ready for tests of hypotheses for one proportion
 
@@ -11772,38 +11773,133 @@ Find
 \end{example}
 
 \begin{example}
-Suppose $p=\mbox{proportion of BLANK who BLANK}$. I give you the
-hypotheses up here.
+\label{exa:prop-test-pvalue-A}Suppose $p=\mbox{the proportion of students}$
+who are admitted to the graduate school of the University of California
+at Berkeley, and suppose that a public relations officer boasts that
+UCB has historically had a 40\% acceptance rate for its graduate school.
+Consider the data stored in the table \inputencoding{latin9}\lstinline!UCBAdmissions!\inputencoding{utf8}
+from 1973. Assuming these observations constituted a simple random
+sample, are they consistent with the officer's claim, or do they provide
+evidence that the acceptance rate was significantly less than 40\%?
+Use an $\alpha=0.01$ significance level.
 
-What is the conclusion if the significance level is 
-\begin{enumerate}
-\item $\alpha=0.05$
-\item $\alpha=0.01$
-\end{enumerate}
+Our null hypothesis in this problem is $H_{0}:\, p=0.4$ and the alternative
+hypothesis is $H_{1}:\, p<0.4$. We reject the null hypothesis if
+$\hat{p}$ is too small, that is, if\[
+\frac{\hat{p}-0.4}{\sqrt{0.4(1-0.4)/n}}<-z_{\alpha},\]
+where $\alpha=0.01$ and $-z_{0.01}$ is 
+
+<<>>=
+- qnorm(0.99)
+@
+
+Our only remaining task is to find the value of the test statistic
+and see where it falls relative to the critical value. We can find
+the number of people admitted and not admitted to the UCB graduate
+school with the following. 
+
+<<>>=
+A <- as.data.frame(UCBAdmissions)
+head(A)
+xtabs(Freq ~ Admit, data = A)
+@
+
+Now we calculate the value of the test statistic.
+
+<<>>=
+phat <- 1755/(1755 + 2771)
+(phat - 0.4)/sqrt(0.4 * 0.6/(1755 + 2771)) 
+@
+
+Our test statistic is not less than $-2.32$, so it does not fall
+into the critical region. Therefore, we \emph{fail} to reject the
+null hypothesis that the true proportion of students admitted to graduate
+school is less than 40\% and say that the observed data are consistent
+with the officer's claim at the $\alpha=0.01$ significance level. 
+
 \end{example}
 
+\begin{example}
+\label{exa:prop-test-pvalue-B}We are going to do Example \ref{exa:prop-test-pvalue-A}
+all over again. Everything will be exactly the same except for one
+change: suppose we choose significance level $\alpha=0.05$ instead
+of $\alpha=0.01$. Are the 1973 data consistent with the officer's
+claim?
 
-Oops! We saw in the last example that our final conclusion changed
-depending on our selection of the significance level. This is bad;
-for a particular test, we would never know whether our conclusion
-would have been different if we had chosen a different significance
-level. Or would we?
+Our null and alternative hypotheses are the same. Our observed test
+statistic is the same: it was approximately $-1.68$. But notice that
+our critical value has changed: $\alpha=0.05$ and $-z_{0.05}$ is
+\end{example}
+<<>>=
+- qnorm(0.95)
+@
+
+Our test statistic is less than $-1.64$ so it now falls into the
+critical region! We must \emph{reject} the null hypothesis and conclude
+that the 1973 data provide evidence that the true proportion of students
+admitted to the graduate school of UCB in 1973 was significantly less
+than 40\%. The data are \emph{not} consistent with the officer's claim
+at the $\alpha=0.05$ significance level.
+
+
+
+What is going on, here? If we choose $\alpha=0.05$ then we reject
+the null hypothesis, but if we choose $\alpha=0.01$ then we fail
+to reject the null hypothesis. Our final conclusion seems to depend
+on our selection of the significance level. This is bad; for a particular
+test, we never know whether our conclusion would have been different
+if we had chosen a different significance level. 
+
+Or do we?
 
 Clearly, for some significance levels we reject, and for some significance
 levels we do not. Where is the boundary? That is, what is the significance
-level for which we would reject for any significance level bigger,
-and we would fail to reject for any significance level smaller? This
-boundary value has a special name: it is called the $p$\emph{-value}
+level for which we would \emph{reject} at any significance level \emph{bigger},
+and we would \emph{fail to reject} at any significance level \emph{smaller}?
+This boundary value has a special name: it is called the $p$\emph{-value}
 of the test.
 \begin{defn}
-The $p$-value for a hypothesis test is the probability of obtaining
-the observed value of $\hat{p}$, or more extreme values, when the
-null hypothesis is true.\end{defn}
+The $p$-\emph{value}, or \emph{observed significance level}, of a
+hypothesis test is the probability when the null hypothesis is true
+of obtaining the observed value of the test statistic (such as $\hat{p}$)
+or values more extreme -- meaning, in the direction of the alternative
+hypothesis%
+\footnote{Bickel and Doksum \cite{Bickel2001} state the definition particularly
+well: the $p$-value is {}``the smallest level of significance $\alpha$
+at which an experimenter using {[}a test statistic{]} $T$ would reject
+{[}$H_{0}${]} on the basis of the observed {[}sample{]} outcome $x$''.%
+}. \end{defn}
 \begin{example}
-Calculate the $p$-value for the test in Example BLANK.
+Calculate the $p$-value for the test in Examples \ref{exa:prop-test-pvalue-A}
+and \ref{exa:prop-test-pvalue-B}.
+
+The $p$-value for this test is the probability of obtaining a $z$-score
+equal to our observed test statistic (which had $z$-score $\approx-1.680919$)
+or more extreme, which in this example is less than the observed test
+statistic. In other words, we want to know the area under a standard
+normal curve on the interval $(-\infty,\,-1.680919]$. We can get
+this easily with
 \end{example}
-Another way to phrase the test is, we will reject $H_{0}$ at the
-$\alpha$-level of significance if the $p$-value is less than $\alpha$.
+<<>>=
+pnorm(-1.680919)
+@
+
+We see the $p$-value is strictly between the significance levels
+$\alpha=0.01$ and $\alpha=0.05$. This makes sense: it has to be
+bigger than $\alpha=0.01$ (otherwise we would have rejected $H_{0}$
+in Example \ref{exa:prop-test-pvalue-A}) and it must also be smaller
+than $\alpha=0.05$ (otherwise we would not have rejected $H_{0}$
+in Example \ref{exa:prop-test-pvalue-B}). Indeed, $p$-values are
+a characteristic indicator of whether or not we would have rejected
+at assorted significance levels, and for this reason a statistician
+will often skip the calculation of critical regions and critical values
+entirely. If (s)he knows the $p$-value, then (s)he knows immediately
+whether or not (s)he would have rejected at \emph{any} given significance
+level.
+
+Thus, another way to phrase our significance test procedure is: we
+will reject $H_{0}$ at the $\alpha$-level of significance if the
+$p$-value is less than $\alpha$.
 \begin{rem}
 If we have two populations with proportions $p_{1}$ and $p_{2}$
 then we can test the null hypothesis $H_{0}:p_{1}=p_{2}$.
@@ -16095,7 +16191,26 @@ head(B)
 
 Now, this is more like it. Note that we slipped in a call to the \inputencoding{latin9}\lstinline[showstringspaces=false]!with!\inputencoding{utf8}
 function, which was done to make the call to \inputencoding{latin9}\lstinline[showstringspaces=false]!untable!\inputencoding{utf8}
-more pretty; we could just as easily have done \inputencoding{latin9}\lstinline[showstringspaces=false]!untable(A, A$Freq)!\inputencoding{utf8}. 
+more pretty; we could just as easily have done
+
+\inputencoding{latin9}
+\begin{lstlisting}[showstringspaces=false]
+untable(TitanicDF, A$Freq)
+\end{lstlisting}
+\inputencoding{utf8}
+
+The only fly in the ointment is the lingering \inputencoding{latin9}\lstinline[showstringspaces=false]!Freq!\inputencoding{utf8}
+column which has repeated values that do not have any meaning any
+more. We could just ignore it, but it would be better to get rid of
+the meaningless column so that it does not cause trouble later. While
+we are at it, we could clean up the \inputencoding{latin9}\lstinline[showstringspaces=false]!rownames!\inputencoding{utf8},
+too.
+
+<<>>=
+C <- B[, -5]
+rownames(C) <- 1:dim(C)[1]
+head(C)
+@
 
 
 \subsection{More about Tables}
