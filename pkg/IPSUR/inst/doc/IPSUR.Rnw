@@ -11920,9 +11920,7 @@ H_{0}:p=p_{0}\quad\mbox{versus}\quad H_{1}:p\neq p_{0}\]
 # this is the example from the help file
 nheads <- rbinom(1, size = 100, prob = 0.45)
 prop.test(x = nheads, n = 100, p = 0.50, alternative = "two.sided", conf.level = 0.95, correct = TRUE)
-prop.test(x = nheads, n = 100, p = 0.50, alternative = "two.sided", conf.level = 0.95, correct = FALSE)
-
-@
+prop.test(x = nheads, n = 100, p = 0.50, alternative = "two.sided", conf.level
 
 %
 \begin{figure}
@@ -11933,7 +11931,7 @@ plot(prop.test(x = nheads, n = 100, p = 0.50, alternative = "two.sided", conf.le
 @
 \par\end{centering}
 
-\caption{Hypothesis test plot from the \texttt{HH} package}
+\caption{Hypothesis test plot from the \texttt{IPSUR} package}
 
 \end{figure}
 
