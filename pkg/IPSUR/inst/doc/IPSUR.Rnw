@@ -10690,10 +10690,10 @@ intervals for basic experimental designs
 
 The following example is how I was introduced to maximum likelihood.
 \begin{example}
-Suppose we have a small pond in our backyard, and in the pond there
-live some fish. We would like to know how many fish live in the pond.
-How can we estimate this? One procedure developed by researchers is
-the capture-recapture method. Here is how it works.
+\label{exa:how-many-fish}Suppose we have a small pond in our backyard,
+and in the pond there live some fish. We would like to know how many
+fish live in the pond. How can we estimate this? One procedure developed
+by researchers is the capture-recapture method. Here is how it works.
 
 We will fish from the pond and suppose that we capture $M=7$ fish.
 On each caught fish we attach an unobtrusive tag to the fish's tail,
@@ -10768,13 +10768,13 @@ points(9, 0, pch = 4, lwd = 3, cex = 2)
 
 
 \begin{example}
-In the last example we were only concerned with how many fish were
-in the pond, but now, we will ask a different question. Suppose it
-is known that there are only two species of fish in the pond: smallmouth
-bass (\emph{Micropterus dolomieu}) and bluegill (\emph{Lepomis macrochirus});
-perhaps we built the pond some years ago and stocked it with only
-these two species. We would like to estimate the proportion of fish
-in the pond which are bass.
+\label{exa:bass-bluegill}In the last example we were only concerned
+with how many fish were in the pond, but now, we will ask a different
+question. Suppose it is known that there are only two species of fish
+in the pond: smallmouth bass (\emph{Micropterus dolomieu}) and bluegill
+(\emph{Lepomis macrochirus}); perhaps we built the pond some years
+ago and stocked it with only these two species. We would like to estimate
+the proportion of fish in the pond which are bass.
 
 Let $p=\mbox{the proportion of bass}$. Without any other information,
 it is conceivable for $p$ to be any value in the interval $[0,1]$,
@@ -10936,7 +10936,7 @@ more popular alternatives are the \emph{method of moments estimators};
 see Casella and Berger \cite{Casella2002} for more.
 \end{itemize}
 \end{rem}
-Notice, in Example BLANK we had $X_{i}$ i.i.d.~$\mathsf{binom}(\mathtt{size}=1,\,\mathtt{prob}=p)$,
+Notice, in Example \ref{exa:bass-bluegill} we had $X_{i}$ i.i.d.~$\mathsf{binom}(\mathtt{size}=1,\,\mathtt{prob}=p)$,
 and we saw that the MLE was $\hat{p}=\Xbar$. But further\begin{eqnarray*}
 \E\Xbar & = & \E\frac{X_{1}+X_{2}+\cdots+X_{n}}{n},\\
  & = & \frac{1}{n}\left(\E X_{1}+\E X_{2}+\cdots+\E X_{n}\right),\\
@@ -10959,8 +10959,8 @@ then the MLE of $\theta$ is\begin{equation}
 \hat{\theta}=(\hat{\mu},\hat{\sigma}^{2}),\end{equation}
  where $\hat{\mu}=\Xbar$ and \begin{equation}
 \hat{\sigma^{2}}=\frac{1}{n}\sum_{i=1}^{n}\left(X_{i}-\Xbar\right)^{2}=\frac{n-1}{n}S^{2}.\end{equation}
-We of course know from BLANK that $\hat{\mu}$ is unbiased. What about
-$\hat{\sigma^{2}}$? Let us check: \begin{eqnarray*}
+We of course know from \ref{pro:mean-sd-xbar} that $\hat{\mu}$ is
+unbiased. What about $\hat{\sigma^{2}}$? Let us check: \begin{eqnarray*}
 \E\,\hat{\sigma^{2}} & = & \E\,\frac{n-1}{n}S^{2}\\
  & = & \E\left(\frac{\sigma^{2}}{n}\frac{(n-1)S^{2}}{\sigma^{2}}\right)\\
  & = & \frac{\sigma^{2}}{n}\E\ \mathsf{chisq}(\mathtt{df}=n-1)\\
@@ -10992,8 +10992,8 @@ function to find MLEs. The arguments are the function to be maximized
 to take place, and optionally any other arguments to be passed to
 the likelihood if needed.
 
-Let us see how to do Example BLANK. Recall that our likelihood function
-was given by\begin{equation}
+Let us see how to do Example \ref{exa:bass-bluegill}. Recall that
+our likelihood function was given by\begin{equation}
 L(p)=p^{\sum x_{i}}(1-p)^{n-\sum x_{i}}.\end{equation}
 Notice that the likelihood is just a product of $\mathsf{binom}(\mathtt{size}=1,\,\mathtt{prob}=p)$
 PMFs. We first give some sample data (in the vector \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},showstringspaces=false]!datavals!\inputencoding{utf8}),
@@ -11593,10 +11593,10 @@ was\[
 \hat{p}\pm z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}.\]
 Reasoning as above we would want\begin{align}
 E & =z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}},\mbox{ or}\\
-n & =z_{\alpha/2}^{2}\frac{\hat{p}(1-\hat{p})}{E^{2}}.\end{align}
+n & =z_{\alpha/2}^{2}\frac{\hat{p}(1-\hat{p})}{E^{2}}.\label{eq:samp-size-prop-ME}\end{align}
 OOPS! Recall that $\hat{p}=Y/n$, which would put the variable $n$
-on both sides of Equation BLANK. Again, there are two solutions to
-the problem.
+on both sides of Equation \ref{eq:samp-size-prop-ME}. Again, there
+are two solutions to the problem.
 \begin{enumerate}
 \item If we have a good idea of what $p$ is, say $p^{\ast}$ then we can
 plug it in to get\begin{equation}
@@ -11799,14 +11799,13 @@ interval for $p$.
 Otherwise, we \emph{fail to reject}$H_{0}$.\end{enumerate}
 \begin{rem}
 Every time we make a decision, it is possible to be wrong. There are
-two types of mistakes: a
+two types of mistakes: we have committed a
 \begin{description}
-\item [{Type~I~Error}] happens if we reject $H_{0}$ when in fact $H_{0}$
-is true. This would be akin to convicting an innocent person for a
-crime (s)he did not convict.
-\item [{Type~II~Error}] happens if we fail to reject $H_{0}$ when in
-fact $H_{1}$ is true. This is analogous to a guilty person going
-free.
+\item [{Type~I~Error}] if we reject $H_{0}$ when in fact $H_{0}$ is
+true. This would be akin to convicting an innocent person for a crime
+(s)he did not convict.
+\item [{Type~II~Error}] if we fail to reject $H_{0}$ when in fact $H_{1}$
+is true. This is analogous to a guilty person going free.
 \end{description}
 \end{rem}
 Type I Errors are usually considered worse%
@@ -11831,13 +11830,11 @@ confidence interval that does not cover $p=0.10$.
 test. Many times we are interested in a \emph{one-sided} test, which
 would look like $H_{1}:p<0.10$ or $H_{1}:p>0.10$.
 \end{itemize}
-We are ready for tests of hypotheses for one proportion
+We are ready for tests of hypotheses for one proportion.
 
-Table Here
+Table here.
 
-Don't forget the assumptions.
-
-PANIC
+Don't forget the assumptions, PANIC.
 \begin{example}
 Suppose $p=\mbox{proportion of BLANK who BLANK}$.
 
@@ -11909,7 +11906,7 @@ statistic is the same: it was approximately $-1.68$. But notice that
 our critical value has changed: $\alpha=0.05$ and $-z_{0.05}$ is
 \end{example}
 <<>>=
-- qnorm(0.95)
+-qnorm(0.95)
 @
 
 Our test statistic is less than $-1.64$ so it now falls into the
@@ -11989,11 +11986,6 @@ Example.
 \end{example}
 
 \subsection{How to do it with \textsf{R}}
-
-Here we find a confidence interval for $p$ and are testing hypotheses
-such as\[
-H_{0}:p=p_{0}\quad\mbox{versus}\quad H_{1}:p\neq p_{0}\]
-
 
 <<>>=
 # this is the example from the help file
@@ -12100,29 +12092,13 @@ Give some data and a hypothesis.
 
 I am thinking z.test in TeachingDemos, t.test in base R.
 
-For the Mean when the Variance is Known
-
-Here we find a confidence interval for $\mu$ and are testing the
-hypotheses (such as)\[
-H_{0}:\mu=\mu_{0}\quad\mbox{versus}\quad H_{1}:\mu\neq\mu_{0}\]
-
-
-For these procedures, the standard deviation $\sigma$ should be known
-in advance.
-
 <<>>=
 x <- rnorm(37, mean = 2, sd = 3)
 library(TeachingDemos)
 z.test(x, mu = 1, sd = 3, conf.level = 0.90)
 @
 
-
-\paragraph*{How to do it with the \textsf{R} Commander }
-
-Can't do it with the \textsf{R} Commander (yet).
-
-
-\subsection{How to do it with \textsf{R}}
+The RcmdrPlugin.IPSUR package does not have a menu for z.test yet. 
 
 <<>>=
 x <- rnorm(13, mean = 2, sd = 3)
@@ -12143,13 +12119,13 @@ The basic idea for this section is the following. We have $X\sim\mathsf{norm}(\m
 and $Y\sim\mathsf{norm}(\mathtt{mean}=\mu_{Y},\,\mathtt{sd}=\sigma_{Y})$.
 distributed independently. We would like to know whether $X$ and
 $Y$ come from the same population distribution, that is, we would
-like to know:\[
-\mbox{Does }X\overset{\mathrm{d}}{=}Y?\]
+like to know:\begin{equation}
+\mbox{Does }X\overset{\mathrm{d}}{=}Y?\end{equation}
 where the symbol $\overset{\mathrm{d}}{=}$ means equality of probability
 distributions.
 
-Since both $X$ and $Y$ are normal, we may rephrase the question:\[
-\mbox{Does }\mu_{X}=\mu_{Y}\mbox{ and }\sigma_{X}=\sigma_{Y}?\]
+Since both $X$ and $Y$ are normal, we may rephrase the question:\begin{equation}
+\mbox{Does }\mu_{X}=\mu_{Y}\mbox{ and }\sigma_{X}=\sigma_{Y}?\end{equation}
 Suppose first that we do not know the values of $\sigma_{X}$ and
 $\sigma_{Y}$, but we know that they are equal, $\sigma_{X}=\sigma_{Y}$.
 Our test would then simplify to $H_{0}:\mu_{X}=\mu_{Y}$. We collect
@@ -12157,16 +12133,16 @@ data $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$ and $Y_{1}$, $Y_{2}$,
 \ldots{}, $Y_{m}$, both simple random samples of size $n$ and $m$
 from their respective normal distributions. Then under $H_{0}$ (that
 is, assuming $H_{0}$ is true) we have $\mu_{X}=\mu_{Y}$ or rewriting,
-$\mu_{X}-\mu_{Y}=0$, so \[
-T=\frac{\Xbar-\Ybar}{S_{p}\sqrt{\frac{1}{n}+\frac{1}{m}}}=\frac{\Xbar-\Ybar-(\mu_{X}-\mu_{Y})}{S_{p}\sqrt{\frac{1}{n}+\frac{1}{m}}}\sim\mathsf{t}(\mathtt{df}=n+m-2).\]
+$\mu_{X}-\mu_{Y}=0$, so \begin{equation}
+T=\frac{\Xbar-\Ybar}{S_{p}\sqrt{\frac{1}{n}+\frac{1}{m}}}=\frac{\Xbar-\Ybar-(\mu_{X}-\mu_{Y})}{S_{p}\sqrt{\frac{1}{n}+\frac{1}{m}}}\sim\mathsf{t}(\mathtt{df}=n+m-2).\end{equation}
 
 
 
 \subsection{Independent Samples}
 \begin{rem}
 If the values of $\sigma_{X}$ and $\sigma_{Y}$ are known, then we
-can plug them in to our statistic:\[
-Z=\frac{\Xbar-\Ybar}{\sqrt{\sigma_{X}^{2}/n+\sigma_{Y}^{2}/m}};\]
+can plug them in to our statistic:\begin{equation}
+Z=\frac{\Xbar-\Ybar}{\sqrt{\sigma_{X}^{2}/n+\sigma_{Y}^{2}/m}};\end{equation}
 the result will have a $\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$
 distribution when $H_{0}:\mu_{X}=\mu_{Y}$ is true.
 \end{rem}
@@ -12204,7 +12180,9 @@ For a nonparametric alternative to the two-sample $F$ test see Chapter
 
 \subsection{Paired Samples}
 
-t.test(extra \textasciitilde{} group, data = sleep, paired = TRUE)
+<<>>=
+t.test(extra ~ group, data = sleep, paired = TRUE)
+@
 
 
 \subsection{How to do it with \textsf{R}}
@@ -12212,13 +12190,11 @@ t.test(extra \textasciitilde{} group, data = sleep, paired = TRUE)
 
 \section{Analysis of Variance\label{sec:Analysis-of-Variance}}
 
-For example do lm(weight \textasciitilde{} feed, data = chickwts) 
+I am thinking lm(weight \textasciitilde{} feed, data = chickwts),
+and with(chickwts, by(weight, feed, shapiro.test). Plot for the intuition
+of between versus within group variation.
 
-with(chickwts, by(weight, feed, shapiro.test)
-
-Plot for the intuition of between versus within
-
-AND%
+%
 \begin{figure}
 \begin{centering}
 <<echo = FALSE, fig = true, height = 4.5, width = 6>>=
@@ -12299,8 +12275,6 @@ par(old.omd)
 
 \section{Sample Size and Power\label{sec:Sample-Size-and-Power}}
 
-We have seen and discussed a
-
 The power function of a test for a parameter $\theta$ is\[
 \beta(\theta)=\P_{\theta}(\mbox{Reject }H_{0}),\quad-\infty<\theta<\infty.\]
 Here are some properties of power functions:
@@ -12312,18 +12286,36 @@ of $\alpha$ of rejecting the null hypothesis. We have controlled
 the Type I error rate to be no greater than $\alpha$.
 \item $\lim_{n\to\infty}\beta(\theta)=1$ for any fixed $\theta\in\Theta_{1}$.
 In other words, as the sample size grows without bound we are able
-to detect nonnull values of $\theta$ with increasing accuracy, no
+to detect a nonnull value of $\theta$ with increasing accuracy, no
 matter how close it lies to the null parameter space. This may appear
 to be a good thing at first glance, but it often turns out to be a
-curse. For notice that another interpretation is that our Type II
-error rate grows as the sample size increases. 
+curse. For another interpretation is that our Type II error rate grows
+as the sample size increases. 
 \end{enumerate}
-The meaning of the 
-
 
 \subsection{How to do it with \textsf{R}}
 
-I am thinking about replicate() here.
+I am thinking about replicate here, and also power.examp from the
+TeachingDemos package.
+
+%
+\begin{figure}
+\begin{centering}
+<<echo = FALSE, fig=true, height = 6, width = 6>>=
+library(TeachingDemos)
+power.examp()
+@
+\par\end{centering}
+
+\caption{Plot of significance level and power\label{fig:power-examp}}
+
+
+~
+
+{\small The graph was generated by the }\texttt{\small power.examp}{\small{}
+function from the }\texttt{\small TeachingDemos}{\small{} package. }
+\end{figure}
+
 
 \newpage{}
 
