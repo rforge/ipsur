@@ -11783,11 +11783,19 @@ Example.
 
 \subsection{How to do it with \textsf{R}}
 
+The following does the test.
+
 <<>>=
-# this is the example from the help file
-nheads <- rbinom(1, size = 100, prob = 0.45)
-prop.test(x = nheads, n = 100, p = 0.50, alternative = "two.sided", conf.level = 0.95, correct = TRUE)
-prop.test(x = nheads, n = 100, p = 0.50, alternative = "two.sided", conf.level = 0.95, correct = FALSE)
+prop.test(1755, 1755 + 2771, p = 0.4, alternative = "less", conf.level = 0.99, correct = FALSE)
+@
+
+Do the following to make the plot.
+
+<<eval = FALSE>>=
+library(IPSUR)
+library(HH)
+temp <- prop.test(1755, 1755 + 2771, p = 0.4, alternative = "less", conf.level = 0.99, correct = FALSE)
+plot(temp, 'Hypoth')
 @
 
 %
@@ -11805,7 +11813,22 @@ plot(prop.test(1755, 1755 + 2771, p = 0.4, alternative = "less", conf.level = 0.
 
 {\small ~}{\small \par}
 
-{\small This plot shows the important features of hypothesis tests.}
+{\small This plot shows all of the important features of hypothesis
+tests in one magnificent display. The (asymptotic) distribution of
+the test statistic (under the null hypothesis) is standard normal,
+represented by the bell curve, above. We see the critical region to
+the left, and the blue shaded area is the significance level, which
+for this example is $\alpha=0.05$. The area outlined in green is
+the $p$-value, and the observed test statistic determines the upper
+bound of this region. We can see clearly that the $p$-value is larger
+than the significance level, thus, we would not reject the null hypothesis.
+There are all sorts of tick marks shown below the graph which detail
+how the different pieces are measured on different scales (the original
+data scale, the standardized scale, }\emph{\small etc}{\small .).
+The workhorse behind the plot is the }\texttt{normal.and.t.dist }{\small function
+from the }\texttt{HH}{\small{} package. See the discussion in {}``How
+to do it with }\textsf{\small R}{\small '' for the exact sequence
+of commands to generate the plot.} 
 \end{figure}
 
 
@@ -15286,6 +15309,19 @@ SSTO=SSE+SSR.\]
 
 \chapter{Resampling Methods\label{cha:Resampling-Methods}}
 
+Computers have changed the face of statistics. Their quick computational
+speed and flawless accuracy, coupled with large datasets acquired
+by the researcher, make them indispensable for many modern analyses.
+In particular, resampling methods (due in large part to Bradley Efron)
+have gained prominence in the modern statistician's repertoire. We
+first look at a classical problem to get some insight why. 
+
+I have seen \emph{Statistical Computing with }\textsf{\emph{R}} by
+Rizzo \cite{Rizzo2008} and I recommend it to those looking for a
+more advanced treatment with additional topics. I believe that \emph{Monte
+Carlo Statistical Methods} by Robert and Casella \cite{Robert2004}
+has a new edition that integrates \textsf{R} into the narrative.
+
 
 \paragraph*{What do I want them to know?}
 \begin{itemize}
@@ -15295,13 +15331,6 @@ SSTO=SSE+SSR.\]
 \end{itemize}
 
 \section{Introduction\label{sec:Introduction-Resampling}}
-
-Computers have changed the face of statistics. Their quick computational
-speed and flawless accuracy, coupled with large datasets acquired
-by the researcher, make them indispensable for many modern analyses.
-In particular, resampling methods (due in large part to Bradley Efron)
-have gained prominence in the modern statistician's repertoire. Let
-us look at a classical problem to get some insight why.
 \begin{description}
 \item [{Classical~question}] Given a population of interest, how may we
 effectively learn some of its salient features, \emph{e.g.}, the population's
