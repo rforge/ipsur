@@ -62,8 +62,6 @@ language=R}
 \else
 \newtheorem{thm}{Theorem}[chapter]
 \fi
-  \theoremstyle{definition}
-  \newtheorem{xca}[thm]{Exercise}
  \theoremstyle{definition}
   \newtheorem{example}[thm]{Example}
   \theoremstyle{plain}
@@ -78,6 +76,8 @@ language=R}
 \normalfont\ttfamily}%
  \item[]}
 {\end{list}}
+  \theoremstyle{definition}
+  \newtheorem{xca}[thm]{Exercise}
   \theoremstyle{remark}
   \newtheorem{note}[thm]{Note}
   \theoremstyle{plain}
@@ -634,7 +634,7 @@ read(IPSUR)
 Another advantage goes hand in hand with the Program's license; since
 \IPSUR\ is free, the source code must be freely available to anyone
 that wants it. A package hosted on \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!CRAN!\inputencoding{utf8}
-allows me to obey the license by default.
+allows the author to obey the license by default.
 
 A much more important advantage is that the excellent facilities at
 \textsf{R}-Forge are building and checking the package daily against
@@ -775,12 +775,6 @@ material in later editions of this book.
 
 
 \chapter{An Introduction to \textsf{R\label{cha:An-Introduction-to-R}}}
-
-This chapter is designed to help a person get started with the \textsf{R}
-statistical computing environment. 
-
-
-\paragraph*{What do I want them to know?}
 
 
 \section{Downloading and Installing \textsf{R\label{sec:Downloading-and-Installing-R}}}
@@ -956,28 +950,28 @@ can be downloaded from the\textsf{ R}-Project website at \url{http://www.sciview
 On the left side of the screen (under \textbf{Projects}) there are
 several choices available.
 \begin{description}
-\item [{The~\textsf{R~}Commander~(\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8})\index{The R Commander@The \textsf{R} Commander}}] provides
+\item [{\textsf{R~}Commander}] provides\index{R Commander@\textsf{R} Commander}
 a point-and-click interface to many basic statistical tasks. It is
 called the {}``Commander'' because every time one makes a selection
 from the menus, the code corresponding to the task is listed in the
 output window. One can take this code, copy-and-paste it to a text
 file, then re-run it again at a later time without the \textsf{R}
-Commander's assistance. It is well suited for the introductory level.\\
+Commander's assistance. It is well suited for the introductory level.
 \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
 also allows for user-contributed {}``Plugins'' which are separate
 packages on \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!CRAN!\inputencoding{utf8}
 that add extra functionality to the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
 package. The plugins are typically named with the prefix \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!RcmdrPlugin!\inputencoding{utf8}
 to make them easy to identify in the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!CRAN!\inputencoding{utf8}
-package list. One such plugin is \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!RcmdrPlugin.IPSUR!\inputencoding{utf8},
-which accompanies this text.
-\item [{Poor~Man's~GUI~(\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!pmg!\inputencoding{utf8})\index{Poor Man's GUI}}] is
-an alternative to the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
+package list. One such plugin is the \\  \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!RcmdrPlugin.IPSUR!\inputencoding{utf8}
+package which accompanies this text.
+\item [{Poor~Man's~GUI}] \index{Poor Man's GUI} is an alternative to
+the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
 which is based on GTk instead of Tcl/Tk. It has been a while since
-I used this it but I remember liking it very much when I did. One
-thing that stood out was that the user could drag-and-drop datasets
-for plots. See here for more information \url{http://wiener.math.csi.cuny.edu/pmg/}
-\item [{Rattle\index{Rattle}}] is a data mining toolkit which is designed
+I used it but I remember liking it very much when I did. One thing
+that stood out was that the user could drag-and-drop datasets for
+plots. See here for more information: \url{http://wiener.math.csi.cuny.edu/pmg/}.
+\item [{Rattle\index{Rattle}}] is a data mining toolkit which was designed
 to manage/analyze very large data sets, but it provides enough other
 general functionality to merit mention here. See \cite{rattle} for
 more information.
@@ -1484,191 +1478,6 @@ I find that it causes more trouble than it saves with beginners.
 
 \setcounter{thm}{0}
 
-\textbf{Directions:} Complete the following exercises and submit your
-answers. \emph{Please Note}: only answers are required; it is not
-necessary to submit the \textsf{R} output on the screen. 
-\begin{xca}
-Write out line \Sexpr{sample(3:12, size = 1)} of the source code
-for the \inputencoding{latin9}\lstinline[showstringspaces=false]!plot!\inputencoding{utf8}
-function.
-\end{xca}
-
-\paragraph*{Solution:}
-
-Type \inputencoding{latin9}\lstinline[showstringspaces=false]!plot!\inputencoding{utf8}
-at the command line (with no parentheses).
-
-<<keep.source = TRUE>>=
-plot
-@
-
-
-
-<<echo = FALSE, results = hide>>=
-x <- rnbinom(6, size = 4, prob = 0.25)
-k <- sample(1:9, size = 3, replace = FALSE)
-@
-\begin{xca}
-Let our small data set of size \Sexpr{length(x)} be 
-
-<<fifteen, echo = FALSE>>=
-x
-@
-
-\noindent Enter these data into a vector \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}.
-\begin{enumerate}
-\item Raise all of the numbers in \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
-to the power \Sexpr{k[1]}. 
-\item Subtract \Sexpr{k[2]} from each number in \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}.
-\item Add \Sexpr{k[3]} to all of the numbers in \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8},
-then take the (natural) logarithm of the answers.
-\end{enumerate}
-Use vectorization of functions to do all of the above, with a single
-line of code for each.
-
-\end{xca}
-
-\paragraph*{Answers:}
-
-<<echo = FALSE>>=
-x^k[1]
-x - k[2]
-log(x + k[3])
-@
-
-
-
-<<echo = FALSE, results = hide>>=
-x <- round(rnorm(13, mean = 20, sd = 2), 1)
-@
-\begin{xca}
-The asking price of used MINI Coopers varies from seller to seller.
-An online listing has these values in thousands: 
-
-<<echo = FALSE>>=
-x
-@
-\begin{enumerate}
-\item What is the smallest amount? The largest?
-\item Find the average amount with \inputencoding{latin9}\lstinline[showstringspaces=false]!mean!\inputencoding{utf8}.
-\item Calculate the difference of the mean value from the largest and smallest
-amounts (the first number will be positive, the second will be negative).
-\end{enumerate}
-\end{xca}
-
-\paragraph*{Answers:}
-
-<<echo = FALSE>>=
-c(min(x), max(x))
-mean(x)
-c(max(x), min(x)) - mean(x)
-@
-
-
-
-<<echo = FALSE, results = hide>>=
-x <- round(rnorm(12, mean = 3, sd = 0.3), 3) * 1000
-names(x) <- c("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")
-@
-\begin{xca}
-The twelve monthly sales of Ramen noodles in the United States during
-2009 were 
-
-<<echo = FALSE>>=
-x
-@
-
-Note that the first entry above was the sales from January, the second
-entry was from February, and so forth.
-\begin{enumerate}
-\item Enter these data into a variable \texttt{H2}. Use \inputencoding{latin9}\lstinline[showstringspaces=false]!cumsum!\inputencoding{utf8}
-to find the cumulative total sales for 2009. What was the total number
-sold? 
-\item Using \inputencoding{latin9}\lstinline[showstringspaces=false]!diff!\inputencoding{utf8},
-find the month with the greatest increase from the previous month,
-and the month with the greatest decrease from the previous month.
-\emph{Hint:} Dont know how to use \inputencoding{latin9}\lstinline[showstringspaces=false]!diff!\inputencoding{utf8}?
-No problem! Check it out using the \textsf{Help} system.
-\end{enumerate}
-\end{xca}
-\small
-
-
-\paragraph*{Solution:}
-
-First enter the data into a vector \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}.
-You can make it fancy with the months of the year with the \inputencoding{latin9}\lstinline[showstringspaces=false]!names!\inputencoding{utf8}
-function. 
-
-<<>>=
-names(x) <- c("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")
-x
-@
-
-Now let's check out \inputencoding{latin9}\lstinline[showstringspaces=false]!cumsum!\inputencoding{utf8}
-:
-
-<<>>=
-cumsum(x)
-@\textsf{R}
-
-This shows that the total amount sold was \Sexpr{max(cumsum(x))}.
-We next check out what \inputencoding{latin9}\lstinline[showstringspaces=false]!diff!\inputencoding{utf8}
-does:
-
-<<>>=
-diff(x)
-@
-
-We see that the first entry of \inputencoding{latin9}\lstinline[showstringspaces=false]!diff(x)!\inputencoding{utf8}
-is the difference in sales, February minus January. The second entry
-is March minus February, and so forth. The greatest increase from
-the previous month was \Sexpr{max(diff(x))}, which happened in {}``\Sexpr{names(x)[which(diff(x)==max(diff(x)))+1]}''.
-The greatest decrease from the previous month was \Sexpr{min(diff(x))},
-which happened in {}``\Sexpr{names(x)[which(diff(x)==min(diff(x)))+1]}''.
-(These can be found by inspection of the output or even quicker with
-a command like \inputencoding{latin9}\lstinline[showstringspaces=false]!max(diff(x))!\inputencoding{utf8}).
-
-\normalsize
-
-
-
-<<twentyfive, echo = FALSE, results = hide>>=
-commute = sample(150:250, size = 10, replace = TRUE)/10
-k = sample(1:10, size = 1)
-new = sample(150:250, size = 1, replace = TRUE)/10
-
-@
-\begin{xca}
-You track your commute times for 10 days, recording the following
-times (in minutes):
-
-<<echo = FALSE>>=
-commute
-@
-\begin{enumerate}
-\item \noindent Enter these data into \textsf{R}. Use the function \inputencoding{latin9}\lstinline[showstringspaces=false]!max!\inputencoding{utf8}
-to find the longest travel time, \inputencoding{latin9}\lstinline[showstringspaces=false]!min!\inputencoding{utf8}
-to find the smallest, \inputencoding{latin9}\lstinline[showstringspaces=false]!mean!\inputencoding{utf8}
-to find the average time, and \inputencoding{latin9}\lstinline[showstringspaces=false]!sd!\inputencoding{utf8}
-to find the sample standard deviation of the times.
-\item Oops! The \Sexpr{commute[k]} was a mistake. It should have been \Sexpr{new},
-instead. How can you fix this (without retyping the whole vector)?
-Correct the mistake and report the new \inputencoding{latin9}\lstinline[showstringspaces=false]!max!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[showstringspaces=false]!min!\inputencoding{utf8},
-\inputencoding{latin9}\lstinline[showstringspaces=false]!mean!\inputencoding{utf8},
-and sample standard deviation.
-\end{enumerate}
-\end{xca}
-
-\paragraph*{Answers:}
-
-<<echo = FALSE>>=
-c(max(commute), min(commute), mean(commute), sd(commute))
-commute[k] <- new
-c(max(commute), min(commute), mean(commute), sd(commute))
-@
-
 
 \chapter{Data Description \label{cha:Describing-Data-Distributions}}
 
@@ -1855,6 +1664,10 @@ par(mfrow = c(1,1)) # back to normal
 
 \caption{Strip charts of the \texttt{precip}, \texttt{rivers}, and \texttt{discoveries}
 data\label{fig:Various-stripchart-methods,}}
+
+
+~
+
 {\small The first graph uses the }\texttt{\small overplot}{\small{}
 method, the second the }\texttt{\small jitter}{\small{} method, and
 the third the }\texttt{\small stack}{\small{} method.}
@@ -1983,7 +1796,7 @@ will typically be several leaves for each stem, in which case the
 leaves accumulate to the right. It is sometimes necessary to round
 the data values, especially for larger data sets.
 \begin{example}
-\inputencoding{latin9}\lstinline[showstringspaces=false]!UKDriverDeaths!\inputencoding{utf8}\index{Data sets!UKDriverDeaths@\texttt{UKDriverDeaths}}
+\label{exa:-ukdriverdeaths-first}\inputencoding{latin9}\lstinline[showstringspaces=false]!UKDriverDeaths!\inputencoding{utf8}\index{Data sets!UKDriverDeaths@\texttt{UKDriverDeaths}}
 is a time series that contains the total car drivers killed or seriously
 injured in Great Britain monthly from Jan 1969 to Dec 1984. See \inputencoding{latin9}\lstinline[showstringspaces=false]!?UKDriverDeaths!\inputencoding{utf8}.
 Compulsory seat belt use was introduced on January 31, 1983. We construct
@@ -2023,7 +1836,7 @@ several plotting methods for index plots, and we discuss two of them:
 height (\inputencoding{latin9}\lstinline[showstringspaces=false]!type = "h"!\inputencoding{utf8}).
 \item [{points:}] plots a simple point at the observation height (\inputencoding{latin9}\lstinline[showstringspaces=false]!type = "p"!\inputencoding{utf8}).\end{description}
 \begin{example}
-Level of Lake Huron 1875-1972. Brockwell and Davis \cite{Brockwell1991}
+\textbf{Level of Lake Huron 1875-1972.} Brockwell and Davis \cite{Brockwell1991}
 give the annual measurements of the level (in feet) of Lake Huron
 from 1875--1972. The data are stored in the time series \inputencoding{latin9}\lstinline[showstringspaces=false]!LakeHuron!\inputencoding{utf8}\index{Data sets!LakeHuron@\texttt{LakeHuron}}.
 See \inputencoding{latin9}\lstinline[showstringspaces=false]!?LakeHuron!\inputencoding{utf8}.
@@ -2208,6 +2021,8 @@ par(mfrow = c(1,1))
 
 \caption{Bar graphs of the \texttt{state.region} data\label{fig:bar-gr-stateregion}}
 
+
+~
 
 {\small The left graph is a frequency barplot made with }\texttt{\small table}{\small{}
 and the right is a relative frequency barplot made with }\texttt{\small prop.table}{\small .}
@@ -2437,8 +2252,10 @@ half.
 We have already encountered skewed distributions: both the discoveries
 data in Figure \ref{fig:Various-stripchart-methods,} and the precip
 data in Figure \ref{fig:histograms-bins} appear right-skewed. The
-UKDriverDeaths data in Example BLANK is relatively symmetric (but
-note the one extreme value 2654 identified at the bottom of the stemplot).
+\inputencoding{latin9}\lstinline[showstringspaces=false]!UKDriverDeaths!\inputencoding{utf8}
+data in Example \ref{exa:-ukdriverdeaths-first} is relatively symmetric
+(but note the one extreme value 2654 identified at the bottom of the
+stemplot).
 
 
 \paragraph*{Kurtosis}
@@ -2465,22 +2282,30 @@ and \ref{sec:The-Normal-Distribution}.
 Clusters or gaps are sometimes observed in quantitative data distributions.
 They indicate clumping of the data about distinct values, and gaps
 may exist between clusters. Clusters often suggest an underlying grouping
-to the data. For example, perhaps we are studying how response time
-on a driving test is affected by alcohol consumption. Suppose there
-are two groups: one that received an alcoholic beverage before taking
-a computerized driving test, and another group that received a non-alcoholic
-beverage before taking the test. If response times are measured, we
-would conceivably observe two clumps, or groups of similar response
-times, with the alcoholic group showing a longer response time.
+to the data. For example, take a look at the \inputencoding{latin9}\lstinline[showstringspaces=false]!faithful!\inputencoding{utf8}
+data which contains the duration of \inputencoding{latin9}\lstinline[showstringspaces=false]!eruptions!\inputencoding{utf8}
+and the \inputencoding{latin9}\lstinline[showstringspaces=false]!waiting!\inputencoding{utf8}
+time between eruptions of the Old Faithful geyser in Yellowstone National
+Park. (Do not be frightened by the complicated information at the
+left of the display for now; we will learn how to interpret it in
+Section \ref{sec:Exploratory-Data-Analysis}).\label{exa:stemleaf-multiple-lines-stem}
+
+<<>>=
+library(aplpack)
+stem.leaf(faithful$eruptions)
+@
+
+There are definitely two clusters of data here; an upper cluster and
+a lower cluster. 
 
 
 \subsection{Extreme Observations and other Unusual Features\label{sub:Extreme-Observations-and}}
 
 Extreme observations fall far from the rest of the data. Such observations
-are troublesome to many statistical procedures, causing exaggerated
-estimates and instability of the methods. It is important to identify
-extreme observations and examine the source of the data more closely.
-There are many possible reasons underlying an extreme observation:
+are troublesome to many statistical procedures; they cause exaggerated
+estimates and instability. It is important to identify extreme observations
+and examine the source of the data more closely. There are many possible
+reasons underlying an extreme observation:
 \begin{itemize}
 \item \textbf{Maybe the value is a typographical error.} Especially with
 large data sets becoming more prevalent, many of which being recorded
@@ -2890,7 +2715,8 @@ Observations with second digit 0 through 4 would go on the upper line,
 while observations with second digit 5 through 9 would go on the lower
 line. (We could do a similar thing with five lines per stem, or even
 ten lines per stem.) The end result is a more spread out stemplot
-which often looks better.
+which often looks better. A good example of this was shown on page
+\pageref{exa:stemleaf-multiple-lines-stem}.
 \item [{Depths:}] these are used to give insight into the balance of the
 observations as they accumulate toward the median. In a column beside
 the standard stemplot, the frequency of the stem containing the sample
@@ -3111,59 +2937,28 @@ but we will get an error if we try to mix function \inputencoding{latin9}\lstinl
 
 
 \subsection{Bivariate Data\label{sub:Bivariate-Data}}
-
-What about the correlation coefficient?
-
-
-\subsubsection*{Displaying Bivariate Data}
 \begin{itemize}
-\item Two-Way Tables. You can do this with \inputencoding{latin9}\lstinline[showstringspaces=false]!table!\inputencoding{utf8},
+\item Introduce the sample correlation coefficient.
+\item Two-Way Tables. Done with \inputencoding{latin9}\lstinline[showstringspaces=false]!table!\inputencoding{utf8},
 or in the \textsf{R} Commander by following \textsf{Statistics $\triangleright$
 Contingency Tables $\triangleright$} \textsf{Two-way Tables}. You
-can also enter and analyze a two-way table. Example: BLANK
-\item Scatterplot: look for linear association and correlation. Need a data
-set that has linear association. Example BLANK.
-\item Line Plot: good for displaying time series data. Example: BLANK
-\item barplot(table(state.region, state.division))
-
-\begin{itemize}
-\item barplot(prop.table(table(state.region, state.division)))
+can also enter and analyze a two-way table.
+\item Scatterplot: look for linear association and correlation. 
 \end{itemize}
-\item spineplot(state.region, state.division) or spineplot(state.division
-\textasciitilde{} state.region) 
-
-\begin{itemize}
-\item legend(\textquotedbl{}topright\textquotedbl{},legend=levels(state.division),fill=gray.colors(9))
-\end{itemize}
-\end{itemize}
-%
-\begin{figure}
-\begin{centering}
-<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
-matplot(sort(rnorm(100)), rnorm(100), type="b", lty=1, pch=1)
-@
-\par\end{centering}
-
-\caption{Line Graph of the salary variable\label{fig:Line-Graph-salary}}
-
-\end{figure}
-
-
 
 \subsection{Multivariate Data\label{sub:Multivariate-Data}}
 
-Displaying Multivariate Data
+Multivariate Data Display
 \begin{itemize}
 \item Multi-Way Tables. You can do this with \inputencoding{latin9}\lstinline[showstringspaces=false]!table!\inputencoding{utf8},
 or in \textsf{R} Commander by following \textsf{Statistics} \textsf{$\triangleright$}
 \textsf{Contingency Tables} \textsf{$\triangleright$} \textsf{Multi-way
-Tables}. Example: BLANK
+Tables}.
 \item Scatterplot Matrix. used for displaying pairwise scatterplots simultaneously.
-Again, look for linear association and correlation. Need data here
-that display multicollinearity. Example: BLANK
-\item 3D Scatterplot. Need data here that follow a plane.
-\item plot(state.region,state.division) 
-\item barplot(table(state.division,state.region),legend.text=TRUE)
+Again, look for linear association and correlation.
+\item 3D Scatterplot. See Figure \pageref{fig:3D-scatterplot-trees}
+\item \inputencoding{latin9}\lstinline[showstringspaces=false]!plot(state.region, state.division)!\inputencoding{utf8} 
+\item \inputencoding{latin9}\lstinline[showstringspaces=false]!barplot(table(state.division,state.region), legend.text=TRUE)!\inputencoding{utf8}
 \end{itemize}
 
 \section{Comparing Populations\label{sec:Comparing-Data-Sets}}
@@ -3174,10 +2969,10 @@ imagine is
 
 Some issues that we would like to address:
 \begin{itemize}
-\item Comparing Centers and Spreads: Variation Within versus Between Groups
-\item Comparing Clusters and gaps
-\item Comparing Outliers and Unusual features
-\item Comparing Shapes.
+\item Comparing centers and spreads: variation within versus between groups
+\item Comparing clusters and gaps
+\item Comparing outliers and unusual features
+\item Comparing shapes.
 \end{itemize}
 
 \subsection{Numerically}
@@ -3189,41 +2984,28 @@ groups} option or the \textsf{Statistics} \textsf{$\triangleright$}
 
 
 \subsection{Graphically}
-
-The graphs that can be plotted by groups:
 \begin{itemize}
-\item Boxplot (Rcmdr, lattice)
+\item Boxplots
 
 \begin{itemize}
-\item Variable Width: if this option is checked, then the width of the drawn
-boxplots are proportional to $\sqrt{n_{i}}$, where $n_{i}$ is the
-size of the $i^{\text{th}}$ group. Why? Because many statistics have
-variability proportional to the reciprocal of the square root of the
-sample size.
-\item Notches: (if requested) extend to $1.58\cdot(h_{U}-h_{L})/\sqrt{n}$.
-The idea is to give roughly a 95\% confidence interval for the difference
-in two medians. See Chapter BLANK.
+\item Variable width: the width of the drawn boxplots are proportional to
+$\sqrt{n_{i}}$, where $n_{i}$ is the size of the $i^{\text{th}}$
+group. Why? Because many statistics have variability proportional
+to the reciprocal of the square root of the sample size.
+\item Notches: extend to $1.58\cdot(h_{U}-h_{L})/\sqrt{n}$. The idea is
+to give roughly a 95\% confidence interval for the difference in two
+medians. See Chapter \ref{cha:Hypothesis-Testing}.
 \end{itemize}
-\item Stripchart(Rcmdr, console)
-\item Histogram (lattice)
-\item Scatterplot (Rcmdr, lattice) If the by groups option is selected then
-the observations are color and symbol coded, depending on the group
-to which they belong.
-\item Scatterplot Matrices. (Rcmdr)
-\item Cleveland Dotplot (console)
-\item Plot of Means (Rcmdr): this one is useful for plotting the means of
-a variable according to the levels of up to two factors. By default,
-error bars are plotted. If \textquotedbl{}Standard Errors\textquotedbl{},
-the default, error bars around means give plus or minus one standard
-error of the mean; if \textquotedbl{}Standard Deviations\textquotedbl{},
-error bars give plus or minus one standard deviation; if \textquotedbl{}Confidence
-Intervals\textquotedbl{}, error bars give a confidence interval around
-each mean; if \textquotedbl{}none\textquotedbl{}, error bars are suppressed.
-\item Quantile-Quantile Plots: There are two ways to do this. One way is
+\item Stripcharts
+\item Histograms
+\item Scatterplots
+\item Scatterplot matrices
+\item Dot charts
+\item Plot of means
+\item Quantile-quantile plots: There are two ways to do this. One way is
 to compare two independent samples (of the same size). qqplot(x,y).
 Another way is to compare the sample quantiles of one variable to
-the theoretical uantiles of another distribution. (Let's talk about
-this in the probability chapter).
+the theoretical uantiles of another distribution.
 \end{itemize}
 Given two samples $\left\{ x_{1},\, x_{2},\,\ldots,\, x_{n}\right\} $
 and $\left\{ y_{1},\, y_{2},\,\ldots,\, y_{n}\right\} $, we may find
@@ -3248,16 +3030,17 @@ of the $Y$ data is greater (less) than the spread of the $X$ data..
 
 The following types of plots are useful when there is one variable
 of interest and there is a factor in the dataset by which the variable
-is categorized. need to attach(Dataset). 
+is categorized. 
 
-Also need 
-
-lattice.options(default.theme = \textquotedbl{}col.whitebg\textquotedbl{})
+It is sometimes nice to set \inputencoding{latin9}\lstinline[showstringspaces=false]!lattice.options(default.theme = "col.whitebg")!\inputencoding{utf8}
 
 
 \paragraph*{Side by side boxplots}
 
-bwplot( \textasciitilde{}before | gender)
+<<eval = FALSE>>=
+library(lattice)
+bwplot(~weight | feed, data = chickwts)
+@
 
 %
 \begin{figure}[H]
@@ -3279,7 +3062,9 @@ data}
 
 \paragraph*{Histograms}
 
-histogram(\textasciitilde{} after | race)
+<<eval = FALSE>>=
+histogram(~age | education, data = infert)
+@
 
 %
 \begin{figure}[H]
@@ -3299,7 +3084,9 @@ data}
 
 \paragraph*{Scatterplots}
 
-xyplot( salary \textasciitilde{} time | race)
+<<eval = FALSE>>=
+xyplot(Petal.Length ~ Petal.Width | Species, data = iris)
+@
 
 %
 \begin{figure}[H]
@@ -3319,7 +3106,9 @@ by \texttt{Species} in the \texttt{iris} data}
 
 \paragraph*{Coplots}
 
-do ?coplot and look at the examples
+<<eval = FALSE>>=
+coplot(conc ~ uptake | Type * Treatment, data = CO2)
+@
 
 %
 \begin{figure}[H]
@@ -3334,11 +3123,6 @@ print(coplot(conc ~ uptake | Type * Treatment, data = CO2))
 and \texttt{Treatment} in the \texttt{CO2} data}
 
 \end{figure}
-
-
-
-\paragraph*{Shingle Plots}
-
 
 
 \newpage{}
@@ -8526,7 +8310,7 @@ The associated \textsf{R} functions are \inputencoding{latin9}\lstinline[breakli
 \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=4]!qt!\inputencoding{utf8},
 and \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=4]!rt!\inputencoding{utf8},
 which give the PDF, CDF, quantile function, and simulate random variates,
-respectively. See Figure \ref{cap:Student's-t-densities}. 
+respectively. 
 
 Similar to that done for the normal we may define $t_{\alpha}^{(\mathtt{df})}$
 as the number on the $x$-axis such that there is exactly $\alpha$
@@ -11442,6 +11226,20 @@ The resulting interval has approximately $100(1-\alpha)\%$ confidence.
 
 \subsection{How to do it with \textsf{R}}
 
+The basic function is \inputencoding{latin9}\lstinline!t.test!\inputencoding{utf8}
+which has a \inputencoding{latin9}\lstinline!var.equal!\inputencoding{utf8}
+argument that may be set to \inputencoding{latin9}\lstinline!TRUE!\inputencoding{utf8}
+or \inputencoding{latin9}\lstinline!FALSE!\inputencoding{utf8}. The
+confidence interval is shown as part of the output, although there
+is a lot of additional information that is not needed until Chapter
+\ref{cha:Hypothesis-Testing}.
+
+There is not any specific functionality to handle the $z$-interval
+for small samples, but if the samples are large then \inputencoding{latin9}\lstinline!t.test!\inputencoding{utf8}
+with \inputencoding{latin9}\lstinline!var.equal = FALSE!\inputencoding{utf8}
+will be essentially the same thing. The standard deviations are never
+(?) known in advance anyway so it does not really matter in practice. 
+
 
 \section{Confidence Intervals for Proportions\label{sec:Confidence-Intervals-Proportions}}
 
@@ -11784,7 +11582,7 @@ the torque converter is doing anything at all, positive or negative.
 
 The \emph{null hypothesis} $H_{0}$ is a {}``nothing'' hypothesis,
 whose interpretation could be that nothing has changed, there is no
-difference, there is nothing special taking place, \emph{etc}. In
+difference, there is nothing special taking place, \emph{etc}.. In
 Example \ref{exa:widget-machine} the null hypothesis would be $H_{0}:\ p=0.10.$
 The \emph{alternative hypothesis} $H_{1}$ is the hypothesis that
 something has changed, in this case, $H_{1}:\ p\neq0.10$. Our goal
@@ -11798,14 +11596,14 @@ interval for $p$.
 \item If the confidence interval does not cover $p=0.10$, then we \emph{reject}$H_{0}$.
 Otherwise, we \emph{fail to reject}$H_{0}$.\end{enumerate}
 \begin{rem}
-Every time we make a decision, it is possible to be wrong. There are
-two types of mistakes: we have committed a
+Every time we make a decision, it is possible to be wrong, and there
+are two possible ways that we can go astray: we have committed a
 \begin{description}
 \item [{Type~I~Error}] if we reject $H_{0}$ when in fact $H_{0}$ is
 true. This would be akin to convicting an innocent person for a crime
-(s)he did not convict.
+(s)he did not commit.
 \item [{Type~II~Error}] if we fail to reject $H_{0}$ when in fact $H_{1}$
-is true. This is analogous to a guilty person going free.
+is true. This is analogous to a guilty person escaping conviction.
 \end{description}
 \end{rem}
 Type I Errors are usually considered worse%
@@ -11816,9 +11614,9 @@ type. That being said, null hypotheses are often by design to correspond
 to the {}``simpler'' model, so it is often easier to analyze (and
 thereby control) the probabilities associated with Type I Errors.%
 }, and we design our statistical procedures to control the probability
-of making such a mistake. We define\begin{equation}
+of making such a mistake. We define the\begin{equation}
 \mbox{significance level of the test}=\P(\mbox{Type I Error})=\alpha.\end{equation}
-We want $\alpha$ to be small, which conventionally means, say, $\alpha=0.05$,
+We want $\alpha$ to be small which conventionally means, say, $\alpha=0.05$,
 $\alpha=0.01$, or $\alpha=0.005$ (but could mean anything, in principle). 
 \begin{itemize}
 \item The \emph{rejection region} (also known as the \emph{critical region})
@@ -11834,10 +11632,8 @@ We are ready for tests of hypotheses for one proportion.
 
 Table here.
 
-Don't forget the assumptions, PANIC.
+Don't forget the assumptions.
 \begin{example}
-Suppose $p=\mbox{proportion of BLANK who BLANK}$.
-
 Find
 \begin{enumerate}
 \item The null and alternative hypotheses
@@ -11960,7 +11756,7 @@ this easily with
 pnorm(-1.680919)
 @
 
-We see the $p$-value is strictly between the significance levels
+We see that the $p$-value is strictly between the significance levels
 $\alpha=0.01$ and $\alpha=0.05$. This makes sense: it has to be
 bigger than $\alpha=0.01$ (otherwise we would have rejected $H_{0}$
 in Example \ref{exa:prop-test-pvalue-A}) and it must also be smaller
@@ -11997,14 +11793,19 @@ prop.test(x = nheads, n = 100, p = 0.50, alternative = "two.sided", conf.level =
 %
 \begin{figure}
 \begin{centering}
-<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
+<<echo = FALSE, fig=true, height = 6, width = 6.5>>=
 library(HH)
-plot(prop.test(x = nheads, n = 100, p = 0.50, alternative = "two.sided", conf.level = 0.95, correct = FALSE), 'Hypoth')
+plot(prop.test(1755, 1755 + 2771, p = 0.4, alternative = "less", conf.level = 0.99, correct = FALSE), 'Hypoth')
 @
 \par\end{centering}
 
-\caption{Hypothesis test plot from the \texttt{IPSUR} package}
+\caption{Hypothesis test plot based on \texttt{normal.and.t.dist} from the
+\texttt{HH} package\label{fig:Hypothesis-test-plot-1}}
 
+
+{\small ~}{\small \par}
+
+{\small This plot shows the important features of hypothesis tests.}
 \end{figure}
 
 
@@ -12051,7 +11852,7 @@ Table here. \end{description}
 \begin{rem}
 If $\sigma$ is unknown but $n$ is large then we can use the $z$-test.\end{rem}
 \begin{example}
-Let $X$= BLANK.
+In this example we
 \begin{enumerate}
 \item Find the null and alternative hypotheses.
 \item Choose a test and find the critical region.
@@ -12072,25 +11873,12 @@ We usually need to estimate $\sigma_{\hat{\theta}}$ with $\hat{\sigma_{\hat{\the
 \end{itemize}
 \end{rem}
 
-\subsection{Tests for a Variance}
-
-Here, $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$ are a $SRS(n)$ from
-a $\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$ distribution.
-We would like to test $H_{0}:\sigma^{2}=\sigma_{0}$. We know that
-under $H_{0}$,\[
-X^{2}=\frac{(n-1)S^{2}}{\sigma^{2}}\sim\mathsf{chisq}(\mathtt{df}=n-1).\]
-Table here.
-\begin{example}
-Give some data and a hypothesis.
-\begin{enumerate}
-\item Give an $\alpha$-level and test the critical region way
-\item Find the $p$-value for the test.
-\end{enumerate}
-\end{example}
-
 \subsection{How to do it with \textsf{R}}
 
-I am thinking z.test in TeachingDemos, t.test in base R.
+I am thinking \inputencoding{latin9}\lstinline!z.test!\inputencoding{utf8}\index{z.test@\texttt{z.test}}
+in \inputencoding{latin9}\lstinline!TeachingDemos!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline!t.test!\inputencoding{utf8}\index{t.test@\texttt{t.test}}
+in base \textsf{\small R}.
 
 <<>>=
 x <- rnorm(37, mean = 2, sd = 3)
@@ -12098,7 +11886,28 @@ library(TeachingDemos)
 z.test(x, mu = 1, sd = 3, conf.level = 0.90)
 @
 
-The RcmdrPlugin.IPSUR package does not have a menu for z.test yet. 
+%
+\begin{figure}
+\begin{centering}
+<<echo = FALSE, fig=true, height = 6, width = 6.5>>=
+library(HH)
+plot(prop.test(1755, 1755 + 2771, p = 0.4, alternative = "less", conf.level = 0.99, correct = FALSE), 'Hypoth')
+@
+\par\end{centering}
+
+\caption{Hypothesis test plot based on \texttt{normal.and.t.dist} from the
+\texttt{HH} package\label{fig:Hypothesis-test-plot-2}}
+
+
+{\small ~}{\small \par}
+
+{\small This plot shows the important features of hypothesis tests.}
+\end{figure}
+
+
+The \inputencoding{latin9}\lstinline!RcmdrPlugin.IPSUR!\inputencoding{utf8}
+package does not have a menu for \inputencoding{latin9}\lstinline!z.test!\inputencoding{utf8}
+yet. 
 
 <<>>=
 x <- rnorm(13, mean = 2, sd = 3)
@@ -12111,6 +11920,34 @@ t.test(x, mu = 0, conf.level = 0.90, alternative = "greater")
 Your data should be in a single numeric column (a variable) of the
 Active Data Set. Use the menu \textsf{Statistics $\triangleright$
 Means $\triangleright$ Single-sample t-test\ldots{}}
+
+
+\subsection{Tests for a Variance}
+
+Here, $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$ are a $SRS(n)$ from
+a $\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$ distribution.
+We would like to test $H_{0}:\sigma^{2}=\sigma_{0}$. We know that
+under $H_{0}$,\[
+X^{2}=\frac{(n-1)S^{2}}{\sigma^{2}}\sim\mathsf{chisq}(\mathtt{df}=n-1).\]
+Table here.
+\begin{example}
+Give some data and a hypothesis.
+\begin{enumerate}
+\item Give an $\alpha$-level and test the critical region way.
+\item Find the $p$-value for the test.
+\end{enumerate}
+\end{example}
+
+\subsection{How to do it with \textsf{R}}
+
+I am thinking about \inputencoding{latin9}\lstinline!sigma.test!\inputencoding{utf8}\index{sigma.test@\texttt{sigma.test}}
+in the \inputencoding{latin9}\lstinline!TeachingDemos!\inputencoding{utf8}
+package.
+
+<<>>=
+library(TeachingDemos)
+sigma.test(women$height, sigma = 8)
+@
 
 
 \section{Two-Sample Tests for Means and Variances\label{sec:Two-Sample-Tests-for-Means}}
@@ -12180,19 +12017,61 @@ For a nonparametric alternative to the two-sample $F$ test see Chapter
 
 \subsection{Paired Samples}
 
+
+\subsection{How to do it with \textsf{R}}
+
 <<>>=
 t.test(extra ~ group, data = sleep, paired = TRUE)
 @
 
 
+\section{Other Hypothesis Tests}
+
+
+\subsection{Kolmogorov-Smirnov Goodness-of-Fit Test}
+
+
 \subsection{How to do it with \textsf{R}}
+
+<<>>=
+ks.test(randu$x, "punif")
+@
+
+
+\subsection{Shapiro-Wilk Normality Test}
+
+
+\subsection{How to do it with \textsf{R}}
+
+<<>>=
+shapiro.test(women$height)
+@
 
 
 \section{Analysis of Variance\label{sec:Analysis-of-Variance}}
 
-I am thinking lm(weight \textasciitilde{} feed, data = chickwts),
-and with(chickwts, by(weight, feed, shapiro.test). Plot for the intuition
-of between versus within group variation.
+
+\subsection{How to do it with \textsf{R}}
+
+I am thinking 
+
+<<>>=
+with(chickwts, by(weight, feed, shapiro.test))
+@
+
+and
+
+<<>>=
+temp <- lm(weight ~ feed, data = chickwts)
+@
+
+and 
+
+<<>>=
+anova(temp)
+@
+
+Plot for the intuition of between versus within group variation.
 
 %
 \begin{figure}
@@ -12255,23 +12134,6 @@ par(old.omd)
 \end{figure}
 
 
-%
-\begin{figure}
-\begin{centering}
-<<echo = FALSE, fig = true, height = 4.5, width = 6>>=
-library(HH)
-old.omd <- par(omd = c(.05,.88, .05,1))
-F.setup(df1 = 5, df2 = 30)
-F.curve(df1 = 5, df2 = 30, col = 'blue', alpha = c(.05, .05))
-par(old.omd)
-@
-\par\end{centering}
-
-\caption{Graph of a single sample test for variance\label{fig:single-sample-variance}}
-
-\end{figure}
-
-
 
 \section{Sample Size and Power\label{sec:Sample-Size-and-Power}}
 
@@ -12295,8 +12157,10 @@ as the sample size increases.
 
 \subsection{How to do it with \textsf{R}}
 
-I am thinking about replicate here, and also power.examp from the
-TeachingDemos package.
+I am thinking about \inputencoding{latin9}\lstinline!replicate!\inputencoding{utf8}\index{replicate@\texttt{replicate}}
+here, and also \inputencoding{latin9}\lstinline!power.examp!\inputencoding{utf8}\index{power.examp@\texttt{power.examp}}
+from the \inputencoding{latin9}\lstinline!TeachingDemos!\inputencoding{utf8}
+package.
 
 %
 \begin{figure}
@@ -12312,8 +12176,30 @@ power.examp()
 
 ~
 
-{\small The graph was generated by the }\texttt{\small power.examp}{\small{}
-function from the }\texttt{\small TeachingDemos}{\small{} package. }
+{\small This graph was generated by the }\texttt{\small power.examp}{\small{}
+function from the }\texttt{\small TeachingDemos}{\small{} package.
+The plot corresponds to the hypothesis test $H_{0}:\,\mu=\mu_{0}$
+versus $H_{1}:\,\mu=\mu_{1}$ (where $\mu_{0}=0$ and $\mu_{1}=1$,
+by default) based on a single observation $X\sim\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$.
+The top graph is of the $H_{0}$ density while the bottom is of the
+$H_{1}$ density. The significance level is set at $\alpha=0.05$,
+the sample size is $n=1$, and the standard deviation is $\sigma=1$.
+The pink area is the significance level, and the critical value $z_{0.05}\approx1.645$
+is marked at the left boundary -- this defines the rejection region.
+When $H_{0}$ is true, the probability of falling in the rejection
+region is exactly $\alpha=0.05$. The same rejection region is marked
+on the bottom graph, and the probability of falling in it (when $H_{1}$
+is true) is the blue area shown at the top of the display to be approximately
+$0.26$. This probability represents the }\emph{\small power}{\small{}
+to detect a non-null mean value of $\mu=1$. With the command the
+}\texttt{\small run.power.examp()}{\small{} at the command line the
+same plot opens, but in addition, there are sliders available that
+allow the user to interactively change the sample size $n$, the standard
+deviation $\sigma$, the true difference between the means $\mu_{1}-\mu_{0}$,
+and the significance level $\alpha$. By playing around the student
+can investigate the effect each of the aformentioned parameters has
+on the statistical power. Note that you need the }\texttt{\small tkrplot}{\small{}
+package for }\texttt{\small run.power.examp}{\small . }
 \end{figure}
 
 
@@ -17305,6 +17191,9 @@ R2HTML
 
 
 \chapter{Instructions for Instructors\textsf{\label{cha:Instructions-for-Instructors}}}
+
+\noun{WARNING: this appendix is not applicable until the exercises
+have been written.} 
 
 <<echo = FALSE>>=
 set.seed(095259)
