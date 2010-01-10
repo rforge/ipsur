@@ -50,7 +50,7 @@ If you would like to print your own copy of the <strong>published</strong> editi
 <p>
 <div align="center">
 	<strong>Publisher Quality PDF</strong><br />
-	<a href="downloads/IPSUR.pdf">IPSUR.pdf</a>
+	<a href="download/IPSUR.pdf">IPSUR.pdf</a>
 </div>
 </p>
 
@@ -69,7 +69,7 @@ If you would like a transparent copy of the published edition of <span class="na
 <p>
 <div align="center">
 	<strong>LaTeX source, Images, and Ancillaries</strong><br />
-	<a href="downloads/IPSUR.zip">IPSUR.zip</a>
+	<a href="download/IPSUR.zip">IPSUR.zip</a>
 </div>
 </p>
 
@@ -80,7 +80,7 @@ Finally, you can download the LyX source file, <span style="text-decoration: non
 <p>
 <div align="center">
 	<strong>Master LyX File</strong><br />
-	<a href="downloads/IPSUR.lyx">IPSUR.lyx</a>
+	<a href="download/IPSUR.lyx">IPSUR.lyx</a>
 </div>
 </p>
 
