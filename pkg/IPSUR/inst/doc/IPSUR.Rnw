@@ -452,7 +452,7 @@ which I would normally not mention during the course of a standard
 lecture. For instance, I normally do not highlight the intricacies
 of measure theory or integrability conditions when speaking to the
 class. Moreover, I often stray from the matrix approach to multiple
-linear regression bacause many of my students have not yet been formally
+linear regression because many of my students have not yet been formally
 trained in linear algebra. That being said, it is important to me
 for the students to hold something in their hands which acknowledges
 the world of mathematics and statistics beyond the classroom, and
@@ -515,7 +515,7 @@ we need not take time to manage them, and
 \end{enumerate}
 I made no attempt to choose data sets that would be interesting to
 the students; rather, data were chosen for their potential to convey
-a statistical point. Many of the datasets are decades old or more
+a statistical point. Many of the data sets are decades old or more
 (for instance, the data used to introduce simple linear regression
 are the speeds and stopping distances of cars in the 1920's).
 
@@ -830,7 +830,7 @@ and additionally install all of the other packages on which \inputencoding{latin
 depends, instead type \inputencoding{latin9}\lstinline[showstringspaces=false]!install.packages("foo", depends = TRUE)!\inputencoding{utf8}.
 
 The general command \inputencoding{latin9}\lstinline[showstringspaces=false]!install.packages()!\inputencoding{utf8}
-will (on most operating systems) open a window contaning a huge list
+will (on most operating systems) open a window containing a huge list
 of available packages; simply choose one or more to install.
 
 No matter how many packages are installed onto the system, each one
@@ -901,7 +901,7 @@ such as code highlighting, remote sourcing, and a ton of other things.
 However, one first needs to download and install a shareware version
 of another program, WinEdt, which is only free for a while -- pop-up
 windows will eventually appear that ask for a registration code. \textsf{R}WinEdt
-is nevetheless a very fine choice if you already own WinEdt or are
+is nevertheless a very fine choice if you already own WinEdt or are
 planning to purchase it in the near future.
 \item [{Tinn-\textsf{R}/Sciviews-K:\index{Tinn-R@Tinn-\textsf{R}}\index{Sciviews-K}}] This
 one is completely free and has all of the above mentioned options
@@ -1356,7 +1356,7 @@ less cordial than you are used to. Below are a few considerations:
 \item Read the FAQ (\url{http://cran.r-project.org/faqs.html}). Note that
 there are different FAQs for different operating systems. You should
 read these now, even without a question at the moment, to learn a
-lot about the idiosyncracies of \textsf{R}.
+lot about the idiosyncrasies of \textsf{R}.
 \item Search the archives. Even if your question is not a FAQ, there is
 a very high likelihood that your question has been asked before on
 the mailing list. If you want to know about topic \inputencoding{latin9}\lstinline[showstringspaces=false]!foo!\inputencoding{utf8},
@@ -1887,7 +1887,7 @@ Shoe size is not quantitative, however, because if we take a size
 Some qualitative data serve merely to \emph{identify} the observation
 (such a subject's name, driver's license number, or SSN). This type
 of data does not usually play much of a role in statistics. But other
-qualitiative variables serve to \emph{subdivide} the data set into
+qualitative variables serve to \emph{subdivide} the data set into
 categories; we call these \emph{factors}. In the above examples, gender,
 race, political party, and socioeconomic status would be considered
 factors (shoe size would be another one). The possible values of a
@@ -2313,7 +2313,7 @@ by hand, mistakes are a common problem. After closer scrutiny, these
 can often be fixed.
 \item \textbf{Maybe the observation was not meant for the study}, because
 it does not belong to the population of interest. For example, in
-medical reasearch some subjects may have relevant complications in
+medical research some subjects may have relevant complications in
 their genealogical history that would rule out their participation
 in the experiment. Or when a manufacturing company investigates the
 properties of one of its devices, perhaps a particular product is
@@ -2526,7 +2526,7 @@ curve, then approximately 68\%, 95\%, and 99.7\% of the data are within
 
 Just as the sample mean is sensitive to extreme values, so the associated
 measure of spread is similarly sensitive to extremes. Further, the
-problem is exascerbated by the fact that the extreme distances are
+problem is exacerbated by the fact that the extreme distances are
 squared. We know that the sample quartiles are resistant to extremes,
 and a measure of spread associated with them is the \emph{interquartile
 range} ($IQR$) defined by $IQR=q_{0.75}-q_{0.25}$. 
@@ -3456,7 +3456,7 @@ measures are on the same scale.)
 
 
 Since \emph{before} has a symmetric, mound shaped distribution, an
-ecellent measure of center would be the sample standard deviation.
+excellent measure of center would be the sample standard deviation.
 And since \emph{after} is left-skewed, we should use the median absolute
 deviation. It is also acceptable to use the IQR, but we should rescale
 it appropriately, namely, by dividing by 1.349. The exact values are
@@ -3600,7 +3600,7 @@ to describe some of the more interesting probabilistic applications
 we will study later; to handle those we will need to consider a more
 general \emph{list} data structure. See Section BLANK for details.
 \begin{example}
-Consider the random experiment of dropping a styrofoam cup onto the
+Consider the random experiment of dropping a Styrofoam cup onto the
 floor from a height of four feet. The cup hits the ground and eventually
 comes to rest. It could land upside down, right side up, or it could
 land on its side. We represent these possible outcomes of the random
@@ -4184,7 +4184,7 @@ approach.
 
 We have seen several approaches to the assignment of a probability
 model to a given random experiment and they are very different in
-thier underlying interpretation. But they all cross paths when it
+their underlying interpretation. But they all cross paths when it
 comes to the equally likely model which assigns equal probability
 to all elementary outcomes of the experiment.
 
@@ -4794,7 +4794,7 @@ convenient for combinatorics problems.
 \begin{example}
 There are 11 artists who each submit a portfolio containing 7 paintings
 for competition in an art exhibition. Unfortunately, the gallery director
-only has space in the winners' section to accomodate 12 paintings
+only has space in the winners' section to accommodate 12 paintings
 in a row equally spread over three consecutive walls. The director
 decides to give the first, second, and third place winners each a
 wall to display the work of their choice. The walls boast 31 separate
@@ -5936,13 +5936,13 @@ ddfsdf
 In this chapter we introduce random variables, and in particular,
 discrete random variables. We discuss probability mass functions and
 introduce some special expectations, namely, the mean, variance and
-standard deviation. Some of the more importand discrete distributions
+standard deviation. Some of the more important discrete distributions
 are discussed in detail, and the more general concept of expectation
 is defined, which paves the way for moment generating functions.
 
 We give special attention to the empirical distribution since it plays
-such a fundamental role with respect to resampling and Chapter \ref{cha:Resampling-Methods};
-it will also be needed in Section BLANK where we discuss the Kolmogorov-Smirnov
+such a fundamental role with respect to re sampling and Chapter \ref{cha:Resampling-Methods};
+it will also be needed in Section BLANK where we discuss the Kolmogorov-Smirnoff
 test. Following this is a section in which we introduce a catalogue
 of discrete random variables that can be used to model experiments.
 
@@ -5960,7 +5960,7 @@ circumstances
 \item the notion of mathematical expectation, how to calculate it, and basic
 properties
 \item moment generating functions (yes, I want them to hear about those)
-\item the general tools of the trade for manipulation of continous random
+\item the general tools of the trade for manipulation of continuous random
 variables, integration, \emph{etc}.
 \item some details on a couple of discrete models, and exposure to a bunch
 of other ones
@@ -7402,7 +7402,7 @@ shots until we make a goal. Let $X$ denote the number of missed shots.
 On a normal day we would typically make about 37\% of the shots.
 \item In a local lottery in which a three digit number is selected randomly,
 let $X$ be the number selected.
-\item We drop a styrofoam cup to the floor twenty times, each time recording
+\item We drop a Styrofoam cup to the floor twenty times, each time recording
 whether the cup comes to rest perfectly right side up, or not. Let
 $X$ be the number of times the cup lands perfectly right side up.
 \item We toss a piece of trash at the garbage can from across the room.
@@ -7469,7 +7469,7 @@ by Johnson \emph{et al }\cite{Johnson1994,Johnson1995}.
 \item how to choose a reasonable continuous model under a variety of physical
 circumstances
 \item basic correspondence between continuous versus discrete random variables
-\item the general tools of the trade for manipulation of continous random
+\item the general tools of the trade for manipulation of continuous random
 variables, integration, \emph{etc}.
 \item some details on a couple of continuous models, and exposure to a bunch
 of other ones
@@ -7496,7 +7496,7 @@ function} (PDF) denoted $f_{X}$ associated with it%
 \footnote{Not true. There are pathological random variables with no density
 function. (This is one of the crazy things that can happen in the
 world of measure theory). But in this book we will not get even close
-to these anomolous beasts, and regardless it can be proved that the
+to these anomalous beasts, and regardless it can be proved that the
 CDF always exists.%
 } that satisfies three basic properties:
 \begin{enumerate}
@@ -7703,7 +7703,7 @@ may not exactly match the theoretical values. Be careful.
 
 \section{The Continuous Uniform Distribution\label{sec:The-Continuous-Uniform}}
 
-A random variable $X$ with the continous uniform distribution on
+A random variable $X$ with the continuous uniform distribution on
 the interval $(a,b)$ has PDF\begin{equation}
 f_{X}(x)=\frac{1}{b-a},\quad a<x<b.\end{equation}
 The associated \textsf{R} function is $\mathsf{dunif}(\mathtt{min}=a,\,\mathtt{max}=b)$.
@@ -7754,8 +7754,8 @@ noise of cosmic background radiation.
 
 When $\mu=0$ and $\sigma=1$ we say that the random variable has
 a \emph{standard normal} distribution and we typically write $Z\sim\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$.
-The lowercase greek letter phi ($\phi$) is used to denote the standard
-normal PDF and the capital greek letter phi $\Phi$ is used to denote
+The lowercase Greek letter phi ($\phi$) is used to denote the standard
+normal PDF and the capital Greek letter phi $\Phi$ is used to denote
 the standard normal CDF: for $-\infty<z<\infty$,\begin{equation}
 \phi(z)=\frac{1}{\sqrt{2\pi}}\,\me^{-z^{2}/2}\mbox{ and }\Phi(t)=\int_{-\infty}^{t}\phi(z)\,\diff z.\end{equation}
 
@@ -7879,7 +7879,7 @@ random variables it is a continuous function.
 \item In the continuous case the graph of $Q_{X}$ may be obtained by reflecting
 the graph of $F_{X}$ about the line $y=x$. In the discrete case,
 before reflecting one should: 1) connect the dots to get rid of the
-jumps -- this will make the graph look lik a set of stairs, 2) erase
+jumps -- this will make the graph look like a set of stairs, 2) erase
 the horizontal lines so that only vertical lines remain, and finally
 3) swap the open circles with the solid dots. Please see Figure \ref{fig:binom-plot-distr}
 for a comparison. 
@@ -8464,7 +8464,7 @@ package \cite{Dutangactuar}. The convention is \inputencoding{latin9}\lstinline[
 in front of the distribution name for raw moments, and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!mgf!\inputencoding{utf8}
 in front of the distribution name for the moment generating function.
 At the time of this writing, the following distributions are supported:
-gamma, inverse gaussian, (non-central) chi-squared, exponential, and
+gamma, inverse Gaussian, (non-central) chi-squared, exponential, and
 uniform.
 \begin{example}
 Calculate the first four raw moments for $X\sim\mathsf{gamma}(\mathtt{shape}=13,\,\mathtt{rate}=1)$
@@ -8584,7 +8584,7 @@ any $s,t>0$,\[
 
 \chapter{Multivariate Distributions\label{cha:Multivariable-Distributions}}
 
-We have built up quite a catologue of distributions, discrete and
+We have built up quite a catalogue of distributions, discrete and
 continuous. They were all univariate, however, meaning that we only
 considered one random variable at a time. We can imagine nevertheless
 many random variables associated with a single person: their height,
@@ -9541,7 +9541,7 @@ for any functions $u$ and $v$.
 \end{fact}
 
 
-Bruno deFinetti was a strong proponent of the subjective approach
+Bruno de Finetti was a strong proponent of the subjective approach
 to probability. He proved an important theorem in 1931 which illuminates
 the link between exchangeable random variables and independent random
 variables. Here it is in one of its simplest forms.
@@ -9829,7 +9829,7 @@ as bias and variance
 If $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$ are independent with $X_{i}\sim f$
 for $i=1,2,\ldots,n$, then we say that $X_{1}$, $X_{2}$, \ldots{},
 $X_{n}$ are \emph{independent and identically distributed} (i.i.d.)
-from the population $f$ or altenatively we say that $X_{1}$, $X_{2}$,
+from the population $f$ or alternatively we say that $X_{1}$, $X_{2}$,
 \ldots{}, $X_{n}$ are a \emph{simple random sample of size} $n$,
 denoted $SRS(n)$, from the population $f$. \end{defn}
 \begin{prop}
@@ -10164,7 +10164,7 @@ $Y_{2}$, \ldots{}, $Y_{n_{2}}$ are independent samples. Define
 Then the sampling distribution of\begin{equation}
 \frac{\hat{p}_{1}-\hat{p}_{2}-(p_{1}-p_{2})}{\sqrt{\frac{p_{1}(1-p_{1})}{n_{1}}+\frac{p_{2}(1-p_{2})}{n_{2}}}}\end{equation}
 approaches a $\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$ distribution
-as both $n_{1},\, n_{2}\to\infty$. In other words, the sampling distibution
+as both $n_{1},\, n_{2}\to\infty$. In other words, the sampling distribution
 of $\hat{p}_{1}-\hat{p}_{2}$ is approximately\begin{equation}
 \mathsf{norm}\left(\mathtt{mean}=p_{1}-p_{2},\,\mathtt{sd}=\sqrt{\frac{p_{1}(1-p_{1})}{n_{1}}+\frac{p_{2}(1-p_{2})}{n_{2}}}\right),\end{equation}
 provided both $n_{1}$ and $n_{2}$ are sufficiently large.
@@ -10439,7 +10439,7 @@ pnorm(43.1, mean = 37, sd = 9, lower.tail = FALSE)
 
 \chapter{Estimation\label{cha:Estimation}}
 
-We wil discuss two branches of estimation procedures: point estimation
+We will discuss two branches of estimation procedures: point estimation
 and interval estimation. We briefly discuss point estimation first
 and then spend the rest of the chapter on interval estimation.
 
@@ -10514,12 +10514,12 @@ to seven? If $F=7$ then all of the fish would have been tagged on
 the first run, and there would be no untagged fish in the pond, thus,
 $\P(\mbox{3 successes in 4 trials})=0$.
 
-What about $F=8$; what would be the probabillity of observing $X=3$
+What about $F=8$; what would be the probability of observing $X=3$
 tagged fish?\[
 \P(\mbox{3 successes in 4 trials})=\frac{{7 \choose 3}{1 \choose 1}}{{8 \choose 4}}=\frac{35}{70}=0.5.\]
 
 
-Similarly, if $F=9$ then the probabillity of observing $X=3$ tagged
+Similarly, if $F=9$ then the probability of observing $X=3$ tagged
 fish would be\[
 \P(\mbox{3 successes in 4 trials})=\frac{{7 \choose 3}{2 \choose 1}}{{9 \choose 4}}=\frac{70}{126}\approx0.556.\]
 We can see already that the observed data $X=3$ is more likely when
@@ -12220,7 +12220,7 @@ same plot opens, but in addition, there are sliders available that
 allow the user to interactively change the sample size $n$, the standard
 deviation $\sigma$, the true difference between the means $\mu_{1}-\mu_{0}$,
 and the significance level $\alpha$. By playing around the student
-can investigate the effect each of the aformentioned parameters has
+can investigate the effect each of the aforementioned parameters has
 on the statistical power. Note that you need the }\texttt{\small tkrplot}{\small{}
 package for }\texttt{\small run.power.examp}{\small . }
 \end{figure}
@@ -13146,7 +13146,7 @@ output. It is also shown in the final columns of \inputencoding{latin9}\lstinlin
 anova(cars.lm)
 @
 
-Here we see that the $F$ statistisic is \Sexpr{round(carsumry$fstatistic, 2)}
+Here we see that the $F$ statistic is \Sexpr{round(carsumry$fstatistic, 2)}
 with a $p$-value very close to zero. The conclusion: there is very
 strong evidence that $H_{0}:\beta_{1}=0$ is false, that is, there
 is strong evidence that $\beta_{1}\neq0$. Moreover, we conclude that
@@ -13512,7 +13512,7 @@ or not an observation is extreme.
 The folklore in regression classes is that a test based on the statistic
 in Equation BLANK can be too liberal. A rule of thumb is if we suspect
 an observation to be an outlier \emph{before} seeing the data then
-we say it is signicantly outlying if its two-tailed $p$-value is
+we say it is significantly outlying if its two-tailed $p$-value is
 less than $\alpha$, but if we suspect an observation to be an outlier
 \emph{after} seeing the data, then we should only say it is significantly
 outlying if its two-tailed $p$-value is less than $\alpha/n$. The
@@ -14419,7 +14419,7 @@ by penalizing $R^{2}$ when parameters are added to the model. The
 result is an \emph{adjusted $R^{2}$} which we denote by $\overline{R}^{2}$.\begin{equation}
 \overline{R}^{2}=\left(R^{2}-\frac{p}{n-1}\right)\left(\frac{n-1}{n-p-1}\right).\end{equation}
 It is good practice for the statistician to weigh both $R^{2}$ and
-$\overline{R}^{2}$ during assesment of model utility. In many cases
+$\overline{R}^{2}$ during assessment of model utility. In many cases
 their values will be very close to each other. If their values differ
 substantially, or if one changes dramatically when an explanatory
 variable is added, then (s)he should take a closer look at the explanatory
@@ -15739,8 +15739,8 @@ that the normality and bias conditions are not met. In this case,
 \end{itemize}
 \item Can do things like transform scales, compute confidence intervals,
 and then transform back.
-\item Studentized bootstrap confidence intervalswhere is the Studentized
-version of is the rth order statistic of the simulation
+\item Studentized bootstrap confidence intervals where is the Studentized
+version of is the  order statistic of the simulation
 \end{itemize}
 
 \section{Resampling in Hypothesis Tests\label{sec:Resampling-in-Hypothesis}}
@@ -15956,7 +15956,7 @@ read(IPSUR)
 
 This appendix is a reference of sorts regarding some of the data structures
 a statistician is likely to encounter. We discuss their salient features
-and idiosyncracies.
+and idiosyncrasies.
 
 
 \section{Data Structures\label{sec:Data-Structures}}
@@ -17394,7 +17394,7 @@ answer keys already for all of your QUIZZES and EXAMS, too.
 \section{Ancillary Materials\label{sec:Ancillary-Materials}}
 
 In addition to the main text, student manual, and instructor manual,
-there are two oth IPSUR.R
+there are two other ancillaries. IPSUR.R, and IPSUR.RData.
 
 
 \section{Modifying This Document\label{sec:Modifying-This-Document}}
@@ -17452,7 +17452,7 @@ dynamically to the random generation of \inputencoding{latin9}\lstinline[showstr
 otherwise, the story has been unchanged. 
 
 
-\section*{CaseFile: ALU-179 {}``Murder Madness in Toon Town”}
+\section*{Case File: ALU-179 {}``Murder Madness in Toon Town”}
 \begin{quotation}
 \noindent \begin{center}
 {*}{*}{*}WARNING{*}{*}{*} 
@@ -17674,7 +17674,7 @@ Bird explained, wishing to have his hit of nicotine at this time.
 “Well, I guess there is nothing left to do but to call Police Chief
 Runner and have him arrest her,” Dr.~Fudd-Einstein explained as he
 began dialing. “What I can’t understand is how in the world the Police
-Chief sent me all of this information ann acceptabled seemed to screw
+Chief sent me all of this information and somehow seemed to screw
 it up.”
 
 “What do you mean?” inquired Professor Bird.
