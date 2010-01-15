@@ -85,7 +85,7 @@
 				R and type the following at the command prompt "&gt;": 
 				<br />
 			    	<div align="center"><br />
-					<span class="name">install.packages("IPSUR", repos="http://ipsur.r-forge.r-project.org")</span>
+					<span class="name">install.packages("IPSUR", repos="http://R-Forge.R-project.org")</span>
 			    	</div>
 				</li>
 			</ul>
