@@ -995,7 +995,7 @@ like the one below; look around to see all sorts of things that can
 be done at this most basic level.
 
 
-\subsection{Arithmetic}
+\subsection{Arithmetic\label{sub:Arithmetic}}
 
 <<keep.source = TRUE>>=
 2 + 3       # add
@@ -1025,7 +1025,7 @@ function for square roots and the \inputencoding{latin9}\lstinline[basicstyle={\
 function for powers of $\me$, Euler's constant.
 
 
-\subsection{Assignment, Object names, and Data types}
+\subsection{Assignment, Object names, and Data types\label{sub:Assignment-Object-names}}
 
 It is often convenient to assign numbers and values to variables (objects)
 to be used later. The proper way to assign values to a variable is
@@ -1176,7 +1176,7 @@ letters[-(6:24)]
 @
 
 
-\subsection{Functions and Expressions}
+\subsection{Functions and Expressions\label{sub:Functions-and-Expressions}}
 
 A function takes arguments as input and returns an object as output.
 There are functions to do all sorts of things. We show some examples
@@ -3598,7 +3598,8 @@ is convenient both for its simplicity and its compatibility with the
 \textsf{R} Commander. Data frames alone are, however, not sufficient
 to describe some of the more interesting probabilistic applications
 we will study later; to handle those we will need to consider a more
-general \emph{list} data structure. See Section BLANK for details.
+general \emph{list} data structure. See Section \ref{sub:howto-ps-objects}
+for details.
 \begin{example}
 Consider the random experiment of dropping a Styrofoam cup onto the
 floor from a height of four feet. The cup hits the ground and eventually
@@ -3843,7 +3844,7 @@ or \emph{disjoint} if $A_{i}\cap A_{j}=\emptyset$ for any distinct
 pair $A_{i}\neq A_{j}$. For instance, in the coin-toss experiment
 the events $A=\left\{ \mbox{Heads}\right\} $ and $B=\left\{ \mbox{Tails}\right\} $
 would be mutually exclusive. Now would be a good time to review the
-algebra of sets in Appendix BLANK.
+algebra of sets in Appendix \ref{sec:The-Algebra-of}.
 
 
 \subsection{How to do it with \textsf{R}}
@@ -4014,7 +4015,7 @@ There have been methods written for \inputencoding{latin9}\lstinline[showstrings
 \inputencoding{latin9}\lstinline[showstringspaces=false]!subset!\inputencoding{utf8},
 and \inputencoding{latin9}\lstinline[showstringspaces=false]!union!\inputencoding{utf8}
 in the case that the input objects are of class \inputencoding{latin9}\lstinline[showstringspaces=false]!ps!\inputencoding{utf8}.
-See Section BLANK.
+See Section \ref{sub:howto-ps-objects}.
 \begin{note}
 When the \inputencoding{latin9}\lstinline[showstringspaces=false]!prob!\inputencoding{utf8}
 package loads you will notice a message: {}``\inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!The!\inputencoding{utf8}
@@ -4099,8 +4100,13 @@ specific coin being flipped, or of the person doing the flipping.
 
 The mathematician who revolutionized this way to do probability theory
 was Andrey Kolmogorov, who published a landmark monograph in 1933.
-See \url{http://www-history.mcs.st-andrews.ac.uk/Mathematicians/Kolmogorov.html}
-for more information.
+See 
+
+\begin{center}
+\url{http://www-history.mcs.st-andrews.ac.uk/Mathematicians/Kolmogorov.html}
+\par\end{center}
+
+\noindent for more information.
 
 
 \subsection{Relative Frequency Approach}
@@ -4143,8 +4149,13 @@ that the world is destroyed by nuclear war.
 
 This approach was espoused by Richard von Mises in the early twentieth
 century, and some of his main ideas were incorporated into the measure
-theory approach. See \url{http://www-history.mcs.st-andrews.ac.uk/Biographies/Mises.html}
-for more.
+theory approach. See 
+
+\begin{center}
+\url{http://www-history.mcs.st-andrews.ac.uk/Biographies/Mises.html}
+\par\end{center}
+
+\noindent for more.
 
 
 \subsection{The Subjective Approach}
@@ -4175,9 +4186,14 @@ for example, to assign your probability that you will get an A in
 this class, the chances of a devastating nuclear war, or the likelihood
 that a cure for the common cold will be discovered.
 
-The roots of subjective probability reach back a long time. See \url{http://en.wikipedia.org/wiki/Subjective_probability}
-for a short discussion and links to references about the subjective
-approach.
+The roots of subjective probability reach back a long time. See 
+
+\begin{center}
+\url{http://en.wikipedia.org/wiki/Subjective_probability} 
+\par\end{center}
+
+\noindent for a short discussion and links to references about the
+subjective approach.
 
 
 \subsection{Equally Likely Model (ELM)}
@@ -4379,7 +4395,7 @@ theory could not be more clear.
 
 For any events $A$ and $B$,
 \begin{enumerate}
-\item $\P(A^{c})=1-\P(A)$. \begin{proof}
+\item $\P(A^{c})=1-\P(A)$.\label{enu:prop-prob-complement} \begin{proof}
 Since $A\cup A^{c}=S$ and $A\cap A^{c}=\emptyset$, we have\[
 1=\P(S)=\P(A\cup A^{c})=\P(A)+\P(A^{c}).\]
 
@@ -4461,7 +4477,7 @@ we see the elements $HH$, $HT$, and $TH$ have at least one Head;
 thus, $\P(\mbox{at least 1 Head})=3/4$. 
 
 What is $\P(\mbox{no Heads})$? Notice that the event $\left\{ \mbox{no Heads}\right\} =\left\{ \mbox{at least one Head}\right\} ^{c}$,
-which by Property BLANK means $\P(\mbox{no Heads})=1-\P(\mbox{at least one Head})=1-3/4=1/4$.
+which by Property \ref{enu:prop-prob-complement} means $\P(\mbox{no Heads})=1-\P(\mbox{at least one Head})=1-3/4=1/4$.
 It is obvious in this simple example that the only outcome with no
 Heads is $TT$, however, this complementation trick is useful in more
 complicated circumstances.
@@ -4800,12 +4816,14 @@ decides to give the first, second, and third place winners each a
 wall to display the work of their choice. The walls boast 31 separate
 lighting options apiece. How many displays are possible?
 
-Answer: The judges will pick 3 (ranked) winners out of 11 (with \texttt{rep=FALSE},
-\texttt{ord=TRUE}). Each artist will select 4 of his/her paintings
-from 7 for display in a row (\texttt{rep=FALSE}, \texttt{ord=TRUE}),
-and lastly, each of the 3 walls has 31 lighting possibilities (\texttt{rep=TRUE},
-\texttt{ord=TRUE}). These three numbers can be calculated quickly
-with 
+Answer: The judges will pick 3 (ranked) winners out of 11 (with \inputencoding{latin9}\lstinline[showstringspaces=false]!rep = FALSE!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!ord = TRUE!\inputencoding{utf8}).
+Each artist will select 4 of his/her paintings from 7 for display
+in a row (\inputencoding{latin9}\lstinline[showstringspaces=false]!rep = FALSE!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!ord = TRUE!\inputencoding{utf8}),
+and lastly, each of the 3 walls has 31 lighting possibilities (\inputencoding{latin9}\lstinline[showstringspaces=false]!rep = TRUE!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!ord = TRUE!\inputencoding{utf8}).
+These three numbers can be calculated quickly with 
 
 <<echo=TRUE,print=FALSE>>= 
 n <- c(11,7,31) 
@@ -4922,7 +4940,7 @@ a graph of the birthday probabilities:
 \begin{centering}
 <<echo = FALSE, fig=true, height = 4, width = 4>>=
 g <- Vectorize(pbirthday.ipsur)
-plot( 1:50, g(1:50), xlab = "Number of people in room", ylab = "Prob(at least one match)")
+plot(1:50, g(1:50), xlab = "Number of people in room", ylab = "Prob(at least one match)")
 abline(h = 0.5)
 abline(v = 23, lty = 2)
 remove(g)
@@ -4940,10 +4958,13 @@ is at $n=23$.}
 
 \subsection{How to do it with \textsf{R}}
 
+We can make the plot in Figure \ref{fig:The-Birthday-Problem} with
+the following sequence of commands.
+
 \inputencoding{latin9}
-\begin{lstlisting}[basicstyle={\ttfamily},breaklines=true,frame=leftline,numbers=left,showstringspaces=false,tabsize=2]
-	g <- Vectorize(pbirthday)	# vectorize pbirthday function
-	plot( 1:50, g(1:50),
+\begin{lstlisting}[basicstyle={\ttfamily},breaklines=true,frame=leftline,showstringspaces=false,tabsize=2]
+	g <- Vectorize(pbirthday.ipsur)
+	plot(1:50, g(1:50),
 			xlab = "Number of people in room",
 			ylab = "Prob(at least one match)",
 			main = "The Birthday Problem")
@@ -5002,8 +5023,9 @@ in the set $B$.
 \end{example}
 
 \begin{example}
-Toss a six-sided die twice. The sample space consists of all ordered
-pairs $(i,j)$ of the numbers $1,2,\ldots,6$, that is, $S=\left\{ (1,1),\ (1,2),\ldots,(6,6)\right\} $.
+\label{exa:Toss-a-six-sided-die-twice}Toss a six-sided die twice.
+The sample space consists of all ordered pairs $(i,j)$ of the numbers
+$1,2,\ldots,6$, that is, $S=\left\{ (1,1),\ (1,2),\ldots,(6,6)\right\} $.
 We know from Section \ref{sec:Methods-of-Counting} that $\#(S)=6^{2}=36$.
 Let $A=\left\{ \mbox{outcomes match}\right\} $ and $B=\left\{ \mbox{sum of outcomes at least 8}\right\} $.
 The sample space may be represented by a matrix:
@@ -5050,8 +5072,8 @@ given $A$ is 1/2.
 
 \subsection{How to do it with \textsf{R}}
 
-Continuing with Example BLANK, the first thing to do is set up the
-probability space with the \inputencoding{latin9}\lstinline[showstringspaces=false]!rolldie!\inputencoding{utf8}
+Continuing with Example \ref{exa:Toss-a-six-sided-die-twice}, the
+first thing to do is set up the probability space with the \inputencoding{latin9}\lstinline[showstringspaces=false]!rolldie!\inputencoding{utf8}
 function.
 
 <<keep.source = TRUE>>=
@@ -5124,13 +5146,13 @@ The Multiplication Rule is very important because it allows us to
 find probabilities in random experiments that have a sequential structure,
 as the next example shows.
 \begin{example}
-In Example BLANK we drew two cards from a standard playing deck. Now
-we may answer, what is $\P(\mbox{both Aces})$?\[
+At the beginning of the section we drew two cards from a standard
+playing deck. Now we may answer our original question, what is $\P(\mbox{both Aces})$?\[
 \P(\mbox{both Aces})=\P(A\cap B)=\P(A)\P(B|A)=\frac{4}{52}\cdot\frac{3}{51}\approx0.00452.\]
 
 \end{example}
 
-\subsection{How to do it with \textsf{R}}
+\subsection{How to do it with \textsf{R\label{sub:howto-ps-objects}}}
 
 Continuing Example BLANK, we set up the probability space by way of
 a three step process. First we employ the \inputencoding{latin9}\lstinline[showstringspaces=false]!cards!\inputencoding{utf8}
@@ -5321,8 +5343,8 @@ and notice that $A\cap B$ and $A^{c}\cap B$ are disjoint. Therefore\begin{align*
 (which is 7/24 in lowest terms).
 
 \end{example}
-Using the same reasoning, one can return to Example BLANK and show
-that\[
+Using the same reasoning, we can return to the example from the beginning
+of the section and show that\[
 \P(\left\{ \mbox{second card is an Ace}\right\} )=4/52.\]
 . 
 
@@ -5933,18 +5955,20 @@ ddfsdf
 
 \chapter{Discrete Distributions\label{cha:Discrete-Distributions}}
 
-In this chapter we introduce random variables, and in particular,
-discrete random variables. We discuss probability mass functions and
-introduce some special expectations, namely, the mean, variance and
-standard deviation. Some of the more important discrete distributions
-are discussed in detail, and the more general concept of expectation
-is defined, which paves the way for moment generating functions.
+In this chapter we introduce discrete random variables, those who
+take values in a finite or countably infinite support set. We discuss
+probability mass functions and some special expectations, namely,
+the mean, variance and standard deviation. Some of the more important
+discrete distributions are explored in detail, and the more general
+concept of expectation is defined, which paves the way for moment
+generating functions.
 
 We give special attention to the empirical distribution since it plays
 such a fundamental role with respect to re sampling and Chapter \ref{cha:Resampling-Methods};
-it will also be needed in Section BLANK where we discuss the Kolmogorov-Smirnoff
-test. Following this is a section in which we introduce a catalogue
-of discrete random variables that can be used to model experiments.
+it will also be needed in Section \ref{sub:Kolmogorov-Smirnov-Goodness-of-Fit-Test}
+where we discuss the Kolmogorov-Smirnov test. Following this is a
+section in which we introduce a catalogue of discrete random variables
+that can be used to model experiments.
 
 There are some comments on simulation, and we mention transformations
 of random variables in the discrete case. The interested reader who
@@ -6019,9 +6043,9 @@ mean $\mu$, also known as $\E X$:\begin{equation}
 provided the (potentially infinite) series $\sum|x|f_{X}(x)$ is convergent.
 Another important number is the variance:\begin{equation}
 \sigma^{2}=\E(X-\mu)^{2}=\sum_{x\in S}(x-\mu)^{2}f_{X}(x),\end{equation}
-which can be computed (see Exercise BLANK) with the alternate formula
-$\sigma^{2}=\E X^{2}-(\E X)^{2}$. Directly defined from the variance
-is the standard deviation $\sigma=\sqrt{\sigma^{2}}$. 
+which can be computed (see Exercise \ref{xca:variance-shortcut})
+with the alternate formula $\sigma^{2}=\E X^{2}-(\E X)^{2}$. Directly
+defined from the variance is the standard deviation $\sigma=\sqrt{\sigma^{2}}$. 
 \begin{example}
 \label{exa:disc-pmf-mean}We will calculate the mean of $X$ in Example
 \ref{exa:Toss-a-coin}.\[
@@ -6063,8 +6087,8 @@ name instead of the defining formula.
 \subsection{How to do it with \textsf{R\label{sub:disc-rv-how-r}}}
 
 The mean and variance of a discrete random variable is easy to compute
-at the console. Let's return to Example BLANK. We will start by defining
-a vector \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
+at the console. Let's return to Example \ref{exa:disc-pmf-mean}.
+We will start by defining a vector \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
 containing the support of $X$, and a vector \inputencoding{latin9}\lstinline[showstringspaces=false]!f!\inputencoding{utf8}
 to contain the values of $f_{X}$ at the respective outcomes in \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}:
 
@@ -6077,7 +6101,7 @@ To calculate the mean $\mu$, we need to multiply the corresponding
 values of \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
 and \inputencoding{latin9}\lstinline[showstringspaces=false]!f!\inputencoding{utf8}
 and add them. This is easily accomplished in \textsf{R} since operations
-on vectors are performed \emph{element-wise} (see Section BLANK): 
+on vectors are performed \emph{element-wise} (see Section \ref{sub:Functions-and-Expressions}): 
 
 <<>>=
 mu <- sum(x * f)
@@ -6172,9 +6196,9 @@ examples follow.
 
 \subsection{Examples}
 \begin{itemize}
-\item To roll a fair die 3000 times: \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=2]!sample(6, size = 3000, replace = TRUE)!\inputencoding{utf8}
-\item To choose 27 random numbers from 30 to 70 : \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=2]!sample(30:70, size = 27, replace = TRUE)!\inputencoding{utf8}
-\item To flip a fair coin 1000 times: \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=2]!sample(c("H","T"), size = 1000, replace = TRUE)!\inputencoding{utf8}
+\item To roll a fair die 3000 times, do \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=2]!sample(6, size = 3000, replace = TRUE)!\inputencoding{utf8}.
+\item To choose 27 random numbers from 30 to 70, do \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=2]!sample(30:70, size = 27, replace = TRUE)!\inputencoding{utf8}.
+\item To flip a fair coin 1000 times, do \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=2]!sample(c("H","T"), size = 1000, replace = TRUE)!\inputencoding{utf8}.
 \end{itemize}
 
 \paragraph*{With the \textsf{R} Commander:}
@@ -6253,7 +6277,7 @@ We next find the mean:
 = & np\,\sum_{x-1=0}^{n-1}{n-1 \choose x-1}p^{(x-1)}(1-p)^{(n-1)-(x-1)},\\
 = & np.\end{alignat*}
  A similar argument shows that $\E X(X-1)=n(n-1)p^{2}$ (see Exercise
-BLANK). Therefore\begin{alignat*}{1}
+\ref{xca:binom-factorial-expectation}). Therefore\begin{alignat*}{1}
 \sigma^{2}= & \E X(X-1)+\E X-[\E X]^{2},\\
 = & n(n-1)p^{2}+np-(np)^{2},\\
 = & n^{2}p^{2}-np^{2}+np-n^{2}p^{2},\\
@@ -6314,8 +6338,8 @@ diff(pbinom(c(6,9), size = 12, prob = 1/6))  # same thing
 \end{example}
 
 \begin{example}
-Toss a coin three times and let $X$ be the number of Heads observed.
-We know from before that $X\sim\mathsf{binom}(\mathtt{size}=3,\,\mathtt{prob}=1/2)$
+\label{exa:toss-coin-3-withR}Toss a coin three times and let $X$
+be the number of Heads observed. We know from before that $X\sim\mathsf{binom}(\mathtt{size}=3,\,\mathtt{prob}=1/2)$
 which implies the following PMF:
 
 %
@@ -6372,15 +6396,15 @@ CDF\label{fig:binom-cdf-base}}
 
 
 \begin{example}
-Another way to do Example BLANK is with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!distr!\inputencoding{utf8}
+Another way to do Example \ref{exa:toss-coin-3-withR} is with the
+\inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!distr!\inputencoding{utf8}
 family of packages \cite{Ruckdescheldistr}. They use an object oriented
 approach to random variables, that is, a random variable is stored
 in an object \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!X!\inputencoding{utf8},
 and then questions about the random variable translate to functions
 on and involving \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!X!\inputencoding{utf8}.
 Random variables with distributions from the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!base!\inputencoding{utf8}
-package are specified by capitalizing the name of the distribution:
-FLAG
+package are specified by capitalizing the name of the distribution.
 
 <<keep.source = TRUE>>=
 library(distr)
@@ -6507,7 +6531,7 @@ Note that for any MGF $M_{X}$, \begin{equation}
 M_{X}(0)=\E\me^{0\cdot X}=\E1=1.\end{equation}
 We will calculate the MGF for the two distributions introduced above.
 \begin{example}
-$X\sim\mathsf{disunif}(m)$. 
+Find the MGF for $X\sim\mathsf{disunif}(m)$. 
 
 Since $f(x)=1/m$, the MGF takes the form\[
 M(t)=\sum_{x=1}^{m}\me^{tx}\frac{1}{m}=\frac{1}{m}(\me^{t}+\me^{2t}+\cdots+\me^{mt}),\quad\mbox{for any \ensuremath{t}.}\]
@@ -6515,11 +6539,11 @@ M(t)=\sum_{x=1}^{m}\me^{tx}\frac{1}{m}=\frac{1}{m}(\me^{t}+\me^{2t}+\cdots+\me^{
 \end{example}
 
 \begin{example}
-$X\sim\mathsf{binom}(\mathtt{size}=n,\,\mathtt{prob}=p)$.
+Find the MGF for $X\sim\mathsf{binom}(\mathtt{size}=n,\,\mathtt{prob}=p)$.
 \end{example}
 \begin{alignat*}{1}
-M_{X}(t)= & \sum_{x=0}^{n}\me^{tx}{n \choose x}p^{x}(1-p)^{n-x},\\
-= & \sum_{x=0}^{n-x}{n \choose x}(p\me^{t})^{x}q^{n-x},\\
+M_{X}(t)= & \sum_{x=0}^{n}\me^{tx}\,{n \choose x}\, p^{x}(1-p)^{n-x},\\
+= & \sum_{x=0}^{n-x}{n \choose x}\,(p\me^{t})^{x}q^{n-x},\\
 = & (p\me^{t}+q)^{n},\quad\mbox{for any \ensuremath{t}.}\end{alignat*}
 
 
@@ -6531,15 +6555,16 @@ in this book. The first is the fact that an MGF may be used to accurately
 identify the probability distribution that generated it, which rests
 on the following:
 \begin{thm}
-The moment generating function, if it exists in a neighborhood of
-zero, determines a probability distribution \emph{uniquely}. \end{thm}
+\label{thm:mgf-unique}The moment generating function, if it exists
+in a neighborhood of zero, determines a probability distribution \emph{uniquely}. \end{thm}
 \begin{proof}
 Unfortunately, the proof of such a theorem is beyond the scope of
-a text like this one. Interested readers could consult BLANK.
+a text like this one. Interested readers could consult Billingsley
+\cite{Billingsley1995}.
 \end{proof}
 
 
-We will see an example of Theorem BLANK in action.
+We will see an example of Theorem \ref{thm:mgf-unique} in action.
 \begin{example}
 Suppose we encounter a random variable which has MGF \[
 M_{X}(t)=(0.3+0.7\me^{t})^{13}.\]
@@ -6602,9 +6627,9 @@ from Calculus II that certain functions $f$ can be represented by
 a Taylor series expansion about a point $a$, which takes the form\begin{equation}
 f(x)=\sum_{r=0}^{\infty}\frac{f^{(r)}(a)}{r!}(x-a)^{r},\quad\mbox{for all \ensuremath{|x-a|<R},}\end{equation}
 where $R$ is called the \emph{radius of convergence} of the series
-(see Appendix BLANK). We combine the two to say that if an MGF exists
-for all $t$ in the interval $(-\epsilon,\epsilon)$, then we can
-write\begin{equation}
+(see Appendix \ref{sec:Sequences-and-Series}). We combine the two
+to say that if an MGF exists for all $t$ in the interval $(-\epsilon,\epsilon)$,
+then we can write\begin{equation}
 M_{X}(t)=\sum_{r=0}^{\infty}\frac{\E X^{r}}{r!}t^{r},\quad\mbox{for all \ensuremath{|t|<\epsilon}.}\end{equation}
 
 \end{rem}
@@ -6615,7 +6640,7 @@ The \inputencoding{latin9}\lstinline[showstringspaces=false]!distrEx!\inputencod
 package provides an expectation operator \inputencoding{latin9}\lstinline[showstringspaces=false]!E!\inputencoding{utf8}
 which can be used on random variables that have been defined in the
 ordinary \inputencoding{latin9}\lstinline[showstringspaces=false]!distr!\inputencoding{utf8}
-sense: FLAG
+sense:
 
 <<>>=
 X <- Binom(size = 3, prob = 0.45)
@@ -6631,7 +6656,7 @@ expectation is not computed directly, rather, it is estimated by first
 generating a random sample from the underlying model and next computing
 a sample mean of the function of interest. 
 
-There are methods for other population parameters: FLAG
+There are methods for other population parameters:
 
 <<>>=
 var(X)
@@ -6653,9 +6678,9 @@ the observed values are distinct, but the remarks are valid even when
 the observed values are repeated. 
 \begin{defn}
 The \emph{empirical cumulative distribution function} $F_{n}$ (written
-ECDF) is the probability distribution that places probability mass
-$1/n$ on each of the values $x_{1}$, $x_{2}$, \ldots{}, $x_{n}$.
-The empirical PMF takes the form\begin{equation}
+ECDF)\index{Empirical distribution} is the probability distribution
+that places probability mass $1/n$ on each of the values $x_{1}$,
+$x_{2}$, \ldots{}, $x_{n}$. The empirical PMF takes the form\begin{equation}
 f_{X}(x)=\frac{1}{n},\quad x\in\left\{ x_{1},x_{2},...,x_{n}\right\} .\end{equation}
 If the value $x_{i}$ is repeated $k$ times, the mass at $x_{i}$
 is accumulated to $k/n$.
@@ -6681,7 +6706,7 @@ in the same way that the other base probability distributions are,
 but there are plenty of resources available for the determined investigator. 
 
 Given a data vector of observed values \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8},
-we can see the empirical CDF with the \inputencoding{latin9}\lstinline[showstringspaces=false]!ecdf!\inputencoding{utf8}
+we can see the empirical CDF with the \inputencoding{latin9}\lstinline[showstringspaces=false]!ecdf!\inputencoding{utf8}\index{ecdf@\texttt{ecdf}}
 function:
 
 <<>>=
@@ -6733,7 +6758,7 @@ epdf(x)(0)       # should be 2/3
 
 To simulate from the empirical distribution supported on the vector
 \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8},
-we use the \inputencoding{latin9}\lstinline[showstringspaces=false]!sample!\inputencoding{utf8}
+we use the \inputencoding{latin9}\lstinline[showstringspaces=false]!sample!\inputencoding{utf8}\index{sample@\texttt{sample}}
 function.
 
 <<>>=
@@ -6788,7 +6813,7 @@ urn. We have the same trouble if $K>N$. The good news is that the
 majority of examples we study have $K\leq M$ and $K\leq N$ and we
 will happily take the support to be $x=0,\ 1,\ \ldots,\ K$. 
 
-It is shown in Exercise BLANK that \begin{equation}
+It is shown in Exercise \ref{xca:hyper-mean-variance} that \begin{equation}
 \mu=K\frac{M}{M+N},\quad\sigma^{2}=K\frac{MN}{(M+N)^{2}}\frac{M+N-K}{M+N-1}.\end{equation}
 
 
@@ -6995,8 +7020,8 @@ which give the PMF, CDF, quantile function, and simulate random variates,
 respectively.
 
 Again it is clear that $f(x)\geq0$ and we check that $\sum f(x)=1$
-(see Equation BLANK in Appendix BLANK):\begin{alignat*}{1}
-\sum_{x=0}^{\infty}p(1-p)^{x}= & p\sum_{x=0}^{\infty}q^{x}=p\frac{1}{1-q}=1.\end{alignat*}
+(see Equation \ref{eq:geom-series} in Appendix \ref{sec:Sequences-and-Series}):\begin{alignat*}{1}
+\sum_{x=0}^{\infty}p(1-p)^{x}= & p\sum_{x=0}^{\infty}q^{x}=p\,\frac{1}{1-q}=1.\end{alignat*}
 We will find in the next section that the mean and variance are\begin{equation}
 \mu=\frac{1-p}{p}=\frac{q}{p}\mbox{ and }\sigma^{2}=\frac{q}{p^{2}}.\end{equation}
 
@@ -7149,8 +7174,9 @@ is $\approx\lambda/n$.
 is $\approx0$.
 \item occurrences in disjoint subintervals are independent.\end{itemize}
 \begin{rem}
-If $X$ counts the number of events in the interval $[0,t]$ and $\lambda$
-is the average number that occur in unit time, then $X\sim\mathsf{pois}(\mathtt{lambda}=\lambda t)$,
+\label{rem:poisson-process}If $X$ counts the number of events in
+the interval $[0,t]$ and $\lambda$ is the average number that occur
+in unit time, then $X\sim\mathsf{pois}(\mathtt{lambda}=\lambda t)$,
 that is,\begin{equation}
 \P(X=x)=\me^{-\lambda t}\frac{(\lambda t)^{x}}{x!},\quad x=0,1,2,3\ldots\end{equation}
 \end{rem}
@@ -7169,12 +7195,11 @@ Solution: The probability that no car arrives is \[
 \begin{example}
 Suppose the car wash above is in operation from 8AM to 6PM, and we
 let $Y$ be the number of customers that appear in this period. Since
-this period covers a total of 10 hours, from Remark BLANK we get that
-$Y\sim\mathsf{pois}(\mathtt{lambda}=5\ast10=50)$. What is the probability
-that there are between 48 and 50 customers, inclusive?
+this period covers a total of 10 hours, from Remark \ref{rem:poisson-process}
+we get that $Y\sim\mathsf{pois}(\mathtt{lambda}=5\ast10=50)$. What
+is the probability that there are between 48 and 50 customers, inclusive?
 
-Solution: We want $\P(48\leq Y\leq50)=\P(X\leq50)-\P(X\leq47)$. See
-Example BLANK: 
+Solution: We want $\P(48\leq Y\leq50)=\P(X\leq50)-\P(X\leq47)$. 
 
 <<>>=
 diff(ppois(c(47, 50), lambda = 50))
@@ -7190,8 +7215,8 @@ many more. Given a random variable $X$ and a given function $h$,
 we may consider $Y=h(X)$. Since the values of $X$ are determined
 by chance, so are the values of $Y$. The question is, what is the
 PMF of the random variable $Y$? The answer, of course, depends on
-$h$. In the case that $h$ is one-to-one (see Appendix BLANK), the
-solution can be found by simple substitution.
+$h$. In the case that $h$ is one-to-one (see Appendix \ref{sec:Differential-and-Integral}),
+the solution can be found by simple substitution.
 \begin{example}
 Let $X\sim\mathsf{nbinom}(\mathtt{size}=r,\,\mathtt{prob}=p)$. We
 saw in \ref{sec:Other-Discrete-Distributions} that $X$ represents
@@ -7278,7 +7303,6 @@ then the mean and variance of $Y=mX+b$ is \begin{equation}
 
 \setcounter{thm}{0}
 \begin{enumerate}
-\item Suppose that there are \Sexpr{rnorm(1)}.
 \item A recent national study showed that approximately 44.7\% of college
 students have used Wikipedia as a source in at least one of their
 term papers. Let $X$ equal the number of students in a random sample
@@ -7356,7 +7380,7 @@ sum(dbinom(16:19, size = 31, prob = 0.447))
 diff(pbinom(c(19,15), size = 31, prob = 0.447, lower.tail = FALSE))
 @
 
-\item Give the mean of $X$, denoted $\E X$. FLAG
+\item Give the mean of $X$, denoted $\E X$.
 
 
 <<>>=
@@ -7436,12 +7460,22 @@ a random variable $X$.\end{xca}
 \item $f(x)=Cx^{3}(1-x)^{2},\quad0<x<1.$
 \item ${\displaystyle f(x)=C(1+x^{2}/4)^{-1}},\quad-\infty<x<\infty.$\end{enumerate}
 \begin{xca}
-Show that $\E(X-\mu)^{2}=\E X^{2}-\mu^{2}$. \emph{Hint}: expand the
-quantity $(X-\mu)^{2}$ and distribute the expectation over the resulting
-terms.
+\label{xca:variance-shortcut}Show that $\E(X-\mu)^{2}=\E X^{2}-\mu^{2}$.
+\emph{Hint}: expand the quantity $(X-\mu)^{2}$ and distribute the
+expectation over the resulting terms.
 \end{xca}
 
+\begin{xca}
+\label{xca:binom-factorial-expectation}If $X\sim\mathsf{binom}(\mathtt{size}=n,\,\mathtt{prob}=p)$
+show that $\E X(X-1)=n(n-1)p^{2}$.
+\end{xca}
 
+\begin{xca}
+\label{xca:hyper-mean-variance}Calculate the mean and variance of
+the hypergeometric distribution. Show that \begin{equation}
+\mu=K\frac{M}{M+N},\quad\sigma^{2}=K\frac{MN}{(M+N)^{2}}\frac{M+N-K}{M+N-1}.\end{equation}
+
+\end{xca}
 
 \chapter{Continuous Distributions\label{cha:Continuous-Distributions}}
 
@@ -7713,7 +7747,7 @@ explicitly a formula for the CDF $F_{X}$:\begin{equation}
 F_{X}(t)=\begin{cases}
 0, & t<0,\\
 \frac{t-a}{b-a}, & a\leq t<b,\\
-1, & t\geq b.\end{cases}\end{equation}
+1, & t\geq b.\end{cases}\label{eq:unif-cdf}\end{equation}
 The continuous uniform distribution is the continuous analogue of
 the discrete uniform distribution; it is used to model experiments
 whose outcome is an interval of numbers that are {}``equally likely''
@@ -7961,7 +7995,7 @@ form\begin{equation}
 f_{U}(u)=f_{X}(x)\left|\frac{\diff x}{\diff u}\right|.\label{eq:univ-trans-pdf-short}\end{equation}
 \end{rem}
 \begin{example}
-Let $X\sim\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$,
+\label{exa:lnorm-transformation}Let $X\sim\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$,
 and let $Y=\me^{X}$. What is the PDF of $Y$? 
 
 Solution: Notice first that $\me^{x}>0$ for any $x$, so the support
@@ -7975,8 +8009,8 @@ Section \ref{sec:Other-Continuous-Distributions}.
 \end{example}
 
 \begin{example}
-Suppose $X\sim\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$ and
-let $Y=4-3X$. What is the PDF of $Y$?
+\label{exa:lin-trans-norm}Suppose $X\sim\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$
+and let $Y=4-3X$. What is the PDF of $Y$?
 \end{example}
 The support of $X$ is $(-\infty,\infty)$, and as $x$ goes from
 $-\infty$ to $\infty$, the quantity $y=4-3x$ also traverses $(-\infty,\infty)$.
@@ -8036,8 +8070,8 @@ $X$ is continuous the two probabilities $\P(X<\me^{-y})$ and $\P(X\leq\me^{-y})$
 are equal; thus\[
 1-\P(X<\me^{-y})=1-\P(X\leq\me^{-y})=1-F_{X}(\me^{-y}).\]
 Now recalling that the CDF of a $\mathsf{unif}(\mathtt{min}=0,\,\mathtt{max}=1)$
-random variable satisfies $F(u)=u$ (see Equation BLANK), we can say
-\[
+random variable satisfies $F(u)=u$ (see Equation \ref{eq:unif-cdf}),
+we can say \[
 F_{Y}(y)=1-F_{X}(\me^{-y})=1-\me^{-y},\quad\mbox{for }y>0.\]
 We have consequently found the formula for the CDF of $Y$; to obtain
 the PDF $f_{Y}$ we need only differentiate $F_{Y}$:\[
@@ -8068,8 +8102,8 @@ CDFs (but the proof is more complicated). The transform is \textbf{not}
 true for discrete random variables, or for continuous random variables
 having a discrete component (that is, with jumps in their CDF). \end{fact}
 \begin{example}
-Let $Z\sim\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$ and let
-$U=Z^{2}$. What is the PDF of $U$? 
+\label{exa:distn-of-z-squared}Let $Z\sim\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$
+and let $U=Z^{2}$. What is the PDF of $U$? 
 
 Notice first that $Z^{2}\geq0$, and thus the support of $U$ is $[0,\infty)$.
 And for any $u\geq0$, \[
@@ -8095,8 +8129,8 @@ package has functionality to investigate transformations of univariate
 distributions. There are exact results for ordinary transformations
 of the standard distributions, and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!distr!\inputencoding{utf8}
 takes advantage of these in many cases. For instance, the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!distr!\inputencoding{utf8}
-package can handle the transformation in Example BLANK quite nicely:
-FLAG
+package can handle the transformation in Example \ref{exa:lin-trans-norm}
+quite nicely:
 
 <<>>=
 library(distr)
@@ -8112,11 +8146,11 @@ and \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!sd!\inputencoding{u
 should be. But it is impossible for \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!distr!\inputencoding{utf8}
 to know everything, and it is not long before we venture outside of
 the transformations that \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!distr!\inputencoding{utf8}
-recognizes. Let us try Example BLANK:
+recognizes. Let us try Example \ref{exa:lnorm-transformation}:
 
 <<>>=
-Z <- exp(X)
-Z
+Y <- exp(X)
+Y
 @
 
 The result is an object of class \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!AbscontDistribution!\inputencoding{utf8},
@@ -8228,7 +8262,7 @@ that we have already waited seven hours, is exactly the probability
 that we needed to wait five hours for a customer in the first place.
 In mathematical symbols, for any $s,\, t>0$,\begin{equation}
 \P(X>s+t\,|\, X>t)=\P(X>s).\end{equation}
-See Exercise BLANK.
+See Exercise \ref{xca:prove-the-memoryless}.
 
 
 \subsection*{The Gamma Distribution\label{sub:The-Gamma-Distribution}}
@@ -8287,9 +8321,9 @@ curve to its right.
 Here are some useful things to know about the chi-square distribution.
 \begin{enumerate}
 \item If $Z\sim\mathtt{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$, then $Z^{2}\sim\mathsf{chisq}(\mathtt{df}=1)$.
-We saw this in Example BLANK, and the fact is important when it comes
-time to find the distribution of the sample variance, $S^{2}$. See
-Theorem BLANK in Section BLANK.
+We saw this in Example \ref{exa:distn-of-z-squared}, and the fact
+is important when it comes time to find the distribution of the sample
+variance, $S^{2}$. See Theorem \ref{thm:Xbar-andS} in Section \ref{sub:Samp-Var-Dist}.
 \item The chi-square distribution is supported on the positive $x$-axis,
 with a right-skewed distribution.
 \item The $\mathsf{chisq}(\mathtt{df}=p)$ distribution is the same as a
@@ -8369,22 +8403,6 @@ plays less of a role today, now that personal computers are widespread.
 \item If $X\sim\mathsf{t}(\mathtt{df}=r)$, then $X^{2}\sim\mathsf{f}(\mathtt{df1}=1,\,\mathtt{df2}=r)$.
 \end{enumerate}
 \end{rem}
-There is a common misconception that the $F$ distribution was discovered
-and/or named by Sir R.~.A.~\emph{F}isher. The mistake is perhaps
-plausible because the $F$ distribution plays a significant role in
-the analysis of variance, and Fisher is widely credited with the invention
-and development of ANOVA (although not with the acronym, that was
-Tukey).
-
-However, the truth of the matter is that G.~W.~Snedecor discovered,
-tabulated, and yes, introduced the notation for, the $F$ distribution
-in Calculation and Interpretation of Analysis of Variance and Covariance
-(1934) (David, 1995). Fisher had tabulated $z=\frac{1}{2}\ln F$ some
-years earlier, and objected to the idea of calling the variance ratio
-{}``$F$''. 
-
-\href{http://jeff560.tripod.com/f.html}{ajskldfjalsdfladsjlad}
-
 
 \subsection{Other Popular Distributions\label{sub:Other-Popular-Distributions}}
 
@@ -8418,9 +8436,9 @@ We write $X\sim\mathsf{beta}(\mathtt{shape1}=\alpha,\,\mathtt{shape2}=\beta)$.
 The associated \textsf{R} function is \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=4]!dbeta(x, shape1, shape2)!\inputencoding{utf8}.
 The mean and variance are\begin{equation}
 \mu=\frac{\alpha}{\alpha+\beta}\mbox{ and }\sigma^{2}=\frac{\alpha\beta}{\left(\alpha+\beta\right)^{2}\left(\alpha+\beta+1\right)}.\end{equation}
-This distribution comes up a lot in Bayesian statistics because it
-is a good model for one's prior beliefs about a population proportion
-$p$, $0\leq p\leq1$. See Example BLANK.
+See Example \ref{exa:cont-pdf3x2}. This distribution comes up a lot
+in Bayesian statistics because it is a good model for one's prior
+beliefs about a population proportion $p$, $0\leq p\leq1$.
 
 
 \subsubsection*{The Logistic Distribution\label{sub:The-Logistic-Distribution}}
@@ -8443,7 +8461,7 @@ f_{X}(x)=\frac{1}{\sigma x\sqrt{2\pi}}\exp\left[\frac{-(\ln x-\mu)^{2}}{2\sigma^
 We write $X\sim\mathsf{lnorm}(\mathtt{meanlog}=\mu,\,\mathtt{sdlog}=\sigma)$.
 The associated \textsf{R} function is \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=4]!dlnorm(x, meanlog = 0, sdlog = 1)!\inputencoding{utf8}.
 Notice that the support is concentrated on the positive $x$ axis;
-the distribution is right-skewed with a heavy tail.
+the distribution is right-skewed with a heavy tail. See Example \ref{exa:lnorm-transformation}.
 
 
 \subsubsection*{The Weibull Distribution\label{sub:The-Weibull-Distribution}}
@@ -8526,7 +8544,7 @@ rnorm(1)
 For the following random experiments, decide what the distribution
 of $X$ should be. In nearly every case, there are additional assumptions
 that should be made for the distribution to apply; identify those
-assumptions (which may or may not strictly hold in practice).\end{xca}
+assumptions (which may or may not strictly hold in practice).
 \begin{enumerate}
 \item We throw a dart at a dart board. Let $X$ denote the squared linear
 distance from the bullseye to the where the dart landed.
@@ -8535,7 +8553,11 @@ let $P$ denote the proportion of the total pages of the book devoted
 to exercises. 
 \item We measure the time it takes for the water to completely drain out
 of the kitchen sink.
-\item We randomly sample strangers at the grocery store and \end{enumerate}
+\item We randomly sample strangers at the grocery store and ask them how
+long it will take them to drive home. 
+\end{enumerate}
+\end{xca}
+
 \begin{xca}
 If $Z$ is $\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$, find 
 \begin{enumerate}
@@ -8571,9 +8593,9 @@ type the exercise here
 \end{xca}
 
 \begin{xca}
-Prove the memoryless property for exponential random variables. That
-is, for $X\sim\mathsf{exp}(\mathtt{rate}=\lambda)$ show that for
-any $s,t>0$,\[
+\label{xca:prove-the-memoryless}Prove the memoryless property for
+exponential random variables. That is, for $X\sim\mathsf{exp}(\mathtt{rate}=\lambda)$
+show that for any $s,t>0$,\[
 \P(X>s+t\,|\, X>t)=\P(X>s).\]
 
 \end{xca}
@@ -12048,10 +12070,10 @@ t.test(extra ~ group, data = sleep, paired = TRUE)
 @
 
 
-\section{Other Hypothesis Tests}
+\section{Other Hypothesis Tests\label{sec:Other-Hypothesis-Tests}}
 
 
-\subsection{Kolmogorov-Smirnov Goodness-of-Fit Test}
+\subsection{Kolmogorov-Smirnov Goodness-of-Fit Test\label{sub:Kolmogorov-Smirnov-Goodness-of-Fit-Test}}
 
 
 \subsection{How to do it with \textsf{R}}
@@ -12061,7 +12083,7 @@ ks.test(randu$x, "punif")
 @
 
 
-\subsection{Shapiro-Wilk Normality Test}
+\subsection{Shapiro-Wilk Normality Test\label{sub:Shapiro-Wilk-Normality-Test}}
 
 
 \subsection{How to do it with \textsf{R}}
@@ -16430,6 +16452,12 @@ or more generally,\begin{equation}
 
 \section{Differential and Integral Calculus\label{sec:Differential-and-Integral}}
 
+A function $f$ of one variable is said to be one-to-one if no two
+distinct $x$ values are mapped to the same $y=f(x)$ value. To show
+that a function is one-to-one we can either use the horizontal line
+test or we may start with the equation $f(x_{1})=f(x_{2})$ and use
+algebra to show that it implies $x_{1}=x_{2}$.
+
 
 \subsection*{Limits and Continuity}
 \begin{defn}
@@ -16635,7 +16663,7 @@ and we say that $\int_{-\infty}^{\infty}f(x)\,\diff x$ is \emph{convergent}.
 Otherwise, we say that the improper integral is \emph{divergent}.
 
 
-\section{Sequences and Series\label{sec:Finite-and-Infinite}}
+\section{Sequences and Series\label{sec:Sequences-and-Series}}
 
 A \emph{sequence} is an ordered list of numbers, $a_{1}$, $a_{2}$,
 $a_{3}$, \ldots{}, $a_{n}$ $=\left(a_{k}\right)_{k=1}^{n}$. A
@@ -16655,11 +16683,11 @@ $a_{k}\leq-M$ for all $k\geq N$).
 \subsection*{Finite Series}
 
 \begin{equation}
-\sum_{k=1}^{n}k=1+2+\cdots+n=\frac{n(n+1)}{2}\end{equation}
+\sum_{k=1}^{n}k=1+2+\cdots+n=\frac{n(n+1)}{2}\label{eq:gauss-series}\end{equation}
 
 
 \begin{equation}
-\sum_{k=1}^{n}k^{2}=1^{2}+2^{2}+\cdots+n^{2}=\frac{n(n+1)(2n+3)}{6}\end{equation}
+\sum_{k=1}^{n}k^{2}=1^{2}+2^{2}+\cdots+n^{2}=\frac{n(n+1)(2n+3)}{6}\label{eq:gauss-series-sq}\end{equation}
 
 
 
@@ -16667,7 +16695,7 @@ $a_{k}\leq-M$ for all $k\geq N$).
 
 
 \paragraph*{\begin{equation}
-\sum_{k=0}^{n}{n \choose k}a^{n-k}b^{k}=(a+b)^{n}\end{equation}
+\sum_{k=0}^{n}{n \choose k}\, a^{n-k}b^{k}=(a+b)^{n}\label{eq:binom-series}\end{equation}
 }
 
 
@@ -16701,26 +16729,26 @@ on the right is (are) convergent.
 
 
 \subsubsection*{The Geometric Series\begin{equation}
-\sum_{k=0}^{\infty}x^{k}=\frac{1}{1-x},\quad|x|<1.\end{equation}
+\sum_{k=0}^{\infty}x^{k}=\frac{1}{1-x},\quad|x|<1.\label{eq:geom-series}\end{equation}
 }
 
 
 \subsubsection*{The Exponential Series\begin{equation}
-\sum_{k=0}^{\infty}\frac{x^{k}}{k!}=\me^{x},\quad-\infty<x<\infty.\end{equation}
+\sum_{k=0}^{\infty}\frac{x^{k}}{k!}=\me^{x},\quad-\infty<x<\infty.\label{eq:exp-series}\end{equation}
 }
 
 
 \paragraph*{Other Series\begin{equation}
-\sum_{k=0}^{\infty}{m+k-1 \choose m-1}x^{k}=\frac{1}{(1-x)^{m}},\quad|x|<1.\end{equation}
+\sum_{k=0}^{\infty}{m+k-1 \choose m-1}x^{k}=\frac{1}{(1-x)^{m}},\quad|x|<1.\label{eq:negbin-series}\end{equation}
 }
 
 
 \paragraph*{\begin{equation}
--\sum_{k=1}^{\infty}\frac{x^{n}}{n}=\ln(1-x),\quad|x|<1.\end{equation}
+-\sum_{k=1}^{\infty}\frac{x^{n}}{n}=\ln(1-x),\quad|x|<1.\label{eq:log-series}\end{equation}
 }
 
 \begin{equation}
-\sum_{k=0}^{\infty}{n \choose k}x^{k}=(1+x)^{n},\quad|x|<1.\end{equation}
+\sum_{k=0}^{\infty}{n \choose k}x^{k}=(1+x)^{n},\quad|x|<1.\label{eq:binom-series-infinite}\end{equation}
 
 
 
