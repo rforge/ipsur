@@ -2219,8 +2219,8 @@ speaking, the center of a dataset is associated with a number that
 represents a middle or general tendency of the data. Of course, there
 are usually several values that would serve as a center, and our later
 tasks will be focused on choosing an appropriate one for the data
-at hand. Judging from the histogram that we saw before, a measure
-of center would be about BLANK. 
+at hand. Judging from the histogram that we saw in Figure \ref{fig:histograms-bins},
+a measure of center would be about \Sexpr{round(mean(precip))}. 
 
 
 \subsection{Spread\label{sub:Spread}}
@@ -3157,7 +3157,8 @@ as the active data set. To learn more about the data set and where
 it comes from, type \inputencoding{latin9}\lstinline[showstringspaces=false]!?RcmdrTestDrive!\inputencoding{utf8}
 at the command line.
 \begin{xca}
-Perform a summary of all variables in \inputencoding{latin9}\lstinline[showstringspaces=false]!RcmdrTestDrive!\inputencoding{utf8}.
+\label{xca:summary-RcmdrTestDrive}Perform a summary of all variables
+in \inputencoding{latin9}\lstinline[showstringspaces=false]!RcmdrTestDrive!\inputencoding{utf8}.
 You can do this with the command \inputencoding{latin9}
 \begin{lstlisting}[showstringspaces=false]
 summary(RcmdrTestDrive)
@@ -3375,9 +3376,8 @@ a suspected outlier.
 In this problem we will compare the variables \emph{before} and \emph{after}.
 Don't forget \inputencoding{latin9}\lstinline[showstringspaces=false]!library(e1071)!\inputencoding{utf8}.
 \begin{enumerate}
-\item Examine the two measures of center for both variables that you found
-in Exercise BLANK. Judging from these measures, which variable has
-a higher center?
+\item Examine the two measures of center for both variables. Judging from
+these measures, which variable has a higher center?
 \item Which measure of center is more appropriate for \emph{before}? (You
 may want to look at a boxplot.) Which measure of center is more appropriate
 for \emph{after}?
@@ -3402,8 +3402,8 @@ center?
 
 
 We may take a look at the \inputencoding{latin9}\lstinline[showstringspaces=false]!summary(RcmdrTestDrive)!\inputencoding{utf8}
-output from Exercise BLANK. Here we will repeat the relevant summary
-statistics.
+output from Exercise \ref{xca:summary-RcmdrTestDrive}. Here we will
+repeat the relevant summary statistics.
 
 <<>>=
 c(mean(before), median(before))
@@ -3682,7 +3682,7 @@ readers may contribute any other game or sample spaces that may be
 of general interest.
 
 
-\subsection{Sampling from Urns}
+\subsection{Sampling from Urns\label{sub:sampling-from-urns}}
 
 This is perhaps the most fundamental type of random experiment. We
 have an urn that contains a bunch of distinguishable objects (balls)
@@ -3729,8 +3729,9 @@ and \inputencoding{latin9}\lstinline[showstringspaces=false]!replace!\inputencod
 arguments are logical and specify how sampling will be performed.
 We will discuss each in turn.
 \begin{example}
-Let our urn simply contain three balls, labeled 1, 2, and 3, respectively.
-We are going to take a sample of size 2 from the urn. 
+\label{exa:sample-urn-two-from-three}Let our urn simply contain three
+balls, labeled 1, 2, and 3, respectively. We are going to take a sample
+of size 2 from the urn. 
 
 \subsubsection*{Ordered, With Replacement}
 
@@ -3826,7 +3827,7 @@ has repeated elements, the resulting sample space may appear to be
 \inputencoding{latin9}\lstinline[showstringspaces=false]!ordered = TRUE!\inputencoding{utf8}
 even when, in fact, the call to the function was \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!urnsamples(..., ordered = FALSE)!\inputencoding{utf8}.
 Similar remarks apply for the \inputencoding{latin9}\lstinline[showstringspaces=false]!replace!\inputencoding{utf8}
-argument. We investigate this issue further in Section BLANK.
+argument. 
 
 
 \section{Events\label{sec:Events}}
@@ -4304,7 +4305,7 @@ to the generated sample space:
 rolldie(1, makespace = TRUE)
 @ 
 
-or just \inputencoding{latin9}\lstinline[showstringspaces=false]!rolldie(1, TRUE)!\inputencoding{utf8}.
+\noindent or just \inputencoding{latin9}\lstinline[showstringspaces=false]!rolldie(1, TRUE)!\inputencoding{utf8}.
 Many of the other sample space functions (\inputencoding{latin9}\lstinline[showstringspaces=false]!tosscoin!\inputencoding{utf8},
 \inputencoding{latin9}\lstinline[showstringspaces=false]!cards!\inputencoding{utf8},
 \inputencoding{latin9}\lstinline[showstringspaces=false]!roulette!\inputencoding{utf8},
@@ -4350,12 +4351,12 @@ space for tossing 100 coins or rolling 50 dice in an attempt to answer
 some scintillating question. (Bear in mind: rolling a die just 9 times
 has a sample space with over \emph{10 million} outcomes.)
 
-Alas! Even if there were enough RAM to barely hold the sample space
+Alas, even if there were enough RAM to barely hold the sample space
 (and there were enough time to wait for it to be generated), the infinitesimal
-probabilities that are associated with SO MANY outcomes make it difficult
-for the underlying machinery to handle reliably. In some cases, special
-algorithms need to be called just to give something that holds asymptotically.
-User beware.
+probabilities that are associated with \emph{so many} outcomes make
+it difficult for the underlying machinery to handle reliably. In some
+cases, special algorithms need to be called just to give something
+that holds asymptotically. User beware.
 
 
 \section{Properties of Probability\label{sec:Properties-of-Probability}}
@@ -4786,8 +4787,9 @@ as above.
 \par\end{center}
 \begin{example}
 We will compute the number of outcomes for each of the four \inputencoding{latin9}\lstinline[showstringspaces=false]!urnsamples!\inputencoding{utf8}
-examples that we saw in Example BLANK. Recall that we took a sample
-of size two from an urn with three distinguishable elements.
+examples that we saw in Example \ref{exa:sample-urn-two-from-three}.
+Recall that we took a sample of size two from an urn with three distinguishable
+elements.
 \end{example}
 <<echo=TRUE,print=TRUE>>= 
 nsamp(n=3, k=2, replace = TRUE, ordered = TRUE) 
@@ -8339,6 +8341,9 @@ variance, $S^{2}$. See Theorem \ref{thm:Xbar-andS} in Section \ref{sub:Samp-Var-
 with a right-skewed distribution.
 \item The $\mathsf{chisq}(\mathtt{df}=p)$ distribution is the same as a
 $\mathsf{gamma}(\mathtt{shape}=p/2,\,\mathtt{rate}=1/2)$ distribution.
+\item The MGF of $X\sim\mathsf{chisq}(\mathtt{df}=p)$ is\begin{equation}
+M_{X}(t)=\left(1-2t\right)^{-p},\quad t<1/2.\label{eq:mgf-chisq}\end{equation}
+
 \end{enumerate}
 \end{rem}
 
@@ -9206,6 +9211,10 @@ This is straightforward from the definition.\begin{eqnarray*}
 and this last quantity is exactly $\left(\E u(X)\right)\left(\E v(Y)\right)$.
 \end{proof}
 
+
+Now that we have Proposition \ref{pro:indep-implies-prodexpect} we
+mention a corollary that will help us later to quickly identify those
+random variables which are \emph{not} independent.
 \begin{cor}
 If $X$ and $Y$ are independent, then $\mbox{Cov}(X,Y)=0$, and consequently,
 $\mbox{Corr}(X,Y)=0$.\label{cor:indep-implies-uncorr}
@@ -9221,19 +9230,8 @@ the covariance is zero the numerator of the correlation is 0.
 \label{rem:cov0-not-imply-indep}Unfortunately, the converse of Corollary
 \ref{cor:indep-implies-uncorr} is not true. That is, there are many
 random variables which are dependent yet their covariance and correlation
-is zero. For more details, see Casella and Berger \cite{Casella2002}. \end{rem}
-\begin{cor}
-If $X$ and $Y$ are independent, then the moment generating function
-of $X+Y$ is \begin{equation}
-M_{X+Y}(t)=M_{X}(t)\cdot M_{Y}(t).\end{equation}
-
-\end{cor}
-\begin{proof}
-Choose $u(x)=\me^{x}$ and $v(y)=\me^{y}$ in Proposition \ref{pro:indep-implies-prodexpect},
-and remember the identity $\me^{t(x+y)}=\me^{tx}\,\me^{ty}$.
-\end{proof}
-
-
+is zero. For more details, see Casella and Berger \cite{Casella2002}. 
+\end{rem}
 Proposition \ref{pro:indep-implies-prodexpect} is useful to us and
 we will receive mileage out of it, but there is another fact which
 will play an even more important role. Unfortunately, the proof is
@@ -9247,6 +9245,42 @@ $v$.
 \end{fact}
 
 \subsection{Combining Independent Random Variables\label{sub:Combining-Independent-Random}}
+
+Another important corollary of Proposition \ref{pro:indep-implies-prodexpect}
+will allow us to find the distribution of sums of random variables.
+\begin{cor}
+If $X$ and $Y$ are independent, then the moment generating function
+of $X+Y$ is \begin{equation}
+M_{X+Y}(t)=M_{X}(t)\cdot M_{Y}(t).\end{equation}
+
+\end{cor}
+\begin{proof}
+Choose $u(x)=\me^{x}$ and $v(y)=\me^{y}$ in Proposition \ref{pro:indep-implies-prodexpect},
+and remember the identity $\me^{t(x+y)}=\me^{tx}\,\me^{ty}$.
+\end{proof}
+
+
+Let us take a look at some examples of the corollary in action.
+\begin{example}
+Let $X\sim\mathsf{binom}(\mathtt{size}=n_{1},\,\mathtt{prob}=p)$
+and $Y\sim\mathsf{binom}(\mathtt{size}=n_{2},\,\mathtt{prob}=p)$
+be independent. Then $X+Y$ has MGF\[
+M_{X+Y}(t)=M_{X}(t)\, M_{Y}(t)=\left(q+p\me^{t}\right)^{n_{1}}\left(q+p\me^{t}\right)^{n_{2}}=\left(q+p\me^{t}\right)^{n_{1}+n_{2}},\]
+which is the MGF of a $\mathsf{binom}(\mathtt{size}=n_{1}+n_{2},\,\mathtt{prob}=p)$
+distribution. Therefore, $X+Y\sim\mathsf{binom}(\mathtt{size}=n_{1}+n_{2},\,\mathtt{prob}=p)$.
+\end{example}
+
+\begin{example}
+Let $X\sim\mathsf{norm}(\mathtt{mean}=\mu_{1},\,\mathtt{sd}=\sigma_{1})$
+and $Y\sim\mathsf{norm}(\mathtt{mean}=\mu_{2},\,\mathtt{sd}=\sigma_{2})$
+be independent. Then $X+Y$ has MGF\[
+M_{X}(t)\, M_{Y}(t)=\exp\left\{ \mu_{1}t+t^{2}\sigma_{1}^{2}/2\right\} \exp\left\{ \mu_{2}t+t^{2}\sigma_{2}^{2}/2\right\} =\exp\left\{ \left(\mu_{1}+\mu_{2}\right)t+t^{2}\left(\sigma_{1}^{2}+\sigma_{2}^{2}\right)/2\right\} ,\]
+which is the MGF of a $\mathsf{norm}(\mathtt{mean}=\mu_{1}+\mu_{2},\,\mathtt{sd}=\sqrt{\sigma_{1}^{2}+\sigma_{2}^{2}})$
+distribution. 
+\end{example}
+Even when we cannot use the MGF trick to identify the exact distribution
+of a linear combination of random variables, we can still say something
+about its mean and variance.
 \begin{prop}
 \label{pro:mean-sd-lin-comb-two}Let $X_{1}$ and $X_{2}$ be independent
 with respective population means $\mu_{1}$ and $\mu_{2}$ and population
@@ -9290,11 +9324,7 @@ changes to their joint random behavior. While independence speaks
 to a \emph{lack of influence} between the two variables, exchangeability
 aims to capture the \emph{symmetry} between them.
 \begin{example}
-BLANK.
-\end{example}
-
-\begin{example}
-Here is another one, more complicated than the one above.\begin{multline}
+Let $X$ and $Y$ have joint PDF\begin{multline}
 f_{X,Y}(x,y)=(1+\alpha)\lambda^{2}\me^{-\lambda(x+y)}+\alpha(2\lambda)^{2}\me^{-2\lambda(x+y)}-2\alpha\lambda^{2}\left(\me^{-\lambda(2x+y)}+\me^{-\lambda(x+2y)}\right).\end{multline}
 It is straightforward and tedious to check that $\iint f=1$. We may
 see immediately that $f_{X,Y}(x,y)=f_{X,Y}(y,x)$ for all $(x,y)$,
@@ -9304,12 +9334,32 @@ one from the Farlie-Gumbel-Morgenstern family of distributions; see
 \cite{Kotz2000}.
 \end{example}
 
-\begin{rem}
+\begin{example}
+\label{exa:binom-exchangeable}Suppose $X$ and $Y$ are i.i.d.~$\mathsf{binom}(\mathtt{size}=n,\,\mathtt{prob}=p)$.
+Then their joint PMF is\begin{eqnarray*}
+f_{X,Y}(x,y) & = & f_{X}(x)f_{Y}(y)\\
+ & = & {n \choose x}\, p^{x}(1-p)^{n-x}\,{n \choose y}\, p^{y}(1-p)^{n-y},\\
+ & = & {n \choose x}{n \choose y}\, p^{x+y}(1-p)^{2n-(x+y)},\end{eqnarray*}
+and the value is the same if we exchange $x$ and $y$. Therefore
+$(X,Y)$ are exchangeable.
+\end{example}
+
+
+Looking at Example \ref{exa:binom-exchangeable} more closely we see
+that the fact that $(X,Y)$ are exchangeable has nothing to do with
+the $\mathsf{binom}(\mathtt{size}=n,\,\mathtt{prob}=p)$ distribution;
+it only matters that they are independent (so that the joint PDF factors)
+and they are identically distributed (in which case we may swap letters
+to no effect). We could just have easily used any other marginal distribution.
+We will take this as a proof of the following proposition.
+\begin{prop}
 If $X$ and $Y$ are i.i.d.~(with common marginal distribution $F$)
-then $X$ and $Y$ are exchangeable because\[
-F_{X,Y}(x,y)=F(x)F(y)=F(y)F(x)=F_{X,Y}(y,x).\]
- 
-\end{rem}
+then $X$ and $Y$ are exchangeable. 
+\end{prop}
+
+
+Exchangeability thus contains i.i.d.~as a special case. 
+
 
 \section{The Bivariate Normal Distribution\label{sec:The-Bivariate-Normal}}
 
@@ -9803,7 +9853,19 @@ print(cloud(probs ~ X1 + X2, data = S, type = c("p","h"), lwd = 2, pch = 16, cex
 Prove that $\mbox{Cov}(X,Y)=\E(XY)-(\E X)(\E Y).$\label{xca:Prove-cov-shortcut}
 \end{xca}
 
+\begin{xca}
+\label{xca:sum-indep-chisq}Suppose $X\sim\mathsf{chisq}(\mathtt{df}=p_{1})$
+and $Y\sim\mathsf{chisq}(\mathtt{df}=p_{2})$ are independent. Find
+the distribution of $X+Y$ (you may want to refer to Equation \ref{eq:mgf-chisq}).
+\end{xca}
 
+\begin{xca}
+\label{xca:diff-indep-norm}Show that when $X$ and $Y$ are independent
+the MGF of $X-Y$ is $M_{X}(t)M_{Y}(-t)$. Use this to find the distribution
+of $X-Y$ when $X\sim\mathsf{norm}(\mathtt{mean}=\mu_{1},\,\mathtt{sd}=\sigma_{1})$
+and $Y\sim\mathsf{norm}(\mathtt{mean}=\mu_{2},\,\mathtt{sd}=\sigma_{2})$
+are independent. 
+\end{xca}
 
 
 
@@ -10123,11 +10185,12 @@ and \inputencoding{latin9}\lstinline[showstringspaces=false]!clt3!\inputencoding
 (see Exercise \ref{xca:clt123} at the end of this chapter). Its purpose
 is to investigate what happens to the sampling distribution of $\Xbar$
 when the population distribution is mound shaped, finite support,
-and skewed, namely $\mathsf{dt}(\mathtt{df}=3)$, $\mathsf{unif}(\mathtt{a}=0,\,\mathtt{b}=10)$
-and $\mathsf{gamma}(\mathtt{shape}=,\,\mathtt{scale}=)$, respectively. 
+and skewed, namely $\mathsf{t}(\mathtt{df}=3)$, $\mathsf{unif}(\mathtt{a}=0,\,\mathtt{b}=10)$
+and $\mathsf{gamma}(\mathtt{shape}=1.21,\,\mathtt{scale}=1/2.37)$,
+respectively. 
 
 For example, when the command \inputencoding{latin9}\lstinline[showstringspaces=false]!clt1()!\inputencoding{utf8}
-is issued a plot window opens to show a graph of the PDF of a $\mathsf{dt}(\mathtt{df}=3)$
+is issued a plot window opens to show a graph of the PDF of a $\mathsf{t}(\mathtt{df}=3)$
 distribution. On the display are shown numerical values of the population
 mean and variance. While the students examine the graph the computer
 is simulating random samples of size \inputencoding{latin9}\lstinline[showstringspaces=false]!sample.size = 2!\inputencoding{utf8}
@@ -10223,7 +10286,7 @@ large by the CLT, and we know that $\hat{p}_{2}$ is approximately
 normal for $n_{2}$ sufficiently large, also by the CLT. Further,
 $\hat{p}_{1}$ and $\hat{p}_{2}$ are independent since they are derived
 from independent samples. And a difference of independent (approximately)
-normal distributions is (approximately) normal, by Proposition BLANK%
+normal distributions is (approximately) normal, by Exercise \ref{xca:diff-indep-norm}%
 \footnote{\begin{rem}
 This does not explicitly follow, because of our cavalier use of {}``approximately''
 in too many places. To be more thorough, however, would require more
@@ -11222,9 +11285,7 @@ $X_{n}$ sample is independent of the $Y_{1}$, $Y_{2}$, \ldots{},
 $Y_{m}$ sample.
 
 Suppose that $\sigma_{X}$ and $\sigma_{Y}$ are known. We would like
-a confidence interval for $\mu_{X}-\mu_{Y}$.
-
-We know that \begin{equation}
+a confidence interval for $\mu_{X}-\mu_{Y}$. We know that \begin{equation}
 \Xbar-\Ybar\sim\mathsf{norm}\left(\mathtt{mean}=\mu_{X}-\mu_{Y},\,\mathtt{sd}=\sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}}\right).\end{equation}
 Therefore, a $100(1-\alpha)$\% confidence interval for $\mu_{X}-\mu_{Y}$
 is given by\begin{equation}
@@ -11246,7 +11307,7 @@ In this case (setting $\sigma=\sigma_{X}=\sigma_{Y}$), \begin{equation}
 \Xbar-\Ybar\sim\mathsf{norm}\left(\mathtt{mean}=\mu_{X}-\mu_{Y},\,\mathtt{sd}=\sigma\sqrt{\frac{1}{n}+\frac{1}{m}}\right).\end{equation}
 Now let \begin{equation}
 U=\frac{n-1}{\sigma^{2}}S_{X}^{2}+\frac{m-1}{\sigma^{2}}S_{Y}^{2}.\end{equation}
-Then by BLANK we know that $U\sim\mathsf{chisq}(\mathtt{df}=n+m-2)$
+Then by Exercise \ref{xca:sum-indep-chisq} we know that $U\sim\mathsf{chisq}(\mathtt{df}=n+m-2)$
 and is not a large leap to believe that $U$ is independent of $\Xbar-\Ybar$;
 thus \begin{equation}
 T=\frac{Z}{\sqrt{\left.U\right\slash (n+m-2)}}\sim\mathsf{t}(\mathtt{df}=n+m-2).\end{equation}
@@ -11261,10 +11322,12 @@ where \begin{equation}
 S_{p}=\sqrt{\frac{(n-1)S_{X}^{2}+(m-1)S_{Y}^{2}}{n+m-2}}\end{equation}
 is called the {}``pooled'' estimator of $\sigma$.
 \item if one of the samples is small, and both underlying populations are
-normal, but $\sigma_{X}\neq\sigma_{Y}$, then we may use a procedure
-attributed to Welch-Aspin (BLANK). The idea is to use an interval
-of the form\begin{equation}
-\left(\Xbar-\Ybar\right)\pm t_{\alpha/2}(\mathtt{df}=r)\,\sqrt{\frac{S_{X}^{2}}{n}+\frac{S_{Y}^{2}}{m}},\end{equation}
+normal, but $\sigma_{X}\neq\sigma_{Y}$, then we may use a Welch (or
+Satterthwaite) approximation to the degrees of freedom. See Welch
+\cite{Welch1947}, Satterthwaite \cite{Satterthwaite1946}, or Neter
+\emph{et al} \cite{Neter1996}. The idea is to use an interval of
+the form\begin{equation}
+\left(\Xbar-\Ybar\right)\pm\mathsf{t}_{\alpha/2}(\mathtt{df}=r)\,\sqrt{\frac{S_{X}^{2}}{n}+\frac{S_{Y}^{2}}{m}},\end{equation}
 where the degrees of freedom $r$ is chosen so that the interval has
 nice statistical properties. It turns out that a good choice for $r$
 is given by\begin{equation}
@@ -11489,6 +11552,8 @@ Mention mle from the stats4 package.
 
 
 \section{Chapter Exercises}
+
+\setcounter{thm}{0}
 \begin{xca}
 Let $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$ be an $SRS(n)$ from a
 $\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$ distribution.
@@ -12282,6 +12347,8 @@ package for }\texttt{\small run.power.examp}{\small . }
 
 \section{Chapter Exercises}
 
+\setcounter{thm}{0}
+
 
 \chapter{\label{cha:Simple-Linear-Regression}Simple Linear Regression}
 
@@ -12594,7 +12661,8 @@ are the fitted linear model object, \inputencoding{latin9}\lstinline[showstrings
 and the desired $x$ value(s) represented by a data frame. See the
 example below.
 \begin{example}
-Using the regression line for the \inputencoding{latin9}\lstinline[showstringspaces=false]!cars!\inputencoding{utf8}
+\label{exa:regline-cars-interpret}Using the regression line for the
+\inputencoding{latin9}\lstinline[showstringspaces=false]!cars!\inputencoding{utf8}
 data:
 \begin{enumerate}
 \item What is the meaning of $\mu(60)=\beta_{0}+\beta_{1}(8$)? 
@@ -12617,17 +12685,17 @@ additional feet to stop for each additional mph increase in speed.
 This would represent the mean stopping distance for a car traveling
 0\,mph (which our regression line estimates to be \Sexpr{round(coef(cars.lm)[1],2)}).
 Of course, this interpretation does not make any sense for this example,
-because a car travelling 0\,mph takes 0~ft to stop (it was not moving
-in the first place)! What went wrong? Looking at the data, we notice
-that the smallest speed for which we have measured data is 4\,mph.
-Therefore, if we predict what would happen for slower speeds then
-we would be \emph{extrapolating}, a dangerous practice which often
-gives nonsensical results.
+because a car travelling 0\,mph takes 0\,ft to stop (it was not
+moving in the first place)! What went wrong? Looking at the data,
+we notice that the smallest speed for which we have measured data
+is 4\,mph. Therefore, if we predict what would happen for slower
+speeds then we would be \emph{extrapolating}, a dangerous practice
+which often gives nonsensical results.
 
 \end{enumerate}
 \end{example}
 
-\subsection{Point Estimates of the Regression Line}
+\subsection{Point Estimates of the Regression Line\label{sub:slr-point-est-regline}}
 
 We said at the beginning of the chapter that our goal was to estimate
 $\mu=\E Y$, and the arguments in Section \ref{sub:point-estimate-mle-slr}
@@ -12642,11 +12710,12 @@ there are two values we would like to estimate:
 The first is a number, $\mu(x_{0})$, and the second is a random variable,
 $Y(x_{0})$, but our point estimate is the same for both: $\hat{\mu}(x_{0})$.
 \begin{example}
-We may use the regression line to obtain a point estimate of the mean
-stopping distance for a car traveling 8\,mph: $\hat{\mu}(15)=b_{0}+8b_{1}\approx$
-\Sexpr{round(coef(cars.lm)[1],2)} $+(8)$ (\Sexpr{round(coef(cars.lm)[2],2)})$\approx13.88$.
-We would also use 13.88 as a point estimate for the stopping distance
-of a future car traveling 8\,mph.
+\label{exa:regline-cars-pe-8mph}We may use the regression line to
+obtain a point estimate of the mean stopping distance for a car traveling
+8\,mph: $\hat{\mu}(15)=b_{0}+8b_{1}\approx$ \Sexpr{round(coef(cars.lm)[1],2)}
+$+(8)$ (\Sexpr{round(coef(cars.lm)[2],2)})$\approx13.88$. We would
+also use 13.88 as a point estimate for the stopping distance of a
+future car traveling 8\,mph.
 \end{example}
 Note that we actually have observed data for a car traveling 8\,mph;
 its stopping distance was 16\,ft as listed in the fifth row of the
@@ -12668,13 +12737,14 @@ to denote a point on the regression line even when $x_{0}$ does not
 belong to the original data if the context of the statement obviates
 any danger of confusion.
 
-We saw in Example BLANK that spooky things can happen when we are
-cavalier about point estimation. While it is usually acceptable to
-predict/estimate at values of $x_{0}$ that fall within the range
-of the original $x$ data, it is reckless to use $\hat{\mu}$ for
-point estimates at locations outside that range. Such estimates are
-usually worthless. \emph{Do not extrapolate} unless there are compelling
-external reasons, and even then, temper it with a good deal of caution.
+We saw in Example \ref{exa:regline-cars-interpret} that spooky things
+can happen when we are cavalier about point estimation. While it is
+usually acceptable to predict/estimate at values of $x_{0}$ that
+fall within the range of the original $x$ data, it is reckless to
+use $\hat{\mu}$ for point estimates at locations outside that range.
+Such estimates are usually worthless. \emph{Do not extrapolate} unless
+there are compelling external reasons, and even then, temper it with
+a good deal of caution.
 
 
 \subsection*{How to do it with \textsf{R}}
@@ -12705,7 +12775,7 @@ predict(cars.lm, newdata = data.frame(speed = c(6, 8, 21)))
 
 Note that there were no observed cars that traveled 6\,mph or 21\,mph.
 Also note that our estimate for a car traveling 8\,mph matches the
-value we computed by hand in Example BLANK.
+value we computed by hand in Example \ref{exa:regline-cars-pe-8mph}.
 
 
 \subsection{Mean Square Error and Standard Error}
@@ -12743,17 +12813,17 @@ In the last section, we calculated the fitted value for $x=8$ and
 found it to be approximately $\hat{\mu}(8)\approx$\Sexpr{round(predict(cars.lm, newdata = data.frame(speed = 8)), 2)}.
 Now, it turns out that there was only one recorded observation at
 $x=8$, and we have seen this value in the output of \inputencoding{latin9}\lstinline[showstringspaces=false]!head(cars)!\inputencoding{utf8}
-in Example \ref{exa:Speed-and-Stopping}; it was $\mathtt{dist}=16$~ft
-for a car with $\mathtt{speed}=8$~mph. Therefore, the residual should
-be $E=Y-\hat{Y}$ which is $E\approx16-$\Sexpr{round(predict(cars.lm, newdata = data.frame(speed = 8)), 2)}.
+in Example \ref{exa:Speed-and-Stopping}; it was $\mathtt{dist}=16$\,ft
+for a car with $\mathtt{speed}=8$\,mph. Therefore, the residual
+should be $E=Y-\hat{Y}$ which is $E\approx16-$\Sexpr{round(predict(cars.lm, newdata = data.frame(speed = 8)), 2)}.
 Now take a look at the last entry of \inputencoding{latin9}\lstinline[showstringspaces=false]!residuals(cars.lm)!\inputencoding{utf8},
 above. It is not a coincidence.
 
 The estimate $S$ for $\sigma$ is called the \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false]!Residual standard error!\inputencoding{utf8}
 and for the \inputencoding{latin9}\lstinline[showstringspaces=false]!cars!\inputencoding{utf8}
 data is shown a few lines up on the \inputencoding{latin9}\lstinline[showstringspaces=false]!summary(cars.lm)!\inputencoding{utf8}
-output (see How to do it with \textsf{R} in Section BLANK). We may
-read it from there to be $S\approx$\Sexpr{round(summary(cars.lm)$sigma, 2)},
+output (see How to do it with \textsf{R} in Section \ref{sub:slr-interval-est-params}).
+We may read it from there to be $S\approx\,$\Sexpr{round(summary(cars.lm)$sigma, 2)},
 or we can access it directly from the \inputencoding{latin9}\lstinline[showstringspaces=false]!summary!\inputencoding{utf8}
 object.
 
@@ -12763,7 +12833,7 @@ carsumry$sigma
 @
 
 
-\subsection{Interval Estimates of the Parameters}
+\subsection{Interval Estimates of the Parameters\label{sub:slr-interval-est-params}}
 
 We discussed general interval estimation in Chapter \ref{cha:Estimation}.
 There we found that we could use what we know about the sampling distribution
@@ -12772,11 +12842,11 @@ being estimated. We will continue in that vein, and to get started
 we will determine the sampling distributions of the parameter estimates,
 $b_{1}$ and $b_{0}$.
 
-To that end, we can see from Equation BLANK (and it is made clear
-in Chapter \ref{cha:Multiple-Linear-Regression}) that $b_{1}$ is
-just a linear combination of normally distributed random variables,
-so $b_{1}$ is normally distributed too. Further, it can be shown
-that\begin{equation}
+To that end, we can see from Equation \ref{eq:regline-slope-formula}
+(and it is made clear in Chapter \ref{cha:Multiple-Linear-Regression})
+that $b_{1}$ is just a linear combination of normally distributed
+random variables, so $b_{1}$ is normally distributed too. Further,
+it can be shown that\begin{equation}
 b_{1}\sim\mathsf{norm}\left(\mathtt{mean}=\beta_{1},\,\mathtt{sd}=\sigma_{b_{1}}\right)\end{equation}
  where \begin{equation}
 \sigma_{b_{1}}=\frac{\sigma}{\sqrt{\sum_{i=1}^{n}(x_{i}-\xbar)^{2}}}\end{equation}
@@ -12787,7 +12857,8 @@ the last section. This gives us an estimate $S_{b_{1}}$ for $\sigma_{b_{1}}$
 defined by\begin{equation}
 S_{b_{1}}=\frac{S}{\sqrt{\sum_{i=1}^{n}(x_{i}-\xbar)^{2}}}.\end{equation}
 Now, it turns out that $b_{0}$, $b_{1}$, and $S$ are mutually independent
-(see the footnote in Section BLANK). Therefore, the quantity\begin{equation}
+(see the footnote in Section \ref{sub:mlr-interval-est-params}).
+Therefore, the quantity\begin{equation}
 T=\frac{b_{1}-\beta_{1}}{S_{b_{1}}}\end{equation}
 has a $\mathsf{t}(\mathtt{df}=n-2)$ distribution. Therefore, a $100(1-\alpha)\%$
 confidence interval for $\beta_{1}$ is given by \begin{equation}
@@ -12826,10 +12897,10 @@ B <- round(confint(cars.lm), 3)
 In the \inputencoding{latin9}\lstinline[showstringspaces=false]!Coefficients!\inputencoding{utf8}
 section we find the parameter estimates and their respective standard
 errors in the second and third columns; the other columns are discussed
-in Section BLANK. If we wanted, say, a 95\% confidence interval for
-$\beta_{1}$ we could use $b_{1}=\ $\Sexpr{A[2,1]} and $S_{b_{1}}=\ $\Sexpr{A[2,2]}
-together with a $\mathsf{t}_{0.025}(\mathtt{df}=23)$ critical value
-to calculate $b_{1}\pm\mathsf{t}_{0.025}(\mathtt{df}=23)S_{b_{1}}$.
+in Section \ref{sec:Model-Utility-SLR}. If we wanted, say, a 95\%
+confidence interval for $\beta_{1}$ we could use $b_{1}=\ $\Sexpr{A[2,1]}
+and $S_{b_{1}}=\ $\Sexpr{A[2,2]} together with a $\mathsf{t}_{0.025}(\mathtt{df}=23)$
+critical value to calculate $b_{1}\pm\mathsf{t}_{0.025}(\mathtt{df}=23)S_{b_{1}}$.
 
 Or, we could use the \inputencoding{latin9}\lstinline[showstringspaces=false]!confint!\inputencoding{utf8}
 function.
@@ -12842,7 +12913,7 @@ With 95\% confidence, the random interval {[}\Sexpr{B[2,1]}, \Sexpr{B[2,2]}{]}
 covers the parameter $\beta_{1}$.
 
 
-\subsection{Interval Estimates of the Regression Line}
+\subsection{Interval Estimates of the Regression Line\label{sub:slr-interval-est-regline}}
 
 We have seen how to estimate the coefficients of regression line with
 both point estimates and confidence intervals. We even saw how to
@@ -12892,8 +12963,8 @@ as we expected at the beginning of the section.
 
 Confidence and prediction intervals are calculated in \textsf{R} with
 the \inputencoding{latin9}\lstinline[showstringspaces=false]!predict!\inputencoding{utf8}\index{predict@\texttt{predict}}
-function, which we encountered in Section BLANK. There we neglected
-to take advantage of its additional \inputencoding{latin9}\lstinline[showstringspaces=false]!interval!\inputencoding{utf8}
+function, which we encountered in Section \ref{sub:slr-point-est-regline}.
+There we neglected to take advantage of its additional \inputencoding{latin9}\lstinline[showstringspaces=false]!interval!\inputencoding{utf8}
 argument. The general syntax follows.
 \begin{example}
 We will find confidence and prediction intervals for the stopping
@@ -12970,8 +13041,9 @@ We earlier guessed that a bound on the value of a single new observation
 would be inherently less certain than a bound for an average (mean)
 value; therefore, we expect the CIs for the mean to be tighter than
 the PIs for a new observation. A close look at the standard deviations
-in Equations BLANK and BLANK confirms our guess, but we would like
-to see a picture to drive the point home.
+in Equations \ref{eq:SLR-conf-int-formula} and \ref{eq:SLR-pred-int-formula}
+confirms our guess, but we would like to see a picture to drive the
+point home.
 
 We may plot the confidence and prediction intervals with one fell
 swoop using the \inputencoding{latin9}\lstinline[showstringspaces=false]!ci.plot!\inputencoding{utf8}
@@ -13000,13 +13072,13 @@ ci.plot(cars.lm)
 Notice that the bands curve outward away from the regression line
 as the $x$ values move away from the center. This is expected once
 we notice the $(x_{0}-\xbar)^{2}$ term in the standard deviation
-formulas in Equations BLANK and BLANK.
+formulas in Equations \ref{eq:SLR-conf-int-formula} and \ref{eq:SLR-pred-int-formula}.
 
 
 \section{Model Utility and Inference\label{sec:Model-Utility-SLR}}
 
 
-\subsection{Hypothesis Tests for the Parameters}
+\subsection{Hypothesis Tests for the Parameters\label{sub:slr-hypoth-test-params}}
 
 Much of the attention of SLR is directed toward $\beta_{1}$ because
 when $\beta_{1}\neq0$ the mean value of $Y$ increases (or decreases)
@@ -13019,18 +13091,19 @@ the alternative hypothesis $H_{1}:\beta_{1}\neq0$, and to do that
 we need to know the sampling distribution of $b_{1}$ when the null
 hypothesis is true.
 
-To this end we already know from Section BLANK that the quantity\begin{equation}
+To this end we already know from Section \ref{sub:slr-interval-est-params}
+that the quantity\begin{equation}
 T=\frac{b_{1}-\beta_{1}}{S_{b_{1}}}\end{equation}
-has a $t(\mathtt{df}=n-2)$ distribution; therefore, when $\beta_{1}=0$
-the quantity $b_{1}/S_{b_{1}}$ has a $t(\mathtt{df}=n-2)$ distribution
-and we can compute a $p$-value by comparing the observed value of
-$b_{1}/S{}_{b_{1}}$ with values under a $\mathsf{t}(\mathtt{df}=n-2)$
+has a $\mathsf{t}(\mathtt{df}=n-2)$ distribution; therefore, when
+$\beta_{1}=0$ the quantity $b_{1}/S_{b_{1}}$ has a $\mathsf{t}(\mathtt{df}=n-2)$
+distribution and we can compute a $p$-value by comparing the observed
+value of $b_{1}/S{}_{b_{1}}$ with values under a $\mathsf{t}(\mathtt{df}=n-2)$
 curve. 
 
 Similarly, we may test the hypothesis $H_{0}:\beta_{0}=0$ versus
 the alternative $H_{1}:\beta_{0}\neq0$ with the statistic $T=b_{0}/S_{b_{0}}$,
-where $S_{b_{0}}$ is given in Section BLANK. The test is conducted
-the same way as for $\beta_{1}$. 
+where $S_{b_{0}}$ is given in Section \ref{sub:slr-interval-est-params}.
+The test is conducted the same way as for $\beta_{1}$. 
 
 
 \subsection*{How to do it with \textsf{R}}
@@ -13169,24 +13242,25 @@ model. In SLR, the new way also tests the hypothesis $H_{0}:\beta_{1}=0$
 versus $H_{1}:\beta_{1}\neq0$, but it is done with a new test statistic
 called the \emph{overall} $F$ \emph{statistic}. It is defined by
 \begin{equation}
-F=\frac{SSR}{SSE/(n-2)}.\end{equation}
+F=\frac{SSR}{SSE/(n-2)}.\label{eq:slr-overall-F-statistic}\end{equation}
 Under the regression assumptions and when $H_{0}$ is true, the $F$
 statistic has an $\mathtt{f}(\mathtt{df1}=1,\,\mathtt{df2}=n-2)$
 distribution. We reject $H_{0}$ when $F$ is large -- that is, when
 the explained variation is large relative to the unexplained variation.
 
 All this being said, we have not yet gained much from the overall
-$F$ statistic because we already knew from Section BLANK how to test
-$H_{0}:\beta_{1}=0$\ldots{} we use the Student's $t$ statistic.
-What is worse is that (in the simple linear regression model) it can
-be proved that the $F$ in Equation BLANK is exactly the Student's
-$t$ statistic for $\beta_{1}$ squared,\begin{equation}
+$F$ statistic because we already knew from Section \ref{sub:slr-hypoth-test-params}
+how to test $H_{0}:\beta_{1}=0$\ldots{} we use the Student's $t$
+statistic. What is worse is that (in the simple linear regression
+model) it can be proved that the $F$ in Equation \ref{eq:slr-overall-F-statistic}
+is exactly the Student's $t$ statistic for $\beta_{1}$ squared,\begin{equation}
 F=\left(\frac{b_{1}}{S_{b_{1}}}\right)^{2}.\end{equation}
 So why bother to define the $F$ statistic? Why not just square the
 $t$ statistic and be done with it? The answer is that the $F$ statistic
 has a more complicated interpretation and plays a more important role
 in the multiple linear regression model which we will study in Chapter
-\ref{cha:Multiple-Linear-Regression}. See Section BLANK for details.
+\ref{cha:Multiple-Linear-Regression}. See Section \ref{sub:mlr-Overall-F-Test}
+for details.
 
 
 \subsection{How to do it with \textsf{R}}
@@ -13279,7 +13353,7 @@ The Shapiro-Wilk test is based on the statistic\begin{equation}
 W=\frac{\left(\sum_{i=1}^{n}a_{i}E_{(i)}\right)^{2}}{\sum_{j=1}^{n}E_{j}^{2}},\end{equation}
 where the $E_{(i)}$ are the ordered residuals and the $a_{i}$ are
 constants derived from the order statistics of a sample of size $n$
-from a normal distribution. See Section BLANK.
+from a normal distribution. See Section \ref{sub:Shapiro-Wilk-Normality-Test}.
 
 We perform the Shapiro-Wilk test below, using the \inputencoding{latin9}\lstinline[showstringspaces=false]!shapiro.test!\inputencoding{utf8}
 function from the \inputencoding{latin9}\lstinline[showstringspaces=false]!stats!\inputencoding{utf8}
@@ -13529,23 +13603,25 @@ from $x_{i}$ to $\xbar$ is large relative to the other $x$'s then
 $h_{ii}$ will be close to 1. 
 
 Leverages have nice mathematical properties; for example, they satisfy\begin{equation}
-0\leq h_{ii}\leq1,\end{equation}
+0\leq h_{ii}\leq1,\label{eq:slr-leverage-between}\end{equation}
 and their sum is \begin{eqnarray}
 \sum_{i=1}^{n}h_{ii} & = & \sum_{i=1}^{n}\left[\frac{1}{n}+\frac{(x_{i}-\xbar)^{2}}{\sum_{k=1}^{n}(x_{k}-\xbar)^{2}}\right],\\
  & = & \frac{n}{n}+\frac{\sum_{i}(x_{i}-\xbar)^{2}}{\sum_{k}(x_{k}-\xbar)^{2}},\\
- & = & 2.\end{eqnarray}
+ & = & 2.\label{eq:slr-average-leverage}\end{eqnarray}
 A rule of thumb is to consider leverage values to be large if they
 are more than double their average size (which is $2/n$ according
-to Equation BLANK). So leverages larger than $4/n$ are suspect. Another
-rule of thumb is to say that values bigger than 0.5 indicate high
-leverage, while values between 0.3 and 0.5 indicate moderate leverage.
+to Equation \ref{eq:slr-average-leverage}). So leverages larger than
+$4/n$ are suspect. Another rule of thumb is to say that values bigger
+than 0.5 indicate high leverage, while values between 0.3 and 0.5
+indicate moderate leverage.
 
 
 \subsection*{Standardized and Studentized Deleted Residuals }
 
 We have already encountered the \emph{standardized residuals} $r_{i}$
-in Section BLANK; they are merely residuals that have been divided
-by their respective standard deviations: \begin{equation}
+in Section \ref{sub:Constant-Variance-Assumption}; they are merely
+residuals that have been divided by their respective standard deviations:
+\begin{equation}
 R_{i}=\frac{E_{i}}{S\sqrt{1-h_{ii}}},\quad i=1,2,\ldots,n.\end{equation}
 Values of $|R_{i}|>2$ are extreme and suggest that the observation
 has an outlying $y$-value. 
@@ -13557,21 +13633,21 @@ in later classes that \begin{equation}
 \mbox{Var\ensuremath{(D_{i})}}=\frac{S_{(i)}^{2}}{1-h_{ii}},\quad i=1,2,\ldots,n,\end{equation}
 so that the \emph{studentized deleted residuals} $t_{i}$ defined
 by\begin{equation}
-t_{i}=\frac{D_{i}}{S_{(i)}/(1-h_{ii})},\quad i=1,2,\ldots,n,\end{equation}
+t_{i}=\frac{D_{i}}{S_{(i)}/(1-h_{ii})},\quad i=1,2,\ldots,n,\label{eq:slr-studentized-deleted-resids}\end{equation}
 have a $\mathsf{t}(\mathtt{df}=n-3)$ distribution and we compare
 observed values of $t_{i}$ to this distribution to decide whether
 or not an observation is extreme. 
 
 The folklore in regression classes is that a test based on the statistic
-in Equation BLANK can be too liberal. A rule of thumb is if we suspect
-an observation to be an outlier \emph{before} seeing the data then
-we say it is significantly outlying if its two-tailed $p$-value is
-less than $\alpha$, but if we suspect an observation to be an outlier
-\emph{after} seeing the data, then we should only say it is significantly
-outlying if its two-tailed $p$-value is less than $\alpha/n$. The
-latter rule of thumb is called the Bonferroni approach and can be
-overly conservative for large data sets. The statistician must look
-at the data and use his/her best judgement, in every case.
+in Equation \ref{eq:slr-studentized-deleted-resids} can be too liberal.
+A rule of thumb is if we suspect an observation to be an outlier \emph{before}
+seeing the data then we say it is significantly outlying if its two-tailed
+$p$-value is less than $\alpha$, but if we suspect an observation
+to be an outlier \emph{after} seeing the data, then we should only
+say it is significantly outlying if its two-tailed $p$-value is less
+than $\alpha/n$. The latter rule of thumb is called the Bonferroni
+approach and can be overly conservative for large data sets. The statistician
+must look at the data and use his/her best judgement, in every case.
 
 
 \subsection{How to do it with \textsf{R}}
@@ -13648,12 +13724,13 @@ are given by\begin{equation}
 (DFBETAS)_{0(i)}=\frac{b_{0}-b_{0(i)}}{S_{(i)}\sqrt{\frac{1}{n}+\frac{\xbar^{2}}{\sum_{i=1}^{n}(x_{i}-\xbar)^{2}}}},\quad i=1,2,\ldots,n.\end{equation}
 and the $DFBETAS$ for the slope $b_{1}$ are given by\begin{equation}
 (DFBETAS)_{1(i)}=\frac{b_{1}-b_{1(i)}}{S_{(i)}\left[\sum_{i=1}^{n}(x_{i}-\xbar)^{2}\right]^{-1/2}},\quad i=1,2,\ldots,n.\end{equation}
-See Section BLANK for a better way to write these. The signs of the
-$DFBETAS$ indicate whether the coefficients would increase or decrease
-as a result of including the observation. If the $DFBETAS$ are large,
-then the observation has a large impact on those regression coefficients.
-We label observations as suspicious if their $DFBETAS$ have magnitude
-greater 1 for small data or $2/\sqrt{n}$ for large data sets.
+See Section \ref{sec:Residual-Analysis-MLR} for a better way to write
+these. The signs of the $DFBETAS$ indicate whether the coefficients
+would increase or decrease as a result of including the observation.
+If the $DFBETAS$ are large, then the observation has a large impact
+on those regression coefficients. We label observations as suspicious
+if their $DFBETAS$ have magnitude greater 1 for small data or $2/\sqrt{n}$
+for large data sets.
 
 We can calculate the $DFBETAS$ with the \inputencoding{latin9}\lstinline[showstringspaces=false]!dfbetas!\inputencoding{utf8}
 function (some output has been omitted):
@@ -13696,12 +13773,13 @@ value, but we may want to measure the influence an observation has
 on all of the fitted values simultaneously. The statistics used for
 measuring this are Cook's distances which may be calculated%
 \footnote{Cook's distances are actually defined by a different formula than
-the one shown. The formula in Equation BLANK is algebraically equivalent
-to the defining formula and is, in the author's opinion, more transparent.%
+the one shown. The formula in Equation \ref{eq:slr-cooks-distance}
+is algebraically equivalent to the defining formula and is, in the
+author's opinion, more transparent.%
 } by the formula
 
 \begin{equation}
-D_{i}=\frac{E_{i}^{2}}{(p+1)S^{2}}\cdot\frac{h_{ii}}{(1-h_{ii})^{2}},\quad i=1,2,\ldots,n.\end{equation}
+D_{i}=\frac{E_{i}^{2}}{(p+1)S^{2}}\cdot\frac{h_{ii}}{(1-h_{ii})^{2}},\quad i=1,2,\ldots,n.\label{eq:slr-cooks-distance}\end{equation}
 It shows that Cook's distance depends both on the residual $E_{i}$
 and the leverage $h_{ii}$ and in this way $D_{i}$ contains information
 about outlying $x$ and $y$ values. 
@@ -13825,8 +13903,7 @@ the horizontal axis.
 
 \section{Chapter Exercises}
 
-
-\subsection*{Section \ref{sec:Basic-Philosophy}}
+\setcounter{thm}{0}
 \begin{xca}
 Prove the ANOVA equality, Equation \ref{eq:anovaeq}. \emph{Hint}:
 show that\[
@@ -14117,7 +14194,7 @@ head(model.matrix(trees.lm))
 @
 
 
-\subsection{Point Estimates of the Regression Surface}
+\subsection{Point Estimates of the Regression Surface\label{sub:mlr-point-est-regsurface}}
 
 The parameter estimates $\mathbf{b}$ make it easy to find the fitted
 values\index{fitted values}, $\hat{\mathbf{Y}}$. We write them individually
@@ -14138,7 +14215,7 @@ in later courses. Some facts about $\mathbf{H}$ are
 \begin{itemize}
 \item $\mathbf{H}$ is a symmetric square matrix, of dimension $\mathrm{n}\times\mathrm{n}$.
 \item The diagonal entries $h_{ii}$ satisfy $0\leq h_{ii}\leq1$ (compare
-to Equation BLANK).
+to Equation \ref{eq:slr-leverage-between}).
 \item The trace is $\mathrm{tr}(\mathbf{H})=p$.
 \item $\mathbf{H}$ is \emph{idempotent} (also known as a \emph{projection
 matrix}) which means that $\mathbf{H}^{2}=\mathbf{H}$. The same is
@@ -14158,7 +14235,7 @@ observation at $\mathbf{x}_{0}$, and
 observation at $\mathbf{x}_{0}$.
 \end{enumerate}
 We can represent $\hat{Y}(\mathbf{x}_{0})$ by the matrix equation\begin{equation}
-\hat{Y}(\mathbf{x}_{0})=\mathbf{x}_{0}^{\mathrm{T}}\mathbf{b},\end{equation}
+\hat{Y}(\mathbf{x}_{0})=\mathbf{x}_{0}^{\mathrm{T}}\mathbf{b},\label{eq:mlr-single-yhat-matrix}\end{equation}
 which is just a fancy way to write\begin{equation}
 \hat{Y}(x_{10},x_{20})=b_{0}+b_{1}x_{10}+b_{2}x_{20}.\end{equation}
  
@@ -14245,7 +14322,7 @@ is \Sexpr{treesFIT[3]} cubic feet.
 \end{enumerate}
 \end{example}
 
-\subsection{Mean Square Error and Standard Error}
+\subsection{Mean Square Error and Standard Error\label{sub:mlr-mse-se}}
 
 The residuals are given by\begin{equation}
 \mathbf{E}=\mathbf{Y}-\hat{\mathbf{Y}}=\mathbf{Y}-\mathbf{H}\mathbf{Y}=(\mathbf{I}-\mathbf{H})\mathbf{Y}.\end{equation}
@@ -14291,9 +14368,9 @@ For the \inputencoding{latin9}\lstinline[showstringspaces=false]!trees!\inputenc
 data we find $s\approx$ \Sexpr{round(treesumry$sigma, 3)}.
 
 
-\subsection{Interval Estimates of the Parameters}
+\subsection{Interval Estimates of the Parameters\label{sub:mlr-interval-est-params}}
 
-We showed in Section BLANK that $\mathbf{b}=\left(\mathbf{X}^{\mathrm{T}}\mathbf{X}\right)^{-1}\mathbf{X}^{\mathrm{T}}\mathbf{Y}$,
+We showed in Section \ref{sub:mlr-parameter-estimates} that $\mathbf{b}=\left(\mathbf{X}^{\mathrm{T}}\mathbf{X}\right)^{-1}\mathbf{X}^{\mathrm{T}}\mathbf{Y}$,
 which is really just a big matrix -- namely $\left(\mathbf{X}^{\mathrm{T}}\mathbf{X}\right)^{-1}\mathbf{X}^{\mathrm{T}}$
 -- multiplied by $\mathbf{Y}$. It stands to reason that the sampling
 distribution of $\mathbf{b}$ would be intimately related to the distribution
@@ -14356,13 +14433,13 @@ in the interval {[}\Sexpr{treesPAR[2, 1]}, \Sexpr{treesPAR[2, 2]}{]}.
 
 \subsection{Confidence and Prediction Intervals}
 
-We saw in Section BLANK how to make point estimates of the mean value
-of additional observations and predict values of future observations,
-but how good are our estimates? We need confidence and prediction
-intervals to gauge their accuracy, and lucky for us the formulas look
-similar to the ones we saw in SLR.
+We saw in Section \ref{sub:mlr-point-est-regsurface} how to make
+point estimates of the mean value of additional observations and predict
+values of future observations, but how good are our estimates? We
+need confidence and prediction intervals to gauge their accuracy,
+and lucky for us the formulas look similar to the ones we saw in SLR.
 
-In Equation BLANK we wrote $\hat{Y}(\mathbf{x}_{0})=\mathbf{x}_{0}^{\mathrm{T}}\mathbf{b},$
+In Equation \ref{eq:mlr-single-yhat-matrix} we wrote $\hat{Y}(\mathbf{x}_{0})=\mathbf{x}_{0}^{\mathrm{T}}\mathbf{b},$
 and in Equation \ref{eq:distn-b-mlr} we saw that \begin{equation}
 \mathbf{b}\sim\mathsf{mvnorm}\left(\mathtt{mean}=\upbeta,\,\mathtt{sigma}=\sigma^{2}\left(\mathbf{X}^{\mathrm{T}}\mathbf{X}\right)^{-1}\right),\end{equation}
 The following is therefore immediate from Theorem \ref{thm:mvnorm-dist-matrix-prod}:\begin{equation}
@@ -14380,7 +14457,7 @@ Prediction intervals for a new observation at $\mathbf{x}_{0}$ are
 given by\begin{equation}
 \hat{Y}(\mathbf{x}_{0})\pm\mathsf{t}_{\alpha/2}(\mathtt{df}=n-p-1)\, S\sqrt{1+\mathbf{x}_{0}^{\mathrm{T}}\left(\mathbf{X}^{\mathrm{T}}\mathbf{X}\right)^{-1}\mathbf{x}_{0}}.\end{equation}
 The prediction intervals are wider than the confidence intervals,
-just as in Section BLANK.
+just as in Section \ref{sub:slr-interval-est-regline}.
 
 
 \subsection{How to do it with \textsf{R}}
@@ -14388,7 +14465,8 @@ just as in Section BLANK.
 The syntax is identical to that used in SLR, with the proviso that
 we need to specify values of the independent variables in the data
 frame \inputencoding{latin9}\lstinline[showstringspaces=false]!new!\inputencoding{utf8}
-as we did in Section BLANK (which we repeat here for illustration).
+as we did in Section \ref{sub:slr-interval-est-regline} (which we
+repeat here for illustration).
 
 <<>>=
 new <- data.frame(Girth = c(9.1, 11.6, 12.5), Height = c(69, 74, 87))
@@ -14455,18 +14533,18 @@ and \Sexpr{treesCI[3, 3]} feet.
 
 \subsection{Multiple Coefficient of Determination}
 
-We saw in Section BLANK that the error sum of squares $SSE$ can be
-conveniently written in MLR as \begin{equation}
-SSE=\mathbf{Y}^{\mathrm{T}}(\mathbf{I}-\mathbf{H})\mathbf{Y}.\end{equation}
+We saw in Section \ref{sub:mlr-mse-se} that the error sum of squares
+$SSE$ can be conveniently written in MLR as \begin{equation}
+SSE=\mathbf{Y}^{\mathrm{T}}(\mathbf{I}-\mathbf{H})\mathbf{Y}.\label{eq:mlr-sse-matrix}\end{equation}
 It turns out that there are equally convenient formulas for the total
 sum of squares $SSTO$ and the regression sum of squares $SSR$. They
 are :\begin{alignat}{1}
-SSTO= & \mathbf{Y}^{\mathrm{T}}\left(\mathbf{I}-\frac{1}{n}\mathbf{J}\right)\mathbf{Y}\end{alignat}
+SSTO= & \mathbf{Y}^{\mathrm{T}}\left(\mathbf{I}-\frac{1}{n}\mathbf{J}\right)\mathbf{Y}\label{eq:mlr-ssto-matrix}\end{alignat}
 and\begin{alignat}{1}
-SSR= & \mathbf{Y}^{\mathrm{T}}\left(\mathbf{H}-\frac{1}{n}\mathbf{J}\right)\mathbf{Y}.\end{alignat}
+SSR= & \mathbf{Y}^{\mathrm{T}}\left(\mathbf{H}-\frac{1}{n}\mathbf{J}\right)\mathbf{Y}.\label{eq:mlr-ssr-matrix}\end{alignat}
 (The matrix $\mathbf{J}$ is defined in Appendix \ref{sec:Linear-Algebra}.)
-Immediately from Equations BLANK, BLANK, and BLANK we get the \emph{Anova
-Equality}\begin{equation}
+Immediately from Equations \ref{eq:mlr-sse-matrix}, \ref{eq:mlr-ssto-matrix},
+and \ref{eq:mlr-ssr-matrix} we get the \emph{Anova Equality}\begin{equation}
 SSTO=SSE+SSR.\end{equation}
 (See Exercise \ref{xca:anova-equality}.) We define the \emph{multiple
 coefficient of determination} by the formula\begin{equation}
@@ -14513,10 +14591,10 @@ treesumry$adj.r.squared
 
 High values of $R^{2}$ and $\overline{R}^{2}$ such as these indicate
 that the model fits very well, which agrees with what we saw in Figure
-BLANK.
+\ref{fig:3D-scatterplot-trees}.
 
 
-\subsection{Overall \emph{F}-Test}
+\subsection{Overall \emph{F}-Test\label{sub:mlr-Overall-F-Test}}
 
 Another way to assess the model's utility is to to test the hypothesis\[
 H_{0}:\beta_{1}=\beta_{2}=\cdots=\beta_{p}=0\mbox{ versus }H_{1}:\mbox{ at least one \ensuremath{\beta_{i}\neq0}}.\]
@@ -14551,7 +14629,7 @@ Consequently we reject $H_{0}$, that is, the data provide strong
 evidence that not all $\beta_{i}$'s are zero.
 
 
-\subsection{Student's \emph{t} Tests}
+\subsection{Student's \emph{t} Tests\label{sub:mlr-Student's-t-Tests}}
 
 We know that \begin{equation}
 \mathbf{b}\sim\mathsf{mvnorm}\left(\mathtt{mean}=\upbeta,\,\mathtt{sigma}=\sigma^{2}\left(\mathbf{X}^{\mathrm{T}}\mathbf{X}\right)^{-1}\right)\end{equation}
@@ -14571,12 +14649,13 @@ in the model%
 but then fail to be significant when another variable is added to
 the model. When this happens it often indicates a problem with the
 explanatory variables, such as \emph{multicollinearity}. See Section
-BLANK.%
+\ref{sub:Multicollinearity}.%
 }. 
 
 To test the hypothesis we go to find the sampling distribution of
 $b_{i},$ the estimator of the corresponding parameter $\beta_{i}$,
-when the null hypothesis is true. We saw in Section BLANK that \begin{equation}
+when the null hypothesis is true. We saw in Section \ref{sub:mlr-interval-est-params}
+that \begin{equation}
 T_{i}=\frac{b_{i}-\beta_{i}}{S_{b_{i}}}\end{equation}
 has a Student's $t$ distribution with $n-(p+1)$ degrees of freedom.
 (Remember, we are estimating $p+1$ parameters.) Consequently, under
@@ -14755,7 +14834,7 @@ decides to include $x^{m}$ as a term in the model, then (s)he should
 also include all lower order terms $x$, $x^{2}$, \ldots{},$x^{m-1}$
 in the model. 
 \end{rem}
-We do estimation/prediction the same way that we did in Section BLANK,
+We do estimation/prediction the same way that we did in Section \ref{sub:mlr-point-est-regsurface},
 except we do not need a \inputencoding{latin9}\lstinline[showstringspaces=false]!Height!\inputencoding{utf8}
 column in the dataframe \inputencoding{latin9}\lstinline[showstringspaces=false]!new!\inputencoding{utf8}
 since the variable is not included in the quadratic model.
@@ -14785,11 +14864,12 @@ from the model, but the model would no longer be \emph{parsimonious}.
 A novice may see the output and be confused about how to proceed,
 while the seasoned statistician recognizes immediately that \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}
 and \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth^2!\inputencoding{utf8}
-are highly correlated (see Section BLANK). The only remedy to this
-ailment is to rescale \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8},
+are highly correlated (see Section \ref{sub:Multicollinearity}).
+The only remedy to this ailment is to rescale \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8},
 which we should have done in the first place.
 
-In Example BLANK of Section BLANK we investigate this issue further.
+In Example \ref{exa:mlr-trees-poly-no-rescale} of Section \ref{sec:Partial-F-Statistic}
+we investigate this issue further.
 \end{rem}
 
 \section{Interaction\label{sec:Interaction}}
@@ -14893,7 +14973,7 @@ taking values in a subset of real numbers. In this section, we extend
 our treatment to include the case in which one of the explanatory
 variables is qualitative, that is, a \emph{factor}. Qualitative variables
 take values in a set of \emph{levels}, which may or may not be ordered.
-See Section BLANK.
+See Section \ref{sub:Qualitative-Data}.
 \begin{note*}
 The \inputencoding{latin9}\lstinline[showstringspaces=false]!trees!\inputencoding{utf8}
 data do not have any qualitative explanatory variables, so we will
@@ -14959,8 +15039,8 @@ class(trees$Tall)
 
 If the qualitative variable is not yet stored as a factor then we
 may convert it to one with the \inputencoding{latin9}\lstinline[showstringspaces=false]!factor!\inputencoding{utf8}
-command. See Appendix BLANK. Other than this we perform MLR as we
-normally would.
+command. See Section \ref{sub:Qualitative-Data}. Other than this
+we perform MLR as we normally would.
 
 <<>>=
 treesdummy.lm <- lm(Volume ~ Girth + Tall, data = trees)
@@ -14985,8 +15065,8 @@ afterward with the knowledge of what \textsf{R} would do so that the
 output the reader saw would match what (s)he had previously read.
 The way that \textsf{R} handles factors internally is part of a much
 larger topic concerning \emph{contrasts}, which falls outside the
-scope of this book. The interested reader should see BLANK or BLANK
-for more.
+scope of this book. The interested reader should see Neter et al \cite{Neter1996}
+or Fox \cite{Fox1997} for more.
 \end{rem}
 
 \begin{rem}
@@ -15075,9 +15155,9 @@ fashion.
 
 \section{Partial \emph{F} Statistic\label{sec:Partial-F-Statistic}}
 
-We saw in Section BLANK how to test $H_{0}:\beta_{0}=\beta_{1}=\cdots=\beta_{p}=0$
-with the overall $F$ statistic and we saw in Section BLANK how to
-test $H_{0}:\beta_{i}=0$ that a particular coefficient $\beta_{i}$
+We saw in Section \ref{sub:mlr-Overall-F-Test} how to test $H_{0}:\beta_{0}=\beta_{1}=\cdots=\beta_{p}=0$
+with the overall $F$ statistic and we saw in Section \ref{sub:mlr-Student's-t-Tests}
+how to test $H_{0}:\beta_{i}=0$ that a particular coefficient $\beta_{i}$
 is zero. Sometimes, however, we would like to test whether a certain
 part of the model is significant. Consider the regression model\begin{equation}
 Y=\beta_{0}+\beta_{1}x_{1}+\cdots+\beta_{j}x_{j}+\beta_{j+1}x_{j+1}+\cdots+\beta_{p}x_{p}+\epsilon,\end{equation}
@@ -15122,7 +15202,7 @@ objects both for the complete model and the reduced model then compare
 the answers with the \inputencoding{latin9}\lstinline[showstringspaces=false]!anova!\inputencoding{utf8}
 function.
 \begin{example}
-For the \inputencoding{latin9}\lstinline[showstringspaces=false]!trees!\inputencoding{utf8}
+\label{exa:mlr-trees-poly-no-rescale}For the \inputencoding{latin9}\lstinline[showstringspaces=false]!trees!\inputencoding{utf8}
 data, let us fit a polynomial regression model and for the sake of
 argument we will ignore our own good advice and fail to rescale the
 explanatory variables. 
@@ -15183,10 +15263,10 @@ true meaning of the univariate tests.
 \section{Residual Analysis and Diagnostic Tools\label{sec:Residual-Analysis-MLR}}
 
 We encountered many, many diagnostic measures for simple linear regression
-in Section BLANK. All of these are valid in multiple linear regression,
-too, but there are some slight changes that we need to make for the
-multivariate case. We list these below, and apply them to the trees
-example. 
+in Sections \ref{sec:Residual-Analysis-SLR} and \ref{sec:Other-Diagnostic-Tools-SLR}.
+All of these are valid in multiple linear regression, too, but there
+are some slight changes that we need to make for the multivariate
+case. We list these below, and apply them to the trees example. 
 \begin{description}
 \item [{Shapiro-Wilk,~Breusch-Pagan,~Durbin-Watson:}] unchanged from
 SLR, but we are now equipped to talk about the Shapiro-Wilk test statistic
@@ -15201,11 +15281,12 @@ from an $\mathsf{mvnorm}\left(\mathtt{mean}=\mathbf{0},\,\mathtt{sigma}=\mathbf{
 distribution. 
 \item [{Leverages:}] are defined to be the diagonal entries of the hat
 matrix $\mathbf{H}$ (which is why we called them $h_{ii}$ in Section
-BLANK). The sum of the leverages is $\mbox{tr}(\mathbf{H})=p+1$.
-One rule of thumb considers a leverage extreme if it is larger than
-double the mean leverage value, which is $2(p+1)/n$, and another
-rule of thumb considers leverages bigger than 0.5 to indicate high
-leverage, while values between 0.3 and 0.5 indicate moderate leverage.
+\ref{sub:mlr-point-est-regsurface}). The sum of the leverages is
+$\mbox{tr}(\mathbf{H})=p+1$. One rule of thumb considers a leverage
+extreme if it is larger than double the mean leverage value, which
+is $2(p+1)/n$, and another rule of thumb considers leverages bigger
+than 0.5 to indicate high leverage, while values between 0.3 and 0.5
+indicate moderate leverage.
 \item [{Standardized~residuals:}] unchanged. Considered extreme if $|R_{i}|>2$.
 \item [{Studentized~residuals:}] compared to a $\mathsf{t}(\mathtt{df}=n-p-2)$
 distribution. 
@@ -15239,14 +15320,14 @@ V=\pi r^{2}h\quad\mbox{or}\quad V=4\pi dh,\end{equation}
 where $r$ and $d$ represent the radius and diameter of the tree,
 respectively. With this in mind, it would seem that a more appropriate
 model for $\mu$ might be\begin{equation}
-\mu(x_{1},x_{2})=\beta_{0}x_{1}^{\beta_{1}}x_{2}^{\beta_{2}},\end{equation}
+\mu(x_{1},x_{2})=\beta_{0}x_{1}^{\beta_{1}}x_{2}^{\beta_{2}},\label{eq:trees-nonlin-reg}\end{equation}
 where $\beta_{1}$ and $\beta_{2}$ are parameters to adjust for the
 fact that a black cherry tree is not a perfect cylinder.
 
 How can we fit this model? The model is not linear in the parameters
 any more, so our linear regression methods will not work\ldots{}or
 will they? In the \inputencoding{latin9}\lstinline[showstringspaces=false]!trees!\inputencoding{utf8}
-example we may take the logarithm of both sides of Equation BLANK
+example we may take the logarithm of both sides of Equation \ref{eq:trees-nonlin-reg}
 to get\begin{equation}
 \mu^{\ast}(x_{1},x_{2})=\ln\left[\mu(x_{1},x_{2})\right]=\ln\beta_{0}+\beta_{1}\ln x_{1}+\beta_{2}\ln x_{2},\end{equation}
 and this new model $\mu^{\ast}$ is linear in the parameters $\beta_{0}^{\ast}=\ln\beta_{0}$,
@@ -15313,12 +15394,16 @@ studied in advanced regression classes. The interested reader should
 see Neter \emph{et al} \cite{Neter1996} or Tabachnick and Fidell
 \cite{Tabachnick2006}. 
 
-It turns out that John Fox has posted an Appendix to his book BLANK
+It turns out that John Fox has posted an Appendix to his book \cite{Fox2002}
 which discusses some of the methods and issues associated with nonlinear
-regression; see \url{http://cran.r-project.org/doc/contrib/Fox-Companion/appendix.html}.
+regression; see 
+
+\begin{center}
+\url{http://cran.r-project.org/doc/contrib/Fox-Companion/appendix.html}
+\par\end{center}
 
 
-\subsection{Multicollinearity}
+\subsection{Multicollinearity\label{sub:Multicollinearity}}
 
 A multiple regression model exhibits \emph{multicollinearity} when
 two or more of the explanatory variables are substantially correlated
@@ -15374,9 +15459,12 @@ AIC=-2\ln L+2(p+1)\]
 
 
 \section{Chapter Exercises}
+
+\setcounter{thm}{0}
 \begin{xca}
-\label{xca:anova-equality}Use Equations BLANK, BLANK, and BLANK to
-prove the Anova Equality:\[
+\label{xca:anova-equality}Use Equations \ref{eq:mlr-sse-matrix},
+\ref{eq:mlr-ssto-matrix}, and \ref{eq:mlr-ssr-matrix} to prove the
+Anova Equality:\[
 SSTO=SSE+SSR.\]
 
 \end{xca}
@@ -15564,7 +15652,8 @@ an estimate of how biased the original statistic is, the so-called
 \emph{bootstrap estimate of bias}. Since the estimate is so small
 we would expect our original statistic ($\Xbar$) to have small bias,
 but this is no surprise to us because we already knew from Section
-BLANK that $\Xbar$ is an unbiased estimator of the population mean.
+\ref{sub:Simple-Random-Samples} that $\Xbar$ is an unbiased estimator
+of the population mean.
 
 Now back to our original problem, we would like to estimate the standard
 error of $\Xbar$. Looking at the histogram, we see that the spread
@@ -15981,6 +16070,8 @@ accuracy desired.
 
 
 \section{Chapter Exercises}
+
+\setcounter{thm}{0}
 
 
 \chapter{Categorical Data Analysis\label{cha:Categorical-Data-Analysis}}
@@ -17398,8 +17489,9 @@ has to offer over plain \LaTeX{} editors. And it's free. See the \LyX{}
 homepage (\url{http://www.lyx.org/}) for additional information.\\
 If you decide to give \LyX{} a try, then you will need to complete
 some extra steps to coordinate Sweave and \LyX{} with each other.
-Luckily, Gregor Gorjanc has a website and an R-News article BLANK
-to help you do exactly that. See the \LyX{}-Sweave Homepage (\url{http://gregor.gorjanc.googlepages.com/lyx-sweave})
+Luckily, Gregor Gorjanc has a website and an \textsf{R} News article
+\cite{Gorjanc2008} to help you do exactly that. See the \LyX{}-Sweave
+homepage (\url{http://gregor.gorjanc.googlepages.com/lyx-sweave})
 for details.
 \end{description}
 An attempt was made to not be extravagant with fonts or packages so
