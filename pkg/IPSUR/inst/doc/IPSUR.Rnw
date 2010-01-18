@@ -736,7 +736,7 @@ Laplace, Quetelet, and the Chevalier de Mere.
 
 \section{Probability}
 
-The common folklore is that probability has been around for millenia
+The common folklore is that probability has been around for millennia
 but did not gain the attention of mathematicians until approximately
 1654 when the Chevalier de Mere had a question regarding the fair
 division of a game's payoff to the two players, if the game had to
@@ -970,7 +970,7 @@ package which accompanies this text.
 the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!Rcmdr!\inputencoding{utf8}
 which is based on GTk instead of Tcl/Tk. It has been a while since
 I used it but I remember liking it very much when I did. One thing
-that stood out was that the user could drag-and-drop datasets for
+that stood out was that the user could drag-and-drop data sets for
 plots. See here for more information: \url{http://wiener.math.csi.cuny.edu/pmg/}.
 \item [{Rattle\index{Rattle}}] is a data mining toolkit which was designed
 to manage/analyze very large data sets, but it provides enough other
@@ -1623,7 +1623,7 @@ do it in \textsf{R} with a call to the \inputencoding{latin9}\lstinline[showstri
 function. There are three available methods.
 \begin{description}
 \item [{overplot}] plots ties covering each other. This method is good
-to display only the distinct values assumed by the dataset.
+to display only the distinct values assumed by the data set.
 \item [{jitter}] adds some noise to the data in the $y$ direction in which
 case the data values are not covered up by ties.
 \item [{stack}] plots repeated values stacked on top of one another. This
@@ -2214,8 +2214,8 @@ and \emph{S}hape. (CUSS).
 
 \subsection{Center\label{sub:Center}}
 
-One of the most basic features of a dataset is its center. Loosely
-speaking, the center of a dataset is associated with a number that
+One of the most basic features of a data set is its center. Loosely
+speaking, the center of a data set is associated with a number that
 represents a middle or general tendency of the data. Of course, there
 are usually several values that would serve as a center, and our later
 tasks will be focused on choosing an appropriate one for the data
@@ -2225,15 +2225,15 @@ a measure of center would be about \Sexpr{round(mean(precip))}.
 
 \subsection{Spread\label{sub:Spread}}
 
-The spread of a dataset is associated with its variability; datasets
-with a large spread tend to cover a large interval of values, while
-datasets with small spread tend to cluster tightly around a central
-value. 
+The spread of a data set is associated with its variability; data
+sets with a large spread tend to cover a large interval of values,
+while data sets with small spread tend to cluster tightly around a
+central value. 
 
 
 \subsection{Shape\label{sub:Shape}}
 
-When we speak of the \emph{shape} of a dataset, we are usually referring
+When we speak of the \emph{shape} of a data set, we are usually referring
 to the shape exhibited by an associated graphical display, such as
 a histogram. The shape can tell us a lot about any underlying structure
 to the data, and can help us decide which statistical procedure we
@@ -2347,7 +2347,7 @@ and is simply the arithmetic average of the observations:\begin{equation}
 \item Good: natural, easy to compute, has nice mathematical properties
 \item Bad: sensitive to extreme values
 \end{itemize}
-It is appropriate for use with datasets that are not highly skewed
+It is appropriate for use with data sets that are not highly skewed
 without extreme observations.
 
 The \emph{sample median} is another popular measure of center and
@@ -2413,7 +2413,7 @@ We will describe the default method (\inputencoding{latin9}\lstinline[showstring
 but the interested reader can see the details for the other methods
 with \inputencoding{latin9}\lstinline[showstringspaces=false]!?quantile!\inputencoding{utf8}.
 
-Suppose the dataset has $n$ observations. Find the sample quantile
+Suppose the data set has $n$ observations. Find the sample quantile
 of order $p$ ($0<p<1$), denoted $\tilde{q}_{p}$ , as follows:
 \begin{description}
 \item [{First~step:}] sort the data to obtain the order statistics $x_{(1)}$,
@@ -2430,7 +2430,7 @@ of the data fall below the value $\tilde{q}_{p}$ .
 Keep in mind that there is not a unique definition of percentiles,
 quartiles, \emph{etc}. Open a different book, and you'll find a different
 procedure. The difference is small and seldom plays a role except
-in small datasets with repeated values. In fact, most people do not
+in small data sets with repeated values. In fact, most people do not
 even notice in common use.
 
 Clearly, the most popular sample quantile is $\tilde{q}_{0.50}$,
@@ -2449,7 +2449,7 @@ We can find the order statistics of a data set stored in a vector
 with the command \inputencoding{latin9}\lstinline[showstringspaces=false]!sort(x)!\inputencoding{utf8}. 
 
 You can calculate the sample quantiles of any order $p$ where $0<p<1$
-for a dataset stored in a data vector \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
+for a data set stored in a data vector \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
 with the \inputencoding{latin9}\lstinline[showstringspaces=false]!quantile!\inputencoding{utf8}
 function, for instance, the command \inputencoding{latin9}\lstinline[showstringspaces=false]!quantile(x, probs = c(0, 0.25, 0.37))!\inputencoding{utf8}
 will return the smallest observation, the first quartile, $\tilde{q}_{0.25}$,
@@ -2683,7 +2683,7 @@ data appear to be mesokurtic, or at least not substantially leptokurtic.
 
 This field was founded (mostly) by John Tukey (1915-2000). Its tools
 are useful when not much is known regarding the underlying causes
-associated with the dataset, and are often used for checking assumptions.
+associated with the data set, and are often used for checking assumptions.
 For example, suppose we perform an experiment and collect some data\ldots{}
 now what? We look at the data using exploratory visual tools.
 
@@ -2792,7 +2792,7 @@ out to be 36.6).
 
 \subsection{Hinges and the Five Number Summary\label{sub:Hinges-and-the} }
 
-Given a dataset $x_{1}$, $x_{2}$, \ldots{}, $x_{n}$, the hinges
+Given a data set $x_{1}$, $x_{2}$, \ldots{}, $x_{n}$, the hinges
 are found by the following method: 
 \begin{itemize}
 \item Find the order statistics $x_{(1)}$, $x_{(2)}$, \ldots{}, $x_{(n)}$. 
@@ -2806,7 +2806,7 @@ statistics.
 Given the hinges, the \emph{five number summary} ($5NS$) is \begin{equation}
 5NS=(x_{(1)},\ h_{L},\ \tilde{x},\ h_{U},\ x_{(n)}).\end{equation}
 An advantage of the $5NS$ is that it reduces a potentially large
-dataset to a shorter list of only five numbers, and further, these
+data set to a shorter list of only five numbers, and further, these
 numbers give insight regarding the shape of the data distribution
 similar to the sample quantiles in Section \ref{sub:Order-Statistics-and}.
 
@@ -2887,7 +2887,7 @@ structure to the data.
 
 \subsection{Standardizing variables}
 
-It is sometimes useful to compare datasets with each other on a scale
+It is sometimes useful to compare data sets with each other on a scale
 that is independent of the measurement units.
 
 
@@ -3006,7 +3006,7 @@ medians. See Chapter \ref{cha:Hypothesis-Testing}.
 \item Quantile-quantile plots: There are two ways to do this. One way is
 to compare two independent samples (of the same size). qqplot(x,y).
 Another way is to compare the sample quantiles of one variable to
-the theoretical uantiles of another distribution.
+the theoretical quantiles of another distribution.
 \end{itemize}
 Given two samples $\left\{ x_{1},\, x_{2},\,\ldots,\, x_{n}\right\} $
 and $\left\{ y_{1},\, y_{2},\,\ldots,\, y_{n}\right\} $, we may find
@@ -3030,7 +3030,7 @@ of the $Y$ data is greater (less) than the spread of the $X$ data..
 \subsection{Lattice Graphics\label{sub:Lattice-Graphics}}
 
 The following types of plots are useful when there is one variable
-of interest and there is a factor in the dataset by which the variable
+of interest and there is a factor in the data set by which the variable
 is categorized. 
 
 It is sometimes nice to set \inputencoding{latin9}\lstinline[showstringspaces=false]!lattice.options(default.theme = "col.whitebg")!\inputencoding{utf8}
@@ -3801,8 +3801,8 @@ One way is to consider this as simply putting two 3-sided dice in
 a cup, shaking the cup, and looking inside -- as in a game of \emph{Liar's
 Dice}, for instance. Each row of the sample space is a potential pair
 we could observe. Another way is to view each outcome as a separate
-methodway to distribute two identical golf balls into three boxes
-labeled 1, 2, and 3. Regardless of the interpretation, \inputencoding{latin9}\lstinline[showstringspaces=false]!urnsamples!\inputencoding{utf8}
+method to distribute two identical golf balls into three boxes labeled
+1, 2, and 3. Regardless of the interpretation, \inputencoding{latin9}\lstinline[showstringspaces=false]!urnsamples!\inputencoding{utf8}
 lists every possible way that the experiment can conclude.
 
 \end{example}
@@ -5956,12 +5956,6 @@ row of Pascal's triangle, which is $2^{n}$.
 
 
 
-<<echo = FALSE, results = hide>>=
-rnorm(1)
-@
-\begin{xca}
-ddfsdf
-\end{xca}
 
 
 
@@ -7573,7 +7567,7 @@ which is restricted to lie in the interval $[0,1]$.
 \end{rem}
 We met the cumulative distribution function, $F_{X}$, in Chapter
 \ref{cha:Discrete-Distributions}. Recall that it is defined by $F_{X}(t)=\P(X\leq t)$,
-for $-\infty<t<\infty$. While in the discrete case the CDF is unwieldly,
+for $-\infty<t<\infty$. While in the discrete case the CDF is unwieldy,
 in the continuous case the CDF has a relatively convenient form:\begin{equation}
 F_{X}(t)=\P(X\leq t)=\int_{-\infty}^{t}f_{X}(x)\:\diff x,\quad-\infty<t<\infty.\end{equation}
 
@@ -8553,7 +8547,7 @@ that should be made for the distribution to apply; identify those
 assumptions (which may or may not strictly hold in practice).
 \begin{enumerate}
 \item We throw a dart at a dart board. Let $X$ denote the squared linear
-distance from the bullseye to the where the dart landed.
+distance from the bulls-eye to the where the dart landed.
 \item We randomly choose a textbook from the shelf at the bookstore and
 let $P$ denote the proportion of the total pages of the book devoted
 to exercises. 
@@ -9353,7 +9347,7 @@ Exchangeability thus contains i.i.d.~as a special case.
 
 \section{The Bivariate Normal Distribution\label{sec:The-Bivariate-Normal}}
 
-The bivariate normal PDF is given by the unwieldly formula\begin{multline}
+The bivariate normal PDF is given by the unwieldy formula\begin{multline}
 f_{X,Y}(x,y)=\frac{1}{2\pi\,\sigma_{X}\sigma_{Y}\sqrt{1-\rho^{2}}}\exp\left\{ -\frac{1}{2(1-\rho^{2})}\left[\left(\frac{x-\mu_{X}}{\sigma_{X}}\right)^{2}+\cdots\right.\right.\\
 \left.\left.\cdots+2\rho\left(\frac{x-\mu_{X}}{\sigma_{X}}\right)\left(\frac{y-\mu_{Y}}{\sigma_{Y}}\right)+\left(\frac{y-\mu_{Y}}{\sigma_{Y}}\right)^{2}\right]\right\} ,\end{multline}
 for $(x,y)\in\R^{2}$. We write $(X,Y)\sim\mathsf{mvnorm}(\mathtt{mean}=\upmu,\,\mathtt{sigma}=\Sigma)$,
@@ -9877,7 +9871,7 @@ good way to achieve this is to sample \emph{randomly} from the population.
 Supposing for the sake of argument that we have collected a random
 sample, the next task is to make some \emph{sense} out of the data
 because the complete list of sample information is usually cumbersome,
-unwieldly. We summarize the data set with a descriptive \emph{statistic},
+unwieldy. We summarize the data set with a descriptive \emph{statistic},
 a quantity calculated from the data (we saw many examples of these
 in Chapter \ref{cha:Describing-Data-Distributions}). But our sample
 was random\ldots{} therefore, it stands to reason that our statistic
@@ -15465,7 +15459,7 @@ topic will receive more attention in a later edition.
 
 \subsection{Akaike's Information Criterion}
 
-aksdjfl\[
+\[
 AIC=-2\ln L+2(p+1)\]
 
 
@@ -15486,7 +15480,7 @@ SSTO=SSE+SSR.\]
 \chapter{Resampling Methods\label{cha:Resampling-Methods}}
 
 Computers have changed the face of statistics. Their quick computational
-speed and flawless accuracy, coupled with large datasets acquired
+speed and flawless accuracy, coupled with large data sets acquired
 by the researcher, make them indispensable for many modern analyses.
 In particular, resampling methods (due in large part to Bradley Efron)
 have gained prominence in the modern statistician's repertoire. We
@@ -15700,7 +15694,7 @@ by the information contained in the original sample. \end{rem}
 \textbf{Standard error of the median.\label{exa:Bootstrap-se-median}}
 We look at one where we do not know the answer ahead of time. This
 example uses the \inputencoding{latin9}\lstinline[showstringspaces=false]!rivers!\inputencoding{utf8}\index{Data sets!rivers@\texttt{rivers}}
-dataset. Recall the stemplot on page \vpageref{ite:stemplot-rivers}
+data set. Recall the stemplot on page \vpageref{ite:stemplot-rivers}
 that we made for these data which shows them to be markedly right-skewed,
 so a natural estimate of center would be the sample median. Unfortunately,
 its sampling distribution falls out of our reach. We use the bootstrap
@@ -16522,7 +16516,7 @@ ab{[}order(ab{[},1{]}),{]}
 
 \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!stack!\inputencoding{utf8}
 
-\# sorting examples using built-in mtcars dataset
+\# sorting examples using built-in mtcars data set
 
 \# sort by mpg newdata <- mtcars{[}order(mpg),{]}
 
