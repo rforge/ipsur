@@ -428,7 +428,7 @@ includes the introductions and elementary \emph{descriptive statistics};
 I want the students to be knee-deep in data right out of the gate.
 The second part is the study of \emph{probability}, which begins at
 the basics of sets and the equally likely model, journeys past discrete/continuous
-random variables and continues through to multivariate distributions.
+random variables, and continues through to multivariate distributions.
 The chapter on sampling distributions paves the way to the third part,
 which is \emph{inferential statistics}. This last part includes point
 and interval estimation, hypothesis testing, and finishes with introductions
@@ -440,12 +440,12 @@ is supplemented by a take-home assignment for the students. I spend
 a lot of time on Data Description, Probability, Discrete, and Continuous
 Distributions. I mention selected facts from Multivariate Distributions
 in passing, and discuss the meaty parts of Sampling Distributions
-before moving right along to Estimation (which is another one I dwell
-on considerably). Hypothesis Testing goes faster after all of the
-previous work, and by that time the end of the semester is in sight.
-I normally choose one or two final chapters (sometimes three) from
-the remaining to survey, and regret at the end that I did not have
-the chance to cover more.
+before moving right along to Estimation (which is another chapter
+I dwell on considerably). Hypothesis Testing goes faster after all
+of the previous work, and by that time the end of the semester is
+in sight. I normally choose one or two final chapters (sometimes three)
+from the remaining to survey, and regret at the end that I did not
+have the chance to cover more.
 
 In an attempt to be correct I have included material in this book
 which I would normally not mention during the course of a standard
@@ -459,11 +459,11 @@ the world of mathematics and statistics beyond the classroom, and
 which may be useful to them for many semesters to come. It also mirrors
 my own experience as a student.
 
-This document's ultimate goal is to be a more or less self contained,
-essentially complete, correct, introductory textbook. There should
-be plenty of exercises for the student, with full solutions for some
-and no solutions for others (so that the instructor may assign them
-for grading). By \inputencoding{latin9}\lstinline[showstringspaces=false]!Sweave!\inputencoding{utf8}'s
+The vision for this document is a more or less self contained, essentially
+complete, correct, introductory textbook. There should be plenty of
+exercises for the student, with full solutions for some, and no solutions
+for others (so that the instructor may assign them for grading). By
+\inputencoding{latin9}\lstinline[showstringspaces=false]!Sweave!\inputencoding{utf8}'s
 dynamic nature it is possible to write randomly generated exercises
 and I had planned to implement this idea already throughout the book.
 Alas, there are only 24 hours in a day. Look for more in future editions.
@@ -491,7 +491,7 @@ Please bear in mind that the title of this book is {}``Introduction
 to Probability and Statistics Using \textsf{R}'', and not {}``Introduction
 to \textsf{R} Using Probability and Statistics'', nor even {}``Introduction
 to Probability and Statistics and \textsf{R} Using Words''. The people
-at the party are probability and statistics; the handshake is \textsf{R}.
+at the party are Probability and Statistics; the handshake is \textsf{R}.
 There are several important topics about \textsf{R} which some individuals
 will feel are underdeveloped, glossed over, or wantonly omitted. Some
 will feel the same way about the probabilistic and/or statistical
@@ -499,13 +499,13 @@ content. Still others will just want to learn \textsf{R} and skip
 all of the mathematics.
 
 Despite any misgivings: here it is, warts and all. I humbly invite
-said individuals to take this book, with the GNU-FDL in hand, and
-make it better. In that spirit there are at least a few ways in my
-view in which this book could be improved.
+said individuals to take this book, with the GNU Free Documentation
+License (GNU-FDL) in hand, and make it better. In that spirit there
+are at least a few ways in my view in which this book could be improved.
 \begin{description}
-\item [{Better~data:}] the data analyzed in this book are almost entirely
+\item [{Better~data.}] The data analyzed in this book are almost entirely
 from the \inputencoding{latin9}\lstinline[showstringspaces=false]!datasets!\inputencoding{utf8}
-package in base \textsf{R}, and here is why: 
+package in base \textsf{R}, and here is why:
 
 \begin{enumerate}
 \item I made a conscious effort to minimize dependence on contributed packages,
@@ -524,10 +524,11 @@ recent, \emph{real} data in a context crafted to engage the students
 in \emph{every} example. One day I hope to stumble over said time.
 In the meantime, I will add new data sets incrementally as time permits.
 
-\item [{More~proofs:}] for the sake of completeness (I understand that
-some people would not consider more proofs to be improvement). Many
-proofs have been skipped entirely, and am not aware of any rhyme or
-reason to the current omissions. I will add more when I get a chance. 
+\item [{More~proofs.}] I would like to include more proofs for the sake
+of completeness (I understand that some people would not consider
+more proofs to be improvement). Many proofs have been skipped entirely,
+and I am not aware of any rhyme or reason to the current omissions.
+I will add more when I get a chance. 
 \item [{More~and~better~graphics:}] I have not used the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily},breaklines=true,language=R]!ggplot2!\inputencoding{utf8}
 package \cite{Wickam2009} because I do not know how to use it yet.
 It is on my to-do list.
@@ -556,9 +557,9 @@ each of them in turn.
 
 The \emph{Document} is that which you are reading right now -- \IPSUR's
 \emph{raison d'\^etre}. There are transparent copies (nonproprietary
-text files) and opaque copies (everything else). See the GNU Free
-Documentation License (GNU-FDL) in Appendix \ref{cha:GNU-Free-Documentation}
-for more precise language and details.
+text files) and opaque copies (everything else). See the GNU-FDL in
+Appendix \ref{cha:GNU-Free-Documentation} for more precise language
+and details.
 \begin{description}
 \item [{\texttt{IPSUR.tex}}] is a transparent copy of the Document to be
 typeset with a \LaTeX{} distribution such as Mik\TeX{} or \TeX{} Live.
@@ -4320,7 +4321,8 @@ to carefully consider the experiment to decide whether or not the
 outcomes are equally likely and then use \inputencoding{latin9}\lstinline[showstringspaces=false]!probspace!\inputencoding{utf8}
 to assign the model.
 \begin{example}
-An unbalanced coin. While the \inputencoding{latin9}\lstinline[showstringspaces=false]!makespace!\inputencoding{utf8}
+\label{exa:unbalanced-coin}\textbf{An unbalanced coin.} While the
+\inputencoding{latin9}\lstinline[showstringspaces=false]!makespace!\inputencoding{utf8}
 argument to \inputencoding{latin9}\lstinline[showstringspaces=false]!tosscoin!\inputencoding{utf8}
 is useful to represent the tossing of a \emph{fair} coin, it is not
 always appropriate. For example, suppose our coin is not perfectly
@@ -4366,15 +4368,16 @@ event $A$ of the sample space a unique number $\P(A)=p$, called
 the probability of $A$. Any probability function $\P$ satisfies
 the following three Kolmogorov Axioms:
 \begin{ax}
-$\P(A)\geq0$ for any event $A\subset S$.
+\label{ax:prob-nonnegative}$\P(A)\geq0$ for any event $A\subset S$.
 \end{ax}
 
 \begin{ax}
-$\P(S)=1$.
+\label{ax:total-mass-one}$\P(S)=1$.
 \end{ax}
 
 \begin{ax}
-If the events $A_{1}$, $A_{2}$, $A_{3}$\ldots{} are disjoint then\begin{equation}
+\label{ax:countable-additivity}If the events $A_{1}$, $A_{2}$,
+$A_{3}$\ldots{} are disjoint then\begin{equation}
 \P\left(\bigcup_{i=1}^{n}A_{i}\right)=\sum_{i=1}^{n}\P(A_{i})\mbox{ for every }n,\end{equation}
 and furthermore,\begin{equation}
 \P\left(\bigcup_{i=1}^{\infty}A_{i}\right)=\sum_{i=1}^{\infty}\P(A_{i}).\end{equation}
@@ -4417,11 +4420,11 @@ since $\P\left(B\cap A^{c}\right)\ge0$.
 \item $0\leq\P(A)\leq1$.
 
 \begin{proof}
-The left inequality is immediate from Axiom 1, and the second inequality
-follows from Property 5 since $A\subset S$.
+The left inequality is immediate from Axiom \ref{ax:prob-nonnegative},
+and the second inequality follows from Property 3 since $A\subset S$.
 \end{proof}
 \item \textbf{\emph{The General Addition Rule.}}\begin{equation}
-\P(A\cup B)=\P(A)+\P(B)-\P(A\cap B).\end{equation}
+\P(A\cup B)=\P(A)+\P(B)-\P(A\cap B).\label{eq:general-addition-rule-1}\end{equation}
 
 
 
@@ -4432,7 +4435,7 @@ $A_{n}$,\begin{equation}
 
 \item \textbf{\emph{The Theorem of Total Probability.}} Let $B_{1}$, $B_{2}$,
 \ldots{}, $B_{n}$ be mutually exclusive and exhaustive. Then\begin{equation}
-\P(A)=\P(A\cap B_{1})+\P(A\cap B_{2})+\cdots+\P(A\cap B_{n}).\end{equation}
+\P(A)=\P(A\cap B_{1})+\P(A\cap B_{2})+\cdots+\P(A\cap B_{n}).\label{eq:theorem-total-probability}\end{equation}
 
 \end{enumerate}
 
@@ -4484,9 +4487,9 @@ complicated circumstances.
 \end{example}
 
 \begin{example}
-Imagine a three child family, each child being either Boy ($B$) or
-Girl ($G$). An example sequence of siblings would be $BGB$. The
-sample space may be written\[
+\label{exa:three-child-family}Imagine a three child family, each
+child being either Boy ($B$) or Girl ($G$). An example sequence
+of siblings would be $BGB$. The sample space may be written\[
 S=\left\{ \begin{array}{cccc}
 BBB, & BGB, & GBB, & GGB,\\
 BBG, & BGG, & GBG, & GGG\end{array}\right\} .\]
@@ -4895,7 +4898,7 @@ for the first person's birthday, 365 possibilities for the second,
 and so forth. The total number of possible birthday sequences is therefore
 $\#(S)=365^{n}$.
 
-Now we will use the complementation trick we saw in Example BLANK.
+Now we will use the complementation trick we saw in Example \ref{exa:three-child-family}.
 We realize that the only situation in which $A$ does \emph{not} occur
 is if there are \emph{no} matches among all people in the room, that
 is, only when everybody's birthday is different, so\[
@@ -5133,10 +5136,10 @@ For any events $A$, $B$, and $C$ with $\P(A)>0$,
 \item If $B\subset C$ then $\P(B|A)\leq\P(C|A)$.
 \item $\P[(B\cup C)|A]=\P(B|A)+\P(C|A)-\P[(B\cap C|A)].$
 \item \textbf{The Multiplication Rule.} For any two events $A$ and $B$,\begin{equation}
-\P(A\cap B)=\P(A)\P(B|A).\end{equation}
+\P(A\cap B)=\P(A)\P(B|A).\label{eq:multiplication-rule-short}\end{equation}
 And more generally, for events $A_{1}$, $A_{2}$, $A_{3}$,\ldots{},
 $A_{n}$,\begin{equation}
-\P(A_{1}\cap A_{2}\cap\cdots\cap A_{n})=\P(A_{1})\P(A_{2}|A_{1})\cdots\P(A_{n}|A_{1}\cap A_{2}\cap\cdots\cap A_{n-1}).\end{equation}
+\P(A_{1}\cap A_{2}\cap\cdots\cap A_{n})=\P(A_{1})\P(A_{2}|A_{1})\cdots\P(A_{n}|A_{1}\cap A_{2}\cap\cdots\cap A_{n-1}).\label{eq:multiplication-rule-long}\end{equation}
 
 \end{enumerate}
 \end{prop}
@@ -5146,16 +5149,17 @@ The Multiplication Rule is very important because it allows us to
 find probabilities in random experiments that have a sequential structure,
 as the next example shows.
 \begin{example}
-At the beginning of the section we drew two cards from a standard
-playing deck. Now we may answer our original question, what is $\P(\mbox{both Aces})$?\[
+\label{exa:two-cards-both-aces}At the beginning of the section we
+drew two cards from a standard playing deck. Now we may answer our
+original question, what is $\P(\mbox{both Aces})$?\[
 \P(\mbox{both Aces})=\P(A\cap B)=\P(A)\P(B|A)=\frac{4}{52}\cdot\frac{3}{51}\approx0.00452.\]
 
 \end{example}
 
 \subsection{How to do it with \textsf{R\label{sub:howto-ps-objects}}}
 
-Continuing Example BLANK, we set up the probability space by way of
-a three step process. First we employ the \inputencoding{latin9}\lstinline[showstringspaces=false]!cards!\inputencoding{utf8}
+Continuing Example \ref{exa:two-cards-both-aces}, we set up the probability
+space by way of a three step process. First we employ the \inputencoding{latin9}\lstinline[showstringspaces=false]!cards!\inputencoding{utf8}
 function to get a data frame \inputencoding{latin9}\lstinline[showstringspaces=false]!L!\inputencoding{utf8}
 with two columns: \inputencoding{latin9}\lstinline[showstringspaces=false]!rank!\inputencoding{utf8}
 and \inputencoding{latin9}\lstinline[showstringspaces=false]!suit!\inputencoding{utf8}.
@@ -5209,14 +5213,15 @@ function:
 prob(N, all(rank == "A"))
 @
 
-Note that this value matches what we found in Example BLANK, above.
-We could calculate all sorts of probabilities at this point; we are
-limited only by the complexity of the event's computer representation. 
+Note that this value matches what we found in Example \ref{exa:two-cards-both-aces},
+above. We could calculate all sorts of probabilities at this point;
+we are limited only by the complexity of the event's computer representation. 
 
 
 \begin{example}
-Consider an urn with 10 balls inside, 7 of which are red and 3 of
-which are green. Select 3 balls successively from the urn. Let $A=\left\{ 1^{\text{st}}\mbox{ ball is red}\right\} $,
+\label{exa:urn-7-red-3-green}Consider an urn with 10 balls inside,
+7 of which are red and 3 of which are green. Select 3 balls successively
+from the urn. Let $A=\left\{ 1^{\text{st}}\mbox{ ball is red}\right\} $,
 $B=\left\{ 2^{\text{nd}}\mbox{ ball is red}\right\} $, and $C=\left\{ 3^{\text{rd}}\mbox{ ball is red}\right\} $.
 Then\[
 \P(\mbox{all 3 balls are red})=\P(A\cap B\cap C)=\frac{7}{10}\cdot\frac{6}{9}\cdot\frac{5}{8}\approx0.2917.\]
@@ -5225,8 +5230,8 @@ Then\[
 
 \subsection{How to do it with \textsf{R}}
 
-Example BLANK is similar to Example BLANK, but it is even easier.
-We need to set up an urn (vector \inputencoding{latin9}\lstinline[showstringspaces=false]!L!\inputencoding{utf8})
+Example \ref{exa:urn-7-red-3-green} is similar to Example \ref{exa:two-cards-both-aces},
+but it is even easier. We need to set up an urn (vector \inputencoding{latin9}\lstinline[showstringspaces=false]!L!\inputencoding{utf8})
 to hold the balls, we sample from \inputencoding{latin9}\lstinline[showstringspaces=false]!L!\inputencoding{utf8}
 to get the sample space (data frame \inputencoding{latin9}\lstinline[showstringspaces=false]!M!\inputencoding{utf8}),
 and we associate a probability vector (column \inputencoding{latin9}\lstinline[showstringspaces=false]!probs!\inputencoding{utf8})
@@ -5264,8 +5269,8 @@ function. Observe
 prob(N, isrep(N, "red", 3))
 @
 
-Note that this answer matches what we found in Example BLANK. Now
-let us try some other probability questions. What is the probability
+Note that this answer matches what we found in Example \ref{exa:urn-7-red-3-green}.
+Now let us try some other probability questions. What is the probability
 of getting two \inputencoding{latin9}\lstinline[showstringspaces=false]!"red"!\inputencoding{utf8}s?
 
 <<>>=
@@ -5393,7 +5398,8 @@ If the events $A$ and $B$ are independent then
 Suppose that $A$ and $B$ are independent. We will show the second
 one; the others are similar. We need to show that\[
 \P(A^{c}\cap B)=\P(A^{c})\P(B).\]
-To this end, note that the Multiplication Rule BLANK implies \begin{eqnarray*}
+To this end, note that the Multiplication Rule, Equation \ref{eq:multiplication-rule-short}
+implies \begin{eqnarray*}
 \P(A^{c}\cap B) & = & \P(B)\P(A^{c}|B),\\
  & = & \P(B)[1-\P(A|B)],\\
  & = & \P(B)\P(A^{c}).\end{eqnarray*}
@@ -5415,14 +5421,14 @@ We can now deduce the pattern for $n$ events, $n>3$. The events
 will be mutually independent only if they satisfy the product equality
 pairwise, then in groups of three, in groups of four, and so forth,
 up to all $n$ events at once. For $n$ events, there will be $2^{n}-n-1$
-equations that must be satisfied (see Exercise BLANK). Although these
-requirements for a set of events to be mutually independent may seem
-stringent, the good news is that for most of the situations considered
-in this book the conditions will all be met (or at least we will suppose
-that they are).
+equations that must be satisfied (see Exercise \ref{xca:numb-cond-indep}).
+Although these requirements for a set of events to be mutually independent
+may seem stringent, the good news is that for most of the situations
+considered in this book the conditions will all be met (or at least
+we will suppose that they are).
 \begin{example}
-Toss ten coins. What is the probability of observing at least one
-Head? Answer: Let $A_{i}=\left\{ \mbox{the }i^{\text{th}}\mbox{ coin shows }H\right\} ,\ i=1,2,\ldots,10$.
+\label{exa:toss-ten-coins}Toss ten coins. What is the probability
+of observing at least one Head? Answer: Let $A_{i}=\left\{ \mbox{the }i^{\text{th}}\mbox{ coin shows }H\right\} ,\ i=1,2,\ldots,10$.
 Supposing that we toss the coins in such a way that they do not interfere
 with each other, this is one of the situations where all of the $A_{i}$
 may be considered mutually independent due to the nature of the tossing.
@@ -5446,7 +5452,7 @@ A <- subset(S, isrep(S, vals = "T", nrep = 10))
 1 - prob(A)
 @
 
-Compare this answer to what we got in Example BLANK.
+Compare this answer to what we got in Example \ref{exa:toss-ten-coins}.
 
 \end{example}
 
@@ -5468,14 +5474,15 @@ in a single trial.
 
 
 \begin{example}
-An unbalanced coin (continued, see Example BLANK). It was easy enough
-to set up the probability space for one unbalanced toss, however,
-the situation becomes more complicated when there are many tosses
-involved. Clearly, the outcome $HHH$ should not have the same probability
-as $TTT$, which should again not have the same probability as $HTH$.
-At the same time, there is symmetry in the experiment in that the
-coin does not remember the face it shows from toss to toss, and it
-is easy enough to toss the coin in a similar way repeatedly.
+\textbf{An unbalanced coin} (continued, see Example \ref{exa:unbalanced-coin}).
+It was easy enough to set up the probability space for one unbalanced
+toss, however, the situation becomes more complicated when there are
+many tosses involved. Clearly, the outcome $HHH$ should not have
+the same probability as $TTT$, which should again not have the same
+probability as $HTH$. At the same time, there is symmetry in the
+experiment in that the coin does not remember the face it shows from
+toss to toss, and it is easy enough to toss the coin in a similar
+way repeatedly.
 
 We may represent tossing our unbalanced coin three times with the
 following: 
@@ -5521,8 +5528,8 @@ ways. For simplicity, suppose that $P(B_{k})>0$ for all $k$. Then\[
 Since $\P(A)>0$ we may divide through to obtain \[
 \P(B_{k}|A)=\frac{\P(B_{k})\P(A|B_{k})}{\P(A)}.\]
 Now remembering that $\left\{ B_{k}\right\} $ is a partition, the
-Theorem of Total Probability BLANK gives the denominator of the last
-expression to be\[
+Theorem of Total Probability (Equation \ref{eq:theorem-total-probability})
+gives the denominator of the last expression to be\[
 \P(A)=\sum_{k=1}^{n}\P(B_{k}\cap A)=\sum_{k=1}^{n}\P(B_{k})\P(A|B_{k}).\]
 
 \end{proof}
@@ -5532,10 +5539,11 @@ some data, which we represent by the event $A$. We want to know:
 how do we \textbf{update} $\P(B_{k})$ to $\P(B_{k}|A)$? The answer:
 Bayes' Rule.
 \begin{example}
-\emph{Misfiling Assistants}. In this problem, there are three assistants
-working at a company: Moe, Larry, and Curly. Their primary job duty
-is to file paperwork in the filing cabinet when papers become available.
-The three assistants have different work schedules:
+\textbf{\label{exa:misfiling-assistants}Misfiling Assistants}\textbf{\emph{.}}
+In this problem, there are three assistants working at a company:
+Moe, Larry, and Curly. Their primary job duty is to file paperwork
+in the filing cabinet when papers become available. The three assistants
+have different work schedules:
 
 %
 \begin{table}[H]
@@ -5633,7 +5641,7 @@ Now let's find the denominator, $\P(A)$. The key here is the notion
 that if a file is misplaced, then either Moe or Larry or Curly must
 have filed it; there is no one else around to do the misfiling. Further,
 these possibilities are mutually exclusive. We may use the Theorem
-of Total Probability BLANK to write\[
+of Total Probability \ref{eq:theorem-total-probability} to write\[
 \P(A)=\P(A\cap M)+\P(A\cap L)+\P(A\cap C).\]
 Luckily, we have computed these above. Thus\[
 \P(A)=0.0018+0.0021+0.0010=0.0049.\]
@@ -5662,14 +5670,15 @@ the best course of action.
 \end{example}
 
 \begin{example}
-Suppose the boss gets a change of heart and does not fire anybody.
-But the next day (s)he randomly selects another file and again finds
-it to be misplaced. To decide whom to fire now, the boss would use
-the same procedure, with one small change. (S)he would not use the
-prior probabilities $ $60\%, 30\%, and 10\%; those are old news.
-Instead, she would replace the prior probabilities with the posterior
-probabilities just calculated. After the math she will have new posterior
-probabilities, updated even more from the day before.
+\label{exa:misfiling-assistants-multiple}Suppose the boss gets a
+change of heart and does not fire anybody. But the next day (s)he
+randomly selects another file and again finds it to be misplaced.
+To decide whom to fire now, the boss would use the same procedure,
+with one small change. (S)he would not use the prior probabilities
+$ $60\%, 30\%, and 10\%; those are old news. Instead, she would replace
+the prior probabilities with the posterior probabilities just calculated.
+After the math she will have new posterior probabilities, updated
+even more from the day before.
 
 In this way, probabilities found by Bayes' rule are always on the
 cutting edge, always updated with respect to the best information
@@ -5682,8 +5691,9 @@ There are not any special functions for Bayes' Rule in the \inputencoding{latin9
 package, but problems like the ones above are easy enough to do by
 hand.
 \begin{example}
-Misfiling assistants (continued, see Example BLANK). We store the
-prior probabilities and the likelihoods in vectors and go to town.
+\textbf{Misfiling assistants} (continued from Example \ref{exa:misfiling-assistants}).
+We store the prior probabilities and the likelihoods in vectors and
+go to town.
 
 <<>>=
 prior <- c(0.6, 0.3, 0.1)
@@ -5695,8 +5705,8 @@ post / sum(post)
 \end{example}
 
 
-Compare these answers with what we got in Example BLANK. We would
-replace \inputencoding{latin9}\lstinline[showstringspaces=false]!prior!\inputencoding{utf8}
+Compare these answers with what we got in Example \ref{exa:misfiling-assistants}.
+We would replace \inputencoding{latin9}\lstinline[showstringspaces=false]!prior!\inputencoding{utf8}
 with \inputencoding{latin9}\lstinline[showstringspaces=false]!post!\inputencoding{utf8}
 in a future calculation. We could raise \inputencoding{latin9}\lstinline[showstringspaces=false]!like!\inputencoding{utf8}
 to a power to see how the posterior is affected by future document
@@ -5738,7 +5748,7 @@ fastpost <- prior * like^8
 fastpost / sum(fastpost)
 @
 
-Compare this to what we got in Example BLANK.
+Compare this to what we got in Example \ref{exa:misfiling-assistants-multiple}.
 
 
 
@@ -5925,10 +5935,10 @@ space.
 rnorm(1)
 @
 \begin{xca}
-Prove the assertion of Example BLANK. The number of conditions that
-the events $A_{1}$, $A_{2}$, \ldots{}, $A_{n}$ must satisfy in
-order to be mutually independent is $2^{n}-n-1$. (\emph{Hint}: think
-about Pascal's triangle.)
+\label{xca:numb-cond-indep}Prove the assertion given in the text:
+the number of conditions that the events $A_{1}$, $A_{2}$, \ldots{},
+$A_{n}$ must satisfy in order to be mutually independent is $2^{n}-n-1$.
+(\emph{Hint}: think about Pascal's triangle.)
 \end{xca}
 
 \paragraph*{Answer:}
@@ -6493,17 +6503,18 @@ convergent. We say that $\E g(X)$ \emph{exists}.
 In this notation the variance is $\sigma^{2}=\E(X-\mu)^{2}$ and we
 prove the identity \begin{equation}
 \E(X-\mu)^{2}=\E X^{2}-(\E X)^{2}\end{equation}
-in Exercise BLANK. Intuitively, for repeated observations of $X$
-we would expect the sample mean of the $g(X)$ values to closely approximate
-$\E\, g(X)$ as the sample size increases without bound.
+in Exercise \ref{xca:variance-shortcut}. Intuitively, for repeated
+observations of $X$ we would expect the sample mean of the $g(X)$
+values to closely approximate $\E\, g(X)$ as the sample size increases
+without bound.
 
 Let us take the analogy further. If we expect $g(X)$ to be close
 to $\E g(X)$ on the average, where would we expect $3g(X)$ to be
 on the average? It could only be $3\E g(X)$. The following theorem
 makes this idea precise.
-\begin{thm}
-For any functions $g$ and $h$, any random variable $X$, and any
-constant $c$: 
+\begin{prop}
+\label{pro:expectation-properties}For any functions $g$ and $h$,
+any random variable $X$, and any constant $c$: 
 \begin{enumerate}
 \item $\E\: c=c$,
 \item $\E[c\cdot g(X)]=c\E g(X)$
@@ -6511,7 +6522,7 @@ constant $c$:
 \end{enumerate}
 provided $\E g(X)$ and $\E h(X)$ exist.
 
-\end{thm}
+\end{prop}
 \begin{proof}
 Go directly from the definition. For example,\[
 \E[c\cdot g(X)]=\sum_{x\in S}c\cdot g(x)f_{X}(x)=c\cdot\sum_{x\in S}g(x)f_{X}(x)=c\E g(X).\]
@@ -8652,7 +8663,7 @@ $S_{Y}$, respectively. Let $S_{X,Y}$ denote the set of all possible
 observed \emph{pairs} $(x,y)$, called the \emph{joint support set}
 of $X$ and $Y$. Then the \emph{joint probability mass function}
 of $X$ and $Y$ is the function $f_{X,Y}$ defined by\begin{equation}
-f_{X,Y}(x,y)=\P(X=x,\, Y=y),\quad\mbox{for }(x,y)\in S_{X,Y}.\end{equation}
+f_{X,Y}(x,y)=\P(X=x,\, Y=y),\quad\mbox{for }(x,y)\in S_{X,Y}.\label{eq:joint-pmf}\end{equation}
 Every joint PMF satisfies\begin{equation}
 f_{X,Y}(x,y)>0\mbox{ for all }(x,y)\in S_{X,Y},\end{equation}
 and\begin{equation}
@@ -8663,12 +8674,13 @@ all of $\R^{2}$ by setting $f_{X,Y}(x,y)=0$ for $(x,y)\not\in S_{X,Y}$.
 In the context of this chapter, the PMFs $f_{X}$ and $f_{Y}$ are
 called the \emph{marginal PMFs} of $X$ and $Y$, respectively. If
 we are given only the joint PMF then we may recover each of the marginal
-PMFs by using the Theorem of Total Probability (see BLANK): observe\begin{eqnarray}
+PMFs by using the Theorem of Total Probability (see Equation\ref{eq:theorem-total-probability}):
+observe\begin{eqnarray}
 f_{X}(x) & = & \P(X=x),\\
  & = & \sum_{y\in S_{Y}}\P(X=x,\, Y=y),\\
  & = & \sum_{y\in S_{Y}}f_{X,Y}(x,y).\end{eqnarray}
 By interchanging the roles of $X$ and $Y$ it is clear that \begin{equation}
-f_{Y}(y)=\sum_{x\in S_{Y}}f_{X,Y}(x,y).\end{equation}
+f_{Y}(y)=\sum_{x\in S_{Y}}f_{X,Y}(x,y).\label{eq:marginal-pmf}\end{equation}
 Given the joint PMF we may recover the marginal PMFs, but the converse
 is not true. Even if we have \emph{both} marginal distributions they
 are not sufficient to determine the joint PMF; more information is
@@ -8683,17 +8695,18 @@ function} $F_{X,Y}$ defined by\[
 F_{X,Y}(x,y)=\P(X\leq x,\, Y\leq y),\quad\mbox{for }(x,y)\in\R^{2}.\]
 The bivariate joint CDF is not quite as tractable as the univariate
 CDFs, but in principle we could calculate it by adding up quantities
-of the form BLANK. The joint CDF is typically not used in practice
-due to its inconvenient form; one can usually get by with the joint
-PMF alone.
+of the form in Equation \ref{eq:joint-pmf}. The joint CDF is typically
+not used in practice due to its inconvenient form; one can usually
+get by with the joint PMF alone.
 
 We now introduce some examples of bivariate discrete distributions.
 The first we have seen before, and the second is based on the first.
 \begin{example}
-Roll a fair die twice. Let $X$ be the face shown on the first roll,
-and let $Y$ be the face shown on the second roll. We have already
-seen this example in Chapter \ref{cha:Probability}, Example BLANK.
-For this example, it suffices to define\[
+\label{exa:toss-two-dice-joint-pmf}Roll a fair die twice. Let $X$
+be the face shown on the first roll, and let $Y$ be the face shown
+on the second roll. We have already seen this example in Chapter \ref{cha:Probability},
+Example \ref{exa:Toss-a-six-sided-die-twice}. For this example, it
+suffices to define\[
 f_{X,Y}(x,y)=\frac{1}{36},\quad x=1,\ldots,6,\ y=1,\ldots,6.\]
 The marginal PMFs are given by $f_{X}(x)=1/6$, $x=1,2,\ldots,6$,
 and $f_{Y}(y)=1/6$, $y=1,2,\ldots,6$, since\[
@@ -8714,28 +8727,30 @@ form. We next investigate just such an example.
 
 
 \begin{example}
-Let the random experiment again be to roll a fair die twice, except
-now let us define the random variables $U$ and $V$ by\begin{eqnarray*}
+\label{exa:max-sum-two-dice}Let the random experiment again be to
+roll a fair die twice, except now let us define the random variables
+$U$ and $V$ by\begin{eqnarray*}
 U & = & \mbox{the maximum of the two rolls, and }\\
 V & = & \mbox{the sum of the two rolls.}\end{eqnarray*}
 We see that the support of $U$ is $S_{U}=\left\{ 1,2,\ldots,6\right\} $
 and the support of $V$ is $S_{V}=\left\{ 2,3,\ldots,12\right\} $.
 We may represent the sample space with a matrix, and for each entry
 in the matrix we may calculate the value that $U$ assumes. The result
-is in the left half of Table BLANK. 
+is in the left half of Table \ref{tab:max-and-sum-two-dice}. 
 
 We can use the table to calculate the marginal PMF of $U$, because
-from Example BLANK we know that each entry in the matrix has probability
-$1/36$ associated with it. For instance, there is only one outcome
-in the matrix with $U=1$, namely, the top left corner. This single
-entry has probability $1/36$, therefore, it must be that $f_{U}(1)=\P(U=1)=1/36$.
-Similarly we see that there are three entries in the matrix with $U=2$,
-thus $f_{U}(2)=3/36$. Continuing in this fashion we will find the
-marginal distribution of $U$ may be written\begin{equation}
+from Example \ref{exa:Toss-a-six-sided-die-twice} we know that each
+entry in the matrix has probability $1/36$ associated with it. For
+instance, there is only one outcome in the matrix with $U=1$, namely,
+the top left corner. This single entry has probability $1/36$, therefore,
+it must be that $f_{U}(1)=\P(U=1)=1/36$. Similarly we see that there
+are three entries in the matrix with $U=2$, thus $f_{U}(2)=3/36$.
+Continuing in this fashion we will find the marginal distribution
+of $U$ may be written\begin{equation}
 f_{U}(u)=\frac{2u-1}{36},\quad u=1,\,2,\ldots,6.\end{equation}
 
 
-We may do a similar thing for $V$; see the right half of Table BLANK.
+We may do a similar thing for $V$; see the right half of Table \ref{tab:max-and-sum-two-dice}.
 Collecting all of the probability we will find that the marginal PMF
 of $V$ is\begin{equation}
 f_{V}(v)=\frac{6-|v-7|}{36},\quad v=2,\,3,\ldots,12.\end{equation}
@@ -8771,13 +8786,14 @@ $V$ & 1 & 2 & 3 & 4 & 5 & 6\tabularnewline
 
 }\hfill{}
 
-\caption{Maximum $U$ and sum $V$ of a pair of dice rolls $(X,Y)$}
+\caption{Maximum $U$ and sum $V$ of a pair of dice rolls $(X,Y)$\label{tab:max-and-sum-two-dice}}
 
 \end{table}
 
 
-We may collapse the two matrices from Table BLANK into one, big matrix
-of pairs of values $(u,v)$. The result is shown in Table BLANK. 
+We may collapse the two matrices from Table \ref{tab:max-and-sum-two-dice}
+into one, big matrix of pairs of values $(u,v)$. The result is shown
+in Table \ref{tab:-max-sum-two-dice-joint}. 
 
 %
 \begin{table}
@@ -8794,7 +8810,7 @@ $(U,V)$ & 1 & 2 & 3 & 4 & 5 & 6\tabularnewline
 \end{tabular}
 \par\end{centering}
 
-\caption{Joint values of $U=\max(X,Y)$ and $V=X+Y$}
+\caption{Joint values of $U=\max(X,Y)$ and $V=X+Y$\label{tab:-max-sum-two-dice-joint}}
 
 \end{table}
 
@@ -8805,7 +8821,7 @@ form. Many of the pairs are repeated, but some of them are not: $(1,2)$
 appears twice, but $(2,3)$ appears only once. We can make more sense
 out of this by writing a new table with $U$ on one side and $V$
 along the top. We will accumulate the probability just like we did
-in Example BLANK. See Table BLANK.
+in Example \ref{exa:toss-two-dice-joint-pmf}. See Table \ref{tab:max-sum-joint-pmf}.
 
 %
 \begin{table}
@@ -8826,7 +8842,7 @@ in Example BLANK. See Table BLANK.
 \end{tabular}
 \par\end{centering}
 
-\caption{The joint PMF of $(U,V)$ }
+\caption{The joint PMF of $(U,V)$\label{tab:max-sum-joint-pmf} }
 {\small The outcomes of $U$ are along the left and the outcomes of
 $V$ are along the top. Empty entries in the table have zero probability.
 The row totals (on the right) and column totals (on the bottom) correspond
@@ -8837,10 +8853,10 @@ to the marginal distribution of $U$ and $V$, respectively. }
 The joint support of $(U,V)$ is concentrated along the main diagonal;
 note that the nonzero entries do not form a rectangle. Also notice
 that if we form row and column totals we are doing exactly the same
-thing as Expression BLANK, so that the marginal distribution of $U$
-is the list of totals in the right {}``margin'' of the Table BLANK,
-and the marginal distribution of $V$ is the list of totals in the
-bottom {}``margin''.
+thing as Equation \ref{eq:marginal-pmf}, so that the marginal distribution
+of $U$ is the list of totals in the right {}``margin'' of the Table
+\ref{tab:max-sum-joint-pmf}, and the marginal distribution of $V$
+is the list of totals in the bottom {}``margin''.
 \end{example}
 Continuing the reasoning for the discrete case, given two continuous
 random variables $X$ and $Y$ there similarly exists%
@@ -8864,7 +8880,7 @@ and the marginal PDF of $Y$ may be found with \begin{equation}
 f_{Y}(y)=\int_{S_{X}}f_{X,Y}(x,y)\,\diff x,\quad y\in S_{Y}.\end{equation}
 
 \begin{example}
-Let the joint PDF of $(X,Y)$ be given by\[
+\label{exa:joint-pdf}Let the joint PDF of $(X,Y)$ be given by\[
 f_{X,Y}(x,y)=\frac{6}{5}\left(x+y^{2}\right),\quad0<x<1,\ 0<y<1.\]
 The marginal PDF of $X$ is\begin{eqnarray*}
 f_{X}(x) & = & \int_{0}^{1}\frac{6}{5}\left(x+y^{2}\right)\,\diff y,\\
@@ -8881,9 +8897,9 @@ See Section \ref{sec:Independent-Random-Variables}.
 
 \subsection{How to do it with \textsf{R}}
 
-We will show how to do Example BLANK using \textsf{R}; it is much
-simpler to do it with \textsf{R} than without. First we set up the
-sample space with the \inputencoding{latin9}\lstinline[showstringspaces=false]!rolldie!\inputencoding{utf8}
+We will show how to do Example \ref{exa:max-sum-two-dice} using \textsf{R};
+it is much simpler to do it with \textsf{R} than without. First we
+set up the sample space with the \inputencoding{latin9}\lstinline[showstringspaces=false]!rolldie!\inputencoding{utf8}
 function. Next, we add random variables $U$ and $V$ with the \inputencoding{latin9}\lstinline[showstringspaces=false]!addrv!\inputencoding{utf8}
 function. We take a look at the very top of the data frame (probability
 space) to make sure that everything is operating according to plan.
@@ -8912,15 +8928,16 @@ head(UV)
 @
 
 The data frame is difficult to understand. It would be better to have
-a tabular display like Table BLANK. We can do that with the \inputencoding{latin9}\lstinline[showstringspaces=false]!xtabs!\inputencoding{utf8}
+a tabular display like Table \ref{tab:max-sum-joint-pmf}. We can
+do that with the \inputencoding{latin9}\lstinline[showstringspaces=false]!xtabs!\inputencoding{utf8}
 function. 
 
 <<>>=
 xtabs(round(probs,3) ~ U + V, data = UV)
 @
 
-Compare these values to the ones shown in Table BLANK. We can repeat
-the process with \inputencoding{latin9}\lstinline[showstringspaces=false]!marginal!\inputencoding{utf8}
+Compare these values to the ones shown in Table \ref{tab:max-sum-joint-pmf}.
+We can repeat the process with \inputencoding{latin9}\lstinline[showstringspaces=false]!marginal!\inputencoding{utf8}
 to get the univariate marginal distributions of $U$ and $V$ separately.
 
 <<>>=
@@ -8941,7 +8958,7 @@ colSums(temp)
 
 You should check that the answers that we have obtained exactly match
 the same (somewhat laborious) calculations that we completed in Example
-BLANK.
+\ref{exa:max-sum-two-dice}.
 
 
 \section{Joint and Marginal Expectation\label{sec:Joint-and-Marginal-Expectation}}
@@ -8986,8 +9003,9 @@ facts about the correlation coefficient:
 \item Equality holds above ($\rho_{X,Y}=\pm1$) if and only if $Y$ is a
 linear function of $X$ with probability one.\end{enumerate}
 \begin{example}
-We will compute the covariance for the discrete distribution in Example
-BLANK. The expected value of $U$ is\[
+\label{exa:max-sum-dice-covariance}We will compute the covariance
+for the discrete distribution in Example \ref{exa:max-sum-two-dice}.
+The expected value of $U$ is\[
 \E U=\sum_{u=1}^{6}u\, f_{U}(u)=\sum_{u=1}^{6}u\,\frac{2u-1}{36}=1\left(\frac{1}{36}\right)+2\left(\frac{3}{36}\right)+\cdots+6\left(\frac{11}{36}\right)=\frac{161}{36},\]
 and the expected value of $V$ is\[
 \E V=\sum_{v=2}^{12}v\,\frac{6-|7-v|}{36}=2\left(\frac{1}{36}\right)+3\left(\frac{2}{36}\right)+\cdots+12\left(\frac{1}{36}\right)=7,\]
@@ -9003,7 +9021,7 @@ the correlation coefficient (omitted).
 We will do a continuous example so that you can see how it works.
 \begin{example}
 Let us find the covariance of the variables $(X,Y)$ from Example
-BLANK. The expected value of $X$ is\[
+\ref{exa:joint-pdf}. The expected value of $X$ is\[
 \E X=\int_{0}^{1}x\cdot\frac{6}{5}\left(x+\frac{1}{3}\right)\diff x=\left.\frac{2}{5}x^{3}+\frac{1}{5}x^{2}\right|_{x=0}^{1}=\frac{3}{5},\]
 and the expected value of $Y$ is\[
 \E Y=\int_{0}^{1}y\cdot\frac{6}{5}\left(\frac{1}{2}+y^{2}\right)\diff x=\left.\frac{3}{10}y^{2}+\frac{3}{20}y^{4}\right|_{y=0}^{1}=\frac{9}{20}.\]
@@ -9024,7 +9042,7 @@ package designed for multivariate expectation. This is not a problem,
 though, because it is easy enough to do expectation the long way --
 with column operations. We just need to keep the definition in mind.
 For instance, we may compute the covariance of $(U,V)$ from Example
-BLANK.
+\ref{exa:max-sum-dice-covariance}.
 
 <<>>=
 Eu <- sum(S$U*S$probs)
@@ -9033,7 +9051,7 @@ Euv <- sum(S$U*S$V*S$probs)
 Euv - Eu * Ev
 @
 
-Compare this answer to what we got in Example BLANK.
+Compare this answer to what we got in Example \ref{exa:max-sum-dice-covariance}.
 
 To do the continuous case we could use the computer algebra utilities
 of \inputencoding{latin9}\lstinline[showstringspaces=false]!Yacas!\inputencoding{utf8}
@@ -9124,8 +9142,8 @@ Bayes' Rule states that the relationship between the three is\[
 \pi(\theta|x_{1},x_{2},\ldots,x_{n})\propto\pi(\theta)\, f(x_{1},x_{2},\ldots,x_{n}|\theta),\]
 where the constant of proportionality is $\int\pi(u)\, f(x_{1},x_{2},\ldots,x_{n}|u)\,\diff u$.
 Any good textbook on Bayesian Statistics will explain these notions
-in detail; to the interested reader I recommend Gelman and this other
-Bayesian book BLANK. 
+in detail; to the interested reader I recommend Gelman \cite{Gelman2004}
+or Lee \cite{Lee1997}. 
 \end{rem}
 
 \section{Independent Random Variables\label{sec:Independent-Random-Variables}}
@@ -9150,8 +9168,9 @@ if it happens that \begin{equation}
 f_{X,Y}(x,y)=f_{X}(x)f_{Y}(y)\quad\mbox{for every }x\in S_{X},\ y\in S_{Y},\end{equation}
 then we say that $X$ and $Y$ are independent.
 \begin{example}
-In Example BLANK we considered the random experiment of rolling a
-fair die twice. There we found the joint PMF to be\[
+In Example \ref{exa:toss-two-dice-joint-pmf} we considered the random
+experiment of rolling a fair die twice. There we found the joint PMF
+to be\[
 f_{X,Y}(x,y)=\frac{1}{36},\quad x=1,\ldots,6,\ y=1,\ldots,6,\]
 and we found the marginal PMFs $f_{X}(x)=1/6$, $x=1,2,\ldots,6$,
 and $f_{Y}(y)=1/6$, $y=1,2,\ldots,6$. Therefore in this experiment
@@ -9162,10 +9181,11 @@ f_{X,Y}(x,y)=\frac{1}{36}=\left(\frac{1}{6}\right)\left(\frac{1}{6}\right)=f_{X}
 \end{example}
 
 \begin{example}
-In Example BLANK we considered the same experiment but different random
-variables $U$ and $V$. We can prove that $U$ and $V$ are not independent
-if we can find a single pair $(u,v)$ where the independence equality
-does not hold. There are many such pairs. One of them is $(6,12)$:\[
+In Example \ref{exa:max-sum-two-dice} we considered the same experiment
+but different random variables $U$ and $V$. We can prove that $U$
+and $V$ are not independent if we can find a single pair $(u,v)$
+where the independence equality does not hold. There are many such
+pairs. One of them is $(6,12)$:\[
 f_{U,V}(6,12)=\frac{1}{36}\neq\left(\frac{11}{36}\right)\left(\frac{1}{36}\right)=f_{U}(6)\, f_{V}(12).\]
 
 \end{example}
@@ -9228,16 +9248,16 @@ $v$.
 
 \subsection{Combining Independent Random Variables\label{sub:Combining-Independent-Random}}
 \begin{prop}
-Let $X_{1}$ and $X_{2}$ be independent with respective population
-means $\mu_{1}$ and $\mu_{2}$ and population standard deviations
-$\sigma_{1}$ and $\sigma_{2}$. For given constants $a_{1}$ and
-$a_{2}$, define $Y=a_{1}X_{1}+a_{2}X_{2}$. Then the mean and standard
-deviation of $Y$ are given by the formulas\begin{equation}
+\label{pro:mean-sd-lin-comb-two}Let $X_{1}$ and $X_{2}$ be independent
+with respective population means $\mu_{1}$ and $\mu_{2}$ and population
+standard deviations $\sigma_{1}$ and $\sigma_{2}$. For given constants
+$a_{1}$ and $a_{2}$, define $Y=a_{1}X_{1}+a_{2}X_{2}$. Then the
+mean and standard deviation of $Y$ are given by the formulas\begin{equation}
 \mu_{Y}=a_{1}\mu_{1}+a_{2}\mu_{2},\quad\sigma_{Y}=\left(a_{1}^{2}\sigma_{1}^{2}+a_{2}^{2}\sigma_{2}^{2}\right)^{1/2}.\end{equation}
 
 \end{prop}
 \begin{proof}
-We use Property BLANK of expectation:\[
+We use Proposition \ref{pro:expectation-properties}:\[
 \E Y=\E\left(a_{1}X_{1}+a_{2}X_{2}\right)=a_{1}\E X_{1}+a_{2}\E X_{2}=a_{1}\mu_{1}+a_{2}\mu_{2}.\]
 For the standard deviation, we will find the variance and take the
 square root at the end. And to calculate the variance we will first
@@ -9342,6 +9362,12 @@ where\begin{equation}
 \mu_{Y|x}=\mu_{Y}+\rho\frac{\sigma_{Y}}{\sigma_{X}}\left(x-\mu_{X}\right),\mbox{ and }\sigma_{Y|x}=\sigma_{Y}\sqrt{1-\rho^{2}}.\end{equation}
 
 \end{prop}
+There are a few things to note about Proposition \ref{pro:mvnorm-cond-dist}
+which will be important in Chapter \ref{cha:Simple-Linear-Regression}.
+First, the conditional mean of $Y|x$ is linear in $x$, with slope\begin{equation}
+\rho\,\frac{\sigma_{Y}}{\sigma_{X}}.\label{eq:population-slope-slr}\end{equation}
+Second, the conditional variance of $Y|x$ is independent of $x$. 
+
 
 \subsection{How to do it with \textsf{R}}
 
@@ -9880,8 +9906,8 @@ M_{\Xbar}(t) & = & \E\,\me^{t\Xbar},\\
  & = & \E\,\me^{t(X_{1}+\cdots+X_{n})/n},\\
  & = & \E\,\me^{tX_{1}/n}\me^{tX_{2}/n}\cdots\me^{tX_{n}/n}.\end{eqnarray*}
 And because $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$ are independent,
-Proposition BLANK allows us to distribute the expectation among each
-term in the product, which is\[
+Proposition \ref{pro:indep-implies-prodexpect} allows us to distribute
+the expectation among each term in the product, which is\[
 \E\me^{tX_{1}/n}\,\E\me^{tX_{2}/n}\cdots\E\me^{tX_{n}/n}.\]
 The last step is to recognize that each term in last product above
 is exactly $M(t/n)$.
@@ -10146,7 +10172,7 @@ an $SRS(n_{2})$ from a $\mathsf{norm}(\mathtt{mean}=\mu_{Y},\,\mathtt{sd}=\sigma
 distribution. Suppose that $X_{1}$, $X_{2}$, \ldots{}, $X_{n_{1}}$
 and $Y_{1}$, $Y_{2}$, \ldots{}, $Y_{n_{2}}$ are independent samples.
 Then the quantity \begin{equation}
-\frac{\Xbar-\Ybar-(\mu_{X}-\mu_{Y})}{\sqrt{\left.\sigma_{X}^{2}\right\slash n_{1}+\left.\sigma_{Y}^{2}\right\slash n_{2}}}\end{equation}
+\frac{\Xbar-\Ybar-(\mu_{X}-\mu_{Y})}{\sqrt{\left.\sigma_{X}^{2}\right\slash n_{1}+\left.\sigma_{Y}^{2}\right\slash n_{2}}}\label{eq:diff-indep-sample-means}\end{equation}
 has a $\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$ sampling distribution.
 Equivalently, $\Xbar-\Ybar$ has a $\mathsf{norm}(\mathtt{mean}=\mu_{X}-\mu_{Y},\,\mathtt{sd}=\sqrt{\left.\sigma_{X}^{2}\right\slash n_{1}+\left.\sigma_{Y}^{2}\right\slash n_{2}})$
 sampling distribution. \end{prop}
@@ -10157,11 +10183,11 @@ And since the samples $X_{1}$, $X_{2}$, \ldots{}, $X_{n_{1}}$
 and $Y_{1}$, $Y_{2}$, \ldots{}, $Y_{n_{2}}$ are independent, so
 too are $\Xbar$ and $\Ybar$. The distribution of their difference
 is thus normal as well, and the mean and standard deviation are given
-by Proposition BLANK.\end{proof}
+by Proposition \ref{pro:mean-sd-lin-comb-two}.\end{proof}
 \begin{rem}
 Even if the distribution of one or both of the samples is not normal,
-the quantity in Equation BLANK will be approximately normal provided
-both sample sizes are large. 
+the quantity in Equation \ref{eq:diff-indep-sample-means} will be
+approximately normal provided both sample sizes are large. 
 \end{rem}
 
 \begin{rem}
@@ -10207,7 +10233,8 @@ that is, convergence in distribution.
 \end{rem}
 %
 }. The expressions for the mean and standard deviation follow immediately
-from Proposition BLANK combined with the formulas for the $\mathsf{binom}(\mathtt{size}=1,\,\mathtt{prob}=p)$
+from Proposition \ref{pro:mean-sd-lin-comb-two} combined with the
+formulas for the $\mathsf{binom}(\mathtt{size}=1,\,\mathtt{prob}=p)$
 distribution from Chapter \ref{cha:Discrete-Distributions}.
 \end{proof}
 
@@ -10227,7 +10254,7 @@ has an $\mathsf{f}(\mathtt{df1}=n_{1}-1,\,\mathtt{df2}=n_{2}-1)$
 sampling distribution.
 \end{prop}
 \begin{proof}
-We know from Theorem BLANK that $(n_{1}-1)S_{X}^{2}/\sigma_{X}^{2}$
+We know from Theorem \ref{thm:Xbar-andS} that $(n_{1}-1)S_{X}^{2}/\sigma_{X}^{2}$
 is distributed $\mathsf{chisq}(\mathtt{df}=n_{1}-1)$ and $(n_{2}-1)S_{Y}^{2}/\sigma_{Y}^{2}$
 is distributed $\mathsf{chisq}(\mathtt{df}=n_{2}-1)$. Now write \[
 F=\frac{\sigma_{Y}^{2}S_{X}^{2}}{\sigma_{X}^{2}S_{Y}^{2}}=\frac{\left.(n_{1}-1)S_{Y}^{2}\right\slash (n_{1}-1)}{\left.(n_{2}-1)S_{Y}^{2}\right\slash (n_{2}-1)}\cdot\frac{\left.1\right\slash \sigma_{X}^{2}}{\left.1\right\slash \sigma_{Y}^{2}},\]
@@ -10758,10 +10785,11 @@ $\theta$. If \[
 then the statistic $s(X_{1},X_{2},\ldots,X_{n})$ is said to be an
 \emph{unbiased estimator} of $\theta$. Otherwise, it is \emph{biased}.\end{defn}
 \begin{example}
-Let $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$ be an $SRS(n)$ from a
-$\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$ distribution.
-It can be shown (in Exercise \ref{xca:norm-mu-sig-MLE}) that if $\mbox{\ensuremath{\theta}}=(\mu,\sigma^{2})$
-then the MLE of $\theta$ is\begin{equation}
+\label{exa:normal-MLE-both}Let $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$
+be an $SRS(n)$ from a $\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$
+distribution. It can be shown (in Exercise \ref{xca:norm-mu-sig-MLE})
+that if $\mbox{\ensuremath{\theta}}=(\mu,\sigma^{2})$ then the MLE
+of $\theta$ is\begin{equation}
 \hat{\theta}=(\hat{\mu},\hat{\sigma}^{2}),\end{equation}
  where $\hat{\mu}=\Xbar$ and \begin{equation}
 \hat{\sigma^{2}}=\frac{1}{n}\sum_{i=1}^{n}\left(X_{i}-\Xbar\right)^{2}=\frac{n-1}{n}S^{2}.\end{equation}
@@ -10855,7 +10883,7 @@ data. We will suppose that the weights constitute a random observations
 $X_{1}$, $X_{2}$,\ldots{}, $X_{n}$ that are i.i.d.~$\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$
 which is not unreasonable based on a histogram and other exploratory
 measures. We will find the MLE of $\theta=(\mu,\sigma^{2})$. We claimed
-in Example BLANK that $\hat{\theta}=(\hat{\mu},\hat{\sigma}^{2})$
+in Example \ref{exa:normal-MLE-both} that $\hat{\theta}=(\hat{\mu},\hat{\sigma}^{2})$
 had the form given above. Let us check whether this is plausible numerically.
 The negative log-likelihood function is
 
@@ -11274,9 +11302,10 @@ For instance, $p$ could be:
 \end{itemize}
 We are given an $SRS(n)$ $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$
 distributed $\mathsf{binom}(\mathtt{size}=1,\,\mathtt{prob}=p)$.
-Recall from Section BLANK that the common mean of these variables
-is $\E X=p$ and the variance is $\E(X-p)^{2}=p(1-p)$. If we let
-$Y=\sum X_{i}$, then from Section BLANK we know that $Y\sim\mathsf{binom}(\mathtt{size}=n,\,\mathtt{prob}=p)$
+Recall from Section \ref{sec:The-Binomial-Distribution} that the
+common mean of these variables is $\E X=p$ and the variance is $\E(X-p)^{2}=p(1-p)$.
+If we let $Y=\sum X_{i}$, then from Section \ref{sec:The-Binomial-Distribution}
+we know that $Y\sim\mathsf{binom}(\mathtt{size}=n,\,\mathtt{prob}=p)$
 and that \[
 \Xbar=\frac{Y}{n}\mbox{ has }\E\Xbar=p\mbox{ and }\mathrm{Var}(\Xbar)=\frac{p(1-p)}{n}.\]
 Thus if $n$ is large (here is the CLT) then an approximate $100(1-\alpha)\%$
@@ -12437,7 +12466,7 @@ fanning out of the points or extreme values.
 \section{Estimation\label{sec:SLR-Estimation}}
 
 
-\subsection{Point Estimates of the Parameters}
+\subsection{\label{sub:point-estimate-mle-slr}Point Estimates of the Parameters}
 
 Where is $\mu(x)$? In essence, we would like to {}``fit'' a line
 to the points. But how do we determine a {}``good'' line? Is there
@@ -12472,7 +12501,8 @@ Solving the system of equations \ref{eq:regML-a} and \ref{eq:regML-b}
 \begin{eqnarray}
 n\beta_{0}+\beta_{1}\sum_{i=1}^{n}x_{i} & = & \sum_{i=1}^{n}y_{i}\\
 \beta_{0}\sum_{i=1}^{n}x_{i}+\beta_{1}\sum_{i=1}^{n}x_{i}^{2} & = & \sum_{i=1}^{n}x_{i}y_{i}\end{eqnarray}
-for $\beta_{0}$ and $\beta_{1}$ (in Exercise BLANK) gives \begin{equation}
+for $\beta_{0}$ and $\beta_{1}$ (in Exercise \ref{xca:find-mles-SLR})
+gives \begin{equation}
 \hat{\beta}_{1}=\frac{\sum_{i=1}^{n}x_{i}y_{i}-\left.\left(\sum_{i=1}^{n}x_{i}\right)\left(\sum_{i=1}^{n}y_{i}\right)\right\slash n}{\sum_{i=1}^{n}x_{i}^{2}-\left.\left(\sum_{i=1}^{n}x_{i}\right)^{2}\right\slash n}\label{eq:regline-slope-formula}\end{equation}
 and\begin{equation}
 \hat{\beta}_{0}=\ybar-\hat{\beta}_{1}\xbar.\end{equation}
@@ -12488,11 +12518,12 @@ The formula for $b_{1}$ in Equation \ref{eq:regline-slope-formula}
 gets the job done but does not really make any sense. There are many
 equivalent formulas for $b_{1}$ that are more intuitive, or at the
 least are easier to remember. One of the author's favorites is\begin{equation}
-b_{1}=r\frac{s_{y}}{s_{x}},\end{equation}
+b_{1}=r\frac{s_{y}}{s_{x}},\label{eq:sample-correlation-formula}\end{equation}
 where $r$, $s_{y}$, and $s_{x}$ are the sample correlation coefficient
 and the sample standard deviations of the $Y$ and $x$ data, respectively.
-See Exercise BLANK. Also, notice the similarity between Equation BLANK
-and Equation BLANK.
+See Exercise \ref{xca:show-alternate-slope-formula}. Also, notice
+the similarity between Equation \ref{eq:sample-correlation-formula}
+and Equation \ref{eq:population-slope-slr}.
 \end{rem}
 
 \subsection*{How to do it with \textsf{R}}
@@ -12599,11 +12630,11 @@ gives nonsensical results.
 \subsection{Point Estimates of the Regression Line}
 
 We said at the beginning of the chapter that our goal was to estimate
-$\mu=\E Y$, and the arguments Section BLANK showed how to obtain
-an estimate $\hat{\mu}$ of $\mu$ when the regression assumptions
-hold. Now we will reap the benefits of our work in more ways than
-we previously disclosed. Given a particular value $x_{0}$, there
-are two values we would like to estimate:
+$\mu=\E Y$, and the arguments in Section \ref{sub:point-estimate-mle-slr}
+showed how to obtain an estimate $\hat{\mu}$ of $\mu$ when the regression
+assumptions hold. Now we will reap the benefits of our work in more
+ways than we previously disclosed. Given a particular value $x_{0}$,
+there are two values we would like to estimate:
 \begin{enumerate}
 \item the mean value of $Y$ at $x_{0}$, and
 \item a future value of $Y$ at $x_{0}$.
@@ -13155,7 +13186,7 @@ So why bother to define the $F$ statistic? Why not just square the
 $t$ statistic and be done with it? The answer is that the $F$ statistic
 has a more complicated interpretation and plays a more important role
 in the multiple linear regression model which we will study in Chapter
-. See Section BLANK for details.
+\ref{cha:Multiple-Linear-Regression}. See Section BLANK for details.
 
 
 \subsection{How to do it with \textsf{R}}
@@ -13803,7 +13834,22 @@ show that\[
 
 \end{xca}
 
+\begin{xca}
+\label{xca:find-mles-SLR}Solve the following system of equations
+for $\beta_{1}$ and $\beta_{0}$ to find the MLEs for slope and intercept
+in the simple linear regression model.\begin{eqnarray*}
+n\beta_{0}+\beta_{1}\sum_{i=1}^{n}x_{i} & = & \sum_{i=1}^{n}y_{i}\\
+\beta_{0}\sum_{i=1}^{n}x_{i}+\beta_{1}\sum_{i=1}^{n}x_{i}^{2} & = & \sum_{i=1}^{n}x_{i}y_{i}\end{eqnarray*}
 
+\end{xca}
+
+\begin{xca}
+\label{xca:show-alternate-slope-formula}Show that the formula given
+in Equation \ref{eq:sample-correlation-formula} is equivalent to
+\[
+\hat{\beta}_{1}=\frac{\sum_{i=1}^{n}x_{i}y_{i}-\left.\left(\sum_{i=1}^{n}x_{i}\right)\left(\sum_{i=1}^{n}y_{i}\right)\right\slash n}{\sum_{i=1}^{n}x_{i}^{2}-\left.\left(\sum_{i=1}^{n}x_{i}\right)^{2}\right\slash n}.\]
+
+\end{xca}
 
 \chapter{\label{cha:Multiple-Linear-Regression}Multiple Linear Regression}
 
@@ -13996,7 +14042,7 @@ without some additional work.)
 \section{Estimation and Prediction\label{sec:Estimation-and-Prediction-MLR}}
 
 
-\subsection{Parameter estimates}
+\subsection{Parameter estimates\label{sub:mlr-parameter-estimates}}
 
 We will proceed exactly like we did in Section \ref{sec:SLR-Estimation}.
 We know \begin{equation}
@@ -14024,8 +14070,8 @@ equations''\index{normal equations}\begin{equation}
 In the case that $\mathbf{X}^{\mathrm{T}}\mathbf{X}$ is invertible%
 \footnote{We can find solutions of the normal equations even when $\mathbf{X}^{\mathrm{T}}\mathbf{X}$
 is not of full rank, but the topic falls outside the scope of this
-book. The interested reader can consult an advanced text such as BLANK
-(CR.Rao)%
+book. The interested reader can consult an advanced text such as Rao
+\cite{Rao1999}.%
 }, we may solve the equation for $\upbeta$ to get the maximum likelihood
 estimator of $\upbeta$ which we denote by $\mathbf{b}$:\begin{equation}
 \mathbf{b}=\left(\mathbf{X}^{\mathrm{T}}\mathbf{X}\right)^{-1}\mathbf{X}^{\mathrm{T}}\mathbf{Y}.\label{eq:b-formula-matrix}\end{equation}
@@ -14203,7 +14249,8 @@ is \Sexpr{treesFIT[3]} cubic feet.
 
 The residuals are given by\begin{equation}
 \mathbf{E}=\mathbf{Y}-\hat{\mathbf{Y}}=\mathbf{Y}-\mathbf{H}\mathbf{Y}=(\mathbf{I}-\mathbf{H})\mathbf{Y}.\end{equation}
-Now we can use Proposition BLANK to see that the residuals are distributed\begin{equation}
+Now we can use Theorem \ref{thm:mvnorm-dist-matrix-prod} to see that
+the residuals are distributed\begin{equation}
 \mathbf{E}\sim\mathsf{mvnorm}(\mathtt{mean}=\mathbf{0},\,\mathtt{sigma}=\sigma^{2}(\mathbf{I}-\mathbf{H})),\end{equation}
 since $(\mathbf{I}-\mathbf{H})\mathbf{X}\upbeta=\mathbf{X}\upbeta-\mathbf{X}\upbeta=\mathbf{0}$
 and $(\mathbf{I}-\mathbf{H})\,(\sigma^{2}\mathbf{I})\,(\mathbf{I}-\mathbf{H})^{\mathrm{T}}=\sigma^{2}(\mathbf{I}-\mathbf{H})^{2}=\sigma^{2}(\mathbf{I}-\mathbf{H})$.
@@ -14254,11 +14301,12 @@ of $\mathbf{Y}$, which we assumed to be
 
 \begin{equation}
 \mathbf{Y}\sim\mathsf{mvnorm}\left(\mathtt{mean}=\mathbf{X}\upbeta,\,\mathtt{sigma}=\sigma^{2}\mathbf{I}\right).\end{equation}
-Now recall Proposition BLANK that we said we were going to need eventually
-(the time is now). That proposition guarantees that
+Now recall Theorem \ref{thm:mvnorm-dist-matrix-prod} that we said
+we were going to need eventually (the time is now). That proposition
+guarantees that
 
 \begin{equation}
-\mathbf{b}\sim\mathsf{mvnorm}\left(\mathtt{mean}=\upbeta,\,\mathtt{sigma}=\sigma^{2}\left(\mathbf{X}^{\mathrm{T}}\mathbf{X}\right)^{-1}\right),\end{equation}
+\mathbf{b}\sim\mathsf{mvnorm}\left(\mathtt{mean}=\upbeta,\,\mathtt{sigma}=\sigma^{2}\left(\mathbf{X}^{\mathrm{T}}\mathbf{X}\right)^{-1}\right),\label{eq:distn-b-mlr}\end{equation}
 since\begin{equation}
 \E\mathbf{b}=\left(\mathbf{X}^{\mathrm{T}}\mathbf{X}\right)^{-1}\mathbf{X}^{\mathrm{T}}(\mathbf{X}\upbeta)=\upbeta,\end{equation}
 and\begin{equation}
@@ -14266,10 +14314,11 @@ and\begin{equation}
 the first equality following because the matrix $\left(\mathbf{X}^{\mathrm{T}}\mathbf{X}\right)^{-1}$
 is symmetric.
 
-There is a lot that we can glean from Equation BLANK. First, it follows
-that the estimator $\mathbf{b}$ is unbiased (see Section BLANK).
-Second, the variances of $b_{0}$, $b_{1}$, \ldots{}, $b_{n}$ are
-exactly the diagonal elements of $\sigma^{2}\left(\mathbf{X}^{\mathrm{T}}\mathbf{X}\right)^{-1}$,
+There is a lot that we can glean from Equation \ref{eq:distn-b-mlr}.
+First, it follows that the estimator $\mathbf{b}$ is unbiased (see
+Section \ref{sec:Point-Estimation-1}). Second, the variances of $b_{0}$,
+$b_{1}$, \ldots{}, $b_{n}$ are exactly the diagonal elements of
+$\sigma^{2}\left(\mathbf{X}^{\mathrm{T}}\mathbf{X}\right)^{-1}$,
 which is completely known except for that pesky parameter $\sigma^{2}$.
 Third, we can estimate the standard error of $b_{i}$ (denoted $S_{b_{i}}$)
 with the mean square error $S$ (defined in the previous section)
@@ -14314,9 +14363,9 @@ intervals to gauge their accuracy, and lucky for us the formulas look
 similar to the ones we saw in SLR.
 
 In Equation BLANK we wrote $\hat{Y}(\mathbf{x}_{0})=\mathbf{x}_{0}^{\mathrm{T}}\mathbf{b},$
-and in Equation BLANK we saw that \begin{equation}
+and in Equation \ref{eq:distn-b-mlr} we saw that \begin{equation}
 \mathbf{b}\sim\mathsf{mvnorm}\left(\mathtt{mean}=\upbeta,\,\mathtt{sigma}=\sigma^{2}\left(\mathbf{X}^{\mathrm{T}}\mathbf{X}\right)^{-1}\right),\end{equation}
-The following is therefore immediate from Proposition BLANK:\begin{equation}
+The following is therefore immediate from Theorem \ref{thm:mvnorm-dist-matrix-prod}:\begin{equation}
 \hat{Y}(\mathbf{x}_{0})\sim\mathsf{mvnorm}\left(\mathtt{mean}=\mathbf{x}_{0}^{\mathrm{T}}\upbeta,\,\mathtt{sigma}=\sigma^{2}\mathbf{x}_{0}^{\mathrm{T}}\left(\mathbf{X}^{\mathrm{T}}\mathbf{X}\right)^{-1}\mathbf{x}_{0}\right).\end{equation}
 It should be no surprise that confidence intervals for the mean value
 of a future observation at the location $\mathbf{x}_{0}=\begin{bmatrix}x_{10} & x_{20} & \ldots & x_{p0}\end{bmatrix}^{\mathrm{T}}$
@@ -14415,11 +14464,12 @@ are :\begin{alignat}{1}
 SSTO= & \mathbf{Y}^{\mathrm{T}}\left(\mathbf{I}-\frac{1}{n}\mathbf{J}\right)\mathbf{Y}\end{alignat}
 and\begin{alignat}{1}
 SSR= & \mathbf{Y}^{\mathrm{T}}\left(\mathbf{H}-\frac{1}{n}\mathbf{J}\right)\mathbf{Y}.\end{alignat}
-(The matrix $\mathbf{J}$ is defined in Appendix BLANK.) Immediately
-from Equations BLANK, BLANK, and BLANK we get the \emph{Anova Equality}\begin{equation}
+(The matrix $\mathbf{J}$ is defined in Appendix \ref{sec:Linear-Algebra}.)
+Immediately from Equations BLANK, BLANK, and BLANK we get the \emph{Anova
+Equality}\begin{equation}
 SSTO=SSE+SSR.\end{equation}
-(See Exercise BLANK.) We define the \emph{multiple coefficient of
-determination} by the formula\begin{equation}
+(See Exercise \ref{xca:anova-equality}.) We define the \emph{multiple
+coefficient of determination} by the formula\begin{equation}
 R^{2}=1-\frac{SSE}{SSTO}.\end{equation}
 
 
@@ -14478,7 +14528,7 @@ F=\frac{SSR/p}{SSE/(n-p-1)}.\end{equation}
 When the regression assumptions hold and under $H_{0}$, it can be
 shown that $F\sim\mathsf{f}(\mathtt{df1}=p,\,\mathtt{df2}=n-p-1)$.
 We reject $H_{0}$ when $F$ is large, that is, when the explained
-variation is large relative to the unexplained variation.$ $
+variation is large relative to the unexplained variation.
 
 
 \subsection{How to do it with \textsf{R}}
@@ -15260,7 +15310,8 @@ transformations.
 
 There are a host of methods to address problems like these which are
 studied in advanced regression classes. The interested reader should
-see BLANK or BLANK. 
+see Neter \emph{et al} \cite{Neter1996} or Tabachnick and Fidell
+\cite{Tabachnick2006}. 
 
 It turns out that John Fox has posted an Appendix to his book BLANK
 which discusses some of the methods and issues associated with nonlinear
@@ -15309,7 +15360,7 @@ topic will receive more attention in a later edition.
 \item What to do when data are not normal
 
 \begin{itemize}
-\item Bootstrap (see Section BLANK).
+\item Bootstrap (see Chapter \ref{cha:Resampling-Methods}).
 \end{itemize}
 \end{itemize}
 
@@ -15323,11 +15374,12 @@ AIC=-2\ln L+2(p+1)\]
 
 
 \section{Chapter Exercises}
-\begin{enumerate}
-\item Use Equations BLANK, BLANK, and BLANK to prove the Anova Equality:\[
+\begin{xca}
+\label{xca:anova-equality}Use Equations BLANK, BLANK, and BLANK to
+prove the Anova Equality:\[
 SSTO=SSE+SSR.\]
 
-\end{enumerate}
+\end{xca}
 
 \chapter{Resampling Methods\label{cha:Resampling-Methods}}
 
