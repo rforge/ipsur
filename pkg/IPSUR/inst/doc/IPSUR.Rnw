@@ -2274,8 +2274,8 @@ In between are distributions (called \emph{mesokurtic}) with a rounded
 peak and moderately sized tails. The standard example of a mesokurtic
 distribution is the famous bell-shaped curve, also known as the Gaussian,
 or normal, distribution, and the binomial distribution can be mesokurtic
-for specific choices of $p$. See Sections \ref{sec:The-Binomial-Distribution}
-and \ref{sec:The-Normal-Distribution}.
+for specific choices of $p$. See Sections \ref{sec:binom-dist} and
+\ref{sec:The-Normal-Distribution}.
 
 
 \subsection{Clusters and Gaps\label{sub:Clusters-and-Gaps}}
@@ -5280,7 +5280,7 @@ prob(N, isrep(N, "red", 2))
 @
 
 Note that the exact value is $21/40$; we will learn a quick way to
-compute this in Section \ref{sec:Other-Discrete-Distributions}. What
+compute this in Section \ref{sec:other-discrete-distributions}. What
 is the probability of observing \inputencoding{latin9}\lstinline[showstringspaces=false]!"red"!\inputencoding{utf8},
 then \inputencoding{latin9}\lstinline[showstringspaces=false]!"green"!\inputencoding{utf8},
 then \inputencoding{latin9}\lstinline[showstringspaces=false]!"red"!\inputencoding{utf8}?
@@ -6003,10 +6003,10 @@ of other ones
 \item how to make new discrete random variables from old ones
 \end{itemize}
 
-\section{Discrete Random Variables\label{sec:Discrete-Random-Variables}}
+\section{Discrete Random Variables\label{sec:discrete-random-variables}}
 
 
-\subsection{Probability Mass Functions\label{sub:Probability-Mass-Functions}}
+\subsection{Probability Mass Functions\label{sub:probability-mass-functions}}
 
 Discrete random variables are characterized by their supports which
 take the form \begin{equation}
@@ -6047,7 +6047,7 @@ $f_{X}(x)=\P(X=x)$ & 1/8 & 3/8 & 3/8 & 1/8 & 1\tabularnewline
 
 \end{example}
 
-\subsection{Mean, Variance, and Standard Deviation\label{sub:Mean,-Variance,-and}}
+\subsection{Mean, Variance, and Standard Deviation\label{sub:mean-variance-sd}}
 
 There are numbers associated with PMFs. One important example is the
 mean $\mu$, also known as $\E X$:\begin{equation}
@@ -6156,7 +6156,7 @@ E(X); var(X); sd(X)
 @
 
 
-\section{The Discrete Uniform Distribution\label{sec:The-Discrete-Uniform}}
+\section{The Discrete Uniform Distribution\label{sec:disc-uniform-dist}}
 
 We have seen the basic building blocks of discrete distributions and
 we now study particular models that statisticians often encounter
@@ -6247,7 +6247,7 @@ set} and a window opens.
 The default name for the variable is \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!disunif.sim1!\inputencoding{utf8}.
 
 
-\section{The Binomial Distribution\label{sec:The-Binomial-Distribution}}
+\section{The Binomial Distribution\label{sec:binom-dist}}
 
 The binomial distribution is based on a \emph{Bernoulli trial}, which
 is a random experiment in which there are only two possible outcomes:
@@ -6479,12 +6479,12 @@ Simulate $k$ variates &  & $\mathtt{rbinom(k,size=n,prob=p)}$ &  & $\mathtt{r(X)
 
 
 
-\section{Expectation and Moment Generating Functions\label{sec:Expectation-and-Moment}}
+\section{Expectation and Moment Generating Functions\label{sec:expectation-and-mgfs}}
 
 
-\subsection{The Expectation Operator\label{sub:The-Expectation-Operator}}
+\subsection{The Expectation Operator\label{sub:expectation-operator}}
 
-We next generalize some of the concepts from Section \ref{sub:Mean,-Variance,-and}.
+We next generalize some of the concepts from Section \ref{sub:mean-variance-sd}.
 There we saw that every%
 \footnote{Not every, only those PMFs for which the (potentially infinite) series
 converges.%
@@ -6531,7 +6531,7 @@ Go directly from the definition. For example,\[
 
 \end{proof}
 
-\subsection{Moment Generating Functions\label{sub:Moment-Generating-Functions}}
+\subsection{Moment Generating Functions\label{sub:MGFs}}
 \begin{defn}
 Given a random variable $X$, its \emph{moment generating function}
 (abbreviated MGF) is defined by the formula\begin{equation}
@@ -6618,9 +6618,9 @@ moments} $\mu_{r}$ defined by\begin{equation}
 \begin{example}
 Let $X\sim\mathsf{binom}(\mathtt{size}=n,\,\mathtt{prob}=p)\mbox{ with \ensuremath{M(t)=(q+p\me^{t})^{n}}}$.
 We calculated the mean and variance of a binomial random variable
-in Section \ref{sec:The-Binomial-Distribution} by means of the binomial
-series. But look how quickly we find the mean and variance with the
-moment generating function.
+in Section \ref{sec:binom-dist} by means of the binomial series.
+But look how quickly we find the mean and variance with the moment
+generating function.
 
 \begin{alignat*}{1}
 M'(t)= & n(q+p\me^{t})^{n-1}p\me^{t}\left|_{t=0}\right.,\\
@@ -6682,7 +6682,7 @@ There are even methods for \inputencoding{latin9}\lstinline[showstringspaces=fal
 and \inputencoding{latin9}\lstinline[showstringspaces=false]!kurtosis!\inputencoding{utf8}.
 
 
-\section{The Empirical Distribution\label{sec:The-Empirical-Distribution}}
+\section{The Empirical Distribution\label{sec:empirical-distribution}}
 
 Do an experiment $n$ times and observe $n$ values $x_{1}$, $x_{2}$,
 \ldots{}, $x_{n}$ of a random variable $X$. For simplicity in most
@@ -6788,7 +6788,7 @@ We will explore some of these in later chapters -- see, for instance,
 Chapter \ref{cha:Resampling-Methods}.
 
 
-\section{Other Discrete Distributions\label{sec:Other-Discrete-Distributions}}
+\section{Other Discrete Distributions\label{sec:other-discrete-distributions}}
 
 The binomial and discrete uniform distributions are popular, and rightly
 so; they are simple and form the foundation for many other more complicated
@@ -6798,10 +6798,10 @@ situations for which we need more than what the uniform and binomial
 offer.
 
 
-\subsection{Dependent Bernoulli Trials\label{sec:Non-Bernoulli-Trials}}
+\subsection{Dependent Bernoulli Trials\label{sec:non-bernoulli-trials}}
 
 
-\subsubsection*{The Hypergeometric Distribution\label{sub:Hypergeometric-Distribution}}
+\subsubsection*{The Hypergeometric Distribution\label{sub:hypergeometric-dist}}
 
 Consider an urn with 7 white balls and 5 black balls. Let our random
 experiment be to randomly select 4 balls, without replacement, from
@@ -7232,7 +7232,7 @@ $h$. In the case that $h$ is one-to-one (see Appendix \ref{sec:Differential-and-
 the solution can be found by simple substitution.
 \begin{example}
 Let $X\sim\mathsf{nbinom}(\mathtt{size}=r,\,\mathtt{prob}=p)$. We
-saw in \ref{sec:Other-Discrete-Distributions} that $X$ represents
+saw in \ref{sec:other-discrete-distributions} that $X$ represents
 the number of failures until $r$ successes in a sequence of Bernoulli
 trials. Suppose now that instead we were interested in counting the
 number of trials (successes and failures) until the $r$$^{\text{th}}$
@@ -8253,7 +8253,7 @@ The mean is $\mu=1/\lambda$ and the variance is $\sigma^{2}=1/\lambda^{2}$.
 The exponential distribution is closely related to the Poisson distribution.
 If customers arrive at a store according to a Poisson process with
 rate $\lambda$ and if $Y$ counts the number of customers that arrive
-in the time interval $[0,t)$, then we saw in Section \ref{sec:Other-Discrete-Distributions}
+in the time interval $[0,t)$, then we saw in Section \ref{sec:other-discrete-distributions}
 that $Y\sim\mathsf{pois}(\mathtt{lambda}=\lambda t).$ Now consider
 a different question: let us start our clock at time 0 and stop the
 clock when the first customer arrives. Let $X$ be the length of this
@@ -8305,10 +8305,10 @@ to measure how long it takes until the third customer arrives. If
 $Y$ denotes this random time then $Y\sim\mathsf{gamma}(\mathtt{shape}=3,\,\mathtt{rate}=1/2)$.
 \end{example}
 
-\subsection{The Chi Square, Student's $t$, and Snedecor's $F$ Distributions\label{sub:The-Chi-Square-t-F}}
+\subsection{The Chi square, Student's $t$, and Snedecor's $F$ Distributions\label{sub:The-Chi-Square-t-F}}
 
 
-\subsection*{The Chi Square Distribution\label{sub:The-Chi-Square}}
+\subsection*{The Chi square Distribution\label{sub:The-Chi-Square}}
 
 A random variable $X$ with PDF\begin{equation}
 f_{X}(x)=\frac{1}{\Gamma(p/2)2^{p/2}}x^{p/2-1}\me^{-x/2},\quad x>0,\end{equation}
@@ -8319,14 +8319,30 @@ of freedom}. We write $X\sim\mathsf{chisq}(\mathtt{df}=p)$. The associated
 \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=4]!qchisq!\inputencoding{utf8},
 and \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=4]!rchisq!\inputencoding{utf8},
 which give the PDF, CDF, quantile function, and simulate random variates,
-respectively. See Figure \ref{dchisq}. In an obvious notation we
-may define $\chi_{\alpha}^{2}(p)$ as the number on the $x$-axis
-such that there is exactly $\alpha$ area under the $\mathsf{chisq}(\mathtt{df}=p)$
+respectively. See Figure \ref{fig:chisq-dist-vary-df}. In an obvious
+notation we may define $\chi_{\alpha}^{2}(p)$ as the number on the
+$x$-axis such that there is exactly $\alpha$ area under the $\mathsf{chisq}(\mathtt{df}=p)$
 curve to its right.
+
+The code to produce Figure \ref{fig:chisq-dist-vary-df} is
+
+<<eval = FALSE>>=
+curve(dchisq(x, df = 3), from = 0, to = 20, ylab = "y")
+ind <- c(4, 5, 10, 15)
+for (i in ind) curve(dchisq(x, df = i), 0, 20, add = TRUE)
+@
 
 %
 \begin{figure}
-\caption{Chi-Square densities with various df\label{dchisq}}
+\begin{centering}
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
+curve(dchisq(x, df = 3), from = 0, to = 20, ylab = "y")
+ind <- c(4, 5, 10, 15)
+for (i in ind) curve(dchisq(x, df = i), 0, 20, add = TRUE)
+@
+\par\end{centering}
+
+\caption{Chi square distribution for various degrees of freedom\label{fig:chisq-dist-vary-df}}
 
 \end{figure}
 
@@ -8354,44 +8370,16 @@ A random variable $X$ with PDF
 \begin{equation}
 f_{X}(x)=\frac{\Gamma\left[(r+1)/2\right]}{\sqrt{r\pi}\,\Gamma(r/2)}\left(1+\frac{x^{2}}{r}\right)^{-(r+1)/2},\quad-\infty<x<\infty\end{equation}
 is said to have \emph{Student's} $t$ distribution with $r$ \emph{degrees
-of freedom} ($\mathtt{df}$), and we write $X\sim\mathsf{t}(\mathtt{df}=r)$.
-The associated \textsf{R} functions are \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=4]!dt(x, df)!\inputencoding{utf8},
+of freedom}, and we write $X\sim\mathsf{t}(\mathtt{df}=r)$. The associated
+\textsf{R} functions are \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=4]!dt!\inputencoding{utf8},
 \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=4]!pt!\inputencoding{utf8},
 \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=4]!qt!\inputencoding{utf8},
 and \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=4]!rt!\inputencoding{utf8},
 which give the PDF, CDF, quantile function, and simulate random variates,
-respectively. 
+respectively. See Section \ref{sec:sampling-from-normal-dist}.
 
-Similar to that done for the normal we may define $t_{\alpha}^{(\mathtt{df})}$
-as the number on the $x$-axis such that there is exactly $\alpha$
-area under the $\mathsf{t}(\mathtt{df}=r)$ curve to its right.
-\begin{example}
-We find $t_{0.01}^{(23)}$with the quantile function:
 
-<<>>=
-qt(0.01, df = 23, lower.tail = FALSE)
-@
-
-\end{example}
-\begin{rem}
-We can say the following:
-\begin{enumerate}
-\item The $\mathsf{t}(\mathtt{df}=r)$ distribution looks just like a $\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$
-distribution except with heavier tails.
-\item The $\mathsf{t}(\mathtt{df}=1)$ distribution is also known as a standard
-{}``Cauchy distribution'', which is implemented in \textsf{R} with
-the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!dcauchy!\inputencoding{utf8}
-function and its relatives. The Cauchy distribution is quite pathological
-and is often a counterexample to many famous results. 
-\item The standard deviation of $\mathsf{t}(\mathtt{df}=r)$ is undefined
-(that is, infinite) unless $r>2$. When $r$ is more than 2, the standard
-deviation is always bigger than one, but decreases to 1 as $r\to\infty$.
-\item The $\mathsf{t}(\mathtt{df}=r)$ distribution approaches a $\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$
-distribution as $r\to\infty$. 
-\end{enumerate}
-\end{rem}
-
-\subsection*{Snedecor's $F$ distribution\label{sub:Fisher's-F-distribution}}
+\subsection*{Snedecor's $F$ distribution\label{sub:snedecor-F-distribution}}
 
 A random variable $X$ with p.d.f.
 
@@ -8404,19 +8392,21 @@ associated \textsf{R} functions are \inputencoding{latin9}\lstinline[breaklines=
 \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=4]!qf!\inputencoding{utf8},
 and \inputencoding{latin9}\lstinline[breaklines=true,showstringspaces=false,tabsize=4]!rf!\inputencoding{utf8},
 which give the PDF, CDF, quantile function, and simulate random variates,
-respectively. We define $F_{\alpha}^{(m,n)}$ as the number on the
-$x$-axis such that there is exactly $\alpha$ area under the $\mathsf{f}(\mathtt{df1}=m,\,\mathtt{df2}=n)$
+respectively. We define $F_{\alpha}(m,n)$ as the number on the $x$-axis
+such that there is exactly $\alpha$ area under the $\mathsf{f}(\mathtt{df1}=m,\,\mathtt{df2}=n)$
 curve to its right. 
 \begin{rem}
-Here are some important notes about the $F$ distribution.
+Here are some notes about the $F$ distribution.
 \begin{enumerate}
-\item If $X\sim\mathsf{f}(\mathtt{df1}=m,\,\mathtt{df2}=n)$, then $(1/X)\sim\mathsf{f}(\mathtt{df1}=n,\,\mathtt{df2}=m)$.
-Historically, this fact was especially convenient. In the old days,
-statisticians used printed tables for their statistical calculations.
-Since the $F$ tables were symmetric in $m$ and $n$, it meant that
-publishers could cut the size of their printed tables in half. It
-plays less of a role today, now that personal computers are widespread.
+\item If $X\sim\mathsf{f}(\mathtt{df1}=m,\,\mathtt{df2}=n)$ and $Y=1/X$,
+then $Y\sim\mathsf{f}(\mathtt{df1}=n,\,\mathtt{df2}=m)$. Historically,
+this fact was especially convenient. In the old days, statisticians
+used printed tables for their statistical calculations. Since the
+$F$ tables were symmetric in $m$ and $n$, it meant that publishers
+could cut the size of their printed tables in half. It plays less
+of a role today now that personal computers are widespread.
 \item If $X\sim\mathsf{t}(\mathtt{df}=r)$, then $X^{2}\sim\mathsf{f}(\mathtt{df1}=1,\,\mathtt{df2}=r)$.
+We will see this again in Section \ref{sub:slr-overall-F-statistic}.
 \end{enumerate}
 \end{rem}
 
@@ -9800,7 +9790,7 @@ ProbTable <- xtabs(probs ~ X1 + X2, data = S)
 round(ProbTable, 3)
 @
 
-Do some examples of \inputencoding{latin9}\lstinline[showstringspaces=false]!rmultinom!\inputencoding{utf8}
+Do some examples of \inputencoding{latin9}\lstinline[showstringspaces=false]!rmultinom!\inputencoding{utf8}.
 
 Here is another way to do it%
 \footnote{Another way to do the plot is with the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!scatterplot3d!\inputencoding{utf8}
@@ -9931,10 +9921,10 @@ is crazy
 as bias and variance
 \end{itemize}
 
-\section{Simple Random Samples\label{sec:Simple-Random-Samples}}
+\section{Simple Random Samples\label{sec:simple-random-samples}}
 
 
-\subsection{Simple Random Samples\label{sub:Simple-Random-Samples}}
+\subsection{Simple Random Samples\label{sub:simple-random-samples}}
 \begin{defn}
 If $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$ are independent with $X_{i}\sim f$
 for $i=1,2,\ldots,n$, then we say that $X_{1}$, $X_{2}$, \ldots{},
@@ -9954,7 +9944,7 @@ Plug in $a_{1}=a_{2}=\cdots=a_{n}=1/n$ in Proposition \ref{pro:mean-sd-lin-comb}
 
 
 The next fact will be useful to us when it comes time to prove the
-Central Limit Theorem in Section \ref{sec:The-Central-Limit}.
+Central Limit Theorem in Section \ref{sec:Central-Limit-Theorem}.
 \begin{prop}
 \label{pro:mgf-xbar}Let $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$ be
 a $SRS(n)$ from a population distribution with MGF $M(t)$. Then
@@ -9977,10 +9967,10 @@ is exactly $M(t/n)$.
 
 
 
-\section{Sampling from a Normal Distribution\label{sec:Sampling-from-Normal}}
+\section{Sampling from a Normal Distribution\label{sec:sampling-from-normal-dist}}
 
 
-\subsection{The Distribution of the Sample Mean\label{sub:Samp-Mean-Dist}}
+\subsection{The Distribution of the Sample Mean\label{sub:samp-mean-dist-of}}
 \begin{prop}
 Let $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$ be a $SRS(n)$ from a
 $\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$ distribution.
@@ -10044,7 +10034,7 @@ so that\begin{equation}
 T=\frac{Z}{\sqrt{V/r}},\end{equation}
 where $r=n-1$.
 
-We know from Section \ref{sub:Samp-Mean-Dist} that $Z\sim\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$
+We know from Section \ref{sub:samp-mean-dist-of} that $Z\sim\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$
 and we know from Section \ref{sub:Samp-Var-Dist} that $V\sim\mathsf{chisq}(\mathtt{df}=n-1)$.
 Further, since we are sampling from a normal distribution, Theorem
 \ref{thm:Xbar-andS} gives that $\Xbar$ and $S^{2}$ are independent
@@ -10063,51 +10053,75 @@ derived explicitly using the techniques of Section \ref{sec:Functions-of-Continu
 it takes the form 
 
 \begin{equation}
-f_{X}(x)=\frac{\Gamma[(r+1)/2]}{\sqrt{r\pi}\ \Gamma(r/2)}\left(1+\frac{x^{2}}{r}\right)^{-(r+1)/2},\quad\-\infty<x<\infty\end{equation}
+f_{X}(x)=\frac{\Gamma[(r+1)/2]}{\sqrt{r\pi}\ \Gamma(r/2)}\left(1+\frac{x^{2}}{r}\right)^{-(r+1)/2},\quad-\infty<x<\infty\end{equation}
 
 
-Any random variable $T$ with the preceding PDF is said to have Student's
-$t$ distribution with $r$ \emph{degrees of freedom} ($\mathtt{df}$),
-and we write $T\sim\mathsf{t}(\mathtt{df}=r)$. The shape of the PDF
-is similar to the normal, but the tails are considerably heavier.
-See Figure BLANK. As with the Normal distribution, there are four
-functions in \textsf{R} associated with the $t$ distribution, namely
-\texttt{dt()}, \texttt{pt()}, \texttt{qt()}, and \texttt{rt()}, which
-compute the p.d.f., c.d.f., quantiles, and generate random variates,
-respectively.
+Any random variable $X$ with the preceding PDF is said to have Student's
+$t$ distribution with $r$ \emph{degrees of freedom}, and we write
+$X\sim\mathsf{t}(\mathtt{df}=r)$. The shape of the PDF is similar
+to the normal, but the tails are considerably heavier. See Figure
+\ref{fig:Student's-t-dist-vary-df}. As with the normal distribution,
+there are four functions in \textsf{R} associated with the $t$ distribution,
+namely \inputencoding{latin9}\lstinline[showstringspaces=false]!dt!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!pt!\inputencoding{utf8},
+\inputencoding{latin9}\lstinline[showstringspaces=false]!qt!\inputencoding{utf8},
+and \inputencoding{latin9}\lstinline[showstringspaces=false]!rt!\inputencoding{utf8},
+which compute the PDF, CDF, quantile function, and generate random
+variates, respectively.
+
+The code to produce Figure \ref{fig:Student's-t-dist-vary-df} is
+
+<<eval = FALSE>>=
+curve(dt(x, df = 30), from = -3, to = 3, lwd = 3, ylab = "y")
+ind <- c(1, 2, 3, 5, 10)
+for (i in ind) curve(dt(x, df = i), -3, 3, add = TRUE)
+@
+
+%
+\begin{figure}
+\begin{centering}
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
+curve(dt(x, df = 30), from = -3, to = 3, lwd = 3, ylab = "y")
+ind <- c(1, 2, 3, 5, 10)
+for (i in ind) curve(dt(x, df = i), -3, 3, add = TRUE)
+@
+\par\end{centering}
+
+\caption{Student's $t$ distribution for various degrees of freedom\label{fig:Student's-t-dist-vary-df}}
+
+\end{figure}
+
 
 Similar to that done for the normal we may define $\mathsf{t}_{\alpha}(\mathtt{df}=n-1)$
 as the number on the $x$-axis such that there is exactly $\alpha$
 area under the $\mathsf{t}(\mathtt{df}=n-1)$ curve to its right.
 \begin{example}
-Find $t_{0.01}^{(23)}$ with the quantile function:
+Find $\mathsf{t}{}_{0.01}(\mathtt{df}=23)$ with the quantile function.
 \end{example}
-\texttt{\textcolor{red}{> qt(0.01, df=23, lower.tail=FALSE)}}\texttt{}~\\
-\texttt{\textcolor{blue}{{[}1{]} 2.499867}}
-
-Notice the \texttt{df} parameter.
+<<>>=
+qt(0.01, df = 23, lower.tail = FALSE)
+@
 \begin{rem}
 There are a few things to note about the $\mathtt{t}(\mathtt{df}=r)$
 distribution.
 \begin{enumerate}
-\item It looks a lot like a $\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$
-distribution, except with heavier tails.
-\item When $r=1$, the $\mathtt{t}(\mathtt{df}=r)$ distribution is the
-same as the $\mathtt{cauchy}(\mathtt{location}=0,\,\mathtt{scale}=1)$
-distribution.
-\item The standard deviation -- if it exists -- is always bigger than one,
-but decreases to one as $r\to\infty$.
+\item The $\mathtt{t}(\mathtt{df}=1)$ distribution is the same as the $\mathsf{cauchy}(\mathtt{location}=0,\,\mathtt{scale}=1)$
+distribution. The Cauchy distribution is rather pathological and is
+a counterexample to many famous results. 
+\item The standard deviation of $\mathsf{t}(\mathtt{df}=r)$ is undefined
+(that is, infinite) unless $r>2$. When $r$ is more than 2, the standard
+deviation is always bigger than one, but decreases to 1 as $r\to\infty$.
 \item As $r\to\infty$, the $\mathtt{t}(\mathtt{df}=r)$ distribution approaches
-the $\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$ distribution. 
+the $\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$ distribution.
 \end{enumerate}
 \end{rem}
 
-\section{The Central Limit Theorem\label{sec:The-Central-Limit}}
+\section{The Central Limit Theorem\label{sec:Central-Limit-Theorem}}
 
 In this section we study the distribution of the sample mean when
 the underlying distribution is \emph{not} normal. We saw in Section
-\ref{sec:Sampling-from-Normal} that when $X_{1}$, $X_{2}$, \ldots{},
-$X_{n}$ is a $SRS(n)$ from a $\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$
+\ref{sec:sampling-from-normal-dist} that when $X_{1}$, $X_{2}$,
+\ldots{}, $X_{n}$ is a $SRS(n)$ from a $\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma)$
 distribution then $\Xbar\sim\mathsf{norm}(\mathtt{mean}=\mu,\,\mathtt{sd}=\sigma/\sqrt{n})$.
 In other words, we may say (owing to Fact \ref{fac:lin-trans-norm-is-norm})
 when the underlying population is normal that the sampling distribution
@@ -10129,7 +10143,7 @@ approaches a $\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$ distribution
 as $n\to\infty$. \end{thm}
 \begin{rem}
 We suppose that $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$ are i.i.d.,
-and we learned in Section \ref{sub:Simple-Random-Samples} that $\Xbar$
+and we learned in Section \ref{sub:simple-random-samples} that $\Xbar$
 has mean $\mu$ and standard deviation $\sigma/\sqrt{n}$, so we already
 knew that $Z$ has mean 0 and standard deviation 1. The beauty of
 the CLT is that it addresses the \emph{shape} of $Z$'s distribution
@@ -10141,7 +10155,7 @@ Notice that the shape of the underlying population's distribution
 is not mentioned in Theorem \ref{thm:central-limit-thrm}; indeed,
 the result is true for any population that is well-behaved enough
 to have a finite standard deviation. In particular, if the population
-is normally distributed then we know from Section \ref{sub:Samp-Mean-Dist}
+is normally distributed then we know from Section \ref{sub:samp-mean-dist-of}
 that the distribution of $\Xbar$ (and $Z$ by extension) is \emph{exactly}
 normal, for \emph{every} $n$.
 \end{rem}
@@ -10614,7 +10628,7 @@ from an urn which has $M=7$ white balls and $N=F-M$ black balls,
 and we have observed $x=3$ of them to be white. What is the probability
 of this?
 
-Looking back to Section \ref{sec:Other-Discrete-Distributions}, we
+Looking back to Section \ref{sec:other-discrete-distributions}, we
 see that the random variable $X$ has a $\mathsf{hyper}(\mathtt{m}=M,\,\mathtt{n}=F-M,\,\mathtt{k}=K)$
 distribution. Therefore, for an observed value $X=x$ the probability
 would be\[
@@ -11294,10 +11308,10 @@ Unfortunately, most of the time the values of $\sigma_{X}$ and $\sigma_{Y}$
 are unknown. This leads us to the following:
 \begin{itemize}
 \item If both sample sizes are large, then we may appeal to the CLT/SLLN
-(see \ref{sec:The-Central-Limit}) and substitute $S_{X}^{2}$ and
-$S_{Y}^{2}$ for $\sigma_{X}^{2}$ and $\sigma_{Y}^{2}$ in the interval
-\ref{eq:two-samp-mean-CI}. The resulting confidence interval will
-have approximately $100(1-\alpha)\%$ confidence.
+(see \ref{sec:Central-Limit-Theorem}) and substitute $S_{X}^{2}$
+and $S_{Y}^{2}$ for $\sigma_{X}^{2}$ and $\sigma_{Y}^{2}$ in the
+interval \ref{eq:two-samp-mean-CI}. The resulting confidence interval
+will have approximately $100(1-\alpha)\%$ confidence.
 \item If one or more of the sample sizes is small then we are in trouble,
 unless
 
@@ -11365,9 +11379,9 @@ For instance, $p$ could be:
 \end{itemize}
 We are given an $SRS(n)$ $X_{1}$, $X_{2}$, \ldots{}, $X_{n}$
 distributed $\mathsf{binom}(\mathtt{size}=1,\,\mathtt{prob}=p)$.
-Recall from Section \ref{sec:The-Binomial-Distribution} that the
-common mean of these variables is $\E X=p$ and the variance is $\E(X-p)^{2}=p(1-p)$.
-If we let $Y=\sum X_{i}$, then from Section \ref{sec:The-Binomial-Distribution}
+Recall from Section \ref{sec:binom-dist} that the common mean of
+these variables is $\E X=p$ and the variance is $\E(X-p)^{2}=p(1-p)$.
+If we let $Y=\sum X_{i}$, then from Section \ref{sec:binom-dist}
 we know that $Y\sim\mathsf{binom}(\mathtt{size}=n,\,\mathtt{prob}=p)$
 and that \[
 \Xbar=\frac{Y}{n}\mbox{ has }\E\Xbar=p\mbox{ and }\mathrm{Var}(\Xbar)=\frac{p(1-p)}{n}.\]
@@ -13235,7 +13249,7 @@ We choose the principal square root because the slope of the regression
 line is positive.
 
 
-\subsection{Overall \emph{F} statistic}
+\subsection{Overall \emph{F} statistic\label{sub:slr-overall-F-statistic}}
 
 There is another way to test the significance of the linear regression
 model. In SLR, the new way also tests the hypothesis $H_{0}:\beta_{1}=0$
@@ -15517,7 +15531,7 @@ make inferences, and go on about our business.
 is, so let us \emph{estimate} it, just like we would with any other
 parameter. The statistic we use is the \emph{empirical CDF}, that
 is, the function that places mass $1/n$ at each of the observed data
-points $x_{1},\ldots,x_{n}$ (see Section \ref{sec:The-Empirical-Distribution}).
+points $x_{1},\ldots,x_{n}$ (see Section \ref{sec:empirical-distribution}).
 As the sample size increases, we would expect the approximation to
 get better and better (with i.i.d.~observations, it does, and there
 is a wonderful theorem by Glivenko and Cantelli that proves it). And
@@ -15594,7 +15608,7 @@ error of the sample mean. We do this in the special case when the
 underlying population is $\mathsf{norm}(\mathtt{mean}=3,\,\mathtt{sd}=1)$. 
 
 Of course, we do not really need a bootstrap distribution here because
-from Section \ref{sec:Sampling-from-Normal} we know that $\Xbar\sim\mathsf{norm}(\mathtt{mean}=3,\,\mathtt{sd}=1/\sqrt{n})$,
+from Section \ref{sec:sampling-from-normal-dist} we know that $\Xbar\sim\mathsf{norm}(\mathtt{mean}=3,\,\mathtt{sd}=1/\sqrt{n})$,
 but we will investigate how the bootstrap performs when we know what
 the answer should be ahead of time.
 
@@ -15652,7 +15666,7 @@ an estimate of how biased the original statistic is, the so-called
 \emph{bootstrap estimate of bias}. Since the estimate is so small
 we would expect our original statistic ($\Xbar$) to have small bias,
 but this is no surprise to us because we already knew from Section
-\ref{sub:Simple-Random-Samples} that $\Xbar$ is an unbiased estimator
+\ref{sub:simple-random-samples} that $\Xbar$ is an unbiased estimator
 of the population mean.
 
 Now back to our original problem, we would like to estimate the standard
@@ -17290,8 +17304,7 @@ Here are the basic steps to typeset a statistical report with OO.o.
 \item Write your report as an \inputencoding{latin9}\lstinline[showstringspaces=false]!.odt!\inputencoding{utf8}
 document in OO.o just as you would any other document. Call this document
 \inputencoding{latin9}\lstinline[showstringspaces=false]!infile.odt!\inputencoding{utf8},
-and make sure that it is saved in your working directory (see Section
-BLANK).
+and make sure that it is saved in your working directory.
 \item At the places you would like to insert \textsf{R} code in the document,
 write the code chunks in the following format:
 
