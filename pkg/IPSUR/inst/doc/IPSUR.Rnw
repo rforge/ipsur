@@ -18474,6 +18474,7 @@ permit their use in free software.
 
 <<echo=FALSE, results=hide, split=FALSE>>= 
 rm(.Random.seed)
+try(dir.create("../../data"), silent = TRUE)
 save.image(file = "../../data/IPSUR.RData")
 Stangle(file="IPSUR.Rnw", output="../IPSUR.R", annotate=TRUE)
 @
