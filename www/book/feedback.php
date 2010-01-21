@@ -47,7 +47,7 @@ I would be happy to hear any (most?) comments, suggestions, problems, questions,
   If you have a question about how to use, install, download, or otherwise operate <span class="name">IPSUR</span>, then write to the <span class="name">IPSUR</span>-help list at <a href="mailto:ipsur-help@lists.r-forge.org">ipsur-help@lists.r-forge.org</a>.  It is a moderated list, which means that you need to register to be able to post messages freely.  If you are not registered then every message  you send will need to be approved in advance (by me) before it will be posted to the list and stored in the archives. Visit <a href="https://lists.r-forge.r-project.org/cgi-bin/mailman/listinfo/ipsur-help">here</a> for registration instructions;  don't worry, it is quick and painless.
 </p>
 <p>
-  Please note that <strong>questions about the exercises</strong> are <strong>intentionally deleted</strong> from the list of appropriate questions.  I <strong>will not</strong> answer questions about the exercises (or other conceptual matters) unless you <em>happen</em> to catch me on a very, <em>very</em> good day.  You should already have your own professor to teach you probability and statistics, and (s)he is the one being paid to do it, not me.
+  Please note that <strong>questions about the exercises</strong> are <strong>intentionally deleted</strong> from the list of appropriate questions.  I <strong>will not</strong> answer questions about the exercises (or other conceptual matters), period.  You should already have your own professor to teach you probability and statistics, and (s)he is the one being paid to do it, not me.
 </p>
 
 <p>
