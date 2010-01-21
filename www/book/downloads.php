@@ -44,22 +44,14 @@ You can get a PDF copy (in color) of the published edition of <span class="name"
 </p>
 
 <p>
-If you would like to print your own copy of the <strong>published</strong> edition of <span class="name">IPSUR</span> then you may want to use the following publication-ready PDF of the book.  It has been typeset in black-and-white to optimize the display of the code and figures. All of the fonts have been embedded so your printer should not have trouble with any of the symbols.
+If you would like to print your own copy of the <strong>published</strong> edition of <span class="name">IPSUR</span> then you may want to use the following publication-ready PDF of the book.  It has been typeset in black-and-white to optimize the code display. All of the fonts have been embedded so your printer should not have trouble with any of the symbols.
 </p>
 
 <p>
 <div align="center">
 	<strong>Publisher Quality PDF from Lulu.com</strong><br />
-	<a href="http://www.lulu.com/product/download/introduction-to-probability-and-statistics-using-r/6272282">IPSUR.pdf</a>
+	<a href="http://www.lulu.com/product/download/introduction-to-probability-and-statistics-using-r/6272282">Download page</a>
 </div>
-</p>
-
-<p>
-You can print your own copy of the <em>development</em> edition of <span class="name">IPSUR</span>, but I do not recommend it for several reasons.  First of all, the electronic copy is in color which does not show up well on black-and-white paper.  Second of all, the electronic copy is optimized for web viewing which means that not all of the fonts are embedded - your printer may not render all of the symbols correctly.  Finally, unless you have a very fancy printer you will be printing only on one side of the page - which wastes paper.
-</p>
-
-<p>
-If you are determined to print your own copy of the <span class="name">IPSUR</span> development edition then I recommend you download the <span style="text-decoration: none">Sweave</span> source, compile your own PDF in black-and-white, and make sure to embed all of the fonts.
 </p>
 
 <p>
@@ -85,6 +77,15 @@ Finally, you can download the LyX source file, <span style="text-decoration: non
 </p>
 
 You will also need the <a href="download/IPSUR.bib">BibTeX</a> file.
+
+<p>
+You are free to print your own copy of the <em>development</em> edition of <span class="name">IPSUR</span>, but I recommend against it for several reasons.  First of all, the electronic copy is in color which does not show up well on black-and-white paper.  Second of all, the electronic copy is optimized for web viewing which means that not all of the fonts are embedded in the PDF - your printer may not render all of the symbols correctly.  Finally, unless you have a very fancy printer you will be printing only on one side of the page - which wastes paper.
+</p>
+
+<p>
+If you would like to print your own copy of the <span class="name">IPSUR</span> development edition then the best approach would be to download the <span style="text-decoration: none">Sweave</span> source, compile your own PDF in black-and-white, and make sure to embed all of the fonts. <a href="download/generateIPSUR">Here</a> is a script that I use to generate <span class="name">IPSUR</span> for publication.
+</p>
+
 <!--END: Page Content-->
 
 <!--BEGIN: Footer-->
