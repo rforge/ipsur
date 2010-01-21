@@ -34,7 +34,7 @@ language=R}
  {hyperref}
 \hypersetup{pdftitle={Introduction to Probability and Statistics Using R},
  pdfauthor={G. Jay Kerns},
- linkcolor=blue,  citecolor=black, urlcolor=blue}
+ linkcolor=blue,  citecolor=blue, urlcolor=blue}
  
 \makeatletter
 
@@ -155,10 +155,15 @@ language=R}
 
 
 %%  Sweave specific commands
-% make the input blue
-\DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl, formatcom=\color{red}}
-% make the output red
+% make the input blue, output red
 \DefineVerbatimEnvironment{Soutput}{Verbatim}{formatcom=\color{blue}}
+\DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl, formatcom=\color{red}}
+% make the output black
+%\DefineVerbatimEnvironment{Soutput}{Verbatim}{formatcom=\color{black}}
+%\DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl, formatcom=\color{black}}
+
+
+
 % get rid of extra Sweave space
 \fvset{listparameters={\setlength{\topsep}{0pt}}}
 \renewenvironment{Schunk}{\vspace{\topsep}}{\vspace{\topsep}}  
@@ -1398,7 +1403,7 @@ email (and the Posting Guide requests this information). See Appendix
 \ref{cha:R-Session-Information} for an example.
 \end{enumerate}
 
-\section{External resources}
+\section{External Resources}
 
 There is a mountain of information on the Internet about \textsf{R}.
 Below are a few of the important ones.
@@ -1424,7 +1429,7 @@ is a search engine based on Google specifically tailored for \textsf{R}
 queries. 
 \end{description}
 
-\section{Other tips}
+\section{Other Tips}
 
 It is unnecessary to retype commands repeatedly, since \textsf{R}
 remembers what you have recently entered on the command line. On the

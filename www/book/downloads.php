@@ -40,7 +40,7 @@ This page has the source code for the released version of <span class="name">IPS
 </p>
 
 <p>
-You can get a PDF copy of the published edition of <span class="name">IPSUR</span> from CRAN, and you can get a PDF of the development edition from R-Forge;  see the the <a href="installation.php">Installation</a> page for details.  Note that the <span style="text-decoration: none">Sweave</span> sources of both of those documents are stored alongside their PDF siblings.
+You can get a PDF copy (in color) of the published edition of <span class="name">IPSUR</span> from CRAN, and you can get a PDF of the development edition from R-Forge;  see the the <a href="installation.php">Installation</a> page for details.  Note that the <span style="text-decoration: none">Sweave</span> sources of both of those documents are stored alongside their PDF siblings.
 </p>
 
 <p>
@@ -55,7 +55,7 @@ If you would like to print your own copy of the <strong>published</strong> editi
 </p>
 
 <p>
-You can try to print your own copy of the <em>development</em> edition of <span class="name">IPSUR</span>, but I do not recommend it for several reasons.  First of all, the electronic copy is in color which does not show up well on black-and-white paper.  Second of all, the electronic copy is optimized for web viewing which means that not all of fonts are embedded - your printer may not render all of the symbols correctly.  Finally, unless you have a very fancy printer you will be printing only on one side of the page - which wastes paper.
+You can print your own copy of the <em>development</em> edition of <span class="name">IPSUR</span>, but I do not recommend it for several reasons.  First of all, the electronic copy is in color which does not show up well on black-and-white paper.  Second of all, the electronic copy is optimized for web viewing which means that not all of the fonts are embedded - your printer may not render all of the symbols correctly.  Finally, unless you have a very fancy printer you will be printing only on one side of the page - which wastes paper.
 </p>
 
 <p>
@@ -84,6 +84,7 @@ Finally, you can download the LyX source file, <span style="text-decoration: non
 </div>
 </p>
 
+You will also need the <a href="download/IPSUR.bib">BibTeX</a> file.
 <!--END: Page Content-->
 
 <!--BEGIN: Footer-->

@@ -63,10 +63,15 @@
 
 
 %%  Sweave specific commands
-% make the input blue
-\DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl, formatcom=\color{red}}
-% make the output red
-\DefineVerbatimEnvironment{Soutput}{Verbatim}{formatcom=\color{blue}}
+% make the input blue, output red
+%\DefineVerbatimEnvironment{Soutput}{Verbatim}{formatcom=\color{blue}}
+%\DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl, formatcom=\color{red}}
+% make the output black
+\DefineVerbatimEnvironment{Soutput}{Verbatim}{formatcom=\color{black}}
+\DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl, formatcom=\color{black}}
+
+
+
 % get rid of extra Sweave space
 \fvset{listparameters={\setlength{\topsep}{0pt}}}
 \renewenvironment{Schunk}{\vspace{\topsep}}{\vspace{\topsep}}  
@@ -116,7 +121,7 @@ theorems-chap
 \pdf_colorlinks true
 \pdf_backref page
 \pdf_pdfusetitle true
-\pdf_quoted_options "linkcolor=blue,  citecolor=black, urlcolor=blue"
+\pdf_quoted_options "linkcolor=black,  citecolor=black, urlcolor=black"
 \papersize a4paper
 \use_geometry true
 \use_amsmath 1
@@ -396,7 +401,7 @@ set.seed(seed)
 \begin_inset Newline newline
 \end_inset
 
-options(width = 70)
+options(width = 75)
 \begin_inset Newline newline
 \end_inset
 
@@ -1131,6 +1136,31 @@ Permission is granted to copy, distribute and/or modify this document under
  no Front-Cover Texts, and no Back-Cover Texts.
  A copy of the license is included in the section entitled ``GNU Free Documentat
 ion License''.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Timestamp: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
  
 \begin_inset VSpace vfill
 \end_inset
@@ -1238,8 +1268,8 @@ descriptive statistics
 probability
 \emph default
 , which begins at the basics of sets and the equally likely model, journeys
- past discrete/continuous random variables and continues through to multivariate
- distributions.
+ past discrete/continuous random variables, and continues through to multivariat
+e distributions.
  The chapter on sampling distributions paves the way to the third part,
  which is 
 \emph on
@@ -1259,7 +1289,7 @@ I usually only have time in one semester to cover a small subset of this
 s Distributions.
  I mention selected facts from Multivariate Distributions in passing, and
  discuss the meaty parts of Sampling Distributions before moving right along
- to Estimation (which is another one I dwell on considerably).
+ to Estimation (which is another chapter I dwell on considerably).
  Hypothesis Testing goes faster after all of the previous work, and by that
  time the end of the semester is in sight.
  I normally choose one or two final chapters (sometimes three) from the
@@ -1273,7 +1303,7 @@ In an attempt to be correct I have included material in this book which
  For instance, I normally do not highlight the intricacies of measure theory
  or integrability conditions when speaking to the class.
  Moreover, I often stray from the matrix approach to multiple linear regression
- bacause many of my students have not yet been formally trained in linear
+ because many of my students have not yet been formally trained in linear
  algebra.
  That being said, it is important to me for the students to hold something
  in their hands which acknowledges the world of mathematics and statistics
@@ -1283,10 +1313,10 @@ In an attempt to be correct I have included material in this book which
 \end_layout
 
 \begin_layout Standard
-This document's ultimate goal is to be a more or less self contained, essentiall
-y complete, correct, introductory textbook.
+The vision for this document is a more or less self contained, essentially
+ complete, correct, introductory textbook.
  There should be plenty of exercises for the student, with full solutions
- for some and no solutions for others (so that the instructor may assign
+ for some, and no solutions for others (so that the instructor may assign
  them for grading).
  By 
 \begin_inset listings
@@ -1477,7 +1507,7 @@ R
 \end_inset
 
 .
- The people at the party are probability and statistics; the handshake is
+ The people at the party are Probability and Statistics; the handshake is
  
 \family sans
 R
@@ -1500,8 +1530,8 @@ R
 
 \begin_layout Standard
 Despite any misgivings: here it is, warts and all.
- I humbly invite said individuals to take this book, with the GNU-FDL in
- hand, and make it better.
+ I humbly invite said individuals to take this book, with the GNU Free Documenta
+tion License (GNU-FDL) in hand, and make it better.
  In that spirit there are at least a few ways in my view in which this book
  could be improved.
 \end_layout
@@ -1511,7 +1541,8 @@ Better
 \begin_inset space ~
 \end_inset
 
-data: the data analyzed in this book are almost entirely from the 
+data.
+ The data analyzed in this book are almost entirely from the 
 \begin_inset listings
 lstparams "showstringspaces=false"
 inline true
@@ -1528,7 +1559,7 @@ datasets
 \family sans
 R
 \family default
-, and here is why: 
+, and here is why:
 \end_layout
 
 \begin_deeper
@@ -1552,7 +1583,7 @@ real
 \begin_layout Standard
 I made no attempt to choose data sets that would be interesting to the students;
  rather, data were chosen for their potential to convey a statistical point.
- Many of the datasets are decades old or more (for instance, the data used
+ Many of the data sets are decades old or more (for instance, the data used
  to introduce simple linear regression are the speeds and stopping distances
  of cars in the 1920's).
 \end_layout
@@ -1578,10 +1609,11 @@ More
 \begin_inset space ~
 \end_inset
 
-proofs: for the sake of completeness (I understand that some people would
- not consider more proofs to be improvement).
- Many proofs have been skipped entirely, and am not aware of any rhyme or
- reason to the current omissions.
+proofs.
+ I would like to include more proofs for the sake of completeness (I understand
+ that some people would not consider more proofs to be improvement).
+ Many proofs have been skipped entirely, and I am not aware of any rhyme
+ or reason to the current omissions.
  I will add more when I get a chance.
  
 \end_layout
@@ -1775,7 +1807,7 @@ emph{raison d'
 .
  There are transparent copies (nonproprietary text files) and opaque copies
  (everything else).
- See the GNU Free Documentation License (GNU-FDL) in Appendix 
+ See the GNU-FDL in Appendix 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cha:GNU-Free-Documentation"
@@ -2758,7 +2790,7 @@ Probability
 \end_layout
 
 \begin_layout Standard
-The common folklore is that probability has been around for millenia but
+The common folklore is that probability has been around for millennia but
  did not gain the attention of mathematicians until approximately 1654 when
  the Chevalier de Mere had a question regarding the fair division of a game's
  payoff to the two players, if the game had to end prematurely.
@@ -3198,7 +3230,7 @@ install.packages()
 
 
 \color inherit
- will (on most operating systems) open a window contaning a huge list of
+ will (on most operating systems) open a window containing a huge list of
  available packages; simply choose one or more to install.
 \end_layout
 
@@ -3616,7 +3648,7 @@ WinEdt
 \family sans
 R
 \family default
-WinEdt is nevetheless a very fine choice if you already own WinEdt or are
+WinEdt is nevertheless a very fine choice if you already own WinEdt or are
  planning to purchase it in the near future.
 \end_layout
 
@@ -4052,7 +4084,7 @@ Rcmdr
  which is based on GTk instead of Tcl/Tk.
  It has been a while since I used it but I remember liking it very much
  when I did.
- One thing that stood out was that the user could drag-and-drop datasets
+ One thing that stood out was that the user could drag-and-drop data sets
  for plots.
  See here for more information: 
 \begin_inset Flex URL
@@ -4170,6 +4202,13 @@ R
 
 \begin_layout Subsection
 Arithmetic
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Arithmetic"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Scrap
@@ -4395,6 +4434,13 @@ exp
 
 \begin_layout Subsection
 Assignment, Object names, and Data types
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Assignment-Object-names"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5518,6 +5564,13 @@ letters[-(6:24)]
 
 \begin_layout Subsection
 Functions and Expressions
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Functions-and-Expressions"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6794,7 +6847,7 @@ http://cran.r-project.org/faqs.html
 ).
  Note that there are different FAQs for different operating systems.
  You should read these now, even without a question at the moment, to learn
- a lot about the idiosyncracies of 
+ a lot about the idiosyncrasies of 
 \family sans
 R
 \family default
@@ -7049,7 +7102,7 @@ reference "cha:R-Session-Information"
 \end_layout
 
 \begin_layout Section
-External resources
+External Resources
 \end_layout
 
 \begin_layout Standard
@@ -7333,7 +7386,7 @@ R
 \end_layout
 
 \begin_layout Section
-Other tips
+Other Tips
 \end_layout
 
 \begin_layout Standard
@@ -8620,7 +8673,7 @@ stripchart
 \begin_layout Description
 overplot plots ties covering each other.
  This method is good to display only the distinct values assumed by the
- dataset.
+ data set.
 \end_layout
 
 \begin_layout Description
@@ -9914,7 +9967,7 @@ identify
 \emph default
  the observation (such a subject's name, driver's license number, or SSN).
  This type of data does not usually play much of a role in statistics.
- But other qualitiative variables serve to 
+ But other qualitative variables serve to 
 \emph on
 subdivide
 \emph default
@@ -11873,14 +11926,33 @@ name "sub:Center"
 \end_layout
 
 \begin_layout Standard
-One of the most basic features of a dataset is its center.
- Loosely speaking, the center of a dataset is associated with a number that
- represents a middle or general tendency of the data.
+One of the most basic features of a data set is its center.
+ Loosely speaking, the center of a data set is associated with a number
+ that represents a middle or general tendency of the data.
  Of course, there are usually several values that would serve as a center,
  and our later tasks will be focused on choosing an appropriate one for
  the data at hand.
- Judging from the histogram that we saw before, a measure of center would
- be about BLANK.
+ Judging from the histogram that we saw in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:histograms-bins"
+
+\end_inset
+
+, a measure of center would be about 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{round(mean(precip))}
+\end_layout
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -11896,8 +11968,8 @@ name "sub:Spread"
 \end_layout
 
 \begin_layout Standard
-The spread of a dataset is associated with its variability; datasets with
- a large spread tend to cover a large interval of values, while datasets
+The spread of a data set is associated with its variability; data sets with
+ a large spread tend to cover a large interval of values, while data sets
  with small spread tend to cluster tightly around a central value.
  
 \end_layout
@@ -11918,7 +11990,7 @@ When we speak of the
 \emph on
 shape
 \emph default
- of a dataset, we are usually referring to the shape exhibited by an associated
+ of a data set, we are usually referring to the shape exhibited by an associated
  graphical display, such as a histogram.
  The shape can tell us a lot about any underlying structure to the data,
  and can help us decide which statistical procedure we should use to analyze
@@ -12068,7 +12140,7 @@ mesokurtic
  See Sections 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:The-Binomial-Distribution"
+reference "sec:binom-dist"
 
 \end_inset
 
@@ -12226,7 +12298,7 @@ Maybe the value is a typographical error.
 Maybe the observation was not meant for the study
 \series default
 , because it does not belong to the population of interest.
- For example, in medical reasearch some subjects may have relevant complications
+ For example, in medical research some subjects may have relevant complications
  in their genealogical history that would rule out their participation in
  the experiment.
  Or when a manufacturing company investigates the properties of one of its
@@ -12327,7 +12399,7 @@ Bad: sensitive to extreme values
 \end_layout
 
 \begin_layout Standard
-It is appropriate for use with datasets that are not highly skewed without
+It is appropriate for use with data sets that are not highly skewed without
  extreme observations.
 \end_layout
 
@@ -12696,7 +12768,7 @@ status open
 \end_layout
 
 \begin_layout Standard
-Suppose the dataset has 
+Suppose the data set has 
 \begin_inset Formula $n$
 \end_inset
 
@@ -12805,7 +12877,7 @@ etc
 \emph default
 .
  Open a different book, and you'll find a different procedure.
- The difference is small and seldom plays a role except in small datasets
+ The difference is small and seldom plays a role except in small data sets
  with repeated values.
  In fact, most people do not even notice in common use.
 \end_layout
@@ -12902,7 +12974,7 @@ You can calculate the sample quantiles of any order
 \begin_inset Formula $0<p<1$
 \end_inset
 
- for a dataset stored in a data vector 
+ for a data set stored in a data vector 
 \color none
 
 \begin_inset listings
@@ -13285,7 +13357,7 @@ Interquartile Range
 \begin_layout Standard
 Just as the sample mean is sensitive to extreme values, so the associated
  measure of spread is similarly sensitive to extremes.
- Further, the problem is exascerbated by the fact that the extreme distances
+ Further, the problem is exacerbated by the fact that the extreme distances
  are squared.
  We know that the sample quartiles are resistant to extremes, and a measure
  of spread associated with them is the 
@@ -14098,7 +14170,7 @@ name "sec:Exploratory-Data-Analysis"
 \begin_layout Standard
 This field was founded (mostly) by John Tukey (1915-2000).
  Its tools are useful when not much is known regarding the underlying causes
- associated with the dataset, and are often used for checking assumptions.
+ associated with the data set, and are often used for checking assumptions.
  For example, suppose we perform an experiment and collect some data\SpecialChar \ldots{}
  now
  what? We look at the data using exploratory visual tools.
@@ -14623,7 +14695,7 @@ name "sub:Hinges-and-the"
 \end_layout
 
 \begin_layout Standard
-Given a dataset 
+Given a data set 
 \begin_inset Formula $x_{1}$
 \end_inset
 
@@ -14743,7 +14815,7 @@ An advantage of the
 \begin_inset Formula $5NS$
 \end_inset
 
- is that it reduces a potentially large dataset to a shorter list of only
+ is that it reduces a potentially large data set to a shorter list of only
  five numbers, and further, these numbers give insight regarding the shape
  of the data distribution similar to the sample quantiles in Section 
 \begin_inset CommandInset ref
@@ -14987,15 +15059,32 @@ Standardizing variables
 \end_layout
 
 \begin_layout Standard
-It is sometimes useful to compare datasets with each other on a scale that
+It is sometimes useful to compare data sets with each other on a scale that
  is independent of the measurement units.
+ The 
+\color none
+
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+scale
+\end_layout
+
+\end_inset
+
+ function will rescale a numeric vector (or data frame) by subtracting the
+ sample mean from each value (column) and/or 
 \end_layout
 
 \begin_layout Section
 Multivariate Data and Data Frames
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Multivariate-Data"
+name "sec:multivariate-data"
 
 \end_inset
 
@@ -15659,7 +15748,7 @@ Quantile-quantile plots: There are two ways to do this.
  One way is to compare two independent samples (of the same size).
  qqplot(x,y).
  Another way is to compare the sample quantiles of one variable to the theoretic
-al uantiles of another distribution.
+al quantiles of another distribution.
 \end_layout
 
 \begin_layout Standard
@@ -15758,7 +15847,7 @@ name "sub:Lattice-Graphics"
 
 \begin_layout Standard
 The following types of plots are useful when there is one variable of interest
- and there is a factor in the dataset by which the variable is categorized.
+ and there is a factor in the data set by which the variable is categorized.
  
 \end_layout
 
@@ -16262,6 +16351,12 @@ status open
 \end_layout
 
 \begin_layout Exercise
+\begin_inset CommandInset label
+LatexCommand label
+name "xca:summary-RcmdrTestDrive"
+
+\end_inset
+
 Perform a summary of all variables in 
 \color none
 
@@ -17354,8 +17449,7 @@ library(e1071)
 
 \begin_deeper
 \begin_layout Enumerate
-Examine the two measures of center for both variables that you found in
- Exercise BLANK.
+Examine the two measures of center for both variables.
  Judging from these measures, which variable has a higher center?
 \end_layout
 
@@ -17447,7 +17541,14 @@ summary(RcmdrTestDrive)
 
 \end_inset
 
- output from Exercise BLANK.
+ output from Exercise 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "xca:summary-RcmdrTestDrive"
+
+\end_inset
+
+.
  Here we will repeat the relevant summary statistics.
 \end_layout
 
@@ -17576,7 +17677,7 @@ Since
 \emph on
 before
 \emph default
- has a symmetric, mound shaped distribution, an ecellent measure of center
+ has a symmetric, mound shaped distribution, an excellent measure of center
  would be the sample standard deviation.
  And since 
 \emph on
@@ -18117,11 +18218,18 @@ R
 list
 \emph default
  data structure.
- See Section BLANK for details.
+ See Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:howto-ps-objects"
+
+\end_inset
+
+ for details.
 \end_layout
 
 \begin_layout Example
-Consider the random experiment of dropping a styrofoam cup onto the floor
+Consider the random experiment of dropping a Styrofoam cup onto the floor
  from a height of four feet.
  The cup hits the ground and eventually comes to rest.
  It could land upside down, right side up, or it could land on its side.
@@ -18632,6 +18740,13 @@ roulette
 
 \begin_layout Subsection
 Sampling from Urns
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:sampling-from-urns"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -18900,6 +19015,12 @@ replace
 \end_layout
 
 \begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:sample-urn-two-from-three"
+
+\end_inset
+
 Let our urn simply contain three balls, labeled 1, 2, and 3, respectively.
  We are going to take a sample of size 2 from the urn.
  
@@ -19148,7 +19269,7 @@ Liar's Dice
 \emph default
 , for instance.
  Each row of the sample space is a potential pair we could observe.
- Another way is to view each outcome as a separate methodway to distribute
+ Another way is to view each outcome as a separate method to distribute
  two identical golf balls into three boxes labeled 1, 2, and 3.
  Regardless of the interpretation, 
 \color none
@@ -19341,7 +19462,7 @@ replace
 
 \color inherit
  argument.
- We investigate this issue further in Section BLANK.
+ 
 \end_layout
 
 \begin_layout Section
@@ -19455,7 +19576,14 @@ disjoint
 \end_inset
 
  would be mutually exclusive.
- Now would be a good time to review the algebra of sets in Appendix BLANK.
+ Now would be a good time to review the algebra of sets in Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:The-Algebra-of"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -20550,7 +20678,14 @@ ps
 
 \color inherit
 .
- See Section BLANK.
+ See Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:howto-ps-objects"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Note
@@ -20991,6 +21126,10 @@ s of the specific coin being flipped, or of the person doing the flipping.
 The mathematician who revolutionized this way to do probability theory was
  Andrey Kolmogorov, who published a landmark monograph in 1933.
  See 
+\end_layout
+
+\begin_layout Standard
+\align center
 \begin_inset Flex URL
 status collapsed
 
@@ -21001,7 +21140,12 @@ http://www-history.mcs.st-andrews.ac.uk/Mathematicians/Kolmogorov.html
 
 \end_inset
 
- for more information.
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+for more information.
 \end_layout
 
 \begin_layout Subsection
@@ -21103,6 +21247,10 @@ ly, say, the probability that it will rain today, the chances that you get
 This approach was espoused by Richard von Mises in the early twentieth century,
  and some of his main ideas were incorporated into the measure theory approach.
  See 
+\end_layout
+
+\begin_layout Standard
+\align center
 \begin_inset Flex URL
 status collapsed
 
@@ -21113,7 +21261,12 @@ http://www-history.mcs.st-andrews.ac.uk/Biographies/Mises.html
 
 \end_inset
 
- for more.
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+for more.
 \end_layout
 
 \begin_layout Subsection
@@ -21193,6 +21346,10 @@ This approach works well in situations that cannot be repeated indefinitely,
 \begin_layout Standard
 The roots of subjective probability reach back a long time.
  See 
+\end_layout
+
+\begin_layout Standard
+\align center
 \begin_inset Flex URL
 status collapsed
 
@@ -21203,7 +21360,12 @@ http://en.wikipedia.org/wiki/Subjective_probability
 
 \end_inset
 
- for a short discussion and links to references about the subjective approach.
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+for a short discussion and links to references about the subjective approach.
 \end_layout
 
 \begin_layout Subsection
@@ -21212,7 +21374,7 @@ Equally Likely Model (ELM)
 
 \begin_layout Standard
 We have seen several approaches to the assignment of a probability model
- to a given random experiment and they are very different in thier underlying
+ to a given random experiment and they are very different in their underlying
  interpretation.
  But they all cross paths when it comes to the equally likely model which
  assigns equal probability to all elementary outcomes of the experiment.
@@ -21948,6 +22110,7 @@ rolldie(1, makespace = TRUE)
 \end_layout
 
 \begin_layout Standard
+\noindent
 or just 
 \color none
 
@@ -22104,7 +22267,17 @@ probspace
 \end_layout
 
 \begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:unbalanced-coin"
+
+\end_inset
+
+
+\series bold
 An unbalanced coin.
+
+\series default
  While the 
 \color none
 
@@ -22216,10 +22389,13 @@ y space for tossing 100 coins or rolling 50 dice in an attempt to answer
 \end_layout
 
 \begin_layout Standard
-Alas! Even if there were enough RAM to barely hold the sample space (and
+Alas, even if there were enough RAM to barely hold the sample space (and
  there were enough time to wait for it to be generated), the infinitesimal
- probabilities that are associated with SO MANY outcomes make it difficult
- for the underlying machinery to handle reliably.
+ probabilities that are associated with 
+\emph on
+so many
+\emph default
+ outcomes make it difficult for the underlying machinery to handle reliably.
  In some cases, special algorithms need to be called just to give something
  that holds asymptotically.
  User beware.
@@ -22273,6 +22449,13 @@ probability function
 \end_layout
 
 \begin_layout Axiom
+\begin_inset CommandInset label
+LatexCommand label
+name "ax:prob-nonnegative"
+
+\end_inset
+
+
 \begin_inset Formula $\P(A)\geq0$
 \end_inset
 
@@ -22288,6 +22471,13 @@ probability function
 \end_layout
 
 \begin_layout Axiom
+\begin_inset CommandInset label
+LatexCommand label
+name "ax:total-mass-one"
+
+\end_inset
+
+
 \begin_inset Formula $\P(S)=1$
 \end_inset
 
@@ -22299,6 +22489,12 @@ probability function
 \end_layout
 
 \begin_layout Axiom
+\begin_inset CommandInset label
+LatexCommand label
+name "ax:countable-additivity"
+
+\end_inset
+
 If the events 
 \begin_inset Formula $A_{1}$
 \end_inset
@@ -22361,6 +22557,12 @@ For any events
 \end_inset
 
 .
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:prop-prob-complement"
+
+\end_inset
+
  
 \begin_inset Branch proofs
 status open
@@ -22451,8 +22653,14 @@ since
 
 \begin_deeper
 \begin_layout Proof
-The left inequality is immediate from Axiom 1, and the second inequality
- follows from Property 5 since 
+The left inequality is immediate from Axiom 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "ax:prob-nonnegative"
+
+\end_inset
+
+, and the second inequality follows from Property 3 since 
 \begin_inset Formula $A\subset S$
 \end_inset
 
@@ -22469,7 +22677,7 @@ The General Addition Rule.
 \emph default
 
 \begin_inset Formula \begin{equation}
-\P(A\cup B)=\P(A)+\P(B)-\P(A\cap B).\end{equation}
+\P(A\cup B)=\P(A)+\P(B)-\P(A\cap B).\label{eq:general-addition-rule-1}\end{equation}
 
 \end_inset
 
@@ -22529,7 +22737,7 @@ The Theorem of Total Probability.
  be mutually exclusive and exhaustive.
  Then
 \begin_inset Formula \begin{equation}
-\P(A)=\P(A\cap B_{1})+\P(A\cap B_{2})+\cdots+\P(A\cap B_{n}).\end{equation}
+\P(A)=\P(A\cap B_{1})+\P(A\cap B_{2})+\cdots+\P(A\cap B_{n}).\label{eq:theorem-total-probability}\end{equation}
 
 \end_inset
 
@@ -22696,7 +22904,14 @@ What is
 \begin_inset Formula $\left\{ \mbox{no Heads}\right\} =\left\{ \mbox{at least one Head}\right\} ^{c}$
 \end_inset
 
-, which by Property BLANK means 
+, which by Property 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:prop-prob-complement"
+
+\end_inset
+
+ means 
 \begin_inset Formula $\P(\mbox{no Heads})=1-\P(\mbox{at least one Head})=1-3/4=1/4$
 \end_inset
 
@@ -22715,6 +22930,12 @@ s.
 \end_layout
 
 \begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:three-child-family"
+
+\end_inset
+
 Imagine a three child family, each child being either Boy (
 \begin_inset Formula $B$
 \end_inset
@@ -24265,7 +24486,14 @@ urnsamples
 
 
 \color inherit
- examples that we saw in Example BLANK.
+ examples that we saw in Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:sample-urn-two-from-three"
+
+\end_inset
+
+.
  Recall that we took a sample of size two from an urn with three distinguishable
  elements.
 \end_layout
@@ -24400,7 +24628,7 @@ ordered
 There are 11 artists who each submit a portfolio containing 7 paintings
  for competition in an art exhibition.
  Unfortunately, the gallery director only has space in the winners' section
- to accomodate 12 paintings in a row equally spread over three consecutive
+ to accommodate 12 paintings in a row equally spread over three consecutive
  walls.
  The director decides to give the first, second, and third place winners
  each a wall to display the work of their choice.
@@ -24411,31 +24639,109 @@ There are 11 artists who each submit a portfolio containing 7 paintings
 \begin_deeper
 \begin_layout Standard
 Answer: The judges will pick 3 (ranked) winners out of 11 (with 
-\family typewriter
-rep=FALSE
-\family default
+\color none
+
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+rep = FALSE
+\end_layout
+
+\end_inset
+
+
+\color inherit
 , 
-\family typewriter
-ord=TRUE
-\family default
+\color none
+
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+ord = TRUE
+\end_layout
+
+\end_inset
+
+
+\color inherit
 ).
  Each artist will select 4 of his/her paintings from 7 for display in a
  row (
-\family typewriter
-rep=FALSE
-\family default
+\color none
+
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+rep = FALSE
+\end_layout
+
+\end_inset
+
+
+\color inherit
 , 
-\family typewriter
-ord=TRUE
-\family default
+\color none
+
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+ord = TRUE
+\end_layout
+
+\end_inset
+
+
+\color inherit
 ), and lastly, each of the 3 walls has 31 lighting possibilities (
-\family typewriter
-rep=TRUE
-\family default
+\color none
+
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+rep = TRUE
+\end_layout
+
+\end_inset
+
+
+\color inherit
 , 
-\family typewriter
-ord=TRUE
-\family default
+\color none
+
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+ord = TRUE
+\end_layout
+
+\end_inset
+
+
+\color inherit
 ).
  These three numbers can be calculated quickly with 
 \end_layout
@@ -24786,7 +25092,14 @@ Let us next think about the sample space.
 \end_layout
 
 \begin_layout Example
-Now we will use the complementation trick we saw in Example BLANK.
+Now we will use the complementation trick we saw in Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:three-child-family"
+
+\end_inset
+
+.
  We realize that the only situation in which 
 \begin_inset Formula $A$
 \end_inset
@@ -24919,8 +25232,8 @@ g <- Vectorize(pbirthday.ipsur)
 \begin_inset Newline newline
 \end_inset
 
-plot( 1:50, g(1:50), xlab = "Number of people in room", ylab = "Prob(at
- least one match)")
+plot(1:50, g(1:50), xlab = "Number of people in room", ylab = "Prob(at least
+ one match)")
 \begin_inset Newline newline
 \end_inset
 
@@ -24984,19 +25297,30 @@ R
 \end_layout
 
 \begin_layout Standard
+We can make the plot in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:The-Birthday-Problem"
+
+\end_inset
+
+ with the following sequence of commands.
+\end_layout
+
+\begin_layout Standard
 \begin_inset listings
-lstparams "basicstyle={\ttfamily},breaklines=true,frame=leftline,numbers=left,showstringspaces=false,tabsize=2"
+lstparams "basicstyle={\ttfamily},breaklines=true,frame=leftline,showstringspaces=false,tabsize=2"
 inline false
 status open
 
 \begin_layout Plain Layout
 
-	g <- Vectorize(pbirthday)	# vectorize pbirthday function
+	g <- Vectorize(pbirthday.ipsur)
 \end_layout
 
 \begin_layout Verse
 
-	plot( 1:50, g(1:50),
+	plot(1:50, g(1:50),
 \end_layout
 
 \begin_layout Verse
@@ -25244,6 +25568,12 @@ which means that given the information that a Head has occurred, we no longer
 \end_layout
 
 \begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:Toss-a-six-sided-die-twice"
+
+\end_inset
+
 Toss a six-sided die twice.
  The sample space consists of all ordered pairs 
 \begin_inset Formula $(i,j)$
@@ -26072,8 +26402,14 @@ R
 \end_layout
 
 \begin_layout Standard
-Continuing with Example BLANK, the first thing to do is set up the probability
- space with the 
+Continuing with Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:Toss-a-six-sided-die-twice"
+
+\end_inset
+
+, the first thing to do is set up the probability space with the 
 \color none
 
 \begin_inset listings
@@ -26374,7 +26710,7 @@ The Multiplication Rule.
 
 ,
 \begin_inset Formula \begin{equation}
-\P(A\cap B)=\P(A)\P(B|A).\end{equation}
+\P(A\cap B)=\P(A)\P(B|A).\label{eq:multiplication-rule-short}\end{equation}
 
 \end_inset
 
@@ -26397,7 +26733,7 @@ And more generally, for events
 
 ,
 \begin_inset Formula \begin{equation}
-\P(A_{1}\cap A_{2}\cap\cdots\cap A_{n})=\P(A_{1})\P(A_{2}|A_{1})\cdots\P(A_{n}|A_{1}\cap A_{2}\cap\cdots\cap A_{n-1}).\end{equation}
+\P(A_{1}\cap A_{2}\cap\cdots\cap A_{n})=\P(A_{1})\P(A_{2}|A_{1})\cdots\P(A_{n}|A_{1}\cap A_{2}\cap\cdots\cap A_{n-1}).\label{eq:multiplication-rule-long}\end{equation}
 
 \end_inset
 
@@ -26416,8 +26752,15 @@ ties in random experiments that have a sequential structure, as the next
 \end_layout
 
 \begin_layout Example
-In Example BLANK we drew two cards from a standard playing deck.
- Now we may answer, what is 
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:two-cards-both-aces"
+
+\end_inset
+
+At the beginning of the section we drew two cards from a standard playing
+ deck.
+ Now we may answer our original question, what is 
 \begin_inset Formula $\P(\mbox{both Aces})$
 \end_inset
 
@@ -26434,11 +26777,24 @@ In Example BLANK we drew two cards from a standard playing deck.
 How to do it with 
 \family sans
 R
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:howto-ps-objects"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Continuing Example BLANK, we set up the probability space by way of a three
- step process.
+Continuing Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:two-cards-both-aces"
+
+\end_inset
+
+, we set up the probability space by way of a three step process.
  First we employ the 
 \color none
 
@@ -26933,7 +27289,14 @@ prob(N, all(rank == "A"))
 \end_layout
 
 \begin_layout Standard
-Note that this value matches what we found in Example BLANK, above.
+Note that this value matches what we found in Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:two-cards-both-aces"
+
+\end_inset
+
+, above.
  We could calculate all sorts of probabilities at this point; we are limited
  only by the complexity of the event's computer representation.
  
@@ -26944,6 +27307,12 @@ Note that this value matches what we found in Example BLANK, above.
 \end_layout
 
 \begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:urn-7-red-3-green"
+
+\end_inset
+
 Consider an urn with 10 balls inside, 7 of which are red and 3 of which
  are green.
  Select 3 balls successively from the urn.
@@ -26976,7 +27345,21 @@ R
 \end_layout
 
 \begin_layout Standard
-Example BLANK is similar to Example BLANK, but it is even easier.
+Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:urn-7-red-3-green"
+
+\end_inset
+
+ is similar to Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:two-cards-both-aces"
+
+\end_inset
+
+, but it is even easier.
  We need to set up an urn (vector 
 \color none
 
@@ -27316,7 +27699,14 @@ prob(N, isrep(N, "red", 3))
 \end_layout
 
 \begin_layout Standard
-Note that this answer matches what we found in Example BLANK.
+Note that this answer matches what we found in Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:urn-7-red-3-green"
+
+\end_inset
+
+.
  Now let us try some other probability questions.
  What is the probability of getting two 
 \color none
@@ -27356,7 +27746,7 @@ Note that the exact value is
 ; we will learn a quick way to compute this in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Other-Discrete-Distributions"
+reference "sec:other-discrete-distributions"
 
 \end_inset
 
@@ -27657,7 +28047,8 @@ and notice that
 
 \end_deeper
 \begin_layout Standard
-Using the same reasoning, one can return to Example BLANK and show that
+Using the same reasoning, we can return to the example from the beginning
+ of the section and show that
 \begin_inset Formula \[
 \P(\left\{ \mbox{second card is an Ace}\right\} )=4/52.\]
 
@@ -27899,7 +28290,14 @@ Suppose that
 
 \end_inset
 
-To this end, note that the Multiplication Rule BLANK implies 
+To this end, note that the Multiplication Rule, Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:multiplication-rule-short"
+
+\end_inset
+
+ implies 
 \begin_inset Formula \begin{eqnarray*}
 \P(A^{c}\cap B) & = & \P(B)\P(A^{c}|B),\\
  & = & \P(B)[1-\P(A|B)],\\
@@ -27987,7 +28385,14 @@ We can now deduce the pattern for
 \begin_inset Formula $2^{n}-n-1$
 \end_inset
 
- equations that must be satisfied (see Exercise BLANK).
+ equations that must be satisfied (see Exercise 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "xca:numb-cond-indep"
+
+\end_inset
+
+).
  Although these requirements for a set of events to be mutually independent
  may seem stringent, the good news is that for most of the situations considered
  in this book the conditions will all be met (or at least we will suppose
@@ -27995,6 +28400,12 @@ We can now deduce the pattern for
 \end_layout
 
 \begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:toss-ten-coins"
+
+\end_inset
+
 Toss ten coins.
  What is the probability of observing at least one Head? Answer: Let 
 \begin_inset Formula $A_{i}=\left\{ \mbox{the }i^{\text{th}}\mbox{ coin shows }H\right\} ,\ i=1,2,\ldots,10$
@@ -28058,7 +28469,14 @@ A <- subset(S, isrep(S, vals = "T", nrep = 10))
 \end_layout
 
 \begin_layout Standard
-Compare this answer to what we got in Example BLANK.
+Compare this answer to what we got in Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:toss-ten-coins"
+
+\end_inset
+
+.
 \end_layout
 
 \end_deeper
@@ -28174,7 +28592,18 @@ x
 \end_layout
 
 \begin_layout Example
-An unbalanced coin (continued, see Example BLANK).
+
+\series bold
+An unbalanced coin
+\series default
+ (continued, see Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:unbalanced-coin"
+
+\end_inset
+
+).
  It was easy enough to set up the probability space for one unbalanced toss,
  however, the situation becomes more complicated when there are many tosses
  involved.
@@ -28471,8 +28900,14 @@ Now remembering that
 \begin_inset Formula $\left\{ B_{k}\right\} $
 \end_inset
 
- is a partition, the Theorem of Total Probability BLANK gives the denominator
- of the last expression to be
+ is a partition, the Theorem of Total Probability (Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:theorem-total-probability"
+
+\end_inset
+
+) gives the denominator of the last expression to be
 \begin_inset Formula \[
 \P(A)=\sum_{k=1}^{n}\P(B_{k}\cap A)=\sum_{k=1}^{n}\P(B_{k})\P(A|B_{k}).\]
 
@@ -28513,10 +28948,19 @@ update
 
 \begin_layout Example
 
-\emph on
+\series bold
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:misfiling-assistants"
+
+\end_inset
+
 Misfiling Assistants
-\emph default
+\emph on
 .
+
+\series default
+\emph default
  In this problem, there are three assistants working at a company: Moe,
  Larry, and Curly.
  Their primary job duty is to file paperwork in the filing cabinet when
@@ -28997,7 +29441,14 @@ Now let's find the denominator,
  or Larry or Curly must have filed it; there is no one else around to do
  the misfiling.
  Further, these possibilities are mutually exclusive.
- We may use the Theorem of Total Probability BLANK to write
+ We may use the Theorem of Total Probability 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:theorem-total-probability"
+
+\end_inset
+
+ to write
 \begin_inset Formula \[
 \P(A)=\P(A\cap M)+\P(A\cap L)+\P(A\cap C).\]
 
@@ -29152,6 +29603,12 @@ Larry
 \end_layout
 
 \begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:misfiling-assistants-multiple"
+
+\end_inset
+
 Suppose the boss gets a change of heart and does not fire anybody.
  But the next day (s)he randomly selects another file and again finds it
  to be misplaced.
@@ -29200,7 +29657,18 @@ prob
 \end_layout
 
 \begin_layout Example
-Misfiling assistants (continued, see Example BLANK).
+
+\series bold
+Misfiling assistants
+\series default
+ (continued from Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:misfiling-assistants"
+
+\end_inset
+
+).
  We store the prior probabilities and the likelihoods in vectors and go
  to town.
 \end_layout
@@ -29236,7 +29704,14 @@ post / sum(post)
 \end_layout
 
 \begin_layout Standard
-Compare these answers with what we got in Example BLANK.
+Compare these answers with what we got in Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:misfiling-assistants"
+
+\end_inset
+
+.
  We would replace 
 \color none
 
@@ -29403,7 +29878,14 @@ fastpost / sum(fastpost)
 \end_layout
 
 \begin_layout Standard
-Compare this to what we got in Example BLANK.
+Compare this to what we got in Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:misfiling-assistants-multiple"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout --Separator--
@@ -30516,8 +30998,14 @@ rnorm(1)
 \end_layout
 
 \begin_layout Exercise
-Prove the assertion of Example BLANK.
- The number of conditions that the events 
+\begin_inset CommandInset label
+LatexCommand label
+name "xca:numb-cond-indep"
+
+\end_inset
+
+Prove the assertion given in the text: the number of conditions that the
+ events 
 \begin_inset Formula $A_{1}$
 \end_inset
 
@@ -30601,22 +31089,6 @@ conditions to be satisfied, but the binomial series in the expression on
 \end_layout
 
 \begin_layout Scrap
-<<echo = FALSE, results = hide>>=
-\begin_inset Newline newline
-\end_inset
-
-rnorm(1)
-\begin_inset Newline newline
-\end_inset
-
-@
-\end_layout
-
-\begin_layout Exercise
-ddfsdf
-\end_layout
-
-\begin_layout --Separator--
 
 \end_layout
 
@@ -30632,26 +31104,32 @@ name "cha:Discrete-Distributions"
 \end_layout
 
 \begin_layout Standard
-In this chapter we introduce random variables, and in particular, discrete
- random variables.
- We discuss probability mass functions and introduce some special expectations,
- namely, the mean, variance and standard deviation.
- Some of the more importand discrete distributions are discussed in detail,
+In this chapter we introduce discrete random variables, those who take values
+ in a finite or countably infinite support set.
+ We discuss probability mass functions and some special expectations, namely,
+ the mean, variance and standard deviation.
+ Some of the more important discrete distributions are explored in detail,
  and the more general concept of expectation is defined, which paves the
  way for moment generating functions.
 \end_layout
 
 \begin_layout Standard
 We give special attention to the empirical distribution since it plays such
- a fundamental role with respect to resampling and Chapter 
+ a fundamental role with respect to re sampling and Chapter 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cha:Resampling-Methods"
 
 \end_inset
 
-; it will also be needed in Section BLANK where we discuss the Kolmogorov-Smirno
-v test.
+; it will also be needed in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Kolmogorov-Smirnov-Goodness-of-Fit-Test"
+
+\end_inset
+
+ where we discuss the Kolmogorov-Smirnov test.
  Following this is a section in which we introduce a catalogue of discrete
  random variables that can be used to model experiments.
 \end_layout
@@ -30697,7 +31175,7 @@ moment generating functions (yes, I want them to hear about those)
 \end_layout
 
 \begin_layout Itemize
-the general tools of the trade for manipulation of continous random variables,
+the general tools of the trade for manipulation of continuous random variables,
  integration, 
 \emph on
 etc
@@ -30718,7 +31196,7 @@ how to make new discrete random variables from old ones
 Discrete Random Variables
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Discrete-Random-Variables"
+name "sec:discrete-random-variables"
 
 \end_inset
 
@@ -30729,7 +31207,7 @@ name "sec:Discrete-Random-Variables"
 Probability Mass Functions
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Probability-Mass-Functions"
+name "sub:probability-mass-functions"
 
 \end_inset
 
@@ -31026,7 +31504,7 @@ Total
 Mean, Variance, and Standard Deviation
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Mean,-Variance,-and"
+name "sub:mean-variance-sd"
 
 \end_inset
 
@@ -31060,7 +31538,14 @@ provided the (potentially infinite) series
 
 \end_inset
 
-which can be computed (see Exercise BLANK) with the alternate formula 
+which can be computed (see Exercise 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "xca:variance-shortcut"
+
+\end_inset
+
+) with the alternate formula 
 \begin_inset Formula $\sigma^{2}=\E X^{2}-(\E X)^{2}$
 \end_inset
 
@@ -31270,7 +31755,14 @@ name "sub:disc-rv-how-r"
 \begin_layout Standard
 The mean and variance of a discrete random variable is easy to compute at
  the console.
- Let's return to Example BLANK.
+ Let's return to Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:disc-pmf-mean"
+
+\end_inset
+
+.
  We will start by defining a vector 
 \color none
 
@@ -31397,7 +31889,14 @@ R
 \emph on
 element-wise
 \emph default
- (see Section BLANK): 
+ (see Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Functions-and-Expressions"
+
+\end_inset
+
+): 
 \end_layout
 
 \begin_layout Scrap
@@ -31679,7 +32178,7 @@ E(X); var(X); sd(X)
 The Discrete Uniform Distribution
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:The-Discrete-Uniform"
+name "sec:disc-uniform-dist"
 
 \end_inset
 
@@ -31928,7 +32427,7 @@ Examples
 \end_layout
 
 \begin_layout Itemize
-To roll a fair die 3000 times: 
+To roll a fair die 3000 times, do 
 \begin_inset listings
 lstparams "breaklines=true,showstringspaces=false,tabsize=2"
 inline true
@@ -31941,11 +32440,11 @@ sample(6, size = 3000, replace = TRUE)
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Itemize
-To choose 27 random numbers from 30 to 70 : 
+To choose 27 random numbers from 30 to 70, do 
 \begin_inset listings
 lstparams "breaklines=true,showstringspaces=false,tabsize=2"
 inline true
@@ -31958,11 +32457,11 @@ sample(30:70, size = 27, replace = TRUE)
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Itemize
-To flip a fair coin 1000 times: 
+To flip a fair coin 1000 times, do 
 \begin_inset listings
 lstparams "breaklines=true,showstringspaces=false,tabsize=2"
 inline true
@@ -31975,7 +32474,7 @@ sample(c("H","T"), size = 1000, replace = TRUE)
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Paragraph*
@@ -32214,7 +32713,7 @@ disunif.sim1
 The Binomial Distribution
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:The-Binomial-Distribution"
+name "sec:binom-dist"
 
 \end_inset
 
@@ -32383,7 +32882,14 @@ We next find the mean:
 \begin_inset Formula $\E X(X-1)=n(n-1)p^{2}$
 \end_inset
 
- (see Exercise BLANK).
+ (see Exercise 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "xca:binom-factorial-expectation"
+
+\end_inset
+
+).
  Therefore
 \begin_inset Formula \begin{alignat*}{1}
 \sigma^{2}= & \E X(X-1)+\E X-[\E X]^{2},\\
@@ -32639,6 +33145,12 @@ diff(pbinom(c(6,9), size = 12, prob = 1/6))  # same thing
 \end_layout
 
 \begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:toss-coin-3-withR"
+
+\end_inset
+
 Toss a coin three times and let 
 \begin_inset Formula $X$
 \end_inset
@@ -32974,7 +33486,14 @@ name "fig:binom-cdf-base"
 \end_layout
 
 \begin_layout Example
-Another way to do Example BLANK is with the 
+Another way to do Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:toss-coin-3-withR"
+
+\end_inset
+
+ is with the 
 \color none
 
 \begin_inset listings
@@ -33053,7 +33572,7 @@ base
 
 
 \color inherit
- package are specified by capitalizing the name of the distribution: FLAG
+ package are specified by capitalizing the name of the distribution.
 \end_layout
 
 \begin_deeper
@@ -33758,7 +34277,7 @@ distr
 Expectation and Moment Generating Functions
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Expectation-and-Moment"
+name "sec:expectation-and-mgfs"
 
 \end_inset
 
@@ -33769,7 +34288,7 @@ name "sec:Expectation-and-Moment"
 The Expectation Operator
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:The-Expectation-Operator"
+name "sub:expectation-operator"
 
 \end_inset
 
@@ -33780,7 +34299,7 @@ name "sub:The-Expectation-Operator"
 We next generalize some of the concepts from Section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Mean,-Variance,-and"
+reference "sub:mean-variance-sd"
 
 \end_inset
 
@@ -33883,7 +34402,14 @@ In this notation the variance is
 
 \end_inset
 
-in Exercise BLANK.
+in Exercise 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "xca:variance-shortcut"
+
+\end_inset
+
+.
  Intuitively, for repeated observations of 
 \begin_inset Formula $X$
 \end_inset
@@ -33921,7 +34447,13 @@ Let us take the analogy further.
  The following theorem makes this idea precise.
 \end_layout
 
-\begin_layout Theorem
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "pro:expectation-properties"
+
+\end_inset
+
 For any functions 
 \begin_inset Formula $g$
 \end_inset
@@ -33991,7 +34523,7 @@ Go directly from the definition.
 Moment Generating Functions
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Moment-Generating-Functions"
+name "sub:MGFs"
 
 \end_inset
 
@@ -34044,6 +34576,7 @@ We will calculate the MGF for the two distributions introduced above.
 \end_layout
 
 \begin_layout Example
+Find the MGF for 
 \begin_inset Formula $X\sim\mathsf{disunif}(m)$
 \end_inset
 
@@ -34070,6 +34603,7 @@ M(t)=\sum_{x=1}^{m}\me^{tx}\frac{1}{m}=\frac{1}{m}(\me^{t}+\me^{2t}+\cdots+\me^{
 \end_layout
 
 \begin_layout Example
+Find the MGF for 
 \begin_inset Formula $X\sim\mathsf{binom}(\mathtt{size}=n,\,\mathtt{prob}=p)$
 \end_inset
 
@@ -34078,8 +34612,8 @@ M(t)=\sum_{x=1}^{m}\me^{tx}\frac{1}{m}=\frac{1}{m}(\me^{t}+\me^{2t}+\cdots+\me^{
 
 \begin_layout Standard
 \begin_inset Formula \begin{alignat*}{1}
-M_{X}(t)= & \sum_{x=0}^{n}\me^{tx}{n \choose x}p^{x}(1-p)^{n-x},\\
-= & \sum_{x=0}^{n-x}{n \choose x}(p\me^{t})^{x}q^{n-x},\\
+M_{X}(t)= & \sum_{x=0}^{n}\me^{tx}\,{n \choose x}\, p^{x}(1-p)^{n-x},\\
+= & \sum_{x=0}^{n-x}{n \choose x}\,(p\me^{t})^{x}q^{n-x},\\
 = & (p\me^{t}+q)^{n},\quad\mbox{for any \ensuremath{t}.}\end{alignat*}
 
 \end_inset
@@ -34099,6 +34633,12 @@ We will discuss three applications of moment generating functions in this
 \end_layout
 
 \begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:mgf-unique"
+
+\end_inset
+
 The moment generating function, if it exists in a neighborhood of zero,
  determines a probability distribution 
 \emph on
@@ -34111,7 +34651,14 @@ uniquely
 \begin_layout Proof
 Unfortunately, the proof of such a theorem is beyond the scope of a text
  like this one.
- Interested readers could consult BLANK.
+ Interested readers could consult Billingsley 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Billingsley1995"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout --Separator--
@@ -34119,7 +34666,14 @@ Unfortunately, the proof of such a theorem is beyond the scope of a text
 \end_layout
 
 \begin_layout Standard
-We will see an example of Theorem BLANK in action.
+We will see an example of Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:mgf-unique"
+
+\end_inset
+
+ in action.
 \end_layout
 
 \begin_layout Example
@@ -34257,7 +34811,7 @@ Let
  
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:The-Binomial-Distribution"
+reference "sec:binom-dist"
 
 \end_inset
 
@@ -34320,7 +34874,14 @@ where
 \emph on
 radius of convergence
 \emph default
- of the series (see Appendix BLANK).
+ of the series (see Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Sequences-and-Series"
+
+\end_inset
+
+).
  We combine the two to say that if an MGF exists for all 
 \begin_inset Formula $t$
 \end_inset
@@ -34395,7 +34956,7 @@ distr
 
 \end_inset
 
- sense: FLAG
+ sense:
 \end_layout
 
 \begin_layout Scrap
@@ -34433,7 +34994,7 @@ For discrete random variables with finite support, the expectation is simply
 \end_layout
 
 \begin_layout Standard
-There are methods for other population parameters: FLAG
+There are methods for other population parameters:
 \end_layout
 
 \begin_layout Scrap
@@ -34520,7 +35081,7 @@ kurtosis
 The Empirical Distribution
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:The-Empirical-Distribution"
+name "sec:empirical-distribution"
 
 \end_inset
 
@@ -34569,8 +35130,17 @@ empirical cumulative distribution function
 \begin_inset Formula $F_{n}$
 \end_inset
 
- (written ECDF) is the probability distribution that places probability
- mass 
+ (written ECDF)
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+Empirical distribution
+\end_layout
+
+\end_inset
+
+ is the probability distribution that places probability mass 
 \begin_inset Formula $1/n$
 \end_inset
 
@@ -34698,6 +35268,18 @@ status open
 
 \begin_layout Plain Layout
 
+ecdf
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+
+\family typewriter
 ecdf
 \end_layout
 
@@ -34972,6 +35554,18 @@ sample
 \end_inset
 
 
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+
+\family typewriter
+sample
+\end_layout
+
+\end_inset
+
+
 \color inherit
  function.
 \end_layout
@@ -35042,7 +35636,7 @@ reference "cha:Resampling-Methods"
 Other Discrete Distributions
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Other-Discrete-Distributions"
+name "sec:other-discrete-distributions"
 
 \end_inset
 
@@ -35063,7 +35657,7 @@ The binomial and discrete uniform distributions are popular, and rightly
 Dependent Bernoulli Trials
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Non-Bernoulli-Trials"
+name "sec:non-bernoulli-trials"
 
 \end_inset
 
@@ -35074,7 +35668,7 @@ name "sec:Non-Bernoulli-Trials"
 The Hypergeometric Distribution
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Hypergeometric-Distribution"
+name "sub:hypergeometric-dist"
 
 \end_inset
 
@@ -35177,7 +35771,14 @@ The support set for the hypergeometric distribution is a little bit tricky.
 \end_layout
 
 \begin_layout Standard
-It is shown in Exercise BLANK that 
+It is shown in Exercise 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "xca:hyper-mean-variance"
+
+\end_inset
+
+ that 
 \begin_inset Formula \begin{equation}
 \mu=K\frac{M}{M+N},\quad\sigma^{2}=K\frac{MN}{(M+N)^{2}}\frac{M+N-K}{M+N-1}.\end{equation}
 
@@ -36089,9 +36690,23 @@ Again it is clear that
 \begin_inset Formula $\sum f(x)=1$
 \end_inset
 
- (see Equation BLANK in Appendix BLANK):
+ (see Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:geom-series"
+
+\end_inset
+
+ in Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Sequences-and-Series"
+
+\end_inset
+
+):
 \begin_inset Formula \begin{alignat*}{1}
-\sum_{x=0}^{\infty}p(1-p)^{x}= & p\sum_{x=0}^{\infty}q^{x}=p\frac{1}{1-q}=1.\end{alignat*}
+\sum_{x=0}^{\infty}p(1-p)^{x}= & p\sum_{x=0}^{\infty}q^{x}=p\,\frac{1}{1-q}=1.\end{alignat*}
 
 \end_inset
 
@@ -36720,6 +37335,12 @@ occurrences in disjoint subintervals are independent.
 \end_layout
 
 \begin_layout Remark
+\begin_inset CommandInset label
+LatexCommand label
+name "rem:poisson-process"
+
+\end_inset
+
 If 
 \begin_inset Formula $X$
 \end_inset
@@ -36787,8 +37408,14 @@ Suppose the car wash above is in operation from 8AM to 6PM, and we let
 \end_inset
 
  be the number of customers that appear in this period.
- Since this period covers a total of 10 hours, from Remark BLANK we get
- that 
+ Since this period covers a total of 10 hours, from Remark 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "rem:poisson-process"
+
+\end_inset
+
+ we get that 
 \begin_inset Formula $Y\sim\mathsf{pois}(\mathtt{lambda}=5\ast10=50)$
 \end_inset
 
@@ -36803,7 +37430,7 @@ Solution: We want
 \end_inset
 
 .
- See Example BLANK: 
+ 
 \end_layout
 
 \begin_layout Scrap
@@ -36868,8 +37495,14 @@ We have built a large catalogue of discrete distributions, but the tools
 \begin_inset Formula $h$
 \end_inset
 
- is one-to-one (see Appendix BLANK), the solution can be found by simple
- substitution.
+ is one-to-one (see Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Differential-and-Integral"
+
+\end_inset
+
+), the solution can be found by simple substitution.
 \end_layout
 
 \begin_layout Example
@@ -36881,7 +37514,7 @@ Let
  We saw in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Other-Discrete-Distributions"
+reference "sec:other-discrete-distributions"
 
 \end_inset
 
@@ -37592,23 +38225,6 @@ setcounter{thm}{0}
 \end_layout
 
 \begin_layout Enumerate
-Suppose that there are 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-Sexpr{rnorm(1)}
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
 A recent national study showed that approximately 44.7% of college students
  have used Wikipedia as a source in at least one of their term papers.
  Let 
@@ -37861,7 +38477,6 @@ Give the mean of
 \end_inset
 
 .
- FLAG
 \end_layout
 
 \begin_deeper
@@ -37997,7 +38612,7 @@ In a local lottery in which a three digit number is selected randomly, let
 \end_layout
 
 \begin_layout Enumerate
-We drop a styrofoam cup to the floor twenty times, each time recording whether
+We drop a Styrofoam cup to the floor twenty times, each time recording whether
  the cup comes to rest perfectly right side up, or not.
  Let 
 \begin_inset Formula $X$
@@ -38110,6 +38725,12 @@ Find the constant
 \end_layout
 
 \begin_layout Exercise
+\begin_inset CommandInset label
+LatexCommand label
+name "xca:variance-shortcut"
+
+\end_inset
+
 Show that 
 \begin_inset Formula $\E(X-\mu)^{2}=\E X^{2}-\mu^{2}$
 \end_inset
@@ -38127,6 +38748,45 @@ Hint
 \end_layout
 
 \begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Exercise
+\begin_inset CommandInset label
+LatexCommand label
+name "xca:binom-factorial-expectation"
+
+\end_inset
+
+If 
+\begin_inset Formula $X\sim\mathsf{binom}(\mathtt{size}=n,\,\mathtt{prob}=p)$
+\end_inset
+
+ show that 
+\begin_inset Formula $\E X(X-1)=n(n-1)p^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Exercise
+\begin_inset CommandInset label
+LatexCommand label
+name "xca:hyper-mean-variance"
+
+\end_inset
+
+Calculate the mean and variance of the hypergeometric distribution.
+ Show that 
+\begin_inset Formula \begin{equation}
+\mu=K\frac{M}{M+N},\quad\sigma^{2}=K\frac{MN}{(M+N)^{2}}\frac{M+N-K}{M+N-1}.\end{equation}
+
+\end_inset
+
 
 \end_layout
 
@@ -38201,7 +38861,7 @@ basic correspondence between continuous versus discrete random variables
 \end_layout
 
 \begin_layout Itemize
-the general tools of the trade for manipulation of continous random variables,
+the general tools of the trade for manipulation of continuous random variables,
  integration, 
 \emph on
 etc
@@ -38285,7 +38945,7 @@ Not true.
  There are pathological random variables with no density function.
  (This is one of the crazy things that can happen in the world of measure
  theory).
- But in this book we will not get even close to these anomolous beasts,
+ But in this book we will not get even close to these anomalous beasts,
  and regardless it can be proved that the CDF always exists.
 \end_layout
 
@@ -38453,7 +39113,7 @@ reference "cha:Discrete-Distributions"
 \end_inset
 
 .
- While in the discrete case the CDF is unwieldly, in the continuous case
+ While in the discrete case the CDF is unwieldy, in the continuous case
  the CDF has a relatively convenient form:
 \begin_inset Formula \begin{equation}
 F_{X}(t)=\P(X\leq t)=\int_{-\infty}^{t}f_{X}(x)\:\diff x,\quad-\infty<t<\infty.\end{equation}
@@ -39184,7 +39844,7 @@ A random variable
 \begin_inset Formula $X$
 \end_inset
 
- with the continous uniform distribution on the interval 
+ with the continuous uniform distribution on the interval 
 \begin_inset Formula $(a,b)$
 \end_inset
 
@@ -39220,7 +39880,7 @@ R
 F_{X}(t)=\begin{cases}
 0, & t<0,\\
 \frac{t-a}{b-a}, & a\leq t<b,\\
-1, & t\geq b.\end{cases}\end{equation}
+1, & t\geq b.\end{cases}\label{eq:unif-cdf}\end{equation}
 
 \end_inset
 
@@ -39395,11 +40055,11 @@ standard normal
 
 \color inherit
 .
- The lowercase greek letter phi (
+ The lowercase Greek letter phi (
 \begin_inset Formula $\phi$
 \end_inset
 
-) is used to denote the standard normal PDF and the capital greek letter
+) is used to denote the standard normal PDF and the capital Greek letter
  phi 
 \begin_inset Formula $\Phi$
 \end_inset
@@ -39872,9 +40532,9 @@ In the continuous case the graph of
 
 .
  In the discrete case, before reflecting one should: 1) connect the dots
- to get rid of the jumps -- this will make the graph look lik a set of stairs,
- 2) erase the horizontal lines so that only vertical lines remain, and finally
- 3) swap the open circles with the solid dots.
+ to get rid of the jumps -- this will make the graph look like a set of
+ stairs, 2) erase the horizontal lines so that only vertical lines remain,
+ and finally 3) swap the open circles with the solid dots.
  Please see Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -40283,6 +40943,12 @@ f_{U}(u)=f_{X}(x)\left|\frac{\diff x}{\diff u}\right|.\label{eq:univ-trans-pdf-s
 \end_layout
 
 \begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:lnorm-transformation"
+
+\end_inset
+
 Let 
 \color none
 
@@ -40376,6 +41042,12 @@ reference "sec:Other-Continuous-Distributions"
 \end_layout
 
 \begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:lin-trans-norm"
+
+\end_inset
+
 Suppose 
 \begin_inset Formula $X\sim\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$
 \end_inset
@@ -40727,7 +41399,14 @@ Now recalling that the CDF of a
 \begin_inset Formula $F(u)=u$
 \end_inset
 
- (see Equation BLANK), we can say 
+ (see Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:unif-cdf"
+
+\end_inset
+
+), we can say 
 \begin_inset Formula \[
 F_{Y}(y)=1-F_{X}(\me^{-y})=1-\me^{-y},\quad\mbox{for }y>0.\]
 
@@ -40880,6 +41559,12 @@ not
 \end_layout
 
 \begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:distn-of-z-squared"
+
+\end_inset
+
 Let 
 \begin_inset Formula $Z\sim\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$
 \end_inset
@@ -41045,7 +41730,14 @@ distr
 
 \end_inset
 
- package can handle the transformation in Example BLANK quite nicely: FLAG
+ package can handle the transformation in Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:lin-trans-norm"
+
+\end_inset
+
+ quite nicely:
 \end_layout
 
 \begin_layout Scrap
@@ -41152,7 +41844,14 @@ distr
 \end_inset
 
  recognizes.
- Let us try Example BLANK:
+ Let us try Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:lnorm-transformation"
+
+\end_inset
+
+:
 \end_layout
 
 \begin_layout Scrap
@@ -41160,11 +41859,11 @@ distr
 \begin_inset Newline newline
 \end_inset
 
-Z <- exp(X)
+Y <- exp(X)
 \begin_inset Newline newline
 \end_inset
 
-Z
+Y
 \begin_inset Newline newline
 \end_inset
 
@@ -41599,7 +42298,7 @@ The exponential distribution is closely related to the Poisson distribution.
 , then we saw in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Other-Discrete-Distributions"
+reference "sec:other-discrete-distributions"
 
 \end_inset
 
@@ -41669,7 +42368,14 @@ memoryless
 
 \end_inset
 
-See Exercise BLANK.
+See Exercise 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "xca:prove-the-memoryless"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection*
@@ -41836,7 +42542,7 @@ At a car wash, two customers arrive per hour on the average.
 \end_layout
 
 \begin_layout Subsection
-The Chi Square, Student's 
+The Chi square, Student's 
 \begin_inset Formula $t$
 \end_inset
 
@@ -41855,7 +42561,7 @@ name "sub:The-Chi-Square-t-F"
 \end_layout
 
 \begin_layout Subsection*
-The Chi Square Distribution
+The Chi square Distribution
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:The-Chi-Square"
@@ -41955,7 +42661,7 @@ rchisq
  See Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "dchisq"
+reference "fig:chisq-dist-vary-df"
 
 \end_inset
 
@@ -41980,19 +42686,71 @@ reference "dchisq"
 \end_layout
 
 \begin_layout Standard
+The code to produce Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:chisq-dist-vary-df"
+
+\end_inset
+
+ is
+\end_layout
+
+\begin_layout Scrap
+<<eval = FALSE>>=
+\begin_inset Newline newline
+\end_inset
+
+curve(dchisq(x, df = 3), from = 0, to = 20, ylab = "y")
+\begin_inset Newline newline
+\end_inset
+
+ind <- c(4, 5, 10, 15)
+\begin_inset Newline newline
+\end_inset
+
+for (i in ind) curve(dchisq(x, df = i), 0, 20, add = TRUE)
+\begin_inset Newline newline
+\end_inset
+
+@
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
+\begin_layout Scrap
+\align center
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
+\begin_inset Newline newline
+\end_inset
+
+curve(dchisq(x, df = 3), from = 0, to = 20, ylab = "y")
+\begin_inset Newline newline
+\end_inset
+
+ind <- c(4, 5, 10, 15)
+\begin_inset Newline newline
+\end_inset
+
+for (i in ind) curve(dchisq(x, df = i), 0, 20, add = TRUE)
+\begin_inset Newline newline
+\end_inset
+
+@
+\end_layout
+
 \begin_layout Plain Layout
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Chi-Square densities with various df
+Chi square distribution for various degrees of freedom
 \begin_inset CommandInset label
 LatexCommand label
-name "dchisq"
+name "fig:chisq-dist-vary-df"
 
 \end_inset
 
@@ -42024,13 +42782,34 @@ If
 \end_inset
 
 .
- We saw this in Example BLANK, and the fact is important when it comes time
- to find the distribution of the sample variance, 
+ We saw this in Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:distn-of-z-squared"
+
+\end_inset
+
+, and the fact is important when it comes time to find the distribution
+ of the sample variance, 
 \begin_inset Formula $S^{2}$
 \end_inset
 
 .
- See Theorem BLANK in Section BLANK.
+ See Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:Xbar-andS"
+
+\end_inset
+
+ in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Samp-Var-Dist"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Enumerate
@@ -42051,6 +42830,20 @@ The
 \end_inset
 
  distribution.
+\end_layout
+
+\begin_layout Enumerate
+The MGF of 
+\begin_inset Formula $X\sim\mathsf{chisq}(\mathtt{df}=p)$
+\end_inset
+
+ is
+\begin_inset Formula \begin{equation}
+M_{X}(t)=\left(1-2t\right)^{-p},\quad t<1/2.\label{eq:mgf-chisq}\end{equation}
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -42099,11 +42892,7 @@ Student's
 \emph on
 degrees of freedom
 \emph default
- (
-\begin_inset Formula $\mathtt{df}$
-\end_inset
-
-), and we write 
+, and we write 
 \begin_inset Formula $X\sim\mathsf{t}(\mathtt{df}=r)$
 \end_inset
 
@@ -42120,7 +42909,7 @@ status open
 
 \begin_layout Plain Layout
 
-dt(x, df)
+dt
 \end_layout
 
 \end_inset
@@ -42168,148 +42957,16 @@ rt
  respectively.
 
 \color none
- 
-\end_layout
+ See Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:sampling-from-normal-dist"
 
-\begin_layout Standard
-Similar to that done for the normal we may define 
-\begin_inset Formula $t_{\alpha}^{(\mathtt{df})}$
-\end_inset
-
- as the number on the 
-\begin_inset Formula $x$
-\end_inset
-
--axis such that there is exactly 
-\begin_inset Formula $\alpha$
-\end_inset
-
- area under the 
-\begin_inset Formula $\mathsf{t}(\mathtt{df}=r)$
-\end_inset
-
- curve to its right.
-\end_layout
-
-\begin_layout Example
-We find 
-\begin_inset Formula $t_{0.01}^{(23)}$
-\end_inset
-
-with the quantile function:
-\end_layout
-
-\begin_deeper
-\begin_layout Scrap
-<<>>=
-\begin_inset Newline newline
-\end_inset
-
-qt(0.01, df = 23, lower.tail = FALSE)
-\begin_inset Newline newline
-\end_inset
-
-@
-\end_layout
-
-\end_deeper
-\begin_layout Remark
-We can say the following:
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-The 
-\begin_inset Formula $\mathsf{t}(\mathtt{df}=r)$
-\end_inset
-
- distribution looks just like a 
-\begin_inset Formula $\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$
-\end_inset
-
- distribution except with heavier tails.
-\end_layout
-
-\begin_layout Enumerate
-The 
-\begin_inset Formula $\mathsf{t}(\mathtt{df}=1)$
-\end_inset
-
- distribution is also known as a standard 
-\begin_inset Quotes eld
-\end_inset
-
-Cauchy distribution
-\begin_inset Quotes erd
-\end_inset
-
-, which is implemented in 
-\family sans
-R
-\family default
- with the 
-\color none
-
-\begin_inset listings
-lstparams "basicstyle={\ttfamily}"
-inline true
-status open
-
-\begin_layout Plain Layout
-
-dcauchy
-\end_layout
-
-\end_inset
-
- function and its relatives.
- The Cauchy distribution is quite pathological and is often a counterexample
- to many famous results.
-
-\color inherit
- 
-\end_layout
-
-\begin_layout Enumerate
-The standard deviation of 
-\begin_inset Formula $\mathsf{t}(\mathtt{df}=r)$
-\end_inset
-
- is undefined (that is, infinite) unless 
-\begin_inset Formula $r>2$
-\end_inset
-
-.
- When 
-\begin_inset Formula $r$
-\end_inset
-
- is more than 2, the standard deviation is always bigger than one, but decreases
- to 1 as 
-\begin_inset Formula $r\to\infty$
 \end_inset
 
 .
 \end_layout
 
-\begin_layout Enumerate
-The 
-\begin_inset Formula $\mathsf{t}(\mathtt{df}=r)$
-\end_inset
-
- distribution approaches a 
-\begin_inset Formula $\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$
-\end_inset
-
- distribution as 
-\begin_inset Formula $r\to\infty$
-\end_inset
-
-.
- 
-\end_layout
-
-\end_deeper
 \begin_layout Subsection*
 Snedecor's 
 \begin_inset Formula $F$
@@ -42318,7 +42975,7 @@ Snedecor's
  distribution
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Fisher's-F-distribution"
+name "sub:snedecor-F-distribution"
 
 \end_inset
 
@@ -42418,7 +43075,7 @@ rf
 We define 
 \color none
 
-\begin_inset Formula $F_{\alpha}^{(m,n)}$
+\begin_inset Formula $F_{\alpha}(m,n)$
 \end_inset
 
 
@@ -42442,7 +43099,7 @@ We define
 \end_layout
 
 \begin_layout Remark
-Here are some important notes about the 
+Here are some notes about the 
 \begin_inset Formula $F$
 \end_inset
 
@@ -42455,8 +43112,12 @@ If
 \begin_inset Formula $X\sim\mathsf{f}(\mathtt{df1}=m,\,\mathtt{df2}=n)$
 \end_inset
 
+ and 
+\begin_inset Formula $Y=1/X$
+\end_inset
+
 , then 
-\begin_inset Formula $(1/X)\sim\mathsf{f}(\mathtt{df1}=n,\,\mathtt{df2}=m)$
+\begin_inset Formula $Y\sim\mathsf{f}(\mathtt{df1}=n,\,\mathtt{df2}=m)$
 \end_inset
 
 .
@@ -42477,7 +43138,7 @@ If
 
 , it meant that publishers could cut the size of their printed tables in
  half.
- It plays less of a role today, now that personal computers are widespread.
+ It plays less of a role today now that personal computers are widespread.
 \end_layout
 
 \begin_layout Enumerate
@@ -42490,84 +43151,17 @@ If
 \end_inset
 
 .
-\end_layout
+ We will see this again in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:slr-overall-F-statistic"
 
-\end_deeper
-\begin_layout Standard
-There is a common misconception that the 
-\begin_inset Formula $F$
-\end_inset
-
- distribution was discovered and/or named by Sir R.
-\begin_inset space ~
-\end_inset
-
-.A.
-\begin_inset space ~
-\end_inset
-
-
-\emph on
-F
-\emph default
-isher.
- The mistake is perhaps plausible because the 
-\begin_inset Formula $F$
-\end_inset
-
- distribution plays a significant role in the analysis of variance, and
- Fisher is widely credited with the invention and development of ANOVA (although
- not with the acronym, that was Tukey).
-\end_layout
-
-\begin_layout Standard
-However, the truth of the matter is that G.
-\begin_inset space ~
-\end_inset
-
-W.
-\begin_inset space ~
-\end_inset
-
-Snedecor discovered, tabulated, and yes, introduced the notation for, the
- 
-\begin_inset Formula $F$
-\end_inset
-
- distribution in Calculation and Interpretation of Analysis of Variance
- and Covariance (1934) (David, 1995).
- Fisher had tabulated 
-\begin_inset Formula $z=\frac{1}{2}\ln F$
-\end_inset
-
- some years earlier, and objected to the idea of calling the variance ratio
- 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset Formula $F$
-\end_inset
-
-
-\begin_inset Quotes erd
 \end_inset
 
 .
- 
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset href
-LatexCommand href
-name "ajskldfjalsdfladsjlad"
-target "http://jeff560.tripod.com/f.html"
-
-\end_inset
-
-
-\end_layout
-
+\end_deeper
 \begin_layout Subsection
 Other Popular Distributions
 \begin_inset CommandInset label
@@ -42712,7 +43306,15 @@ dbeta(x, shape1, shape2)
 
 \end_inset
 
-This distribution comes up a lot in Bayesian statistics because it is a
+See Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:cont-pdf3x2"
+
+\end_inset
+
+.
+ This distribution comes up a lot in Bayesian statistics because it is a
  good model for one's prior beliefs about a population proportion 
 \begin_inset Formula $p$
 \end_inset
@@ -42722,7 +43324,6 @@ This distribution comes up a lot in Bayesian statistics because it is a
 \end_inset
 
 .
- See Example BLANK.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -42833,6 +43434,14 @@ dlnorm(x, meanlog = 0, sdlog = 1)
 \end_inset
 
  axis; the distribution is right-skewed with a heavy tail.
+ See Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:lnorm-transformation"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -42950,7 +43559,7 @@ mgf
 \color inherit
  in front of the distribution name for the moment generating function.
  At the time of this writing, the following distributions are supported:
- gamma, inverse gaussian, (non-central) chi-squared, exponential, and uniform.
+ gamma, inverse Gaussian, (non-central) chi-squared, exponential, and uniform.
 \end_layout
 
 \begin_layout Example
@@ -43204,14 +43813,15 @@ For the following random experiments, decide what the distribution of
  may not strictly hold in practice).
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
 We throw a dart at a dart board.
  Let 
 \begin_inset Formula $X$
 \end_inset
 
- denote the squared linear distance from the bullseye to the where the dart
- landed.
+ denote the squared linear distance from the bulls-eye to the where the
+ dart landed.
 \end_layout
 
 \begin_layout Enumerate
@@ -43229,7 +43839,14 @@ We measure the time it takes for the water to completely drain out of the
 \end_layout
 
 \begin_layout Enumerate
-We randomly sample strangers at the grocery store and 
+We randomly sample strangers at the grocery store and ask them how long
+ it will take them to drive home.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout --Separator--
+
 \end_layout
 
 \begin_layout Exercise
@@ -43345,6 +43962,12 @@ type the exercise here
 \end_layout
 
 \begin_layout Exercise
+\begin_inset CommandInset label
+LatexCommand label
+name "xca:prove-the-memoryless"
+
+\end_inset
+
 Prove the memoryless property for exponential random variables.
  That is, for 
 \begin_inset Formula $X\sim\mathsf{exp}(\mathtt{rate}=\lambda)$
@@ -43383,7 +44006,7 @@ name "cha:Multivariable-Distributions"
 \end_layout
 
 \begin_layout Standard
-We have built up quite a catologue of distributions, discrete and continuous.
+We have built up quite a catalogue of distributions, discrete and continuous.
  They were all univariate, however, meaning that we only considered one
  random variable at a time.
  We can imagine nevertheless many random variables associated with a single
@@ -43556,7 +44179,7 @@ joint probability mass function
 
  defined by
 \begin_inset Formula \begin{equation}
-f_{X,Y}(x,y)=\P(X=x,\, Y=y),\quad\mbox{for }(x,y)\in S_{X,Y}.\end{equation}
+f_{X,Y}(x,y)=\P(X=x,\, Y=y),\quad\mbox{for }(x,y)\in S_{X,Y}.\label{eq:joint-pmf}\end{equation}
 
 \end_inset
 
@@ -43615,7 +44238,14 @@ marginal PMFs
 
 , respectively.
  If we are given only the joint PMF then we may recover each of the marginal
- PMFs by using the Theorem of Total Probability (see BLANK): observe
+ PMFs by using the Theorem of Total Probability (see Equation
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:theorem-total-probability"
+
+\end_inset
+
+): observe
 \begin_inset Formula \begin{eqnarray}
 f_{X}(x) & = & \P(X=x),\\
  & = & \sum_{y\in S_{Y}}\P(X=x,\, Y=y),\\
@@ -43633,7 +44263,7 @@ By interchanging the roles of
 
  it is clear that 
 \begin_inset Formula \begin{equation}
-f_{Y}(y)=\sum_{x\in S_{Y}}f_{X,Y}(x,y).\end{equation}
+f_{Y}(y)=\sum_{x\in S_{Y}}f_{X,Y}(x,y).\label{eq:marginal-pmf}\end{equation}
 
 \end_inset
 
@@ -43677,7 +44307,14 @@ F_{X,Y}(x,y)=\P(X\leq x,\, Y\leq y),\quad\mbox{for }(x,y)\in\R^{2}.\]
 
 The bivariate joint CDF is not quite as tractable as the univariate CDFs,
  but in principle we could calculate it by adding up quantities of the form
- BLANK.
+ in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:joint-pmf"
+
+\end_inset
+
+.
  The joint CDF is typically not used in practice due to its inconvenient
  form; one can usually get by with the joint PMF alone.
 \end_layout
@@ -43688,6 +44325,12 @@ We now introduce some examples of bivariate discrete distributions.
 \end_layout
 
 \begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:toss-two-dice-joint-pmf"
+
+\end_inset
+
 Roll a fair die twice.
  Let 
 \begin_inset Formula $X$
@@ -43705,7 +44348,14 @@ reference "cha:Probability"
 
 \end_inset
 
-, Example BLANK.
+, Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:Toss-a-six-sided-die-twice"
+
+\end_inset
+
+.
  For this example, it suffices to define
 \begin_inset Formula \[
 f_{X,Y}(x,y)=\frac{1}{36},\quad x=1,\ldots,6,\ y=1,\ldots,6.\]
@@ -43815,6 +44465,12 @@ exchangeable
 \end_layout
 
 \begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:max-sum-two-dice"
+
+\end_inset
+
 Let the random experiment again be to roll a fair die twice, except now
  let us define the random variables 
 \begin_inset Formula $U$
@@ -43854,7 +44510,14 @@ We see that the support of
 \end_inset
 
  assumes.
- The result is in the left half of Table BLANK.
+ The result is in the left half of Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:max-and-sum-two-dice"
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -43863,8 +44526,14 @@ We can use the table to calculate the marginal PMF of
 \begin_inset Formula $U$
 \end_inset
 
-, because from Example BLANK we know that each entry in the matrix has probabili
-ty 
+, because from Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:Toss-a-six-sided-die-twice"
+
+\end_inset
+
+ we know that each entry in the matrix has probability 
 \begin_inset Formula $1/36$
 \end_inset
 
@@ -43910,7 +44579,14 @@ We may do a similar thing for
 \begin_inset Formula $V$
 \end_inset
 
-; see the right half of Table BLANK.
+; see the right half of Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:max-and-sum-two-dice"
+
+\end_inset
+
+.
  Collecting all of the probability we will find that the marginal PMF of
  
 \begin_inset Formula $V$
@@ -44963,6 +45639,13 @@ Maximum
 \end_inset
 
 
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:max-and-sum-two-dice"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -44976,13 +45659,26 @@ Maximum
 \end_layout
 
 \begin_layout Example
-We may collapse the two matrices from Table BLANK into one, big matrix of
- pairs of values 
+We may collapse the two matrices from Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:max-and-sum-two-dice"
+
+\end_inset
+
+ into one, big matrix of pairs of values 
 \begin_inset Formula $(u,v)$
 \end_inset
 
 .
- The result is shown in Table BLANK.
+ The result is shown in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:-max-sum-two-dice-joint"
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -45482,6 +46178,13 @@ Joint values of
 \end_inset
 
 
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:-max-sum-two-dice-joint"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -45522,8 +46225,22 @@ Again, each of these pairs has probability
 \end_inset
 
  along the top.
- We will accumulate the probability just like we did in Example BLANK.
- See Table BLANK.
+ We will accumulate the probability just like we did in Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:toss-two-dice-joint-pmf"
+
+\end_inset
+
+.
+ See Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:max-sum-joint-pmf"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Example
@@ -46747,6 +47464,13 @@ The joint PMF of
 \begin_inset Formula $(U,V)$
 \end_inset
 
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:max-sum-joint-pmf"
+
+\end_inset
+
  
 \end_layout
 
@@ -46790,8 +47514,14 @@ The joint support of
  is concentrated along the main diagonal; note that the nonzero entries
  do not form a rectangle.
  Also notice that if we form row and column totals we are doing exactly
- the same thing as Expression BLANK, so that the marginal distribution of
- 
+ the same thing as Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:marginal-pmf"
+
+\end_inset
+
+, so that the marginal distribution of 
 \begin_inset Formula $U$
 \end_inset
 
@@ -46803,7 +47533,14 @@ margin
 \begin_inset Quotes erd
 \end_inset
 
- of the Table BLANK, and the marginal distribution of 
+ of the Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:max-sum-joint-pmf"
+
+\end_inset
+
+, and the marginal distribution of 
 \begin_inset Formula $V$
 \end_inset
 
@@ -46946,6 +47683,12 @@ f_{Y}(y)=\int_{S_{X}}f_{X,Y}(x,y)\,\diff x,\quad y\in S_{Y}.\end{equation}
 \end_layout
 
 \begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:joint-pdf"
+
+\end_inset
+
 Let the joint PDF of 
 \begin_inset Formula $(X,Y)$
 \end_inset
@@ -47019,7 +47762,14 @@ R
 \end_layout
 
 \begin_layout Standard
-We will show how to do Example BLANK using 
+We will show how to do Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:max-sum-two-dice"
+
+\end_inset
+
+ using 
 \family sans
 R
 \family default
@@ -47173,7 +47923,14 @@ head(UV)
 
 \begin_layout Standard
 The data frame is difficult to understand.
- It would be better to have a tabular display like Table BLANK.
+ It would be better to have a tabular display like Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:max-sum-joint-pmf"
+
+\end_inset
+
+.
  We can do that with the 
 \color none
 
@@ -47208,7 +47965,14 @@ xtabs(round(probs,3) ~ U + V, data = UV)
 \end_layout
 
 \begin_layout Standard
-Compare these values to the ones shown in Table BLANK.
+Compare these values to the ones shown in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:max-sum-joint-pmf"
+
+\end_inset
+
+.
  We can repeat the process with 
 \color none
 
@@ -47331,7 +48095,14 @@ colSums(temp)
 
 \begin_layout Standard
 You should check that the answers that we have obtained exactly match the
- same (somewhat laborious) calculations that we completed in Example BLANK.
+ same (somewhat laborious) calculations that we completed in Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:max-sum-two-dice"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -47510,8 +48281,21 @@ Equality holds above (
 \end_layout
 
 \begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:max-sum-dice-covariance"
+
+\end_inset
+
 We will compute the covariance for the discrete distribution in Example
- BLANK.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:max-sum-two-dice"
+
+\end_inset
+
+.
  The expected value of 
 \begin_inset Formula $U$
 \end_inset
@@ -47576,7 +48360,14 @@ Let us find the covariance of the variables
 \begin_inset Formula $(X,Y)$
 \end_inset
 
- from Example BLANK.
+ from Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:joint-pdf"
+
+\end_inset
+
+.
  The expected value of 
 \begin_inset Formula $X$
 \end_inset
@@ -47656,7 +48447,14 @@ prob
 \begin_inset Formula $(U,V)$
 \end_inset
 
- from Example BLANK.
+ from Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:max-sum-dice-covariance"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Scrap
@@ -47684,7 +48482,14 @@ Euv - Eu * Ev
 \end_layout
 
 \begin_layout Standard
-Compare this answer to what we got in Example BLANK.
+Compare this answer to what we got in Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:max-sum-dice-covariance"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -48125,8 +48930,21 @@ where the constant of proportionality is
 
 .
  Any good textbook on Bayesian Statistics will explain these notions in
- detail; to the interested reader I recommend Gelman and this other Bayesian
- book BLANK.
+ detail; to the interested reader I recommend Gelman 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gelman2004"
+
+\end_inset
+
+ or Lee 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lee1997"
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -48259,8 +49077,14 @@ then we say that
 \end_layout
 
 \begin_layout Example
-In Example BLANK we considered the random experiment of rolling a fair die
- twice.
+In Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:toss-two-dice-joint-pmf"
+
+\end_inset
+
+ we considered the random experiment of rolling a fair die twice.
  There we found the joint PMF to be
 \begin_inset Formula \[
 f_{X,Y}(x,y)=\frac{1}{36},\quad x=1,\ldots,6,\ y=1,\ldots,6,\]
@@ -48314,8 +49138,14 @@ f_{X,Y}(x,y)=\frac{1}{36}=\left(\frac{1}{6}\right)\left(\frac{1}{6}\right)=f_{X}
 \end_layout
 
 \begin_layout Example
-In Example BLANK we considered the same experiment but different random
- variables 
+In Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:max-sum-two-dice"
+
+\end_inset
+
+ we considered the same experiment but different random variables 
 \begin_inset Formula $U$
 \end_inset
 
@@ -48414,6 +49244,22 @@ and this last quantity is exactly
 
 \end_layout
 
+\begin_layout Standard
+Now that we have Proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "pro:indep-implies-prodexpect"
+
+\end_inset
+
+ we mention a corollary that will help us later to quickly identify those
+ random variables which are 
+\emph on
+not
+\emph default
+ independent.
+\end_layout
+
 \begin_layout Corollary
 If 
 \begin_inset Formula $X$
@@ -48500,60 +49346,6 @@ key "Casella2002"
  
 \end_layout
 
-\begin_layout Corollary
-If 
-\begin_inset Formula $X$
-\end_inset
-
- and 
-\begin_inset Formula $Y$
-\end_inset
-
- are independent, then the moment generating function of 
-\begin_inset Formula $X+Y$
-\end_inset
-
- is 
-\begin_inset Formula \begin{equation}
-M_{X+Y}(t)=M_{X}(t)\cdot M_{Y}(t).\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Branch proofs
-status open
-
-\begin_layout Proof
-Choose 
-\begin_inset Formula $u(x)=\me^{x}$
-\end_inset
-
- and 
-\begin_inset Formula $v(y)=\me^{y}$
-\end_inset
-
- in Proposition 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "pro:indep-implies-prodexpect"
-
-\end_inset
-
-, and remember the identity 
-\begin_inset Formula $\me^{t(x+y)}=\me^{tx}\,\me^{ty}$
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
 Proposition 
 \begin_inset CommandInset ref
@@ -48631,7 +49423,152 @@ name "sub:Combining-Independent-Random"
 
 \end_layout
 
+\begin_layout Standard
+Another important corollary of Proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "pro:indep-implies-prodexpect"
+
+\end_inset
+
+ will allow us to find the distribution of sums of random variables.
+\end_layout
+
+\begin_layout Corollary
+If 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ are independent, then the moment generating function of 
+\begin_inset Formula $X+Y$
+\end_inset
+
+ is 
+\begin_inset Formula \begin{equation}
+M_{X+Y}(t)=M_{X}(t)\cdot M_{Y}(t).\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch proofs
+status open
+
+\begin_layout Proof
+Choose 
+\begin_inset Formula $u(x)=\me^{x}$
+\end_inset
+
+ and 
+\begin_inset Formula $v(y)=\me^{y}$
+\end_inset
+
+ in Proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "pro:indep-implies-prodexpect"
+
+\end_inset
+
+, and remember the identity 
+\begin_inset Formula $\me^{t(x+y)}=\me^{tx}\,\me^{ty}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let us take a look at some examples of the corollary in action.
+\end_layout
+
+\begin_layout Example
+Let 
+\begin_inset Formula $X\sim\mathsf{binom}(\mathtt{size}=n_{1},\,\mathtt{prob}=p)$
+\end_inset
+
+ and 
+\begin_inset Formula $Y\sim\mathsf{binom}(\mathtt{size}=n_{2},\,\mathtt{prob}=p)$
+\end_inset
+
+ be independent.
+ Then 
+\begin_inset Formula $X+Y$
+\end_inset
+
+ has MGF
+\begin_inset Formula \[
+M_{X+Y}(t)=M_{X}(t)\, M_{Y}(t)=\left(q+p\me^{t}\right)^{n_{1}}\left(q+p\me^{t}\right)^{n_{2}}=\left(q+p\me^{t}\right)^{n_{1}+n_{2}},\]
+
+\end_inset
+
+which is the MGF of a 
+\begin_inset Formula $\mathsf{binom}(\mathtt{size}=n_{1}+n_{2},\,\mathtt{prob}=p)$
+\end_inset
+
+ distribution.
+ Therefore, 
+\begin_inset Formula $X+Y\sim\mathsf{binom}(\mathtt{size}=n_{1}+n_{2},\,\mathtt{prob}=p)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Example
+Let 
+\begin_inset Formula $X\sim\mathsf{norm}(\mathtt{mean}=\mu_{1},\,\mathtt{sd}=\sigma_{1})$
+\end_inset
+
+ and 
+\begin_inset Formula $Y\sim\mathsf{norm}(\mathtt{mean}=\mu_{2},\,\mathtt{sd}=\sigma_{2})$
+\end_inset
+
+ be independent.
+ Then 
+\begin_inset Formula $X+Y$
+\end_inset
+
+ has MGF
+\begin_inset Formula \[
+M_{X}(t)\, M_{Y}(t)=\exp\left\{ \mu_{1}t+t^{2}\sigma_{1}^{2}/2\right\} \exp\left\{ \mu_{2}t+t^{2}\sigma_{2}^{2}/2\right\} =\exp\left\{ \left(\mu_{1}+\mu_{2}\right)t+t^{2}\left(\sigma_{1}^{2}+\sigma_{2}^{2}\right)/2\right\} ,\]
+
+\end_inset
+
+which is the MGF of a 
+\begin_inset Formula $\mathsf{norm}(\mathtt{mean}=\mu_{1}+\mu_{2},\,\mathtt{sd}=\sqrt{\sigma_{1}^{2}+\sigma_{2}^{2}})$
+\end_inset
+
+ distribution.
+ 
+\end_layout
+
+\begin_layout Standard
+Even when we cannot use the MGF trick to identify the exact distribution
+ of a linear combination of random variables, we can still say something
+ about its mean and variance.
+\end_layout
+
 \begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "pro:mean-sd-lin-comb-two"
+
+\end_inset
+
 Let 
 \begin_inset Formula $X_{1}$
 \end_inset
@@ -48688,7 +49625,14 @@ Let
 status open
 
 \begin_layout Proof
-We use Property BLANK of expectation:
+We use Proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "pro:expectation-properties"
+
+\end_inset
+
+:
 \begin_inset Formula \[
 \E Y=\E\left(a_{1}X_{1}+a_{2}X_{2}\right)=a_{1}\E X_{1}+a_{2}\E X_{2}=a_{1}\mu_{1}+a_{2}\mu_{2}.\]
 
@@ -48818,15 +49762,15 @@ symmetry
 \end_layout
 
 \begin_layout Example
-BLANK.
-\end_layout
+Let 
+\begin_inset Formula $X$
+\end_inset
 
-\begin_layout --Separator--
+ and 
+\begin_inset Formula $Y$
+\end_inset
 
-\end_layout
-
-\begin_layout Example
-Here is another one, more complicated than the one above.
+ have joint PDF
 \begin_inset Formula \begin{multline}
 f_{X,Y}(x,y)=(1+\alpha)\lambda^{2}\me^{-\lambda(x+y)}+\alpha(2\lambda)^{2}\me^{-2\lambda(x+y)}-2\alpha\lambda^{2}\left(\me^{-\lambda(2x+y)}+\me^{-\lambda(x+2y)}\right).\end{multline}
 
@@ -48874,7 +49818,82 @@ key "Kotz2000"
 
 \end_layout
 
-\begin_layout Remark
+\begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:binom-exchangeable"
+
+\end_inset
+
+Suppose 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ are i.i.d.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\mathsf{binom}(\mathtt{size}=n,\,\mathtt{prob}=p)$
+\end_inset
+
+.
+ Then their joint PMF is
+\begin_inset Formula \begin{eqnarray*}
+f_{X,Y}(x,y) & = & f_{X}(x)f_{Y}(y)\\
+ & = & {n \choose x}\, p^{x}(1-p)^{n-x}\,{n \choose y}\, p^{y}(1-p)^{n-y},\\
+ & = & {n \choose x}{n \choose y}\, p^{x+y}(1-p)^{2n-(x+y)},\end{eqnarray*}
+
+\end_inset
+
+and the value is the same if we exchange 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ Therefore 
+\begin_inset Formula $(X,Y)$
+\end_inset
+
+ are exchangeable.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Standard
+Looking at Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:binom-exchangeable"
+
+\end_inset
+
+ more closely we see that the fact that 
+\begin_inset Formula $(X,Y)$
+\end_inset
+
+ are exchangeable has nothing to do with the 
+\begin_inset Formula $\mathsf{binom}(\mathtt{size}=n,\,\mathtt{prob}=p)$
+\end_inset
+
+ distribution; it only matters that they are independent (so that the joint
+ PDF factors) and they are identically distributed (in which case we may
+ swap letters to no effect).
+ We could just have easily used any other marginal distribution.
+ We will take this as a proof of the following proposition.
+\end_layout
+
+\begin_layout Proposition
 If 
 \begin_inset Formula $X$
 \end_inset
@@ -48899,12 +49918,20 @@ If
 \begin_inset Formula $Y$
 \end_inset
 
- are exchangeable because
-\begin_inset Formula \[
-F_{X,Y}(x,y)=F(x)F(y)=F(y)F(x)=F_{X,Y}(y,x).\]
+ are exchangeable.
+ 
+\end_layout
 
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Standard
+Exchangeability thus contains i.i.d.
+\begin_inset space ~
 \end_inset
 
+as a special case.
  
 \end_layout
 
@@ -48920,7 +49947,7 @@ name "sec:The-Bivariate-Normal"
 \end_layout
 
 \begin_layout Standard
-The bivariate normal PDF is given by the unwieldly formula
+The bivariate normal PDF is given by the unwieldy formula
 \begin_inset Formula \begin{multline}
 f_{X,Y}(x,y)=\frac{1}{2\pi\,\sigma_{X}\sigma_{Y}\sqrt{1-\rho^{2}}}\exp\left\{ -\frac{1}{2(1-\rho^{2})}\left[\left(\frac{x-\mu_{X}}{\sigma_{X}}\right)^{2}+\cdots\right.\right.\\
 \left.\left.\cdots+2\rho\left(\frac{x-\mu_{X}}{\sigma_{X}}\right)\left(\frac{y-\mu_{Y}}{\sigma_{Y}}\right)+\left(\frac{y-\mu_{Y}}{\sigma_{Y}}\right)^{2}\right]\right\} ,\end{multline}
@@ -49107,6 +50134,48 @@ The conditional distribution of
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+There are a few things to note about Proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "pro:mvnorm-cond-dist"
+
+\end_inset
+
+ which will be important in Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cha:Simple-Linear-Regression"
+
+\end_inset
+
+.
+ First, the conditional mean of 
+\begin_inset Formula $Y|x$
+\end_inset
+
+ is linear in 
+\begin_inset Formula $x$
+\end_inset
+
+, with slope
+\begin_inset Formula \begin{equation}
+\rho\,\frac{\sigma_{Y}}{\sigma_{X}}.\label{eq:population-slope-slr}\end{equation}
+
+\end_inset
+
+Second, the conditional variance of 
+\begin_inset Formula $Y|x$
+\end_inset
+
+ is independent of 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -50196,7 +51265,8 @@ If
 \end_layout
 
 \begin_layout Standard
-Bruno deFinetti was a strong proponent of the subjective approach to probability.
+Bruno de Finetti was a strong proponent of the subjective approach to probabilit
+y.
  He proved an important theorem in 1931 which illuminates the link between
  exchangeable random variables and independent random variables.
  Here it is in one of its simplest forms.
@@ -50944,7 +52014,7 @@ rmultinom
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -51207,7 +52277,81 @@ name "xca:Prove-cov-shortcut"
 
 \end_layout
 
-\begin_layout Scrap
+\begin_layout Exercise
+\begin_inset CommandInset label
+LatexCommand label
+name "xca:sum-indep-chisq"
+
+\end_inset
+
+Suppose 
+\begin_inset Formula $X\sim\mathsf{chisq}(\mathtt{df}=p_{1})$
+\end_inset
+
+ and 
+\begin_inset Formula $Y\sim\mathsf{chisq}(\mathtt{df}=p_{2})$
+\end_inset
+
+ are independent.
+ Find the distribution of 
+\begin_inset Formula $X+Y$
+\end_inset
+
+ (you may want to refer to Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:mgf-chisq"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Exercise
+\begin_inset CommandInset label
+LatexCommand label
+name "xca:diff-indep-norm"
+
+\end_inset
+
+Show that when 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ are independent the MGF of 
+\begin_inset Formula $X-Y$
+\end_inset
+
+ is 
+\begin_inset Formula $M_{X}(t)M_{Y}(-t)$
+\end_inset
+
+.
+ Use this to find the distribution of 
+\begin_inset Formula $X-Y$
+\end_inset
+
+ when 
+\begin_inset Formula $X\sim\mathsf{norm}(\mathtt{mean}=\mu_{1},\,\mathtt{sd}=\sigma_{1})$
+\end_inset
+
+ and 
+\begin_inset Formula $Y\sim\mathsf{norm}(\mathtt{mean}=\mu_{2},\,\mathtt{sd}=\sigma_{2})$
+\end_inset
+
+ are independent.
+ 
+\end_layout
+
+\begin_layout --Separator--
 
 \end_layout
 
@@ -51274,7 +52418,7 @@ Supposing for the sake of argument that we have collected a random sample,
 sense
 \emph default
  out of the data because the complete list of sample information is usually
- cumbersome, unwieldly.
+ cumbersome, unwieldy.
  We summarize the data set with a descriptive 
 \emph on
 statistic
@@ -51376,7 +52520,7 @@ some basic concepts related to sampling distribution utility, such as bias
 Simple Random Samples
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Simple-Random-Samples"
+name "sec:simple-random-samples"
 
 \end_inset
 
@@ -51387,7 +52531,7 @@ name "sec:Simple-Random-Samples"
 Simple Random Samples
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Simple-Random-Samples"
+name "sub:simple-random-samples"
 
 \end_inset
 
@@ -51437,7 +52581,7 @@ independent and identically distributed
 \begin_inset Formula $f$
 \end_inset
 
- or altenatively we say that 
+ or alternatively we say that 
 \begin_inset Formula $X_{1}$
 \end_inset
 
@@ -51548,7 +52692,7 @@ The next fact will be useful to us when it comes time to prove the Central
  Limit Theorem in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:The-Central-Limit"
+reference "sec:Central-Limit-Theorem"
 
 \end_inset
 
@@ -51623,8 +52767,15 @@ And because
 \begin_inset Formula $X_{n}$
 \end_inset
 
- are independent, Proposition BLANK allows us to distribute the expectation
- among each term in the product, which is
+ are independent, Proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "pro:indep-implies-prodexpect"
+
+\end_inset
+
+ allows us to distribute the expectation among each term in the product,
+ which is
 \begin_inset Formula \[
 \E\me^{tX_{1}/n}\,\E\me^{tX_{2}/n}\cdots\E\me^{tX_{n}/n}.\]
 
@@ -51647,7 +52798,7 @@ The last step is to recognize that each term in last product above is exactly
 Sampling from a Normal Distribution
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Sampling-from-Normal"
+name "sec:sampling-from-normal-dist"
 
 \end_inset
 
@@ -51658,7 +52809,7 @@ name "sec:Sampling-from-Normal"
 The Distribution of the Sample Mean
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Samp-Mean-Dist"
+name "sub:samp-mean-dist-of"
 
 \end_inset
 
@@ -51968,7 +53119,7 @@ where
 We know from Section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Samp-Mean-Dist"
+reference "sub:samp-mean-dist-of"
 
 \end_inset
 
@@ -52079,7 +53230,7 @@ reference "sec:Functions-of-Continuous"
 
 \begin_layout Standard
 \begin_inset Formula \begin{equation}
-f_{X}(x)=\frac{\Gamma[(r+1)/2]}{\sqrt{r\pi}\ \Gamma(r/2)}\left(1+\frac{x^{2}}{r}\right)^{-(r+1)/2},\quad\-\infty<x<\infty\end{equation}
+f_{X}(x)=\frac{\Gamma[(r+1)/2]}{\sqrt{r\pi}\ \Gamma(r/2)}\left(1+\frac{x^{2}}{r}\right)^{-(r+1)/2},\quad-\infty<x<\infty\end{equation}
 
 \end_inset
 
@@ -52088,7 +53239,7 @@ f_{X}(x)=\frac{\Gamma[(r+1)/2]}{\sqrt{r\pi}\ \Gamma(r/2)}\left(1+\frac{x^{2}}{r}
 
 \begin_layout Standard
 Any random variable 
-\begin_inset Formula $T$
+\begin_inset Formula $X$
 \end_inset
 
  with the preceding PDF is said to have Student's 
@@ -52103,19 +53254,22 @@ Any random variable
 \emph on
 degrees of freedom
 \emph default
- (
-\begin_inset Formula $\mathtt{df}$
-\end_inset
-
-), and we write 
-\begin_inset Formula $T\sim\mathsf{t}(\mathtt{df}=r)$
+, and we write 
+\begin_inset Formula $X\sim\mathsf{t}(\mathtt{df}=r)$
 \end_inset
 
 .
  The shape of the PDF is similar to the normal, but the tails are considerably
  heavier.
- See Figure BLANK.
- As with the Normal distribution, there are four functions in 
+ See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Student's-t-dist-vary-df"
+
+\end_inset
+
+.
+ As with the normal distribution, there are four functions in 
 \family sans
 R
 \family default
@@ -52124,23 +53278,149 @@ R
 \end_inset
 
  distribution, namely 
-\family typewriter
-dt()
-\family default
+\color none
+
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+dt
+\end_layout
+
+\end_inset
+
 , 
-\family typewriter
-pt()
-\family default
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+pt
+\end_layout
+
+\end_inset
+
 , 
-\family typewriter
-qt()
-\family default
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+qt
+\end_layout
+
+\end_inset
+
 , and 
-\family typewriter
-rt()
-\family default
-, which compute the p.d.f., c.d.f., quantiles, and generate random variates, respectiv
-ely.
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+rt
+\end_layout
+
+\end_inset
+
+, 
+\color inherit
+which compute the PDF, CDF, quantile function, and generate random variates,
+ respectively.
+\end_layout
+
+\begin_layout Standard
+The code to produce Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Student's-t-dist-vary-df"
+
+\end_inset
+
+ is
+\end_layout
+
+\begin_layout Scrap
+<<eval = FALSE>>=
+\begin_inset Newline newline
+\end_inset
+
+curve(dt(x, df = 30), from = -3, to = 3, lwd = 3, ylab = "y")
+\begin_inset Newline newline
+\end_inset
+
+ind <- c(1, 2, 3, 5, 10)
+\begin_inset Newline newline
+\end_inset
+
+for (i in ind) curve(dt(x, df = i), -3, 3, add = TRUE)
+\begin_inset Newline newline
+\end_inset
+
+@
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Scrap
+\align center
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
+\begin_inset Newline newline
+\end_inset
+
+curve(dt(x, df = 30), from = -3, to = 3, lwd = 3, ylab = "y")
+\begin_inset Newline newline
+\end_inset
+
+ind <- c(1, 2, 3, 5, 10)
+\begin_inset Newline newline
+\end_inset
+
+for (i in ind) curve(dt(x, df = i), -3, 3, add = TRUE)
+\begin_inset Newline newline
+\end_inset
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Student's 
+\begin_inset Formula $t$
+\end_inset
+
+ distribution for various degrees of freedom
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Student's-t-dist-vary-df"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -52165,33 +53445,22 @@ Similar to that done for the normal we may define
 
 \begin_layout Example
 Find 
-\begin_inset Formula $t_{0.01}^{(23)}$
+\begin_inset Formula $\mathsf{t}{}_{0.01}(\mathtt{df}=23)$
 \end_inset
 
- with the quantile function:
+ with the quantile function.
 \end_layout
 
-\begin_layout Verse
-
-\family typewriter
-\color red
-> qt(0.01, df=23, lower.tail=FALSE)
-\color none
-
+\begin_layout Scrap
+<<>>=
 \begin_inset Newline newline
 \end_inset
 
+qt(0.01, df = 23, lower.tail = FALSE)
+\begin_inset Newline newline
+\end_inset
 
-\color blue
-[1] 2.499867
-\end_layout
-
-\begin_layout Standard
-Notice the 
-\family typewriter
-df
-\family default
- parameter.
+@
 \end_layout
 
 \begin_layout Remark
@@ -52204,32 +53473,40 @@ There are a few things to note about the
 
 \begin_deeper
 \begin_layout Enumerate
-It looks a lot like a 
-\begin_inset Formula $\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$
-\end_inset
-
- distribution, except with heavier tails.
-\end_layout
-
-\begin_layout Enumerate
-When 
-\begin_inset Formula $r=1$
-\end_inset
-
-, the 
-\begin_inset Formula $\mathtt{t}(\mathtt{df}=r)$
+The 
+\begin_inset Formula $\mathtt{t}(\mathtt{df}=1)$
 \end_inset
 
  distribution is the same as the 
-\begin_inset Formula $\mathtt{cauchy}(\mathtt{location}=0,\,\mathtt{scale}=1)$
+\begin_inset Formula $\mathsf{cauchy}(\mathtt{location}=0,\,\mathtt{scale}=1)$
 \end_inset
 
  distribution.
+ 
+\color none
+The Cauchy distribution is rather pathological and is a counterexample to
+ many famous results.
+
+\color inherit
+ 
 \end_layout
 
 \begin_layout Enumerate
-The standard deviation -- if it exists -- is always bigger than one, but
- decreases to one as 
+The standard deviation of 
+\begin_inset Formula $\mathsf{t}(\mathtt{df}=r)$
+\end_inset
+
+ is undefined (that is, infinite) unless 
+\begin_inset Formula $r>2$
+\end_inset
+
+.
+ When 
+\begin_inset Formula $r$
+\end_inset
+
+ is more than 2, the standard deviation is always bigger than one, but decreases
+ to 1 as 
 \begin_inset Formula $r\to\infty$
 \end_inset
 
@@ -52250,7 +53527,6 @@ As
 \end_inset
 
  distribution.
- 
 \end_layout
 
 \end_deeper
@@ -52258,7 +53534,7 @@ As
 The Central Limit Theorem
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:The-Central-Limit"
+name "sec:Central-Limit-Theorem"
 
 \end_inset
 
@@ -52275,7 +53551,7 @@ not
  We saw in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Sampling-from-Normal"
+reference "sec:sampling-from-normal-dist"
 
 \end_inset
 
@@ -52415,7 +53691,7 @@ We suppose that
  are i.i.d., and we learned in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Simple-Random-Samples"
+reference "sub:simple-random-samples"
 
 \end_inset
 
@@ -52466,7 +53742,7 @@ reference "thm:central-limit-thrm"
  Section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Samp-Mean-Dist"
+reference "sub:samp-mean-dist-of"
 
 \end_inset
 
@@ -52699,7 +53975,7 @@ reference "xca:clt123"
 
  when the population distribution is mound shaped, finite support, and skewed,
  namely 
-\begin_inset Formula $\mathsf{dt}(\mathtt{df}=3)$
+\begin_inset Formula $\mathsf{t}(\mathtt{df}=3)$
 \end_inset
 
 , 
@@ -52707,7 +53983,7 @@ reference "xca:clt123"
 \end_inset
 
  and 
-\begin_inset Formula $\mathsf{gamma}(\mathtt{shape}=,\,\mathtt{scale}=)$
+\begin_inset Formula $\mathsf{gamma}(\mathtt{shape}=1.21,\,\mathtt{scale}=1/2.37)$
 \end_inset
 
 , respectively.
@@ -52729,7 +54005,7 @@ clt1()
 \end_inset
 
  is issued a plot window opens to show a graph of the PDF of a 
-\begin_inset Formula $\mathsf{dt}(\mathtt{df}=3)$
+\begin_inset Formula $\mathsf{t}(\mathtt{df}=3)$
 \end_inset
 
  distribution.
@@ -52962,7 +54238,7 @@ Let
  are independent samples.
  Then the quantity 
 \begin_inset Formula \begin{equation}
-\frac{\Xbar-\Ybar-(\mu_{X}-\mu_{Y})}{\sqrt{\left.\sigma_{X}^{2}\right\slash n_{1}+\left.\sigma_{Y}^{2}\right\slash n_{2}}}\end{equation}
+\frac{\Xbar-\Ybar-(\mu_{X}-\mu_{Y})}{\sqrt{\left.\sigma_{X}^{2}\right\slash n_{1}+\left.\sigma_{Y}^{2}\right\slash n_{2}}}\label{eq:diff-indep-sample-means}\end{equation}
 
 \end_inset
 
@@ -53037,13 +54313,26 @@ We know that
 
 .
  The distribution of their difference is thus normal as well, and the mean
- and standard deviation are given by Proposition BLANK.
+ and standard deviation are given by Proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "pro:mean-sd-lin-comb-two"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Remark
 Even if the distribution of one or both of the samples is not normal, the
- quantity in Equation BLANK will be approximately normal provided both sample
- sizes are large.
+ quantity in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:diff-indep-sample-means"
+
+\end_inset
+
+ will be approximately normal provided both sample sizes are large.
  
 \end_layout
 
@@ -53182,7 +54471,7 @@ approaches a
 \end_inset
 
 .
- In other words, the sampling distibution of 
+ In other words, the sampling distribution of 
 \begin_inset Formula $\hat{p}_{1}-\hat{p}_{2}$
 \end_inset
 
@@ -53235,7 +54524,14 @@ We know that
 
  are independent since they are derived from independent samples.
  And a difference of independent (approximately) normal distributions is
- (approximately) normal, by Proposition BLANK
+ (approximately) normal, by Exercise 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "xca:diff-indep-norm"
+
+\end_inset
+
+
 \begin_inset Foot
 status collapsed
 
@@ -53259,7 +54555,14 @@ approximately
 
 .
  The expressions for the mean and standard deviation follow immediately
- from Proposition BLANK combined with the formulas for the 
+ from Proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "pro:mean-sd-lin-comb-two"
+
+\end_inset
+
+ combined with the formulas for the 
 \begin_inset Formula $\mathsf{binom}(\mathtt{size}=1,\,\mathtt{prob}=p)$
 \end_inset
 
@@ -53371,7 +54674,14 @@ has an
 status open
 
 \begin_layout Proof
-We know from Theorem BLANK that 
+We know from Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:Xbar-andS"
+
+\end_inset
+
+ that 
 \begin_inset Formula $(n_{1}-1)S_{X}^{2}/\sigma_{X}^{2}$
 \end_inset
 
@@ -54341,8 +55651,8 @@ name "cha:Estimation"
 \end_layout
 
 \begin_layout Standard
-We wil discuss two branches of estimation procedures: point estimation and
- interval estimation.
+We will discuss two branches of estimation procedures: point estimation
+ and interval estimation.
  We briefly discuss point estimation first and then spend the rest of the
  chapter on interval estimation.
 \end_layout
@@ -54523,7 +55833,7 @@ Now let
 Looking back to Section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Other-Discrete-Distributions"
+reference "sec:other-discrete-distributions"
 
 \end_inset
 
@@ -54576,7 +55886,7 @@ What about
 \begin_inset Formula $F=8$
 \end_inset
 
-; what would be the probabillity of observing 
+; what would be the probability of observing 
 \begin_inset Formula $X=3$
 \end_inset
 
@@ -54594,7 +55904,7 @@ Similarly, if
 \begin_inset Formula $F=9$
 \end_inset
 
- then the probabillity of observing 
+ then the probability of observing 
 \begin_inset Formula $X=3$
 \end_inset
 
@@ -55516,6 +56826,12 @@ biased
 \end_layout
 
 \begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:normal-MLE-both"
+
+\end_inset
+
 Let 
 \begin_inset Formula $X_{1}$
 \end_inset
@@ -56102,7 +57418,14 @@ PlantGrowth
 \end_inset
 
 .
- We claimed in Example BLANK that 
+ We claimed in Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:normal-MLE-both"
+
+\end_inset
+
+ that 
 \begin_inset Formula $\hat{\theta}=(\hat{\mu},\hat{\sigma}^{2})$
 \end_inset
 
@@ -57376,10 +58699,7 @@ Suppose that
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-We know that 
+ We know that 
 \begin_inset Formula \begin{equation}
 \Xbar-\Ybar\sim\mathsf{norm}\left(\mathtt{mean}=\mu_{X}-\mu_{Y},\,\mathtt{sd}=\sqrt{\frac{\sigma_{X}^{2}}{n}+\frac{\sigma_{Y}^{2}}{m}}\right).\end{equation}
 
@@ -57416,7 +58736,7 @@ If both sample sizes are large, then we may appeal to the CLT/SLLN (see
  
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:The-Central-Limit"
+reference "sec:Central-Limit-Theorem"
 
 \end_inset
 
@@ -57478,7 +58798,14 @@ U=\frac{n-1}{\sigma^{2}}S_{X}^{2}+\frac{m-1}{\sigma^{2}}S_{Y}^{2}.\end{equation}
 
 \end_inset
 
-Then by BLANK we know that 
+Then by Exercise 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "xca:sum-indep-chisq"
+
+\end_inset
+
+ we know that 
 \begin_inset Formula $U\sim\mathsf{chisq}(\mathtt{df}=n+m-2)$
 \end_inset
 
@@ -57545,10 +58872,37 @@ if one of the samples is small, and both underlying populations are normal,
 \begin_inset Formula $\sigma_{X}\neq\sigma_{Y}$
 \end_inset
 
-, then we may use a procedure attributed to Welch-Aspin (BLANK).
+, then we may use a Welch (or Satterthwaite) approximation to the degrees
+ of freedom.
+ See Welch 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Welch1947"
+
+\end_inset
+
+, Satterthwaite 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Satterthwaite1946"
+
+\end_inset
+
+, or Neter 
+\emph on
+et al
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Neter1996"
+
+\end_inset
+
+.
  The idea is to use an interval of the form
 \begin_inset Formula \begin{equation}
-\left(\Xbar-\Ybar\right)\pm t_{\alpha/2}(\mathtt{df}=r)\,\sqrt{\frac{S_{X}^{2}}{n}+\frac{S_{Y}^{2}}{m}},\end{equation}
+\left(\Xbar-\Ybar\right)\pm\mathsf{t}_{\alpha/2}(\mathtt{df}=r)\,\sqrt{\frac{S_{X}^{2}}{n}+\frac{S_{Y}^{2}}{m}},\end{equation}
 
 \end_inset
 
@@ -57753,7 +59107,14 @@ We are given an
 \end_inset
 
 .
- Recall from Section BLANK that the common mean of these variables is 
+ Recall from Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:binom-dist"
+
+\end_inset
+
+ that the common mean of these variables is 
 \begin_inset Formula $\E X=p$
 \end_inset
 
@@ -57766,7 +59127,14 @@ We are given an
 \begin_inset Formula $Y=\sum X_{i}$
 \end_inset
 
-, then from Section BLANK we know that 
+, then from Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:binom-dist"
+
+\end_inset
+
+ we know that 
 \begin_inset Formula $Y\sim\mathsf{binom}(\mathtt{size}=n,\,\mathtt{prob}=p)$
 \end_inset
 
@@ -58529,6 +59897,22 @@ Mention mle from the stats4 package.
 
 \begin_layout Section
 Chapter Exercises
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{thm}{0}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Exercise
@@ -60893,10 +62277,24 @@ t.test(extra ~ group, data = sleep, paired = TRUE)
 
 \begin_layout Section
 Other Hypothesis Tests
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Other-Hypothesis-Tests"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
 Kolmogorov-Smirnov Goodness-of-Fit Test
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Kolmogorov-Smirnov-Goodness-of-Fit-Test"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -60919,6 +62317,13 @@ ks.test(randu$x, "punif")
 
 \begin_layout Subsection
 Shapiro-Wilk Normality Test
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Shapiro-Wilk-Normality-Test"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -61539,8 +62944,8 @@ run.power.examp()
 \end_inset
 
 .
- By playing around the student can investigate the effect each of the aformentio
-ned parameters has on the statistical power.
+ By playing around the student can investigate the effect each of the aforementi
+oned parameters has on the statistical power.
  Note that you need the 
 \family typewriter
 tkrplot
@@ -61567,6 +62972,22 @@ run.power.examp
 
 \begin_layout Section
 Chapter Exercises
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{thm}{0}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
@@ -62524,6 +63945,12 @@ name "sec:SLR-Estimation"
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:point-estimate-mle-slr"
+
+\end_inset
+
 Point Estimates of the Parameters
 \end_layout
 
@@ -62712,7 +64139,14 @@ for
 \begin_inset Formula $\beta_{1}$
 \end_inset
 
- (in Exercise BLANK) gives 
+ (in Exercise 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "xca:find-mles-SLR"
+
+\end_inset
+
+) gives 
 \begin_inset Formula \begin{equation}
 \hat{\beta}_{1}=\frac{\sum_{i=1}^{n}x_{i}y_{i}-\left.\left(\sum_{i=1}^{n}x_{i}\right)\left(\sum_{i=1}^{n}y_{i}\right)\right\slash n}{\sum_{i=1}^{n}x_{i}^{2}-\left.\left(\sum_{i=1}^{n}x_{i}\right)^{2}\right\slash n}\label{eq:regline-slope-formula}\end{equation}
 
@@ -62788,7 +64222,7 @@ reference "eq:regline-slope-formula"
  that are more intuitive, or at the least are easier to remember.
  One of the author's favorites is
 \begin_inset Formula \begin{equation}
-b_{1}=r\frac{s_{y}}{s_{x}},\end{equation}
+b_{1}=r\frac{s_{y}}{s_{x}},\label{eq:sample-correlation-formula}\end{equation}
 
 \end_inset
 
@@ -62814,8 +64248,29 @@ where
 \end_inset
 
  data, respectively.
- See Exercise BLANK.
- Also, notice the similarity between Equation BLANK and Equation BLANK.
+ See Exercise 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "xca:show-alternate-slope-formula"
+
+\end_inset
+
+.
+ Also, notice the similarity between Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:sample-correlation-formula"
+
+\end_inset
+
+ and Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:population-slope-slr"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection*
@@ -63309,6 +64764,12 @@ cars.lm
 \end_layout
 
 \begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:regline-cars-interpret"
+
+\end_inset
+
 Using the regression line for the 
 \color none
 
@@ -63419,9 +64880,13 @@ Sexpr{round(coef(cars.lm)[1],2)}
 \end_inset
 
 mph takes 0
-\begin_inset space ~
+\color none
+
+\begin_inset space \thinspace{}
 \end_inset
 
+
+\color inherit
 ft to stop (it was not moving in the first place)! What went wrong? Looking
  at the data, we notice that the smallest speed for which we have measured
  data is 4
@@ -63441,6 +64906,13 @@ extrapolating
 \end_deeper
 \begin_layout Subsection
 Point Estimates of the Regression Line
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:slr-point-est-regline"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -63448,7 +64920,14 @@ We said at the beginning of the chapter that our goal was to estimate
 \begin_inset Formula $\mu=\E Y$
 \end_inset
 
-, and the arguments Section BLANK showed how to obtain an estimate 
+, and the arguments in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:point-estimate-mle-slr"
+
+\end_inset
+
+ showed how to obtain an estimate 
 \begin_inset Formula $\hat{\mu}$
 \end_inset
 
@@ -63507,6 +64986,12 @@ The first is a number,
 \end_layout
 
 \begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:regline-cars-pe-8mph"
+
+\end_inset
+
 We may use the regression line to obtain a point estimate of the mean stopping
  distance for a car traveling 8
 \begin_inset space \thinspace{}
@@ -63654,8 +65139,14 @@ In an abuse of notation we will sometimes write
 \end_layout
 
 \begin_layout Standard
-We saw in Example BLANK that spooky things can happen when we are cavalier
- about point estimation.
+We saw in Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:regline-cars-interpret"
+
+\end_inset
+
+ that spooky things can happen when we are cavalier about point estimation.
  While it is usually acceptable to predict/estimate at values of 
 \begin_inset Formula $x_{0}$
 \end_inset
@@ -63850,7 +65341,14 @@ mph.
 \begin_inset space \thinspace{}
 \end_inset
 
-mph matches the value we computed by hand in Example BLANK.
+mph matches the value we computed by hand in Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:regline-cars-pe-8mph"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -64064,7 +65562,7 @@ reference "exa:Speed-and-Stopping"
 \end_inset
 
 
-\begin_inset space ~
+\begin_inset space \thinspace{}
 \end_inset
 
 ft for a car with 
@@ -64072,7 +65570,7 @@ ft for a car with
 \end_inset
 
 
-\begin_inset space ~
+\begin_inset space \thinspace{}
 \end_inset
 
 mph.
@@ -64183,9 +65681,16 @@ summary(cars.lm)
 \family sans
 R
 \family default
- in Section BLANK).
+ in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:slr-interval-est-params"
+
+\end_inset
+
+).
  We may read it from there to be 
-\begin_inset Formula $S\approx$
+\begin_inset Formula $S\approx\,$
 \end_inset
 
 
@@ -64239,6 +65744,13 @@ carsumry$sigma
 
 \begin_layout Subsection
 Interval Estimates of the Parameters
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:slr-interval-est-params"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -64266,8 +65778,14 @@ reference "cha:Estimation"
 \end_layout
 
 \begin_layout Standard
-To that end, we can see from Equation BLANK (and it is made clear in Chapter
- 
+To that end, we can see from Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:regline-slope-formula"
+
+\end_inset
+
+ (and it is made clear in Chapter 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cha:Multiple-Linear-Regression"
@@ -64344,7 +65862,14 @@ Now, it turns out that
 \begin_inset Formula $S$
 \end_inset
 
- are mutually independent (see the footnote in Section BLANK).
+ are mutually independent (see the footnote in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mlr-interval-est-params"
+
+\end_inset
+
+).
  Therefore, the quantity
 \begin_inset Formula \begin{equation}
 T=\frac{b_{1}-\beta_{1}}{S_{b_{1}}}\end{equation}
@@ -64519,7 +66044,14 @@ Coefficients
 \color inherit
  section we find the parameter estimates and their respective standard errors
  in the second and third columns; the other columns are discussed in Section
- BLANK.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Model-Utility-SLR"
+
+\end_inset
+
+.
  If we wanted, say, a 95% confidence interval for 
 \begin_inset Formula $\beta_{1}$
 \end_inset
@@ -64638,6 +66170,13 @@ Sexpr{B[2,2]}
 
 \begin_layout Subsection
 Interval Estimates of the Regression Line
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:slr-interval-est-regline"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -64886,7 +66425,14 @@ predict
 
 
 \color inherit
- function, which we encountered in Section BLANK.
+ function, which we encountered in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:slr-point-est-regline"
+
+\end_inset
+
+.
  There we neglected to take advantage of its additional 
 \color none
 
@@ -65368,8 +66914,22 @@ We earlier guessed that a bound on the value of a single new observation
  would be inherently less certain than a bound for an average (mean) value;
  therefore, we expect the CIs for the mean to be tighter than the PIs for
  a new observation.
- A close look at the standard deviations in Equations BLANK and BLANK confirms
- our guess, but we would like to see a picture to drive the point home.
+ A close look at the standard deviations in Equations 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:SLR-conf-int-formula"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:SLR-pred-int-formula"
+
+\end_inset
+
+ confirms our guess, but we would like to see a picture to drive the point
+ home.
 \end_layout
 
 \begin_layout Standard
@@ -65502,7 +67062,21 @@ Notice that the bands curve outward away from the regression line as the
 \begin_inset Formula $(x_{0}-\xbar)^{2}$
 \end_inset
 
- term in the standard deviation formulas in Equations BLANK and BLANK.
+ term in the standard deviation formulas in Equations 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:SLR-conf-int-formula"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:SLR-pred-int-formula"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -65518,6 +67092,13 @@ name "sec:Model-Utility-SLR"
 
 \begin_layout Subsection
 Hypothesis Tests for the Parameters
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:slr-hypoth-test-params"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -65573,14 +67154,21 @@ Much of the attention of SLR is directed toward
 \end_layout
 
 \begin_layout Standard
-To this end we already know from Section BLANK that the quantity
+To this end we already know from Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:slr-interval-est-params"
+
+\end_inset
+
+ that the quantity
 \begin_inset Formula \begin{equation}
 T=\frac{b_{1}-\beta_{1}}{S_{b_{1}}}\end{equation}
 
 \end_inset
 
 has a 
-\begin_inset Formula $t(\mathtt{df}=n-2)$
+\begin_inset Formula $\mathsf{t}(\mathtt{df}=n-2)$
 \end_inset
 
  distribution; therefore, when 
@@ -65592,7 +67180,7 @@ has a
 \end_inset
 
  has a 
-\begin_inset Formula $t(\mathtt{df}=n-2)$
+\begin_inset Formula $\mathsf{t}(\mathtt{df}=n-2)$
 \end_inset
 
  distribution and we can compute a 
@@ -65628,7 +67216,14 @@ Similarly, we may test the hypothesis
 \begin_inset Formula $S_{b_{0}}$
 \end_inset
 
- is given in Section BLANK.
+ is given in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:slr-interval-est-params"
+
+\end_inset
+
+.
  The test is conducted the same way as for 
 \begin_inset Formula $\beta_{1}$
 \end_inset
@@ -66394,6 +67989,13 @@ Overall
 F
 \emph default
  statistic
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:slr-overall-F-statistic"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -66421,7 +68023,7 @@ statistic
 .
  It is defined by 
 \begin_inset Formula \begin{equation}
-F=\frac{SSR}{SSE/(n-2)}.\end{equation}
+F=\frac{SSR}{SSE/(n-2)}.\label{eq:slr-overall-F-statistic}\end{equation}
 
 \end_inset
 
@@ -66455,7 +68057,14 @@ All this being said, we have not yet gained much from the overall
 \begin_inset Formula $F$
 \end_inset
 
- statistic because we already knew from Section BLANK how to test 
+ statistic because we already knew from Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:slr-hypoth-test-params"
+
+\end_inset
+
+ how to test 
 \begin_inset Formula $H_{0}:\beta_{1}=0$
 \end_inset
 
@@ -66470,7 +68079,14 @@ All this being said, we have not yet gained much from the overall
 \begin_inset Formula $F$
 \end_inset
 
- in Equation BLANK is exactly the Student's 
+ in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:slr-overall-F-statistic"
+
+\end_inset
+
+ is exactly the Student's 
 \begin_inset Formula $t$
 \end_inset
 
@@ -66498,8 +68114,22 @@ So why bother to define the
 
  statistic has a more complicated interpretation and plays a more important
  role in the multiple linear regression model which we will study in Chapter
- .
- See Section BLANK for details.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cha:Multiple-Linear-Regression"
+
+\end_inset
+
+.
+ See Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mlr-Overall-F-Test"
+
+\end_inset
+
+ for details.
 \end_layout
 
 \begin_layout Subsection
@@ -66572,7 +68202,7 @@ Here we see that the
 \begin_inset Formula $F$
 \end_inset
 
- statistisic is 
+ statistic is 
 \begin_inset ERT
 status open
 
@@ -66910,7 +68540,14 @@ where the
 \end_inset
 
  from a normal distribution.
- See Section BLANK.
+ See Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Shapiro-Wilk-Normality-Test"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -67763,7 +69400,7 @@ The formula has a nice interpretation in the SLR model: if the distance
 \begin_layout Standard
 Leverages have nice mathematical properties; for example, they satisfy
 \begin_inset Formula \begin{equation}
-0\leq h_{ii}\leq1,\end{equation}
+0\leq h_{ii}\leq1,\label{eq:slr-leverage-between}\end{equation}
 
 \end_inset
 
@@ -67771,7 +69408,7 @@ and their sum is
 \begin_inset Formula \begin{eqnarray}
 \sum_{i=1}^{n}h_{ii} & = & \sum_{i=1}^{n}\left[\frac{1}{n}+\frac{(x_{i}-\xbar)^{2}}{\sum_{k=1}^{n}(x_{k}-\xbar)^{2}}\right],\\
  & = & \frac{n}{n}+\frac{\sum_{i}(x_{i}-\xbar)^{2}}{\sum_{k}(x_{k}-\xbar)^{2}},\\
- & = & 2.\end{eqnarray}
+ & = & 2.\label{eq:slr-average-leverage}\end{eqnarray}
 
 \end_inset
 
@@ -67780,7 +69417,14 @@ A rule of thumb is to consider leverage values to be large if they are more
 \begin_inset Formula $2/n$
 \end_inset
 
- according to Equation BLANK).
+ according to Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:slr-average-leverage"
+
+\end_inset
+
+).
  So leverages larger than 
 \begin_inset Formula $4/n$
 \end_inset
@@ -67803,8 +69447,15 @@ standardized residuals
 \begin_inset Formula $r_{i}$
 \end_inset
 
- in Section BLANK; they are merely residuals that have been divided by their
- respective standard deviations: 
+ in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Constant-Variance-Assumption"
+
+\end_inset
+
+; they are merely residuals that have been divided by their respective standard
+ deviations: 
 \begin_inset Formula \begin{equation}
 R_{i}=\frac{E_{i}}{S\sqrt{1-h_{ii}}},\quad i=1,2,\ldots,n.\end{equation}
 
@@ -67864,7 +69515,7 @@ studentized deleted residuals
 
  defined by
 \begin_inset Formula \begin{equation}
-t_{i}=\frac{D_{i}}{S_{(i)}/(1-h_{ii})},\quad i=1,2,\ldots,n,\end{equation}
+t_{i}=\frac{D_{i}}{S_{(i)}/(1-h_{ii})},\quad i=1,2,\ldots,n,\label{eq:slr-studentized-deleted-resids}\end{equation}
 
 \end_inset
 
@@ -67882,12 +69533,19 @@ have a
 
 \begin_layout Standard
 The folklore in regression classes is that a test based on the statistic
- in Equation BLANK can be too liberal.
+ in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:slr-studentized-deleted-resids"
+
+\end_inset
+
+ can be too liberal.
  A rule of thumb is if we suspect an observation to be an outlier 
 \emph on
 before
 \emph default
- seeing the data then we say it is signicantly outlying if its two-tailed
+ seeing the data then we say it is significantly outlying if its two-tailed
  
 \begin_inset Formula $p$
 \end_inset
@@ -68203,7 +69861,14 @@ and the
 
 \end_inset
 
-See Section BLANK for a better way to write these.
+See Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Residual-Analysis-MLR"
+
+\end_inset
+
+ for a better way to write these.
  The signs of the 
 \begin_inset Formula $DFBETAS$
 \end_inset
@@ -68402,13 +70067,20 @@ The
  The statistics used for measuring this are Cook's distances which may be
  calculated
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Cook's distances are actually defined by a different formula than the one
  shown.
- The formula in Equation BLANK is algebraically equivalent to the defining
- formula and is, in the author's opinion, more transparent.
+ The formula in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:slr-cooks-distance"
+
+\end_inset
+
+ is algebraically equivalent to the defining formula and is, in the author's
+ opinion, more transparent.
 \end_layout
 
 \end_inset
@@ -68418,7 +70090,7 @@ Cook's distances are actually defined by a different formula than the one
 
 \begin_layout Standard
 \begin_inset Formula \begin{equation}
-D_{i}=\frac{E_{i}^{2}}{(p+1)S^{2}}\cdot\frac{h_{ii}}{(1-h_{ii})^{2}},\quad i=1,2,\ldots,n.\end{equation}
+D_{i}=\frac{E_{i}^{2}}{(p+1)S^{2}}\cdot\frac{h_{ii}}{(1-h_{ii})^{2}},\quad i=1,2,\ldots,n.\label{eq:slr-cooks-distance}\end{equation}
 
 \end_inset
 
@@ -68888,11 +70560,16 @@ l axis.
 Chapter Exercises
 \end_layout
 
-\begin_layout Subsection*
-Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Basic-Philosophy"
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{thm}{0}
+\end_layout
 
 \end_inset
 
@@ -68914,7 +70591,7 @@ Hint
 \emph default
 : show that
 \begin_inset Formula \[
-\sum\]
+\sum_{i=1}^{n}(Y_{i}-\hat{Y_{i}})(\hat{Y_{i}}-\Ybar)=0.\]
 
 \end_inset
 
@@ -68922,6 +70599,59 @@ Hint
 \end_layout
 
 \begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Exercise
+\begin_inset CommandInset label
+LatexCommand label
+name "xca:find-mles-SLR"
+
+\end_inset
+
+Solve the following system of equations for 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta_{0}$
+\end_inset
+
+ to find the MLEs for slope and intercept in the simple linear regression
+ model.
+\begin_inset Formula \begin{eqnarray*}
+n\beta_{0}+\beta_{1}\sum_{i=1}^{n}x_{i} & = & \sum_{i=1}^{n}y_{i}\\
+\beta_{0}\sum_{i=1}^{n}x_{i}+\beta_{1}\sum_{i=1}^{n}x_{i}^{2} & = & \sum_{i=1}^{n}x_{i}y_{i}\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Exercise
+\begin_inset CommandInset label
+LatexCommand label
+name "xca:show-alternate-slope-formula"
+
+\end_inset
+
+Show that the formula given in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:sample-correlation-formula"
+
+\end_inset
+
+ is equivalent to 
+\begin_inset Formula \[
+\hat{\beta}_{1}=\frac{\sum_{i=1}^{n}x_{i}y_{i}-\left.\left(\sum_{i=1}^{n}x_{i}\right)\left(\sum_{i=1}^{n}y_{i}\right)\right\slash n}{\sum_{i=1}^{n}x_{i}^{2}-\left.\left(\sum_{i=1}^{n}x_{i}\right)^{2}\right\slash n}.\]
+
+\end_inset
+
 
 \end_layout
 
@@ -69949,6 +71679,13 @@ name "sec:Estimation-and-Prediction-MLR"
 
 \begin_layout Subsection
 Parameter estimates
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mlr-parameter-estimates"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -70113,7 +71850,14 @@ We can find solutions of the normal equations even when
 \end_inset
 
  is not of full rank, but the topic falls outside the scope of this book.
- The interested reader can consult an advanced text such as BLANK (CR.Rao)
+ The interested reader can consult an advanced text such as Rao 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Rao1999"
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -70307,6 +72051,13 @@ head(model.matrix(trees.lm))
 
 \begin_layout Subsection
 Point Estimates of the Regression Surface
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mlr-point-est-regsurface"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -70427,7 +72178,14 @@ The diagonal entries
 \begin_inset Formula $0\leq h_{ii}\leq1$
 \end_inset
 
- (compare to Equation BLANK).
+ (compare to Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:slr-leverage-between"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Itemize
@@ -70550,7 +72308,7 @@ We can represent
 
  by the matrix equation
 \begin_inset Formula \begin{equation}
-\hat{Y}(\mathbf{x}_{0})=\mathbf{x}_{0}^{\mathrm{T}}\mathbf{b},\end{equation}
+\hat{Y}(\mathbf{x}_{0})=\mathbf{x}_{0}^{\mathrm{T}}\mathbf{b},\label{eq:mlr-single-yhat-matrix}\end{equation}
 
 \end_inset
 
@@ -71098,6 +72856,13 @@ Sexpr{treesFIT[3]}
 \end_deeper
 \begin_layout Subsection
 Mean Square Error and Standard Error
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mlr-mse-se"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -71107,7 +72872,14 @@ The residuals are given by
 
 \end_inset
 
-Now we can use Proposition BLANK to see that the residuals are distributed
+Now we can use Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:mvnorm-dist-matrix-prod"
+
+\end_inset
+
+ to see that the residuals are distributed
 \begin_inset Formula \begin{equation}
 \mathbf{E}\sim\mathsf{mvnorm}(\mathtt{mean}=\mathbf{0},\,\mathtt{sigma}=\sigma^{2}(\mathbf{I}-\mathbf{H})),\end{equation}
 
@@ -71368,10 +73140,24 @@ Sexpr{round(treesumry$sigma, 3)}
 
 \begin_layout Subsection
 Interval Estimates of the Parameters
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mlr-interval-est-params"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-We showed in Section BLANK that 
+We showed in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mlr-parameter-estimates"
+
+\end_inset
+
+ that 
 \begin_inset Formula $\mathbf{b}=\left(\mathbf{X}^{\mathrm{T}}\mathbf{X}\right)^{-1}\mathbf{X}^{\mathrm{T}}\mathbf{Y}$
 \end_inset
 
@@ -71401,14 +73187,20 @@ We showed in Section BLANK that
 
 \end_inset
 
-Now recall Proposition BLANK that we said we were going to need eventually
- (the time is now).
+Now recall Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:mvnorm-dist-matrix-prod"
+
+\end_inset
+
+ that we said we were going to need eventually (the time is now).
  That proposition guarantees that
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula \begin{equation}
-\mathbf{b}\sim\mathsf{mvnorm}\left(\mathtt{mean}=\upbeta,\,\mathtt{sigma}=\sigma^{2}\left(\mathbf{X}^{\mathrm{T}}\mathbf{X}\right)^{-1}\right),\end{equation}
+\mathbf{b}\sim\mathsf{mvnorm}\left(\mathtt{mean}=\upbeta,\,\mathtt{sigma}=\sigma^{2}\left(\mathbf{X}^{\mathrm{T}}\mathbf{X}\right)^{-1}\right),\label{eq:distn-b-mlr}\end{equation}
 
 \end_inset
 
@@ -71432,12 +73224,26 @@ the first equality following because the matrix
 \end_layout
 
 \begin_layout Standard
-There is a lot that we can glean from Equation BLANK.
+There is a lot that we can glean from Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:distn-b-mlr"
+
+\end_inset
+
+.
  First, it follows that the estimator 
 \begin_inset Formula $\mathbf{b}$
 \end_inset
 
- is unbiased (see Section BLANK).
+ is unbiased (see Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Point-Estimation-1"
+
+\end_inset
+
+).
  Second, the variances of 
 \begin_inset Formula $b_{0}$
 \end_inset
@@ -71649,15 +73455,28 @@ Confidence and Prediction Intervals
 \end_layout
 
 \begin_layout Standard
-We saw in Section BLANK how to make point estimates of the mean value of
- additional observations and predict values of future observations, but
- how good are our estimates? We need confidence and prediction intervals
- to gauge their accuracy, and lucky for us the formulas look similar to
- the ones we saw in SLR.
+We saw in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mlr-point-est-regsurface"
+
+\end_inset
+
+ how to make point estimates of the mean value of additional observations
+ and predict values of future observations, but how good are our estimates?
+ We need confidence and prediction intervals to gauge their accuracy, and
+ lucky for us the formulas look similar to the ones we saw in SLR.
 \end_layout
 
 \begin_layout Standard
-In Equation BLANK we wrote 
+In Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:mlr-single-yhat-matrix"
+
+\end_inset
+
+ we wrote 
 \family roman
 \series medium
 \shape up
@@ -71679,13 +73498,27 @@ In Equation BLANK we wrote
 \bar default
 \noun default
 \color inherit
- and in Equation BLANK we saw that 
+ and in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:distn-b-mlr"
+
+\end_inset
+
+ we saw that 
 \begin_inset Formula \begin{equation}
 \mathbf{b}\sim\mathsf{mvnorm}\left(\mathtt{mean}=\upbeta,\,\mathtt{sigma}=\sigma^{2}\left(\mathbf{X}^{\mathrm{T}}\mathbf{X}\right)^{-1}\right),\end{equation}
 
 \end_inset
 
-The following is therefore immediate from Proposition BLANK:
+The following is therefore immediate from Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:mvnorm-dist-matrix-prod"
+
+\end_inset
+
+:
 \begin_inset Formula \begin{equation}
 \hat{Y}(\mathbf{x}_{0})\sim\mathsf{mvnorm}\left(\mathtt{mean}=\mathbf{x}_{0}^{\mathrm{T}}\upbeta,\,\mathtt{sigma}=\sigma^{2}\mathbf{x}_{0}^{\mathrm{T}}\left(\mathbf{X}^{\mathrm{T}}\mathbf{X}\right)^{-1}\mathbf{x}_{0}\right).\end{equation}
 
@@ -71738,7 +73571,14 @@ Prediction intervals for a new observation at
 \end_inset
 
 The prediction intervals are wider than the confidence intervals, just as
- in Section BLANK.
+ in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:slr-interval-est-regline"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -71766,7 +73606,14 @@ new
 
 
 \color inherit
- as we did in Section BLANK (which we repeat here for illustration).
+ as we did in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:slr-interval-est-regline"
+
+\end_inset
+
+ (which we repeat here for illustration).
 \end_layout
 
 \begin_layout Scrap
@@ -72234,13 +74081,20 @@ Multiple Coefficient of Determination
 \end_layout
 
 \begin_layout Standard
-We saw in Section BLANK that the error sum of squares 
+We saw in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mlr-mse-se"
+
+\end_inset
+
+ that the error sum of squares 
 \begin_inset Formula $SSE$
 \end_inset
 
  can be conveniently written in MLR as 
 \begin_inset Formula \begin{equation}
-SSE=\mathbf{Y}^{\mathrm{T}}(\mathbf{I}-\mathbf{H})\mathbf{Y}.\end{equation}
+SSE=\mathbf{Y}^{\mathrm{T}}(\mathbf{I}-\mathbf{H})\mathbf{Y}.\label{eq:mlr-sse-matrix}\end{equation}
 
 \end_inset
 
@@ -72256,13 +74110,13 @@ It turns out that there are equally convenient formulas for the total sum
 .
  They are :
 \begin_inset Formula \begin{alignat}{1}
-SSTO= & \mathbf{Y}^{\mathrm{T}}\left(\mathbf{I}-\frac{1}{n}\mathbf{J}\right)\mathbf{Y}\end{alignat}
+SSTO= & \mathbf{Y}^{\mathrm{T}}\left(\mathbf{I}-\frac{1}{n}\mathbf{J}\right)\mathbf{Y}\label{eq:mlr-ssto-matrix}\end{alignat}
 
 \end_inset
 
 and
 \begin_inset Formula \begin{alignat}{1}
-SSR= & \mathbf{Y}^{\mathrm{T}}\left(\mathbf{H}-\frac{1}{n}\mathbf{J}\right)\mathbf{Y}.\end{alignat}
+SSR= & \mathbf{Y}^{\mathrm{T}}\left(\mathbf{H}-\frac{1}{n}\mathbf{J}\right)\mathbf{Y}.\label{eq:mlr-ssr-matrix}\end{alignat}
 
 \end_inset
 
@@ -72270,8 +74124,35 @@ SSR= & \mathbf{Y}^{\mathrm{T}}\left(\mathbf{H}-\frac{1}{n}\mathbf{J}\right)\math
 \begin_inset Formula $\mathbf{J}$
 \end_inset
 
- is defined in Appendix BLANK.) Immediately from Equations BLANK, BLANK,
- and BLANK we get the 
+ is defined in Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Linear-Algebra"
+
+\end_inset
+
+.) Immediately from Equations 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:mlr-sse-matrix"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:mlr-ssto-matrix"
+
+\end_inset
+
+, and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:mlr-ssr-matrix"
+
+\end_inset
+
+ we get the 
 \emph on
 Anova Equality
 \emph default
@@ -72281,7 +74162,14 @@ SSTO=SSE+SSR.\end{equation}
 
 \end_inset
 
-(See Exercise BLANK.) We define the 
+(See Exercise 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "xca:anova-equality"
+
+\end_inset
+
+.) We define the 
 \emph on
 multiple coefficient of determination
 \emph default
@@ -72367,7 +74255,7 @@ It is good practice for the statistician to weigh both
 \begin_inset Formula $\overline{R}^{2}$
 \end_inset
 
- during assesment of model utility.
+ during assessment of model utility.
  In many cases their values will be very close to each other.
  If their values differ substantially, or if one changes dramatically when
  an explanatory variable is added, then (s)he should take a closer look
@@ -72514,7 +74402,14 @@ High values of
 \end_inset
 
  such as these indicate that the model fits very well, which agrees with
- what we saw in Figure BLANK.
+ what we saw in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:3D-scatterplot-trees"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -72523,6 +74418,13 @@ Overall
 F
 \emph default
 -Test
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mlr-Overall-F-Test"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -72574,10 +74476,6 @@ When the regression assumptions hold and under
 
  is large, that is, when the explained variation is large relative to the
  unexplained variation.
-\begin_inset Formula $ $
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -72730,6 +74628,13 @@ Student's
 t
 \emph default
  Tests
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:mlr-Student's-t-Tests"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -72813,7 +74718,14 @@ In other words, a variable might be highly significant one moment but then
 multicollinearity
 \emph default
 .
- See Section BLANK.
+ See Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Multicollinearity"
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -72832,7 +74744,14 @@ To test the hypothesis we go to find the sampling distribution of
 \end_inset
 
 , when the null hypothesis is true.
- We saw in Section BLANK that 
+ We saw in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mlr-interval-est-params"
+
+\end_inset
+
+ that 
 \begin_inset Formula \begin{equation}
 T_{i}=\frac{b_{i}-\beta_{i}}{S_{b_{i}}}\end{equation}
 
@@ -73827,8 +75746,14 @@ parsimony
 \end_layout
 
 \begin_layout Standard
-We do estimation/prediction the same way that we did in Section BLANK, except
- we do not need a 
+We do estimation/prediction the same way that we did in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mlr-point-est-regsurface"
+
+\end_inset
+
+, except we do not need a 
 \color none
 
 \begin_inset listings
@@ -74026,7 +75951,14 @@ Girth^2
 
 
 \color inherit
- are highly correlated (see Section BLANK).
+ are highly correlated (see Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Multicollinearity"
+
+\end_inset
+
+).
  The only remedy to this ailment is to rescale 
 \color none
 
@@ -74048,7 +75980,21 @@ Girth
 \end_layout
 
 \begin_layout Remark
-In Example BLANK of Section BLANK we investigate this issue further.
+In Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:mlr-trees-poly-no-rescale"
+
+\end_inset
+
+ of Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Partial-F-Statistic"
+
+\end_inset
+
+ we investigate this issue further.
 \end_layout
 
 \begin_layout Section
@@ -74658,7 +76604,14 @@ factor
 levels
 \emph default
 , which may or may not be ordered.
- See Section BLANK.
+ See Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Qualitative-Data"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Note*
@@ -75064,7 +77017,14 @@ factor
 
 \color inherit
  command.
- See Appendix BLANK.
+ See Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Qualitative-Data"
+
+\end_inset
+
+.
  Other than this we perform MLR as we normally would.
 \end_layout
 
@@ -75200,7 +77160,25 @@ contrasts
 \emph default
 \color none
 , which falls outside the scope of this book.
- The interested reader should see BLANK or BLANK for more.
+ The interested reader should see 
+\color inherit
+Neter et al 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Neter1996"
+
+\end_inset
+
+
+\color none
+ or Fox 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Fox1997"
+
+\end_inset
+
+ for more.
 \end_layout
 
 \begin_layout --Separator--
@@ -75836,7 +77814,14 @@ name "sec:Partial-F-Statistic"
 \end_layout
 
 \begin_layout Standard
-We saw in Section BLANK how to test 
+We saw in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mlr-Overall-F-Test"
+
+\end_inset
+
+ how to test 
 \begin_inset Formula $H_{0}:\beta_{0}=\beta_{1}=\cdots=\beta_{p}=0$
 \end_inset
 
@@ -75844,7 +77829,14 @@ We saw in Section BLANK how to test
 \begin_inset Formula $F$
 \end_inset
 
- statistic and we saw in Section BLANK how to test 
+ statistic and we saw in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mlr-Student's-t-Tests"
+
+\end_inset
+
+ how to test 
 \begin_inset Formula $H_{0}:\beta_{i}=0$
 \end_inset
 
@@ -76072,6 +78064,12 @@ anova
 \end_layout
 
 \begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:mlr-trees-poly-no-rescale"
+
+\end_inset
+
 For the 
 \color none
 
@@ -76474,7 +78472,21 @@ name "sec:Residual-Analysis-MLR"
 
 \begin_layout Standard
 We encountered many, many diagnostic measures for simple linear regression
- in Section BLANK.
+ in Sections 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Residual-Analysis-SLR"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Other-Diagnostic-Tools-SLR"
+
+\end_inset
+
+.
  All of these are valid in multiple linear regression, too, but there are
  some slight changes that we need to make for the multivariate case.
  We list these below, and apply them to the trees example.
@@ -76538,7 +78550,14 @@ Leverages: are defined to be the diagonal entries of the hat matrix
 \begin_inset Formula $h_{ii}$
 \end_inset
 
- in Section BLANK).
+ in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:mlr-point-est-regsurface"
+
+\end_inset
+
+).
  The sum of the leverages is 
 \begin_inset Formula $\mbox{tr}(\mathbf{H})=p+1$
 \end_inset
@@ -76726,7 +78745,7 @@ where
 
  might be
 \begin_inset Formula \begin{equation}
-\mu(x_{1},x_{2})=\beta_{0}x_{1}^{\beta_{1}}x_{2}^{\beta_{2}},\end{equation}
+\mu(x_{1},x_{2})=\beta_{0}x_{1}^{\beta_{1}}x_{2}^{\beta_{2}},\label{eq:trees-nonlin-reg}\end{equation}
 
 \end_inset
 
@@ -76763,7 +78782,14 @@ trees
 
  
 \color inherit
-example we may take the logarithm of both sides of Equation BLANK to get
+example we may take the logarithm of both sides of Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:trees-nonlin-reg"
+
+\end_inset
+
+ to get
 \color none
 
 \begin_inset Formula \begin{equation}
@@ -76985,14 +79011,42 @@ where
 \begin_layout Standard
 There are a host of methods to address problems like these which are studied
  in advanced regression classes.
- The interested reader should see BLANK or BLANK.
+ The interested reader should see Neter 
+\emph on
+et al
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Neter1996"
+
+\end_inset
+
+ or Tabachnick and Fidell 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Tabachnick2006"
+
+\end_inset
+
+.
  
 \end_layout
 
 \begin_layout Standard
-It turns out that John Fox has posted an Appendix to his book BLANK which
- discusses some of the methods and issues associated with nonlinear regression;
- see 
+It turns out that John Fox has posted an Appendix to his book 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Fox2002"
+
+\end_inset
+
+ which discusses some of the methods and issues associated with nonlinear
+ regression; see 
+\end_layout
+
+\begin_layout Standard
+\align center
 \begin_inset Flex URL
 status collapsed
 
@@ -77003,11 +79057,18 @@ http://cran.r-project.org/doc/contrib/Fox-Companion/appendix.html
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Subsection
 Multicollinearity
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Multicollinearity"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -77106,7 +79167,14 @@ What to do when data are not normal
 
 \begin_deeper
 \begin_layout Itemize
-Bootstrap (see Section BLANK).
+Bootstrap (see Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cha:Resampling-Methods"
+
+\end_inset
+
+).
 \end_layout
 
 \end_deeper
@@ -77115,7 +79183,6 @@ Akaike's Information Criterion
 \end_layout
 
 \begin_layout Standard
-aksdjfl
 \begin_inset Formula \[
 AIC=-2\ln L+2(p+1)\]
 
@@ -77135,8 +79202,51 @@ AIC=-2\ln L+2(p+1)\]
 Chapter Exercises
 \end_layout
 
-\begin_layout Enumerate
-Use Equations BLANK, BLANK, and BLANK to prove the Anova Equality:
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{thm}{0}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+\begin_inset CommandInset label
+LatexCommand label
+name "xca:anova-equality"
+
+\end_inset
+
+Use Equations 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:mlr-sse-matrix"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:mlr-ssto-matrix"
+
+\end_inset
+
+, and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:mlr-ssr-matrix"
+
+\end_inset
+
+ to prove the Anova Equality:
 \begin_inset Formula \[
 SSTO=SSE+SSR.\]
 
@@ -77159,8 +79269,8 @@ name "cha:Resampling-Methods"
 \begin_layout Standard
 Computers have changed the face of statistics.
  Their quick computational speed and flawless accuracy, coupled with large
- datasets acquired by the researcher, make them indispensable for many modern
- analyses.
+ data sets acquired by the researcher, make them indispensable for many
+ modern analyses.
  In particular, resampling methods (due in large part to Bradley Efron)
  have gained prominence in the modern statistician's repertoire.
  We first look at a classical problem to get some insight why.
@@ -77310,7 +79420,7 @@ empirical CDF
  (see Section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:The-Empirical-Distribution"
+reference "sec:empirical-distribution"
 
 \end_inset
 
@@ -77360,7 +79470,7 @@ Fewer
 
 assumptions.
  We are no longer required to assume the population is normal or the sample
- size is large.
+ size is large (though, as before, the larger the sample the better).
 \end_layout
 
 \begin_layout Description
@@ -77482,17 +79592,12 @@ name "sec:Bootstrap-Standard-Errors"
 Since the bootstrap distribution gives us information about a statistic's
  sampling distribution, we can use the bootstrap distribution to estimate
  properties of the statistic.
- of We have seen a procedure to help us gain information about the sampling
- distribution of a statistic of interest, and in this section we bring that
- information to bear to help us with estimation.Once we have a bootstrap
- distribution the next question is, what are we going to do with it?One
- statistic whose sampling distribution is often of interest is the sampling
  We will illustrate the bootstrap procedure in the special case that the
  statistic 
 \begin_inset Formula $S$
 \end_inset
 
- is the standard error
+ is a standard error.
 \end_layout
 
 \begin_layout Example
@@ -77508,21 +79613,17 @@ name "exa:Bootstrap-se-mean"
 
 \series default
  In this example we illustrate the bootstrap by estimating the standard
- error of the sample mean.
- We do this in the special case when the underlying population is 
+ error of the sample mean, and we will do it in the special case that the
+ underlying population is 
 \begin_inset Formula $\mathsf{norm}(\mathtt{mean}=3,\,\mathtt{sd}=1)$
 \end_inset
 
 .
- 
-\end_layout
-
-\begin_layout Example
-Of course, we do not really need a bootstrap distribution here because from
- Section 
+ Of course, we do not really need a bootstrap distribution here because
+ from Section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Sampling-from-Normal"
+reference "sec:sampling-from-normal-dist"
 
 \end_inset
 
@@ -77530,8 +79631,8 @@ reference "sec:Sampling-from-Normal"
 \begin_inset Formula $\Xbar\sim\mathsf{norm}(\mathtt{mean}=3,\,\mathtt{sd}=1/\sqrt{n})$
 \end_inset
 
-, but we will investigate how the bootstrap performs when we know what the
- answer should be ahead of time.
+, but we proceed anyway to investigate how the bootstrap performs when we
+ know what the answer should be ahead of time.
 \end_layout
 
 \begin_layout Example
@@ -77614,6 +79715,50 @@ name "fig:Bootstrap-se-mean"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+The original data were 25 observations generated from a 
+\begin_inset Formula $\mathsf{norm}(\mathtt{mean}=3,\,\mathtt{sd}=1)$
+\end_inset
+
+ distribution.
+ We next resampled to get 1000 resamples, each of size 25, and calculated
+ the sample mean for each resample.
+ A histogram of the 1000 values of 
+\begin_inset Formula $\xbar$
+\end_inset
+
+ is shown above.
+ Also shown (with a solid line) is the true sampling distribution of 
+\begin_inset Formula $\Xbar$
+\end_inset
+
+, which is a 
+\begin_inset Formula $\mathsf{norm}(\mathtt{mean}=3,\,\mathtt{sd}=0.2)$
+\end_inset
+
+ distribution.
+ Note that the histogram is centered at the sample mean of the original
+ data, while the true sampling distribution is centered at the true value
+ of 
+\begin_inset Formula $\mu=3$
+\end_inset
+
+.
+ The shape and spread of the histogram is similar to the shape and spread
+ of the true sampling distribution.
 \end_layout
 
 \end_inset
@@ -77705,7 +79850,14 @@ bootstrap estimate of bias
 \end_inset
 
 ) to have small bias, but this is no surprise to us because we already knew
- from Section BLANK that 
+ from Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:simple-random-samples"
+
+\end_inset
+
+ that 
 \begin_inset Formula $\Xbar$
 \end_inset
 
@@ -77764,8 +79916,8 @@ would it help? The answer
  that from the original sample, and that from the subsequent resampling
  procedure.
  An increased number of resamples would reduce the variation due to the
- second part, but would be powerless to reduce the variation due to the
- first part.
+ second part, but would do nothing to reduce the variation due to the first
+ part.
  We only took an original sample of size 
 \begin_inset Formula $n=25$
 \end_inset
@@ -77822,7 +79974,7 @@ rivers
 
 
 \color inherit
- dataset.
+ data set.
  Recall the stemplot on page 
 \begin_inset CommandInset ref
 LatexCommand vpageref
@@ -77913,7 +80065,7 @@ reference "fig:Bootstrapping-se-median"
 
 \end_inset
 
-, and was produced by the following.
+, and was produced by the following code.
 \end_layout
 
 \begin_layout Scrap
@@ -77954,11 +80106,15 @@ mean(medstar) - median(rivers)
 \end_layout
 
 \begin_layout Example
+
+\series bold
 The boot package in 
 \family typewriter
 R
 \family default
 .
+
+\series default
  It turns out that there are many bootstrap procedures and commands already
  built into base 
 \family typewriter
@@ -78421,7 +80577,19 @@ boot.ci
 \end_layout
 
 \begin_layout Example
-Confidence interval for expected value of the median.
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:percentile-interval-median-first"
+
+\end_inset
+
+
+\series bold
+Percentile interval for the expected value of the median.
+
+\series default
+ We will try the naive approach where we generate the resamples and calculate
+ the percentile interval by hand.
 \end_layout
 
 \begin_deeper
@@ -78464,6 +80632,22 @@ Confidence interval for expected value of the median,
 \end_inset
 
  try.
+ Now we will do it the right way with the 
+\color none
+
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+boot
+\end_layout
+
+\end_inset
+
+ function.
 \end_layout
 
 \begin_deeper
@@ -78672,8 +80856,8 @@ Can do things like transform scales, compute confidence intervals, and then
 \end_layout
 
 \begin_layout Itemize
-Studentized bootstrap confidence intervalswhere is the Studentized version
- of is the rth order statistic of the simulation
+Studentized bootstrap confidence intervals where is the Studentized version
+ of is the  order statistic of the simulation
 \end_layout
 
 \begin_layout Section
@@ -79428,6 +81612,22 @@ Relationship between two variables.
 Chapter Exercises
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{thm}{0}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 Categorical Data Analysis
 \begin_inset CommandInset label
@@ -79617,7 +81817,7 @@ name "cha:Data"
 \begin_layout Standard
 This appendix is a reference of sorts regarding some of the data structures
  a statistician is likely to encounter.
- We discuss their salient features and idiosyncracies.
+ We discuss their salient features and idiosyncrasies.
 \end_layout
 
 \begin_layout Section
@@ -81117,7 +83317,8 @@ status open
 \end_inset
 
  for the available options to customize the file import.
- Note that the R Commander
+ Note that the R Commander will import many of the common file types with
+ a menu driven interface.
 \end_layout
 
 \begin_layout Subsection
@@ -81187,7 +83388,11 @@ scan
 \end_layout
 
 \begin_layout Standard
-Using R Commander.
+Using the 
+\family sans
+R
+\family default
+ Commander.
 \end_layout
 
 \begin_layout Section
@@ -81215,6 +83420,207 @@ Deleting Rows and Columns
 
 \begin_layout Subsection
 Sorting Data
+\end_layout
+
+\begin_layout Standard
+We can sort a vector with the 
+\begin_inset listings
+lstparams "showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+sort
+\end_layout
+
+\end_inset
+
+ function.
+ 
+\end_layout
+
+\begin_layout Standard
+Normally we have a data frame of several columns (variables) and many, many
+ rows (observations).
+ The goal is to shuffle the rows so that they are ordered by the values
+ of one or more columns.
+ This is done with the 
+\begin_inset listings
+lstparams "showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+order
+\end_layout
+
+\end_inset
+
+ function.
+ 
+\end_layout
+
+\begin_layout Standard
+For example, we may sort all of the rows of the 
+\begin_inset listings
+lstparams "showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Puromycin
+\end_layout
+
+\end_inset
+
+ data (in ascending order) by the variable 
+\begin_inset listings
+lstparams "showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+conc
+\end_layout
+
+\end_inset
+
+ with the following:
+\end_layout
+
+\begin_layout Scrap
+<<>>=
+\begin_inset Newline newline
+\end_inset
+
+Tmp <- Puromycin[order(Puromycin$conc), ]
+\begin_inset Newline newline
+\end_inset
+
+head(Tmp)
+\begin_inset Newline newline
+\end_inset
+
+@
+\end_layout
+
+\begin_layout Standard
+We can accomplish the same thing with the command 
+\end_layout
+
+\begin_layout Scrap
+<<eval = FALSE>>=
+\begin_inset Newline newline
+\end_inset
+
+with(Puromycin, Puromycin[order(conc), ])
+\begin_inset Newline newline
+\end_inset
+
+@
+\end_layout
+
+\begin_layout Standard
+We can sort by more than one variable.
+ To sort first by 
+\begin_inset listings
+lstparams "showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+state
+\end_layout
+
+\end_inset
+
+ and then next by 
+\begin_inset listings
+lstparams "showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+conc
+\end_layout
+
+\end_inset
+
+ do
+\end_layout
+
+\begin_layout Scrap
+<<eval = FALSE>>=
+\begin_inset Newline newline
+\end_inset
+
+with(Puromycin, Puromycin[order(state, conc), ])
+\begin_inset Newline newline
+\end_inset
+
+@
+\end_layout
+
+\begin_layout Standard
+If we would like to sort a numeric variable in descending order then we
+ put a minus sign in front of it.
+\end_layout
+
+\begin_layout Scrap
+<<>>=
+\begin_inset Newline newline
+\end_inset
+
+Tmp <- with(Puromycin, Puromycin[order(-conc), ])
+\begin_inset Newline newline
+\end_inset
+
+head(Tmp)
+\begin_inset Newline newline
+\end_inset
+
+@
+\end_layout
+
+\begin_layout Standard
+If we would like to sort by a character (or factor) in decreasing order
+ then we can use the 
+\begin_inset listings
+lstparams "showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+xtfrm
+\end_layout
+
+\end_inset
+
+ function which produces a numeric vector in the same order as the character
+ vector.
+\end_layout
+
+\begin_layout Scrap
+<<>>=
+\begin_inset Newline newline
+\end_inset
+
+Tmp <- with(Puromycin, Puromycin[order(-xtfrm(state)), ])
+\begin_inset Newline newline
+\end_inset
+
+head(Tmp)
+\begin_inset Newline newline
+\end_inset
+
+@
 \end_layout
 
 \begin_layout Section
@@ -81296,11 +83702,11 @@ name "sec:Reshaping-a-Data"
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 Aggregation
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 Convert Tables to Data Frames and back
 \end_layout
 
@@ -81318,6 +83724,9 @@ rbind
 \end_inset
 
  
+\end_layout
+
+\begin_layout Standard
 \begin_inset listings
 lstparams "showstringspaces=false,tabsize=2"
 inline true
@@ -81334,7 +83743,19 @@ cbind
 \end_layout
 
 \begin_layout Standard
-ab[order(ab[,1]),]
+\begin_inset listings
+lstparams "showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+ab[order(ab[ ,1]), ]
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -81383,27 +83804,6 @@ stack
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-# sorting examples using built-in mtcars dataset
-\end_layout
-
-\begin_layout Standard
-# sort by mpg newdata <- mtcars[order(mpg),]
-\end_layout
-
-\begin_layout Standard
-# sort by mpg and cyl newdata <- mtcars[order(mpg, cyl),]
-\end_layout
-
-\begin_layout Standard
-#sort by mpg (ascending) and cyl (descending) newdata <- mtcars[order(mpg,
- -cyl),] 
-\end_layout
-
-\begin_layout Section
-Chapter Exercises
 \end_layout
 
 \begin_layout Chapter
@@ -81976,6 +84376,32 @@ name "sec:Differential-and-Integral"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+A function 
+\begin_inset Formula $f$
+\end_inset
+
+ of one variable is said to be one-to-one if no two distinct 
+\begin_inset Formula $x$
+\end_inset
+
+ values are mapped to the same 
+\begin_inset Formula $y=f(x)$
+\end_inset
+
+ value.
+ To show that a function is one-to-one we can either use the horizontal
+ line test or we may start with the equation 
+\begin_inset Formula $f(x_{1})=f(x_{2})$
+\end_inset
+
+ and use algebra to show that it implies 
+\begin_inset Formula $x_{1}=x_{2}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection*
@@ -83429,7 +85855,7 @@ divergent
 Sequences and Series
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Finite-and-Infinite"
+name "sec:Sequences-and-Series"
 
 \end_inset
 
@@ -83574,7 +86000,7 @@ Finite Series
 
 \begin_layout Standard
 \begin_inset Formula \begin{equation}
-\sum_{k=1}^{n}k=1+2+\cdots+n=\frac{n(n+1)}{2}\end{equation}
+\sum_{k=1}^{n}k=1+2+\cdots+n=\frac{n(n+1)}{2}\label{eq:gauss-series}\end{equation}
 
 \end_inset
 
@@ -83583,7 +86009,7 @@ Finite Series
 
 \begin_layout Standard
 \begin_inset Formula \begin{equation}
-\sum_{k=1}^{n}k^{2}=1^{2}+2^{2}+\cdots+n^{2}=\frac{n(n+1)(2n+3)}{6}\end{equation}
+\sum_{k=1}^{n}k^{2}=1^{2}+2^{2}+\cdots+n^{2}=\frac{n(n+1)(2n+3)}{6}\label{eq:gauss-series-sq}\end{equation}
 
 \end_inset
 
@@ -83596,7 +86022,7 @@ The Binomial Series
 
 \begin_layout Paragraph*
 \begin_inset Formula \begin{equation}
-\sum_{k=0}^{n}{n \choose k}a^{n-k}b^{k}=(a+b)^{n}\end{equation}
+\sum_{k=0}^{n}{n \choose k}\, a^{n-k}b^{k}=(a+b)^{n}\label{eq:binom-series}\end{equation}
 
 \end_inset
 
@@ -83715,7 +86141,7 @@ In both of the above the series on the left is convergent if the series
 \begin_layout Subsubsection*
 The Geometric Series
 \begin_inset Formula \begin{equation}
-\sum_{k=0}^{\infty}x^{k}=\frac{1}{1-x},\quad|x|<1.\end{equation}
+\sum_{k=0}^{\infty}x^{k}=\frac{1}{1-x},\quad|x|<1.\label{eq:geom-series}\end{equation}
 
 \end_inset
 
@@ -83725,7 +86151,7 @@ The Geometric Series
 \begin_layout Subsubsection*
 The Exponential Series
 \begin_inset Formula \begin{equation}
-\sum_{k=0}^{\infty}\frac{x^{k}}{k!}=\me^{x},\quad-\infty<x<\infty.\end{equation}
+\sum_{k=0}^{\infty}\frac{x^{k}}{k!}=\me^{x},\quad-\infty<x<\infty.\label{eq:exp-series}\end{equation}
 
 \end_inset
 
@@ -83735,7 +86161,7 @@ The Exponential Series
 \begin_layout Paragraph*
 Other Series
 \begin_inset Formula \begin{equation}
-\sum_{k=0}^{\infty}{m+k-1 \choose m-1}x^{k}=\frac{1}{(1-x)^{m}},\quad|x|<1.\end{equation}
+\sum_{k=0}^{\infty}{m+k-1 \choose m-1}x^{k}=\frac{1}{(1-x)^{m}},\quad|x|<1.\label{eq:negbin-series}\end{equation}
 
 \end_inset
 
@@ -83744,7 +86170,7 @@ Other Series
 
 \begin_layout Paragraph*
 \begin_inset Formula \begin{equation}
--\sum_{k=1}^{\infty}\frac{x^{n}}{n}=\ln(1-x),\quad|x|<1.\end{equation}
+-\sum_{k=1}^{\infty}\frac{x^{n}}{n}=\ln(1-x),\quad|x|<1.\label{eq:log-series}\end{equation}
 
 \end_inset
 
@@ -83753,7 +86179,7 @@ Other Series
 
 \begin_layout Standard
 \begin_inset Formula \begin{equation}
-\sum_{k=0}^{\infty}{n \choose k}x^{k}=(1+x)^{n},\quad|x|<1.\end{equation}
+\sum_{k=0}^{\infty}{n \choose k}x^{k}=(1+x)^{n},\quad|x|<1.\label{eq:binom-series-infinite}\end{equation}
 
 \end_inset
 
@@ -85529,8 +87955,7 @@ infile.odt
 
 
 \color inherit
-, and make sure that it is saved in your working directory (see Section
- BLANK).
+, and make sure that it is saved in your working directory.
 \end_layout
 
 \begin_layout Enumerate
@@ -86241,9 +88666,19 @@ http://www.lyx.org/
 
 If you decide to give LyX a try, then you will need to complete some extra
  steps to coordinate Sweave and LyX with each other.
- Luckily, Gregor Gorjanc has a website and an R-News article BLANK to help
- you do exactly that.
- See the LyX-Sweave Homepage (
+ Luckily, Gregor Gorjanc has a website and an 
+\family sans
+R
+\family default
+ News article 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gorjanc2008"
+
+\end_inset
+
+ to help you do exactly that.
+ See the LyX-Sweave homepage (
 \begin_inset Flex URL
 status collapsed
 
@@ -86694,7 +89129,8 @@ name "sec:Ancillary-Materials"
 
 \begin_layout Standard
 In addition to the main text, student manual, and instructor manual, there
- are two oth IPSUR.R
+ are two other ancillaries.
+ IPSUR.R, and IPSUR.RData.
 \end_layout
 
 \begin_layout Section
@@ -86892,7 +89328,7 @@ RcmdrTestDrive
 \end_layout
 
 \begin_layout Section*
-CaseFile: ALU-179 
+Case File: ALU-179 
 \begin_inset Quotes eld
 \end_inset
 
@@ -87462,7 +89898,7 @@ Fudd-Einstein said in awe and sarcasm.
 
 Fudd-Einstein explained as he began dialing.
  “What I can’t understand is how in the world the Police Chief sent me all
- of this information ann acceptabled seemed to screw it up.”
+ of this information and somehow seemed to screw it up.”
 \end_layout
 
 \begin_layout Standard
