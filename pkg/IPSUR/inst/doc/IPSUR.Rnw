@@ -18454,7 +18454,7 @@ permit their use in free software.
 \cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{\bibname}
-%\nocite{*} 
+%\nocite{*}
 %\bibliography{IPSUR}
 
 \bibliographystyle{plainurl}
@@ -18474,7 +18474,7 @@ permit their use in free software.
 
 <<echo=FALSE, results=hide, split=FALSE>>= 
 rm(.Random.seed)
-save.image(file = "../IPSUR.RData")
+save.image(file = "../../data/IPSUR.RData")
 Stangle(file="IPSUR.Rnw", output="../IPSUR.R", annotate=TRUE)
 @
 \end{document}
