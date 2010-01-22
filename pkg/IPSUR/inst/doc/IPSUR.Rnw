@@ -25,9 +25,7 @@ language=R}
 \usepackage{amsthm}
 \usepackage{amsmath}
 \makeindex
-\usepackage{setspace}
 \usepackage{amssymb}
-\setstretch{1.2}
 \usepackage[unicode=true, 
  bookmarks=true,bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=0,
  breaklinks=true,pdfborder={0 0 0},backref=page,colorlinks=true]
@@ -407,7 +405,7 @@ Free Documentation License''.
 \noindent \bigskip{}
 
 
-\noindent Timestamp: \today \vfill{}
+\noindent Date: \today \vfill{}
 
 
 \cleardoublepage
@@ -807,12 +805,52 @@ for your operating system:
 \item [{MacOS:}] \url{http://cran.r-project/bin/macosx}
 \item [{Linux:}] \url{http://cran.r-project/bin/linux}
 \end{description}
-On MS-Windows, click the \inputencoding{latin9}\lstinline[showstringspaces=false]!.exe!\inputencoding{utf8}
+On Windows, click the \inputencoding{latin9}\lstinline[showstringspaces=false]!.exe!\inputencoding{utf8}
 program file to start installation. When it asks for \textquotedbl{}Customized
 startup options\textquotedbl{}, specify \textsf{Yes}. In the next
-window, be sure to select the SDI (single-window) option; this is
-useful later when we discuss three dimensional plots with the \inputencoding{latin9}\lstinline[showstringspaces=false]!rgl!\inputencoding{utf8}
+window, be sure to select the SDI (single document interface) option;
+this is useful later when we discuss three dimensional plots with
+the \inputencoding{latin9}\lstinline[showstringspaces=false]!rgl!\inputencoding{utf8}
 package \cite{rgl}.
+
+
+\paragraph*{Installing \textsf{R} on a USB drive (Windows)}
+
+With this option you can use \textsf{R} portably and without administrative
+privileges. There is an entry in the \textsf{R} for Windows FAQ about
+this. Here is the procedure I use:
+\begin{enumerate}
+\item Download the Windows installer above and start installation as usual.
+When it asks \emph{where} to install, navigate to the top-level directory
+of the USB drive instead of the default \inputencoding{latin9}\lstinline[showstringspaces=false]!C!\inputencoding{utf8}
+drive.
+\item When it asks whether to modify the Windows registry, uncheck the box;
+we do NOT want to tamper with the registry. 
+\item After installation, change the name of the folder from {\textquotedbl{}}\inputencoding{latin9}\lstinline[showstringspaces=false]!R-x.y.z!\inputencoding{utf8}\textquotedbl{}
+to just plain {\textquotedbl{}}\inputencoding{latin9}\lstinline[showstringspaces=false]!R!\inputencoding{utf8}\textquotedbl{}.
+(Even quicker: do this in step 1.)
+\item Download the following shortcut to the top-level of the USB drive,
+right beside the \inputencoding{latin9}\lstinline[showstringspaces=false]!R!\inputencoding{utf8}
+folder, not inside the folder.
+
+
+\begin{center}
+\url{http://ipsur.r-forge.r-project.org/book/download/R.exe}
+\par\end{center}
+
+Use the downloaded shortcut to run \textsf{R}. 
+
+\end{enumerate}
+Steps 3 and 4 are not required but save you the trouble of navigating
+to the \inputencoding{latin9}\lstinline[showstringspaces=false]!/R-x.y.z/bin!\inputencoding{utf8}
+directory to double-click \inputencoding{latin9}\lstinline[showstringspaces=false]!Rgui.exe!\inputencoding{utf8}
+every time you want to run the program. It is useless to create your
+own shortcut to \inputencoding{latin9}\lstinline[showstringspaces=false]!Rgui.exe!\inputencoding{utf8}.
+Windows does not allow shortcuts to have relative paths; they always
+have a drive letter associated with them. So if you make your own
+shortcut and plug your USB drive into some \emph{other} machine that
+happens to assign your drive a different letter, then your shortcut
+will no longer be pointing to the right place.
 
 
 \subsection{Installing and Loading Add-on Packages\label{sub:Installing-and-Loading-packages}}
@@ -1985,16 +2023,14 @@ prop.table(Tbl)   # same thing
 
 \paragraph*{Bar Graphs\label{par:Bar-Graphs}}
 
-A bar graph is the analogue of a histogram, but for categorical data.
-A bar is displayed for each level of a factor, with the height of
-the bars proportional to the frequencies of observations falling in
-the respective categories. A disadvantage of bar graphs is that the
-levels are ordered alphabetically (by default), which may sometimes
-obscure patterns in the display. 
+A bar graph is the analogue of a histogram for categorical data. A
+bar is displayed for each level of a factor, with the height of the
+bars proportional to the frequencies of observations falling in the
+respective categories. A disadvantage of bar graphs is that the levels
+are ordered alphabetically (by default), which may sometimes obscure
+patterns in the display. 
 \begin{example}
-\textbf{U.S.~State Facts and Features.} The U.S.~Department of Commerce
-U.S.~Census Bureau, releases all sorts of information in the \emph{Statistical
-Abstract of the United States}, and the \inputencoding{latin9}\lstinline[showstringspaces=false]!state.region!\inputencoding{utf8}
+\textbf{U.S.~State Facts and Features.} The \inputencoding{latin9}\lstinline[showstringspaces=false]!state.region!\inputencoding{utf8}
 data lists each of the 50 states and the region to which it belongs,
 be it Northeast, South, North Central, or West. See \inputencoding{latin9}\lstinline[showstringspaces=false]!?state.region!\inputencoding{utf8}.
 It is already stored internally as a factor. We make a bar graph with
@@ -4979,7 +5015,7 @@ We can make the plot in Figure \ref{fig:The-Birthday-Problem} with
 the following sequence of commands.
 
 \inputencoding{latin9}
-\begin{lstlisting}[basicstyle={\ttfamily},breaklines=true,frame=leftline,showstringspaces=false,tabsize=2]
+\begin{lstlisting}[basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2]
 	g <- Vectorize(pbirthday.ipsur)
 	plot(1:50, g(1:50),
 			xlab = "Number of people in room",
