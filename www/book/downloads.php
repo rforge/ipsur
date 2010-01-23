@@ -56,7 +56,7 @@ If you would like to print your own copy of the <strong>published</strong> editi
 </p>
 
 <p>
-If you would like a transparent copy of the published edition of <span class="name">IPSUR</span>, then download the following <span class="name">zip</span> file.  It contains all of the LaTeX source code and all of the figures (in <span class="name">.pdf</span> and <span class="name">.eps</span>).  This document can be used (in principle) to generate your own personal copy of the published edition of <span class="name">IPSUR</span>, and you are FREE to modify and distribute your own version of it under the constraints of the GNU-FDL.
+If you would like a transparent copy of the published edition of <span class="name">IPSUR</span>, then download the following <span class="name">zip</span> file.  It contains all of the LaTeX source code and all of the figures (in <span class="name">.pdf</span> and <span class="name">.eps</span>).  These can be used (in principle) to generate your own personal copy of the published edition of <span class="name">IPSUR</span>, and you are FREE to modify and distribute your own version of it under the constraints of the GNU-FDL.
 </p>
 
 <p>
@@ -67,7 +67,7 @@ If you would like a transparent copy of the published edition of <span class="na
 </p>
 
 <p>
-Finally, you can download the LyX source file, <span class="name">IPSUR.lyx</span>, which was used by the author to write <span class="name">IPSUR</span>. It is essentially the Sweave source code for the published edition, except that LyX conceals the intermediate step of generating the LaTeX source file and figures.  This one text file will generate a PDF of the entire published edition of <span class="name">IPSUR</span>, with a single click.  Enjoy.  (I certainly have.)
+Finally, you can download the LyX source file, <span class="name">IPSUR.lyx</span>, which was used by the author to write <span class="name">IPSUR</span>. It is essentially the <span class="name">Sweave</span> source code for the published edition, but LyX conceals the intermediate step of generating the LaTeX source file and figures.  This one text file will generate a PDF of the entire published edition of <span class="name">IPSUR</span> with a single click.  Enjoy.  (I certainly have.)
 </p>
 
 <p>
