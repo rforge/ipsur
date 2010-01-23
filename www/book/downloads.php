@@ -32,12 +32,13 @@
 	
 <!--BEGIN: Page Content-->
 <p class="articleTitle">
-  <strong>Downloads for the <span class="name">IPSUR</span> package</strong>
+  Downloads for the <span class="name">IPSUR</span> package
 </p>
-
+<blockquote>
 <p>
 This page has the source code for the released version of <span class="name">IPSUR</span> in a variety of formats.
 </p>
+
 
 <p>
 You can get a PDF copy (in color) of the published edition of <span class="name">IPSUR</span> from CRAN, and you can get a PDF of the development edition from R-Forge;  see the the <a href="installation.php">Installation</a> page for details.  Note that the <span style="text-decoration: none">Sweave</span> sources of both of those documents are stored alongside their PDF siblings.
@@ -87,6 +88,8 @@ You are free to print your own copy of the <em>development</em> edition of <span
 <p>
 If you would like to print your own copy of the <span class="name">IPSUR</span> development edition then the best approach would be to download the <span style="text-decoration: none">Sweave</span> source, compile your own PDF in black-and-white, and make sure to embed all of the fonts. <a href="download/generateIPSUR">Here</a> is a script that I use to generate <span class="name">IPSUR</span> for publication.
 </p>
+
+</blockquote>
 
 <!--END: Page Content-->
 
