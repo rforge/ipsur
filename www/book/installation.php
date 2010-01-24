@@ -53,7 +53,7 @@
 			<ul><br />  
 				<li>
 		  		<strong>Windows Installation Tip for <span class="name">R</span></strong>:  click the 
-				<span style="text-decoration: none">.exe</span> 
+				<span class="name">.exe</span> 
 				program file to start installation.  When it asks for "Customized startup options", 
 				specify <em>Yes</em>.  In the next window, be sure to select the SDI (single-window) option.
 				</li>

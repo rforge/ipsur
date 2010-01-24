@@ -3,8 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>IPSUR: Introduction to Probability and Statistics Using R</title>
-	<link rel="Shortcut Icon" href="favicon.ico">
-	<style type="text/css">
+	<link rel="Shortcut Icon" href="favicon.ico"><style type="text/css">
 	<!--
 		@import url("main.css");
 		body {
@@ -40,8 +39,10 @@ include "topMenu.php";
 </p>
 
 <p>
-<span class="name">IPSUR</span> is <a href="http://www.gnu.org/copyleft/fdl.html">FREE</a>, in the <a href="http://www.gnu.org/">GNU</a> sense of the word.  Hard copies are (will be) available for purchase (coming soon) from the standard online retailers worldwide.  In efforts to keep the price down I have waived all royalties; the price of the book is exactly the on-demand manufacturing cost plus the retail markup (which is still nontrivial due to the book's size).   You can get it even cheaper by downloading an electronic copy and printing it yourself, but if you elect this route then be sure to get the publisher-quality PDF from the <a href="downloads.php">Downloads</a> page.
+<span class="name">IPSUR</span> is <a href="http://www.gnu.org/copyleft/fdl.html">FREE</a>, in the <a href="http://www.gnu.org/">GNU</a> sense of the word. Hard copies are available for purchase <a href="http://www.lulu.com/content/paperback-book/introduction-to-probability-and-statistics-using-r/8123594">here</a> from Lulu and will be available (coming soon) from the other standard online retailers worldwide. The price of the book is exactly the manufacturing cost plus the retailers' markup. You may be able to get it even cheaper by downloading an electronic copy and printing it yourself, but if you elect this route then be sure to get the publisher-quality PDF from the <a href="downloads.php">Downloads</a> page.  And double check the price.  It was cheaper for my students to buy a <a href="http://www.lulu.com/content/paperback-book/introduction-to-probability-and-statistics-using-r/8123594">perfect-bound paperback</a> from Lulu and have it shipped to their door than it was to upload the PDF to Fed-Ex Kinkos and Xerox a coil-bound copy (and on top of that go pick it up at the store).
 </p>
+
+<p>If you are going to buy from anywhere other than Lulu then be sure to check the time-stamp on the copyright page.  There is a 6 to 8 week delay from Lulu to Amazon and you may not be getting the absolute latest version available.</p>
 
 <p>
 Refer to the <a href="installation.php">Installation</a> page for instructions to install an electronic copy of <span class="name">IPSUR</span> on your personal computer.  See the <a href="feedback.php">Feedback</a> page for guidance about questions or comments you may have about <span class="name">IPSUR</span>.

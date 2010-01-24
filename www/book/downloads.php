@@ -32,7 +32,7 @@
 	
 <!--BEGIN: Page Content-->
 <p class="articleTitle">
-  Downloads for the <span class="name">IPSUR</span> package
+  Download Options
 </p>
 <blockquote>
 <p>
@@ -82,11 +82,11 @@ You will need the <a href="download/IPSUR.bib">BibTeX</a> file to generate the b
 </p>
 
 <p>
-You are free to print your own copy of the <em>development</em> edition of <span class="name">IPSUR</span>, but I recommend against it for several reasons.  First of all, the electronic copy is in color which does not show up well on black-and-white paper.  Second of all, the electronic copy is optimized for web viewing which means that not all of the fonts are embedded in the PDF - your printer may not render all of the symbols correctly.  Finally, unless you have a very fancy printer you will be printing only on one side of the page - which wastes paper.
+You are free to print your own copy of the <em>development</em> edition of <span class="name">IPSUR</span>, but for several reasons I do not recommend it.  For one thing, the electronic copy is in color which does not show up well on black-and-white paper.  For another, the electronic copy is optimized for web viewing which means that not all of the fonts are embedded in the PDF - your printer may not render all of the symbols correctly.  Moreover, unless you have a very fancy printer you will be printing only on one side of the page - which wastes paper.
 </p>
 
 <p>
-If you would like to print your own copy of the <span class="name">IPSUR</span> development edition then the best approach would be to download the <span style="text-decoration: none">Sweave</span> source, compile your own PDF in black-and-white, and make sure to embed all of the fonts. <a href="download/generateIPSUR">Here</a> is a script that I use to generate <span class="name">IPSUR</span> for publication.
+If you would like to print your own copy of the <span class="name">IPSUR</span> development edition then the best approach would be to download the <span style="text-decoration: none">Sweave</span> source, compile your own PDF in black-and-white, and be sure to embed all of the fonts. <a href="download/generateIPSUR">Here</a> is a script that I use to generate <span class="name">IPSUR</span> for publication.
 </p>
 
 </blockquote>
