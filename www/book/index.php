@@ -3,7 +3,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>IPSUR: Introduction to Probability and Statistics Using R</title>
-	<link rel="Shortcut Icon" href="favicon.ico"><style type="text/css">
+	<link rel="Shortcut Icon" href="favicon.ico">
+	<style type="text/css">
 	<!--
 		@import url("main.css");
 		body {
@@ -35,6 +36,7 @@ include "topMenu.php";
 
 <p class="articleTitle">What <span class="name">IPSUR</span> is:</p>
 <blockquote>
+
 <p> <span class="name">IPSUR</span> stands for <em>Introduction to Probability and Statistics Using R</em>, ISBN: 978-0-557-24979-4, which is a textbook written for an undergraduate course in probability and statistics. The approximate prerequisites are two or three semesters of calculus and some linear algebra in a few places.  Attendees of the class include mathematics, engineering, and computer science majors.  
 </p>
 
@@ -80,7 +82,6 @@ R logo &copy; the R Foundation,
     </td>
   </tr>
 </table>
-
 </div>
 </body>
 </html>

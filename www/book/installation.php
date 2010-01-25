@@ -3,7 +3,8 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
   <title>IPSUR Installation</title>
-  <link rel="Shortcut Icon" href="favicon.ico"><style type="text/css">
+  <link rel="Shortcut Icon" href="favicon.ico">
+  <style type="text/css">
   <!--
     @import url("main.css");
       body {
@@ -35,7 +36,7 @@
 <!--BEGIN: Page Content-->
 <p class="articleTitle">Installation Instructions</p>
 <blockquote>
-      
+
 <div id="list">
 	<ol type="1">
 		<li>
@@ -116,5 +117,8 @@
 	</tr>
 </table>
 </div>
+</body>
+</html>
+
 </body>
 </html>

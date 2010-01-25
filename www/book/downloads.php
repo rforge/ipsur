@@ -3,10 +3,13 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
   <title>IPSUR Downloads</title>
-  <link rel="Shortcut Icon" href="favicon.ico"><style type="text/css">
+  <link rel="Shortcut Icon" href="favicon.ico">
+  <style type="text/css">
   <!--
     @import url("main.css");
-    body { background-image: url();}
+    body { 
+      background-image: url();
+    }
   -->
   </style>
 </head>
@@ -31,10 +34,9 @@
 <!--END: Top Menu-->
 	
 <!--BEGIN: Page Content-->
-<p class="articleTitle">
-  Download Options
-</p>
+<p class="articleTitle">Download Options</p>
 <blockquote>
+
 <p>
 This page has the source code for the released version of <span class="name">IPSUR</span> in a variety of formats.
 </p>
