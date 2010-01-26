@@ -31,8 +31,6 @@ include "banner.php";
 include "topMenu.php";
 ?>
 <!--END: Top Menu-->
-	
-
 
 <p class="articleTitle">What <span class="name">IPSUR</span> is:</p>
 <blockquote>
@@ -66,10 +64,8 @@ I have been writing <span class="name">IPSUR</span> on and off since 2006, yet t
         </tr>
       </table>
 </p>
-
-
 <p>&nbsp;</p>
-      
+
 <p align="center">
 R logo &copy; the R Foundation, 
 <font face="Courier New">

@@ -1,39 +1,37 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-  <title>IPSUR Downloads</title>
-  <link rel="Shortcut Icon" href="favicon.ico">
-  <style type="text/css">
-  <!--
-    @import url("main.css");
-    body { 
-      background-image: url();
-    }
-  -->
-  </style>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>IPSUR Downloads</title>
+	<link rel="Shortcut Icon" href="favicon.ico">
+	<style type="text/css">
+	<!--
+		@import url("main.css");
+		body { 
+			background-image: url();
+		}
+	-->
+	</style>
 </head>
 
 <body>
-  <div align="center">
-    <!-- All of the page content is in this table-->
-    <table width="700" height="100%" border="0" cellpadding="0" cellspacing="0">
+	<div align="center">
+	<table width="700" height="100%" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td align="left" valign="top" bgcolor="#FFFFFF">
 
 <!--BEGIN: Page Banner-->
 <?php
-  include "banner.php";
+include "banner.php";
 ?>
 <!--END: Page Banner-->
 	
 <!--BEGIN: Top Menu-->
 <?php
-  include "topMenu.php";
+include "topMenu.php";
 ?>
 <!--END: Top Menu-->
 	
-<!--BEGIN: Page Content-->
 <p class="articleTitle">Download Options</p>
 <blockquote>
 
@@ -43,7 +41,7 @@ This page has the source code for the released version of <span class="name">IPS
 
 
 <p>
-You can get a PDF copy (in color) of the published edition of <span class="name">IPSUR</span> from CRAN, and you can get a PDF of the development edition from R-Forge;  see the the <a href="installation.php">Installation</a> page for details.  Note that the <span style="text-decoration: none">Sweave</span> sources of both of those documents are stored alongside their PDF siblings.
+You can get a PDF copy (in color) of the published edition of <span class="name">IPSUR</span> from CRAN, and you can get a PDF of the development edition from R-Forge;  see the the <a href="installation.php">Installation</a> page for details.  Note that the <span class="name">Sweave</span> sources of both of those documents are stored alongside their PDF siblings.
 </p>
 
 <p>
@@ -88,14 +86,14 @@ You are free to print your own copy of the <em>development</em> edition of <span
 </p>
 
 <p>
-If you would like to print your own copy of the <span class="name">IPSUR</span> development edition then the best approach would be to download the <span style="text-decoration: none">Sweave</span> source, compile your own PDF in black-and-white, and be sure to embed all of the fonts. <a href="download/generateIPSUR">Here</a> is a script that I use to generate <span class="name">IPSUR</span> for publication.
+If you would like to print your own copy of the <span class="name">IPSUR</span> development edition then the best approach would be to download the <span class="name">Sweave</span> source, compile your own PDF in black-and-white, and be sure to embed all of the fonts. <a href="download/generateIPSUR">Here</a> is a script that I use to generate <span class="name">IPSUR</span> for publication.
 </p>
 
 </blockquote>
 
-<!--END: Page Content-->
 
-<!--BEGIN: Footer-->
+
+
 <p align="center">
   R logo &copy; the R Foundation, 
     <font face="Courier New">
@@ -104,9 +102,7 @@ If you would like to print your own copy of the <span class="name">IPSUR</span> 
       </a>
     </font>
 </p>
-<!--END: Footer-->
-  
-<!--Close main table-->
+
       </td>
     </tr>
   </table>
