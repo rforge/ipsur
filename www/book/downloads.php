@@ -36,11 +36,6 @@ include "topMenu.php";
 <blockquote>
 
 <p>
-This page has the source code for the released version of <span class="name">IPSUR</span> in a variety of formats.
-</p>
-
-
-<p>
 You can get a PDF copy (in color) of the published edition of <span class="name">IPSUR</span> from CRAN, and you can get a PDF of the development edition from R-Forge;  see the the <a href="installation.php">Installation</a> page for details.  Note that the <span class="name">Sweave</span> sources of both of those documents are stored alongside their PDF siblings.
 </p>
 
