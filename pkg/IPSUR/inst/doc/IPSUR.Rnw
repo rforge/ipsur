@@ -25,16 +25,14 @@ language=R}
 \usepackage{amsthm}
 \usepackage{amsmath}
 \makeindex
-\usepackage{setspace}
 \usepackage{amssymb}
-\setstretch{1.2}
 \usepackage[unicode=true, 
  bookmarks=true,bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=0,
  breaklinks=true,pdfborder={0 0 0},backref=page,colorlinks=true]
  {hyperref}
 \hypersetup{pdftitle={Introduction to Probability and Statistics Using R},
  pdfauthor={G. Jay Kerns},
- linkcolor=blue,  citecolor=black, urlcolor=blue}
+ linkcolor=blue,  citecolor=blue, urlcolor=blue}
  
 \makeatletter
 
@@ -155,10 +153,15 @@ language=R}
 
 
 %%  Sweave specific commands
-% make the input blue
-\DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl, formatcom=\color{red}}
-% make the output red
+% make the input blue, output red
 \DefineVerbatimEnvironment{Soutput}{Verbatim}{formatcom=\color{blue}}
+\DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl, formatcom=\color{red}}
+% make the output black
+%\DefineVerbatimEnvironment{Soutput}{Verbatim}{formatcom=\color{black}}
+%\DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl, formatcom=\color{black}}
+
+
+
 % get rid of extra Sweave space
 \fvset{listparameters={\setlength{\topsep}{0pt}}}
 \renewenvironment{Schunk}{\vspace{\topsep}}{\vspace{\topsep}}  
@@ -224,7 +227,7 @@ morestring=[b]"
 <<echo = FALSE>>=
 seed <- 42
 set.seed(seed)
-options(width = 70)
+options(width = 75)
 #library(random)
 #i_seed <- randomNumbers(n = 624, col = 1, min = -1e+09, max = 1e+09)
 #.Random.seed[2:626] <- as.integer(c(1, i_seed))
@@ -399,12 +402,10 @@ with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
 Texts. A copy of the license is included in the section entitled ``GNU
 Free Documentation License''.
 
-\bigskip{}
+\noindent \bigskip{}
 
 
-\noindent Date: \today
-
-\noindent \vfill{}
+\noindent Date: \today \vfill{}
 
 
 \cleardoublepage
@@ -804,12 +805,52 @@ for your operating system:
 \item [{MacOS:}] \url{http://cran.r-project/bin/macosx}
 \item [{Linux:}] \url{http://cran.r-project/bin/linux}
 \end{description}
-On MS-Windows, click the \inputencoding{latin9}\lstinline[showstringspaces=false]!.exe!\inputencoding{utf8}
+On Windows, click the \inputencoding{latin9}\lstinline[showstringspaces=false]!.exe!\inputencoding{utf8}
 program file to start installation. When it asks for \textquotedbl{}Customized
 startup options\textquotedbl{}, specify \textsf{Yes}. In the next
-window, be sure to select the SDI (single-window) option; this is
-useful later when we discuss three dimensional plots with the \inputencoding{latin9}\lstinline[showstringspaces=false]!rgl!\inputencoding{utf8}
+window, be sure to select the SDI (single document interface) option;
+this is useful later when we discuss three dimensional plots with
+the \inputencoding{latin9}\lstinline[showstringspaces=false]!rgl!\inputencoding{utf8}
 package \cite{rgl}.
+
+
+\paragraph*{Installing \textsf{R} on a USB drive (Windows)}
+
+With this option you can use \textsf{R} portably and without administrative
+privileges. There is an entry in the \textsf{R} for Windows FAQ about
+this. Here is the procedure I use:
+\begin{enumerate}
+\item Download the Windows installer above and start installation as usual.
+When it asks \emph{where} to install, navigate to the top-level directory
+of the USB drive instead of the default \inputencoding{latin9}\lstinline[showstringspaces=false]!C!\inputencoding{utf8}
+drive.
+\item When it asks whether to modify the Windows registry, uncheck the box;
+we do NOT want to tamper with the registry. 
+\item After installation, change the name of the folder from {\textquotedbl{}}\inputencoding{latin9}\lstinline[showstringspaces=false]!R-x.y.z!\inputencoding{utf8}\textquotedbl{}
+to just plain {\textquotedbl{}}\inputencoding{latin9}\lstinline[showstringspaces=false]!R!\inputencoding{utf8}\textquotedbl{}.
+(Even quicker: do this in step 1.)
+\item Download the following shortcut to the top-level of the USB drive,
+right beside the \inputencoding{latin9}\lstinline[showstringspaces=false]!R!\inputencoding{utf8}
+folder, not inside the folder.
+
+
+\begin{center}
+\url{http://ipsur.r-forge.r-project.org/book/download/R.exe}
+\par\end{center}
+
+Use the downloaded shortcut to run \textsf{R}. 
+
+\end{enumerate}
+Steps 3 and 4 are not required but save you the trouble of navigating
+to the \inputencoding{latin9}\lstinline[showstringspaces=false]!/R-x.y.z/bin!\inputencoding{utf8}
+directory to double-click \inputencoding{latin9}\lstinline[showstringspaces=false]!Rgui.exe!\inputencoding{utf8}
+every time you want to run the program. It is useless to create your
+own shortcut to \inputencoding{latin9}\lstinline[showstringspaces=false]!Rgui.exe!\inputencoding{utf8}.
+Windows does not allow shortcuts to have relative paths; they always
+have a drive letter associated with them. So if you make your own
+shortcut and plug your USB drive into some \emph{other} machine that
+happens to assign your drive a different letter, then your shortcut
+will no longer be pointing to the right place.
 
 
 \subsection{Installing and Loading Add-on Packages\label{sub:Installing-and-Loading-packages}}
@@ -1400,7 +1441,7 @@ email (and the Posting Guide requests this information). See Appendix
 \ref{cha:R-Session-Information} for an example.
 \end{enumerate}
 
-\section{External resources}
+\section{External Resources}
 
 There is a mountain of information on the Internet about \textsf{R}.
 Below are a few of the important ones.
@@ -1426,7 +1467,7 @@ is a search engine based on Google specifically tailored for \textsf{R}
 queries. 
 \end{description}
 
-\section{Other tips}
+\section{Other Tips}
 
 It is unnecessary to retype commands repeatedly, since \textsf{R}
 remembers what you have recently entered on the command line. On the
@@ -1982,16 +2023,14 @@ prop.table(Tbl)   # same thing
 
 \paragraph*{Bar Graphs\label{par:Bar-Graphs}}
 
-A bar graph is the analogue of a histogram, but for categorical data.
-A bar is displayed for each level of a factor, with the height of
-the bars proportional to the frequencies of observations falling in
-the respective categories. A disadvantage of bar graphs is that the
-levels are ordered alphabetically (by default), which may sometimes
-obscure patterns in the display. 
+A bar graph is the analogue of a histogram for categorical data. A
+bar is displayed for each level of a factor, with the height of the
+bars proportional to the frequencies of observations falling in the
+respective categories. A disadvantage of bar graphs is that the levels
+are ordered alphabetically (by default), which may sometimes obscure
+patterns in the display. 
 \begin{example}
-\textbf{U.S.~State Facts and Features.} The U.S.~Department of Commerce
-U.S.~Census Bureau, releases all sorts of information in the \emph{Statistical
-Abstract of the United States}, and the \inputencoding{latin9}\lstinline[showstringspaces=false]!state.region!\inputencoding{utf8}
+\textbf{U.S.~State Facts and Features.} The \inputencoding{latin9}\lstinline[showstringspaces=false]!state.region!\inputencoding{utf8}
 data lists each of the 50 states and the region to which it belongs,
 be it Northeast, South, North Central, or West. See \inputencoding{latin9}\lstinline[showstringspaces=false]!?state.region!\inputencoding{utf8}.
 It is already stored internally as a factor. We make a bar graph with
@@ -2895,10 +2934,12 @@ structure to the data.
 \subsection{Standardizing variables}
 
 It is sometimes useful to compare data sets with each other on a scale
-that is independent of the measurement units.
+that is independent of the measurement units. The \inputencoding{latin9}\lstinline[showstringspaces=false]!scale!\inputencoding{utf8}
+function will rescale a numeric vector (or data frame) by subtracting
+the sample mean from each value (column) and/or 
 
 
-\section{Multivariate Data and Data Frames\label{sec:Multivariate-Data}}
+\section{Multivariate Data and Data Frames\label{sec:multivariate-data}}
 
 We have had experience with vectors of data, which are long lists
 of numbers. Typically, each entry in the vector is a single measurement
@@ -4974,7 +5015,7 @@ We can make the plot in Figure \ref{fig:The-Birthday-Problem} with
 the following sequence of commands.
 
 \inputencoding{latin9}
-\begin{lstlisting}[basicstyle={\ttfamily},breaklines=true,frame=leftline,showstringspaces=false,tabsize=2]
+\begin{lstlisting}[basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2]
 	g <- Vectorize(pbirthday.ipsur)
 	plot(1:50, g(1:50),
 			xlab = "Number of people in room",
@@ -13922,7 +13963,7 @@ the horizontal axis.
 \begin{xca}
 Prove the ANOVA equality, Equation \ref{eq:anovaeq}. \emph{Hint}:
 show that\[
-\sum\]
+\sum_{i=1}^{n}(Y_{i}-\hat{Y_{i}})(\hat{Y_{i}}-\Ybar)=0.\]
 
 \end{xca}
 
@@ -15556,7 +15597,8 @@ In short, here are some of the benefits that the advent of resampling
 methods has given us:
 \begin{description}
 \item [{Fewer~assumptions.}] We are no longer required to assume the population
-is normal or the sample size is large.
+is normal or the sample size is large (though, as before, the larger
+the sample the better).
 \item [{Greater~accuracy.}] Many classical methods are based on rough
 upper bounds or Taylor expansions. The bootstrap procedures can be
 iterated long enough to give results accurate to several decimal places,
@@ -15594,24 +15636,17 @@ distribution of $S$.
 
 Since the bootstrap distribution gives us information about a statistic's
 sampling distribution, we can use the bootstrap distribution to estimate
-properties of the statistic. of We have seen a procedure to help us
-gain information about the sampling distribution of a statistic of
-interest, and in this section we bring that information to bear to
-help us with estimation.Once we have a bootstrap distribution the
-next question is, what are we going to do with it?One statistic whose
-sampling distribution is often of interest is the sampling We will
-illustrate the bootstrap procedure in the special case that the statistic
-$S$ is the standard error
+properties of the statistic. We will illustrate the bootstrap procedure
+in the special case that the statistic $S$ is a standard error.
 \begin{example}
 \textbf{Standard error of the mean.\label{exa:Bootstrap-se-mean}}
 In this example we illustrate the bootstrap by estimating the standard
-error of the sample mean. We do this in the special case when the
-underlying population is $\mathsf{norm}(\mathtt{mean}=3,\,\mathtt{sd}=1)$. 
-
+error of the sample mean, and we will do it in the special case that
+the underlying population is $\mathsf{norm}(\mathtt{mean}=3,\,\mathtt{sd}=1)$.
 Of course, we do not really need a bootstrap distribution here because
 from Section \ref{sec:sampling-from-normal-dist} we know that $\Xbar\sim\mathsf{norm}(\mathtt{mean}=3,\,\mathtt{sd}=1/\sqrt{n})$,
-but we will investigate how the bootstrap performs when we know what
-the answer should be ahead of time.
+but we proceed anyway to investigate how the bootstrap performs when
+we know what the answer should be ahead of time.
 
 We will take a random sample of size $n=25$ from the population.
 Then we will \emph{resample} the data 1000 times to get 1000 resamples
@@ -15635,6 +15670,19 @@ curve(dnorm(x, 3, 0.2), add = TRUE)
 
 \caption{Bootstrapping the standard error of the mean, simulated data\label{fig:Bootstrap-se-mean}}
 
+
+{\small ~}{\small \par}
+
+{\small The original data were 25 observations generated from a $\mathsf{norm}(\mathtt{mean}=3,\,\mathtt{sd}=1)$
+distribution. We next resampled to get 1000 resamples, each of size
+25, and calculated the sample mean for each resample. A histogram
+of the 1000 values of $\xbar$ is shown above. Also shown (with a
+solid line) is the true sampling distribution of $\Xbar$, which is
+a $\mathsf{norm}(\mathtt{mean}=3,\,\mathtt{sd}=0.2)$ distribution.
+Note that the histogram is centered at the sample mean of the original
+data, while the true sampling distribution is centered at the true
+value of $\mu=3$. The shape and spread of the histogram is similar
+to the shape and spread of the true sampling distribution.}
 \end{figure}
 A histogram of the 1000 values of $\xbar$ is shown in Figure \ref{fig:Bootstrap-se-mean},
 and was produced by the following code.
@@ -15692,7 +15740,7 @@ it help? The answer is both yes and no. Keep in mind that with resampling
 methods there are two sources of randomness: that from the original
 sample, and that from the subsequent resampling procedure. An increased
 number of resamples would reduce the variation due to the second part,
-but would be powerless to reduce the variation due to the first part.
+but would do nothing to reduce the variation due to the first part.
 We only took an original sample of size $n=25$, and resampling more
 and more would never generate more information about the population
 than was already there. In this sense, the statistician is limited
@@ -15729,7 +15777,7 @@ data\label{fig:Bootstrapping-se-median}}
 
 
 The graph is shown in Figure \ref{fig:Bootstrapping-se-median}, and
-was produced by the following.
+was produced by the following code.
 
 <<eval = FALSE, keep.source = TRUE>>=
 hist(medstar, breaks = 40, prob = TRUE)
@@ -15744,9 +15792,9 @@ mean(medstar) - median(rivers)
 \end{example}
 
 \begin{example}
-The boot package in \texttt{R}. It turns out that there are many bootstrap
-procedures and commands already built into base \texttt{R}, in the
-\inputencoding{latin9}\lstinline[showstringspaces=false]!boot!\inputencoding{utf8}
+\textbf{The boot package in }\texttt{\textbf{R}}\textbf{.} It turns
+out that there are many bootstrap procedures and commands already
+built into base \texttt{R}, in the \inputencoding{latin9}\lstinline[showstringspaces=false]!boot!\inputencoding{utf8}
 package. Further, inside the \inputencoding{latin9}\lstinline[showstringspaces=false]!boot!\inputencoding{utf8}
 package there is even a function called \inputencoding{latin9}\lstinline[showstringspaces=false]!boot!\inputencoding{utf8}\index{boot@\texttt{boot}}.
 The basic syntax is of the form:\inputencoding{latin9}
@@ -15835,7 +15883,10 @@ function and save the output in a variable, for example, \inputencoding{latin9}\
 We then plug \inputencoding{latin9}\lstinline[showstringspaces=false]!data.boot!\inputencoding{utf8}
 into the function \inputencoding{latin9}\lstinline[showstringspaces=false]!boot.ci!\inputencoding{utf8}.
 \begin{example}
-Confidence interval for expected value of the median.
+\label{exa:percentile-interval-median-first}\textbf{Percentile interval
+for the expected value of the median.} We will try the naive approach
+where we generate the resamples and calculate the percentile interval
+by hand.
 
 <<>>=
 btsamps <- replicate(2000, sample(stack.loss, 21, TRUE), simplify = FALSE)
@@ -15849,7 +15900,8 @@ quantile(thetast, c(0.025, 0.975))
 
 \begin{example}
 Confidence interval for expected value of the median, $2^{\mathrm{nd}}$
-try.
+try. Now we will do it the right way with the \inputencoding{latin9}\lstinline[showstringspaces=false]!boot!\inputencoding{utf8}
+function.
 
 <<>>=
 library(boot)
@@ -16465,7 +16517,8 @@ read.spss("foo.sav")
 
 See \inputencoding{latin9}\lstinline[showstringspaces=false]!?read.spss!\inputencoding{utf8}
 for the available options to customize the file import. Note that
-the R Commander
+the R Commander will import many of the common file types with a menu
+driven interface.
 
 
 \subsection{Importing a Data Frame}
@@ -16479,7 +16532,7 @@ Using \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!c!\inpu
 
 Using \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!scan!\inputencoding{utf8}
 
-Using R Commander.
+Using the \textsf{R} Commander.
 
 
 \section{Editing Data\label{sec:Editing-Data-Sets}}
@@ -16496,6 +16549,56 @@ Using R Commander.
 
 \subsection{Sorting Data}
 
+We can sort a vector with the \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!sort!\inputencoding{utf8}
+function. 
+
+Normally we have a data frame of several columns (variables) and many,
+many rows (observations). The goal is to shuffle the rows so that
+they are ordered by the values of one or more columns. This is done
+with the \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!order!\inputencoding{utf8}
+function. 
+
+For example, we may sort all of the rows of the \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!Puromycin!\inputencoding{utf8}
+data (in ascending order) by the variable \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!conc!\inputencoding{utf8}
+with the following:
+
+<<>>=
+Tmp <- Puromycin[order(Puromycin$conc), ]
+head(Tmp)
+@
+
+We can accomplish the same thing with the command 
+
+<<eval = FALSE>>=
+with(Puromycin, Puromycin[order(conc), ])
+@
+
+We can sort by more than one variable. To sort first by \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!state!\inputencoding{utf8}
+and then next by \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!conc!\inputencoding{utf8}
+do
+
+<<eval = FALSE>>=
+with(Puromycin, Puromycin[order(state, conc), ])
+@
+
+If we would like to sort a numeric variable in descending order then
+we put a minus sign in front of it.
+
+<<>>=
+Tmp <- with(Puromycin, Puromycin[order(-conc), ])
+head(Tmp)
+@
+
+If we would like to sort by a character (or factor) in decreasing
+order then we can use the \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!xtfrm!\inputencoding{utf8}
+function which produces a numeric vector in the same order as the
+character vector.
+
+<<>>=
+Tmp <- with(Puromycin, Puromycin[order(-xtfrm(state)), ])
+head(Tmp)
+@
+
 
 \section{Exporting Data\label{sec:Exporting-a-Data}}
 
@@ -16507,33 +16610,21 @@ function.
 
 
 \section{Reshaping Data\label{sec:Reshaping-a-Data}}
+\begin{itemize}
+\item Aggregation
+\item Convert Tables to Data Frames and back
+\end{itemize}
+\inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!rbind!\inputencoding{utf8} 
 
-Aggregation
-
-Convert Tables to Data Frames and back
-
-\inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!rbind!\inputencoding{utf8}
 \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!cbind!\inputencoding{utf8}
 
-ab{[}order(ab{[},1{]}),{]}
+\inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!ab[order(ab[ ,1]), ]!\inputencoding{utf8}
 
 \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!complete.cases!\inputencoding{utf8}
 
 \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!aggregate!\inputencoding{utf8}
 
 \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!stack!\inputencoding{utf8}
-
-\# sorting examples using built-in mtcars data set
-
-\# sort by mpg newdata <- mtcars{[}order(mpg),{]}
-
-\# sort by mpg and cyl newdata <- mtcars{[}order(mpg, cyl),{]}
-
-\#sort by mpg (ascending) and cyl (descending) newdata <- mtcars{[}order(mpg,
--cyl),{]} 
-
-
-\section{Chapter Exercises}
 
 
 \chapter{Mathematical Machinery\label{cha:Mathematical-Machinery}}
@@ -18399,7 +18490,7 @@ permit their use in free software.
 \cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{\bibname}
-%\nocite{*} 
+%\nocite{*}
 %\bibliography{IPSUR}
 
 \bibliographystyle{plainurl}
