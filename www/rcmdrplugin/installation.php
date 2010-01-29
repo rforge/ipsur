@@ -57,7 +57,7 @@
 				<br />
 			  		Linux - 
 						<a href="http://cran.r-project.org/bin/linux/">
-							http://cran.r-project/bin/linux
+							http://cran.r-project.org/bin/linux/
 						</a>
 			</div>
 				

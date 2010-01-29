@@ -32,7 +32,7 @@ language=R}
  {hyperref}
 \hypersetup{pdftitle={Introduction to Probability and Statistics Using R},
  pdfauthor={G. Jay Kerns},
- linkcolor=blue,  citecolor=blue, urlcolor=blue}
+ linkcolor=blue,  citecolor=black, urlcolor=blue}
  
 \makeatletter
 
@@ -156,10 +156,9 @@ language=R}
 % make the input blue, output red
 \DefineVerbatimEnvironment{Soutput}{Verbatim}{formatcom=\color{blue}}
 \DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl, formatcom=\color{red}}
-% make the output black
+% make the input/output black
 %\DefineVerbatimEnvironment{Soutput}{Verbatim}{formatcom=\color{black}}
 %\DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl, formatcom=\color{black}}
-
 
 
 % get rid of extra Sweave space
@@ -405,7 +404,9 @@ Free Documentation License''.
 \noindent \bigskip{}
 
 
-\noindent Date: \today \vfill{}
+\noindent Date: \today
+
+\noindent \vfill{}
 
 
 \cleardoublepage
@@ -802,10 +803,10 @@ Visit one of the links below to download the latest version of \textsf{R}
 for your operating system:
 \begin{description}
 \item [{Microsoft~Windows:}] \url{http://cran.r-project.org/bin/windows/base/} 
-\item [{MacOS:}] \url{http://cran.r-project/bin/macosx}
-\item [{Linux:}] \url{http://cran.r-project/bin/linux}
+\item [{MacOS:}] \url{http://cran.r-project.org/bin/macosx/}
+\item [{Linux:}] \url{http://cran.r-project.org/bin/linux/}
 \end{description}
-On Windows, click the \inputencoding{latin9}\lstinline[showstringspaces=false]!.exe!\inputencoding{utf8}
+On MS-Windows, click the \inputencoding{latin9}\lstinline[showstringspaces=false]!.exe!\inputencoding{utf8}
 program file to start installation. When it asks for \textquotedbl{}Customized
 startup options\textquotedbl{}, specify \textsf{Yes}. In the next
 window, be sure to select the SDI (single document interface) option;
@@ -818,7 +819,7 @@ package \cite{rgl}.
 
 With this option you can use \textsf{R} portably and without administrative
 privileges. There is an entry in the \textsf{R} for Windows FAQ about
-this. Here is the procedure I use:
+this. Here is the procedure I use: 
 \begin{enumerate}
 \item Download the Windows installer above and start installation as usual.
 When it asks \emph{where} to install, navigate to the top-level directory
@@ -826,11 +827,11 @@ of the USB drive instead of the default \inputencoding{latin9}\lstinline[showstr
 drive.
 \item When it asks whether to modify the Windows registry, uncheck the box;
 we do NOT want to tamper with the registry. 
-\item After installation, change the name of the folder from {\textquotedbl{}}\inputencoding{latin9}\lstinline[showstringspaces=false]!R-x.y.z!\inputencoding{utf8}\textquotedbl{}
-to just plain {\textquotedbl{}}\inputencoding{latin9}\lstinline[showstringspaces=false]!R!\inputencoding{utf8}\textquotedbl{}.
-(Even quicker: do this in step 1.)
-\item Download the following shortcut to the top-level of the USB drive,
-right beside the \inputencoding{latin9}\lstinline[showstringspaces=false]!R!\inputencoding{utf8}
+\item After installation, change the name of the folder from \inputencoding{latin9}\lstinline[showstringspaces=false]!R-x.y.z!\inputencoding{utf8}
+to just plain \inputencoding{latin9}\lstinline[showstringspaces=false]!R!\inputencoding{utf8}.
+(Even quicker: do this in step 1.) 
+\item Download the following shortcut to the top-level directory of the
+USB drive, right beside the \inputencoding{latin9}\lstinline[showstringspaces=false]!R!\inputencoding{utf8}
 folder, not inside the folder.
 
 
@@ -838,11 +839,11 @@ folder, not inside the folder.
 \url{http://ipsur.r-forge.r-project.org/book/download/R.exe}
 \par\end{center}
 
-Use the downloaded shortcut to run \textsf{R}. 
+Use the downloaded shortcut to run \textsf{R}.
 
 \end{enumerate}
 Steps 3 and 4 are not required but save you the trouble of navigating
-to the \inputencoding{latin9}\lstinline[showstringspaces=false]!/R-x.y.z/bin!\inputencoding{utf8}
+to the \inputencoding{latin9}\lstinline[showstringspaces=false]!R-x.y.z/bin!\inputencoding{utf8}
 directory to double-click \inputencoding{latin9}\lstinline[showstringspaces=false]!Rgui.exe!\inputencoding{utf8}
 every time you want to run the program. It is useless to create your
 own shortcut to \inputencoding{latin9}\lstinline[showstringspaces=false]!Rgui.exe!\inputencoding{utf8}.
@@ -850,7 +851,7 @@ Windows does not allow shortcuts to have relative paths; they always
 have a drive letter associated with them. So if you make your own
 shortcut and plug your USB drive into some \emph{other} machine that
 happens to assign your drive a different letter, then your shortcut
-will no longer be pointing to the right place.
+will no longer be pointing to the right place. 
 
 
 \subsection{Installing and Loading Add-on Packages\label{sub:Installing-and-Loading-packages}}
@@ -2024,7 +2025,7 @@ prop.table(Tbl)   # same thing
 \paragraph*{Bar Graphs\label{par:Bar-Graphs}}
 
 A bar graph is the analogue of a histogram for categorical data. A
-bar is displayed for each level of a factor, with the height of the
+bar is displayed for each level of a factor, with the heights of the
 bars proportional to the frequencies of observations falling in the
 respective categories. A disadvantage of bar graphs is that the levels
 are ordered alphabetically (by default), which may sometimes obscure
@@ -2936,7 +2937,8 @@ structure to the data.
 It is sometimes useful to compare data sets with each other on a scale
 that is independent of the measurement units. The \inputencoding{latin9}\lstinline[showstringspaces=false]!scale!\inputencoding{utf8}
 function will rescale a numeric vector (or data frame) by subtracting
-the sample mean from each value (column) and/or 
+the sample mean from each value (column) and/or by dividing each observation
+by the sample standard deviation.
 
 
 \section{Multivariate Data and Data Frames\label{sec:multivariate-data}}
@@ -15641,8 +15643,9 @@ in the special case that the statistic $S$ is a standard error.
 \begin{example}
 \textbf{Standard error of the mean.\label{exa:Bootstrap-se-mean}}
 In this example we illustrate the bootstrap by estimating the standard
-error of the sample mean, and we will do it in the special case that
-the underlying population is $\mathsf{norm}(\mathtt{mean}=3,\,\mathtt{sd}=1)$.
+error of the sample meanand we will do it in the special case that
+the underlying population is $\mathsf{norm}(\mathtt{mean}=3,\,\mathtt{sd}=1)$. 
+
 Of course, we do not really need a bootstrap distribution here because
 from Section \ref{sec:sampling-from-normal-dist} we know that $\Xbar\sim\mathsf{norm}(\mathtt{mean}=3,\,\mathtt{sd}=1/\sqrt{n})$,
 but we proceed anyway to investigate how the bootstrap performs when
@@ -15792,9 +15795,9 @@ mean(medstar) - median(rivers)
 \end{example}
 
 \begin{example}
-\textbf{The boot package in }\texttt{\textbf{R}}\textbf{.} It turns
-out that there are many bootstrap procedures and commands already
-built into base \texttt{R}, in the \inputencoding{latin9}\lstinline[showstringspaces=false]!boot!\inputencoding{utf8}
+\textbf{The boot package in }\texttt{\textbf{R}}. It turns out that
+there are many bootstrap procedures and commands already built into
+base \texttt{R}, in the \inputencoding{latin9}\lstinline[showstringspaces=false]!boot!\inputencoding{utf8}
 package. Further, inside the \inputencoding{latin9}\lstinline[showstringspaces=false]!boot!\inputencoding{utf8}
 package there is even a function called \inputencoding{latin9}\lstinline[showstringspaces=false]!boot!\inputencoding{utf8}\index{boot@\texttt{boot}}.
 The basic syntax is of the form:\inputencoding{latin9}
@@ -15884,7 +15887,7 @@ We then plug \inputencoding{latin9}\lstinline[showstringspaces=false]!data.boot!
 into the function \inputencoding{latin9}\lstinline[showstringspaces=false]!boot.ci!\inputencoding{utf8}.
 \begin{example}
 \label{exa:percentile-interval-median-first}\textbf{Percentile interval
-for the expected value of the median.} We will try the naive approach
+for the expected value of the median.} Wee will try the naive approach
 where we generate the resamples and calculate the percentile interval
 by hand.
 
@@ -15899,8 +15902,8 @@ quantile(thetast, c(0.025, 0.975))
 \end{example}
 
 \begin{example}
-Confidence interval for expected value of the median, $2^{\mathrm{nd}}$
-try. Now we will do it the right way with the \inputencoding{latin9}\lstinline[showstringspaces=false]!boot!\inputencoding{utf8}
+\textbf{Confidence interval for expected value of the median, $2^{\mathrm{nd}}$
+try.} Now we will do it the right way with the \inputencoding{latin9}\lstinline[showstringspaces=false]!boot!\inputencoding{utf8}
 function.
 
 <<>>=
@@ -16517,8 +16520,8 @@ read.spss("foo.sav")
 
 See \inputencoding{latin9}\lstinline[showstringspaces=false]!?read.spss!\inputencoding{utf8}
 for the available options to customize the file import. Note that
-the R Commander will import many of the common file types with a menu
-driven interface.
+the \textsf{R} Commander will import many of the common file types
+with a menu driven interface.
 
 
 \subsection{Importing a Data Frame}
@@ -16550,22 +16553,20 @@ Using the \textsf{R} Commander.
 \subsection{Sorting Data}
 
 We can sort a vector with the \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!sort!\inputencoding{utf8}
-function. 
-
-Normally we have a data frame of several columns (variables) and many,
-many rows (observations). The goal is to shuffle the rows so that
-they are ordered by the values of one or more columns. This is done
-with the \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!order!\inputencoding{utf8}
+function. Normally we have a data frame of several columns (variables)
+and many, many rows (observations). The goal is to shuffle the rows
+so that they are ordered by the values of one or more columns. This
+is done with the \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!order!\inputencoding{utf8}
 function. 
 
 For example, we may sort all of the rows of the \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!Puromycin!\inputencoding{utf8}
 data (in ascending order) by the variable \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!conc!\inputencoding{utf8}
-with the following:
+with the following: 
 
 <<>>=
 Tmp <- Puromycin[order(Puromycin$conc), ]
 head(Tmp)
-@
+@ 
 
 We can accomplish the same thing with the command 
 
@@ -16574,15 +16575,15 @@ with(Puromycin, Puromycin[order(conc), ])
 @
 
 We can sort by more than one variable. To sort first by \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!state!\inputencoding{utf8}
-and then next by \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!conc!\inputencoding{utf8}
-do
+and next by \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!conc!\inputencoding{utf8}
+do 
 
 <<eval = FALSE>>=
 with(Puromycin, Puromycin[order(state, conc), ])
 @
 
 If we would like to sort a numeric variable in descending order then
-we put a minus sign in front of it.
+we put a minus sign in front of it. 
 
 <<>>=
 Tmp <- with(Puromycin, Puromycin[order(-conc), ])
@@ -16602,9 +16603,8 @@ head(Tmp)
 
 \section{Exporting Data\label{sec:Exporting-a-Data}}
 
-The basic function is \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!write.table!\inputencoding{utf8}
-in the \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!base!\inputencoding{utf8}
-package. The \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!MASS!\inputencoding{utf8}
+The basic function is \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!write.table!\inputencoding{utf8}.
+The \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!MASS!\inputencoding{utf8}
 package also has a \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!write.matrix!\inputencoding{utf8}
 function.
 
@@ -16612,13 +16612,12 @@ function.
 \section{Reshaping Data\label{sec:Reshaping-a-Data}}
 \begin{itemize}
 \item Aggregation
-\item Convert Tables to Data Frames and back
+\item Convert Tables to data frames and back
 \end{itemize}
-\inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!rbind!\inputencoding{utf8} 
-
+\inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!rbind!\inputencoding{utf8},
 \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!cbind!\inputencoding{utf8}
 
-\inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!ab[order(ab[ ,1]), ]!\inputencoding{utf8}
+\inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!ab[order(ab[,1]),]!\inputencoding{utf8}
 
 \inputencoding{latin9}\lstinline[showstringspaces=false,tabsize=2]!complete.cases!\inputencoding{utf8}
 
@@ -18490,7 +18489,7 @@ permit their use in free software.
 \cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{\bibname}
-%\nocite{*}
+%\nocite{*} 
 %\bibliography{IPSUR}
 
 \bibliographystyle{plainurl}

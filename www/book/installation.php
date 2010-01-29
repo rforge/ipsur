@@ -49,7 +49,7 @@
 				<br />
                       MacOS X - <a href="http://cran.r-project.org/bin/macosx/">http://cran.r-project.org/bin/macosx/</a>
 				<br />
-                      Linux - 	<a href="http://cran.r-project.org/bin/linux/">http://cran.r-project/bin/linux</a>
+                      Linux - 	<a href="http://cran.r-project.org/bin/linux/">http://cran.r-project.org/bin/linux/</a>
 		  </div>	
 			<ul><br />  
 				<li>
