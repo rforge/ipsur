@@ -1547,14 +1547,14 @@ I find that it causes more trouble than it saves with beginners.
 
 \chapter{Data Description \label{cha:Describing-Data-Distributions}}
 
-In this chapter we introduce the different types of data that a statistician
-is likely to encounter, and in each subsection we give some examples
-of how to display the data of that particular type. Once we see how
-to display data distributions, we next introduce the basic properties
-of data distributions. We qualitatively explore several data sets.
-Once that we have intuitive properties of data sets, we next discuss
-how we may numerically measure and describe those properties with
-descriptive statistics.
+\noindent In this chapter we introduce the different types of data
+that a statistician is likely to encounter, and in each subsection
+we give some examples of how to display the data of that particular
+type. Once we see how to display data distributions, we next introduce
+the basic properties of data distributions. We qualitatively explore
+several data sets. Once that we have intuitive properties of data
+sets, we next discuss how we may numerically measure and describe
+those properties with descriptive statistics.
 
 
 \paragraph*{What do I want them to know?}
@@ -1664,7 +1664,7 @@ discoveries[1:4]
 
 \end{example}
 The output is telling us that \inputencoding{latin9}\lstinline[showstringspaces=false]!discoveries!\inputencoding{utf8}
-is a \emph{time series} (see Section \ref{sub:Other-data-types} for
+is a \emph{time series} (see Section \ref{sub:other-data-types} for
 more) of length 100. The entries are integers, and since they represent
 counts this is a good example of discrete quantitative data. We will
 take a closer look in the following sections.
@@ -2264,10 +2264,10 @@ for rectangular data sets (or data frames) is the \inputencoding{latin9}\lstinli
 function. See Appendix \ref{sec:Editing-Data-Sets}.
 
 
-\subsection{Other Data Types\label{sub:Other-data-types}}
+\subsection{Other Data Types\label{sub:other-data-types}}
 
 
-\section{Features of Data Distributions\label{sec:Features-of-Data}}
+\section{Features of Data Distributions\label{sec:features-of-data}}
 
 Given that the data have been appropriately displayed, the next step
 is to try to identify salient features represented in the graph. The
@@ -2324,9 +2324,8 @@ stemplot).
 
 \paragraph*{Kurtosis}
 
-Introduced by Pearson in 1905 \url{http://jeff560.tripod.com/k.html}Another
-component to the shape of a distribution is how {}``peaked'' it
-is. Some distributions tend to have a flat shape with thin tails.
+Another component to the shape of a distribution is how {}``peaked''
+it is. Some distributions tend to have a flat shape with thin tails.
 These are called \emph{platykurtic}, and an example of a platykurtic
 distribution is the uniform distribution; see Section \ref{sec:The-Continuous-Uniform}.
 On the other end of the spectrum are distributions with a steep peak,
@@ -2341,7 +2340,7 @@ for specific choices of $p$. See Sections \ref{sec:binom-dist} and
 \ref{sec:The-Normal-Distribution}.
 
 
-\subsection{Clusters and Gaps\label{sub:Clusters-and-Gaps}}
+\subsection{Clusters and Gaps\label{sub:clusters-and-gaps}}
 
 Clusters or gaps are sometimes observed in quantitative data distributions.
 They indicate clumping of the data about distinct values, and gaps
@@ -2694,9 +2693,8 @@ of $g_{1}$. See Tabachnick \& Fidell \cite{Tabachnick2006} for details.
 The \emph{sample excess kurtosis}, denoted by $g_{2}$, is given by
 the formula\begin{equation}
 g_{2}=\frac{1}{n}\frac{\sum_{i=1}^{n}(x_{i}-\xbar)^{4}}{s^{4}}-3.\end{equation}
-The first term in the formula is always nonnegative, so the sample
-excess kurtosis takes values $-3\leq g_{2}<\infty$. The subtraction
-of 3 may seem mysterious to the reader, but it is done so that mound
+The sample excess kurtosis takes values $-2\leq g_{2}<\infty$. The
+subtraction of 3 may seem mysterious but it is done so that mound
 shaped samples have values of $g_{2}$ near zero. Samples with $g_{2}>0$
 are called \emph{leptokurtic}, and samples with $g_{2}<0$ are called
 \emph{platykurtic}. Samples with $g_{2}\approx0$ are called \emph{mesokurtic}.
@@ -3021,12 +3019,12 @@ A <- data.frame(v1 = x, v2 = y)
 @
 
 \end{example}
-The data frame has Notice that \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
+Notice that \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
 and \inputencoding{latin9}\lstinline[showstringspaces=false]!y!\inputencoding{utf8}
 are the same length. This is \emph{necessary}. Also notice that \inputencoding{latin9}\lstinline[showstringspaces=false]!x!\inputencoding{utf8}
 is a numeric vector and \inputencoding{latin9}\lstinline[showstringspaces=false]!y!\inputencoding{utf8}
 is a character vector. We may choose numeric and character vectors
-(or even factors) for the columns of the dataframe, but each column
+(or even factors) for the columns of the data frame, but each column
 must be of exactly one type. That is, we can have a column for \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!height!\inputencoding{utf8}
 and a column for \inputencoding{latin9}\lstinline[showstringspaces=false]!gender!\inputencoding{utf8},
 but we will get an error if we try to mix function \inputencoding{latin9}\lstinline[showstringspaces=false]!height!\inputencoding{utf8}
@@ -3071,6 +3069,19 @@ or in the \textsf{R} Commander by following \textsf{Statistics $\triangleright$
 Contingency Tables $\triangleright$} \textsf{Two-way Tables}. You
 can also enter and analyze a two-way table.
 \item Scatterplot: look for linear association and correlation. 
+
+\begin{itemize}
+\item carb \textasciitilde{} optden, data = Formaldehyde
+\item conc \textasciitilde{} rate, data = Puromycin
+\item xyplot(accel \textasciitilde{} dist, data = attenu) nonlinear association
+\item xyplot(eruptions \textasciitilde{} waiting, data = faithful) (linear,
+two groups)
+\item xyplot(Petal.Width \textasciitilde{} Petal.Length, data = iris)
+\item xyplot(pressure \textasciitilde{} temperature, data = pressure) (exponential
+growth)
+\item xyplot(weight \textasciitilde{} height, data = women) (strong positive
+linear)
+\end{itemize}
 \end{itemize}
 
 \subsection{Multivariate Data\label{sub:Multivariate-Data}}
@@ -3124,11 +3135,89 @@ to give roughly a 95\% confidence interval for the difference in two
 medians. See Chapter \ref{cha:Hypothesis-Testing}.
 \end{itemize}
 \item Stripcharts
+\item Bar Graphs
+
+\begin{itemize}
+\item plot(xtabs(Freq \textasciitilde{} Admit + Gender, data = UCBAdmissions))
+\# rescaled barplot
+\item barplot(xtabs(Freq \textasciitilde{} Admit + Gender, data = UCBAdmissions))
+\# stacked bar chart
+\item barplot(xtabs(Freq \textasciitilde{} Admit, data = UCBAdmissions))
+\item barplot(xtabs(Freq \textasciitilde{} Gender + Admit, data = UCBAdmissions),
+legend = TRUE, beside = TRUE) \# oops, discrimination.
+\item barplot(xtabs(Freq \textasciitilde{} Admit+Dept, data = UCBAdmissions),
+legend = TRUE, beside = TRUE) \# different departments have different
+standards
+\item barplot(xtabs(Freq \textasciitilde{} Gender+Dept, data = UCBAdmissions),
+legend = TRUE, beside = TRUE) \# men mostly applied to easy departments,
+women mostly applied to difficult departments
+\item barplot(xtabs(Freq \textasciitilde{} Gender+Dept, data = UCBAdmissions),
+legend = TRUE, beside = TRUE)
+\item barchart(Admit \textasciitilde{} Freq, data = C)
+\item barchart(Admit \textasciitilde{} Freq|Gender, data = C)
+\item barchart(Admit \textasciitilde{} Freq | Dept, groups = Gender, data
+= C)
+\item barchart(Admit \textasciitilde{} Freq | Dept, groups = Gender, data
+= C, auto.key = TRUE)
+\end{itemize}
 \item Histograms
+
+\begin{itemize}
+\item \textasciitilde{} breaks | wool{*}tension, data = warpbreaks
+\item \textasciitilde{} weight | feed, data = chickwts
+\item \textasciitilde{} weight | group, data = PlantGrowth 
+\item \textasciitilde{} count | spray, data = InsectSprays
+\item \textasciitilde{} len | dose, data = ToothGrowth
+\item \textasciitilde{} decrease | treatment, data = OrchardSprays (or rowpos
+or colpos)
+\end{itemize}
 \item Scatterplots
+
+\begin{itemize}
+\item xyplot(Petal.Width \textasciitilde{} Petal.Length, data = iris, group
+= Species)
+\end{itemize}
+<<eval = FALSE>>=
+library(lattice)
+xyplot()
+@
+
 \item Scatterplot matrices
+
+\begin{itemize}
+\item splom(\textasciitilde{} cbind(GNP.deflator,GNP,Unemployed,Armed.Forces,Population,Year,Employed),
+data = longley)
+\item splom(\textasciitilde{} cbind(pop15,pop75,dpi), data = LifeCycleSavings)
+\item splom(\textasciitilde{} cbind(Murder, Assault, Rape), data = USArrests)
+\item splom(\textasciitilde{} cbind(CONT, INTG, DMNR), data = USJudgeRatings)
+\item splom(\textasciitilde{} cbind(area,peri,shape,perm), data = rock)
+\item splom(\textasciitilde{} cbind(Air.Flow, Water.Temp, Acid.Conc., stack.loss),
+data = stackloss)
+\item splom(\textasciitilde{} cbind(Fertility,Agriculture,Examination,Education,Catholic,Infant.Mortality),
+data = swiss)
+\item splom(\textasciitilde{} cbind(Fertility,Agriculture,Examination),
+data = swiss) (positive and negative)
+\end{itemize}
 \item Dot charts
-\item Plot of means
+
+\begin{itemize}
+\item dotchart(USPersonalExpenditure)
+\item dotchart(t(USPersonalExpenditure))
+\item dotchart(WorldPhones) (transpose is no good)
+\item freeny.x is no good, neither is volcano
+\item dotchart(UCBAdmissions{[},,1{]})
+\item dotplot(Survived \textasciitilde{} Freq | Class, groups = Sex, data
+= B)
+\item dotplot(Admit \textasciitilde{} Freq | Dept, groups = Gender, data
+= C)
+\end{itemize}
+\item Mosaic plot
+
+\begin{itemize}
+\item mosaic(\textasciitilde{} Survived + Class + Age + Sex, data = Titanic)
+(or just mosaic(Titanic))
+\item mosaic(\textasciitilde{} Admit + Dept + Gender, data = UCBAdmissions)
+\end{itemize}
 \item Quantile-quantile plots: There are two ways to do this. One way is
 to compare two independent samples (of the same size). qqplot(x,y).
 Another way is to compare the sample quantiles of one variable to
@@ -3298,6 +3387,11 @@ with the sequence \textsf{Statistics} \textsf{$\triangleright$ Summaries}
 summary statistics for each variable.
 
 
+\paragraph*{Answer:}
+
+<<"Find summary statistics">>=
+summary(RcmdrTestDrive)
+@
 \end{xca}
 
 \begin{xca}
@@ -3312,6 +3406,26 @@ Make a table of the \emph{race} variable. Do this with \textsf{Statistics}
 \end{enumerate}
 \end{xca}
 
+\paragraph*{Solution:}
+
+First we will make a table of the \emph{race} variable with the \inputencoding{latin9}\lstinline[showstringspaces=false]!table!\inputencoding{utf8}
+function.
+
+<<>>=
+table(race)
+@
+\begin{enumerate}
+\item For these data, \Sexpr{names(table(race))[which(table(race)==max(table(race)))]}
+has the highest frequency.
+\item For these data, \Sexpr{names(table(race))[which(table(race)==min(table(race)))]}
+has the lowest frequency.
+\item The graph is shown below.
+\end{enumerate}
+\begin{center}
+<<echo = FALSE, fig=true, height = 4, width = 6>>=
+barplot(table(RcmdrTestDrive$race), main="", xlab="race", ylab="Frequency", legend.text=FALSE, col=NULL) 
+@
+\par\end{center}
 
 
 \begin{xca}
@@ -3340,6 +3454,75 @@ How does the boxplot compare to your answers to (1) and (3)?
 \end{enumerate}
 \end{xca}
 \noindent 
+\paragraph*{Solution:}
+
+We can generate a table listing the average salaries by gender with
+two methods. The first uses \inputencoding{latin9}\lstinline[showstringspaces=false]!tapply!\inputencoding{utf8}:
+
+<<keep.source = TRUE>>=
+x <- tapply(salary, list(gender = gender), mean)
+x
+@
+
+The second method uses the \inputencoding{latin9}\lstinline[showstringspaces=false]!by!\inputencoding{utf8}
+function:
+
+<<keep.source = TRUE>>=
+by(salary, gender, mean, na.rm = TRUE)
+@
+
+Now to answer the questions:
+\begin{enumerate}
+\item Which gender has the highest mean salary? 
+
+
+We can answer this by looking above. For these data, the gender with
+the highest mean salary is \Sexpr{names(x)[which(x==max(x))]}.
+
+\item Report the highest mean salary.
+
+
+Depending on our answer above, we would do something like \inputencoding{latin9}
+\begin{lstlisting}[showstringspaces=false]
+mean(salary[gender == Male])
+\end{lstlisting}
+\inputencoding{utf8} for example. For these data, the highest mean salary is 
+
+<<>>=
+x[which(x==max(x))]
+@
+
+\item Compare the spreads for the genders by calculating the standard deviation
+of \emph{salary} by \emph{gender}. Which gender has the biggest standard
+deviation?
+
+
+<<>>=
+y <- tapply(salary, list(gender = gender), sd)
+y
+@
+
+For these data, the the largest standard deviation is approximately
+\Sexpr{round(y[which(y==max(y))],2)} which was attained by the \Sexpr{names(y)[which(y==max(y))]}
+gender.
+
+\item Make boxplots of \emph{salary} by \emph{gender}. How does the boxplot
+compare to your answers to (1) and (3)?
+
+
+The graph is shown below.
+
+\begin{center}
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
+boxplot(salary~gender, xlab="salary", ylab="gender", main="", notch=FALSE, varwidth=TRUE, horizontal=TRUE, data=RcmdrTestDrive) 
+@
+\par\end{center}
+
+Answers will vary. There should be some remarks that the center of
+the box is farther to the right for the \Sexpr{names(x)[which(x==max(x))]}
+gender, and some recognition that the box is wider for the \Sexpr{names(y)[which(y==max(y))]}
+gender.\end{enumerate}
+
 
 
 \begin{xca}
@@ -3365,6 +3548,44 @@ any, as \emph{potential} or \emph{suspected} outliers.
 \end{enumerate}
 \end{xca}
 
+\paragraph*{Answers:}
+
+<<echo = FALSE, results = hide>>=
+x = sort(reduction)
+@
+
+<<>>=
+x[137]
+IQR(x)
+fivenum(x)
+fivenum(x)[4] - fivenum(x)[2]
+@
+
+\noindent Compare your answers (3) and (5). Are they the same? If
+not, are they close?
+
+Yes, they are close, within \Sexpr{abs(IQR(x)-(fivenum(x)[4] - fivenum(x)[2]))}
+of each other.
+
+\noindent The boxplot of \emph{reduction} is below.
+
+\begin{center}
+<<echo = FALSE, fig=true, height = 4, width = 6>>=
+boxplot(reduction, xlab="reduction", main="", notch=FALSE, varwidth=TRUE, horizontal=TRUE, data=RcmdrTestDrive) 
+@
+\par\end{center}
+
+<<>>=
+temp <- fivenum(x)
+inF <- 1.5 * (temp[4] - temp[2]) + temp[4]
+outF <- 3 * (temp[4] - temp[2]) + temp[4]
+which(x > inF)
+which(x > outF)
+@
+
+Observations \Sexpr{which(x > inF)} would be considered potential
+outliers, while observation(s) \Sexpr{which(x > outF)} would be considered
+a suspected outlier.
 
 
 \begin{xca}
@@ -3389,6 +3610,146 @@ to your answers to (4) and (5).
 \end{enumerate}
 \end{xca}
 
+\paragraph*{Solution:}
+\begin{enumerate}
+\item Examine the two measures of center for both variables that you found
+in problem 1. Judging from these measures, which variable has a higher
+center?
+
+
+We may take a look at the \inputencoding{latin9}\lstinline[showstringspaces=false]!summary(RcmdrTestDrive)!\inputencoding{utf8}
+output from Exercise \ref{xca:summary-RcmdrTestDrive}. Here we will
+repeat the relevant summary statistics.
+
+<<>>=
+c(mean(before), median(before))
+c(mean(after), median(after))
+@
+
+The idea is to look at the two measures and compare them to make a
+decision. In a nice world, both the mean and median of one variable
+will be larger than the other which sends a nice message. If We get
+a mixed message, then we should look for other information, such as
+extreme values in one of the variables, which is one of the reasons
+for the next part of the problem.
+
+\item Which measure of center is more appropriate for \emph{before}? (You
+may want to look at a boxplot.) Which measure of center is more appropriate
+for \emph{after}?
+
+
+The boxplot of \emph{before} is shown below.
+
+\begin{center}
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
+boxplot(before, xlab="before", main="", notch=FALSE, varwidth=TRUE, horizontal=TRUE, data=RcmdrTestDrive) 
+@
+\par\end{center}
+
+We want to watch out for extreme values (shown as circles separated
+from the box) or large departures from symmetry. If the distribution
+is fairly symmetric then the mean and median should be approximately
+the same. But if the distribution is highly skewed with extreme values
+then we should be skeptical of the sample mean, and fall back to the
+median which is resistant to extremes. By design, the before variable
+is set up to have a fairly symmetric distribution.
+
+A boxplot of \emph{after} is shown next.
+
+\begin{center}
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
+boxplot(after, xlab="after", notch=FALSE, varwidth=TRUE, horizontal=TRUE, data=RcmdrTestDrive) 
+@
+\par\end{center}
+
+The same remarks apply to the \emph{after} variable. The \emph{after}
+variable has been designed to be left-skewed\ldots{} thus, the median
+would likely be a good choice for this variable.
+
+\item Based on your answer to (2), choose an appropriate measure of spread
+for each variable, calculate it, and report its value. Which variable
+has the biggest spread? (Note that you need to make sure that your
+measures are on the same scale.) 
+
+
+Since \emph{before} has a symmetric, mound shaped distribution, an
+excellent measure of center would be the sample standard deviation.
+And since \emph{after} is left-skewed, we should use the median absolute
+deviation. It is also acceptable to use the IQR, but we should rescale
+it appropriately, namely, by dividing by 1.349. The exact values are
+shown below.
+
+<<>>=
+sd(before)
+mad(after)
+IQR(after)/1.349
+@
+
+Judging from the values above, we would decide which variable has
+the higher spread. Look at how close the \inputencoding{latin9}\lstinline[showstringspaces=false]!mad!\inputencoding{utf8}
+and the \inputencoding{latin9}\lstinline[showstringspaces=false]!IQR!\inputencoding{utf8}
+(after suitable rescaling) are; it goes to show why the rescaling
+is important.
+
+\item Calculate and report the skewness and kurtosis for \emph{before}.
+Based on these values, how would you describe the shape of \emph{before}?
+
+
+The values of these descriptive measures are shown below.
+
+<<>>=
+library(e1071)
+skewness(before)
+kurtosis(before)
+@
+
+We should take the sample skewness value and compare it to $2\sqrt{6/n}\approx$\Sexpr{round(2*sqrt(6/length(before)),3)}
+in absolute value to see if it is substantially different from zero.
+The direction of skewness is decided by the sign (positive or negative)
+of the skewness value. 
+
+We should take the sample kurtosis value and compare it to $2\cdot\sqrt{24/168}\approx$\Sexpr{round(4*sqrt(6/length(before)),3)}),
+in absolute value to see if the excess kurtosis is substantially different
+from zero. And take a look at the sign to see whether the distribution
+is platykurtic or leptokurtic.
+
+\item Calculate and report the skewness and kurtosis for \emph{after}. Based
+on these values, how would you describe the shape of \emph{after}?
+
+
+The values of these descriptive measures are shown below.
+
+<<>>=
+skewness(after)
+kurtosis(after)
+@
+
+We should do for this one just like we did previously. We would again
+compare the sample skewness and kurtosis values (in absolute value)
+to \Sexpr{round(2*sqrt(6/length(after)),3)} and \Sexpr{round(4*sqrt(6/length(after)),3)},
+respectively.
+
+\item Plot histograms of \emph{before} and \emph{after} and compare them
+to your answers to (4) and (5).
+
+
+The graphs are shown below.
+
+\begin{center}
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
+hist(before, xlab="before", data=RcmdrTestDrive) 
+@
+\par\end{center}
+
+\begin{center}
+<<echo = FALSE, fig=true, height = 4.5, width = 6>>=
+hist(after, xlab="after", data=RcmdrTestDrive) 
+@
+\par\end{center}
+
+Answers will vary. We are looking for visual consistency in the histograms
+to our statements above.\end{enumerate}
+
 \begin{xca}
 Describe the following data sets just as if you were communicating
 with an alien, but one who has had a statistics class. Mention the
@@ -3403,11 +3764,12 @@ statistics.
 
 \chapter{Probability\label{cha:Probability}}
 
-In this chapter, we define the basic terminology associated with probability
-and derive some of its properties. We discuss three interpretations
-of probability. We discuss conditional probability and independent
-events, along with Bayes' Theorem. We finish the chapter with an introduction
-to random variables, which paves the way for the next two chapters.
+\noindent In this chapter we define the basic terminology associated
+with probability and derive some of its properties. We discuss three
+interpretations of probability. We discuss conditional probability
+and independent events, along with Bayes' Theorem. We finish the chapter
+with an introduction to random variables, which paves the way for
+the next two chapters.
 
 In this book we distinguish between two types of experiments: \emph{deterministic}
 and \emph{random}. A \emph{deterministic} experiment is one whose
@@ -5799,6 +6161,16 @@ $A_{n}$ must satisfy in order to be mutually independent is $2^{n}-n-1$.
 (\emph{Hint}: think about Pascal's triangle.)
 \end{xca}
 
+\paragraph*{Answer:}
+
+The events must satisfy the product equalities two at a time, of which
+there are ${n \choose 2}$, then they must satisfy an additional ${n \choose 3}$
+conditions three at a time, and so on, until they satisfy the ${n \choose n}=1$
+condition including all $n$ events. In total, there are \[
+{n \choose 2}+{n \choose 3}+\cdots+{n \choose n}=\sum_{k=0}^{n}{n \choose k}-\left[{n \choose 0}+{n \choose 1}\right]\]
+conditions to be satisfied, but the binomial series in the expression
+on the right is the sum of the entries of the $n$$^{\text{th}}$
+row of Pascal's triangle, which is $2^{n}$.
 
 
 
@@ -5807,13 +6179,13 @@ $A_{n}$ must satisfy in order to be mutually independent is $2^{n}-n-1$.
 
 \chapter{Discrete Distributions\label{cha:Discrete-Distributions}}
 
-In this chapter we introduce discrete random variables, those who
-take values in a finite or countably infinite support set. We discuss
-probability mass functions and some special expectations, namely,
-the mean, variance and standard deviation. Some of the more important
-discrete distributions are explored in detail, and the more general
-concept of expectation is defined, which paves the way for moment
-generating functions.
+\noindent In this chapter we introduce discrete random variables,
+those who take values in a finite or countably infinite support set.
+We discuss probability mass functions and some special expectations,
+namely, the mean, variance and standard deviation. Some of the more
+important discrete distributions are explored in detail, and the more
+general concept of expectation is defined, which paves the way for
+moment generating functions.
 
 We give special attention to the empirical distribution since it plays
 such a fundamental role with respect to re sampling and Chapter \ref{cha:resampling-methods};
@@ -6279,8 +6651,8 @@ p(X)(2)   # cdf of X evaluated at x = 2
 \end{example}
 Random variables defined via the \inputencoding{latin9}\lstinline[showstringspaces=false]!distr!\inputencoding{utf8}
 package may be \emph{plotted}, which will return graphs of the PMF,
-CDF, and quantile function (introduced in Section ). See Figure \ref{fig:binom-plot-distr}
-for an example.
+CDF, and quantile function (introduced in Section \ref{sub:Normal-Quantiles-QF}).
+See Figure \ref{fig:binom-plot-distr} for an example.
 
 %
 \begin{figure}[H]
@@ -7016,14 +7388,12 @@ respectively.
 
 \paragraph*{What are the reasonable conditions?}
 
-Divide $[0,1]$ into subintervals of length $1/n$. 
-
-
-\paragraph*{Assumptions:}
+Divide $[0,1]$ into subintervals of length $1/n$. A \emph{Poisson
+process}\index{Poisson process} satisfies the following conditions:
 \begin{itemize}
-\item The probability of an event occurring in a particular subinterval
+\item the probability of an event occurring in a particular subinterval
 is $\approx\lambda/n$.
-\item The probability of two or more events occurring in any subinterval
+\item the probability of two or more events occurring in any subinterval
 is $\approx0$.
 \item occurrences in disjoint subintervals are independent.\end{itemize}
 \begin{rem}
@@ -7060,7 +7430,7 @@ diff(ppois(c(47, 50), lambda = 50))
 
 \end{example}
 
-\section{Functions of Discrete Random Variables\label{sec:Functions-of-Discrete}}
+\section{Functions of Discrete Random Variables\label{sec:functions-discrete-rvs}}
 
 We have built a large catalogue of discrete distributions, but the
 tools of this section will give us the ability to consider infinitely
@@ -7332,13 +7702,13 @@ the hypergeometric distribution. Show that \begin{equation}
 
 \chapter{Continuous Distributions\label{cha:Continuous-Distributions}}
 
-The focus of the last chapter was on random variables whose support
-can be written down in a list of values (finite or countably infinite),
-such as the number of successes in a sequence of Bernoulli trials.
-Now we move to random variables whose support is a whole range of
-values, say, an interval $(a,b)$. It is shown in later classes that
-it is impossible to write all of the numbers down in a list; there
-are simply too many of them. 
+\noindent The focus of the last chapter was on random variables whose
+support can be written down in a list of values (finite or countably
+infinite), such as the number of successes in a sequence of Bernoulli
+trials. Now we move to random variables whose support is a whole range
+of values, say, an interval $(a,b)$. It is shown in later classes
+that it is impossible to write all of the numbers down in a list;
+there are simply too many of them. 
 
 This chapter begins with continuous random variables and the associated
 PDFs and CDFs The continuous uniform distribution is highlighted,
@@ -7363,10 +7733,10 @@ of other ones
 \item how to make new continuous random variables from old ones
 \end{itemize}
 
-\section{Continuous Random Variables\label{sec:Continuous-Random-Variables}}
+\section{Continuous Random Variables\label{sec:continuous-random-variables}}
 
 
-\subsection{Probability Density Functions\label{sub:Probability-Density-Functions}}
+\subsection{Probability Density Functions\label{sub:probability-density-functions}}
 
 Continuous random variables have supports that look like\begin{equation}
 S_{X}=[a,b]\mbox{ or }(a,b),\end{equation}
@@ -7903,7 +8273,7 @@ on each piece, and finish up by adding the results together.
 
 \subsection{The CDF method}
 
-We know from Section \ref{sec:Continuous-Random-Variables} that $f_{X}=F_{X}'$
+We know from Section \ref{sec:continuous-random-variables} that $f_{X}=F_{X}'$
 in the continuous case. Starting from the equation $F_{Y}(y)=\P(Y\leq y)$,
 we may substitute $g(X)$ for $Y$, then solve for $X$ to obtain
 $\P[X\leq g^{-1}(y)]$, which is just another way to write $F_{X}[g^{-1}(y)]$.
@@ -8453,9 +8823,9 @@ show that for any $s,t>0$,\[
 
 \chapter{Multivariate Distributions\label{cha:Multivariable-Distributions}}
 
-We have built up quite a catalogue of distributions, discrete and
-continuous. They were all univariate, however, meaning that we only
-considered one random variable at a time. We can imagine nevertheless
+\noindent We have built up quite a catalogue of distributions, discrete
+and continuous. They were all univariate, however, meaning that we
+only considered one random variable at a time. We can imagine nevertheless
 many random variables associated with a single person: their height,
 their weight, their wrist circumference (all continuous), or their
 eye/hair color, shoe size, whether they are right handed, left handed,
@@ -9703,8 +10073,8 @@ are independent.
 
 \chapter{Sampling Distributions\label{cha:Sampling-Distributions}}
 
-This is an important chapter; it is the bridge from probability and
-descriptive statistics that we studied in Chapters \ref{cha:Describing-Data-Distributions}
+\noindent This is an important chapter; it is the bridge from probability
+and descriptive statistics that we studied in Chapters \ref{cha:Describing-Data-Distributions}
 through \ref{cha:Multivariable-Distributions} to inferential statistics
 which forms the latter part of this book.
 
@@ -10408,9 +10778,9 @@ pnorm(43.1, mean = 37, sd = 9, lower.tail = FALSE)
 
 \chapter{Estimation\label{cha:Estimation}}
 
-We will discuss two branches of estimation procedures: point estimation
-and interval estimation. We briefly discuss point estimation first
-and then spend the rest of the chapter on interval estimation.
+\noindent We will discuss two branches of estimation procedures: point
+estimation and interval estimation. We briefly discuss point estimation
+first and then spend the rest of the chapter on interval estimation.
 
 We find an estimator with the methods of Section \ref{sec:Point-Estimation-1}.
 We make some assumptions about the underlying population distribution
@@ -11536,7 +11906,7 @@ helps.
 \item $Y=17$, then throw away the torque converter.
 \end{itemize}
 Let $p$ denote the proportion of defectives produced by the machine.
-Before the installation of the torque converter, $p$ was $0.10$.
+Before the installation of the torque converter $p$ was $0.10$.
 Then we installed the torque converter. Did $p$ change? Did it go
 up or down? We use statistics to decide. Our method is to observe
 data and construct a 95\% confidence interval for $p$,\begin{equation}
@@ -11570,8 +11940,8 @@ interval for $p$.
 \item If the confidence interval does not cover $p=0.10$, then we \emph{reject}$H_{0}$.
 Otherwise, we \emph{fail to reject}$H_{0}$.\end{enumerate}
 \begin{rem}
-Every time we make a decision, it is possible to be wrong, and there
-are two possible ways that we can go astray: we have committed a
+Every time we make a decision it is possible to be wrong, and there
+are two possible mistakes that we could make. We have committed a
 \begin{description}
 \item [{Type~I~Error}] if we reject $H_{0}$ when in fact $H_{0}$ is
 true. This would be akin to convicting an innocent person for a crime
@@ -11630,8 +12000,8 @@ Use an $\alpha=0.01$ significance level.
 
 Our null hypothesis in this problem is $H_{0}:\, p=0.4$ and the alternative
 hypothesis is $H_{1}:\, p<0.4$. We reject the null hypothesis if
-$\hat{p}$ is too small, that is, if\[
-\frac{\hat{p}-0.4}{\sqrt{0.4(1-0.4)/n}}<-z_{\alpha},\]
+$\hat{p}$ is too small, that is, if\begin{equation}
+\frac{\hat{p}-0.4}{\sqrt{0.4(1-0.4)/n}}<-z_{\alpha},\end{equation}
 where $\alpha=0.01$ and $-z_{0.01}$ is 
 
 <<>>=
@@ -11667,7 +12037,7 @@ with the officer's claim at the $\alpha=0.01$ significance level.
 \begin{example}
 \label{exa:prop-test-pvalue-B}We are going to do Example \ref{exa:prop-test-pvalue-A}
 all over again. Everything will be exactly the same except for one
-change: suppose we choose significance level $\alpha=0.05$ instead
+change. Suppose we choose significance level $\alpha=0.05$ instead
 of $\alpha=0.01$. Are the 1973 data consistent with the officer's
 claim?
 
@@ -11680,7 +12050,7 @@ our critical value has changed: $\alpha=0.05$ and $-z_{0.05}$ is
 @
 
 Our test statistic is less than $-1.64$ so it now falls into the
-critical region! We must \emph{reject} the null hypothesis and conclude
+critical region! We now \emph{reject} the null hypothesis and conclude
 that the 1973 data provide evidence that the true proportion of students
 admitted to the graduate school of UCB in 1973 was significantly less
 than 40\%. The data are \emph{not} consistent with the officer's claim
@@ -13790,10 +14160,11 @@ in Equation \ref{eq:sample-correlation-formula} is equivalent to
 
 \chapter{Multiple Linear Regression\label{cha:multiple-linear-regression}}
 
-We know a lot about simple linear regression models, and a next step
-is to study multiple regression models that have more than one independent
-(explanatory) variable. In the discussion that follows we will assume
-that we have $p$ explanatory variables, where $p>1$.
+\noindent We know a lot about simple linear regression models, and
+a next step is to study multiple regression models that have more
+than one independent (explanatory) variable. In the discussion that
+follows we will assume that we have $p$ explanatory variables, where
+$p>1$.
 
 The language is phrased in matrix terms -- for two reasons. First,
 it is quicker to write and (arguably) more pleasant to read. Second,
@@ -15332,12 +15703,13 @@ SSTO=SSE+SSR.\]
 
 \chapter{Resampling Methods\label{cha:resampling-methods}}
 
-Computers have changed the face of statistics. Their quick computational
-speed and flawless accuracy, coupled with large data sets acquired
-by the researcher, make them indispensable for many modern analyses.
-In particular, resampling methods (due in large part to Bradley Efron)
-have gained prominence in the modern statistician's repertoire. We
-first look at a classical problem to get some insight why. 
+\noindent Computers have changed the face of statistics. Their quick
+computational speed and flawless accuracy, coupled with large data
+sets acquired by the researcher, make them indispensable for many
+modern analyses. In particular, resampling methods (due in large part
+to Bradley Efron) have gained prominence in the modern statistician's
+repertoire. We first look at a classical problem to get some insight
+why. 
 
 I have seen \emph{Statistical Computing with }\textsf{\emph{R}} by
 Rizzo \cite{Rizzo2008} and I recommend it to those looking for a
