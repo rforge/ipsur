@@ -10,8 +10,8 @@ remove  twoWayTable  "" "" "" "" ""
 remove  enterTable  "" "" "" "" ""
 remove  barGraph  "" "" "" "" ""
 remove  boxPlot  "" "" "" "" ""
-remove  continuousMenu  "" "" "" "" ""
-remove  discreteMenu  "" "" "" "" ""
+#remove  continuousMenu  "" "" "" "" ""
+#remove  discreteMenu  "" "" "" "" ""
 
 
 
