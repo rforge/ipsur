@@ -982,8 +982,12 @@ it, then you can write a program that extends Emacs to do it. Once
 such extension is called \emph{ESS}, which stands for \emph{E}macs
 \emph{S}peaks \emph{S}tatistics. With ESS a person can speak to \textsf{R,}
 do all of the tricks that the other script editors offer, and much,
-much, more.
-
+much, more. Please see the following for installation details, documentation,
+reference cards, and a whole lot more:
+\end{description}
+\begin{center}
+\url{http://ess.r-project.org}
+\par\end{center}
 
 \emph{Fair warning}: if you want to try Emacs and if you grew up with
 Microsoft$\circledR$ Windows or Macintosh, then you are going to
@@ -991,7 +995,7 @@ need to relearn everything you thought you knew about computers your
 whole life. (Or, since Emacs is completely customizable, you can reconfigure
 Emacs to behave the way you want.) I have personally experienced this
 transformation and I will never go back.
-
+\begin{description}
 \item [{JGR~(read~{}``Jaguar''):\index{JGR}}] This one has the bells
 and whistles of \textsf{RGui} plus it is based on Java, so it works
 on multiple operating systems. It has its own script editor like \textsf{R}
@@ -1087,7 +1091,7 @@ Note that it is possible to set \inputencoding{latin9}\lstinline[basicstyle={\tt
 up to 22, but setting them over 16 is not recommended (the extra significant
 digits are not necessarily reliable). Above notice the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!sqrt!\inputencoding{utf8}\index{sqrt@\texttt{sqrt}}
 function for square roots and the \inputencoding{latin9}\lstinline[basicstyle={\ttfamily}]!exp!\inputencoding{utf8}\index{exp@\texttt{exp}}
-function for powers of $\me$, Euler's constant.
+function for powers of $\me$, Euler's number.
 
 
 \subsection{Assignment, Object names, and Data types\label{sub:Assignment-Object-names}}
@@ -12867,7 +12871,7 @@ are the coefficients of \inputencoding{latin9}\lstinline[showstringspaces=false]
 \begin{figure}
 \begin{centering}
 <<echo = FALSE, fig=true, height = 4.5, width = 6>>=
-plot(dist ~ speed, data = cars)
+plot(dist ~ speed, data = cars, pch = 16)
 abline(coef(cars.lm))
 @
 \par\end{centering}
@@ -12878,7 +12882,7 @@ abline(coef(cars.lm))
 
 
 <<eval = FALSE>>=
-plot(dist ~ speed, data = cars)
+plot(dist ~ speed, data = cars, pch = 16)
 abline(coef(cars))
 @
 
