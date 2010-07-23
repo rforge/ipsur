@@ -13790,7 +13790,7 @@ This is studied in more detail in later classes.
 for stabilizing the variance are equally appropriate for smoothing
 the residuals to a more Gaussian form. In fact, often we will kill
 two birds with one stone.
-\item [{Errors~are~not~independent.}] There are a large class of autoregressive
+\item [{Errors~are~not~independent.}] There is a large class of autoregressive
 models to be used in this situation which occupy the latter part of
 Chapter \ref{cha:Time-Series}.
 \end{description}
@@ -13820,8 +13820,8 @@ in that order.
 There are three ways that an observation $(x_{i},y_{i})$ may be an
 outlier: it can have an $x_{i}$ value which falls far from the other
 $x$ values, it can have a $y_{i}$ value which falls far from the
-other $y$ values, or it can have both $x_{i}$ and $y_{i}$ values
-to fall far from the other $x$ and $y$ values.
+other $y$ values, or it can have both its $x_{i}$ and $y_{i}$ values
+falling far from the other $x$ and $y$ values.
 
 
 \subsection*{Leverage}
@@ -13876,11 +13876,12 @@ in Equation \ref{eq:slr-studentized-deleted-resids} can be too liberal.
 A rule of thumb is if we suspect an observation to be an outlier \emph{before}
 seeing the data then we say it is significantly outlying if its two-tailed
 $p$-value is less than $\alpha$, but if we suspect an observation
-to be an outlier \emph{after} seeing the data, then we should only
+to be an outlier \emph{after} seeing the data then we should only
 say it is significantly outlying if its two-tailed $p$-value is less
-than $\alpha/n$. The latter rule of thumb is called the Bonferroni
-approach and can be overly conservative for large data sets. The statistician
-must look at the data and use his/her best judgement, in every case.
+than $\alpha/n$. The latter rule of thumb is called the \emph{Bonferroni
+approach} and can be overly conservative for large data sets. The
+responsible statistician should look at the data and use his/her best
+judgement, in every case.
 
 
 \subsection{How to do it with \textsf{R}}
@@ -15212,7 +15213,16 @@ See Section \ref{sub:Qualitative-Data}.
 \begin{note*}
 The \inputencoding{latin9}\lstinline[showstringspaces=false]!trees!\inputencoding{utf8}
 data do not have any qualitative explanatory variables, so we will
-construct one for illustrative purposes. We will leave the \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}
+construct one for illustrative purposes%
+\footnote{This procedure of replacing a continuous variable by a discrete/qualitative
+one is called \emph{binning}, and is almost \emph{never} the right
+thing to do. We are in a bind at this point, however, because we have
+invested this chapter in the \texttt{trees} data and I do not want
+to switch mid-discussion. I am currently searching for a data set
+with pre-existing qualitative variables that also conveys the same
+points present in the trees data, and when I find it I will update
+this chapter accordingly.%
+}. We will leave the \inputencoding{latin9}\lstinline[showstringspaces=false]!Girth!\inputencoding{utf8}
 variable alone, but we will replace the variable \inputencoding{latin9}\lstinline[showstringspaces=false]!Height!\inputencoding{utf8}
 by a new variable \inputencoding{latin9}\lstinline[showstringspaces=false]!Tall!\inputencoding{utf8}
 which indicates whether or not the cherry tree is taller than a certain
@@ -15237,7 +15247,7 @@ order. See \inputencoding{latin9}\lstinline[showstringspaces=false]!?cut!\inpute
 for more. 
 
 \end{note*}
-Once we have \inputencoding{latin9}\lstinline[showstringspaces=false]!Tall!\inputencoding{utf8}
+Once we have \inputencoding{latin9}\lstinline[showstringspaces=false]!Tall!\inputencoding{utf8},
 we include it in the regression model just like we would any other
 variable. It is handled internally in a special way. Define a {}``dummy
 variable'' \inputencoding{latin9}\lstinline[showstringspaces=false]!Tallyes!\inputencoding{utf8}
@@ -15258,7 +15268,7 @@ will have the mean response\begin{equation}
 \mu(\mathtt{Girth})=\beta_{0}+\beta_{1}\mathtt{Girth}.\end{equation}
 In essence, we are fitting two regression lines: one for tall trees,
 and one for short trees. The regression lines have the same slope
-but they have differing $y$ intercepts (which are exactly $|\beta_{2}|$
+but they have different $y$ intercepts (which are exactly $|\beta_{2}|$
 far apart).
 
 
