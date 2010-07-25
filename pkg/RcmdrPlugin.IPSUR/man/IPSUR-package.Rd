@@ -16,7 +16,7 @@ An IPSUR Plugin for the R Commander
 \tabular{ll}{
 Package: \tab RcmdrPlugin.IPSUR\cr
 Version: \tab 0.1-6\cr
-Date: \tab 2009-12-25\cr
+Date: \tab 2010-07-23\cr
 Depends: \tab Rcmdr (>= 1.4-0), rgl\cr
 Suggests: \tab abind, distr, distrEx, e1071, effects (>= 1.0-7), foreign, grid, lattice, lmtest, MASS, mgcv, multcomp (>= 0.991-2), nlme, nnet, qcc, relimp, RODBC\cr
 LazyLoad: \tab no\cr

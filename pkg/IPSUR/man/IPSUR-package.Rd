@@ -14,7 +14,7 @@ This package contains the Sweave source code used to generate IPSUR, an introduc
 Package: \tab IPSUR\cr
 Type: \tab Package\cr
 Version: \tab 1.0\cr
-Date: \tab 2009-12-08\cr
+Date: \tab 2010-07-25\cr
 License: \tab GPL (>= 3)\cr
 LazyLoad: \tab yes\cr
 }
