@@ -32,7 +32,7 @@ language=R}
  {hyperref}
 \hypersetup{pdftitle={Introduction to Probability and Statistics Using R},
  pdfauthor={G. Jay Kerns},
- linkcolor=blue,  citecolor=black, urlcolor=blue}
+ linkcolor=black,  citecolor=black, urlcolor=black}
  
 \makeatletter
 
@@ -154,11 +154,11 @@ language=R}
 
 %%  Sweave specific commands
 % make the input blue, output red
-\DefineVerbatimEnvironment{Soutput}{Verbatim}{formatcom=\color{blue}}
-\DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl, formatcom=\color{red}}
+%\DefineVerbatimEnvironment{Soutput}{Verbatim}{formatcom=\color{blue}}
+%\DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl, formatcom=\color{red}}
 % make the input/output black
-%\DefineVerbatimEnvironment{Soutput}{Verbatim}{formatcom=\color{black}}
-%\DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl, formatcom=\color{black}}
+\DefineVerbatimEnvironment{Soutput}{Verbatim}{formatcom=\color{black}}
+\DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl, formatcom=\color{black}}
 
 
 % get rid of extra Sweave space

@@ -66,10 +66,9 @@
 % make the input blue, output red
 %\DefineVerbatimEnvironment{Soutput}{Verbatim}{formatcom=\color{blue}}
 %\DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl, formatcom=\color{red}}
-% make the output black
+% make the input/output black
 \DefineVerbatimEnvironment{Soutput}{Verbatim}{formatcom=\color{black}}
 \DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl, formatcom=\color{black}}
-
 
 
 % get rid of extra Sweave space
@@ -85,6 +84,13 @@ keywordstyle={\ttfamily},
 numberstyle = {\ttfamily},
 morestring=[b]"
 }
+
+% Turn on questions and answers
+\newcommand{\question}[1]{#1}
+\newcommand{\answer}[1]{#1}
+% Turn off questions and answers
+%\newcommand{\question}[1]{}
+%\newcommand{\answer}[1]{}
 \end_preamble
 \options nogin
 \use_default_options false
@@ -108,7 +114,7 @@ theorems-chap
 
 \graphics default
 \paperfontsize 12
-\spacing other 1.2
+\spacing single
 \use_hyperref true
 \pdf_title "Introduction to Probability and Statistics Using R"
 \pdf_author "G. Jay Kerns"
@@ -146,6 +152,10 @@ theorems-chap
 \color #faf0e6
 \end_branch
 \branch solutions
+\selected 1
+\color #faf0e6
+\end_branch
+\branch main
 \selected 1
 \color #faf0e6
 \end_branch
@@ -1148,7 +1158,7 @@ ion License''.
 
 \begin_layout Standard
 \noindent
-Timestamp: 
+Date: 
 \begin_inset ERT
 status open
 
@@ -1161,7 +1171,11 @@ today
 
 \end_inset
 
- 
+
+\end_layout
+
+\begin_layout Standard
+\noindent
 \begin_inset VSpace vfill
 \end_inset
 
@@ -1206,6 +1220,11 @@ LatexCommand tableofcontents
 
 
 \end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Branch main
+status open
 
 \begin_layout Standard
 \begin_inset ERT
@@ -2649,6 +2668,12 @@ Andy Chang for showing me what it means to be a statistician.
 \end_layout
 
 \begin_layout Standard
+I would like to thank Richard Heiberger for his insightful comments and
+ improvements to several points and displays in the manuscript.
+ 
+\end_layout
+
+\begin_layout Standard
 Finally, and most importantly, I would like to thank my wife for her patience
  and understanding while I worked hours, days, months, and years on a 
 \emph on
@@ -2746,6 +2771,11 @@ listoftables
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 An Introduction to Probability and Statistics
 \end_layout
@@ -2767,6 +2797,12 @@ pagenumbering{arabic}
 \end_layout
 
 \begin_layout Standard
+\noindent
+\begin_inset Branch main
+status open
+
+\begin_layout Standard
+\noindent
 This chapter has proved to be the hardest to write, by far.
  The trouble is that there is so much to say -- and so many people have
  already said it so much better than I could.
@@ -2859,7 +2895,45 @@ reference "sec:Conditional-Distributions"
 
 .
  I plan to add more bayesian material in later editions of this book.
- 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Chapter Exercises
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Chapter Exercises}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{thm}{0}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
@@ -2868,12 +2942,16 @@ An Introduction to
 R
 \begin_inset CommandInset label
 LatexCommand label
-name "cha:An-Introduction-to-R"
+name "cha:introduction-to-R"
 
 \end_inset
 
 
 \end_layout
+
+\begin_layout Standard
+\begin_inset Branch main
+status open
 
 \begin_layout Section
 Downloading and Installing 
@@ -2881,7 +2959,7 @@ Downloading and Installing
 R
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Downloading-and-Installing-R"
+name "sec:download-install-R"
 
 \end_inset
 
@@ -2928,7 +3006,7 @@ Microsoft
 
 Windows: 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2943,11 +3021,11 @@ http://cran.r-project.org/bin/windows/base/
 \begin_layout Description
 MacOS: 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
-http://cran.r-project/bin/macosx
+http://cran.r-project.org/bin/macosx/
 \end_layout
 
 \end_inset
@@ -2958,11 +3036,11 @@ http://cran.r-project/bin/macosx
 \begin_layout Description
 Linux: 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
-http://cran.r-project/bin/linux
+http://cran.r-project.org/bin/linux/
 \end_layout
 
 \end_inset
@@ -2971,7 +3049,7 @@ http://cran.r-project/bin/linux
 \end_layout
 
 \begin_layout Standard
-On MS-Windows, click the 
+On Microsoft Windows, click the 
 \color none
 
 \begin_inset listings
@@ -2981,21 +3059,22 @@ status open
 
 \begin_layout Plain Layout
 
-.exe
+R-x.y.z.exe
 \end_layout
 
 \end_inset
 
 
 \color inherit
- program file to start installation.
+ installer to start installation.
  When it asks for "Customized startup options", specify 
 \family sans
 Yes
 \family default
 .
- In the next window, be sure to select the SDI (single-window) option; this
- is useful later when we discuss three dimensional plots with the 
+ In the next window, be sure to select the SDI (single document interface)
+ option; this is useful later when we discuss three dimensional plots with
+ the 
 \color none
 
 \begin_inset listings
@@ -3022,11 +3101,218 @@ key "rgl"
 .
 \end_layout
 
+\begin_layout Paragraph*
+Installing 
+\family sans
+R
+\family default
+ on a USB drive (Windows)
+\end_layout
+
+\begin_layout Standard
+With this option you can use 
+\family sans
+R
+\family default
+ portably and without administrative privileges.
+ There is an entry in the 
+\family sans
+R
+\family default
+ for Windows FAQ about this.
+ Here is the procedure I use: 
+\end_layout
+
+\begin_layout Enumerate
+Download the Windows installer above and start installation as usual.
+ When it asks 
+\emph on
+where
+\emph default
+ to install, navigate to the top-level directory of the USB drive instead
+ of the default 
+\color none
+
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+C
+\end_layout
+
+\end_inset
+
+
+\color inherit
+ drive.
+\end_layout
+
+\begin_layout Enumerate
+When it asks whether to modify the Windows registry, uncheck the box; we
+ do NOT want to tamper with the registry.
+ 
+\end_layout
+
+\begin_layout Enumerate
+After installation, change the name of the folder from 
+\color none
+
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+R-x.y.z
+\end_layout
+
+\end_inset
+
+
+\color inherit
+ to just plain 
+\color none
+
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+R
+\end_layout
+
+\end_inset
+
+
+\color inherit
+.
+ (Even quicker: do this in step 1.) 
+\end_layout
+
+\begin_layout Enumerate
+Download the following shortcut to the top-level directory of the USB drive,
+ right beside the 
+\color none
+
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+R
+\end_layout
+
+\end_inset
+
+
+\color inherit
+ folder, not inside the folder.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://ipsur.r-forge.r-project.org/book/download/R.exe
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Use the downloaded shortcut to run 
+\family sans
+R
+\family default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Steps 3 and 4 are not required but save you the trouble of navigating to
+ the 
+\color none
+
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+R-x.y.z/bin
+\end_layout
+
+\end_inset
+
+
+\color inherit
+ directory to double-click 
+\color none
+
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Rgui.exe
+\end_layout
+
+\end_inset
+
+
+\color inherit
+ every time you want to run the program.
+ It is useless to create your own shortcut to 
+\color none
+
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Rgui.exe
+\end_layout
+
+\end_inset
+
+
+\color inherit
+.
+ Windows does not allow shortcuts to have relative paths; they always have
+ a drive letter associated with them.
+ So if you make your own shortcut and plug your USB drive into some 
+\emph on
+other
+\emph default
+ machine that happens to assign your drive a different letter, then your
+ shortcut will no longer be pointing to the right place.
+ 
+\end_layout
+
 \begin_layout Subsection
 Installing and Loading Add-on Packages
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Installing-and-Loading-packages"
+name "sub:installing-loading-packages"
 
 \end_inset
 
@@ -3745,9 +4031,25 @@ R,
 \family default
  do all of the tricks that the other script editors offer, and much, much,
  more.
+ Please see the following for installation details, documentation, reference
+ cards, and a whole lot more:
 \end_layout
 
-\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://ess.r-project.org
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 
 \emph on
@@ -3764,7 +4066,6 @@ Fair warning
  and I will never go back.
 \end_layout
 
-\end_deeper
 \begin_layout Description
 JGR
 \begin_inset space ~
@@ -4429,7 +4730,7 @@ exp
 \begin_inset Formula $\me$
 \end_inset
 
-, Euler's constant.
+, Euler's number.
 \end_layout
 
 \begin_layout Subsection
@@ -7997,13 +8298,25 @@ R
 
 \end_layout
 
-\begin_layout Section
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
 Chapter Exercises
 \end_layout
 
 \begin_layout Standard
 \begin_inset ERT
 status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Chapter Exercises}
+\end_layout
 
 \begin_layout Plain Layout
 
@@ -8029,6 +8342,11 @@ name "cha:Describing-Data-Distributions"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Branch main
+status open
+
+\begin_layout Standard
+\noindent
 In this chapter we introduce the different types of data that a statistician
  is likely to encounter, and in each subsection we give some examples of
  how to display the data of that particular type.
@@ -8562,7 +8880,7 @@ time series
  (see Section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Other-data-types"
+reference "sub:other-data-types"
 
 \end_inset
 
@@ -10493,9 +10811,9 @@ name "par:Bar-Graphs"
 \end_layout
 
 \begin_layout Standard
-A bar graph is the analogue of a histogram, but for categorical data.
- A bar is displayed for each level of a factor, with the height of the bars
- proportional to the frequencies of observations falling in the respective
+A bar graph is the analogue of a histogram for categorical data.
+ A bar is displayed for each level of a factor, with the heights of the
+ bars proportional to the frequencies of observations falling in the respective
  categories.
  A disadvantage of bar graphs is that the levels are ordered alphabetically
  (by default), which may sometimes obscure patterns in the display.
@@ -10513,21 +10831,7 @@ State Facts and Features.
 
 \series default
 \color none
- The U.S.
-\begin_inset space ~
-\end_inset
-
-Department of Commerce U.S.
-\begin_inset space ~
-\end_inset
-
-Census Bureau, releases all sorts of information in the 
-\emph on
-\color inherit
-Statistical Abstract of the United States
-\emph default
-\color none
-, and the 
+ The 
 \begin_inset listings
 lstparams "showstringspaces=false"
 inline true
@@ -11059,7 +11363,11 @@ reference "sec:Comparing-Data-Sets"
 \begin_inset Newline newline
 \end_inset
 
-dotchart(table(state.region))
+x <- table(state.region)
+\begin_inset Newline newline
+\end_inset
+
+dotchart(as.vector(x), labels = names(x))
 \begin_inset Newline newline
 \end_inset
 
@@ -11078,7 +11386,11 @@ status open
 \begin_inset Newline newline
 \end_inset
 
-dotchart(table(state.region))
+x <- table(state.region)
+\begin_inset Newline newline
+\end_inset
+
+dotchart(as.vector(x), labels = names(x))
 \begin_inset Newline newline
 \end_inset
 
@@ -11873,7 +12185,7 @@ reference "sec:Editing-Data-Sets"
 Other Data Types
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Other-data-types"
+name "sub:other-data-types"
 
 \end_inset
 
@@ -11884,7 +12196,7 @@ name "sub:Other-data-types"
 Features of Data Distributions
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Features-of-Data"
+name "sec:features-of-data"
 
 \end_inset
 
@@ -12075,17 +12387,6 @@ Kurtosis
 \end_layout
 
 \begin_layout Standard
-Introduced by Pearson in 1905 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://jeff560.tripod.com/k.html
-\end_layout
-
-\end_inset
-
 Another component to the shape of a distribution is how 
 \begin_inset Quotes eld
 \end_inset
@@ -12158,7 +12459,7 @@ reference "sec:The-Normal-Distribution"
 Clusters and Gaps
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Clusters-and-Gaps"
+name "sub:clusters-and-gaps"
 
 \end_inset
 
@@ -13881,14 +14182,13 @@ g_{2}=\frac{1}{n}\frac{\sum_{i=1}^{n}(x_{i}-\xbar)^{4}}{s^{4}}-3.\end{equation}
 
 \end_inset
 
-The first term in the formula is always nonnegative, so the sample excess
- kurtosis takes values 
-\begin_inset Formula $-3\leq g_{2}<\infty$
+The sample excess kurtosis takes values 
+\begin_inset Formula $-2\leq g_{2}<\infty$
 \end_inset
 
 .
- The subtraction of 3 may seem mysterious to the reader, but it is done
- so that mound shaped samples have values of 
+ The subtraction of 3 may seem mysterious but it is done so that mound shaped
+ samples have values of 
 \begin_inset Formula $g_{2}$
 \end_inset
 
@@ -14687,7 +14987,7 @@ Here is an example of split stems, with two lines per stem.
 Hinges and the Five Number Summary
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Hinges-and-the"
+name "sub:hinges-and-5NS"
 
 \end_inset
 
@@ -14871,7 +15171,7 @@ fivenum
 Boxplots
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Boxplots"
+name "sub:boxplots"
 
 \end_inset
 
@@ -15054,6 +15354,107 @@ How to do it with
 R
 \end_layout
 
+\begin_layout Standard
+The quickest way to visually identify outliers is with a boxplot, described
+ above.
+ Another way is with the 
+\color none
+
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+boxplot.stats
+\end_layout
+
+\end_inset
+
+ function.
+\end_layout
+
+\begin_layout Example
+The 
+\color none
+
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+rivers
+\end_layout
+
+\end_inset
+
+ data.
+ We will look for potential outliers in the 
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+rivers
+\end_layout
+
+\end_inset
+
+ data.
+\end_layout
+
+\begin_deeper
+\begin_layout Scrap
+<<>>=
+\begin_inset Newline newline
+\end_inset
+
+boxplot.stats(rivers)$out
+\begin_inset Newline newline
+\end_inset
+
+@
+\end_layout
+
+\begin_layout Standard
+We may change the 
+\color none
+
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+coef
+\end_layout
+
+\end_inset
+
+
+\color inherit
+ argument to 3 (it is 1.5 by default) to identify suspected outliers.
+\end_layout
+
+\begin_layout Scrap
+<<>>=
+\begin_inset Newline newline
+\end_inset
+
+boxplot.stats(rivers, coef = 3)$out
+\begin_inset Newline newline
+\end_inset
+
+@
+\end_layout
+
+\end_deeper
 \begin_layout Subsection
 Standardizing variables
 \end_layout
@@ -15061,7 +15462,53 @@ Standardizing variables
 \begin_layout Standard
 It is sometimes useful to compare data sets with each other on a scale that
  is independent of the measurement units.
- The 
+ Given a set of observed data 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+, \SpecialChar \ldots{}
+, 
+\begin_inset Formula $x_{n}$
+\end_inset
+
+ we get 
+\begin_inset Formula $z$
+\end_inset
+
+ scores, denoted 
+\begin_inset Formula $z_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $z_{2}$
+\end_inset
+
+, \SpecialChar \ldots{}
+, 
+\begin_inset Formula $z_{n}$
+\end_inset
+
+, by means of the following formula
+\begin_inset Formula \[
+z_{i}=\frac{x_{i}-\xbar}{s},\quad i=1,\,2,\,\ldots,\, n.\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+How to do it with 
+\family sans
+R
+\end_layout
+
+\begin_layout Standard
+The 
 \color none
 
 \begin_inset listings
@@ -15076,8 +15523,11 @@ scale
 
 \end_inset
 
- function will rescale a numeric vector (or data frame) by subtracting the
- sample mean from each value (column) and/or 
+ 
+\color inherit
+function will rescale a numeric vector (or data frame) by subtracting the
+ sample mean from each value (column) and/or by dividing each observation
+ by the sample standard deviation.
 \end_layout
 
 \begin_layout Section
@@ -15146,11 +15596,11 @@ However, statistical studies often involve experiments where there are two
  We display the measured information in a rectangular array in which each
  row corresponds to a subject, and the columns contain the measurements
  for each respective variable.
- For instance, if one were to measure the height and weight of each of 11
- persons in a research study, the information could be represented with
- a rectangular array.
+ For instance, if one were to measure the height and weight and hair color
+ of each of 11 persons in a research study, the information could be represented
+ with a rectangular array.
  There would be 11 rows.
- Each row would have the person's height in the first column and weight
+ Each row would have the person's height in the first column and hair color
  in the second column.
 \end_layout
 
@@ -15222,6 +15672,7 @@ y
  and we want to make a data frame out of them.
 \end_layout
 
+\begin_deeper
 \begin_layout Scrap
 <<>>=
 \begin_inset Newline newline
@@ -15235,13 +15686,14 @@ y <- letters[3:6]
 \begin_inset Newline newline
 \end_inset
 
-data.frame(x,y)
+A <- data.frame(v1 = x, v2 = y)
 \begin_inset Newline newline
 \end_inset
 
 @
 \end_layout
 
+\end_deeper
 \begin_layout Standard
 Notice that 
 \color none
@@ -15319,7 +15771,7 @@ y
 \color inherit
  is a character vector.
  We may choose numeric and character vectors (or even factors) for the columns
- of the dataframe, but each column must be of exactly one type.
+ of the data frame, but each column must be of exactly one type.
  That is, we can have a column for 
 \color none
 
@@ -15391,6 +15843,220 @@ gender
  (character or factor) information in the same column.
 \end_layout
 
+\begin_layout Standard
+Indexing of data frames is similar to indexing of vectors.
+ To get the entry in row 
+\begin_inset Formula $i$
+\end_inset
+
+ and column 
+\begin_inset Formula $j$
+\end_inset
+
+ do 
+\color none
+
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+A[i,j]
+\end_layout
+
+\end_inset
+
+.
+ We can get entire rows and columns by omitting the other index.
+
+\color inherit
+ 
+\end_layout
+
+\begin_layout Scrap
+<<>>=
+\begin_inset Newline newline
+\end_inset
+
+A[3,]
+\begin_inset Newline newline
+\end_inset
+
+A[1, ]
+\begin_inset Newline newline
+\end_inset
+
+A[ ,2]
+\begin_inset Newline newline
+\end_inset
+
+@
+\end_layout
+
+\begin_layout Standard
+There are several things happening above.
+ Notice that 
+\color none
+
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+A[3,]
+\end_layout
+
+\end_inset
+
+ gave a data frame (with the same entries as the third row of 
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+A
+\end_layout
+
+\end_inset
+
+) 
+\color inherit
+yet 
+\color none
+
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+A[1, ]
+\end_layout
+
+\end_inset
+
+ is a numeric vector.
+ 
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+A[ ,2]
+\end_layout
+
+\end_inset
+
+ is a factor vector because the default setting for 
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+data.frame
+\end_layout
+
+\end_inset
+
+ is 
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+stringsAsFactors = TRUE
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Data frames have a 
+\color none
+
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+names
+\end_layout
+
+\end_inset
+
+ attribute and the names may be extracted with the 
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+names
+\end_layout
+
+\end_inset
+
+ function.
+ Once we have the names we may extract given columns by way of the dollar
+ sign.
+\end_layout
+
+\begin_layout Scrap
+<<>>=
+\begin_inset Newline newline
+\end_inset
+
+names(A)
+\begin_inset Newline newline
+\end_inset
+
+A$v1
+\begin_inset Newline newline
+\end_inset
+
+@
+\end_layout
+
+\begin_layout Standard
+The above is identical to 
+\color none
+
+\begin_inset listings
+lstparams "showstringspaces=false"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+A[ ,1]
+\end_layout
+
+\end_inset
+
+.
+
+\color inherit
+ 
+\end_layout
+
 \begin_layout Subsection
 Bivariate Data
 \begin_inset CommandInset label
@@ -15454,6 +16120,36 @@ Scatterplot: look for linear association and correlation.
  
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+carb ~ optden, data = Formaldehyde
+\end_layout
+
+\begin_layout Itemize
+conc ~ rate, data = Puromycin
+\end_layout
+
+\begin_layout Itemize
+xyplot(accel ~ dist, data = attenu) nonlinear association
+\end_layout
+
+\begin_layout Itemize
+xyplot(eruptions ~ waiting, data = faithful) (linear, two groups)
+\end_layout
+
+\begin_layout Itemize
+xyplot(Petal.Width ~ Petal.Length, data = iris)
+\end_layout
+
+\begin_layout Itemize
+xyplot(pressure ~ temperature, data = pressure) (exponential growth)
+\end_layout
+
+\begin_layout Itemize
+xyplot(weight ~ height, data = women) (strong positive linear)
+\end_layout
+
+\end_deeper
 \begin_layout Subsection
 Multivariate Data
 \begin_inset CommandInset label
@@ -15524,7 +16220,7 @@ Multi-way Tables
 \end_layout
 
 \begin_layout Itemize
-Scatterplot Matrix.
+Scatterplot matrix.
  used for displaying pairwise scatterplots simultaneously.
  Again, look for linear association and correlation.
 \end_layout
@@ -15724,25 +16420,206 @@ Stripcharts
 \end_layout
 
 \begin_layout Itemize
+Bar Graphs
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+plot(xtabs(Freq ~ Admit + Gender, data = UCBAdmissions)) # rescaled barplot
+\end_layout
+
+\begin_layout Itemize
+barplot(xtabs(Freq ~ Admit + Gender, data = UCBAdmissions)) # stacked bar
+ chart
+\end_layout
+
+\begin_layout Itemize
+barplot(xtabs(Freq ~ Admit, data = UCBAdmissions))
+\end_layout
+
+\begin_layout Itemize
+barplot(xtabs(Freq ~ Gender + Admit, data = UCBAdmissions), legend = TRUE,
+ beside = TRUE) # oops, discrimination.
+\end_layout
+
+\begin_layout Itemize
+barplot(xtabs(Freq ~ Admit+Dept, data = UCBAdmissions), legend = TRUE, beside
+ = TRUE) # different departments have different standards
+\end_layout
+
+\begin_layout Itemize
+barplot(xtabs(Freq ~ Gender+Dept, data = UCBAdmissions), legend = TRUE,
+ beside = TRUE) # men mostly applied to easy departments, women mostly applied
+ to difficult departments
+\end_layout
+
+\begin_layout Itemize
+barplot(xtabs(Freq ~ Gender+Dept, data = UCBAdmissions), legend = TRUE,
+ beside = TRUE)
+\end_layout
+
+\begin_layout Itemize
+barchart(Admit ~ Freq, data = C)
+\end_layout
+
+\begin_layout Itemize
+barchart(Admit ~ Freq|Gender, data = C)
+\end_layout
+
+\begin_layout Itemize
+barchart(Admit ~ Freq | Dept, groups = Gender, data = C)
+\end_layout
+
+\begin_layout Itemize
+barchart(Admit ~ Freq | Dept, groups = Gender, data = C, auto.key = TRUE)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
 Histograms
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+~ breaks | wool*tension, data = warpbreaks
+\end_layout
+
+\begin_layout Itemize
+~ weight | feed, data = chickwts
+\end_layout
+
+\begin_layout Itemize
+~ weight | group, data = PlantGrowth 
+\end_layout
+
+\begin_layout Itemize
+~ count | spray, data = InsectSprays
+\end_layout
+
+\begin_layout Itemize
+~ len | dose, data = ToothGrowth
+\end_layout
+
+\begin_layout Itemize
+~ decrease | treatment, data = OrchardSprays (or rowpos or colpos)
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Scatterplots
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+xyplot(Petal.Width ~ Petal.Length, data = iris, group = Species)
+\end_layout
+
+\begin_layout Scrap
+<<eval = FALSE>>=
+\begin_inset Newline newline
+\end_inset
+
+library(lattice)
+\begin_inset Newline newline
+\end_inset
+
+xyplot()
+\begin_inset Newline newline
+\end_inset
+
+@
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Scatterplot matrices
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+splom(~ cbind(GNP.deflator,GNP,Unemployed,Armed.Forces,Population,Year,Employed),
+ data = longley)
+\end_layout
+
+\begin_layout Itemize
+splom(~ cbind(pop15,pop75,dpi), data = LifeCycleSavings)
+\end_layout
+
+\begin_layout Itemize
+splom(~ cbind(Murder, Assault, Rape), data = USArrests)
+\end_layout
+
+\begin_layout Itemize
+splom(~ cbind(CONT, INTG, DMNR), data = USJudgeRatings)
+\end_layout
+
+\begin_layout Itemize
+splom(~ cbind(area,peri,shape,perm), data = rock)
+\end_layout
+
+\begin_layout Itemize
+splom(~ cbind(Air.Flow, Water.Temp, Acid.Conc., stack.loss), data = stackloss)
+\end_layout
+
+\begin_layout Itemize
+splom(~ cbind(Fertility,Agriculture,Examination,Education,Catholic,Infant.Mortali
+ty), data = swiss)
+\end_layout
+
+\begin_layout Itemize
+splom(~ cbind(Fertility,Agriculture,Examination), data = swiss) (positive
+ and negative)
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Dot charts
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
-Plot of means
+dotchart(USPersonalExpenditure)
 \end_layout
 
+\begin_layout Itemize
+dotchart(t(USPersonalExpenditure))
+\end_layout
+
+\begin_layout Itemize
+dotchart(WorldPhones) (transpose is no good)
+\end_layout
+
+\begin_layout Itemize
+freeny.x is no good, neither is volcano
+\end_layout
+
+\begin_layout Itemize
+dotchart(UCBAdmissions[,,1])
+\end_layout
+
+\begin_layout Itemize
+dotplot(Survived ~ Freq | Class, groups = Sex, data = B)
+\end_layout
+
+\begin_layout Itemize
+dotplot(Admit ~ Freq | Dept, groups = Gender, data = C)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Mosaic plot
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mosaic(~ Survived + Class + Age + Sex, data = Titanic) (or just mosaic(Titanic))
+\end_layout
+
+\begin_layout Itemize
+mosaic(~ Admit + Dept + Gender, data = UCBAdmissions)
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Quantile-quantile plots: There are two ways to do this.
  One way is to compare two independent samples (of the same size).
@@ -16181,13 +17058,25 @@ CO2
 
 \end_layout
 
-\begin_layout Section
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
 Chapter Exercises
 \end_layout
 
 \begin_layout Standard
 \begin_inset ERT
 status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Chapter Exercises}
+\end_layout
 
 \begin_layout Plain Layout
 
@@ -16442,7 +17331,7 @@ Statistics
 status open
 
 \begin_layout Paragraph*
-Answers:
+Answer:
 \end_layout
 
 \begin_layout Scrap
@@ -16805,6 +17694,7 @@ How does the boxplot compare to your answers to (1) and (3)?
 \end_deeper
 \end_deeper
 \begin_layout Standard
+\noindent
 \begin_inset Branch solutions
 status open
 
@@ -18008,7 +18898,12 @@ name "cha:Probability"
 \end_layout
 
 \begin_layout Standard
-In this chapter, we define the basic terminology associated with probability
+\begin_inset Branch main
+status open
+
+\begin_layout Standard
+\noindent
+In this chapter we define the basic terminology associated with probability
  and derive some of its properties.
  We discuss three interpretations of probability.
  We discuss conditional probability and independent events, along with Bayes'
@@ -25309,7 +26204,7 @@ reference "fig:The-Birthday-Problem"
 
 \begin_layout Standard
 \begin_inset listings
-lstparams "basicstyle={\ttfamily},breaklines=true,frame=leftline,showstringspaces=false,tabsize=2"
+lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
 inline false
 status open
 
@@ -27962,7 +28857,7 @@ RcmdrTestDrive
  data set in Chapter 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:An-Introduction-to-R"
+reference "cha:introduction-to-R"
 
 \end_inset
 
@@ -30965,13 +31860,25 @@ probs
 
 \end_layout
 
-\begin_layout Section
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
 Chapter Exercises
 \end_layout
 
 \begin_layout Standard
 \begin_inset ERT
 status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Chapter Exercises}
+\end_layout
 
 \begin_layout Plain Layout
 
@@ -31104,6 +32011,11 @@ name "cha:Discrete-Distributions"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Branch main
+status open
+
+\begin_layout Standard
+\noindent
 In this chapter we introduce discrete random variables, those who take values
  in a finite or countably infinite support set.
  We discuss probability mass functions and some special expectations, namely,
@@ -31118,7 +32030,7 @@ We give special attention to the empirical distribution since it plays such
  a fundamental role with respect to re sampling and Chapter 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:Resampling-Methods"
+reference "cha:resampling-methods"
 
 \end_inset
 
@@ -33726,7 +34638,14 @@ distr
 plotted
 \emph default
 , which will return graphs of the PMF, CDF, and quantile function (introduced
- in Section ).
+ in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Normal-Quantiles-QF"
+
+\end_inset
+
+).
  See Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -35347,7 +36266,7 @@ reference "cha:Hypothesis-Testing"
 ) or resampling (see Chapter 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:Resampling-Methods"
+reference "cha:resampling-methods"
 
 \end_inset
 
@@ -35625,7 +36544,7 @@ As we hinted above, the empirical distribution is significant more because
  
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:Resampling-Methods"
+reference "cha:resampling-methods"
 
 \end_inset
 
@@ -37307,15 +38226,25 @@ Divide
 \end_inset
 
 .
- 
+ A 
+\emph on
+Poisson process
+\emph default
+
+\begin_inset Index
+status open
+
+\begin_layout Plain Layout
+Poisson process
 \end_layout
 
-\begin_layout Paragraph*
-Assumptions:
+\end_inset
+
+ satisfies the following conditions:
 \end_layout
 
 \begin_layout Itemize
-The probability of an event occurring in a particular subinterval is 
+the probability of an event occurring in a particular subinterval is 
 \begin_inset Formula $\approx\lambda/n$
 \end_inset
 
@@ -37323,7 +38252,7 @@ The probability of an event occurring in a particular subinterval is
 \end_layout
 
 \begin_layout Itemize
-The probability of two or more events occurring in any subinterval is 
+the probability of two or more events occurring in any subinterval is 
 \begin_inset Formula $\approx0$
 \end_inset
 
@@ -37450,7 +38379,7 @@ diff(ppois(c(47, 50), lambda = 50))
 Functions of Discrete Random Variables
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Functions-of-Discrete"
+name "sec:functions-discrete-rvs"
 
 \end_inset
 
@@ -38204,13 +39133,25 @@ If
 
 \end_layout
 
-\begin_layout Section
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
 Chapter Exercises
 \end_layout
 
 \begin_layout Standard
 \begin_inset ERT
 status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Chapter Exercises}
+\end_layout
 
 \begin_layout Plain Layout
 
@@ -38224,7 +39165,7 @@ setcounter{thm}{0}
 
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Exercise
 A recent national study showed that approximately 44.7% of college students
  have used Wikipedia as a source in at least one of their term papers.
  Let 
@@ -38802,6 +39743,11 @@ name "cha:Continuous-Distributions"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Branch main
+status open
+
+\begin_layout Standard
+\noindent
 The focus of the last chapter was on random variables whose support can
  be written down in a list of values (finite or countably infinite), such
  as the number of successes in a sequence of Bernoulli trials.
@@ -38882,7 +39828,7 @@ how to make new continuous random variables from old ones
 Continuous Random Variables
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Continuous-Random-Variables"
+name "sec:continuous-random-variables"
 
 \end_inset
 
@@ -38893,7 +39839,7 @@ name "sec:Continuous-Random-Variables"
 Probability Density Functions
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Probability-Density-Functions"
+name "sub:probability-density-functions"
 
 \end_inset
 
@@ -41257,7 +42203,7 @@ The CDF method
 We know from Section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Continuous-Random-Variables"
+reference "sec:continuous-random-variables"
 
 \end_inset
 
@@ -43715,13 +44661,25 @@ name "fig:gamma-mgf"
 
 \end_layout
 
-\begin_layout Section
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
 Chapter Exercises
 \end_layout
 
 \begin_layout Standard
 \begin_inset ERT
 status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Chapter Exercises}
+\end_layout
 
 \begin_layout Plain Layout
 
@@ -44006,6 +44964,11 @@ name "cha:Multivariable-Distributions"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Branch main
+status open
+
+\begin_layout Standard
+\noindent
 We have built up quite a catalogue of distributions, discrete and continuous.
  They were all univariate, however, meaning that we only considered one
  random variable at a time.
@@ -50147,7 +51110,7 @@ reference "pro:mvnorm-cond-dist"
  which will be important in Chapter 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:Simple-Linear-Regression"
+reference "cha:simple-linear-regression"
 
 \end_inset
 
@@ -51487,7 +52450,7 @@ M_{\mathbf{X}}(\mathbf{t})=\exp\left\{ \upmu^{\top}\mathbf{t}+\frac{1}{2}\mathbf
 We will need the following in Chapter 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:Multiple-Linear-Regression"
+reference "cha:multiple-linear-regression"
 
 \end_inset
 
@@ -52234,13 +53197,25 @@ name "fig:multinom-pmf2"
 
 \end_layout
 
-\begin_layout Section
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
 Chapter Exercises
 \end_layout
 
 \begin_layout Standard
 \begin_inset ERT
 status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Chapter Exercises}
+\end_layout
 
 \begin_layout Plain Layout
 
@@ -52367,6 +53342,11 @@ name "cha:Sampling-Distributions"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Branch main
+status open
+
+\begin_layout Standard
+\noindent
 This is an important chapter; it is the bridge from probability and descriptive
  statistics that we studied in Chapters 
 \begin_inset CommandInset ref
@@ -55003,13 +55983,25 @@ name "fig:simulated-MAD"
 
 \end_layout
 
-\begin_layout Section
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
 Chapter Exercises
 \end_layout
 
 \begin_layout Standard
 \begin_inset ERT
 status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Chapter Exercises}
+\end_layout
 
 \begin_layout Plain Layout
 
@@ -55651,6 +56643,11 @@ name "cha:Estimation"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Branch main
+status open
+
+\begin_layout Standard
+\noindent
 We will discuss two branches of estimation procedures: point estimation
  and interval estimation.
  We briefly discuss point estimation first and then spend the rest of the
@@ -58218,13 +59215,13 @@ TeachingDemos
 \family typewriter
 htest
 \family default
- object, and plotting it with 
+ object, and plotting it with the 
 \family typewriter
-plot.htest
+normal.and.t.dist
 \family default
- from the 
+ function from the 
 \family typewriter
-IPSUR
+HH
 \family default
  package.
  See the remarks in the 
@@ -59895,13 +60892,25 @@ Mention mle from the stats4 package.
 
 \end_layout
 
-\begin_layout Section
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
 Chapter Exercises
 \end_layout
 
 \begin_layout Standard
 \begin_inset ERT
 status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Chapter Exercises}
+\end_layout
 
 \begin_layout Plain Layout
 
@@ -59987,6 +60996,10 @@ name "cha:Hypothesis-Testing"
 
 
 \end_layout
+
+\begin_layout Standard
+\begin_inset Branch main
+status open
 
 \begin_layout Paragraph*
 What do I want them to know?
@@ -60257,7 +61270,7 @@ Let
 \end_inset
 
  denote the proportion of defectives produced by the machine.
- Before the installation of the torque converter, 
+ Before the installation of the torque converter 
 \begin_inset Formula $p$
 \end_inset
 
@@ -60431,8 +61444,9 @@ fail to reject
 \end_layout
 
 \begin_layout Remark
-Every time we make a decision, it is possible to be wrong, and there are
- two possible ways that we can go astray: we have committed a
+Every time we make a decision it is possible to be wrong, and there are
+ two possible mistakes that we could make.
+ We have committed a
 \end_layout
 
 \begin_deeper
@@ -60680,8 +61694,8 @@ Our null hypothesis in this problem is
 \end_inset
 
  is too small, that is, if
-\begin_inset Formula \[
-\frac{\hat{p}-0.4}{\sqrt{0.4(1-0.4)/n}}<-z_{\alpha},\]
+\begin_inset Formula \begin{equation}
+\frac{\hat{p}-0.4}{\sqrt{0.4(1-0.4)/n}}<-z_{\alpha},\end{equation}
 
 \end_inset
 
@@ -60797,8 +61811,8 @@ reference "exa:prop-test-pvalue-A"
 \end_inset
 
  all over again.
- Everything will be exactly the same except for one change: suppose we choose
- significance level 
+ Everything will be exactly the same except for one change.
+ Suppose we choose significance level 
 \begin_inset Formula $\alpha=0.05$
 \end_inset
 
@@ -60845,7 +61859,7 @@ Our test statistic is less than
 \begin_inset Formula $-1.64$
 \end_inset
 
- so it now falls into the critical region! We must 
+ so it now falls into the critical region! We now 
 \emph on
 reject
 \emph default
@@ -62230,7 +63244,7 @@ The equal variance assumption can be relaxed as long as both sample sizes
  well; we should instead use the methods of Chapter 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:Resampling-Methods"
+reference "cha:resampling-methods"
 
 \end_inset
 
@@ -62781,6 +63795,7 @@ TeachingDemos
 \end_inset
 
  package.
+ There is an even better plot in upcoming work from the HH package.
 \end_layout
 
 \begin_layout Standard
@@ -62970,13 +63985,25 @@ run.power.examp
 
 \end_layout
 
-\begin_layout Section
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
 Chapter Exercises
 \end_layout
 
 \begin_layout Standard
 \begin_inset ERT
 status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Chapter Exercises}
+\end_layout
 
 \begin_layout Plain Layout
 
@@ -62991,14 +64018,19 @@ setcounter{thm}{0}
 \end_layout
 
 \begin_layout Chapter
+Simple Linear Regression
 \begin_inset CommandInset label
 LatexCommand label
-name "cha:Simple-Linear-Regression"
+name "cha:simple-linear-regression"
 
 \end_inset
 
-Simple Linear Regression
+
 \end_layout
+
+\begin_layout Standard
+\begin_inset Branch main
+status open
 
 \begin_layout Paragraph*
 What do I want them to know?
@@ -64638,7 +65670,7 @@ status open
 \begin_inset Newline newline
 \end_inset
 
-plot(dist ~ speed, data = cars)
+plot(dist ~ speed, data = cars, pch = 16)
 \begin_inset Newline newline
 \end_inset
 
@@ -64682,7 +65714,7 @@ name "fig:Scatter-cars-regline"
 \begin_inset Newline newline
 \end_inset
 
-plot(dist ~ speed, data = cars)
+plot(dist ~ speed, data = cars, pch = 16)
 \begin_inset Newline newline
 \end_inset
 
@@ -65788,7 +66820,7 @@ reference "eq:regline-slope-formula"
  (and it is made clear in Chapter 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:Multiple-Linear-Regression"
+reference "cha:multiple-linear-regression"
 
 \end_inset
 
@@ -65912,7 +66944,7 @@ It is also sometimes of interest to construct a confidence interval for
  It is shown in Chapter 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:Multiple-Linear-Regression"
+reference "cha:multiple-linear-regression"
 
 \end_inset
 
@@ -67934,7 +68966,7 @@ Adjusted R-squared
  which we will discuss in Chapter 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:Multiple-Linear-Regression"
+reference "cha:multiple-linear-regression"
 
 \end_inset
 
@@ -68117,7 +69149,7 @@ So why bother to define the
  
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:Multiple-Linear-Regression"
+reference "cha:multiple-linear-regression"
 
 \end_inset
 
@@ -69245,7 +70277,7 @@ not
 \end_inset
 
 independent.
- There are a large class of autoregressive models to be used in this situation
+ There is a large class of autoregressive models to be used in this situation
  which occupy the latter part of Chapter 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -69333,7 +70365,7 @@ There are three ways that an observation
 \begin_inset Formula $y$
 \end_inset
 
- values, or it can have both 
+ values, or it can have both its 
 \begin_inset Formula $x_{i}$
 \end_inset
 
@@ -69341,7 +70373,7 @@ There are three ways that an observation
 \begin_inset Formula $y_{i}$
 \end_inset
 
- values to fall far from the other 
+ values falling far from the other 
 \begin_inset Formula $x$
 \end_inset
 
@@ -69558,7 +70590,7 @@ before
 \emph on
 after
 \emph default
- seeing the data, then we should only say it is significantly outlying if
+ seeing the data then we should only say it is significantly outlying if
  its two-tailed 
 \begin_inset Formula $p$
 \end_inset
@@ -69568,10 +70600,13 @@ after
 \end_inset
 
 .
- The latter rule of thumb is called the Bonferroni approach and can be overly
- conservative for large data sets.
- The statistician must look at the data and use his/her best judgement,
- in every case.
+ The latter rule of thumb is called the 
+\emph on
+Bonferroni approach
+\emph default
+ and can be overly conservative for large data sets.
+ The responsible statistician should look at the data and use his/her best
+ judgement, in every case.
 \end_layout
 
 \begin_layout Subsection
@@ -70556,13 +71591,25 @@ l axis.
 
 \end_layout
 
-\begin_layout Section
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
 Chapter Exercises
 \end_layout
 
 \begin_layout Standard
 \begin_inset ERT
 status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Chapter Exercises}
+\end_layout
 
 \begin_layout Plain Layout
 
@@ -70656,16 +71703,22 @@ reference "eq:sample-correlation-formula"
 \end_layout
 
 \begin_layout Chapter
+Multiple Linear Regression
 \begin_inset CommandInset label
 LatexCommand label
-name "cha:Multiple-Linear-Regression"
+name "cha:multiple-linear-regression"
 
 \end_inset
 
-Multiple Linear Regression
+
 \end_layout
 
 \begin_layout Standard
+\begin_inset Branch main
+status open
+
+\begin_layout Standard
+\noindent
 We know a lot about simple linear regression models, and a next step is
  to study multiple regression models that have more than one independent
  (explanatory) variable.
@@ -70810,7 +71863,7 @@ model matrix
  As in Chapter 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:Simple-Linear-Regression"
+reference "cha:simple-linear-regression"
 
 \end_inset
 
@@ -76633,7 +77686,35 @@ trees
 
 \color inherit
  data do not have any qualitative explanatory variables, so we will construct
- one for illustrative purposes.
+ one for illustrative purposes
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+This procedure of replacing a continuous variable by a discrete/qualitative
+ one is called 
+\emph on
+binning
+\emph default
+, and is almost 
+\emph on
+never
+\emph default
+ the right thing to do.
+ We are in a bind at this point, however, because we have invested this
+ chapter in the 
+\family typewriter
+trees
+\family default
+ data and I do not want to switch mid-discussion.
+ I am currently searching for a data set with pre-existing qualitative variables
+ that also conveys the same points present in the trees data, and when I
+ find it I will update this chapter accordingly.
+\end_layout
+
+\end_inset
+
+.
  We will leave the 
 \color none
 
@@ -76830,7 +77911,7 @@ Tall
 
 \end_inset
 
-
+,
 \color inherit
  we include it in the regression model just like we would any other variable.
  It is handled internally in a special way.
@@ -76946,7 +78027,7 @@ Tall = no
 
 In essence, we are fitting two regression lines: one for tall trees, and
  one for short trees.
- The regression lines have the same slope but they have differing 
+ The regression lines have the same slope but they have different 
 \begin_inset Formula $y$
 \end_inset
 
@@ -78666,7 +79747,7 @@ Note that plugging the value
  into the formulas will recover all of the ones we saw in Chapter 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:Simple-Linear-Regression"
+reference "cha:simple-linear-regression"
 
 \end_inset
 
@@ -79170,7 +80251,7 @@ What to do when data are not normal
 Bootstrap (see Chapter 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:Resampling-Methods"
+reference "cha:resampling-methods"
 
 \end_inset
 
@@ -79198,13 +80279,25 @@ AIC=-2\ln L+2(p+1)\]
 
 \end_layout
 
-\begin_layout Section
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
 Chapter Exercises
 \end_layout
 
 \begin_layout Standard
 \begin_inset ERT
 status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Chapter Exercises}
+\end_layout
 
 \begin_layout Plain Layout
 
@@ -79259,7 +80352,7 @@ SSTO=SSE+SSR.\]
 Resampling Methods
 \begin_inset CommandInset label
 LatexCommand label
-name "cha:Resampling-Methods"
+name "cha:resampling-methods"
 
 \end_inset
 
@@ -79267,6 +80360,11 @@ name "cha:Resampling-Methods"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Branch main
+status open
+
+\begin_layout Standard
+\noindent
 Computers have changed the face of statistics.
  Their quick computational speed and flawless accuracy, coupled with large
  data sets acquired by the researcher, make them indispensable for many
@@ -79613,14 +80711,18 @@ name "exa:Bootstrap-se-mean"
 
 \series default
  In this example we illustrate the bootstrap by estimating the standard
- error of the sample mean, and we will do it in the special case that the
+ error of the sample meanand we will do it in the special case that the
  underlying population is 
 \begin_inset Formula $\mathsf{norm}(\mathtt{mean}=3,\,\mathtt{sd}=1)$
 \end_inset
 
 .
- Of course, we do not really need a bootstrap distribution here because
- from Section 
+ 
+\end_layout
+
+\begin_layout Example
+Of course, we do not really need a bootstrap distribution here because from
+ Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:sampling-from-normal-dist"
@@ -80112,9 +81214,8 @@ The boot package in
 \family typewriter
 R
 \family default
-.
-
 \series default
+.
  It turns out that there are many bootstrap procedures and commands already
  built into base 
 \family typewriter
@@ -80588,7 +81689,7 @@ name "exa:percentile-interval-median-first"
 Percentile interval for the expected value of the median.
 
 \series default
- We will try the naive approach where we generate the resamples and calculate
+ Wee will try the naive approach where we generate the resamples and calculate
  the percentile interval by hand.
 \end_layout
 
@@ -80627,11 +81728,15 @@ quantile(thetast, c(0.025, 0.975))
 \end_layout
 
 \begin_layout Example
+
+\series bold
 Confidence interval for expected value of the median, 
 \begin_inset Formula $2^{\mathrm{nd}}$
 \end_inset
 
  try.
+
+\series default
  Now we will do it the right way with the 
 \color none
 
@@ -80647,6 +81752,8 @@ boot
 
 \end_inset
 
+
+\color inherit
  function.
 \end_layout
 
@@ -81608,13 +82715,25 @@ Relationship between two variables.
 
 \end_layout
 
-\begin_layout Section
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
 Chapter Exercises
 \end_layout
 
 \begin_layout Standard
 \begin_inset ERT
 status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Chapter Exercises}
+\end_layout
 
 \begin_layout Plain Layout
 
@@ -81804,10 +82923,887 @@ read(IPSUR)
 
 \begin_layout Chapter
 \start_of_appendix
+
+\family sans
+R
+\family default
+ Session Information
+\begin_inset CommandInset label
+LatexCommand label
+name "cha:R-Session-Information"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If you ever write the 
+\family sans
+R
+\family default
+ help mailing list with a question, then you should include your session
+ information in the email; it makes the reader's job easier and is requested
+ by the Posting Guide.
+ Here is how to do that, and below is what the output looks like.
+ 
+\end_layout
+
+\begin_layout Scrap
+<<keep.source = TRUE>>=
+\begin_inset Newline newline
+\end_inset
+
+sessionInfo()
+\begin_inset Newline newline
+\end_inset
+
+@
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+GNU Free Documentation License
+\begin_inset CommandInset label
+LatexCommand label
+name "cha:GNU-Free-Documentation"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\series bold
+\size large
+Version 1.3, 3 November 2008
+\series default
+\size default
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Copyright (C) 2000, 2001, 2002, 2007, 2008 Free Software Foundation, Inc.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://fsf.org/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Everyone is permitted to copy and distribute verbatim copies of this license
+ document, but changing it is not allowed.
+\end_layout
+
+\begin_layout Section*
+0.
+ PREAMBLE
+\end_layout
+
+\begin_layout Standard
+The purpose of this License is to make a manual, textbook, or other functional
+ and useful document "free" in the sense of freedom: to assure everyone
+ the effective freedom to copy and redistribute it, with or without modifying
+ it, either commercially or noncommercially.
+ Secondarily, this License preserves for the author and publisher a way
+ to get credit for their work, while not being considered responsible for
+ modifications made by others.
+\end_layout
+
+\begin_layout Standard
+This License is a kind of "copyleft", which means that derivative works
+ of the document must themselves be free in the same sense.
+ It complements the GNU General Public License, which is a copyleft license
+ designed for free software.
+\end_layout
+
+\begin_layout Standard
+We have designed this License in order to use it for manuals for free software,
+ because free software needs free documentation: a free program should come
+ with manuals providing the same freedoms that the software does.
+ But this License is not limited to software manuals; it can be used for
+ any textual work, regardless of subject matter or whether it is published
+ as a printed book.
+ We recommend this License principally for works whose purpose is instruction
+ or reference.
+\end_layout
+
+\begin_layout Section*
+1.
+ APPLICABILITY AND DEFINITIONS
+\end_layout
+
+\begin_layout Standard
+This License applies to any manual or other work, in any medium, that contains
+ a notice placed by the copyright holder saying it can be distributed under
+ the terms of this License.
+ Such a notice grants a world-wide, royalty-free license, unlimited in duration,
+ to use that work under the conditions stated herein.
+ The "Document", below, refers to any such manual or work.
+ Any member of the public is a licensee, and is addressed as "you".
+ You accept the license if you copy, modify or distribute the work in a
+ way requiring permission under copyright law.
+\end_layout
+
+\begin_layout Standard
+A "Modified Version" of the Document means any work containing the Document
+ or a portion of it, either copied verbatim, or with modifications and/or
+ translated into another language.
+\end_layout
+
+\begin_layout Standard
+A "Secondary Section" is a named appendix or a front-matter section of the
+ Document that deals exclusively with the relationship of the publishers
+ or authors of the Document to the Document's overall subject (or to related
+ matters) and contains nothing that could fall directly within that overall
+ subject.
+ (Thus, if the Document is in part a textbook of mathematics, a Secondary
+ Section may not explain any mathematics.) The relationship could be a matter
+ of historical connection with the subject or with related matters, or of
+ legal, commercial, philosophical, ethical or political position regarding
+ them.
+\end_layout
+
+\begin_layout Standard
+The "Invariant Sections" are certain Secondary Sections whose titles are
+ designated, as being those of Invariant Sections, in the notice that says
+ that the Document is released under this License.
+ If a section does not fit the above definition of Secondary then it is
+ not allowed to be designated as Invariant.
+ The Document may contain zero Invariant Sections.
+ If the Document does not identify any Invariant Sections then there are
+ none.
+\end_layout
+
+\begin_layout Standard
+The "Cover Texts" are certain short passages of text that are listed, as
+ Front-Cover Texts or Back-Cover Texts, in the notice that says that the
+ Document is released under this License.
+ A Front-Cover Text may be at most 5 words, and a Back-Cover Text may be
+ at most 25 words.
+\end_layout
+
+\begin_layout Standard
+A "Transparent" copy of the Document means a machine-readable copy, represented
+ in a format whose specification is available to the general public, that
+ is suitable for revising the document straightforwardly with generic text
+ editors or (for images composed of pixels) generic paint programs or (for
+ drawings) some widely available drawing editor, and that is suitable for
+ input to text formatters or for automatic translation to a variety of formats
+ suitable for input to text formatters.
+ A copy made in an otherwise Transparent file format whose markup, or absence
+ of markup, has been arranged to thwart or discourage subsequent modification
+ by readers is not Transparent.
+ An image format is not Transparent if used for any substantial amount of
+ text.
+ A copy that is not "Transparent" is called "Opaque".
+\end_layout
+
+\begin_layout Standard
+Examples of suitable formats for Transparent copies include plain ASCII
+ without markup, Texinfo input format, LaTeX input format, SGML or XML using
+ a publicly available DTD, and standard-conforming simple HTML, PostScript
+ or PDF designed for human modification.
+ Examples of transparent image formats include PNG, XCF and JPG.
+ Opaque formats include proprietary formats that can be read and edited
+ only by proprietary word processors, SGML or XML for which the DTD and/or
+ processing tools are not generally available, and the machine-generated
+ HTML, PostScript or PDF produced by some word processors for output purposes
+ only.
+\end_layout
+
+\begin_layout Standard
+The "Title Page" means, for a printed book, the title page itself, plus
+ such following pages as are needed to hold, legibly, the material this
+ License requires to appear in the title page.
+ For works in formats which do not have any title page as such, "Title Page"
+ means the text near the most prominent appearance of the work's title,
+ preceding the beginning of the body of the text.
+\end_layout
+
+\begin_layout Standard
+The "publisher" means any person or entity that distributes copies of the
+ Document to the public.
+\end_layout
+
+\begin_layout Standard
+A section "Entitled XYZ" means a named subunit of the Document whose title
+ either is precisely XYZ or contains XYZ in parentheses following text that
+ translates XYZ in another language.
+ (Here XYZ stands for a specific section name mentioned below, such as "Acknowle
+dgements", "Dedications", "Endorsements", or "History".) To "Preserve the
+ Title" of such a section when you modify the Document means that it remains
+ a section "Entitled XYZ" according to this definition.
+\end_layout
+
+\begin_layout Standard
+The Document may include Warranty Disclaimers next to the notice which states
+ that this License applies to the Document.
+ These Warranty Disclaimers are considered to be included by reference in
+ this License, but only as regards disclaiming warranties: any other implication
+ that these Warranty Disclaimers may have is void and has no effect on the
+ meaning of this License.
+\end_layout
+
+\begin_layout Section*
+2.
+ VERBATIM COPYING
+\end_layout
+
+\begin_layout Standard
+You may copy and distribute the Document in any medium, either commercially
+ or noncommercially, provided that this License, the copyright notices,
+ and the license notice saying this License applies to the Document are
+ reproduced in all copies, and that you add no other conditions whatsoever
+ to those of this License.
+ You may not use technical measures to obstruct or control the reading or
+ further copying of the copies you make or distribute.
+ However, you may accept compensation in exchange for copies.
+ If you distribute a large enough number of copies you must also follow
+ the conditions in section 3.
+\end_layout
+
+\begin_layout Standard
+You may also lend copies, under the same conditions stated above, and you
+ may publicly display copies.
+\end_layout
+
+\begin_layout Section*
+3.
+ COPYING IN QUANTITY
+\end_layout
+
+\begin_layout Standard
+If you publish printed copies (or copies in media that commonly have printed
+ covers) of the Document, numbering more than 100, and the Document's license
+ notice requires Cover Texts, you must enclose the copies in covers that
+ carry, clearly and legibly, all these Cover Texts: Front-Cover Texts on
+ the front cover, and Back-Cover Texts on the back cover.
+ Both covers must also clearly and legibly identify you as the publisher
+ of these copies.
+ The front cover must present the full title with all words of the title
+ equally prominent and visible.
+ You may add other material on the covers in addition.
+ Copying with changes limited to the covers, as long as they preserve the
+ title of the Document and satisfy these conditions, can be treated as verbatim
+ copying in other respects.
+\end_layout
+
+\begin_layout Standard
+If the required texts for either cover are too voluminous to fit legibly,
+ you should put the first ones listed (as many as fit reasonably) on the
+ actual cover, and continue the rest onto adjacent pages.
+\end_layout
+
+\begin_layout Standard
+If you publish or distribute Opaque copies of the Document numbering more
+ than 100, you must either include a machine-readable Transparent copy along
+ with each Opaque copy, or state in or with each Opaque copy a computer-network
+ location from which the general network-using public has access to download
+ using public-standard network protocols a complete Transparent copy of
+ the Document, free of added material.
+ If you use the latter option, you must take reasonably prudent steps, when
+ you begin distribution of Opaque copies in quantity, to ensure that this
+ Transparent copy will remain thus accessible at the stated location until
+ at least one year after the last time you distribute an Opaque copy (directly
+ or through your agents or retailers) of that edition to the public.
+\end_layout
+
+\begin_layout Standard
+It is requested, but not required, that you contact the authors of the Document
+ well before redistributing any large number of copies, to give them a chance
+ to provide you with an updated version of the Document.
+\end_layout
+
+\begin_layout Section*
+4.
+ MODIFICATIONS
+\end_layout
+
+\begin_layout Standard
+You may copy and distribute a Modified Version of the Document under the
+ conditions of sections 2 and 3 above, provided that you release the Modified
+ Version under precisely this License, with the Modified Version filling
+ the role of the Document, thus licensing distribution and modification
+ of the Modified Version to whoever possesses a copy of it.
+ In addition, you must do these things in the Modified Version:
+\end_layout
+
+\begin_layout Standard
+A.
+ Use in the Title Page (and on the covers, if any) a title distinct from
+ that of the Document, and from those of previous versions (which should,
+ if there were any, be listed in the History section of the Document).
+ You may use the same title as a previous version if the original publisher
+ of that version gives permission.
+ 
+\end_layout
+
+\begin_layout Standard
+B.
+ List on the Title Page, as authors, one or more persons or entities responsible
+ for authorship of the modifications in the Modified Version, together with
+ at least five of the principal authors of the Document (all of its principal
+ authors, if it has fewer than five), unless they release you from this
+ requirement.
+ 
+\end_layout
+
+\begin_layout Standard
+C.
+ State on the Title page the name of the publisher of the Modified Version,
+ as the publisher.
+ 
+\end_layout
+
+\begin_layout Standard
+D.
+ Preserve all the copyright notices of the Document.
+ 
+\end_layout
+
+\begin_layout Standard
+E.
+ Add an appropriate copyright notice for your modifications adjacent to
+ the other copyright notices.
+ 
+\end_layout
+
+\begin_layout Standard
+F.
+ Include, immediately after the copyright notices, a license notice giving
+ the public permission to use the Modified Version under the terms of this
+ License, in the form shown in the Addendum below.
+ 
+\end_layout
+
+\begin_layout Standard
+G.
+ Preserve in that license notice the full lists of Invariant Sections and
+ required Cover Texts given in the Document's license notice.
+ 
+\end_layout
+
+\begin_layout Standard
+H.
+ Include an unaltered copy of this License.
+ 
+\end_layout
+
+\begin_layout Standard
+I.
+ Preserve the section Entitled "History", Preserve its Title, and add to
+ it an item stating at least the title, year, new authors, and publisher
+ of the Modified Version as given on the Title Page.
+ If there is no section Entitled "History" in the Document, create one stating
+ the title, year, authors, and publisher of the Document as given on its
+ Title Page, then add an item describing the Modified Version as stated
+ in the previous sentence.
+ 
+\end_layout
+
+\begin_layout Standard
+J.
+ Preserve the network location, if any, given in the Document for public
+ access to a Transparent copy of the Document, and likewise the network
+ locations given in the Document for previous versions it was based on.
+ These may be placed in the "History" section.
+ You may omit a network location for a work that was published at least
+ four years before the Document itself, or if the original publisher of
+ the version it refers to gives permission.
+ 
+\end_layout
+
+\begin_layout Standard
+K.
+ For any section Entitled "Acknowledgements" or "Dedications", Preserve
+ the Title of the section, and preserve in the section all the substance
+ and tone of each of the contributor acknowledgements and/or dedications
+ given therein.
+ 
+\end_layout
+
+\begin_layout Standard
+L.
+ Preserve all the Invariant Sections of the Document, unaltered in their
+ text and in their titles.
+ Section numbers or the equivalent are not considered part of the section
+ titles.
+ 
+\end_layout
+
+\begin_layout Standard
+M.
+ Delete any section Entitled "Endorsements".
+ Such a section may not be included in the Modified Version.
+ 
+\end_layout
+
+\begin_layout Standard
+N.
+ Do not retitle any existing section to be Entitled "Endorsements" or to
+ conflict in title with any Invariant Section.
+ 
+\end_layout
+
+\begin_layout Standard
+O.
+ Preserve any Warranty Disclaimers.
+\end_layout
+
+\begin_layout Standard
+If the Modified Version includes new front-matter sections or appendices
+ that qualify as Secondary Sections and contain no material copied from
+ the Document, you may at your option designate some or all of these sections
+ as invariant.
+ To do this, add their titles to the list of Invariant Sections in the Modified
+ Version's license notice.
+ These titles must be distinct from any other section titles.
+\end_layout
+
+\begin_layout Standard
+You may add a section Entitled "Endorsements", provided it contains nothing
+ but endorsements of your Modified Version by various parties--for example,
+ statements of peer review or that the text has been approved by an organization
+ as the authoritative definition of a standard.
+\end_layout
+
+\begin_layout Standard
+You may add a passage of up to five words as a Front-Cover Text, and a passage
+ of up to 25 words as a Back-Cover Text, to the end of the list of Cover
+ Texts in the Modified Version.
+ Only one passage of Front-Cover Text and one of Back-Cover Text may be
+ added by (or through arrangements made by) any one entity.
+ If the Document already includes a cover text for the same cover, previously
+ added by you or by arrangement made by the same entity you are acting on
+ behalf of, you may not add another; but you may replace the old one, on
+ explicit permission from the previous publisher that added the old one.
+\end_layout
+
+\begin_layout Standard
+The author(s) and publisher(s) of the Document do not by this License give
+ permission to use their names for publicity for or to assert or imply endorseme
+nt of any Modified Version.
+\end_layout
+
+\begin_layout Section*
+5.
+ COMBINING DOCUMENTS
+\end_layout
+
+\begin_layout Standard
+You may combine the Document with other documents released under this License,
+ under the terms defined in section 4 above for modified versions, provided
+ that you include in the combination all of the Invariant Sections of all
+ of the original documents, unmodified, and list them all as Invariant Sections
+ of your combined work in its license notice, and that you preserve all
+ their Warranty Disclaimers.
+\end_layout
+
+\begin_layout Standard
+The combined work need only contain one copy of this License, and multiple
+ identical Invariant Sections may be replaced with a single copy.
+ If there are multiple Invariant Sections with the same name but different
+ contents, make the title of each such section unique by adding at the end
+ of it, in parentheses, the name of the original author or publisher of
+ that section if known, or else a unique number.
+ Make the same adjustment to the section titles in the list of Invariant
+ Sections in the license notice of the combined work.
+\end_layout
+
+\begin_layout Standard
+In the combination, you must combine any sections Entitled "History" in
+ the various original documents, forming one section Entitled "History";
+ likewise combine any sections Entitled "Acknowledgements", and any sections
+ Entitled "Dedications".
+ You must delete all sections Entitled "Endorsements".
+\end_layout
+
+\begin_layout Section*
+6.
+ COLLECTIONS OF DOCUMENTS
+\end_layout
+
+\begin_layout Standard
+You may make a collection consisting of the Document and other documents
+ released under this License, and replace the individual copies of this
+ License in the various documents with a single copy that is included in
+ the collection, provided that you follow the rules of this License for
+ verbatim copying of each of the documents in all other respects.
+\end_layout
+
+\begin_layout Standard
+You may extract a single document from such a collection, and distribute
+ it individually under this License, provided you insert a copy of this
+ License into the extracted document, and follow this License in all other
+ respects regarding verbatim copying of that document.
+\end_layout
+
+\begin_layout Section*
+7.
+ AGGREGATION WITH INDEPENDENT WORKS
+\end_layout
+
+\begin_layout Standard
+A compilation of the Document or its derivatives with other separate and
+ independent documents or works, in or on a volume of a storage or distribution
+ medium, is called an "aggregate" if the copyright resulting from the compilatio
+n is not used to limit the legal rights of the compilation's users beyond
+ what the individual works permit.
+ When the Document is included in an aggregate, this License does not apply
+ to the other works in the aggregate which are not themselves derivative
+ works of the Document.
+\end_layout
+
+\begin_layout Standard
+If the Cover Text requirement of section 3 is applicable to these copies
+ of the Document, then if the Document is less than one half of the entire
+ aggregate, the Document's Cover Texts may be placed on covers that bracket
+ the Document within the aggregate, or the electronic equivalent of covers
+ if the Document is in electronic form.
+ Otherwise they must appear on printed covers that bracket the whole aggregate.
+\end_layout
+
+\begin_layout Section*
+8.
+ TRANSLATION
+\end_layout
+
+\begin_layout Standard
+Translation is considered a kind of modification, so you may distribute
+ translations of the Document under the terms of section 4.
+ Replacing Invariant Sections with translations requires special permission
+ from their copyright holders, but you may include translations of some
+ or all Invariant Sections in addition to the original versions of these
+ Invariant Sections.
+ You may include a translation of this License, and all the license notices
+ in the Document, and any Warranty Disclaimers, provided that you also include
+ the original English version of this License and the original versions
+ of those notices and disclaimers.
+ In case of a disagreement between the translation and the original version
+ of this License or a notice or disclaimer, the original version will prevail.
+\end_layout
+
+\begin_layout Standard
+If a section in the Document is Entitled "Acknowledgements", "Dedications",
+ or "History", the requirement (section 4) to Preserve its Title (section
+ 1) will typically require changing the actual title.
+\end_layout
+
+\begin_layout Section*
+9.
+ TERMINATION
+\end_layout
+
+\begin_layout Standard
+You may not copy, modify, sublicense, or distribute the Document except
+ as expressly provided under this License.
+ Any attempt otherwise to copy, modify, sublicense, or distribute it is
+ void, and will automatically terminate your rights under this License.
+\end_layout
+
+\begin_layout Standard
+However, if you cease all violation of this License, then your license from
+ a particular copyright holder is reinstated (a) provisionally, unless and
+ until the copyright holder explicitly and finally terminates your license,
+ and (b) permanently, if the copyright holder fails to notify you of the
+ violation by some reasonable means prior to 60 days after the cessation.
+\end_layout
+
+\begin_layout Standard
+Moreover, your license from a particular copyright holder is reinstated
+ permanently if the copyright holder notifies you of the violation by some
+ reasonable means, this is the first time you have received notice of violation
+ of this License (for any work) from that copyright holder, and you cure
+ the violation prior to 30 days after your receipt of the notice.
+\end_layout
+
+\begin_layout Standard
+Termination of your rights under this section does not terminate the licenses
+ of parties who have received copies or rights from you under this License.
+ If your rights have been terminated and not permanently reinstated, receipt
+ of a copy of some or all of the same material does not give you any rights
+ to use it.
+\end_layout
+
+\begin_layout Section*
+10.
+ FUTURE REVISIONS OF THIS LICENSE
+\end_layout
+
+\begin_layout Standard
+The Free Software Foundation may publish new, revised versions of the GNU
+ Free Documentation License from time to time.
+ Such new versions will be similar in spirit to the present version, but
+ may differ in detail to address new problems or concerns.
+ See http://www.gnu.org/copyleft/.
+\end_layout
+
+\begin_layout Standard
+Each version of the License is given a distinguishing version number.
+ If the Document specifies that a particular numbered version of this License
+ "or any later version" applies to it, you have the option of following
+ the terms and conditions either of that specified version or of any later
+ version that has been published (not as a draft) by the Free Software Foundatio
+n.
+ If the Document does not specify a version number of this License, you
+ may choose any version ever published (not as a draft) by the Free Software
+ Foundation.
+ If the Document specifies that a proxy can decide which future versions
+ of this License can be used, that proxy's public statement of acceptance
+ of a version permanently authorizes you to choose that version for the
+ Document.
+\end_layout
+
+\begin_layout Section*
+11.
+ RELICENSING
+\end_layout
+
+\begin_layout Standard
+"Massive Multiauthor Collaboration Site" (or "MMC Site") means any World
+ Wide Web server that publishes copyrightable works and also provides prominent
+ facilities for anybody to edit those works.
+ A public wiki that anybody can edit is an example of such a server.
+ A "Massive Multiauthor Collaboration" (or "MMC") contained in the site
+ means any set of copyrightable works thus published on the MMC site.
+\end_layout
+
+\begin_layout Standard
+"CC-BY-SA" means the Creative Commons Attribution-Share Alike 3.0 license
+ published by Creative Commons Corporation, a not-for-profit corporation
+ with a principal place of business in San Francisco, California, as well
+ as future copyleft versions of that license published by that same organization.
+\end_layout
+
+\begin_layout Standard
+"Incorporate" means to publish or republish a Document, in whole or in part,
+ as part of another Document.
+\end_layout
+
+\begin_layout Standard
+An MMC is "eligible for relicensing" if it is licensed under this License,
+ and if all works that were first published under this License somewhere
+ other than this MMC, and subsequently incorporated in whole or in part
+ into the MMC, (1) had no cover texts or invariant sections, and (2) were
+ thus incorporated prior to November 1, 2008.
+\end_layout
+
+\begin_layout Standard
+The operator of an MMC Site may republish an MMC contained in the site under
+ CC-BY-SA on the same site at any time before August 1, 2009, provided the
+ MMC is eligible for relicensing.
+\end_layout
+
+\begin_layout Section*
+ADDENDUM: How to use this License for your documents
+\end_layout
+
+\begin_layout Standard
+To use this License in a document you have written, include a copy of the
+ License in the document and put the following copyright and license notices
+ just after the title page:
+\end_layout
+
+\begin_layout Quotation
+\noindent
+Copyright (c) YEAR YOUR NAME.
+ Permission is granted to copy, distribute and/or modify this document under
+ the terms of the GNU Free Documentation License, Version 1.3 or any later
+ version published by the Free Software Foundation; with no Invariant Sections,
+ no Front-Cover Texts, and no Back-Cover Texts.
+ A copy of the license is included in the section entitled "GNU Free Documentati
+on License".
+\end_layout
+
+\begin_layout Standard
+If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts,
+ replace the "with...Texts." line with this:
+\end_layout
+
+\begin_layout Quotation
+\noindent
+with the Invariant Sections being LIST THEIR TITLES, with the Front-Cover
+ Texts being LIST, and with the Back-Cover Texts being LIST.
+\end_layout
+
+\begin_layout Standard
+If you have Invariant Sections without Cover Texts, or some other combination
+ of the three, merge those two alternatives to suit the situation.
+\end_layout
+
+\begin_layout Standard
+If your document contains nontrivial examples of program code, we recommend
+ releasing these examples in parallel under your choice of free software
+ license, such as the GNU General Public License, to permit their use in
+ free software.
+ 
+\end_layout
+
+\begin_layout Chapter
+History
+\begin_inset CommandInset label
+LatexCommand label
+name "cha:History"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features>
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Title:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Introduction to Probability and Statistics Using 
+\family sans
+R
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Year:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2010
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Authors:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+G.
+\begin_inset space ~
+\end_inset
+
+Jay Kerns
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Publisher:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+G.
+\begin_inset space ~
+\end_inset
+
+Jay Kerns
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Branch main
+status open
+
+\begin_layout Chapter
 Data
 \begin_inset CommandInset label
 LatexCommand label
-name "cha:Data"
+name "cha:data"
 
 \end_inset
 
@@ -83317,8 +85313,14 @@ status open
 \end_inset
 
  for the available options to customize the file import.
- Note that the R Commander will import many of the common file types with
- a menu driven interface.
+ Note that the 
+\family sans
+\color inherit
+R
+\family default
+\color none
+ Commander will import many of the common file types with a menu driven
+ interface.
 \end_layout
 
 \begin_layout Subsection
@@ -83437,12 +85439,8 @@ sort
 \end_inset
 
  function.
- 
-\end_layout
-
-\begin_layout Standard
-Normally we have a data frame of several columns (variables) and many, many
- rows (observations).
+ Normally we have a data frame of several columns (variables) and many,
+ many rows (observations).
  The goal is to shuffle the rows so that they are ordered by the values
  of one or more columns.
  This is done with the 
@@ -83489,7 +85487,7 @@ conc
 
 \end_inset
 
- with the following:
+ with the following: 
 \end_layout
 
 \begin_layout Scrap
@@ -83505,7 +85503,7 @@ head(Tmp)
 \begin_inset Newline newline
 \end_inset
 
-@
+@ 
 \end_layout
 
 \begin_layout Standard
@@ -83539,7 +85537,7 @@ state
 
 \end_inset
 
- and then next by 
+ and next by 
 \begin_inset listings
 lstparams "showstringspaces=false,tabsize=2"
 inline true
@@ -83552,7 +85550,7 @@ conc
 
 \end_inset
 
- do
+ do 
 \end_layout
 
 \begin_layout Scrap
@@ -83570,6 +85568,7 @@ with(Puromycin, Puromycin[order(state, conc), ])
 \begin_layout Standard
 If we would like to sort a numeric variable in descending order then we
  put a minus sign in front of it.
+ 
 \end_layout
 
 \begin_layout Scrap
@@ -83648,20 +85647,7 @@ write.table
 
 \end_inset
 
- in the 
-\begin_inset listings
-lstparams "showstringspaces=false,tabsize=2"
-inline true
-status open
-
-\begin_layout Plain Layout
-
-base
-\end_layout
-
-\end_inset
-
- package.
+.
  The 
 \begin_inset listings
 lstparams "showstringspaces=false,tabsize=2"
@@ -83707,7 +85693,7 @@ Aggregation
 \end_layout
 
 \begin_layout Itemize
-Convert Tables to Data Frames and back
+Convert Tables to data frames and back
 \end_layout
 
 \begin_layout Standard
@@ -83723,10 +85709,7 @@ rbind
 
 \end_inset
 
- 
-\end_layout
-
-\begin_layout Standard
+, 
 \begin_inset listings
 lstparams "showstringspaces=false,tabsize=2"
 inline true
@@ -83750,7 +85733,7 @@ status open
 
 \begin_layout Plain Layout
 
-ab[order(ab[ ,1]), ]
+ab[order(ab[,1]),]
 \end_layout
 
 \end_inset
@@ -83954,10 +85937,6 @@ Given subsets
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 \align center
@@ -86883,7 +88862,7 @@ hat matrix
  of Chapter 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cha:Multiple-Linear-Regression"
+reference "cha:multiple-linear-regression"
 
 \end_inset
 
@@ -90010,871 +91989,6 @@ Pig
 ***End File***
 \end_layout
 
-\begin_layout Chapter
-
-\family sans
-R
-\family default
- Session Information
-\begin_inset CommandInset label
-LatexCommand label
-name "cha:R-Session-Information"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-If you ever write the 
-\family sans
-R
-\family default
- help mailing list with a question, then you should include your session
- information in the email; it makes the reader's job easier and is requested
- by the Posting Guide.
- Here is how to do that, and below is what the output looks like.
- 
-\end_layout
-
-\begin_layout Scrap
-<<keep.source = TRUE>>=
-\begin_inset Newline newline
-\end_inset
-
-sessionInfo()
-\begin_inset Newline newline
-\end_inset
-
-@
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace vfill
-\end_inset
-
-
-\end_layout
-
-\begin_layout Chapter
-GNU Free Documentation License
-\begin_inset CommandInset label
-LatexCommand label
-name "cha:GNU-Free-Documentation"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-
-\series bold
-\size large
-Version 1.3, 3 November 2008
-\series default
-\size default
-
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-Copyright (C) 2000, 2001, 2002, 2007, 2008 Free Software Foundation, Inc.
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://fsf.org/
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-Everyone is permitted to copy and distribute verbatim copies of this license
- document, but changing it is not allowed.
-\end_layout
-
-\begin_layout Section*
-0.
- PREAMBLE
-\end_layout
-
-\begin_layout Standard
-The purpose of this License is to make a manual, textbook, or other functional
- and useful document "free" in the sense of freedom: to assure everyone
- the effective freedom to copy and redistribute it, with or without modifying
- it, either commercially or noncommercially.
- Secondarily, this License preserves for the author and publisher a way
- to get credit for their work, while not being considered responsible for
- modifications made by others.
-\end_layout
-
-\begin_layout Standard
-This License is a kind of "copyleft", which means that derivative works
- of the document must themselves be free in the same sense.
- It complements the GNU General Public License, which is a copyleft license
- designed for free software.
-\end_layout
-
-\begin_layout Standard
-We have designed this License in order to use it for manuals for free software,
- because free software needs free documentation: a free program should come
- with manuals providing the same freedoms that the software does.
- But this License is not limited to software manuals; it can be used for
- any textual work, regardless of subject matter or whether it is published
- as a printed book.
- We recommend this License principally for works whose purpose is instruction
- or reference.
-\end_layout
-
-\begin_layout Section*
-1.
- APPLICABILITY AND DEFINITIONS
-\end_layout
-
-\begin_layout Standard
-This License applies to any manual or other work, in any medium, that contains
- a notice placed by the copyright holder saying it can be distributed under
- the terms of this License.
- Such a notice grants a world-wide, royalty-free license, unlimited in duration,
- to use that work under the conditions stated herein.
- The "Document", below, refers to any such manual or work.
- Any member of the public is a licensee, and is addressed as "you".
- You accept the license if you copy, modify or distribute the work in a
- way requiring permission under copyright law.
-\end_layout
-
-\begin_layout Standard
-A "Modified Version" of the Document means any work containing the Document
- or a portion of it, either copied verbatim, or with modifications and/or
- translated into another language.
-\end_layout
-
-\begin_layout Standard
-A "Secondary Section" is a named appendix or a front-matter section of the
- Document that deals exclusively with the relationship of the publishers
- or authors of the Document to the Document's overall subject (or to related
- matters) and contains nothing that could fall directly within that overall
- subject.
- (Thus, if the Document is in part a textbook of mathematics, a Secondary
- Section may not explain any mathematics.) The relationship could be a matter
- of historical connection with the subject or with related matters, or of
- legal, commercial, philosophical, ethical or political position regarding
- them.
-\end_layout
-
-\begin_layout Standard
-The "Invariant Sections" are certain Secondary Sections whose titles are
- designated, as being those of Invariant Sections, in the notice that says
- that the Document is released under this License.
- If a section does not fit the above definition of Secondary then it is
- not allowed to be designated as Invariant.
- The Document may contain zero Invariant Sections.
- If the Document does not identify any Invariant Sections then there are
- none.
-\end_layout
-
-\begin_layout Standard
-The "Cover Texts" are certain short passages of text that are listed, as
- Front-Cover Texts or Back-Cover Texts, in the notice that says that the
- Document is released under this License.
- A Front-Cover Text may be at most 5 words, and a Back-Cover Text may be
- at most 25 words.
-\end_layout
-
-\begin_layout Standard
-A "Transparent" copy of the Document means a machine-readable copy, represented
- in a format whose specification is available to the general public, that
- is suitable for revising the document straightforwardly with generic text
- editors or (for images composed of pixels) generic paint programs or (for
- drawings) some widely available drawing editor, and that is suitable for
- input to text formatters or for automatic translation to a variety of formats
- suitable for input to text formatters.
- A copy made in an otherwise Transparent file format whose markup, or absence
- of markup, has been arranged to thwart or discourage subsequent modification
- by readers is not Transparent.
- An image format is not Transparent if used for any substantial amount of
- text.
- A copy that is not "Transparent" is called "Opaque".
-\end_layout
-
-\begin_layout Standard
-Examples of suitable formats for Transparent copies include plain ASCII
- without markup, Texinfo input format, LaTeX input format, SGML or XML using
- a publicly available DTD, and standard-conforming simple HTML, PostScript
- or PDF designed for human modification.
- Examples of transparent image formats include PNG, XCF and JPG.
- Opaque formats include proprietary formats that can be read and edited
- only by proprietary word processors, SGML or XML for which the DTD and/or
- processing tools are not generally available, and the machine-generated
- HTML, PostScript or PDF produced by some word processors for output purposes
- only.
-\end_layout
-
-\begin_layout Standard
-The "Title Page" means, for a printed book, the title page itself, plus
- such following pages as are needed to hold, legibly, the material this
- License requires to appear in the title page.
- For works in formats which do not have any title page as such, "Title Page"
- means the text near the most prominent appearance of the work's title,
- preceding the beginning of the body of the text.
-\end_layout
-
-\begin_layout Standard
-The "publisher" means any person or entity that distributes copies of the
- Document to the public.
-\end_layout
-
-\begin_layout Standard
-A section "Entitled XYZ" means a named subunit of the Document whose title
- either is precisely XYZ or contains XYZ in parentheses following text that
- translates XYZ in another language.
- (Here XYZ stands for a specific section name mentioned below, such as "Acknowle
-dgements", "Dedications", "Endorsements", or "History".) To "Preserve the
- Title" of such a section when you modify the Document means that it remains
- a section "Entitled XYZ" according to this definition.
-\end_layout
-
-\begin_layout Standard
-The Document may include Warranty Disclaimers next to the notice which states
- that this License applies to the Document.
- These Warranty Disclaimers are considered to be included by reference in
- this License, but only as regards disclaiming warranties: any other implication
- that these Warranty Disclaimers may have is void and has no effect on the
- meaning of this License.
-\end_layout
-
-\begin_layout Section*
-2.
- VERBATIM COPYING
-\end_layout
-
-\begin_layout Standard
-You may copy and distribute the Document in any medium, either commercially
- or noncommercially, provided that this License, the copyright notices,
- and the license notice saying this License applies to the Document are
- reproduced in all copies, and that you add no other conditions whatsoever
- to those of this License.
- You may not use technical measures to obstruct or control the reading or
- further copying of the copies you make or distribute.
- However, you may accept compensation in exchange for copies.
- If you distribute a large enough number of copies you must also follow
- the conditions in section 3.
-\end_layout
-
-\begin_layout Standard
-You may also lend copies, under the same conditions stated above, and you
- may publicly display copies.
-\end_layout
-
-\begin_layout Section*
-3.
- COPYING IN QUANTITY
-\end_layout
-
-\begin_layout Standard
-If you publish printed copies (or copies in media that commonly have printed
- covers) of the Document, numbering more than 100, and the Document's license
- notice requires Cover Texts, you must enclose the copies in covers that
- carry, clearly and legibly, all these Cover Texts: Front-Cover Texts on
- the front cover, and Back-Cover Texts on the back cover.
- Both covers must also clearly and legibly identify you as the publisher
- of these copies.
- The front cover must present the full title with all words of the title
- equally prominent and visible.
- You may add other material on the covers in addition.
- Copying with changes limited to the covers, as long as they preserve the
- title of the Document and satisfy these conditions, can be treated as verbatim
- copying in other respects.
-\end_layout
-
-\begin_layout Standard
-If the required texts for either cover are too voluminous to fit legibly,
- you should put the first ones listed (as many as fit reasonably) on the
- actual cover, and continue the rest onto adjacent pages.
-\end_layout
-
-\begin_layout Standard
-If you publish or distribute Opaque copies of the Document numbering more
- than 100, you must either include a machine-readable Transparent copy along
- with each Opaque copy, or state in or with each Opaque copy a computer-network
- location from which the general network-using public has access to download
- using public-standard network protocols a complete Transparent copy of
- the Document, free of added material.
- If you use the latter option, you must take reasonably prudent steps, when
- you begin distribution of Opaque copies in quantity, to ensure that this
- Transparent copy will remain thus accessible at the stated location until
- at least one year after the last time you distribute an Opaque copy (directly
- or through your agents or retailers) of that edition to the public.
-\end_layout
-
-\begin_layout Standard
-It is requested, but not required, that you contact the authors of the Document
- well before redistributing any large number of copies, to give them a chance
- to provide you with an updated version of the Document.
-\end_layout
-
-\begin_layout Section*
-4.
- MODIFICATIONS
-\end_layout
-
-\begin_layout Standard
-You may copy and distribute a Modified Version of the Document under the
- conditions of sections 2 and 3 above, provided that you release the Modified
- Version under precisely this License, with the Modified Version filling
- the role of the Document, thus licensing distribution and modification
- of the Modified Version to whoever possesses a copy of it.
- In addition, you must do these things in the Modified Version:
-\end_layout
-
-\begin_layout Standard
-A.
- Use in the Title Page (and on the covers, if any) a title distinct from
- that of the Document, and from those of previous versions (which should,
- if there were any, be listed in the History section of the Document).
- You may use the same title as a previous version if the original publisher
- of that version gives permission.
- 
-\end_layout
-
-\begin_layout Standard
-B.
- List on the Title Page, as authors, one or more persons or entities responsible
- for authorship of the modifications in the Modified Version, together with
- at least five of the principal authors of the Document (all of its principal
- authors, if it has fewer than five), unless they release you from this
- requirement.
- 
-\end_layout
-
-\begin_layout Standard
-C.
- State on the Title page the name of the publisher of the Modified Version,
- as the publisher.
- 
-\end_layout
-
-\begin_layout Standard
-D.
- Preserve all the copyright notices of the Document.
- 
-\end_layout
-
-\begin_layout Standard
-E.
- Add an appropriate copyright notice for your modifications adjacent to
- the other copyright notices.
- 
-\end_layout
-
-\begin_layout Standard
-F.
- Include, immediately after the copyright notices, a license notice giving
- the public permission to use the Modified Version under the terms of this
- License, in the form shown in the Addendum below.
- 
-\end_layout
-
-\begin_layout Standard
-G.
- Preserve in that license notice the full lists of Invariant Sections and
- required Cover Texts given in the Document's license notice.
- 
-\end_layout
-
-\begin_layout Standard
-H.
- Include an unaltered copy of this License.
- 
-\end_layout
-
-\begin_layout Standard
-I.
- Preserve the section Entitled "History", Preserve its Title, and add to
- it an item stating at least the title, year, new authors, and publisher
- of the Modified Version as given on the Title Page.
- If there is no section Entitled "History" in the Document, create one stating
- the title, year, authors, and publisher of the Document as given on its
- Title Page, then add an item describing the Modified Version as stated
- in the previous sentence.
- 
-\end_layout
-
-\begin_layout Standard
-J.
- Preserve the network location, if any, given in the Document for public
- access to a Transparent copy of the Document, and likewise the network
- locations given in the Document for previous versions it was based on.
- These may be placed in the "History" section.
- You may omit a network location for a work that was published at least
- four years before the Document itself, or if the original publisher of
- the version it refers to gives permission.
- 
-\end_layout
-
-\begin_layout Standard
-K.
- For any section Entitled "Acknowledgements" or "Dedications", Preserve
- the Title of the section, and preserve in the section all the substance
- and tone of each of the contributor acknowledgements and/or dedications
- given therein.
- 
-\end_layout
-
-\begin_layout Standard
-L.
- Preserve all the Invariant Sections of the Document, unaltered in their
- text and in their titles.
- Section numbers or the equivalent are not considered part of the section
- titles.
- 
-\end_layout
-
-\begin_layout Standard
-M.
- Delete any section Entitled "Endorsements".
- Such a section may not be included in the Modified Version.
- 
-\end_layout
-
-\begin_layout Standard
-N.
- Do not retitle any existing section to be Entitled "Endorsements" or to
- conflict in title with any Invariant Section.
- 
-\end_layout
-
-\begin_layout Standard
-O.
- Preserve any Warranty Disclaimers.
-\end_layout
-
-\begin_layout Standard
-If the Modified Version includes new front-matter sections or appendices
- that qualify as Secondary Sections and contain no material copied from
- the Document, you may at your option designate some or all of these sections
- as invariant.
- To do this, add their titles to the list of Invariant Sections in the Modified
- Version's license notice.
- These titles must be distinct from any other section titles.
-\end_layout
-
-\begin_layout Standard
-You may add a section Entitled "Endorsements", provided it contains nothing
- but endorsements of your Modified Version by various parties--for example,
- statements of peer review or that the text has been approved by an organization
- as the authoritative definition of a standard.
-\end_layout
-
-\begin_layout Standard
-You may add a passage of up to five words as a Front-Cover Text, and a passage
- of up to 25 words as a Back-Cover Text, to the end of the list of Cover
- Texts in the Modified Version.
- Only one passage of Front-Cover Text and one of Back-Cover Text may be
- added by (or through arrangements made by) any one entity.
- If the Document already includes a cover text for the same cover, previously
- added by you or by arrangement made by the same entity you are acting on
- behalf of, you may not add another; but you may replace the old one, on
- explicit permission from the previous publisher that added the old one.
-\end_layout
-
-\begin_layout Standard
-The author(s) and publisher(s) of the Document do not by this License give
- permission to use their names for publicity for or to assert or imply endorseme
-nt of any Modified Version.
-\end_layout
-
-\begin_layout Section*
-5.
- COMBINING DOCUMENTS
-\end_layout
-
-\begin_layout Standard
-You may combine the Document with other documents released under this License,
- under the terms defined in section 4 above for modified versions, provided
- that you include in the combination all of the Invariant Sections of all
- of the original documents, unmodified, and list them all as Invariant Sections
- of your combined work in its license notice, and that you preserve all
- their Warranty Disclaimers.
-\end_layout
-
-\begin_layout Standard
-The combined work need only contain one copy of this License, and multiple
- identical Invariant Sections may be replaced with a single copy.
- If there are multiple Invariant Sections with the same name but different
- contents, make the title of each such section unique by adding at the end
- of it, in parentheses, the name of the original author or publisher of
- that section if known, or else a unique number.
- Make the same adjustment to the section titles in the list of Invariant
- Sections in the license notice of the combined work.
-\end_layout
-
-\begin_layout Standard
-In the combination, you must combine any sections Entitled "History" in
- the various original documents, forming one section Entitled "History";
- likewise combine any sections Entitled "Acknowledgements", and any sections
- Entitled "Dedications".
- You must delete all sections Entitled "Endorsements".
-\end_layout
-
-\begin_layout Section*
-6.
- COLLECTIONS OF DOCUMENTS
-\end_layout
-
-\begin_layout Standard
-You may make a collection consisting of the Document and other documents
- released under this License, and replace the individual copies of this
- License in the various documents with a single copy that is included in
- the collection, provided that you follow the rules of this License for
- verbatim copying of each of the documents in all other respects.
-\end_layout
-
-\begin_layout Standard
-You may extract a single document from such a collection, and distribute
- it individually under this License, provided you insert a copy of this
- License into the extracted document, and follow this License in all other
- respects regarding verbatim copying of that document.
-\end_layout
-
-\begin_layout Section*
-7.
- AGGREGATION WITH INDEPENDENT WORKS
-\end_layout
-
-\begin_layout Standard
-A compilation of the Document or its derivatives with other separate and
- independent documents or works, in or on a volume of a storage or distribution
- medium, is called an "aggregate" if the copyright resulting from the compilatio
-n is not used to limit the legal rights of the compilation's users beyond
- what the individual works permit.
- When the Document is included in an aggregate, this License does not apply
- to the other works in the aggregate which are not themselves derivative
- works of the Document.
-\end_layout
-
-\begin_layout Standard
-If the Cover Text requirement of section 3 is applicable to these copies
- of the Document, then if the Document is less than one half of the entire
- aggregate, the Document's Cover Texts may be placed on covers that bracket
- the Document within the aggregate, or the electronic equivalent of covers
- if the Document is in electronic form.
- Otherwise they must appear on printed covers that bracket the whole aggregate.
-\end_layout
-
-\begin_layout Section*
-8.
- TRANSLATION
-\end_layout
-
-\begin_layout Standard
-Translation is considered a kind of modification, so you may distribute
- translations of the Document under the terms of section 4.
- Replacing Invariant Sections with translations requires special permission
- from their copyright holders, but you may include translations of some
- or all Invariant Sections in addition to the original versions of these
- Invariant Sections.
- You may include a translation of this License, and all the license notices
- in the Document, and any Warranty Disclaimers, provided that you also include
- the original English version of this License and the original versions
- of those notices and disclaimers.
- In case of a disagreement between the translation and the original version
- of this License or a notice or disclaimer, the original version will prevail.
-\end_layout
-
-\begin_layout Standard
-If a section in the Document is Entitled "Acknowledgements", "Dedications",
- or "History", the requirement (section 4) to Preserve its Title (section
- 1) will typically require changing the actual title.
-\end_layout
-
-\begin_layout Section*
-9.
- TERMINATION
-\end_layout
-
-\begin_layout Standard
-You may not copy, modify, sublicense, or distribute the Document except
- as expressly provided under this License.
- Any attempt otherwise to copy, modify, sublicense, or distribute it is
- void, and will automatically terminate your rights under this License.
-\end_layout
-
-\begin_layout Standard
-However, if you cease all violation of this License, then your license from
- a particular copyright holder is reinstated (a) provisionally, unless and
- until the copyright holder explicitly and finally terminates your license,
- and (b) permanently, if the copyright holder fails to notify you of the
- violation by some reasonable means prior to 60 days after the cessation.
-\end_layout
-
-\begin_layout Standard
-Moreover, your license from a particular copyright holder is reinstated
- permanently if the copyright holder notifies you of the violation by some
- reasonable means, this is the first time you have received notice of violation
- of this License (for any work) from that copyright holder, and you cure
- the violation prior to 30 days after your receipt of the notice.
-\end_layout
-
-\begin_layout Standard
-Termination of your rights under this section does not terminate the licenses
- of parties who have received copies or rights from you under this License.
- If your rights have been terminated and not permanently reinstated, receipt
- of a copy of some or all of the same material does not give you any rights
- to use it.
-\end_layout
-
-\begin_layout Section*
-10.
- FUTURE REVISIONS OF THIS LICENSE
-\end_layout
-
-\begin_layout Standard
-The Free Software Foundation may publish new, revised versions of the GNU
- Free Documentation License from time to time.
- Such new versions will be similar in spirit to the present version, but
- may differ in detail to address new problems or concerns.
- See http://www.gnu.org/copyleft/.
-\end_layout
-
-\begin_layout Standard
-Each version of the License is given a distinguishing version number.
- If the Document specifies that a particular numbered version of this License
- "or any later version" applies to it, you have the option of following
- the terms and conditions either of that specified version or of any later
- version that has been published (not as a draft) by the Free Software Foundatio
-n.
- If the Document does not specify a version number of this License, you
- may choose any version ever published (not as a draft) by the Free Software
- Foundation.
- If the Document specifies that a proxy can decide which future versions
- of this License can be used, that proxy's public statement of acceptance
- of a version permanently authorizes you to choose that version for the
- Document.
-\end_layout
-
-\begin_layout Section*
-11.
- RELICENSING
-\end_layout
-
-\begin_layout Standard
-"Massive Multiauthor Collaboration Site" (or "MMC Site") means any World
- Wide Web server that publishes copyrightable works and also provides prominent
- facilities for anybody to edit those works.
- A public wiki that anybody can edit is an example of such a server.
- A "Massive Multiauthor Collaboration" (or "MMC") contained in the site
- means any set of copyrightable works thus published on the MMC site.
-\end_layout
-
-\begin_layout Standard
-"CC-BY-SA" means the Creative Commons Attribution-Share Alike 3.0 license
- published by Creative Commons Corporation, a not-for-profit corporation
- with a principal place of business in San Francisco, California, as well
- as future copyleft versions of that license published by that same organization.
-\end_layout
-
-\begin_layout Standard
-"Incorporate" means to publish or republish a Document, in whole or in part,
- as part of another Document.
-\end_layout
-
-\begin_layout Standard
-An MMC is "eligible for relicensing" if it is licensed under this License,
- and if all works that were first published under this License somewhere
- other than this MMC, and subsequently incorporated in whole or in part
- into the MMC, (1) had no cover texts or invariant sections, and (2) were
- thus incorporated prior to November 1, 2008.
-\end_layout
-
-\begin_layout Standard
-The operator of an MMC Site may republish an MMC contained in the site under
- CC-BY-SA on the same site at any time before August 1, 2009, provided the
- MMC is eligible for relicensing.
-\end_layout
-
-\begin_layout Section*
-ADDENDUM: How to use this License for your documents
-\end_layout
-
-\begin_layout Standard
-To use this License in a document you have written, include a copy of the
- License in the document and put the following copyright and license notices
- just after the title page:
-\end_layout
-
-\begin_layout Quotation
-\noindent
-Copyright (c) YEAR YOUR NAME.
- Permission is granted to copy, distribute and/or modify this document under
- the terms of the GNU Free Documentation License, Version 1.3 or any later
- version published by the Free Software Foundation; with no Invariant Sections,
- no Front-Cover Texts, and no Back-Cover Texts.
- A copy of the license is included in the section entitled "GNU Free Documentati
-on License".
-\end_layout
-
-\begin_layout Standard
-If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts,
- replace the "with...Texts." line with this:
-\end_layout
-
-\begin_layout Quotation
-\noindent
-with the Invariant Sections being LIST THEIR TITLES, with the Front-Cover
- Texts being LIST, and with the Back-Cover Texts being LIST.
-\end_layout
-
-\begin_layout Standard
-If you have Invariant Sections without Cover Texts, or some other combination
- of the three, merge those two alternatives to suit the situation.
-\end_layout
-
-\begin_layout Standard
-If your document contains nontrivial examples of program code, we recommend
- releasing these examples in parallel under your choice of free software
- license, such as the GNU General Public License, to permit their use in
- free software.
- 
-\end_layout
-
-\begin_layout Chapter
-History
-\begin_inset CommandInset label
-LatexCommand label
-name "cha:History"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="2">
-<features>
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Title:
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Introduction to Probability and Statistics Using 
-\family sans
-R
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Year:
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-2010
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Authors:
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-G.
-\begin_inset space ~
-\end_inset
-
-Jay Kerns
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Publisher:
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-G.
-\begin_inset space ~
-\end_inset
-
-Jay Kerns
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
 \begin_inset VSpace vfill
 \end_inset
@@ -91011,7 +92125,11 @@ rm(.Random.seed)
 \begin_inset Newline newline
 \end_inset
 
-save.image(file = "../IPSUR.RData")
+try(dir.create("../../data"), silent = TRUE)
+\begin_inset Newline newline
+\end_inset
+
+save.image(file = "../../data/IPSUR.RData")
 \begin_inset Newline newline
 \end_inset
 
@@ -91020,6 +92138,11 @@ Stangle(file="IPSUR.Rnw", output="../IPSUR.R", annotate=TRUE)
 \end_inset
 
 @
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
