@@ -1,4 +1,4 @@
-#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
 \lyxformat 345
 \begin_document
 \begin_header
@@ -64,11 +64,11 @@
 
 %%  Sweave specific commands
 % make the input blue, output red
-%\DefineVerbatimEnvironment{Soutput}{Verbatim}{formatcom=\color{blue}}
-%\DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl, formatcom=\color{red}}
+\DefineVerbatimEnvironment{Soutput}{Verbatim}{formatcom=\color{blue}}
+\DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl, formatcom=\color{red}}
 % make the input/output black
-\DefineVerbatimEnvironment{Soutput}{Verbatim}{formatcom=\color{black}}
-\DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl, formatcom=\color{black}}
+%\DefineVerbatimEnvironment{Soutput}{Verbatim}{formatcom=\color{black}}
+%\DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl, formatcom=\color{black}}
 
 
 % get rid of extra Sweave space
@@ -127,7 +127,7 @@ theorems-chap
 \pdf_colorlinks true
 \pdf_backref page
 \pdf_pdfusetitle true
-\pdf_quoted_options "linkcolor=black,  citecolor=black, urlcolor=black"
+\pdf_quoted_options "linkcolor=blue,  citecolor=black, urlcolor=blue"
 \papersize a4paper
 \use_geometry true
 \use_amsmath 1
@@ -1220,11 +1220,6 @@ LatexCommand tableofcontents
 
 
 \end_layout
-
-\begin_layout Standard
-\noindent
-\begin_inset Branch main
-status open
 
 \begin_layout Standard
 \begin_inset ERT
@@ -2338,7 +2333,7 @@ R
 worldwide
 \emph default
  within hours.
- We aren't in Kansas anymore, Dorothy.
+ We aren't in Kansas anymore, Toto.
 \end_layout
 
 \begin_layout Subsection*
@@ -2771,11 +2766,6 @@ listoftables
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
 \begin_layout Chapter
 An Introduction to Probability and Statistics
 \end_layout
@@ -2795,11 +2785,6 @@ pagenumbering{arabic}
 
 
 \end_layout
-
-\begin_layout Standard
-\noindent
-\begin_inset Branch main
-status open
 
 \begin_layout Standard
 \noindent
@@ -2897,18 +2882,6 @@ reference "sec:Conditional-Distributions"
  I plan to add more bayesian material in later editions of this book.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section*
 Chapter Exercises
 \end_layout
@@ -2948,10 +2921,6 @@ name "cha:introduction-to-R"
 
 
 \end_layout
-
-\begin_layout Standard
-\begin_inset Branch main
-status open
 
 \begin_layout Section
 Downloading and Installing 
@@ -8298,11 +8267,6 @@ R
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section*
 Chapter Exercises
 \end_layout
@@ -8340,10 +8304,6 @@ name "cha:Describing-Data-Distributions"
 
 
 \end_layout
-
-\begin_layout Standard
-\begin_inset Branch main
-status open
 
 \begin_layout Standard
 \noindent
@@ -10238,6 +10198,10 @@ name "fig:indpl-lakehuron"
 \end_layout
 
 \end_deeper
+\begin_layout Paragraph*
+Density estimates
+\end_layout
+
 \begin_layout Subsection
 Qualitative Data, Categorical Data, and Factors
 \begin_inset CommandInset label
@@ -16069,7 +16033,55 @@ name "sub:Bivariate-Data"
 \end_layout
 
 \begin_layout Itemize
+Stacked bar charts
+\end_layout
+
+\begin_layout Itemize
+odds ratio and relative risk
+\end_layout
+
+\begin_layout Itemize
 Introduce the sample correlation coefficient.
+\end_layout
+
+\begin_layout Standard
+The 
+\series bold
+sample Pearson product-moment 
+\emph on
+correlation coefficient
+\series default
+\emph default
+:
+\begin_inset Formula \[
+r=\frac{\sum_{i=1}^{n}(x_{i}-\xbar)(y_{i}-\ybar)}{\sqrt{\sum_{i=1}^{n}(x_{i}-\xbar)}\sqrt{\sum_{i=1}^{n}(y_{i}-\ybar)}}\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+independent of scale
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $-1<r<1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+measures 
+\emph on
+strength
+\emph default
+ and 
+\emph on
+direction
+\emph default
+ of linear association
 \end_layout
 
 \begin_layout Itemize
@@ -16115,6 +16127,60 @@ Two-way Tables
  You can also enter and analyze a two-way table.
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+table
+\end_layout
+
+\begin_layout Itemize
+prop.table
+\end_layout
+
+\begin_layout Itemize
+addmargins
+\end_layout
+
+\begin_layout Itemize
+rowPercents (Rcmdr)
+\end_layout
+
+\begin_layout Itemize
+colPercents (Rcmdr)
+\end_layout
+
+\begin_layout Itemize
+totPercents(Rcmdr)
+\end_layout
+
+\begin_layout Itemize
+A <- xtabs(~ gender + race, data = RcmdrTestDrive)
+\end_layout
+
+\begin_layout Itemize
+xtabs( Freq ~ Class + Sex, data = Titanic) # from built in table
+\end_layout
+
+\begin_layout Itemize
+barplot(A, legend.text=TRUE) 
+\end_layout
+
+\begin_layout Itemize
+barplot(t(A), legend.text=TRUE) 
+\end_layout
+
+\begin_layout Itemize
+barplot(A, legend.text=TRUE, beside = TRUE)
+\end_layout
+
+\begin_layout Itemize
+spineplot(gender ~ race, data = RcmdrTestDrive)
+\end_layout
+
+\begin_layout Itemize
+Spine plot: plots categorical versus categorical
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Scatterplot: look for linear association and correlation.
  
@@ -16122,7 +16188,7 @@ Scatterplot: look for linear association and correlation.
 
 \begin_deeper
 \begin_layout Itemize
-carb ~ optden, data = Formaldehyde
+carb ~ optden, data = Formaldehyde (boring)
 \end_layout
 
 \begin_layout Itemize
@@ -16289,11 +16355,7 @@ name "sec:Comparing-Data-Sets"
 \begin_layout Standard
 Sometimes we have data from two or more groups (or populations) and we would
  like to compare them and draw conclusions.
- What we should imagine is
-\end_layout
-
-\begin_layout Standard
-Some issues that we would like to address:
+ Some issues that we would like to address:
 \end_layout
 
 \begin_layout Itemize
@@ -16419,15 +16481,17 @@ reference "cha:Hypothesis-Testing"
 Stripcharts
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+stripchart(weight ~ feed, method="stack", data=chickwts)
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Bar Graphs
 \end_layout
 
 \begin_deeper
-\begin_layout Itemize
-plot(xtabs(Freq ~ Admit + Gender, data = UCBAdmissions)) # rescaled barplot
-\end_layout
-
 \begin_layout Itemize
 barplot(xtabs(Freq ~ Admit + Gender, data = UCBAdmissions)) # stacked bar
  chart
@@ -16617,6 +16681,17 @@ mosaic(~ Survived + Class + Age + Sex, data = Titanic) (or just mosaic(Titanic))
 
 \begin_layout Itemize
 mosaic(~ Admit + Dept + Gender, data = UCBAdmissions)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Spine plots
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+spineplot(xtabs(Freq ~ Admit + Gender, data = UCBAdmissions)) # rescaled
+ barplot
 \end_layout
 
 \end_deeper
@@ -17053,11 +17128,6 @@ CO2
 
 \begin_layout Standard
 \begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \end_inset
 
 
@@ -18898,10 +18968,6 @@ name "cha:Probability"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Branch main
-status open
-
-\begin_layout Standard
 \noindent
 In this chapter we define the basic terminology associated with probability
  and derive some of its properties.
@@ -18983,6 +19049,75 @@ Bayes' Rule and how it relates to the subjective view of probability
 what we mean by 'random variables', and where they come from
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Scrap
+\align center
+<<echo = FALSE, fig = TRUE, width = 4.5, height = 2.75>>=
+\begin_inset Newline newline
+\end_inset
+
+require(diagram)
+\begin_inset Newline newline
+\end_inset
+
+par(mex = 0.2, cex = 0.5)
+\begin_inset Newline newline
+\end_inset
+
+openplotmat(frame.plot=TRUE)
+\begin_inset Newline newline
+\end_inset
+
+straightarrow(from = c(0.46,0.74), to = c(0.53,0.71), arr.pos = 1)
+\begin_inset Newline newline
+\end_inset
+
+straightarrow(from = c(0.3,0.65), to = c(0.3,0.51), arr.pos = 1)
+\begin_inset Newline newline
+\end_inset
+
+textellipse(mid = c(0.74,0.55), box.col = grey(0.95), radx = 0.24, rady = 0.22,
+ lab = c(expression(bold(underline(DETERMINISTIC))), expression(2*H[2]+O[2]
+ %->% H[2]*O), "3 + 4 = 7"), cex = 2 )
+\begin_inset Newline newline
+\end_inset
+
+textrect(mid = c(0.3, 0.75), radx = 0.15, rady = 0.1, lab = c("Experiments"),
+ cex = 2 )
+\begin_inset Newline newline
+\end_inset
+
+textellipse(mid = c(0.29,0.25), box.col = grey(0.95), radx = 0.27, rady = 0.22,
+ lab = c(expression(bold(underline(RANDOM))), "toss coin, roll die", "count
+ ants on sidewalk", "measure rainfall" ), cex = 2 )
+\begin_inset Newline newline
+\end_inset
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Two types of experiments
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Sample Spaces
 \begin_inset CommandInset label
@@ -19022,7 +19157,7 @@ sample space
 \end_inset
 
 .
- For the coin-toss experiment, 
+ For a coin-toss experiment, 
 \begin_inset Formula $S$
 \end_inset
 
@@ -19349,7 +19484,7 @@ prob
 \color inherit
  package
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 The seasoned 
@@ -31860,11 +31995,6 @@ probs
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section*
 Chapter Exercises
 \end_layout
@@ -32009,10 +32139,6 @@ name "cha:Discrete-Distributions"
 
 
 \end_layout
-
-\begin_layout Standard
-\begin_inset Branch main
-status open
 
 \begin_layout Standard
 \noindent
@@ -32433,7 +32559,7 @@ There are numbers associated with PMFs.
 \begin_inset Formula $\E X$
 \end_inset
 
-:
+ (which we will discuss later):
 \begin_inset Formula \begin{equation}
 \mu=\E X=\sum_{x\in S}xf_{X}(x),\end{equation}
 
@@ -32446,7 +32572,7 @@ provided the (potentially infinite) series
  is convergent.
  Another important number is the variance:
 \begin_inset Formula \begin{equation}
-\sigma^{2}=\E(X-\mu)^{2}=\sum_{x\in S}(x-\mu)^{2}f_{X}(x),\end{equation}
+\sigma^{2}=\sum_{x\in S}(x-\mu)^{2}f_{X}(x),\end{equation}
 
 \end_inset
 
@@ -32458,7 +32584,7 @@ reference "xca:variance-shortcut"
 \end_inset
 
 ) with the alternate formula 
-\begin_inset Formula $\sigma^{2}=\E X^{2}-(\E X)^{2}$
+\begin_inset Formula $\sigma^{2}=\sum x{}^{2}f_{X}(x)-\mu^{2}$
 \end_inset
 
 .
@@ -33170,13 +33296,13 @@ where we have used the famous identity
 .
  To get the variance we first calculate
 \begin_inset Formula \[
-\E X^{2}=\frac{1}{m}\sum_{x=1}^{m}x^{2}=\frac{1}{m}\frac{m(m+1)(2m+3)}{6}=\frac{(m+1)(2m+1)}{6},\]
+\sum_{x=1}^{m}x^{2}f_{X}(x)=\frac{1}{m}\sum_{x=1}^{m}x^{2}=\frac{1}{m}\frac{m(m+1)(2m+1)}{6}=\frac{(m+1)(2m+1)}{6},\]
 
 \end_inset
 
  and finally,
 \begin_inset Formula \begin{equation}
-\sigma^{2}=\E X^{2}-(\E X)^{2}=\frac{(m+1)(2m+1)}{6}-\left(\frac{m+1}{2}\right)^{2}=\cdots=\frac{m^{2}-1}{12}.\end{equation}
+\sigma^{2}=\sum_{x=1}^{m}x^{2}f_{X}(x)-\mu^{2}=\frac{(m+1)(2m+1)}{6}-\left(\frac{m+1}{2}\right)^{2}=\cdots=\frac{m^{2}-1}{12}.\end{equation}
 
 \end_inset
 
@@ -39133,11 +39259,6 @@ If
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section*
 Chapter Exercises
 \end_layout
@@ -39741,10 +39862,6 @@ name "cha:Continuous-Distributions"
 
 
 \end_layout
-
-\begin_layout Standard
-\begin_inset Branch main
-status open
 
 \begin_layout Standard
 \noindent
@@ -41042,6 +41159,19 @@ Z=\frac{X-\mu}{\sigma}\sim\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1).\end{eq
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: put in proof of this with a change of variables
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 The MGF of 
 \begin_inset Formula $Z\sim\mathsf{norm}(\mathtt{mean}=0,\,\mathtt{sd}=1)$
 \end_inset
@@ -41104,6 +41234,19 @@ for
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: put in how to get mean and variance of Normal
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Fact
@@ -44661,11 +44804,6 @@ name "fig:gamma-mgf"
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section*
 Chapter Exercises
 \end_layout
@@ -44962,10 +45100,6 @@ name "cha:Multivariable-Distributions"
 
 
 \end_layout
-
-\begin_layout Standard
-\begin_inset Branch main
-status open
 
 \begin_layout Standard
 \noindent
@@ -53197,11 +53331,6 @@ name "fig:multinom-pmf2"
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section*
 Chapter Exercises
 \end_layout
@@ -53340,10 +53469,6 @@ name "cha:Sampling-Distributions"
 
 
 \end_layout
-
-\begin_layout Standard
-\begin_inset Branch main
-status open
 
 \begin_layout Standard
 \noindent
@@ -55983,11 +56108,6 @@ name "fig:simulated-MAD"
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section*
 Chapter Exercises
 \end_layout
@@ -56641,10 +56761,6 @@ name "cha:Estimation"
 
 
 \end_layout
-
-\begin_layout Standard
-\begin_inset Branch main
-status open
 
 \begin_layout Standard
 \noindent
@@ -60892,11 +61008,6 @@ Mention mle from the stats4 package.
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section*
 Chapter Exercises
 \end_layout
@@ -60996,10 +61107,6 @@ name "cha:Hypothesis-Testing"
 
 
 \end_layout
-
-\begin_layout Standard
-\begin_inset Branch main
-status open
 
 \begin_layout Paragraph*
 What do I want them to know?
@@ -63985,11 +64092,6 @@ run.power.examp
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section*
 Chapter Exercises
 \end_layout
@@ -64027,10 +64129,6 @@ name "cha:simple-linear-regression"
 
 
 \end_layout
-
-\begin_layout Standard
-\begin_inset Branch main
-status open
 
 \begin_layout Paragraph*
 What do I want them to know?
@@ -71591,11 +71689,6 @@ l axis.
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section*
 Chapter Exercises
 \end_layout
@@ -71712,10 +71805,6 @@ name "cha:multiple-linear-regression"
 
 
 \end_layout
-
-\begin_layout Standard
-\begin_inset Branch main
-status open
 
 \begin_layout Standard
 \noindent
@@ -80129,7 +80218,7 @@ key "Fox2002"
 \begin_layout Standard
 \align center
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -80139,6 +80228,51 @@ http://cran.r-project.org/doc/contrib/Fox-Companion/appendix.html
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Here is an example of how it works, based on a question from R-help.
+\end_layout
+
+\begin_layout Scrap
+<<>>=
+\begin_inset Newline newline
+\end_inset
+
+# fake data 
+\begin_inset Newline newline
+\end_inset
+
+set.seed(1) 
+\begin_inset Newline newline
+\end_inset
+
+x <- seq(from = 0, to = 1000, length.out = 200) 
+\begin_inset Newline newline
+\end_inset
+
+y <- 1 + 2*(sin((2*pi*x/360) - 3))^2 + rnorm(200, sd = 2)
+\begin_inset Newline newline
+\end_inset
+
+plot(x, y)
+\begin_inset Newline newline
+\end_inset
+
+acc.nls <- nls(y ~ a + b*(sin((2*pi*x/360) - c))^2, start = list(a = 0.9,
+ b = 2.3, c = 2.9))
+\begin_inset Newline newline
+\end_inset
+
+summary(acc.nls)
+\begin_inset Newline newline
+\end_inset
+
+#plot(x, fitted(acc.nls))
+\begin_inset Newline newline
+\end_inset
+
+@
 \end_layout
 
 \begin_layout Subsection
@@ -80279,11 +80413,6 @@ AIC=-2\ln L+2(p+1)\]
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section*
 Chapter Exercises
 \end_layout
@@ -80358,10 +80487,6 @@ name "cha:resampling-methods"
 
 
 \end_layout
-
-\begin_layout Standard
-\begin_inset Branch main
-status open
 
 \begin_layout Standard
 \noindent
@@ -82715,11 +82840,6 @@ Relationship between two variables.
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section*
 Chapter Exercises
 \end_layout
@@ -83793,11 +83913,6 @@ Jay Kerns
 
 
 \end_layout
-
-\begin_layout Standard
-\noindent
-\begin_inset Branch main
-status open
 
 \begin_layout Chapter
 Data
@@ -92138,11 +92253,6 @@ Stangle(file="IPSUR.Rnw", output="../IPSUR.R", annotate=TRUE)
 \end_inset
 
 @
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_body
