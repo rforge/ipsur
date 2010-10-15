@@ -1,4 +1,4 @@
-%% LyX 1.6.5 created this file.  For more info, see http://www.lyx.org/.
+%% LyX 1.6.7 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
 \documentclass[12pt,english,nogin]{book}
 \usepackage{lmodern}
@@ -33,7 +33,7 @@ language=R}
 \hypersetup{pdftitle={Introduction to Probability and Statistics Using R},
  pdfauthor={G. Jay Kerns},
  linkcolor=blue,  citecolor=black, urlcolor=blue}
- 
+
 \makeatletter
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
@@ -7738,15 +7738,6 @@ of land.
 \item We count the number of pats on a baby's back until (s)he burps.
 \end{enumerate}
 
-\begin{xca}
-Find the constant $c$ so that the given function is a valid PDF of
-a random variable $X$.\end{xca}
-\begin{enumerate}
-\item $f(x)=Cx^{n},\quad0<x<1$.
-\item $f(x)=Cx\me^{-x},\quad0<x<\infty$.
-\item $f(x)=\me^{-(x-C)},\quad7<x<\infty.$
-\item $f(x)=Cx^{3}(1-x)^{2},\quad0<x<1.$
-\item ${\displaystyle f(x)=C(1+x^{2}/4)^{-1}},\quad-\infty<x<\infty.$\end{enumerate}
 \begin{xca}
 \label{xca:variance-shortcut}Show that $\E(X-\mu)^{2}=\E X^{2}-\mu^{2}$.
 \emph{Hint}: expand the quantity $(X-\mu)^{2}$ and distribute the

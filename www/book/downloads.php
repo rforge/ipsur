@@ -45,8 +45,8 @@ If you would like to print your own copy of the <strong>published</strong> editi
 
 <p>
 <div align="center">
-	<strong>Publisher Quality PDF from Lulu.com</strong><br />
-	<a href="http://www.lulu.com/product/download/introduction-to-probability-and-statistics-using-r/6272282">Download page</a>
+	<strong>Publisher Quality PDF</strong><br />
+	<a href="download/IPSUR.pdf">IPSUR.pdf</a>
 </div>
 </p>
 
