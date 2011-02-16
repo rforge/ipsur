@@ -18772,7 +18772,7 @@ Detective Pyork E.~Pig
 rm(.Random.seed)
 try(dir.create("../../data"), silent = TRUE)
 save.image(file = "../../data/IPSUR.RData")
-tools::resaveRdaFiles('../../data')
+tools::resaveRdaFiles('../../data', compress = 'xz')
 Stangle(file="IPSUR.Rnw", output="../IPSUR.R", annotate=TRUE)
 @
 \end{document}
