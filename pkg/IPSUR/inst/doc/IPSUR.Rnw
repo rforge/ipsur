@@ -6833,7 +6833,7 @@ Find the MGF for $X\sim\mathsf{binom}(\mathtt{size}=n,\,\mathtt{prob}=p)$.
 \end{example}
 \begin{alignat*}{1}
 M_{X}(t)= & \sum_{x=0}^{n}\me^{tx}\,{n \choose x}\, p^{x}(1-p)^{n-x},\\
-= & \sum_{x=0}^{n-x}{n \choose x}\,(p\me^{t})^{x}q^{n-x},\\
+= & \sum_{x=0}^{n}{n \choose x}\,(p\me^{t})^{x}q^{n-x},\\
 = & (p\me^{t}+q)^{n},\quad\mbox{for any \ensuremath{t}.}\end{alignat*}
 
 
@@ -6886,7 +6886,7 @@ derivation. Suffice it to say that when the MGF exists in a neighborhood
 of $t=0$, the exchange of differentiation and summation is valid
 in that neighborhood, and our remarks hold true.%
 } that\begin{equation}
-M_{X}^{(r)}(0)=\E X^{r}=\mbox{\ensuremath{r^{th}}moment of \ensuremath{X}about the origin.}\end{equation}
+M_{X}^{(r)}(0)=\E X^{r}=\mbox{\ensuremath{r^{\mathrm{th}}}moment of \ensuremath{X}about the origin.}\end{equation}
 These are also known as \emph{raw moments} and are sometimes denoted
 $\mu_{r}'$. In addition to these are the so called \emph{central
 moments} $\mu_{r}$ defined by\begin{equation}
@@ -18771,7 +18771,8 @@ Detective Pyork E.~Pig
 <<echo=FALSE, results=hide, split=FALSE>>= 
 rm(.Random.seed)
 try(dir.create("../../data"), silent = TRUE)
-save.image(file = "../../data/IPSUR.RData", compress = "xz")
+save.image(file = "../../data/IPSUR.RData")
+tools::resaveRdaFiles('../../data', compress = 'xz')
 Stangle(file="IPSUR.Rnw", output="../IPSUR.R", annotate=TRUE)
 @
 \end{document}
