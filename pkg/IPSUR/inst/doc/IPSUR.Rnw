@@ -673,15 +673,6 @@ These are extra materials that accompany \IPSUR. They reside in the
 \inputencoding{latin9}\lstinline[showstringspaces=false]!/etc!\inputencoding{utf8}
 subdirectory of the package source.
 \begin{description}
-\item [{\texttt{IPSUR.RData}}] is a saved image of the \textsf{R} workspace
-at the completion of the Sweave processing of \IPSUR. It can be loaded
-into memory with \textsf{File} $\triangleright$ \textsf{Load Workspace}
-or with the command \inputencoding{latin9}\lstinline[showstringspaces=false]!load("/path/to/IPSUR.Rdata")!\inputencoding{utf8}.
-Either method will make every single object in the file immediately
-available and in memory. In particular, the data BLANK from Exercise
-BLANK in Chapter BLANK on page BLANK will be loaded. Type BLANK at
-the command line (after loading \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR.RData!\inputencoding{utf8})
-to see for yourself. 
 \item [{\texttt{IPSUR.R}}] is the exported \textsf{R} code from \inputencoding{latin9}\lstinline[showstringspaces=false]!IPSUR.Rnw!\inputencoding{utf8}.
 With this script, literally every \textsf{R} command from the entirety
 of \IPSUR\ can be resubmitted at the command line.
@@ -18437,7 +18428,7 @@ answer keys already for all of your QUIZZES and EXAMS, too.
 \section{Ancillary Materials\label{sec:Ancillary-Materials}}
 
 In addition to the main text, student manual, and instructor manual,
-there are two other ancillaries. IPSUR.R, and IPSUR.RData.
+there is IPSUR.R which is all of the parsed R code used in the document.
 
 
 \section{Modifying This Document\label{sec:Modifying-This-Document}}
@@ -18770,9 +18761,9 @@ Detective Pyork E.~Pig
 
 <<echo=FALSE, results=hide, split=FALSE>>= 
 rm(.Random.seed)
-try(dir.create("../../data"), silent = TRUE)
-save.image(file = "../../data/IPSUR.RData")
-tools::resaveRdaFiles('../../data', compress = 'xz')
+# try(dir.create("../../data"), silent = TRUE)
+# save.image(file = "../../data/IPSUR.RData")
+# tools::resaveRdaFiles('../../data', compress = 'xz')
 Stangle(file="IPSUR.Rnw", output="../IPSUR.R", annotate=TRUE)
 @
 \end{document}
