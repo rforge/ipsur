@@ -1,5 +1,0 @@
-redirect 301 /index.html http://ipsur.org/index.html
-redirect 301 /install.html http://ipsur.org/install.html
-redirect 301 /download.html http://ipsur.org/download.html
-redirect 301 /resources.html http://ipsur.org/resources.html
-redirect 301 /feedback.html http://ipsur.org/feedback.html
