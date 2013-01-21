@@ -22,8 +22,8 @@ function (n, classes = 365, coincident = 2)
     upper <- min(1, exp(k * log(n) - (k - 1) * log(c)), na.rm = TRUE)
     nmin <- uniroot(f, lower = 0, upper = upper, tol = eps)
     if (nmin$root == 0 && f(.Machine$double.xmin) < 0) {
-        f <- function(ln.p) qbirthday(exp(ln.p), c, k) - n
-        nmin <- uniroot(f, lower = floor(log(.Machine$double.xmin)), 
+        g <- function(ln.p) qbirthday(exp(ln.p), c, k) - n
+        nmin <- uniroot(g, lower = floor(log(.Machine$double.xmin)), 
             upper = -2, tol = eps)
         exp(nmin$root)
     }
