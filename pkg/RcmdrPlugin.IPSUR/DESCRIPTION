@@ -1,6 +1,6 @@
 Package: RcmdrPlugin.IPSUR
-Version: 0.1-9
-Date: 2013-01-19
+Version: 0.2-0
+Date: 2013-01-25
 Title: An IPSUR Plugin for the R Commander
 Author: G. Jay Kerns <gkerns@ysu.edu> with contributions by Theophilius Boye and Tyler Drombosky, adapted from the work of John Fox et al.
 Maintainer: G. Jay Kerns <gkerns@ysu.edu>
