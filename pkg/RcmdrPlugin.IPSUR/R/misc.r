@@ -62,10 +62,11 @@ function (prob = 0.5, classes = 365, coincident = 2)
 #######
 # Need this to assign numbers below
 RcmdrEnv <- function() {
-    pos <-  match("RcmdrEnv", search())
+    pos <- match("RcmdrEnv", search())
     if (is.na(pos)) { # Must create it
         RcmdrEnv <- list()
         attach(RcmdrEnv, pos = length(search()) - 1)
+        on.exit(detach(RcmdrEnv))
         rm(RcmdrEnv)
         pos <- match("RcmdrEnv", search())
         }

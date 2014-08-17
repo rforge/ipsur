@@ -694,9 +694,9 @@ function ()
             return()
         }
         closeDialog()
-        command <- paste("seq(", from1, ", ", to1, ", by=", by1, 
+        command <- paste("support <- seq(", from1, ", ", to1, ", by=", by1, 
             ")", sep = "")
-        assign("support", justDoIt(command), envir = .GlobalEnv)
+        justDoIt(command)
         store <- tclvalue(locVariable)
         if (store == "new") {
             initializeDialog(title = gettextRcmdr("Simulation Dataset"))
@@ -2398,7 +2398,6 @@ function ()
     pos <- match("RcmdrEnv", search())
     if (is.na(pos)) {
         RcmdrEnv <- list()
-        attach(RcmdrEnv, pos = length(search()) - 1)
         rm(RcmdrEnv)
         pos <- match("RcmdrEnv", search())
     }
