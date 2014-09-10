@@ -1,6 +1,6 @@
 Package: RcmdrPlugin.IPSUR
-Version: 0.2-0
-Date: 2013-01-25
+Version: 0.2-1
+Date: 2014-09-10
 Title: An IPSUR Plugin for the R Commander
 Authors@R: c(person("G. Jay", "Kerns", role = c("aut", "cre"), email = "gkerns@ysu.edu"),
     person("Theophilus", "Boye", role = "ctb"), person("Tyler", "Drombosky", role = "ctb")
